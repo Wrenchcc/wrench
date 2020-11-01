@@ -204,17 +204,17 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
 
   const onDelete = useCallback(() => {
     Alert.alert(
-      t('options:alertTitle'),
+      t('options.alertTitle'),
       null,
       [
         {
           onPress: () => handleDeletePost(post.id),
           style: 'destructive',
-          text: t('options:delete'),
+          text: t('options.delete'),
         },
         {
           style: 'cancel',
-          text: t('options:cancel'),
+          text: t('options.cancel'),
         },
       ],
       { cancelable: false }
@@ -224,10 +224,10 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
   const handleActionSheet = useCallback(() => {
     if (post.permissions.isOwner) {
       const options = [
-        t('options:edit'),
-        post.collection ? t('options:removeCollection') : t('options:collection'),
-        t('options:delete'),
-        t('options:cancel'),
+        t('options.edit'),
+        post.collection ? t('options.removeCollection') : t('options.collection'),
+        t('options.delete'),
+        t('options.cancel'),
       ]
 
       showActionSheetWithOptions(
@@ -272,7 +272,7 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
         }
       )
     } else {
-      const options = [t('options:report'), t('options:cancel')]
+      const options = [t('options.report'), t('options.cancel')]
       showActionSheetWithOptions(
         {
           options,

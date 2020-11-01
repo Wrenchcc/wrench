@@ -3,8 +3,8 @@
     "feedback": "Feedback",
     "field": {
         "bio": "Bio",
-        "firstName": "First name",
-        "lastName": "Last name",
+        "firstname": "",
+        "lastname": "",
         "website": "Website"
     },
     "mail": "Mail",

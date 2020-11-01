@@ -1,5 +1,6 @@
 import { Alert } from 'react-native'
 import NativeShare from 'react-native-share'
+import { useTranslation } from 'react-i18next'
 import { mergeAll } from 'rambda'
 import AsyncStorage from '@react-native-community/async-storage'
 import { locales } from '@wrench/translations'
@@ -31,7 +32,7 @@ const generateLanguageSettings = () => {
   const currentLocale = i18next.language
 
   items = locales.map((locale) => ({
-    titleKey: `languages:${locale}`,
+    titleKey: locale,
     onPress: () => currentLocale !== locale && changeLocale(locale),
     type: 'selector',
     selected: currentLocale === locale,

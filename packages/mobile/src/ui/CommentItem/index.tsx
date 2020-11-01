@@ -26,7 +26,6 @@ function CommentItem({ data, onReply, fetchReplies, first, highlightId, postId }
           isReply
           {...node}
           commentId={commentId}
-          t={t}
           onReply={onReply}
           highlightId={highlightId}
           postId={postId}
@@ -49,7 +48,6 @@ function CommentItem({ data, onReply, fetchReplies, first, highlightId, postId }
   ) : (
     <Item
       {...data.node}
-      t={t}
       first={first}
       onReply={onReply}
       highlightId={highlightId}

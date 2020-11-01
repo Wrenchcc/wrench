@@ -56,6 +56,9 @@ function Search({ query }) {
     },
   }
 
+  // t('users')
+  // t('projects')
+  // t('hashtags')
   const handleLabelText = useCallback(({ route }) => t(route.key), [t])
 
   const renderScene = useCallback(

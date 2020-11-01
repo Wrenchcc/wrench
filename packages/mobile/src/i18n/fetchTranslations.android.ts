@@ -1,8 +1,9 @@
-import fs from 'react-native-fs'
+import { readFileAssets } from 'react-native-fs'
 
-const fetchTranslation = async (locale) => {
-  const path = `translations/${locale}.json`
-  const contents = await fs.readFileAssets(path, 'utf8')
+// TODO: Need copuy files to andorid assets?
+const fetchTranslation = async (language, namespace) => {
+  const path = `translations/${language}/${namespace}.json`
+  const contents = await readFileAssets(path, 'utf8')
   return JSON.parse(contents)
 }
 

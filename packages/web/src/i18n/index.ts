@@ -19,6 +19,10 @@ const NextI18NextInstance = new NextI18Next({
     lookupCookie: 'preferred_language',
     order: ['querystring', 'cookie', 'navigator', 'header'],
   },
+  react: {
+    useSuspense: false,
+    wait: true
+  },
   interpolation: {
     escapeValue: false,
     format(value, format) {

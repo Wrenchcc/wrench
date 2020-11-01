@@ -1,5 +1,8 @@
 {
     "clear": "Clear all",
+    "hashtags": "Hashtags",
     "placeholder": "Search",
-    "recent": "Recent"
+    "projects": "Projects",
+    "recent": "Recent",
+    "users": "Users"
 }
