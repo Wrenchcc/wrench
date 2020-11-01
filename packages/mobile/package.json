@@ -11,6 +11,7 @@
     "start:android": "tasks/start_android",
     "start:ios": "tasks/start_ios",
     "start:packager": "react-native start --reset-cache",
+    "copy:locales": "node tasks/copy_locales.js",
     "check:types": "tsc --noEmit"
   },
   "dependencies": {

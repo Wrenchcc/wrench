@@ -4,9 +4,7 @@ import { initReactI18next } from 'react-i18next'
 import humanFormat from 'human-format'
 import { locales, defaultLocale } from '@wrench/translations'
 import { getLocale } from './helpers'
-
-export * from './helpers'
-export * from './registerUserLocale'
+import en from 'translations/en/translations.json'
 
 const languageDetector = {
   async: true,
@@ -41,4 +39,10 @@ i18next
         return value
       },
     },
+    resources: {
+      en,
+    },
   })
+
+export * from './helpers'
+export * from './registerUserLocale'

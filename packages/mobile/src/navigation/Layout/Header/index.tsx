@@ -8,8 +8,14 @@ import { Base, Background, Content, Inner } from './styles'
 
 const { interpolate } = Animated
 
+
+// NOTE: Used to create translation files
+// t('notifications')
+// t('home')
+
 function Header({ headerLeft, headerRight, headerTitleKey, stickyComponent }) {
   const { t } = useTranslation('header')
+
   const { translateY, headerHeight } = useContext(ScrollContext)
 
   const transform = [

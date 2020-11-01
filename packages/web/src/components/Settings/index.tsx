@@ -37,7 +37,7 @@ function Settings({ isAuthenticated }) {
     i18n: { language },
   } = useContext(I18nContext)
 
-  const { t } = useTranslation(['settings'])
+  const { t } = useTranslation('settings')
   const [saved, setSaved] = useState(false)
 
   const [data, setData] = useState({
@@ -133,7 +133,7 @@ function Settings({ isAuthenticated }) {
       {saved && (
         <Toast>
           <Text color="inverted" medium>
-            {t('toast_saved')}
+            {t('toast.saved')}
           </Text>
         </Toast>
       )}
@@ -141,7 +141,7 @@ function Settings({ isAuthenticated }) {
       {error && (
         <Toast error>
           <Text color="inverted" medium>
-            {t('toast_error')}
+            {t('toast.error')}
           </Text>
         </Toast>
       )}
@@ -150,16 +150,16 @@ function Settings({ isAuthenticated }) {
         <MenuTitle fontSize={36}>{t('title')}</MenuTitle>
 
         <MenuItem to="edit-profile" smooth duration={250} spy offset={-150}>
-          <Text color="neutral">{t('sections_profile')}</Text>
+          <Text color="neutral">{t('sections.profile')}</Text>
         </MenuItem>
         <MenuItem to="notifications" smooth duration={250} spy offset={-150}>
-          <Text color="neutral">{t('sections_notifications')}</Text>
+          <Text color="neutral">{t('sections.notifications')}</Text>
         </MenuItem>
         <MenuItem to="language" smooth duration={250} spy offset={-150}>
-          <Text color="neutral">{t('sections_language')}</Text>
+          <Text color="neutral">{t('sections.language')}</Text>
         </MenuItem>
         <MenuItem to="support" smooth duration={250} spy offset={-150}>
-          <Text color="neutral">{t('sections_support')}</Text>
+          <Text color="neutral">{t('sections.support')}</Text>
         </MenuItem>
       </Left>
 
@@ -167,12 +167,12 @@ function Settings({ isAuthenticated }) {
         <Element name={'edit-profile'}>
           <Section>
             <Headline>
-              <Title medium>{t('sections_profile')}</Title>
+              <Title medium>{t('sections.profile')}</Title>
             </Headline>
 
             <Row>
               <Input
-                placeholder={t('field_firstname')}
+                placeholder={t('field.firstname')}
                 value={data.firstName}
                 required
                 onChangeText={(firstName) => updateField('firstName', firstName)}
@@ -181,7 +181,7 @@ function Settings({ isAuthenticated }) {
 
             <Row>
               <Input
-                placeholder={t('field_lastname')}
+                placeholder={t('field.lastname')}
                 value={data.lastName}
                 required
                 onChangeText={(lastName) => updateField('lastName', lastName)}
@@ -196,7 +196,7 @@ function Settings({ isAuthenticated }) {
             </Row>
 
             <Row>
-              <Input placeholder={t('field_bio')} onChangeText={handleBio} value={data.bio} />
+              <Input placeholder={t('field.bio')} onChangeText={handleBio} value={data.bio} />
               <Counter color="neutral" fontSize={15}>
                 {`${data.bio ? data.bio.length : 0}/${MAX_CHARACTERS}`}
               </Counter>
@@ -204,7 +204,7 @@ function Settings({ isAuthenticated }) {
 
             <Row>
               <Input
-                placeholder={t('field_website')}
+                placeholder={t('field.website')}
                 type="url"
                 onChangeText={(website) => updateField('website', website)}
                 value={data.website}
@@ -222,7 +222,7 @@ function Settings({ isAuthenticated }) {
         <Element name="notifications">
           <Section>
             <Headline>
-              <Title medium>{t('sections_notifications')}</Title>
+              <Title medium>{t('sections.notifications')}</Title>
             </Headline>
 
             {notifications &&
@@ -238,7 +238,7 @@ function Settings({ isAuthenticated }) {
         <Element name="language">
           <Section>
             <Headline>
-              <Title medium>{t('sections_language')}</Title>
+              <Title medium>{t('sections.language')}</Title>
             </Headline>
 
             {locales.map((locale) => {
@@ -257,7 +257,7 @@ function Settings({ isAuthenticated }) {
         <Element name="support">
           <Section>
             <Headline>
-              <Title medium>{t('sections_support')}</Title>
+              <Title medium>{t('sections.support')}</Title>
             </Headline>
 
             <Setting>

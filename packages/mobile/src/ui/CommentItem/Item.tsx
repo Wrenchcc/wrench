@@ -222,7 +222,7 @@ function Item({
               {!first && likes.totalCount > 0 && (
                 <Action>
                   <Text medium color="accent" fontSize={12}>
-                    {t('CommentItem:like', { count: likes.totalCount })}
+                    {t('like', { count: likes.totalCount })}
                   </Text>
                 </Action>
               )}
@@ -235,7 +235,7 @@ function Item({
                     disabled={id < 0}
                     color="accent"
                   >
-                    {t('CommentItem:reply')}
+                    {t('reply')}
                   </Reply>
                 </Action>
               )}

@@ -11,7 +11,12 @@
     "title": ""
   },
   "add-media": {
-    "next": ""
+    "next": "",
+    "options": {
+      "cancel": "",
+      "discard": "",
+      "title": ""
+    }
   },
   "add-post-to-collection": {
     "done": "",
@@ -323,10 +328,12 @@
     "cancel": "",
     "collection": "",
     "delete": "",
-    "discard": "",
     "edit": "",
     "removeCollection": "",
-    "report": "",
+    "report": ""
+  },
+  "options_old": {
+    "discard": "",
     "title": ""
   },
   "popular": {
@@ -421,10 +428,12 @@
   "settings": {
     "chat": "Habla con nosotros",
     "feedback": "Retroalimentación",
-    "field_bio": "Bio",
-    "field_firstname": "Nombre de pila",
-    "field_lastname": "Apellido",
-    "field_website": "Sitio web",
+    "field": {
+      "bio": "",
+      "firstname": "",
+      "lastname": "",
+      "website": ""
+    },
     "mail": "Soporte por correo",
     "save": "Salvar",
     "sections": {
@@ -434,6 +443,14 @@
       "support": ""
     },
     "title": "Configuraciones",
+    "toast": {
+      "error": "",
+      "saved": ""
+    },
+    "field_bio": "Bio",
+    "field_firstname": "Nombre de pila",
+    "field_lastname": "Apellido",
+    "field_website": "Sitio web",
     "toast_error": "Algo salió mal",
     "toast_saved": "Se guardó la configuración",
     "sections_language": "Idioma",
@@ -1067,27 +1084,13 @@
         "loadreplies_plural": ""
       },
       "common": {
-        "chat": "",
         "description": "",
-        "feedback": "",
-        "field_bio": "",
-        "field_firstname": "",
-        "field_lastname": "",
-        "field_website": "",
         "legal": "",
         "like": "",
         "like_plural": "",
         "link": "",
-        "mail": "",
         "reply": "",
-        "save": "",
-        "sections_language": "",
-        "sections_notifications": "",
-        "sections_profile": "",
-        "sections_support": "",
-        "title": "",
-        "toast_error": "",
-        "toast_saved": ""
+        "title": ""
       },
       "common_old": {
         "signout": "",
@@ -1096,7 +1099,21 @@
         "feed": "",
         "login": "",
         "register": "",
-        "sign_out": ""
+        "sign_out": "",
+        "chat": "",
+        "feedback": "",
+        "field_bio": "",
+        "field_firstname": "",
+        "field_lastname": "",
+        "field_website": "",
+        "mail": "",
+        "save": "",
+        "sections_language": "",
+        "sections_notifications": "",
+        "sections_profile": "",
+        "sections_support": "",
+        "toast_error": "",
+        "toast_saved": ""
       },
       "edit-collection": {
         "add": "",
@@ -1397,13 +1414,16 @@
       "searching-for": {
         "title": ""
       },
+      "sections": {
+        "language": "",
+        "notifications": "",
+        "profile": "",
+        "support": ""
+      },
       "select-project": {
         "create": ""
       },
       "settings": {
-        "sections_profile": "Editar perfil"
-      },
-      "settings_old": {
         "chat": "Habla con nosotros",
         "feedback": "Retroalimentación",
         "field_bio": "Bio",
@@ -1412,18 +1432,28 @@
         "field_website": "Sitio web",
         "mail": "Soporte por correo",
         "save": "Salvar",
-        "sections_language": "Idioma",
-        "sections_notifications": "Notificaciones",
-        "sections_support": "Apoyo",
+        "sections": {
+          "language": "",
+          "notifications": "",
+          "profile": "",
+          "support": ""
+        },
         "title": "Configuraciones",
         "toast_error": "Algo salió mal",
         "toast_saved": "Se guardó la configuración",
+        "sections_language": "Idioma",
+        "sections_notifications": "Notificaciones",
+        "sections_profile": "Editar perfil",
+        "sections_support": "Apoyo"
+      },
+      "settings_old": {
         "new_comment": "Comentarios",
         "new_mention": "Menciones",
         "new_article": "Artículos",
         "new_follower": "Seguidores",
         "similar_projects": "Proyectos similares",
-        "product_announcements": "Anuncios de productos"
+        "product_announcements": "Anuncios de productos",
+        "sections:profile": ""
       },
       "share": {
         "share": ""
@@ -1948,999 +1978,1501 @@
           "network": "",
           "spam": ""
         },
-        "translations": [
-          {
-            "CommentItem": {
-              "like": "",
-              "like_plural": "",
-              "reply": ""
-            }
-          },
-          {
-            "add-collection": {
-              "add": "",
-              "done": "",
-              "placeholder": "",
-              "title": ""
-            }
-          },
-          {
-            "add-media": {
-              "next": ""
-            }
-          },
-          {
-            "add-post-to-collection": {
-              "done": "",
-              "title": ""
-            }
-          },
-          {
-            "add-post": {
-              "add": "",
-              "collection": "",
-              "error": "",
-              "placeholder": ""
-            }
-          },
-          {
-            "add-project-model": {
-              "add": "",
-              "headerTitle": "",
-              "placeholder": "",
-              "skip": "",
-              "title": ""
-            }
-          },
-          {
-            "add-project-type": {
-              "headerTitle": "",
-              "title": ""
-            }
-          },
-          {
-            "add-project": {
-              "headerTitle": "",
-              "next": "",
-              "placeholder": "",
-              "title": ""
-            }
-          },
-          {
-            "blog-post": {
-              "back": "Volver al blog",
-              "title": "Blog"
-            }
-          },
-          {
-            "blog": {
-              "title": "Blog"
-            }
-          },
-          {
-            "bookmarks": {
-              "description": "",
-              "headerTitle": "",
-              "title": ""
-            }
-          },
-          {
-            "collections": {
-              "edit": "",
-              "title": ""
-            }
-          },
-          {
-            "comment-field": {
-              "placeholder": "Añadir un comentario...",
-              "post": "Enviar"
-            }
-          },
-          {
-            "comment-item": {
-              "loadReplies": "",
-              "loadReplies_plural": ""
-            }
-          },
-          {
-            "comment-list": {
-              "loadMore": "",
-              "loadMore_plural": ""
-            }
-          },
-          {
-            "comments": {
-              "load_replies": "Ver respuestas ( {{count}} )",
-              "load_replies_plural": "",
-              "loadMore": "",
-              "title": ""
-            }
-          },
-          {
-            "comments_old": {
-              "loadreplies": "",
-              "loadreplies_plural": ""
-            }
-          },
-          {
-            "common": {
-              "chat": "",
-              "description": "",
-              "feedback": "",
-              "field_bio": "",
-              "field_firstname": "",
-              "field_lastname": "",
-              "field_website": "",
-              "legal": "",
-              "like": "",
-              "like_plural": "",
-              "link": "",
-              "mail": "",
-              "reply": "",
-              "save": "",
-              "sections_language": "",
-              "sections_notifications": "",
-              "sections_profile": "",
-              "sections_support": "",
-              "title": "",
-              "toast_error": "",
-              "toast_saved": ""
-            }
-          },
-          {
-            "common_old": {
-              "signout": "",
-              "download": "",
-              "explore": "",
-              "feed": "",
-              "login": "",
-              "register": "",
-              "sign_out": ""
-            }
-          },
-          {
-            "edit-collection": {
-              "add": "",
-              "delete": "",
-              "done": "",
-              "placeholder": "",
-              "title": ""
-            }
-          },
-          {
-            "edit-model": {
-              "headerTitle": "",
-              "placeholder": "",
-              "save": "",
-              "title": ""
-            }
-          },
-          {
-            "edit-post": {
-              "cancel": "",
-              "headerTitle": "",
-              "placeholder": "",
-              "save": ""
-            }
-          },
-          {
-            "edit-profile": {
-              "bio": "",
-              "change": "",
-              "firstName": "",
-              "headerTitle": "",
-              "imagePickerCancel": "",
-              "imagePickerLibrary": "",
-              "imagePickerPermissionOk": "",
-              "imagePickerPermissionRetry": "",
-              "imagePickerPermissionText": "",
-              "imagePickerPermissionTitle": "",
-              "imagePickerPhoto": "",
-              "imagePickerTitle": "",
-              "information": "",
-              "lastName": "",
-              "place": "",
-              "remove": "",
-              "save": "",
-              "username": "",
-              "validation": "",
-              "validationUsername": "",
-              "website": "",
-              "wrong": ""
-            }
-          },
-          {
-            "edit-project": {
-              "cancel": "",
-              "delete": "",
-              "deleteAlert": "",
-              "deleteTitle": "",
-              "description": "",
-              "done": "",
-              "headerTitle": "",
-              "information": "",
-              "model": "",
-              "projectSettings": "",
-              "title": ""
-            }
-          },
-          {
-            "edit": {
-              "edit": ""
-            }
-          },
-          {
-            "facebook": {
-              "button": ""
-            }
-          },
-          {
-            "feed": {
-              "description": "",
-              "title": "Alimentar"
-            }
-          },
-          {
-            "follow": {
-              "follow": "Sigue este proyecto",
-              "followSmall": "",
-              "unfollow": "Siguiendo",
-              "unfollowSmall": "",
-              "follow_short": "Seguir"
-            }
-          },
-          {
-            "followers": {
-              "followers": "{{count, humanFormat}} seguidor",
-              "followers_plural": "{{count, humanFormat}} seguidores",
-              "title": ""
-            }
-          },
-          {
-            "following-projects": {
-              "description": "",
-              "title": "Proyectos que sigues"
-            }
-          },
-          {
-            "footer": {
-              "about": "Acerca de",
-              "blog": "Blog",
-              "chat": "Habla con nosotros",
-              "cookies": "Política de cookies",
-              "description": "Wrench es una comunidad de proyectos fundada en 2018 en Suecia. Está diseñado, construido y dirigido desde el corazón de Estocolmo.",
-              "download": "Descargar aplicaciones",
-              "eula": "EULA",
-              "faq": "Preguntas más frecuentes",
-              "feedback": "Retroalimentación",
-              "help": "Ayuda",
-              "legal": "Legal",
-              "mail": "Soporte por correo",
-              "policy": "Política de privacidad",
-              "press": "Prensa",
-              "social": "Social",
-              "status": "Estado",
-              "terms": "Términos y condiciones",
-              "trademarks": "App Store es una marca de servicio de Apple Inc. Google Play es una marca comercial de Google LLC."
-            }
-          },
-          {
-            "google": {
-              "button": ""
-            }
-          },
-          {
-            "hashtag": {
-              "posts": "",
-              "posts_plural": ""
-            }
-          },
-          {
-            "header": {
-              "download": "Descargar aplicaciones",
-              "explore": "Explorar",
-              "feed": "Alimentar",
-              "home": "",
-              "login": "Iniciar sesión",
-              "notifications": "",
-              "register": "Regístrate"
-            }
-          },
-          {
-            "home": {
-              "description": "Documente sus construcciones, comparta sus proyectos y aprenda de ideas afines.",
-              "document_title": "Wrench | Llave inglesa Tu comunidad de motociclistas",
-              "explore": "Explore más proyectos",
-              "signup": "Regístrate ahora",
-              "subtitle": "comunidad.",
-              "title": "Tu motocicleta"
-            }
-          },
-          {
-            "languages": {
-              "sv": "Sueco",
-              "en": "Inglés",
-              "es": "Español",
-              "it": "Italiano",
-              "de": "Alemán",
-              "nl": "Holandés",
-              "fr": "Francés",
-              "tl": "Filipino",
-              "pt": "Portugués",
-              "ru": "Ruso",
-              "no": "Noruego",
-              "da": "Danés"
-            }
-          },
-          {
-            "legal": {
-              "description": "Al continuar, acepta las",
-              "link": "términos y Condiciones."
-            }
-          },
-          {
-            "like-post": {
-              "like": "{{count}} chispa",
-              "like_plural": "{{count, humanFormat}} chispas"
-            }
-          },
-          {
-            "list": {
-              "load_more": "Ver 1 comentario",
-              "load_more_plural": "Ver los {{count, humanFormat}} comentarios"
-            }
-          },
-          {
-            "login": {
-              "apple_button": "Continuar con Apple",
-              "fb_button": "Continuar con Facebook",
-              "google_button": "Continuar con Google",
-              "title": "Inicie sesión para seguir sus proyectos favoritos y más."
-            }
-          },
-          {
-            "logout": {
-              "logout": "Cerrar sesión",
-              "profile": "Perfil",
-              "settings": "Configuraciones"
-            }
-          },
-          {
-            "me": {
-              "bookmarks": "",
-              "edit": "",
-              "settings": ""
-            }
-          },
-          {
-            "media-picker-list": {
-              "deselectAll": ""
-            }
-          },
-          {
-            "mobile-menu": {
-              "download": "Descargar aplicaciones",
-              "explore": "Explorar",
-              "feed": "Alimentar",
-              "login": "Iniciar sesión",
-              "register": "Regístrate",
-              "sign_out": "desconectar"
-            }
-          },
-          {
-            "no-results": {
-              "title": ""
-            }
-          },
-          {
-            "notification": {
-              "comment": "Comentó tu publicación",
-              "comment_like": "Provocó tu comentario",
-              "follow": "Ahora sigue tu proyecto",
-              "mention": "Te mencioné en un comentario",
-              "post_like": "Encendió tu publicación",
-              "reply": "Respondió a su comentario"
-            }
-          },
-          {
-            "notifications": {
-              "comment": "",
-              "commentLike": "",
-              "description": "Aquí verá comentarios, nuevos seguidores y otras actividades.",
-              "follow": "",
-              "mention": "",
-              "postLike": "",
-              "reply": "",
-              "title": "Aún no hay notificaciones."
-            }
-          },
-          {
-            "onboarding": {
-              "description": "Elija al menos tres categorías que le interesen y le ofreceremos algunos proyectos interesantes para empezar.",
-              "headerTitle": "",
-              "headline": "",
-              "next": "próximo",
-              "save": "",
-              "title": "¿En que estas interesado?"
-            }
-          },
-          {
-            "options": {
-              "alertTitle": "",
-              "cancel": "",
-              "collection": "",
-              "delete": "",
-              "discard": "",
-              "edit": "",
-              "removeCollection": "",
-              "report": "",
-              "title": ""
-            }
-          },
-          {
-            "popular": {
-              "description": "Aquí ves los proyectos más populares de esta semana.",
-              "popular": "",
-              "recent": "",
-              "title": "Proyectos populares"
-            }
-          },
-          {
-            "post-container": {
-              "loadMore": "",
-              "title": ""
-            }
-          },
-          {
-            "post": {
-              "selectCollection": "",
-              "showCollection": ""
-            }
-          },
-          {
-            "posting": {
-              "description": ""
-            }
-          },
-          {
-            "project-card": {
-              "follow": "",
-              "unfollow": ""
-            }
-          },
-          {
-            "project-suggestion": {
-              "description": "Hemos seleccionado algunos proyectos a continuación que pueden resultarle interesantes.",
-              "title": "Ponte al día y sigue algunos proyectos.",
-              "title_small": "Sugerido para ti"
-            }
-          },
-          {
-            "project-suggestion_old": {
-              "headline": "Ponte al día y sigue algunos proyectos."
-            }
-          },
-          {
-            "project-suggestions": {
-              "description": "",
-              "title": ""
-            }
-          },
-          {
-            "project-types": {
-              "inspo": ""
-            }
-          },
-          {
-            "project": {
-              "description": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} publicaciones - {{fullName}} . (@{{username}}) en Wrench",
-              "recent": "",
-              "share": "Compartir",
-              "similar": "Proyectos similares",
-              "title": "{{title}} - {{type}} proyecto",
-              "description_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} publicaciones - {{fullName}} . (@{{username}}) en Wrench"
-            }
-          },
-          {
-            "promo": {
-              "button_default": "Enviar",
-              "button_success": "Expedido",
-              "description": "Ingrese su número y obtenga un enlace de SMS por única vez.",
-              "title": "Descarga la aplicación Wrench en Appstore y Google Play"
-            }
-          },
-          {
-            "push-notifications": {
-              "approve": "",
-              "decline": "",
-              "description": "",
-              "title": ""
-            }
-          },
-          {
-            "result": {
-              "not_found": "No se encontraron resultados de búsqueda.",
-              "projects": "{{count, humanFormat}} proyecto",
-              "projects_plural": "{{count, humanFormat}} proyectos"
-            }
-          },
-          {
-            "search-bar": {
-              "cancel": "",
-              "placeholder": ""
-            }
-          },
-          {
-            "search-location-footer": {
-              "poweredBy": ""
-            }
-          },
-          {
-            "search-location": {
-              "no_result": "No hay resultados.",
-              "placeholder": "Ciudad, País"
-            }
-          },
-          {
-            "search": {
-              "clear": "",
-              "placeholder": "Buscar",
-              "recent": ""
-            }
-          },
-          {
-            "searching-for": {
-              "title": ""
-            }
-          },
-          {
-            "select-project": {
-              "create": ""
-            }
-          },
-          {
-            "settings": {
-              "sections_profile": "Editar perfil"
-            }
-          },
-          {
-            "settings_old": {
-              "chat": "Habla con nosotros",
-              "feedback": "Retroalimentación",
-              "field_bio": "Bio",
-              "field_firstname": "Nombre de pila",
-              "field_lastname": "Apellido",
-              "field_website": "Sitio web",
-              "mail": "Soporte por correo",
-              "save": "Salvar",
-              "sections_language": "Idioma",
-              "sections_notifications": "Notificaciones",
-              "sections_support": "Apoyo",
-              "title": "Configuraciones",
-              "toast_error": "Algo salió mal",
-              "toast_saved": "Se guardó la configuración",
-              "new_comment": "Comentarios",
-              "new_mention": "Menciones",
-              "new_article": "Artículos",
-              "new_follower": "Seguidores",
-              "similar_projects": "Proyectos similares",
-              "product_announcements": "Anuncios de productos"
-            }
-          },
-          {
-            "share": {
-              "share": ""
-            }
-          },
-          {
-            "show-latest": {
-              "button": ""
-            }
-          },
-          {
-            "sign-in": {
-              "description": "",
-              "headline": "",
-              "other": ""
-            }
-          },
-          {
-            "similar-projects": {
-              "title": ""
-            }
-          },
-          {
-            "sparks": {
-              "title": ""
-            }
-          },
-          {
-            "suggestions": {
-              "description": "",
-              "headline": "",
-              "next": ""
-            }
-          },
-          {
-            "text": {
-              "more": ""
-            }
-          },
-          {
-            "time": {
-              "d": "Hace {{count}} días",
-              "d_plural": "Hace {{count}} días",
-              "h": "Hace {{count}} horas",
-              "h_plural": "Hace {{count}} horas",
-              "m": "Hace {{count}} minutos",
-              "m_plural": "Hace {{count}} minutos",
-              "mo": "Hace {{count}} meses",
-              "mo_plural": "Hace {{count}} meses",
-              "now": "justo ahora",
-              "y": "Hace {{count}} años",
-              "y_plural": "Hace {{count}} años"
-            }
-          },
-          {
-            "toast": {
-              "network": "",
-              "spam": ""
-            }
-          },
-          {
-            "translations": [
-              {
-                "blog-post": {
-                  "back": "Volver al blog",
-                  "title": "Blog"
-                }
-              },
-              {
-                "blog": {
-                  "title": "Blog"
-                }
-              },
-              {
-                "collections": {
-                  "title": ""
-                }
-              },
-              {
-                "comment-field": {
-                  "placeholder": "Añadir un comentario...",
-                  "post": "Enviar"
-                }
-              },
-              {
-                "comments": {
-                  "load_replies": "Ver respuestas ( {{count}} )",
-                  "load_replies_plural": ""
-                }
-              },
-              {
-                "comments_old": {
-                  "loadreplies": "",
-                  "loadreplies_plural": ""
-                }
-              },
-              {
-                "common": {
-                  "like": "",
-                  "like_plural": "",
-                  "reply": ""
-                }
-              },
-              {
-                "common_old": {
-                  "signout": "",
-                  "download": "",
-                  "explore": "",
-                  "feed": "",
-                  "login": "",
-                  "register": "",
-                  "sign_out": ""
-                }
-              },
-              {
-                "feed": {
-                  "description": "",
-                  "title": "Alimentar"
-                }
-              },
-              {
-                "follow": {
-                  "follow": "Sigue este proyecto",
-                  "follow_short": "Seguir",
-                  "unfollow": "Siguiendo"
-                }
-              },
-              {
-                "followers": {
-                  "followers": "{{count, humanFormat}} seguidor",
-                  "followers_plural": "{{count, humanFormat}} seguidores"
-                }
-              },
-              {
-                "following-projects": {
-                  "title": "Proyectos que sigues"
-                }
-              },
-              {
-                "footer": {
-                  "about": "Acerca de",
-                  "blog": "Blog",
-                  "chat": "Habla con nosotros",
-                  "cookies": "Política de cookies",
-                  "description": "Wrench es una comunidad de proyectos fundada en 2018 en Suecia. Está diseñado, construido y dirigido desde el corazón de Estocolmo.",
-                  "download": "Descargar aplicaciones",
-                  "eula": "EULA",
-                  "faq": "Preguntas más frecuentes",
-                  "feedback": "Retroalimentación",
-                  "help": "Ayuda",
-                  "legal": "Legal",
-                  "mail": "Soporte por correo",
-                  "policy": "Política de privacidad",
-                  "press": "Prensa",
-                  "social": "Social",
-                  "status": "Estado",
-                  "terms": "Términos y condiciones",
-                  "trademarks": "App Store es una marca de servicio de Apple Inc. Google Play es una marca comercial de Google LLC."
-                }
-              },
-              {
-                "header": {
-                  "download": "Descargar aplicaciones",
-                  "explore": "Explorar",
-                  "feed": "Alimentar",
-                  "login": "Iniciar sesión",
-                  "register": "Regístrate"
-                }
-              },
-              {
-                "home": {
-                  "description": "Documente sus construcciones, comparta sus proyectos y aprenda de ideas afines.",
-                  "document_title": "Wrench | Llave inglesa Tu comunidad de motociclistas",
-                  "explore": "Explore más proyectos",
-                  "signup": "Regístrate ahora",
-                  "subtitle": "comunidad.",
-                  "title": "Tu motocicleta"
-                }
-              },
-              {
-                "languages": {
-                  "sv": "Sueco",
-                  "en": "Inglés",
-                  "es": "Español",
-                  "it": "Italiano",
-                  "de": "Alemán",
-                  "nl": "Holandés",
-                  "fr": "Francés",
-                  "tl": "Filipino",
-                  "pt": "Portugués",
-                  "ru": "Ruso",
-                  "no": "Noruego",
-                  "da": "Danés"
-                }
-              },
-              {
-                "legal": {
-                  "description": "Al continuar, acepta las",
-                  "link": "términos y Condiciones."
-                }
-              },
-              {
-                "like-post": {
-                  "like": "{{count}} chispa",
-                  "like_plural": "{{count, humanFormat}} chispas"
-                }
-              },
-              {
-                "list": {
-                  "load_more": "Ver 1 comentario",
-                  "load_more_plural": "Ver los {{count, humanFormat}} comentarios"
-                }
-              },
-              {
-                "login": {
-                  "apple_button": "Continuar con Apple",
-                  "fb_button": "Continuar con Facebook",
-                  "google_button": "Continuar con Google",
-                  "title": "Inicie sesión para seguir sus proyectos favoritos y más."
-                }
-              },
-              {
-                "logout": {
-                  "logout": "Cerrar sesión",
-                  "profile": "Perfil",
-                  "settings": "Configuraciones"
-                }
-              },
-              {
-                "mobile-menu": {
-                  "download": "Descargar aplicaciones",
-                  "explore": "Explorar",
-                  "feed": "Alimentar",
-                  "login": "Iniciar sesión",
-                  "register": "Regístrate",
-                  "sign_out": "desconectar"
-                }
-              },
-              {
-                "notification": {
-                  "comment": "Comentó tu publicación",
-                  "comment_like": "Provocó tu comentario",
-                  "follow": "Ahora sigue tu proyecto",
-                  "mention": "Te mencioné en un comentario",
-                  "post_like": "Encendió tu publicación",
-                  "reply": "Respondió a su comentario"
-                }
-              },
-              {
-                "notifications": {
-                  "description": "Aquí verá comentarios, nuevos seguidores y otras actividades.",
-                  "title": "Aún no hay notificaciones."
-                }
-              },
-              {
-                "onboarding": {
-                  "description": "Elija al menos tres categorías que le interesen y le ofreceremos algunos proyectos interesantes para empezar.",
-                  "next": "próximo",
-                  "title": "¿En que estas interesado?"
-                }
-              },
-              {
-                "popular": {
-                  "description": "Aquí ves los proyectos más populares de esta semana.",
-                  "title": "Proyectos populares"
-                }
-              },
-              {
-                "project-suggestion": {
-                  "description": "Hemos seleccionado algunos proyectos a continuación que pueden resultarle interesantes.",
-                  "title": "Ponte al día y sigue algunos proyectos.",
-                  "title_small": "Sugerido para ti"
-                }
-              },
-              {
-                "project-suggestion_old": {
-                  "headline": "Ponte al día y sigue algunos proyectos."
-                }
-              },
-              {
-                "project": {
-                  "description": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} publicaciones - {{fullName}} . (@{{username}}) en Wrench",
-                  "share": "Compartir",
-                  "similar": "Proyectos similares",
-                  "title": "{{title}} - {{type}} proyecto",
-                  "description_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} publicaciones - {{fullName}} . (@{{username}}) en Wrench"
-                }
-              },
-              {
-                "promo": {
-                  "button_default": "Enviar",
-                  "button_success": "Expedido",
-                  "description": "Ingrese su número y obtenga un enlace de SMS por única vez.",
-                  "title": "Descarga la aplicación Wrench en Appstore y Google Play"
-                }
-              },
-              {
-                "result": {
-                  "projects": "{{count, humanFormat}} proyecto",
-                  "projects_plural": "{{count, humanFormat}} proyectos",
-                  "not_found": "No se encontraron resultados de búsqueda."
-                }
-              },
-              {
-                "search-location": {
-                  "no_result": "No hay resultados.",
-                  "placeholder": "Ciudad, País"
-                }
-              },
-              {
-                "search": {
-                  "placeholder": "Buscar"
-                }
-              },
-              {
-                "settings": {
-                  "chat": "Habla con nosotros",
-                  "feedback": "Retroalimentación",
-                  "field_bio": "Bio",
-                  "field_firstname": "Nombre de pila",
-                  "field_lastname": "Apellido",
-                  "field_website": "Sitio web",
-                  "mail": "Soporte por correo",
-                  "save": "Salvar",
-                  "sections_language": "Idioma",
-                  "sections_notifications": "Notificaciones",
-                  "sections_profile": "Editar perfil",
-                  "sections_support": "Apoyo",
-                  "title": "Configuraciones",
-                  "toast_error": "Algo salió mal",
-                  "toast_saved": "Se guardó la configuración",
-                  "new_comment": "Comentarios",
-                  "new_mention": "Menciones",
-                  "new_article": "Artículos",
-                  "new_follower": "Seguidores",
-                  "similar_projects": "Proyectos similares",
-                  "product_announcements": "Anuncios de productos"
-                }
-              },
-              {
-                "time": {
-                  "d": "Hace {{count}} días",
-                  "d_plural": "Hace {{count}} días",
-                  "h": "Hace {{count}} horas",
-                  "h_plural": "Hace {{count}} horas",
-                  "m": "Hace {{count}} minutos",
-                  "m_plural": "Hace {{count}} minutos",
-                  "mo": "Hace {{count}} meses",
-                  "mo_plural": "Hace {{count}} meses",
-                  "now": "justo ahora",
-                  "y": "Hace {{count}} años",
-                  "y_plural": "Hace {{count}} años"
-                }
-              },
-              {
-                "translations": {
+        "translations": {
+          "CommentItem": {
+            "like": "",
+            "like_plural": "",
+            "reply": ""
+          },
+          "add-collection": {
+            "add": "",
+            "done": "",
+            "placeholder": "",
+            "title": ""
+          },
+          "add-media": {
+            "next": ""
+          },
+          "add-post-to-collection": {
+            "done": "",
+            "title": ""
+          },
+          "add-post": {
+            "add": "",
+            "collection": "",
+            "error": "",
+            "placeholder": ""
+          },
+          "add-project-model": {
+            "add": "",
+            "headerTitle": "",
+            "placeholder": "",
+            "skip": "",
+            "title": ""
+          },
+          "add-project-type": {
+            "headerTitle": "",
+            "title": ""
+          },
+          "add-project": {
+            "headerTitle": "",
+            "next": "",
+            "placeholder": "",
+            "title": ""
+          },
+          "blog-post": {
+            "back": "Volver al blog",
+            "title": "Blog"
+          },
+          "blog": {
+            "title": "Blog"
+          },
+          "bookmarks": {
+            "description": "",
+            "headerTitle": "",
+            "title": ""
+          },
+          "collections": {
+            "edit": "",
+            "title": ""
+          },
+          "comment-field": {
+            "placeholder": "Añadir un comentario...",
+            "post": "Enviar"
+          },
+          "comment-item": {
+            "loadReplies": "",
+            "loadReplies_plural": ""
+          },
+          "comment-list": {
+            "loadMore": "",
+            "loadMore_plural": ""
+          },
+          "comments": {
+            "load_replies": "Ver respuestas ( {{count}} )",
+            "load_replies_plural": "",
+            "loadMore": "",
+            "title": ""
+          },
+          "comments_old": {
+            "loadreplies": "",
+            "loadreplies_plural": ""
+          },
+          "common": {
+            "chat": "",
+            "description": "",
+            "feedback": "",
+            "field_bio": "",
+            "field_firstname": "",
+            "field_lastname": "",
+            "field_website": "",
+            "legal": "",
+            "like": "",
+            "like_plural": "",
+            "link": "",
+            "mail": "",
+            "reply": "",
+            "save": "",
+            "sections_language": "",
+            "sections_notifications": "",
+            "sections_profile": "",
+            "sections_support": "",
+            "title": "",
+            "toast_error": "",
+            "toast_saved": ""
+          },
+          "common_old": {
+            "signout": "",
+            "download": "",
+            "explore": "",
+            "feed": "",
+            "login": "",
+            "register": "",
+            "sign_out": ""
+          },
+          "edit-collection": {
+            "add": "",
+            "delete": "",
+            "done": "",
+            "placeholder": "",
+            "title": ""
+          },
+          "edit-model": {
+            "headerTitle": "",
+            "placeholder": "",
+            "save": "",
+            "title": ""
+          },
+          "edit-post": {
+            "cancel": "",
+            "headerTitle": "",
+            "placeholder": "",
+            "save": ""
+          },
+          "edit-profile": {
+            "bio": "",
+            "change": "",
+            "firstName": "",
+            "headerTitle": "",
+            "imagePickerCancel": "",
+            "imagePickerLibrary": "",
+            "imagePickerPermissionOk": "",
+            "imagePickerPermissionRetry": "",
+            "imagePickerPermissionText": "",
+            "imagePickerPermissionTitle": "",
+            "imagePickerPhoto": "",
+            "imagePickerTitle": "",
+            "information": "",
+            "lastName": "",
+            "place": "",
+            "remove": "",
+            "save": "",
+            "username": "",
+            "validation": "",
+            "validationUsername": "",
+            "website": "",
+            "wrong": ""
+          },
+          "edit-project": {
+            "cancel": "",
+            "delete": "",
+            "deleteAlert": "",
+            "deleteTitle": "",
+            "description": "",
+            "done": "",
+            "headerTitle": "",
+            "information": "",
+            "model": "",
+            "projectSettings": "",
+            "title": ""
+          },
+          "edit": {
+            "edit": ""
+          },
+          "facebook": {
+            "button": ""
+          },
+          "feed": {
+            "description": "",
+            "title": "Alimentar"
+          },
+          "follow": {
+            "follow": "Sigue este proyecto",
+            "followSmall": "",
+            "unfollow": "Siguiendo",
+            "unfollowSmall": "",
+            "follow_short": "Seguir"
+          },
+          "followers": {
+            "followers": "{{count, humanFormat}} seguidor",
+            "followers_plural": "{{count, humanFormat}} seguidores",
+            "title": ""
+          },
+          "following-projects": {
+            "description": "",
+            "title": "Proyectos que sigues"
+          },
+          "footer": {
+            "about": "Acerca de",
+            "blog": "Blog",
+            "chat": "Habla con nosotros",
+            "cookies": "Política de cookies",
+            "description": "Wrench es una comunidad de proyectos fundada en 2018 en Suecia. Está diseñado, construido y dirigido desde el corazón de Estocolmo.",
+            "download": "Descargar aplicaciones",
+            "eula": "EULA",
+            "faq": "Preguntas más frecuentes",
+            "feedback": "Retroalimentación",
+            "help": "Ayuda",
+            "legal": "Legal",
+            "mail": "Soporte por correo",
+            "policy": "Política de privacidad",
+            "press": "Prensa",
+            "social": "Social",
+            "status": "Estado",
+            "terms": "Términos y condiciones",
+            "trademarks": "App Store es una marca de servicio de Apple Inc. Google Play es una marca comercial de Google LLC."
+          },
+          "google": {
+            "button": ""
+          },
+          "hashtag": {
+            "posts": "",
+            "posts_plural": ""
+          },
+          "header": {
+            "download": "Descargar aplicaciones",
+            "explore": "Explorar",
+            "feed": "Alimentar",
+            "home": "",
+            "login": "Iniciar sesión",
+            "notifications": "",
+            "register": "Regístrate"
+          },
+          "home": {
+            "description": "Documente sus construcciones, comparta sus proyectos y aprenda de ideas afines.",
+            "document_title": "Wrench | Llave inglesa Tu comunidad de motociclistas",
+            "explore": "Explore más proyectos",
+            "signup": "Regístrate ahora",
+            "subtitle": "comunidad.",
+            "title": "Tu motocicleta"
+          },
+          "languages": {
+            "sv": "Sueco",
+            "en": "Inglés",
+            "es": "Español",
+            "it": "Italiano",
+            "de": "Alemán",
+            "nl": "Holandés",
+            "fr": "Francés",
+            "tl": "Filipino",
+            "pt": "Portugués",
+            "ru": "Ruso",
+            "no": "Noruego",
+            "da": "Danés"
+          },
+          "legal": {
+            "description": "Al continuar, acepta las",
+            "link": "términos y Condiciones."
+          },
+          "like-post": {
+            "like": "{{count}} chispa",
+            "like_plural": "{{count, humanFormat}} chispas"
+          },
+          "list": {
+            "load_more": "Ver 1 comentario",
+            "load_more_plural": "Ver los {{count, humanFormat}} comentarios"
+          },
+          "login": {
+            "apple_button": "Continuar con Apple",
+            "fb_button": "Continuar con Facebook",
+            "google_button": "Continuar con Google",
+            "title": "Inicie sesión para seguir sus proyectos favoritos y más."
+          },
+          "logout": {
+            "logout": "Cerrar sesión",
+            "profile": "Perfil",
+            "settings": "Configuraciones"
+          },
+          "me": {
+            "bookmarks": "",
+            "edit": "",
+            "settings": ""
+          },
+          "media-picker-list": {
+            "deselectAll": ""
+          },
+          "mobile-menu": {
+            "download": "Descargar aplicaciones",
+            "explore": "Explorar",
+            "feed": "Alimentar",
+            "login": "Iniciar sesión",
+            "register": "Regístrate",
+            "sign_out": "desconectar"
+          },
+          "no-results": {
+            "title": ""
+          },
+          "notification": {
+            "comment": "Comentó tu publicación",
+            "comment_like": "Provocó tu comentario",
+            "follow": "Ahora sigue tu proyecto",
+            "mention": "Te mencioné en un comentario",
+            "post_like": "Encendió tu publicación",
+            "reply": "Respondió a su comentario"
+          },
+          "notifications": {
+            "comment": "",
+            "commentLike": "",
+            "description": "Aquí verá comentarios, nuevos seguidores y otras actividades.",
+            "follow": "",
+            "mention": "",
+            "postLike": "",
+            "reply": "",
+            "title": "Aún no hay notificaciones."
+          },
+          "onboarding": {
+            "description": "Elija al menos tres categorías que le interesen y le ofreceremos algunos proyectos interesantes para empezar.",
+            "headerTitle": "",
+            "headline": "",
+            "next": "próximo",
+            "save": "",
+            "title": "¿En que estas interesado?"
+          },
+          "options": {
+            "alertTitle": "",
+            "cancel": "",
+            "collection": "",
+            "delete": "",
+            "discard": "",
+            "edit": "",
+            "removeCollection": "",
+            "report": "",
+            "title": ""
+          },
+          "popular": {
+            "description": "Aquí ves los proyectos más populares de esta semana.",
+            "popular": "",
+            "recent": "",
+            "title": "Proyectos populares"
+          },
+          "post-container": {
+            "loadMore": "",
+            "title": ""
+          },
+          "post": {
+            "selectCollection": "",
+            "showCollection": ""
+          },
+          "posting": {
+            "description": ""
+          },
+          "project-card": {
+            "follow": "",
+            "unfollow": ""
+          },
+          "project-suggestion": {
+            "description": "Hemos seleccionado algunos proyectos a continuación que pueden resultarle interesantes.",
+            "title": "Ponte al día y sigue algunos proyectos.",
+            "title_small": "Sugerido para ti"
+          },
+          "project-suggestion_old": {
+            "headline": "Ponte al día y sigue algunos proyectos."
+          },
+          "project-suggestions": {
+            "description": "",
+            "title": ""
+          },
+          "project-types": {
+            "inspo": ""
+          },
+          "project": {
+            "description": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} publicaciones - {{fullName}} . (@{{username}}) en Wrench",
+            "recent": "",
+            "share": "Compartir",
+            "similar": "Proyectos similares",
+            "title": "{{title}} - {{type}} proyecto",
+            "description_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} publicaciones - {{fullName}} . (@{{username}}) en Wrench"
+          },
+          "promo": {
+            "button_default": "Enviar",
+            "button_success": "Expedido",
+            "description": "Ingrese su número y obtenga un enlace de SMS por única vez.",
+            "title": "Descarga la aplicación Wrench en Appstore y Google Play"
+          },
+          "push-notifications": {
+            "approve": "",
+            "decline": "",
+            "description": "",
+            "title": ""
+          },
+          "result": {
+            "not_found": "No se encontraron resultados de búsqueda.",
+            "projects": "{{count, humanFormat}} proyecto",
+            "projects_plural": "{{count, humanFormat}} proyectos"
+          },
+          "search-bar": {
+            "cancel": "",
+            "placeholder": ""
+          },
+          "search-location-footer": {
+            "poweredBy": ""
+          },
+          "search-location": {
+            "no_result": "No hay resultados.",
+            "placeholder": "Ciudad, País"
+          },
+          "search": {
+            "clear": "",
+            "placeholder": "Buscar",
+            "recent": ""
+          },
+          "searching-for": {
+            "title": ""
+          },
+          "select-project": {
+            "create": ""
+          },
+          "settings": {
+            "sections_profile": "Editar perfil"
+          },
+          "settings_old": {
+            "chat": "Habla con nosotros",
+            "feedback": "Retroalimentación",
+            "field_bio": "Bio",
+            "field_firstname": "Nombre de pila",
+            "field_lastname": "Apellido",
+            "field_website": "Sitio web",
+            "mail": "Soporte por correo",
+            "save": "Salvar",
+            "sections_language": "Idioma",
+            "sections_notifications": "Notificaciones",
+            "sections_support": "Apoyo",
+            "title": "Configuraciones",
+            "toast_error": "Algo salió mal",
+            "toast_saved": "Se guardó la configuración",
+            "new_comment": "Comentarios",
+            "new_mention": "Menciones",
+            "new_article": "Artículos",
+            "new_follower": "Seguidores",
+            "similar_projects": "Proyectos similares",
+            "product_announcements": "Anuncios de productos"
+          },
+          "share": {
+            "share": ""
+          },
+          "show-latest": {
+            "button": ""
+          },
+          "sign-in": {
+            "description": "",
+            "headline": "",
+            "other": ""
+          },
+          "similar-projects": {
+            "title": ""
+          },
+          "sparks": {
+            "title": ""
+          },
+          "suggestions": {
+            "description": "",
+            "headline": "",
+            "next": ""
+          },
+          "text": {
+            "more": ""
+          },
+          "time": {
+            "d": "Hace {{count}} días",
+            "d_plural": "Hace {{count}} días",
+            "h": "Hace {{count}} horas",
+            "h_plural": "Hace {{count}} horas",
+            "m": "Hace {{count}} minutos",
+            "m_plural": "Hace {{count}} minutos",
+            "mo": "Hace {{count}} meses",
+            "mo_plural": "Hace {{count}} meses",
+            "now": "justo ahora",
+            "y": "Hace {{count}} años",
+            "y_plural": "Hace {{count}} años"
+          },
+          "toast": {
+            "network": "",
+            "spam": ""
+          },
+          "translations": [
+            {
+              "CommentItem": {
+                "like": "",
+                "like_plural": "",
+                "reply": ""
+              }
+            },
+            {
+              "add-collection": {
+                "add": "",
+                "done": "",
+                "placeholder": "",
+                "title": ""
+              }
+            },
+            {
+              "add-media": {
+                "next": ""
+              }
+            },
+            {
+              "add-post-to-collection": {
+                "done": "",
+                "title": ""
+              }
+            },
+            {
+              "add-post": {
+                "add": "",
+                "collection": "",
+                "error": "",
+                "placeholder": ""
+              }
+            },
+            {
+              "add-project-model": {
+                "add": "",
+                "headerTitle": "",
+                "placeholder": "",
+                "skip": "",
+                "title": ""
+              }
+            },
+            {
+              "add-project-type": {
+                "headerTitle": "",
+                "title": ""
+              }
+            },
+            {
+              "add-project": {
+                "headerTitle": "",
+                "next": "",
+                "placeholder": "",
+                "title": ""
+              }
+            },
+            {
+              "blog-post": {
+                "back": "Volver al blog",
+                "title": "Blog"
+              }
+            },
+            {
+              "blog": {
+                "title": "Blog"
+              }
+            },
+            {
+              "bookmarks": {
+                "description": "",
+                "headerTitle": "",
+                "title": ""
+              }
+            },
+            {
+              "collections": {
+                "edit": "",
+                "title": ""
+              }
+            },
+            {
+              "comment-field": {
+                "placeholder": "Añadir un comentario...",
+                "post": "Enviar"
+              }
+            },
+            {
+              "comment-item": {
+                "loadReplies": "",
+                "loadReplies_plural": ""
+              }
+            },
+            {
+              "comment-list": {
+                "loadMore": "",
+                "loadMore_plural": ""
+              }
+            },
+            {
+              "comments": {
+                "load_replies": "Ver respuestas ( {{count}} )",
+                "load_replies_plural": "",
+                "loadMore": "",
+                "title": ""
+              }
+            },
+            {
+              "comments_old": {
+                "loadreplies": "",
+                "loadreplies_plural": ""
+              }
+            },
+            {
+              "common": {
+                "chat": "",
+                "description": "",
+                "feedback": "",
+                "field_bio": "",
+                "field_firstname": "",
+                "field_lastname": "",
+                "field_website": "",
+                "legal": "",
+                "like": "",
+                "like_plural": "",
+                "link": "",
+                "mail": "",
+                "reply": "",
+                "save": "",
+                "sections_language": "",
+                "sections_notifications": "",
+                "sections_profile": "",
+                "sections_support": "",
+                "title": "",
+                "toast_error": "",
+                "toast_saved": ""
+              }
+            },
+            {
+              "common_old": {
+                "signout": "",
+                "download": "",
+                "explore": "",
+                "feed": "",
+                "login": "",
+                "register": "",
+                "sign_out": ""
+              }
+            },
+            {
+              "edit-collection": {
+                "add": "",
+                "delete": "",
+                "done": "",
+                "placeholder": "",
+                "title": ""
+              }
+            },
+            {
+              "edit-model": {
+                "headerTitle": "",
+                "placeholder": "",
+                "save": "",
+                "title": ""
+              }
+            },
+            {
+              "edit-post": {
+                "cancel": "",
+                "headerTitle": "",
+                "placeholder": "",
+                "save": ""
+              }
+            },
+            {
+              "edit-profile": {
+                "bio": "",
+                "change": "",
+                "firstName": "",
+                "headerTitle": "",
+                "imagePickerCancel": "",
+                "imagePickerLibrary": "",
+                "imagePickerPermissionOk": "",
+                "imagePickerPermissionRetry": "",
+                "imagePickerPermissionText": "",
+                "imagePickerPermissionTitle": "",
+                "imagePickerPhoto": "",
+                "imagePickerTitle": "",
+                "information": "",
+                "lastName": "",
+                "place": "",
+                "remove": "",
+                "save": "",
+                "username": "",
+                "validation": "",
+                "validationUsername": "",
+                "website": "",
+                "wrong": ""
+              }
+            },
+            {
+              "edit-project": {
+                "cancel": "",
+                "delete": "",
+                "deleteAlert": "",
+                "deleteTitle": "",
+                "description": "",
+                "done": "",
+                "headerTitle": "",
+                "information": "",
+                "model": "",
+                "projectSettings": "",
+                "title": ""
+              }
+            },
+            {
+              "edit": {
+                "edit": ""
+              }
+            },
+            {
+              "facebook": {
+                "button": ""
+              }
+            },
+            {
+              "feed": {
+                "description": "",
+                "title": "Alimentar"
+              }
+            },
+            {
+              "follow": {
+                "follow": "Sigue este proyecto",
+                "followSmall": "",
+                "unfollow": "Siguiendo",
+                "unfollowSmall": "",
+                "follow_short": "Seguir"
+              }
+            },
+            {
+              "followers": {
+                "followers": "{{count, humanFormat}} seguidor",
+                "followers_plural": "{{count, humanFormat}} seguidores",
+                "title": ""
+              }
+            },
+            {
+              "following-projects": {
+                "description": "",
+                "title": "Proyectos que sigues"
+              }
+            },
+            {
+              "footer": {
+                "about": "Acerca de",
+                "blog": "Blog",
+                "chat": "Habla con nosotros",
+                "cookies": "Política de cookies",
+                "description": "Wrench es una comunidad de proyectos fundada en 2018 en Suecia. Está diseñado, construido y dirigido desde el corazón de Estocolmo.",
+                "download": "Descargar aplicaciones",
+                "eula": "EULA",
+                "faq": "Preguntas más frecuentes",
+                "feedback": "Retroalimentación",
+                "help": "Ayuda",
+                "legal": "Legal",
+                "mail": "Soporte por correo",
+                "policy": "Política de privacidad",
+                "press": "Prensa",
+                "social": "Social",
+                "status": "Estado",
+                "terms": "Términos y condiciones",
+                "trademarks": "App Store es una marca de servicio de Apple Inc. Google Play es una marca comercial de Google LLC."
+              }
+            },
+            {
+              "google": {
+                "button": ""
+              }
+            },
+            {
+              "hashtag": {
+                "posts": "",
+                "posts_plural": ""
+              }
+            },
+            {
+              "header": {
+                "download": "Descargar aplicaciones",
+                "explore": "Explorar",
+                "feed": "Alimentar",
+                "home": "",
+                "login": "Iniciar sesión",
+                "notifications": "",
+                "register": "Regístrate"
+              }
+            },
+            {
+              "home": {
+                "description": "Documente sus construcciones, comparta sus proyectos y aprenda de ideas afines.",
+                "document_title": "Wrench | Llave inglesa Tu comunidad de motociclistas",
+                "explore": "Explore más proyectos",
+                "signup": "Regístrate ahora",
+                "subtitle": "comunidad.",
+                "title": "Tu motocicleta"
+              }
+            },
+            {
+              "languages": {
+                "sv": "Sueco",
+                "en": "Inglés",
+                "es": "Español",
+                "it": "Italiano",
+                "de": "Alemán",
+                "nl": "Holandés",
+                "fr": "Francés",
+                "tl": "Filipino",
+                "pt": "Portugués",
+                "ru": "Ruso",
+                "no": "Noruego",
+                "da": "Danés"
+              }
+            },
+            {
+              "legal": {
+                "description": "Al continuar, acepta las",
+                "link": "términos y Condiciones."
+              }
+            },
+            {
+              "like-post": {
+                "like": "{{count}} chispa",
+                "like_plural": "{{count, humanFormat}} chispas"
+              }
+            },
+            {
+              "list": {
+                "load_more": "Ver 1 comentario",
+                "load_more_plural": "Ver los {{count, humanFormat}} comentarios"
+              }
+            },
+            {
+              "login": {
+                "apple_button": "Continuar con Apple",
+                "fb_button": "Continuar con Facebook",
+                "google_button": "Continuar con Google",
+                "title": "Inicie sesión para seguir sus proyectos favoritos y más."
+              }
+            },
+            {
+              "logout": {
+                "logout": "Cerrar sesión",
+                "profile": "Perfil",
+                "settings": "Configuraciones"
+              }
+            },
+            {
+              "me": {
+                "bookmarks": "",
+                "edit": "",
+                "settings": ""
+              }
+            },
+            {
+              "media-picker-list": {
+                "deselectAll": ""
+              }
+            },
+            {
+              "mobile-menu": {
+                "download": "Descargar aplicaciones",
+                "explore": "Explorar",
+                "feed": "Alimentar",
+                "login": "Iniciar sesión",
+                "register": "Regístrate",
+                "sign_out": "desconectar"
+              }
+            },
+            {
+              "no-results": {
+                "title": ""
+              }
+            },
+            {
+              "notification": {
+                "comment": "Comentó tu publicación",
+                "comment_like": "Provocó tu comentario",
+                "follow": "Ahora sigue tu proyecto",
+                "mention": "Te mencioné en un comentario",
+                "post_like": "Encendió tu publicación",
+                "reply": "Respondió a su comentario"
+              }
+            },
+            {
+              "notifications": {
+                "comment": "",
+                "commentLike": "",
+                "description": "Aquí verá comentarios, nuevos seguidores y otras actividades.",
+                "follow": "",
+                "mention": "",
+                "postLike": "",
+                "reply": "",
+                "title": "Aún no hay notificaciones."
+              }
+            },
+            {
+              "onboarding": {
+                "description": "Elija al menos tres categorías que le interesen y le ofreceremos algunos proyectos interesantes para empezar.",
+                "headerTitle": "",
+                "headline": "",
+                "next": "próximo",
+                "save": "",
+                "title": "¿En que estas interesado?"
+              }
+            },
+            {
+              "options": {
+                "alertTitle": "",
+                "cancel": "",
+                "collection": "",
+                "delete": "",
+                "discard": "",
+                "edit": "",
+                "removeCollection": "",
+                "report": "",
+                "title": ""
+              }
+            },
+            {
+              "popular": {
+                "description": "Aquí ves los proyectos más populares de esta semana.",
+                "popular": "",
+                "recent": "",
+                "title": "Proyectos populares"
+              }
+            },
+            {
+              "post-container": {
+                "loadMore": "",
+                "title": ""
+              }
+            },
+            {
+              "post": {
+                "selectCollection": "",
+                "showCollection": ""
+              }
+            },
+            {
+              "posting": {
+                "description": ""
+              }
+            },
+            {
+              "project-card": {
+                "follow": "",
+                "unfollow": ""
+              }
+            },
+            {
+              "project-suggestion": {
+                "description": "Hemos seleccionado algunos proyectos a continuación que pueden resultarle interesantes.",
+                "title": "Ponte al día y sigue algunos proyectos.",
+                "title_small": "Sugerido para ti"
+              }
+            },
+            {
+              "project-suggestion_old": {
+                "headline": "Ponte al día y sigue algunos proyectos."
+              }
+            },
+            {
+              "project-suggestions": {
+                "description": "",
+                "title": ""
+              }
+            },
+            {
+              "project-types": {
+                "inspo": ""
+              }
+            },
+            {
+              "project": {
+                "description": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} publicaciones - {{fullName}} . (@{{username}}) en Wrench",
+                "recent": "",
+                "share": "Compartir",
+                "similar": "Proyectos similares",
+                "title": "{{title}} - {{type}} proyecto",
+                "description_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} publicaciones - {{fullName}} . (@{{username}}) en Wrench"
+              }
+            },
+            {
+              "promo": {
+                "button_default": "Enviar",
+                "button_success": "Expedido",
+                "description": "Ingrese su número y obtenga un enlace de SMS por única vez.",
+                "title": "Descarga la aplicación Wrench en Appstore y Google Play"
+              }
+            },
+            {
+              "push-notifications": {
+                "approve": "",
+                "decline": "",
+                "description": "",
+                "title": ""
+              }
+            },
+            {
+              "result": {
+                "not_found": "No se encontraron resultados de búsqueda.",
+                "projects": "{{count, humanFormat}} proyecto",
+                "projects_plural": "{{count, humanFormat}} proyectos"
+              }
+            },
+            {
+              "search-bar": {
+                "cancel": "",
+                "placeholder": ""
+              }
+            },
+            {
+              "search-location-footer": {
+                "poweredBy": ""
+              }
+            },
+            {
+              "search-location": {
+                "no_result": "No hay resultados.",
+                "placeholder": "Ciudad, País"
+              }
+            },
+            {
+              "search": {
+                "clear": "",
+                "placeholder": "Buscar",
+                "recent": ""
+              }
+            },
+            {
+              "searching-for": {
+                "title": ""
+              }
+            },
+            {
+              "select-project": {
+                "create": ""
+              }
+            },
+            {
+              "settings": {
+                "sections_profile": "Editar perfil"
+              }
+            },
+            {
+              "settings_old": {
+                "chat": "Habla con nosotros",
+                "feedback": "Retroalimentación",
+                "field_bio": "Bio",
+                "field_firstname": "Nombre de pila",
+                "field_lastname": "Apellido",
+                "field_website": "Sitio web",
+                "mail": "Soporte por correo",
+                "save": "Salvar",
+                "sections_language": "Idioma",
+                "sections_notifications": "Notificaciones",
+                "sections_support": "Apoyo",
+                "title": "Configuraciones",
+                "toast_error": "Algo salió mal",
+                "toast_saved": "Se guardó la configuración",
+                "new_comment": "Comentarios",
+                "new_mention": "Menciones",
+                "new_article": "Artículos",
+                "new_follower": "Seguidores",
+                "similar_projects": "Proyectos similares",
+                "product_announcements": "Anuncios de productos"
+              }
+            },
+            {
+              "share": {
+                "share": ""
+              }
+            },
+            {
+              "show-latest": {
+                "button": ""
+              }
+            },
+            {
+              "sign-in": {
+                "description": "",
+                "headline": "",
+                "other": ""
+              }
+            },
+            {
+              "similar-projects": {
+                "title": ""
+              }
+            },
+            {
+              "sparks": {
+                "title": ""
+              }
+            },
+            {
+              "suggestions": {
+                "description": "",
+                "headline": "",
+                "next": ""
+              }
+            },
+            {
+              "text": {
+                "more": ""
+              }
+            },
+            {
+              "time": {
+                "d": "Hace {{count}} días",
+                "d_plural": "Hace {{count}} días",
+                "h": "Hace {{count}} horas",
+                "h_plural": "Hace {{count}} horas",
+                "m": "Hace {{count}} minutos",
+                "m_plural": "Hace {{count}} minutos",
+                "mo": "Hace {{count}} meses",
+                "mo_plural": "Hace {{count}} meses",
+                "now": "justo ahora",
+                "y": "Hace {{count}} años",
+                "y_plural": "Hace {{count}} años"
+              }
+            },
+            {
+              "toast": {
+                "network": "",
+                "spam": ""
+              }
+            },
+            {
+              "translations": [
+                {
+                  "blog-post": {
+                    "back": "Volver al blog",
+                    "title": "Blog"
+                  }
+                },
+                {
+                  "blog": {
+                    "title": "Blog"
+                  }
+                },
+                {
+                  "collections": {
+                    "title": ""
+                  }
+                },
+                {
+                  "comment-field": {
+                    "placeholder": "Añadir un comentario...",
+                    "post": "Enviar"
+                  }
+                },
+                {
+                  "comments": {
+                    "load_replies": "Ver respuestas ( {{count}} )",
+                    "load_replies_plural": ""
+                  }
+                },
+                {
+                  "comments_old": {
+                    "loadreplies": "",
+                    "loadreplies_plural": ""
+                  }
+                },
+                {
+                  "common": {
+                    "like": "",
+                    "like_plural": "",
+                    "reply": ""
+                  }
+                },
+                {
+                  "common_old": {
+                    "signout": "",
+                    "download": "",
+                    "explore": "",
+                    "feed": "",
+                    "login": "",
+                    "register": "",
+                    "sign_out": ""
+                  }
+                },
+                {
+                  "feed": {
+                    "description": "",
+                    "title": "Alimentar"
+                  }
+                },
+                {
+                  "follow": {
+                    "follow": "Sigue este proyecto",
+                    "follow_short": "Seguir",
+                    "unfollow": "Siguiendo"
+                  }
+                },
+                {
+                  "followers": {
+                    "followers": "{{count, humanFormat}} seguidor",
+                    "followers_plural": "{{count, humanFormat}} seguidores"
+                  }
+                },
+                {
+                  "following-projects": {
+                    "title": "Proyectos que sigues"
+                  }
+                },
+                {
+                  "footer": {
+                    "about": "Acerca de",
+                    "blog": "Blog",
+                    "chat": "Habla con nosotros",
+                    "cookies": "Política de cookies",
+                    "description": "Wrench es una comunidad de proyectos fundada en 2018 en Suecia. Está diseñado, construido y dirigido desde el corazón de Estocolmo.",
+                    "download": "Descargar aplicaciones",
+                    "eula": "EULA",
+                    "faq": "Preguntas más frecuentes",
+                    "feedback": "Retroalimentación",
+                    "help": "Ayuda",
+                    "legal": "Legal",
+                    "mail": "Soporte por correo",
+                    "policy": "Política de privacidad",
+                    "press": "Prensa",
+                    "social": "Social",
+                    "status": "Estado",
+                    "terms": "Términos y condiciones",
+                    "trademarks": "App Store es una marca de servicio de Apple Inc. Google Play es una marca comercial de Google LLC."
+                  }
+                },
+                {
+                  "header": {
+                    "download": "Descargar aplicaciones",
+                    "explore": "Explorar",
+                    "feed": "Alimentar",
+                    "login": "Iniciar sesión",
+                    "register": "Regístrate"
+                  }
+                },
+                {
+                  "home": {
+                    "description": "Documente sus construcciones, comparta sus proyectos y aprenda de ideas afines.",
+                    "document_title": "Wrench | Llave inglesa Tu comunidad de motociclistas",
+                    "explore": "Explore más proyectos",
+                    "signup": "Regístrate ahora",
+                    "subtitle": "comunidad.",
+                    "title": "Tu motocicleta"
+                  }
+                },
+                {
+                  "languages": {
+                    "sv": "Sueco",
+                    "en": "Inglés",
+                    "es": "Español",
+                    "it": "Italiano",
+                    "de": "Alemán",
+                    "nl": "Holandés",
+                    "fr": "Francés",
+                    "tl": "Filipino",
+                    "pt": "Portugués",
+                    "ru": "Ruso",
+                    "no": "Noruego",
+                    "da": "Danés"
+                  }
+                },
+                {
+                  "legal": {
+                    "description": "Al continuar, acepta las",
+                    "link": "términos y Condiciones."
+                  }
+                },
+                {
+                  "like-post": {
+                    "like": "{{count}} chispa",
+                    "like_plural": "{{count, humanFormat}} chispas"
+                  }
+                },
+                {
+                  "list": {
+                    "load_more": "Ver 1 comentario",
+                    "load_more_plural": "Ver los {{count, humanFormat}} comentarios"
+                  }
+                },
+                {
+                  "login": {
+                    "apple_button": "Continuar con Apple",
+                    "fb_button": "Continuar con Facebook",
+                    "google_button": "Continuar con Google",
+                    "title": "Inicie sesión para seguir sus proyectos favoritos y más."
+                  }
+                },
+                {
+                  "logout": {
+                    "logout": "Cerrar sesión",
+                    "profile": "Perfil",
+                    "settings": "Configuraciones"
+                  }
+                },
+                {
+                  "mobile-menu": {
+                    "download": "Descargar aplicaciones",
+                    "explore": "Explorar",
+                    "feed": "Alimentar",
+                    "login": "Iniciar sesión",
+                    "register": "Regístrate",
+                    "sign_out": "desconectar"
+                  }
+                },
+                {
+                  "notification": {
+                    "comment": "Comentó tu publicación",
+                    "comment_like": "Provocó tu comentario",
+                    "follow": "Ahora sigue tu proyecto",
+                    "mention": "Te mencioné en un comentario",
+                    "post_like": "Encendió tu publicación",
+                    "reply": "Respondió a su comentario"
+                  }
+                },
+                {
+                  "notifications": {
+                    "description": "Aquí verá comentarios, nuevos seguidores y otras actividades.",
+                    "title": "Aún no hay notificaciones."
+                  }
+                },
+                {
+                  "onboarding": {
+                    "description": "Elija al menos tres categorías que le interesen y le ofreceremos algunos proyectos interesantes para empezar.",
+                    "next": "próximo",
+                    "title": "¿En que estas interesado?"
+                  }
+                },
+                {
+                  "popular": {
+                    "description": "Aquí ves los proyectos más populares de esta semana.",
+                    "title": "Proyectos populares"
+                  }
+                },
+                {
+                  "project-suggestion": {
+                    "description": "Hemos seleccionado algunos proyectos a continuación que pueden resultarle interesantes.",
+                    "title": "Ponte al día y sigue algunos proyectos.",
+                    "title_small": "Sugerido para ti"
+                  }
+                },
+                {
+                  "project-suggestion_old": {
+                    "headline": "Ponte al día y sigue algunos proyectos."
+                  }
+                },
+                {
+                  "project": {
+                    "description": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} publicaciones - {{fullName}} . (@{{username}}) en Wrench",
+                    "share": "Compartir",
+                    "similar": "Proyectos similares",
+                    "title": "{{title}} - {{type}} proyecto",
+                    "description_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} publicaciones - {{fullName}} . (@{{username}}) en Wrench"
+                  }
+                },
+                {
+                  "promo": {
+                    "button_default": "Enviar",
+                    "button_success": "Expedido",
+                    "description": "Ingrese su número y obtenga un enlace de SMS por única vez.",
+                    "title": "Descarga la aplicación Wrench en Appstore y Google Play"
+                  }
+                },
+                {
+                  "result": {
+                    "projects": "{{count, humanFormat}} proyecto",
+                    "projects_plural": "{{count, humanFormat}} proyectos",
+                    "not_found": "No se encontraron resultados de búsqueda."
+                  }
+                },
+                {
+                  "search-location": {
+                    "no_result": "No hay resultados.",
+                    "placeholder": "Ciudad, País"
+                  }
+                },
+                {
+                  "search": {
+                    "placeholder": "Buscar"
+                  }
+                },
+                {
+                  "settings": {
+                    "chat": "Habla con nosotros",
+                    "feedback": "Retroalimentación",
+                    "field_bio": "Bio",
+                    "field_firstname": "Nombre de pila",
+                    "field_lastname": "Apellido",
+                    "field_website": "Sitio web",
+                    "mail": "Soporte por correo",
+                    "save": "Salvar",
+                    "sections_language": "Idioma",
+                    "sections_notifications": "Notificaciones",
+                    "sections_profile": "Editar perfil",
+                    "sections_support": "Apoyo",
+                    "title": "Configuraciones",
+                    "toast_error": "Algo salió mal",
+                    "toast_saved": "Se guardó la configuración",
+                    "new_comment": "Comentarios",
+                    "new_mention": "Menciones",
+                    "new_article": "Artículos",
+                    "new_follower": "Seguidores",
+                    "similar_projects": "Proyectos similares",
+                    "product_announcements": "Anuncios de productos"
+                  }
+                },
+                {
+                  "time": {
+                    "d": "Hace {{count}} días",
+                    "d_plural": "Hace {{count}} días",
+                    "h": "Hace {{count}} horas",
+                    "h_plural": "Hace {{count}} horas",
+                    "m": "Hace {{count}} minutos",
+                    "m_plural": "Hace {{count}} minutos",
+                    "mo": "Hace {{count}} meses",
+                    "mo_plural": "Hace {{count}} meses",
+                    "now": "justo ahora",
+                    "y": "Hace {{count}} años",
+                    "y_plural": "Hace {{count}} años"
+                  }
+                },
+                {
+                  "translations": {
+                    "user": {
+                      "description": "Consulta los proyectos y publicaciones de Wrench de {{fullName}} . (@ {{username}} )",
+                      "image_alt": "",
+                      "title": "{{fullName}} . (@ {{username}} ) - proyectos y publicaciones"
+                    }
+                  }
+                },
+                {
+                  "user-following-projects": {
+                    "description": "Pero aquí hay algunos de los proyectos que sigue {{name}} .",
+                    "title": "Este usuario aún no tiene proyectos propios."
+                  }
+                },
+                {
+                  "user-projects": {
+                    "followers": "{{count, humanFormat}} seguidor",
+                    "followers_plural": "{{count, humanFormat}} seguidores",
+                    "title": "Proyectos"
+                  }
+                },
+                {
                   "user": {
                     "description": "Consulta los proyectos y publicaciones de Wrench de {{fullName}} . (@ {{username}} )",
                     "image_alt": "",
                     "title": "{{fullName}} . (@ {{username}} ) - proyectos y publicaciones"
                   }
                 }
-              },
-              {
-                "user-following-projects": {
-                  "description": "Pero aquí hay algunos de los proyectos que sigue {{name}} .",
-                  "title": "Este usuario aún no tiene proyectos propios."
-                }
-              },
-              {
-                "user-projects": {
-                  "followers": "{{count, humanFormat}} seguidor",
-                  "followers_plural": "{{count, humanFormat}} seguidores",
-                  "title": "Proyectos"
-                }
-              },
-              {
-                "user": {
-                  "description": "Consulta los proyectos y publicaciones de Wrench de {{fullName}} . (@ {{username}} )",
-                  "image_alt": "",
-                  "title": "{{fullName}} . (@ {{username}} ) - proyectos y publicaciones"
-                }
+              ]
+            },
+            {
+              "user-following-projects": {
+                "description": "Pero aquí hay algunos de los proyectos que sigue {{name}} .",
+                "title": "Este usuario aún no tiene proyectos propios."
               }
-            ]
-          },
-          {
-            "user-following-projects": {
-              "description": "Pero aquí hay algunos de los proyectos que sigue {{name}} .",
-              "title": "Este usuario aún no tiene proyectos propios."
+            },
+            {
+              "user-projects": {
+                "followers": "{{count, humanFormat}} seguidor",
+                "followers_plural": "{{count, humanFormat}} seguidores",
+                "title": "Proyectos"
+              }
+            },
+            {
+              "user": {
+                "description": "Consulta los proyectos y publicaciones de Wrench de {{fullName}} . (@ {{username}} )",
+                "image_alt": "",
+                "notfound": "",
+                "projects": "",
+                "projects_plural": "",
+                "title": "{{fullName}} . (@ {{username}} ) - proyectos y publicaciones"
+              }
+            },
+            {
+              "webview": {
+                "loading": ""
+              }
             }
+          ],
+          "user-following-projects": {
+            "description": "Pero aquí hay algunos de los proyectos que sigue {{name}} .",
+            "title": "Este usuario aún no tiene proyectos propios."
           },
-          {
-            "user-projects": {
-              "followers": "{{count, humanFormat}} seguidor",
-              "followers_plural": "{{count, humanFormat}} seguidores",
-              "title": "Proyectos"
-            }
+          "user-projects": {
+            "followers": "{{count, humanFormat}} seguidor",
+            "followers_plural": "{{count, humanFormat}} seguidores",
+            "title": "Proyectos"
           },
-          {
-            "user": {
-              "description": "Consulta los proyectos y publicaciones de Wrench de {{fullName}} . (@ {{username}} )",
-              "image_alt": "",
-              "notfound": "",
-              "projects": "",
-              "projects_plural": "",
-              "title": "{{fullName}} . (@ {{username}} ) - proyectos y publicaciones"
-            }
+          "user": {
+            "description": "Consulta los proyectos y publicaciones de Wrench de {{fullName}} . (@ {{username}} )",
+            "image_alt": "",
+            "notfound": "",
+            "projects": "",
+            "projects_plural": "",
+            "title": "{{fullName}} . (@ {{username}} ) - proyectos y publicaciones"
           },
-          {
-            "webview": {
-              "loading": ""
-            }
+          "webview": {
+            "loading": ""
           }
-        ],
+        },
         "user-following-projects": {
           "description": "Pero aquí hay algunos de los proyectos que sigue {{name}} .",
           "title": "Este usuario aún no tiene proyectos propios."

@@ -52,8 +52,8 @@ function AddMedia({ id }) {
     if (selectedFiles.length > 0) {
       showActionSheetWithOptions(
         {
-          title: t('options:title'),
-          options: [t('options:discard'), t('options:cancel')],
+          title: t('options.title'),
+          options: [t('options.discard'), t('options.cancel')],
           destructiveButtonIndex: 0,
           cancelButtonIndex: 1,
           tintColor: dynamicColor,

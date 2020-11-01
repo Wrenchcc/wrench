@@ -2,8 +2,9 @@ import { Alert } from 'react-native'
 import NativeShare from 'react-native-share'
 import { mergeAll } from 'rambda'
 import AsyncStorage from '@react-native-community/async-storage'
+import { locales } from '@wrench/translations'
 import i18next from 'i18next'
-import { setLocale, languages, updateUserLocale } from 'i18n'
+import { setLocale, updateUserLocale } from 'i18n'
 import { SCREENS } from 'navigation'
 import { client } from 'gql'
 import { askForRating } from 'utils/rate'
@@ -29,7 +30,7 @@ const generateLanguageSettings = () => {
 
   const currentLocale = i18next.language
 
-  items = languages.map((locale) => ({
+  items = locales.map((locale) => ({
     titleKey: `languages:${locale}`,
     onPress: () => currentLocale !== locale && changeLocale(locale),
     type: 'selector',
