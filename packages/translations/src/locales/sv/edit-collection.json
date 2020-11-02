@@ -1,7 +1,7 @@
 {
-    "add": "",
-    "delete": "",
-    "done": "",
-    "placeholder": "",
-    "title": ""
+    "add": "Lägg till inlägg",
+    "delete": "Radera",
+    "done": "Klar",
+    "placeholder": "Förgasare",
+    "title": "Information"
 }

@@ -1,49 +1,64 @@
 {
-  "CommentItem": {
-    "like": "",
-    "like_plural": "",
-    "reply": ""
-  },
   "add-collection": {
-    "add": "",
-    "done": "",
-    "placeholder": "",
-    "title": ""
+    "add": "Lägg till",
+    "done": "Klar",
+    "placeholder": "Förgasare",
+    "title": "Ny samling"
   },
   "add-media": {
-    "next": "",
+    "next": "Nästa",
     "options": {
-      "cancel": "",
-      "discard": "",
-      "title": ""
+      "cancel": "Avbryt",
+      "discard": "Släng",
+      "title": "Om du går tillbaka kommer dina val att ignoreras."
     }
   },
   "add-post-to-collection": {
-    "done": "",
-    "title": ""
+    "done": "Klar",
+    "title": "Lägg till inlägg"
   },
   "add-post": {
-    "add": "",
-    "collection": "",
-    "error": "",
-    "placeholder": ""
+    "add": "Dela",
+    "collection": "Lägg till i samling",
+    "error": "Kunde inte dela just nu",
+    "placeholder": "Skriv en text för ditt inlägg"
   },
   "add-project-model": {
-    "add": "",
-    "headerTitle": "",
-    "placeholder": "",
-    "skip": "",
-    "title": ""
+    "add": "Lägg till",
+    "headerTitle": "Skapa projekt",
+    "placeholder": "Ex. BMW R100 1981",
+    "skip": "Hoppa över",
+    "title": "Sök och välj din modell."
   },
   "add-project-type": {
-    "headerTitle": "",
-    "title": ""
+    "headerTitle": "Skapa projekt",
+    "title": "Välj din kategori"
   },
   "add-project": {
-    "headerTitle": "",
-    "next": "",
-    "placeholder": "",
-    "title": ""
+    "headerTitle": "Skapa projekt",
+    "next": "Nästa",
+    "placeholder": "Ex. Honda Cafe Racer",
+    "title": "Välj en titel på ditt projekt."
+  },
+  "ask-for-permission": {
+    "camera": {
+      "alertCancel": "Avbryt",
+      "alertDescription": "Det gick inte att få tillstånd. Aktivera det från inställningar.",
+      "alertOpen": "Öppna inställningar",
+      "alertTitle": "Whoops!",
+      "permissionButton": "Tillåt kameraåtkomst",
+      "permissionDescription": "Tillåt Wrench att få åtkomst till din kamera för att kunna ta bilder och spela in video.",
+      "permissionHeadline": "Ta bilder och spela in videoklipp"
+    },
+    "photo": {
+      "alertCancel": "Avbryt",
+      "alertDescription": "Det gick inte att få tillstånd. Aktivera det från inställningar.",
+      "alertOpen": "Öppna inställningar",
+      "alertTitle": "Whoops!",
+      "permissionButton": "Aktivera biblioteksåtkomst",
+      "permissionDescription": "Detta gör att Wrench kan dela dina foton från din bibliotek och spara foton till din kamerarulle.",
+      "permissionHeadline": "Lägg till foton och videoklipp"
+    }
   },
   "blog-post": {
     "back": "Tillbaka till bloggen",
@@ -53,12 +68,12 @@
     "title": "Blogg"
   },
   "bookmarks": {
-    "description": "",
-    "headerTitle": "",
-    "title": ""
+    "description": "Save posts that you want to see again. No one is notified, and only you can see what you've saved.",
+    "headerTitle": "Saved posts",
+    "title": "Save"
   },
   "collections": {
-    "edit": "",
+    "edit": "Redigera",
     "title": "Samlingar"
   },
   "comment-field": {
@@ -66,21 +81,22 @@
     "post": "Skicka"
   },
   "comment-item": {
-    "like": "",
-    "like_plural": "",
-    "loadReplies": "",
-    "loadReplies_plural": "",
-    "reply": ""
+    "like": "{{count}} gnista",
+    "like_plural": "{{count, humanFormat}} gnistor",
+    "loadReplies": "Visa svar ({{count}})",
+    "loadReplies_plural": "Visa svar ({{count}})",
+    "reply": "Svara"
   },
   "comment-list": {
-    "loadMore": "",
-    "loadMore_plural": ""
+    "loadMore": "Visa 1 kommentar",
+    "loadMore_plural": "Visa alla {{count, humanFormat}} kommentarer"
   },
   "comments": {
     "load_replies": "Visa svar ({{count}})",
-    "load_replies_plural": "",
-    "loadMore": "",
-    "title": ""
+    "load_replies_plural": "Visa svar ({{count}})",
+    "loadMore": "Ladda fler kommentarer",
+    "title": "Kommentarer",
+    "loadMore_plural": "Visa alla {{count, humanFormat}} kommentarer"
   },
   "common": {
     "description": "",
@@ -91,100 +107,100 @@
     "title": ""
   },
   "edit-collection": {
-    "add": "",
-    "delete": "",
-    "done": "",
-    "placeholder": "",
-    "title": ""
+    "add": "Lägg till inlägg",
+    "delete": "Radera",
+    "done": "Klar",
+    "placeholder": "Förgasare",
+    "title": "Information"
   },
   "edit-model": {
-    "headerTitle": "",
-    "placeholder": "",
-    "save": "",
-    "title": ""
+    "headerTitle": "Redigera modell",
+    "placeholder": "Ex. BMW R100 1981",
+    "save": "Spara",
+    "title": "Sök och välj din modell."
   },
   "edit-post": {
-    "cancel": "",
-    "headerTitle": "",
-    "placeholder": "",
-    "save": ""
+    "cancel": "Avbryt",
+    "headerTitle": "Redigera inlägg",
+    "placeholder": "Skriv en text för ditt inlägg",
+    "save": "Spara"
   },
   "edit-profile": {
-    "bio": "",
-    "change": "",
-    "firstName": "",
-    "headerTitle": "",
-    "imagePickerCancel": "",
-    "imagePickerLibrary": "",
-    "imagePickerPermissionOk": "",
-    "imagePickerPermissionRetry": "",
-    "imagePickerPermissionText": "",
-    "imagePickerPermissionTitle": "",
-    "imagePickerPhoto": "",
-    "imagePickerTitle": "",
-    "information": "",
-    "lastName": "",
-    "place": "",
-    "remove": "",
-    "save": "",
-    "username": "",
-    "validation": "",
-    "validationUsername": "",
-    "website": "",
-    "wrong": ""
+    "bio": "Beskrivning",
+    "change": "Ändra",
+    "firstName": "Förnamn",
+    "headerTitle": "Redigera profil",
+    "imagePickerCancel": "Avbryt",
+    "imagePickerLibrary": "Välj från kamerarullen…",
+    "imagePickerPermissionOk": "Jag är säker",
+    "imagePickerPermissionRetry": "Försök igen",
+    "imagePickerPermissionText": "För att kunna ta bilder med din kamera och välja bilder från ditt bibliotek.",
+    "imagePickerPermissionTitle": "Åtkomst nekad",
+    "imagePickerPhoto": "Ta ett foto…",
+    "imagePickerTitle": "Välj Avatar",
+    "information": "Information",
+    "lastName": "Efternamn",
+    "place": "Stad, Land",
+    "remove": "Ta bort nuvarande bild",
+    "save": "Spara",
+    "username": "Användarnamn",
+    "validation": "Kontrollera alla obligatoriska fält.",
+    "validationUsername": "Användarnamn är upptaget.",
+    "website": "Hemsida",
+    "wrong": "Något gick fel."
   },
   "edit-project": {
-    "cancel": "",
-    "delete": "",
-    "deleteAlert": "",
-    "deleteTitle": "",
-    "description": "",
-    "done": "",
-    "headerTitle": "",
-    "information": "",
-    "model": "",
-    "projectSettings": "",
-    "title": ""
+    "cancel": "Avbryt",
+    "delete": "Radera",
+    "deleteAlert": "Radera projekt?",
+    "deleteTitle": "Radera projekt",
+    "description": "Den här åtgärden kan inte ångras.",
+    "done": "Klar",
+    "headerTitle": "Redigera",
+    "information": "Information",
+    "model": "Redigera modell",
+    "projectSettings": "Projektinställningar",
+    "title": "Titel"
   },
   "edit": {
-    "edit": ""
+    "edit": "Redigera"
   },
   "empty-state": {
     "collection-no-post": {
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "description": "Användaren har ännu inte lagt till några inlägg i den här samlingen.",
+      "title": "Inga inlägg har lagts till i denna samling."
     },
     "collection-post": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Lägg till",
+      "description": "Lägg till ett inlägg i den här samlingen genom att skapa ett nytt inlägg eller använd ett befintligt inlägg genom att klicka på knappen Mer i inläggets högra hörn.",
+      "title": "Lägg till ditt första inlägg i denna samling."
     },
     "notifications": {
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter.",
+      "title": "Inga notifikationer ännu."
     },
     "post": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Lägg till",
+      "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg.",
+      "title": "2. Lägg till ditt första inlägg."
     },
     "project-no-post": {
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "description": "Följ detta projekt nu och få en notifikation när det uppdateras.",
+      "title": "Det här projektet har inga inlägg ännu."
     },
     "project-post": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Lägg till",
+      "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg",
+      "title": "Lägg till ditt första inlägg"
     },
     "project": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Kom igång",
+      "description": "Kom igång och skapa ditt första projekt.",
+      "title": "1. Skapa ditt första projekt."
     }
   },
   "facebook": {
-    "button": ""
+    "button": "Logga in med Facebook"
   },
   "feed": {
     "description": "",
@@ -192,18 +208,18 @@
   },
   "follow": {
     "follow": "Följ projekt",
-    "followSmall": "",
+    "followSmall": "Följ",
     "unfollow": "Följer",
-    "unfollowSmall": "",
+    "unfollowSmall": "Följer",
     "follow_short": "Följ"
   },
   "followers": {
     "followers": "{{count, humanFormat}} följare",
     "followers_plural": "{{count, humanFormat}} följare",
-    "title": ""
+    "title": "Följare"
   },
   "following-projects": {
-    "description": "",
+    "description": "Men här är några project som {{name}} följer.",
     "title": "Projekt du följer"
   },
   "footer": {
@@ -227,19 +243,19 @@
     "trademarks": "App Store är ett varumärke som tillhör Apple Inc. Google Play är ett varumärke som tillhör Google LLC."
   },
   "google": {
-    "button": ""
+    "button": "Logga in med Google"
   },
   "hashtag": {
-    "posts": "",
-    "posts_plural": ""
+    "posts": "{{count, humanFormat}} inlägg",
+    "posts_plural": "{{count, humanFormat}} inlägg"
   },
   "header": {
     "download": "Ladda ner Appar",
     "explore": "Utforska",
     "feed": "Feed",
-    "home": "",
+    "home": "Hem",
     "login": "Logga in",
-    "notifications": "",
+    "notifications": "Notifikationer",
     "register": "Registrera dig"
   },
   "home": {
@@ -288,12 +304,12 @@
     "settings": "Inställningar"
   },
   "me": {
-    "bookmarks": "",
-    "edit": "",
-    "settings": ""
+    "bookmarks": "Sparade inlägg",
+    "edit": "Redigera profil",
+    "settings": "Inställningar"
   },
   "media-picker-list": {
-    "deselectAll": ""
+    "deselectAll": "Avmarkera alla"
   },
   "mobile-menu": {
     "download": "Ladda ner Appar",
@@ -304,7 +320,7 @@
     "sign_out": "Logga ut"
   },
   "no-results": {
-    "title": ""
+    "title": "Inga resultat funna"
   },
   "notification": {
     "comment": "Kommenterade på ditt inlägg",
@@ -315,67 +331,67 @@
     "reply": "Svarade på din kommentar"
   },
   "notifications": {
-    "comment": "",
-    "commentLike": "",
+    "comment": "Kommenterade på ditt inlägg",
+    "commentLike": "Gav en gnista på din kommentar",
     "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter.",
-    "follow": "",
-    "mention": "",
-    "NEW_ARTICLE": "",
-    "NEW_COMMENT": "",
-    "NEW_FOLLOWER": "",
-    "NEW_MENTION": "",
-    "postLike": "",
-    "PRODUCT_ANNOUNCEMENTS": "NO_TRANSLATION",
-    "reply": "",
-    "SIMILAR_PROJECTS": "",
+    "follow": "Följer nu ditt projekt",
+    "mention": "Nämnde dig i en kommentar",
+    "NEW_ARTICLE": "Artiklar",
+    "NEW_COMMENT": "Kommentarer",
+    "NEW_FOLLOWER": "Följare",
+    "NEW_MENTION": "Mentions",
+    "postLike": "Gav en gnista på ditt inlägg",
+    "PRODUCT_ANNOUNCEMENTS": "Produktmeddelanden",
+    "reply": "Svarade på din kommentar",
+    "SIMILAR_PROJECTS": "Liknande projekt",
     "title": "Inga notifikationer ännu."
   },
   "onboarding": {
     "description": "Välj minst tre kategorier som du är intresserad av och vi ger dig några trevliga projekt att börja med.",
-    "headerTitle": "",
-    "headline": "",
+    "headerTitle": "Ändra dina intressen",
+    "headline": "Vad är du intresserad av?",
     "next": "Nästa",
-    "save": "",
+    "save": "Spara",
     "title": "Vad är du intresserad av?"
   },
   "options": {
-    "alertTitle": "",
-    "cancel": "",
-    "collection": "",
-    "delete": "",
-    "edit": "",
-    "removeCollection": "",
-    "report": ""
+    "alertTitle": "Är du säker?",
+    "report": "Rapportera",
+    "edit": "Redigera",
+    "collection": "Lägga till i samling",
+    "delete": "Radera",
+    "cancel": "Avbryt",
+    "removeCollection": "Radera från samling"
   },
   "popular": {
     "description": "Här ser du de mest populära projekten från den här veckan.",
-    "popular": "",
-    "recent": "",
+    "popular": "Populära projekt",
+    "recent": "Senaste inlägg",
     "title": "Populära projekt"
   },
   "post-container": {
-    "loadMore": "",
-    "title": ""
+    "loadMore": "Ladda fler kommentarer",
+    "title": "Inlägg"
   },
   "post": {
     "options": {
-      "alertTitle": "",
-      "cancel": "",
-      "collection": "",
-      "delete": "",
-      "edit": "",
-      "removeCollection": "",
-      "report": ""
+      "alertTitle": "Är du säker?",
+      "cancel": "Avbryt",
+      "collection": "Lägga till i samling",
+      "delete": "Radera",
+      "edit": "Redigera",
+      "removeCollection": "Radera från samling",
+      "report": "Rapportera"
     },
-    "selectCollection": "",
-    "showCollection": ""
+    "selectCollection": "Välj samling",
+    "showCollection": "Visa samling"
   },
   "posting": {
-    "description": ""
+    "description": "Postar..."
   },
   "project-card": {
-    "follow": "",
-    "unfollow": ""
+    "follow": "Följ projekt",
+    "unfollow": "Följer"
   },
   "project-suggestion": {
     "description": "Vi har valt ut några projekt nedan som du kanske tycker är intressanta.",
@@ -383,15 +399,15 @@
     "title_small": "Föreslås för dig"
   },
   "project-suggestions": {
-    "description": "",
-    "title": ""
+    "description": "Vi har valt några projekt som vi tror du tycker om.",
+    "title": "Kom igång och följ några projekt."
   },
   "project-types": {
-    "inspo": ""
+    "inspo": "Inspiration"
   },
   "project": {
     "description": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench",
-    "recent": "",
+    "recent": "Senaste inlägg",
     "share": "Dela",
     "similar": "Liknande project",
     "title": "{{title}} - {{type}} projekt",
@@ -404,10 +420,10 @@
     "title": "Ladda ner Wrench-appen på Appstore och Google play"
   },
   "push-notifications": {
-    "approve": "",
-    "decline": "",
-    "description": "",
-    "title": ""
+    "approve": "Sätt på notifikationer",
+    "decline": "Nej tack",
+    "description": "Vet direkt när folk följer dina projekt eller gillar och kommenterar dina inlägg.",
+    "title": "Vänligen aktivera notiser."
   },
   "result": {
     "not_found": "Inga sökresultat hittades.",
@@ -415,89 +431,89 @@
     "projects_plural": "{{count, humanFormat}} projekt"
   },
   "search-bar": {
-    "cancel": "",
-    "placeholder": ""
+    "cancel": "Avbryt",
+    "placeholder": "Sök"
   },
   "search-location-footer": {
-    "poweredBy": ""
+    "poweredBy": "Drivs med"
   },
   "search-location": {
     "no_result": "Inga resultat.",
     "placeholder": "Stad, land"
   },
   "search": {
-    "clear": "",
-    "hashtags": "",
+    "clear": "Rensa",
+    "hashtags": "Taggar",
     "placeholder": "Sök",
-    "projects": "",
-    "recent": "",
-    "users": ""
+    "projects": "Projekt",
+    "recent": "Senast",
+    "users": "Personer"
   },
   "searching-for": {
-    "title": ""
+    "title": "Söker efter"
   },
   "sections": {
-    "language": "",
-    "notifications": "",
-    "profile": "",
-    "support": ""
+    "language": "Språk",
+    "notifications": "Notifikationer",
+    "profile": "Profil",
+    "support": "Support"
   },
   "select-project": {
-    "create": ""
+    "create": "Skapa ett nytt projekt"
   },
   "settings": {
     "chat": "Chatta med oss",
-    "clear": "",
-    "codepush": "",
-    "contacts": "NO_TRANSLATION",
-    "credits": "",
-    "customize-interests": "",
-    "delete": "",
-    "deleteCancel": "NO_TRANSLATION",
-    "deleteDescription": "NO_TRANSLATION",
-    "deleteOk": "NO_TRANSLATION",
-    "deleteTitle": "NO_TRANSLATION",
-    "developer": "",
-    "email-notifications": "NO_TRANSLATION",
-    "facebook": "NO_TRANSLATION",
-    "faq": "NO_TRANSLATION",
+    "clear": "Rensa sparad data",
+    "codepush": "Codepush",
+    "contacts": "Mina kontakter",
+    "credits": "Tack till",
+    "customize-interests": "Ändra dina intressen",
+    "delete": "Radera konto",
+    "deleteCancel": "Avbryt",
+    "deleteDescription": "Om du väljer att ta bort ditt konto kommer du inte att kunna logga in igen. Radera dina projekt innan du väljer att radera ditt konto.",
+    "deleteOk": "OK",
+    "deleteTitle": "Radera konto",
+    "developer": "Utvecklare",
+    "email-notifications": "Email-notifikationer",
+    "facebook": "Facebook",
+    "faq": "Frågor och svar",
     "feedback": "Feedback",
     "field": {
-      "bio": "",
-      "firstname": "",
-      "lastname": "",
-      "website": ""
+      "bio": "Beskrivning",
+      "firstname": "Förnamn",
+      "lastname": "Efternamn",
+      "website": "Hemsida"
     },
-    "general": "",
-    "invite": "",
-    "language": "",
-    "logout": "",
+    "general": "Almänt",
+    "invite": "Bjud in",
+    "language": "Språk",
+    "logout": "Logga ut",
     "mail": "Mail Support",
-    "membership": "NO_TRANSLATION",
-    "push-notifications": "NO_TRANSLATION",
-    "rate": "",
-    "report": "NO_TRANSLATION",
+    "membership": "Medlemskap",
+    "push-notifications": "Push-notifikationer",
+    "rate": "Ge oss en recension",
+    "report": "Rapportera en bugg",
     "save": "Spara",
     "sections": {
-      "language": "",
-      "notifications": "",
-      "profile": "",
-      "support": ""
+      "language": "Språk",
+      "notifications": "Notifioationer",
+      "profile": "Profil",
+      "support": "Support"
     },
-    "settings": "",
-    "share": "",
+    "settings": "Inställningar",
+    "share": "Dela oss",
     "stages": {
-      "production": "NO_TRANSLATION",
-      "staging": "NO_TRANSLATION"
+      "production": "Produktion",
+      "staging": "Staging"
     },
-    "support": "",
-    "terms": "",
+    "support": "Support",
+    "terms": "Villkor",
     "title": "Inställningar",
     "toast": {
       "error": "",
       "saved": ""
     },
-    "website": "",
+    "website": "Hemsida",
     "field_bio": "Beskrivning",
     "field_firstname": "Förnamn",
     "field_lastname": "Efternamn",
@@ -510,29 +526,29 @@
     "sections_support": "Support"
   },
   "share": {
-    "share": ""
+    "share": "Dela"
   },
   "show-latest": {
-    "button": ""
+    "button": "Nya inlägg"
   },
   "sign-in": {
-    "description": "",
-    "headline": "",
-    "other": ""
+    "description": "Document your builds, share your projects & learn from like-minded.",
+    "headline": "Your \nmotorcycle \ncommunity.",
+    "other": "Other sign in options"
   },
   "similar-projects": {
-    "title": ""
+    "title": "Liknande projekt"
   },
   "sparks": {
-    "title": ""
+    "title": "Gnistor"
   },
   "suggestions": {
-    "description": "",
-    "headline": "",
-    "next": ""
+    "description": "Vi har valt några projekt som vi tror du tycker om.",
+    "headline": "Kom igång och följ några projekt.",
+    "next": "Nästa"
   },
   "text": {
-    "more": ""
+    "more": "mer"
   },
   "time": {
     "d": "{{count}} dag sedan",
@@ -548,8 +564,8 @@
     "y_plural": "{{count}} år sedan"
   },
   "toast": {
-    "network": "",
-    "spam": ""
+    "network": "Ingen internetanslutning",
+    "spam": "Åtgärd blockerad. Vänligen försök igen."
   },
   "user-following-projects": {
     "description": "Men här är några av de projekt {{name}} följer.",
@@ -563,12 +579,12 @@
   "user": {
     "description": "Se skiftnyckelprojekt och inlägg från {{fullName}} . (@ {{username}} )",
     "image_alt": "",
-    "notfound": "",
-    "projects": "",
-    "projects_plural": "",
+    "notfound": "Användaren hittades ej",
+    "projects": "{{count, humanFormat}} projekt",
+    "projects_plural": "{{count, humanFormat}} projekt",
     "title": "{{fullName}} . (@ {{username}} ) - projekt och inlägg"
   },
   "webview": {
-    "loading": ""
+    "loading": "Laddar..."
   }
 }

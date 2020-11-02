@@ -1,6 +1,7 @@
 {
     "load_replies": "Visa svar ({{count}})",
-    "load_replies_plural": "",
-    "loadMore": "",
-    "title": ""
+    "load_replies_plural": "Visa svar ({{count}})",
+    "loadMore": "Ladda fler kommentarer",
+    "title": "Kommentarer",
+    "loadMore_plural": "Visa alla {{count, humanFormat}} kommentarer"
 }

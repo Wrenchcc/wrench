@@ -1,9 +1,9 @@
 {
-    "alertTitle": "",
-    "cancel": "",
-    "collection": "",
-    "delete": "",
-    "edit": "",
-    "removeCollection": "",
-    "report": ""
+    "alertTitle": "Är du säker?",
+    "report": "Rapportera",
+    "edit": "Redigera",
+    "collection": "Lägga till i samling",
+    "delete": "Radera",
+    "cancel": "Avbryt",
+    "removeCollection": "Radera från samling"
 }

@@ -1,13 +1,13 @@
 {
-    "cancel": "",
-    "delete": "",
-    "deleteAlert": "",
-    "deleteTitle": "",
-    "description": "",
-    "done": "",
-    "headerTitle": "",
-    "information": "",
-    "model": "",
-    "projectSettings": "",
-    "title": ""
+    "cancel": "Avbryt",
+    "delete": "Radera",
+    "deleteAlert": "Radera projekt?",
+    "deleteTitle": "Radera projekt",
+    "description": "Den här åtgärden kan inte ångras.",
+    "done": "Klar",
+    "headerTitle": "Redigera",
+    "information": "Information",
+    "model": "Redigera modell",
+    "projectSettings": "Projektinställningar",
+    "title": "Titel"
 }

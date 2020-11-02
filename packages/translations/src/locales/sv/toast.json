@@ -1,4 +1,4 @@
 {
-    "network": "",
-    "spam": ""
+    "network": "Ingen internetanslutning",
+    "spam": "Åtgärd blockerad. Vänligen försök igen."
 }

@@ -1,0 +1,20 @@
+{
+    "camera": {
+        "alertCancel": "Cancel",
+        "alertDescription": "There was a problem getting your permission. Please enable it from settings.",
+        "alertOpen": "Open Settings",
+        "alertTitle": "Whoops!",
+        "permissionButton": "Allow Camera Access",
+        "permissionDescription": "Allow Wrench access to your camera to take photos and record video within the app.",
+        "permissionHeadline": "Take photos and record videos"
+    },
+    "photo": {
+        "alertCancel": "Cancel",
+        "alertDescription": "There was a problem getting your permission. Please enable it from settings.",
+        "alertOpen": "Open Settings",
+        "alertTitle": "Whoops!",
+        "permissionButton": "Enable Library Access",
+        "permissionDescription": "This allows Wrench to share photos from your library and save photos to your camera roll.",
+        "permissionHeadline": "Add photos and videos"
+    }
+}

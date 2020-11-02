@@ -45,6 +45,26 @@
     "placeholder": "",
     "title": ""
   },
+  "ask-for-permission": {
+    "camera": {
+      "alertCancel": "NO_TRANSLATION",
+      "alertDescription": "NO_TRANSLATION",
+      "alertOpen": "NO_TRANSLATION",
+      "alertTitle": "NO_TRANSLATION",
+      "permissionButton": "NO_TRANSLATION",
+      "permissionDescription": "NO_TRANSLATION",
+      "permissionHeadline": "NO_TRANSLATION"
+    },
+    "photo": {
+      "alertCancel": "NO_TRANSLATION",
+      "alertDescription": "NO_TRANSLATION",
+      "alertOpen": "NO_TRANSLATION",
+      "alertTitle": "NO_TRANSLATION",
+      "permissionButton": "NO_TRANSLATION",
+      "permissionDescription": "NO_TRANSLATION",
+      "permissionHeadline": "NO_TRANSLATION"
+    }
+  },
   "blog-post": {
     "back": "Terug naar blog",
     "title": "Blog"

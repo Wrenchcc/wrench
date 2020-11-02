@@ -11,19 +11,22 @@ export default class FileBackend {
 
   async read(locale, namespace, callback) {
     try {
-      if (!(locale in translationsCache) && !__DEV__) {
+      if (!(locale in translationsCache)) {
         translationsCache[locale] = await fetchTranslation(locale)
       }
 
       const data = translationsCache[locale]
+      const translations = data ? data[namespace] : null
 
-      const noTranslationAvailable = !Object.values(data[namespace]).some((x) => x !== null && x !== 'NO_TRANSLATION')
+      const noTranslationAvailable =
+        translations &&
+        !Object.values(translations).some((x) => x !== null && x !== 'NO_TRANSLATION')
 
       // NOTE: Pass the chain so we fetch our API for translations
       if (noTranslationAvailable) {
         callback(null, null)
       } else {
-        callback(null, data[namespace])
+        callback(null, translations)
       }
     } catch (err) {
       console.warn(err)

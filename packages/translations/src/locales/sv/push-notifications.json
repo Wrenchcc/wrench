@@ -1,6 +1,6 @@
 {
-    "approve": "",
-    "decline": "",
-    "description": "",
-    "title": ""
+    "approve": "Sätt på notifikationer",
+    "decline": "Nej tack",
+    "description": "Vet direkt när folk följer dina projekt eller gillar och kommenterar dina inlägg.",
+    "title": "Vänligen aktivera notiser."
 }

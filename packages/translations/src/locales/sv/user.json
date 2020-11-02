@@ -1,8 +1,8 @@
 {
     "description": "Se skiftnyckelprojekt och inlägg från {{fullName}} . (@ {{username}} )",
     "image_alt": "",
-    "notfound": "",
-    "projects": "",
-    "projects_plural": "",
+    "notfound": "Användaren hittades ej",
+    "projects": "{{count, humanFormat}} projekt",
+    "projects_plural": "{{count, humanFormat}} projekt",
     "title": "{{fullName}} . (@ {{username}} ) - projekt och inlägg"
 }

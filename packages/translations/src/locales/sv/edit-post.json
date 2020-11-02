@@ -1,6 +1,6 @@
 {
-    "cancel": "",
-    "headerTitle": "",
-    "placeholder": "",
-    "save": ""
+    "cancel": "Avbryt",
+    "headerTitle": "Redigera inlägg",
+    "placeholder": "Skriv en text för ditt inlägg",
+    "save": "Spara"
 }

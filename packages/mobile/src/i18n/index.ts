@@ -17,17 +17,31 @@ const languageDetector = {
   type: 'languageDetector',
 }
 
+// Production
 // NOTE: We want fallback in production
 let backends = [FileBackend, HttpApi]
+let backendOptions = [
+  {},
+  {
+    allowMultiLoading: false,
+    crossDomain: true,
+    loadPath: 'https://wrench.cc/locales/{{lng}}/{{ns}}.json',
+    queryStringParams: {
+      v: readableVersion,
+    },
+  },
+]
 
+// Development
 // Note: We just want FileBackend in dev to notice missing keys
-if (__DEV__) {
-  backends = [FileBackend]
-}
+// if (__DEV__) {
+//   backends = [FileBackend]
+//   backendOptions = [{}]
+// }
 
 i18next
-  .use(languageDetector)
   .use(initReactI18next)
+  .use(languageDetector)
   .use(Backend)
   .init({
     cache: {
@@ -58,17 +72,7 @@ i18next
     },
     backend: {
       backends,
-      backendOptions: [
-        {},
-        {
-          allowMultiLoading: false,
-          crossDomain: true,
-          loadPath: 'https://wrench.cc/locales/{{lng}}/{{ns}}.json',
-          queryStringParams: {
-            v: readableVersion,
-          },
-        },
-      ],
+      backendOptions,
     },
   })
 

@@ -1,6 +1,6 @@
 {
     "description": "Här ser du de mest populära projekten från den här veckan.",
-    "popular": "",
-    "recent": "",
+    "popular": "Populära projekt",
+    "recent": "Senaste inlägg",
     "title": "Populära projekt"
 }
