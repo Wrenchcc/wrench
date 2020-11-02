@@ -4,7 +4,13 @@
     "description": "Здесь вы увидите комментарии, новых подписчиков и другие действия.",
     "follow": "",
     "mention": "",
+    "NEW_ARTICLE": "",
+    "NEW_COMMENT": "",
+    "NEW_FOLLOWER": "",
+    "NEW_MENTION": "",
     "postLike": "",
+    "PRODUCT_ANNOUNCEMENTS": "NO_TRANSLATION",
     "reply": "",
+    "SIMILAR_PROJECTS": "",
     "title": "Уведомлений пока нет."
 }

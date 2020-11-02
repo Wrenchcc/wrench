@@ -1,5 +1,19 @@
 {
     "chat": "chatta con noi",
+    "clear": "",
+    "codepush": "",
+    "contacts": "NO_TRANSLATION",
+    "credits": "",
+    "customize-interests": "",
+    "delete": "",
+    "deleteCancel": "NO_TRANSLATION",
+    "deleteDescription": "NO_TRANSLATION",
+    "deleteOk": "NO_TRANSLATION",
+    "deleteTitle": "NO_TRANSLATION",
+    "developer": "",
+    "email-notifications": "NO_TRANSLATION",
+    "facebook": "NO_TRANSLATION",
+    "faq": "NO_TRANSLATION",
     "feedback": "Risposta",
     "field": {
         "bio": "",
@@ -7,7 +21,15 @@
         "lastname": "",
         "website": ""
     },
+    "general": "",
+    "invite": "",
+    "language": "",
+    "logout": "",
     "mail": "Supporto per posta",
+    "membership": "NO_TRANSLATION",
+    "push-notifications": "NO_TRANSLATION",
+    "rate": "",
+    "report": "NO_TRANSLATION",
     "save": "Salva",
     "sections": {
         "language": "",
@@ -15,11 +37,20 @@
         "profile": "",
         "support": ""
     },
+    "settings": "",
+    "share": "",
+    "stages": {
+        "production": "NO_TRANSLATION",
+        "staging": "NO_TRANSLATION"
+    },
+    "support": "",
+    "terms": "",
     "title": "impostazioni",
     "toast": {
         "error": "",
         "saved": ""
     },
+    "website": "",
     "field_bio": "Bio",
     "field_firstname": "nome di battesimo",
     "field_lastname": "Cognome",

@@ -4,7 +4,13 @@
     "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
     "follow": "",
     "mention": "",
+    "NEW_ARTICLE": "",
+    "NEW_COMMENT": "",
+    "NEW_FOLLOWER": "",
+    "NEW_MENTION": "",
     "postLike": "",
+    "PRODUCT_ANNOUNCEMENTS": "NO_TRANSLATION",
     "reply": "",
+    "SIMILAR_PROJECTS": "",
     "title": "Ingen varsler ennå."
 }

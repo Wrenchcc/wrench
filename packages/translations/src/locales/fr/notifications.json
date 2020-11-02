@@ -4,7 +4,13 @@
     "description": "Ici, vous verrez des commentaires, de nouveaux abonnés et d'autres activités.",
     "follow": "",
     "mention": "",
+    "NEW_ARTICLE": "",
+    "NEW_COMMENT": "",
+    "NEW_FOLLOWER": "",
+    "NEW_MENTION": "",
     "postLike": "",
+    "PRODUCT_ANNOUNCEMENTS": "NO_TRANSLATION",
     "reply": "",
+    "SIMILAR_PROJECTS": "",
     "title": "Aucune notification pour le moment."
 }

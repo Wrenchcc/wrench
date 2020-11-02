@@ -1,7 +1,5 @@
 import { Alert } from 'react-native'
 import NativeShare from 'react-native-share'
-import { useTranslation } from 'react-i18next'
-import { mergeAll } from 'rambda'
 import AsyncStorage from '@react-native-community/async-storage'
 import { locales } from '@wrench/translations'
 import i18next from 'i18next'
@@ -26,13 +24,13 @@ const changeLocale = async (locale) => {
   }
 }
 
-const generateLanguageSettings = () => {
+const generateLanguageSettings = (t) => {
   let items = []
 
   const currentLocale = i18next.language
 
   items = locales.map((locale) => ({
-    titleKey: locale,
+    title: t(`languages:${locale}`),
     onPress: () => currentLocale !== locale && changeLocale(locale),
     type: 'selector',
     selected: currentLocale === locale,
@@ -42,7 +40,7 @@ const generateLanguageSettings = () => {
 }
 
 const generateNotificationSettings = (
-  { settings, handleToggleNotificationSettings },
+  { settings, handleToggleNotificationSettings, t },
   deliveryMethod
 ) => {
   if (!settings) {
@@ -53,7 +51,7 @@ const generateNotificationSettings = (
   let items = []
 
   items = types.map((type) => ({
-    titleKey: `notifications:${type}`,
+    title: t(`notifications:${type}`),
     onPress: () =>
       handleToggleNotificationSettings({
         notificationType: type,
@@ -66,34 +64,34 @@ const generateNotificationSettings = (
   return items
 }
 
-const sections = (props) => {
+const sections = ({ t, ...props }) => {
   const data = {
     settings: [
       {
-        titleKey: 'invite',
+        title: t('settings:invite'),
         data: [
           {
-            titleKey: 'share',
+            title: t('settings:share'),
             onPress: () =>
               NativeShare.open({
-                title: 'shareContent',
+                title: t('shareContent'),
                 url: WEBSITE_URL,
               }).catch(() => {}),
           },
         ],
       },
       {
-        titleKey: 'settings',
+        title: t('settings:settings'),
         data: [
           {
-            titleKey: 'customize-interests',
+            title: t('settings:customize-interests'),
             onPress: () =>
               props.navigate(SCREENS.ONBOARDING, {
                 settingsPage: true,
               }),
           },
           {
-            titleKey: 'push-notifications',
+            title: t('settings:push-notifications'),
             hasChildren: true,
             onPress: () =>
               props.navigate(SCREENS.SETTINGS, {
@@ -101,7 +99,7 @@ const sections = (props) => {
               }),
           },
           {
-            titleKey: 'email-notifications',
+            title: t('settings:email-notifications'),
             hasChildren: true,
             onPress: () =>
               props.navigate(SCREENS.SETTINGS, {
@@ -109,7 +107,7 @@ const sections = (props) => {
               }),
           },
           {
-            titleKey: 'language',
+            title: t('settings:language'),
             hasChildren: true,
             onPress: () =>
               props.navigate(SCREENS.SETTINGS, {
@@ -119,10 +117,10 @@ const sections = (props) => {
         ],
       },
       {
-        titleKey: 'general',
+        title: t('settings:general'),
         data: [
           {
-            titleKey: 'support',
+            title: t('support'),
             hasChildren: true,
             onPress: () =>
               props.navigate(SCREENS.SETTINGS, {
@@ -130,15 +128,15 @@ const sections = (props) => {
               }),
           },
           {
-            titleKey: 'terms',
+            title: t('settings:terms'),
             onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'https://wrench.cc/terms' }),
           },
           {
-            titleKey: 'website',
+            title: t('settings:website'),
             onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'https://wrench.cc' }),
           },
           {
-            titleKey: 'credits',
+            title: t('settings:credits'),
             hasChildren: true,
             onPress: () =>
               props.navigate(SCREENS.SETTINGS, {
@@ -146,22 +144,22 @@ const sections = (props) => {
               }),
           },
           {
-            titleKey: 'rate',
+            title: t('settings:rate'),
             onPress: () => askForRating(),
           },
           {
-            titleKey: 'delete',
+            title: t('settings:delete'),
             onPress: () =>
               Alert.alert(
-                props.t('deleteTitle'),
-                props.t('deleteDescription'),
+                t('settings:deleteTitle'),
+                t('settings:deleteDescription'),
                 [
                   {
-                    text: props.t('deleteCancel'),
+                    text: t('settings:deleteCancel'),
                     style: 'cancel',
                   },
                   {
-                    text: props.t('deleteOk'),
+                    text: t('settings:deleteOk'),
                     onPress: () => {
                       client.clearStore()
                       props.deleteUser()
@@ -173,7 +171,7 @@ const sections = (props) => {
             important: true,
           },
           {
-            titleKey: 'logout',
+            title: t('settings:logout'),
             onPress: () => client.clearStore(),
             important: true,
           },
@@ -182,54 +180,54 @@ const sections = (props) => {
     ],
     facebook: [
       {
-        headerTitle: 'facebook',
+        headerTitle: t('settings:facebook'),
         data: [{}],
       },
     ],
     contacts: [
       {
-        headerTitle: 'contacts',
+        headerTitle: t('settings:contacts'),
         data: [{}],
       },
     ],
     'push-notifications': [
       {
-        headerTitle: 'push-notifications',
-        data: generateNotificationSettings(props, 'push'),
+        headerTitle: t('settings:push-notifications'),
+        data: generateNotificationSettings({ t, ...props }, 'push'),
       },
     ],
     'email-notifications': [
       {
-        headerTitle: 'email-notifications',
-        data: generateNotificationSettings(props, 'email'),
+        headerTitle: t('settings:email-notifications'),
+        data: generateNotificationSettings({ t, ...props }, 'email'),
       },
     ],
     language: [
       {
-        headerTitle: 'language',
-        data: generateLanguageSettings(),
+        headerTitle: t('settings:language'),
+        data: generateLanguageSettings(t),
       },
     ],
     membership: [
       {
-        headerTitle: 'membership',
+        headerTitle: t('settings:membership'),
         data: [{}],
       },
     ],
     support: [
       {
-        headerTitle: 'support',
+        headerTitle: t('settings:support'),
         data: [
           {
-            titleKey: 'faq',
+            title: t('settings:faq'),
             onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'https://wrench.cc/faq' }),
           },
           {
-            titleKey: 'report',
+            title: t('settings:report'),
             onPress: () => openLink('mailto:support@wrench.cc?subject=Bug Report'),
           },
           {
-            titleKey: 'chat',
+            title: t('settings:chat'),
             onPress: () => openLink('https://m.me/wrench.cc'),
           },
         ],
@@ -237,16 +235,16 @@ const sections = (props) => {
     ],
     codepush: [
       {
-        headerTitle: 'credits',
+        headerTitle: t('credits'),
         data: [
           {
-            titleKey: 'stages.production',
+            title: t('settings:stages.production'),
             onPress: async () => setDeploymentKey(DEPLOYMENT_KEY_PRODUCTION),
             type: 'selector',
             selected: false,
           },
           {
-            titleKey: 'stages.staging',
+            title: t('settings:stages.staging'),
             onPress: async () => setDeploymentKey(DEPLOYMENT_KEY_STAGING),
             type: 'selector',
             selected: false,
@@ -256,27 +254,27 @@ const sections = (props) => {
     ],
     credits: [
       {
-        headerTitle: 'credits',
+        headerTitle: t('credits'),
         data: [
           {
-            titleKey: 'knallpott',
+            title: 'Knallpott',
             onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'https://knallpott.de' }),
           },
           {
-            titleKey: 'paal',
+            title: 'Paal Motorcycles',
             onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'http://paalmotorcycles.com' }),
           },
           {
-            titleKey: 'kismo',
+            title: 'Kismo motors',
             onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'http://kismomotors.com' }),
           },
           {
-            titleKey: 'motorfabriken',
+            title: 'Motorfabriken',
             onPress: () =>
               props.showModal(SCREENS.WEBVIEW, { url: 'https://www.instagram.com/motorfabriken' }),
           },
           {
-            titleKey: 'hojstyling',
+            title: 'Hojstyling.se',
             onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'https://www.hojstyling.se' }),
           },
         ],
@@ -286,10 +284,10 @@ const sections = (props) => {
 
   if (props.user && isAdmin(props.user)) {
     data.settings.push({
-      titleKey: 'developer',
+      title: t('developer'),
       data: [
         {
-          titleKey: 'codepush',
+          title: t('codepush'),
           hasChildren: true,
           onPress: () =>
             props.navigate(SCREENS.SETTINGS, {
@@ -297,7 +295,7 @@ const sections = (props) => {
             }),
         },
         {
-          titleKey: 'clear',
+          title: t('clear'),
           onPress: async () => AsyncStorage.clear(),
         },
       ],
@@ -306,26 +304,4 @@ const sections = (props) => {
 
   return data
 }
-
-const routeSections = {
-  settings: [{ titleKey: 'invite' }],
-  facebook: [{ headerTitle: 'facebook' }],
-  contacts: [{ headerTitle: 'contacts' }],
-  'push-notifications': [{ headerTitle: 'push-notifications' }],
-  language: [{ headerTitle: 'language' }],
-  membership: [{ headerTitle: 'membership' }],
-  support: [{ headerTitle: 'support' }],
-  credits: [{ headerTitle: 'credits' }],
-  developer: [{ headerTitle: 'developer' }],
-}
-
-export const mapRouteForSection = (component) =>
-  mergeAll(
-    Object.keys(routeSections).map((section) => ({
-      [section]: {
-        component,
-      },
-    }))
-  )
-
 export default sections

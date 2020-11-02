@@ -4,7 +4,13 @@
     "description": "Hier sehen Sie Kommentare, neue Follower und andere Aktivitäten.",
     "follow": "",
     "mention": "",
+    "NEW_ARTICLE": "",
+    "NEW_COMMENT": "",
+    "NEW_FOLLOWER": "",
+    "NEW_MENTION": "",
     "postLike": "",
+    "PRODUCT_ANNOUNCEMENTS": "NO_TRANSLATION",
     "reply": "",
+    "SIMILAR_PROJECTS": "",
     "title": "Noch keine Benachrichtigungen."
 }
