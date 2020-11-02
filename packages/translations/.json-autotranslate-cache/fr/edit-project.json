@@ -1,13 +1,13 @@
 {
-  "cancel": "",
-  "delete": "",
-  "deleteAlert": "",
-  "deleteTitle": "",
-  "description": "",
-  "done": "",
-  "headerTitle": "",
-  "information": "",
-  "model": "",
-  "projectSettings": "",
-  "title": ""
+  "cancel": "Annuler",
+  "delete": "Supprimer",
+  "deleteAlert": "Supprimer le projet?",
+  "deleteTitle": "Supprimer le projet",
+  "description": "Cette action ne peut pas être annulée.",
+  "done": "Terminé",
+  "headerTitle": "Éditer",
+  "information": "Information",
+  "model": "Modifier le modèle",
+  "projectSettings": "Paramètres du projet",
+  "title": "Titre"
 }

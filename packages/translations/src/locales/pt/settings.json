@@ -45,20 +45,10 @@
   },
   "support": "Apoio, suporte",
   "terms": "Termos e Condições",
-  "title": "Configurações",
+  "title": "Definições",
   "toast": {
     "error": "Algo deu errado",
     "saved": "Configurações salvas"
   },
-  "website": "Local na rede Internet",
-  "field_bio": "Bio",
-  "field_firstname": "Primeiro nome",
-  "field_lastname": "Último nome",
-  "field_website": "Local na rede Internet",
-  "toast_error": "Algo deu errado",
-  "toast_saved": "Configurações salvas",
-  "sections_language": "Língua",
-  "sections_notifications": "Notificações",
-  "sections_profile": "Editar Perfil",
-  "sections_support": "Apoio, suporte"
+  "website": "Local na rede Internet"
 }

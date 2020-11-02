@@ -1,14 +1,14 @@
 {
-  "sv": "Sueco",
+  "sv": "sueco",
   "en": "Inglés",
   "es": "Español",
-  "it": "Italiano",
-  "de": "Alemán",
-  "nl": "Holandés",
-  "fr": "Francés",
+  "it": "italiano",
+  "de": "alemán",
+  "nl": "holandés",
+  "fr": "francés",
   "tl": "Filipino",
-  "pt": "Portugués",
-  "ru": "Ruso",
-  "no": "Noruego",
-  "da": "Danés"
+  "pt": "portugués",
+  "ru": "ruso",
+  "no": "noruego",
+  "da": "danés"
 }

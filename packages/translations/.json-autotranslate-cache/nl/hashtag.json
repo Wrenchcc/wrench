@@ -1,4 +1,4 @@
 {
-  "posts": "",
-  "posts_plural": ""
+  "posts": "{{count, humanFormat}} berichten",
+  "posts_plural": "{{count, humanFormat}} berichten"
 }

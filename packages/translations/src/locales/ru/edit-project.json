@@ -1,13 +1,13 @@
 {
-  "cancel": "",
-  "delete": "",
-  "deleteAlert": "",
-  "deleteTitle": "",
-  "description": "",
-  "done": "",
-  "headerTitle": "",
-  "information": "",
-  "model": "",
-  "projectSettings": "",
-  "title": ""
+  "cancel": "Отмена",
+  "delete": "удалять",
+  "deleteAlert": "Удалить проект?",
+  "deleteTitle": "Удалить проект",
+  "description": "Это действие не может быть отменено.",
+  "done": "Выполнено",
+  "headerTitle": "редактировать",
+  "information": "Информация",
+  "model": "Редактировать модель",
+  "projectSettings": "Настройки проекта",
+  "title": "заглавие"
 }

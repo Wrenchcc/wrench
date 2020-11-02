@@ -1,7 +1,7 @@
 {
-  "like": "",
-  "like_plural": "",
-  "loadReplies": "",
-  "loadReplies_plural": "",
-  "reply": ""
+  "like": "{{count}} scintilla",
+  "like_plural": "{{count, humanFormat}} scintille",
+  "loadReplies": "Visualizza risposte ( {{count}} )",
+  "loadReplies_plural": "Visualizza risposte ( {{count}} )",
+  "reply": "rispondere"
 }

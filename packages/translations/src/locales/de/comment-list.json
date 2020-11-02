@@ -1,4 +1,4 @@
 {
-  "loadMore": "",
-  "loadMore_plural": ""
+  "loadMore": "1 Kommentar anzeigen",
+  "loadMore_plural": "Alle {{count, humanFormat}} Kommentare anzeigen"
 }

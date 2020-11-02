@@ -42,15 +42,5 @@
   "title": "impostazioni",
   "toast.error": "Qualcosa è andato storto",
   "toast.saved": "Impostazioni salvate",
-  "website": "Sito web",
-  "field_bio": "Bio",
-  "field_firstname": "nome di battesimo",
-  "field_lastname": "Cognome",
-  "field_website": "Sito web",
-  "toast_error": "Qualcosa è andato storto",
-  "toast_saved": "Impostazioni salvate",
-  "sections_language": "linguaggio",
-  "sections_notifications": "Notifiche",
-  "sections_profile": "Modifica Profilo",
-  "sections_support": "Supporto"
+  "website": "Sito web"
 }

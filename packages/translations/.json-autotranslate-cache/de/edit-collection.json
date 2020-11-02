@@ -1,7 +1,7 @@
 {
-  "add": "",
-  "delete": "",
-  "done": "",
-  "placeholder": "",
-  "title": ""
+  "add": "Beiträge hinzufügen",
+  "delete": "Löschen",
+  "done": "Erledigt",
+  "placeholder": "Ex. Motor umbauen",
+  "title": "Information"
 }

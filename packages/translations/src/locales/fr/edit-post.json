@@ -1,6 +1,6 @@
 {
-  "cancel": "",
-  "headerTitle": "",
-  "placeholder": "",
-  "save": ""
+  "cancel": "Annuler",
+  "headerTitle": "Modifier le message",
+  "placeholder": "Ajouter un texte sur votre message",
+  "save": "sauvegarder"
 }

@@ -1,68 +1,63 @@
 {
-  "CommentItem": {
-    "like": "",
-    "like_plural": "",
-    "reply": ""
-  },
   "add-collection": {
-    "add": "",
-    "done": "",
-    "placeholder": "",
-    "title": ""
+    "add": "Legg til ny",
+    "done": "Ferdig",
+    "placeholder": "Eks. Ombygging av motor",
+    "title": "Ny kolleksjon"
   },
   "add-media": {
-    "next": "",
+    "next": "Neste",
     "options": {
-      "cancel": "",
-      "discard": "",
-      "title": ""
+      "cancel": "Avbryt",
+      "discard": "Kast",
+      "title": "Hvis du går tilbake nå, blir endringene dine kastet."
     }
   },
   "add-post-to-collection": {
-    "done": "",
-    "title": ""
+    "done": "Ferdig",
+    "title": "Legg til innlegg"
   },
   "add-post": {
-    "add": "",
-    "collection": "",
-    "error": "",
-    "placeholder": ""
+    "add": "Dele",
+    "collection": "Legg til i samlingen",
+    "error": "Kunne ikke legge ut akkurat nå",
+    "placeholder": "Legg til en tekst om innlegget ditt"
   },
   "add-project-model": {
-    "add": "",
-    "headerTitle": "",
-    "placeholder": "",
-    "skip": "",
-    "title": ""
+    "add": "Legge til",
+    "headerTitle": "Legg til prosjekt",
+    "placeholder": "F.eks. BMW R100 1981",
+    "skip": "Hopp over",
+    "title": "Søk og velg modellen din."
   },
   "add-project-type": {
-    "headerTitle": "",
-    "title": ""
+    "headerTitle": "Legg til prosjekt",
+    "title": "Velg kategori"
   },
   "add-project": {
-    "headerTitle": "",
-    "next": "",
-    "placeholder": "",
-    "title": ""
+    "headerTitle": "Legg til prosjekt",
+    "next": "Neste",
+    "placeholder": "F.eks. Honda Cafe Racer",
+    "title": "Velg en tittel for prosjektet ditt."
   },
   "ask-for-permission": {
     "camera": {
-      "alertCancel": "NO_TRANSLATION",
-      "alertDescription": "NO_TRANSLATION",
-      "alertOpen": "NO_TRANSLATION",
-      "alertTitle": "NO_TRANSLATION",
-      "permissionButton": "NO_TRANSLATION",
-      "permissionDescription": "NO_TRANSLATION",
-      "permissionHeadline": "NO_TRANSLATION"
+      "alertCancel": "Avbryt",
+      "alertDescription": "Det oppsto et problem med å få din tillatelse. Aktiver det fra innstillingene.",
+      "alertOpen": "Åpne innstillinger",
+      "alertTitle": "Oj!",
+      "permissionButton": "Tillat kameratilgang",
+      "permissionDescription": "Gi skiftenøkkel tilgang til kameraet ditt for å ta bilder og ta opp video i appen.",
+      "permissionHeadline": "Ta bilder og ta opp videoer"
     },
     "photo": {
-      "alertCancel": "NO_TRANSLATION",
-      "alertDescription": "NO_TRANSLATION",
-      "alertOpen": "NO_TRANSLATION",
-      "alertTitle": "NO_TRANSLATION",
-      "permissionButton": "NO_TRANSLATION",
-      "permissionDescription": "NO_TRANSLATION",
-      "permissionHeadline": "NO_TRANSLATION"
+      "alertCancel": "Avbryt",
+      "alertDescription": "Det oppsto et problem med å få din tillatelse. Aktiver det fra innstillingene.",
+      "alertOpen": "Åpne innstillinger",
+      "alertTitle": "Oj!",
+      "permissionButton": "Aktiver tilgang til biblioteket",
+      "permissionDescription": "Dette gjør at skiftenøkkel kan dele bilder fra biblioteket ditt og lagre bilder på kamerarullen.",
+      "permissionHeadline": "Legg til bilder og videoer"
     }
   },
   "blog-post": {
@@ -73,134 +68,134 @@
     "title": "Blogg"
   },
   "bookmarks": {
-    "description": "",
-    "headerTitle": "",
-    "title": ""
+    "description": "Lagre innlegg du vil se igjen. Ingen får beskjed, og bare du kan se hva du har lagret.",
+    "headerTitle": "Lagrede innlegg",
+    "title": "Lagre"
   },
   "collections": {
     "edit": "Redigere",
-    "title": ""
+    "title": "Samlinger"
   },
   "comment-field": {
     "placeholder": "Legg til en kommentar...",
     "post": "Post"
   },
   "comment-item": {
-    "like": "",
-    "like_plural": "",
-    "loadReplies": "",
-    "loadReplies_plural": "",
-    "reply": ""
+    "like": "{{count}} gnist",
+    "like_plural": "{{count, humanFormat}} gnister",
+    "loadReplies": "Se svar ( {{count}} )",
+    "loadReplies_plural": "Se svar ( {{count}} )",
+    "reply": "Svare"
   },
   "comment-list": {
-    "loadMore": "",
-    "loadMore_plural": ""
+    "loadMore": "Vis 1 kommentar",
+    "loadMore_plural": "Vis alle {{count, humanFormat}} kommentarene"
   },
   "comments": {
-    "load_replies": "INGEN OVERSETTELSE",
-    "load_replies_plural": "INGEN OVERSETTELSE",
+    "load_replies": "",
+    "load_replies_plural": "",
     "loadMore": "Last inn flere kommentarer",
     "title": "Kommentarer"
   },
   "common": {
-    "description": "INGEN OVERSETTELSE",
-    "like": "INGEN OVERSETTELSE",
-    "like_plural": "INGEN OVERSETTELSE",
-    "reply": "INGEN OVERSETTELSE",
-    "settings": "INGEN OVERSETTELSE",
-    "title": "INGEN OVERSETTELSE"
+    "description": "",
+    "like": "",
+    "like_plural": "",
+    "reply": "",
+    "settings": "",
+    "title": ""
   },
   "edit-collection": {
-    "add": "",
-    "delete": "",
-    "done": "",
-    "placeholder": "",
-    "title": ""
+    "add": "Legg til innlegg",
+    "delete": "Slett",
+    "done": "Ferdig",
+    "placeholder": "Eks. Ombygging av motor",
+    "title": "Informasjon"
   },
   "edit-model": {
-    "headerTitle": "",
-    "placeholder": "",
-    "save": "",
-    "title": ""
+    "headerTitle": "Rediger modell",
+    "placeholder": "F.eks. BMW R100 1981",
+    "save": "Lagre",
+    "title": "Søk og velg modellen din."
   },
   "edit-post": {
-    "cancel": "",
-    "headerTitle": "",
-    "placeholder": "",
-    "save": ""
+    "cancel": "Avbryt",
+    "headerTitle": "Rediger innlegget",
+    "placeholder": "Legg til en tekst om innlegget ditt",
+    "save": "Lagre"
   },
   "edit-profile": {
-    "bio": "",
-    "change": "",
-    "firstName": "",
-    "headerTitle": "",
-    "imagePickerCancel": "",
-    "imagePickerLibrary": "",
-    "imagePickerPermissionOk": "",
-    "imagePickerPermissionRetry": "",
-    "imagePickerPermissionText": "",
-    "imagePickerPermissionTitle": "",
-    "imagePickerPhoto": "",
-    "imagePickerTitle": "",
-    "information": "",
-    "lastName": "",
-    "place": "",
-    "remove": "",
-    "save": "",
-    "username": "",
-    "validation": "",
-    "validationUsername": "",
-    "website": "",
-    "wrong": ""
+    "bio": "Bio",
+    "change": "Endring",
+    "firstName": "Fornavn",
+    "headerTitle": "Rediger profil",
+    "imagePickerCancel": "Avbryt",
+    "imagePickerLibrary": "Velg fra bibliotek…",
+    "imagePickerPermissionOk": "jeg er sikker",
+    "imagePickerPermissionRetry": "prøv på nytt",
+    "imagePickerPermissionText": "For å kunne ta bilder med kameraet ditt og velge bilder fra biblioteket ditt.",
+    "imagePickerPermissionTitle": "Tillatelse avslått",
+    "imagePickerPhoto": "Ta bilde…",
+    "imagePickerTitle": "Velg Avatar",
+    "information": "Informasjon",
+    "lastName": "Etternavn",
+    "place": "By land",
+    "remove": "Fjern gjeldende bilde",
+    "save": "Lagre",
+    "username": "Brukernavn",
+    "validation": "Vennligst sjekk obligatoriske felt.",
+    "validationUsername": "Brukernavnet er allerede i bruk.",
+    "website": "Nettsted",
+    "wrong": "Noe gikk galt"
   },
   "edit-project": {
-    "cancel": "",
-    "delete": "",
-    "deleteAlert": "",
-    "deleteTitle": "",
-    "description": "",
-    "done": "",
-    "headerTitle": "",
-    "information": "",
-    "model": "",
-    "projectSettings": "",
-    "title": ""
+    "cancel": "Avbryt",
+    "delete": "Slett",
+    "deleteAlert": "Vil du slette prosjektet?",
+    "deleteTitle": "Slett prosjektet",
+    "description": "Denne handlingen kan ikke angres.",
+    "done": "Ferdig",
+    "headerTitle": "Redigere",
+    "information": "Informasjon",
+    "model": "Rediger modell",
+    "projectSettings": "Prosjektinnstillinger",
+    "title": "Tittel"
   },
   "edit": {
-    "edit": ""
+    "edit": "Redigere"
   },
   "empty-state": {
     "collection-no-post": {
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "description": "Brukeren har ikke lagt til noen innlegg i denne samlingen ennå.",
+      "title": "Ingen innlegg lagt til i denne samlingen."
     },
     "collection-post": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Legge til",
+      "description": "Legg til et innlegg i denne samlingen fra opprett ny innleggsflyt eller et eksisterende innlegg ved å klikke på mer-knappen i høyre hjørne av innlegget.",
+      "title": "Legg til det første innlegget ditt i denne samlingen."
     },
     "notifications": {
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
+      "title": "Ingen varsler ennå."
     },
     "post": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Legge til",
+      "description": "Nå når du har et prosjekt, er det på tide å lage ditt første innlegg.",
+      "title": "2. Legg til ditt første innlegg."
     },
     "project-no-post": {
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "description": "Følg dette prosjektet nå og bli varslet når det oppdateres.",
+      "title": "Dette prosjektet har ingen innlegg ennå."
     },
     "project-post": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Legge til",
+      "description": "Nå når du har et prosjekt, er det på tide å lage ditt første innlegg.",
+      "title": "Legg til ditt første innlegg."
     },
     "project": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Kom i gang",
+      "description": "La oss få fart på deg og lage ditt første prosjekt.",
+      "title": "1. Lag ditt første prosjekt."
     }
   },
   "en": {
@@ -297,18 +292,18 @@
       "loadMore_plural": "Vis alle {{count, humanFormat}} kommentarene"
     },
     "comments": {
-      "load_replies": "INGEN OVERSETTELSE",
-      "load_replies_plural": "INGEN OVERSETTELSE",
+      "load_replies": "",
+      "load_replies_plural": "",
       "loadMore": "Last inn flere kommentarer",
       "title": "Kommentarer"
     },
     "common": {
-      "description": "INGEN OVERSETTELSE",
-      "like": "INGEN OVERSETTELSE",
-      "like_plural": "INGEN OVERSETTELSE",
-      "reply": "INGEN OVERSETTELSE",
-      "settings": "INGEN OVERSETTELSE",
-      "title": "INGEN OVERSETTELSE"
+      "description": "",
+      "like": "",
+      "like_plural": "",
+      "reply": "",
+      "settings": "",
+      "title": ""
     },
     "edit-collection": {
       "add": "Legg til innlegg",
@@ -407,7 +402,7 @@
       "button": "Fortsett med Facebook"
     },
     "feed": {
-      "description": "INGEN OVERSETTELSE",
+      "description": "",
       "title": "Mate"
     },
     "follow": {
@@ -771,7 +766,7 @@
     },
     "user": {
       "description": "Se skiftenøkkelprosjekter og innlegg fra {{fullName}} . (@ {{username}} )",
-      "image_alt": "INGEN OVERSETTELSE",
+      "image_alt": "",
       "notfound": "Bruker ikke funnet",
       "projects": "{{count, humanFormat}} prosjekt",
       "projects_plural": "{{count, humanFormat}} prosjekter",
@@ -782,18 +777,17 @@
     }
   },
   "facebook": {
-    "button": ""
+    "button": "Fortsett med Facebook"
   },
   "feed": {
-    "description": "INGEN OVERSETTELSE",
+    "description": "",
     "title": "Mate"
   },
   "follow": {
     "follow": "Følg dette prosjektet",
     "followSmall": "Følg",
     "unfollow": "Følgende",
-    "unfollowSmall": "Følgende",
-    "follow_short": "Følg"
+    "unfollowSmall": "Følgende"
   },
   "followers": {
     "followers": "{{count, humanFormat}} følger",
@@ -825,11 +819,11 @@
     "trademarks": "App Store er et tjenestemerke for Apple Inc. Google Play er et varemerke for Google LLC."
   },
   "google": {
-    "button": ""
+    "button": "Fortsett med Google"
   },
   "hashtag": {
-    "posts": "",
-    "posts_plural": ""
+    "posts": "{{count, humanFormat}} innlegg",
+    "posts_plural": "{{count, humanFormat}} innlegg"
   },
   "header": {
     "download": "Last ned apper",
@@ -842,25 +836,25 @@
   },
   "home": {
     "description": "Dokumenter dine bygg, del prosjektene dine og lær av likesinnede.",
-    "document_title": "Wrench | Motorsykkel samfunnet",
+    "document_title": "Skiftenøkkel | Motorsykkel samfunnet",
     "explore": "Utforsk flere prosjekter",
     "signup": "Registrer deg nå",
     "subtitle": "samfunnet.",
     "title": "Motoren din"
   },
   "languages": {
-    "sv": "Svensk",
+    "sv": "svensk",
     "en": "Engelsk",
     "es": "Spansk",
     "it": "Italiensk",
-    "de": "Tysk",
-    "nl": "Nederlandsk",
-    "fr": "Fransk",
+    "de": "tysk",
+    "nl": "nederlandsk",
+    "fr": "fransk",
     "tl": "Filippinsk",
     "pt": "Portugisisk",
     "ru": "Russisk",
-    "no": "Norsk",
-    "da": "Dansk"
+    "no": "norsk",
+    "da": "dansk"
   },
   "legal": {
     "description": "Ved å fortsette godtar du Wrench's",
@@ -886,12 +880,12 @@
     "settings": "Innstillinger"
   },
   "me": {
-    "bookmarks": "",
-    "edit": "",
-    "settings": ""
+    "bookmarks": "Lagrede innlegg",
+    "edit": "Rediger profil",
+    "settings": "Innstillinger"
   },
   "media-picker-list": {
-    "deselectAll": ""
+    "deselectAll": "Opphev alle"
   },
   "mobile-menu": {
     "download": "Last ned apper",
@@ -902,7 +896,7 @@
     "sign_out": "Logg ut"
   },
   "no-results": {
-    "title": ""
+    "title": "Ingen resultater"
   },
   "notification": {
     "comment": "Kommenterte innlegget ditt",
@@ -937,13 +931,13 @@
     "title": "Hva er du interessert i?"
   },
   "options": {
-    "alertTitle": "",
-    "cancel": "",
-    "collection": "",
-    "delete": "",
-    "edit": "",
-    "removeCollection": "",
-    "report": ""
+    "alertTitle": "Er du sikker?",
+    "cancel": "Avbryt",
+    "collection": "Legg til i samlingen",
+    "delete": "Slett",
+    "edit": "Redigere",
+    "removeCollection": "Fjern fra samlingen",
+    "report": "Rapportere"
   },
   "popular": {
     "description": "Her ser du de mest populære prosjektene fra denne uken.",
@@ -952,41 +946,40 @@
     "title": "Populære prosjekter"
   },
   "post-container": {
-    "loadMore": "",
-    "title": ""
+    "loadMore": "Last inn flere kommentarer",
+    "title": "Post"
   },
   "post": {
     "options": {
-      "alertTitle": "",
-      "cancel": "",
-      "collection": "",
-      "delete": "",
-      "edit": "",
-      "removeCollection": "",
-      "report": ""
+      "alertTitle": "Er du sikker?",
+      "cancel": "Avbryt",
+      "collection": "Legg til i samlingen",
+      "delete": "Slett",
+      "edit": "Redigere",
+      "removeCollection": "Fjern fra samlingen",
+      "report": "Rapportere"
     },
-    "selectCollection": "",
-    "showCollection": ""
+    "selectCollection": "Velg samling",
+    "showCollection": "Vis samling"
   },
   "posting": {
-    "description": ""
+    "description": "Legger ut ..."
   },
   "project-card": {
-    "follow": "",
-    "unfollow": ""
+    "follow": "Følg",
+    "unfollow": "Følgende"
   },
   "project-suggestion": {
     "description": "Vi har valgt noen prosjekter nedenfor du kan synes er interessante.",
     "title": "Bli oppdatert og følg noen prosjekter.",
-    "title_small": "Foreslått for deg",
-    "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} innlegg - {{fullName}} . (@ {{username}} ) på skiftenøkkel"
+    "title_small": "Foreslått for deg"
   },
   "project-suggestions": {
-    "description": "",
-    "title": ""
+    "description": "Vi har valgt noen prosjekter nedenfor du kan synes er interessante.",
+    "title": "Bli oppdatert og følg noen prosjekter."
   },
   "project-types": {
-    "inspo": ""
+    "inspo": "Inspirasjon"
   },
   "project": {
     "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} innlegg - {{fullName}} . (@ {{username}} ) på skiftenøkkel",
@@ -1003,10 +996,10 @@
     "title": "Last ned Wrench-appen på Appstore og Google play"
   },
   "push-notifications": {
-    "approve": "",
-    "decline": "",
-    "description": "",
-    "title": ""
+    "approve": "Slå på varsler",
+    "decline": "Nei takk",
+    "description": "Vet med en gang når folk følger prosjektene dine eller liker og kommenterer innleggene dine.",
+    "title": "Slå på varsler."
   },
   "result": {
     "not_found": "Ingen søkeresultater funnet.",
@@ -1014,11 +1007,11 @@
     "projects_plural": "{{count, humanFormat}} prosjekter"
   },
   "search-bar": {
-    "cancel": "",
-    "placeholder": ""
+    "cancel": "Avbryt",
+    "placeholder": "Søk"
   },
   "search-location-footer": {
-    "poweredBy": ""
+    "poweredBy": "Drevet av"
   },
   "search-location": {
     "no_result": "Ingen resultater.",
@@ -1033,16 +1026,16 @@
     "users": "Brukere"
   },
   "searching-for": {
-    "title": ""
+    "title": "Leter etter"
   },
   "sections": {
-    "language": "",
-    "notifications": "",
-    "profile": "",
-    "support": ""
+    "language": "Språk",
+    "notifications": "Varsler",
+    "profile": "Profil",
+    "support": "Brukerstøtte"
   },
   "select-project": {
-    "create": ""
+    "create": "Lag et nytt prosjekt"
   },
   "settings": {
     "chat": "snakk med oss",
@@ -1096,42 +1089,32 @@
       "error": "Noe gikk galt",
       "saved": "Instillinger lagret"
     },
-    "website": "Nettsted",
-    "field_bio": "Bio",
-    "field_firstname": "Fornavn",
-    "field_lastname": "Etternavn",
-    "field_website": "Nettsted",
-    "toast_error": "Noe gikk galt",
-    "toast_saved": "Instillinger lagret",
-    "sections_language": "Språk",
-    "sections_notifications": "Varsler",
-    "sections_profile": "Rediger profil",
-    "sections_support": "Brukerstøtte"
+    "website": "Nettsted"
   },
   "share": {
-    "share": ""
+    "share": "Dele"
   },
   "show-latest": {
-    "button": ""
+    "button": "Nye innlegg"
   },
   "sign-in": {
-    "description": "",
-    "headline": "",
-    "other": ""
+    "description": "Dokumenter dine bygg, del prosjektene dine og lær av likesinnede.",
+    "headline": "Din\nmotorsykkel\nsamfunnet.",
+    "other": "Andre påloggingsalternativer"
   },
   "similar-projects": {
-    "title": ""
+    "title": "Lignende prosjekter"
   },
   "sparks": {
-    "title": ""
+    "title": "Gnister"
   },
   "suggestions": {
-    "description": "",
-    "headline": "",
-    "next": ""
+    "description": "Vi har valgt noen prosjekter nedenfor du kan synes er interessante.",
+    "headline": "Bli oppdatert og følg noen prosjekter.",
+    "next": "Neste"
   },
   "text": {
-    "more": ""
+    "more": "mer"
   },
   "time": {
     "d": "<span>For 0</span> dager siden",
@@ -1147,8 +1130,8 @@
     "y_plural": "<span>For 0</span> år siden"
   },
   "toast": {
-    "network": "",
-    "spam": ""
+    "network": "Ingen internettforbindelse",
+    "spam": "Handling blokkert. Prøv igjen senere."
   },
   "user-following-projects": {
     "description": "Men her er noen av prosjektene {{name}} følger.",
@@ -1161,13 +1144,13 @@
   },
   "user": {
     "description": "Se skiftenøkkelprosjekter og innlegg fra {{fullName}} . (@ {{username}} )",
-    "image_alt": "INGEN OVERSETTELSE",
+    "image_alt": "",
     "notfound": "Bruker ikke funnet",
     "projects": "{{count, humanFormat}} prosjekt",
     "projects_plural": "{{count, humanFormat}} prosjekter",
     "title": "{{fullName}} . (@ {{username}} ) - prosjekter og innlegg"
   },
   "webview": {
-    "loading": ""
+    "loading": "Laster inn ..."
   }
 }

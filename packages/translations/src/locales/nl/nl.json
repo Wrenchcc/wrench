@@ -1,68 +1,63 @@
 {
-  "CommentItem": {
-    "like": "",
-    "like_plural": "",
-    "reply": ""
-  },
   "add-collection": {
-    "add": "",
-    "done": "",
-    "placeholder": "",
-    "title": ""
+    "add": "Nieuw toevoegen",
+    "done": "Gedaan",
+    "placeholder": "Ex. Motor herbouwd",
+    "title": "Nieuwe collectie"
   },
   "add-media": {
-    "next": "",
+    "next": "De volgende",
     "options": {
-      "cancel": "",
-      "discard": "",
-      "title": ""
+      "cancel": "annuleren",
+      "discard": "Gooi weg",
+      "title": "Als u nu teruggaat, worden uw bewerkingen verwijderd."
     }
   },
   "add-post-to-collection": {
-    "done": "",
-    "title": ""
+    "done": "Gedaan",
+    "title": "Voeg berichten toe"
   },
   "add-post": {
-    "add": "",
-    "collection": "",
-    "error": "",
-    "placeholder": ""
+    "add": "Delen",
+    "collection": "Voeg toe aan collectie",
+    "error": "Kan nu niet posten",
+    "placeholder": "Voeg een tekst toe over je bericht"
   },
   "add-project-model": {
-    "add": "",
-    "headerTitle": "",
-    "placeholder": "",
-    "skip": "",
-    "title": ""
+    "add": "Toevoegen",
+    "headerTitle": "Project toevoegen",
+    "placeholder": "Bijv. BMW R100 1981",
+    "skip": "Overspringen",
+    "title": "Zoek en kies uw model."
   },
   "add-project-type": {
-    "headerTitle": "",
-    "title": ""
+    "headerTitle": "Project toevoegen",
+    "title": "Kies uw categorie"
   },
   "add-project": {
-    "headerTitle": "",
-    "next": "",
-    "placeholder": "",
-    "title": ""
+    "headerTitle": "Project toevoegen",
+    "next": "De volgende",
+    "placeholder": "Bijv. Honda Cafe Racer",
+    "title": "Kies een titel voor uw project."
   },
   "ask-for-permission": {
     "camera": {
-      "alertCancel": "NO_TRANSLATION",
-      "alertDescription": "NO_TRANSLATION",
-      "alertOpen": "NO_TRANSLATION",
-      "alertTitle": "NO_TRANSLATION",
-      "permissionButton": "NO_TRANSLATION",
-      "permissionDescription": "NO_TRANSLATION",
-      "permissionHeadline": "NO_TRANSLATION"
+      "alertCancel": "annuleren",
+      "alertDescription": "Er is een probleem opgetreden bij het verkrijgen van uw toestemming. Schakel het in via de instellingen.",
+      "alertOpen": "Open instellingen",
+      "alertTitle": "Oeps!",
+      "permissionButton": "Cameratoegang toestaan",
+      "permissionDescription": "Geef Wrench toegang tot uw camera om foto's te maken en video op te nemen in de app.",
+      "permissionHeadline": "Maak foto's en neem video's op"
     },
     "photo": {
-      "alertCancel": "NO_TRANSLATION",
-      "alertDescription": "NO_TRANSLATION",
-      "alertOpen": "NO_TRANSLATION",
-      "alertTitle": "NO_TRANSLATION",
-      "permissionButton": "NO_TRANSLATION",
-      "permissionDescription": "NO_TRANSLATION",
-      "permissionHeadline": "NO_TRANSLATION"
+      "alertCancel": "annuleren",
+      "alertDescription": "Er is een probleem opgetreden bij het verkrijgen van uw toestemming. Schakel het in via de instellingen.",
+      "alertOpen": "Open instellingen",
+      "alertTitle": "Oeps!",
+      "permissionButton": "Bibliotheektoegang inschakelen",
+      "permissionDescription": "Hierdoor kan Wrench foto's uit uw bibliotheek delen en foto's opslaan op uw filmrol.",
+      "permissionHeadline": "Voeg foto's en video's toe"
     }
   },
   "blog-post": {
@@ -73,28 +68,28 @@
     "title": "Blog"
   },
   "bookmarks": {
-    "description": "",
-    "headerTitle": "",
-    "title": ""
+    "description": "Sla berichten op die u opnieuw wilt zien. Niemand krijgt een melding en alleen u kunt zien wat u heeft opgeslagen.",
+    "headerTitle": "Opgeslagen berichten",
+    "title": "Opslaan"
   },
   "collections": {
     "edit": "Bewerk",
-    "title": ""
+    "title": "Collecties"
   },
   "comment-field": {
     "placeholder": "Voeg een reactie toe...",
     "post": "Post"
   },
   "comment-item": {
-    "like": "",
-    "like_plural": "",
-    "loadReplies": "",
-    "loadReplies_plural": "",
-    "reply": ""
+    "like": "{{count}} vonk",
+    "like_plural": "{{count, humanFormat}} vonken",
+    "loadReplies": "Reacties bekijken ( {{count}} )",
+    "loadReplies_plural": "Reacties bekijken ( {{count}} )",
+    "reply": "Antwoord"
   },
   "comment-list": {
-    "loadMore": "",
-    "loadMore_plural": ""
+    "loadMore": "Bekijk 1 reactie",
+    "loadMore_plural": "Bekijk alle {{count, humanFormat}} reacties"
   },
   "comments": {
     "load_replies": "GEEN VERTALING",
@@ -111,96 +106,96 @@
     "title": "GEEN VERTALING"
   },
   "edit-collection": {
-    "add": "",
-    "delete": "",
-    "done": "",
-    "placeholder": "",
-    "title": ""
+    "add": "Voeg berichten toe",
+    "delete": "Verwijderen",
+    "done": "Gedaan",
+    "placeholder": "Ex. Motor herbouwd",
+    "title": "Informatie"
   },
   "edit-model": {
-    "headerTitle": "",
-    "placeholder": "",
-    "save": "",
-    "title": ""
+    "headerTitle": "Model bewerken",
+    "placeholder": "Bijv. BMW R100 1981",
+    "save": "Opslaan",
+    "title": "Zoek en kies uw model."
   },
   "edit-post": {
-    "cancel": "",
-    "headerTitle": "",
-    "placeholder": "",
-    "save": ""
+    "cancel": "annuleren",
+    "headerTitle": "Bericht bewerken",
+    "placeholder": "Voeg een tekst toe over je bericht",
+    "save": "Opslaan"
   },
   "edit-profile": {
-    "bio": "",
-    "change": "",
-    "firstName": "",
-    "headerTitle": "",
-    "imagePickerCancel": "",
-    "imagePickerLibrary": "",
-    "imagePickerPermissionOk": "",
-    "imagePickerPermissionRetry": "",
-    "imagePickerPermissionText": "",
-    "imagePickerPermissionTitle": "",
-    "imagePickerPhoto": "",
-    "imagePickerTitle": "",
-    "information": "",
-    "lastName": "",
-    "place": "",
-    "remove": "",
-    "save": "",
-    "username": "",
-    "validation": "",
-    "validationUsername": "",
-    "website": "",
-    "wrong": ""
+    "bio": "Bio",
+    "change": "Verandering",
+    "firstName": "Voornaam",
+    "headerTitle": "Bewerk profiel",
+    "imagePickerCancel": "annuleren",
+    "imagePickerLibrary": "Kies uit bibliotheek ...",
+    "imagePickerPermissionOk": "Ik ben er zeker van",
+    "imagePickerPermissionRetry": "probeer het opnieuw",
+    "imagePickerPermissionText": "Om foto's te kunnen maken met uw camera en afbeeldingen uit uw bibliotheek te kunnen kiezen.",
+    "imagePickerPermissionTitle": "Geen toestemming",
+    "imagePickerPhoto": "Foto maken ...",
+    "imagePickerTitle": "Selecteer Avatar",
+    "information": "Informatie",
+    "lastName": "Achternaam",
+    "place": "Stad land",
+    "remove": "Verwijder huidige foto",
+    "save": "Opslaan",
+    "username": "Gebruikersnaam",
+    "validation": "Controleer de verplichte velden.",
+    "validationUsername": "Gebruikersnaam is al bezet.",
+    "website": "Website",
+    "wrong": "Er is iets fout gegaan"
   },
   "edit-project": {
-    "cancel": "",
-    "delete": "",
-    "deleteAlert": "",
-    "deleteTitle": "",
-    "description": "",
-    "done": "",
-    "headerTitle": "",
-    "information": "",
-    "model": "",
-    "projectSettings": "",
-    "title": ""
+    "cancel": "annuleren",
+    "delete": "Verwijderen",
+    "deleteAlert": "Project verwijderen?",
+    "deleteTitle": "Project verwijderen",
+    "description": "Deze actie kan niet ongedaan gemaakt worden.",
+    "done": "Gedaan",
+    "headerTitle": "Bewerk",
+    "information": "Informatie",
+    "model": "Model bewerken",
+    "projectSettings": "Project instellingen",
+    "title": "Titel"
   },
   "edit": {
-    "edit": ""
+    "edit": "Bewerk"
   },
   "empty-state": {
     "collection-no-post": {
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "description": "De gebruiker heeft nog geen berichten aan deze verzameling toegevoegd.",
+      "title": "Geen posts toegevoegd aan deze collectie."
     },
     "collection-post": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Toevoegen",
+      "description": "Voeg een bericht toe aan deze verzameling vanuit de stroom voor het maken van een nieuw bericht of een bestaand bericht door op de knop meer in de rechterhoek van het bericht te klikken.",
+      "title": "Voeg uw eerste post toe aan deze collectie."
     },
     "notifications": {
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "description": "Hier zie je reacties, nieuwe volgers en andere activiteiten.",
+      "title": "Nog geen notificaties."
     },
     "post": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Toevoegen",
+      "description": "Als je nu een project hebt, is het tijd om je eerste bericht te maken.",
+      "title": "2. Voeg je eerste bericht toe."
     },
     "project-no-post": {
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "description": "Volg dit project nu en ontvang een melding wanneer het wordt bijgewerkt.",
+      "title": "Dit project heeft nog geen posts."
     },
     "project-post": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Toevoegen",
+      "description": "Als je nu een project hebt, is het tijd om je eerste bericht te maken.",
+      "title": "Voeg je eerste bericht toe."
     },
     "project": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Begin",
+      "description": "Laten we u op weg helpen en uw eerste project maken.",
+      "title": "1. Creëer uw eerste project."
     }
   },
   "en": {
@@ -236,11 +231,11 @@
       "title": "Zoek en kies uw model."
     },
     "add-project-type": {
-      "headerTitle": "Voeg project toe",
+      "headerTitle": "Project toevoegen",
       "title": "Kies uw categorie"
     },
     "add-project": {
-      "headerTitle": "Voeg project toe",
+      "headerTitle": "Project toevoegen",
       "next": "De volgende",
       "placeholder": "Bijv. Honda Cafe Racer",
       "title": "Kies een titel voor uw project."
@@ -782,18 +777,17 @@
     }
   },
   "facebook": {
-    "button": ""
+    "button": "Ga verder met Facebook"
   },
   "feed": {
     "description": "GEEN VERTALING",
-    "title": "Voeden"
+    "title": "Eten geven"
   },
   "follow": {
     "follow": "Volg dit project",
     "followSmall": "Volgen",
     "unfollow": "In aansluiting op",
-    "unfollowSmall": "In aansluiting op",
-    "follow_short": "Volgen"
+    "unfollowSmall": "In aansluiting op"
   },
   "followers": {
     "followers": "{{count, humanFormat}} volger",
@@ -807,7 +801,7 @@
   "footer": {
     "about": "Over",
     "blog": "Blog",
-    "chat": "Chat met ons",
+    "chat": "chat met ons",
     "cookies": "Cookiebeleid",
     "description": "Wrench is een projectgemeenschap opgericht in 2018 in Zweden. Het is ontworpen, gebouwd en wordt beheerd vanuit het hart van Stockholm.",
     "download": "Apps downloaden",
@@ -818,23 +812,23 @@
     "legal": "Juridisch",
     "mail": "Mail-ondersteuning",
     "policy": "Privacybeleid",
-    "press": "Druk op",
+    "press": "druk op",
     "social": "Sociaal",
     "status": "Toestand",
-    "terms": "Algemene voorwaarden",
+    "terms": "algemene voorwaarden",
     "trademarks": "App Store is een servicemerk van Apple Inc. Google Play is een handelsmerk van Google LLC."
   },
   "google": {
-    "button": ""
+    "button": "Ga verder met Google"
   },
   "hashtag": {
-    "posts": "",
-    "posts_plural": ""
+    "posts": "{{count, humanFormat}} berichten",
+    "posts_plural": "{{count, humanFormat}} berichten"
   },
   "header": {
     "download": "Apps downloaden",
     "explore": "Verken",
-    "feed": "Voeden",
+    "feed": "Eten geven",
     "home": "Huis",
     "login": "Log in",
     "notifications": "Meldingen",
@@ -842,9 +836,9 @@
   },
   "home": {
     "description": "Documenteer uw builds, deel uw projecten en leer van gelijkgestemden.",
-    "document_title": "Wrench | Uw motorgemeenschap",
+    "document_title": "Moersleutel | Uw motorgemeenschap",
     "explore": "Ontdek meer projecten",
-    "signup": "Schrijf je nu in",
+    "signup": "Meld u nu aan",
     "subtitle": "gemeenschap.",
     "title": "Uw motorfiets"
   },
@@ -867,8 +861,8 @@
     "link": "voorwaarden."
   },
   "like-post": {
-    "like": "{{count}} spark",
-    "like_plural": "{{count, humanFormat}} sparks"
+    "like": "{{count}} vonk",
+    "like_plural": "{{count, humanFormat}} vonken"
   },
   "list": {
     "load_more": "Bekijk 1 reactie",
@@ -886,23 +880,23 @@
     "settings": "Instellingen"
   },
   "me": {
-    "bookmarks": "",
-    "edit": "",
-    "settings": ""
+    "bookmarks": "Opgeslagen berichten",
+    "edit": "Bewerk profiel",
+    "settings": "Instellingen"
   },
   "media-picker-list": {
-    "deselectAll": ""
+    "deselectAll": "Deselecteer alles"
   },
   "mobile-menu": {
     "download": "Apps downloaden",
     "explore": "Verken",
-    "feed": "Voeden",
+    "feed": "Eten geven",
     "login": "Log in",
     "register": "Aanmelden",
     "sign_out": "Afmelden"
   },
   "no-results": {
-    "title": ""
+    "title": "geen resultaten gevonden"
   },
   "notification": {
     "comment": "Heeft gereageerd op je bericht",
@@ -937,13 +931,13 @@
     "title": "Waar ben je in geïnteresseerd?"
   },
   "options": {
-    "alertTitle": "",
-    "cancel": "",
-    "collection": "",
-    "delete": "",
-    "edit": "",
-    "removeCollection": "",
-    "report": ""
+    "alertTitle": "Weet je zeker dat?",
+    "cancel": "annuleren",
+    "collection": "Voeg toe aan collectie",
+    "delete": "Verwijderen",
+    "edit": "Bewerk",
+    "removeCollection": "Verwijderen uit verzameling",
+    "report": "Verslag doen van"
   },
   "popular": {
     "description": "Hier zie je de meest populaire projecten van deze week.",
@@ -952,48 +946,47 @@
     "title": "Populaire projecten"
   },
   "post-container": {
-    "loadMore": "",
-    "title": ""
+    "loadMore": "Laad meer reacties",
+    "title": "Post"
   },
   "post": {
     "options": {
-      "alertTitle": "",
-      "cancel": "",
-      "collection": "",
-      "delete": "",
-      "edit": "",
-      "removeCollection": "",
-      "report": ""
+      "alertTitle": "Weet je zeker dat?",
+      "cancel": "annuleren",
+      "collection": "Voeg toe aan collectie",
+      "delete": "Verwijderen",
+      "edit": "Bewerk",
+      "removeCollection": "Verwijderen uit verzameling",
+      "report": "Verslag doen van"
     },
-    "selectCollection": "",
-    "showCollection": ""
+    "selectCollection": "Selecteer collectie",
+    "showCollection": "Toon collectie"
   },
   "posting": {
-    "description": ""
+    "description": "Posten ..."
   },
   "project-card": {
-    "follow": "",
-    "unfollow": ""
+    "follow": "Volgen",
+    "unfollow": "In aansluiting op"
   },
   "project-suggestion": {
-    "description": "We hebben hieronder een aantal projecten geselecteerd die u wellicht interessant vindt.",
+    "description": "We hebben hieronder enkele projecten geselecteerd die u wellicht interessant vindt.",
     "title": "Kom op de hoogte en volg enkele projecten.",
-    "title_small": "Aanbevolen voor jou",
-    "description_plural": "{{followers, humanFormat}} volgers, {{posts, humanFormat}} berichten - {{fullName}} . (@ {{username}} ) op Wrench"
+    "title_small": "Aanbevolen voor jou"
   },
   "project-suggestions": {
-    "description": "",
-    "title": ""
+    "description": "We hebben hieronder enkele projecten geselecteerd die u wellicht interessant vindt.",
+    "title": "Kom op de hoogte en volg enkele projecten."
   },
   "project-types": {
-    "inspo": ""
+    "inspo": "Inspiratie"
   },
   "project": {
     "description": "{{followers, humanFormat}} volger, {{posts, humanFormat}} berichten - {{fullName}} . (@ {{username}} ) op Wrench",
     "recent": "Recente berichten",
     "share": "Delen",
     "similar": "Vergelijkbare projecten",
-    "title": "{{title}} - {{type}} <span>binnen</span> project",
+    "title": "<span><span>0-1</span></span> project",
     "description_plural": "{{followers, humanFormat}} volgers, {{posts, humanFormat}} berichten - {{fullName}} . (@ {{username}} ) op Wrench"
   },
   "promo": {
@@ -1003,10 +996,10 @@
     "title": "Download de Wrench-app in Appstore en Google play"
   },
   "push-notifications": {
-    "approve": "",
-    "decline": "",
-    "description": "",
-    "title": ""
+    "approve": "Zet de meldingen aan",
+    "decline": "Nee, dank u wel",
+    "description": "Weet meteen wanneer mensen je projecten volgen of je posts leuk vinden en erop reageren.",
+    "title": "Schakel Meldingen in."
   },
   "result": {
     "not_found": "Geen zoekresultaten gevonden.",
@@ -1014,11 +1007,11 @@
     "projects_plural": "{{count, humanFormat}} projecten"
   },
   "search-bar": {
-    "cancel": "",
-    "placeholder": ""
+    "cancel": "annuleren",
+    "placeholder": "Zoeken"
   },
   "search-location-footer": {
-    "poweredBy": ""
+    "poweredBy": "Aangedreven door"
   },
   "search-location": {
     "no_result": "Geen resultaten.",
@@ -1033,16 +1026,16 @@
     "users": "Gebruikers"
   },
   "searching-for": {
-    "title": ""
+    "title": "Op zoek naar"
   },
   "sections": {
-    "language": "",
-    "notifications": "",
-    "profile": "",
-    "support": ""
+    "language": "Taal",
+    "notifications": "Kennisgevingen",
+    "profile": "Profiel",
+    "support": "Ondersteuning"
   },
   "select-project": {
-    "create": ""
+    "create": "Maak een nieuw project"
   },
   "settings": {
     "chat": "chat met ons",
@@ -1096,42 +1089,32 @@
       "error": "Er is iets fout gegaan",
       "saved": "Instellingen opgeslagen"
     },
-    "website": "Website",
-    "field_bio": "Bio",
-    "field_firstname": "Voornaam",
-    "field_lastname": "Achternaam",
-    "field_website": "Website",
-    "toast_error": "Er is iets fout gegaan",
-    "toast_saved": "Instellingen opgeslagen",
-    "sections_language": "Taal",
-    "sections_notifications": "Meldingen",
-    "sections_profile": "Bewerk profiel",
-    "sections_support": "Ondersteuning"
+    "website": "Website"
   },
   "share": {
-    "share": ""
+    "share": "Delen"
   },
   "show-latest": {
-    "button": ""
+    "button": "Nieuwe berichten"
   },
   "sign-in": {
-    "description": "",
-    "headline": "",
-    "other": ""
+    "description": "Documenteer uw builds, deel uw projecten en leer van gelijkgestemden.",
+    "headline": "Uw\nmotorfiets\ngemeenschap.",
+    "other": "Andere aanmeldingsopties"
   },
   "similar-projects": {
-    "title": ""
+    "title": "Vergelijkbare projecten"
   },
   "sparks": {
-    "title": ""
+    "title": "Vonken"
   },
   "suggestions": {
-    "description": "",
-    "headline": "",
-    "next": ""
+    "description": "We hebben hieronder enkele projecten geselecteerd die u wellicht interessant vindt.",
+    "headline": "Kom op de hoogte en volg enkele projecten.",
+    "next": "De volgende"
   },
   "text": {
-    "more": ""
+    "more": "meer"
   },
   "time": {
     "d": "{{count}} dagen geleden",
@@ -1147,8 +1130,8 @@
     "y_plural": "{{count}} jaar geleden"
   },
   "toast": {
-    "network": "",
-    "spam": ""
+    "network": "Geen internet verbinding",
+    "spam": "Actie geblokkeerd. Probeer het later opnieuw."
   },
   "user-following-projects": {
     "description": "Maar hier zijn enkele van de projecten die {{name}} volgt.",
@@ -1168,6 +1151,6 @@
     "title": "{{fullName}} . (@ {{username}} ) - projecten en berichten"
   },
   "webview": {
-    "loading": ""
+    "loading": "Bezig met laden..."
   }
 }

@@ -1,6 +1,6 @@
 {
-  "cancel": "",
-  "headerTitle": "",
-  "placeholder": "",
-  "save": ""
+  "cancel": "Отмена",
+  "headerTitle": "Редактировать пост",
+  "placeholder": "Добавьте текст о своем сообщении",
+  "save": "Сохранить"
 }

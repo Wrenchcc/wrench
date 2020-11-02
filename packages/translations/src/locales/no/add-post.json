@@ -1,6 +1,6 @@
 {
-  "add": "",
-  "collection": "",
-  "error": "",
-  "placeholder": ""
+  "add": "Dele",
+  "collection": "Legg til i samlingen",
+  "error": "Kunne ikke legge ut akkurat nå",
+  "placeholder": "Legg til en tekst om innlegget ditt"
 }

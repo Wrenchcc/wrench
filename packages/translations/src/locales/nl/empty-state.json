@@ -1,34 +1,34 @@
 {
   "collection-no-post": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "De gebruiker heeft nog geen berichten aan deze verzameling toegevoegd.",
+    "title": "Geen posts toegevoegd aan deze collectie."
   },
   "collection-post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Toevoegen",
+    "description": "Voeg een bericht toe aan deze verzameling vanuit de stroom voor het maken van een nieuw bericht of een bestaand bericht door op de knop meer in de rechterhoek van het bericht te klikken.",
+    "title": "Voeg uw eerste post toe aan deze collectie."
   },
   "notifications": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Hier zie je reacties, nieuwe volgers en andere activiteiten.",
+    "title": "Nog geen notificaties."
   },
   "post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Toevoegen",
+    "description": "Als je nu een project hebt, is het tijd om je eerste bericht te maken.",
+    "title": "2. Voeg je eerste bericht toe."
   },
   "project-no-post": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Volg dit project nu en ontvang een melding wanneer het wordt bijgewerkt.",
+    "title": "Dit project heeft nog geen posts."
   },
   "project-post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Toevoegen",
+    "description": "Als je nu een project hebt, is het tijd om je eerste bericht te maken.",
+    "title": "Voeg je eerste bericht toe."
   },
   "project": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Begin",
+    "description": "Laten we u op weg helpen en uw eerste project maken.",
+    "title": "1. Creëer uw eerste project."
   }
 }

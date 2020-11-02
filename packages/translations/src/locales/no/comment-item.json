@@ -1,7 +1,7 @@
 {
-  "like": "",
-  "like_plural": "",
-  "loadReplies": "",
-  "loadReplies_plural": "",
-  "reply": ""
+  "like": "{{count}} gnist",
+  "like_plural": "{{count, humanFormat}} gnister",
+  "loadReplies": "Se svar ( {{count}} )",
+  "loadReplies_plural": "Se svar ( {{count}} )",
+  "reply": "Svare"
 }

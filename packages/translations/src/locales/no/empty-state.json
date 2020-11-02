@@ -1,34 +1,34 @@
 {
   "collection-no-post": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Brukeren har ikke lagt til noen innlegg i denne samlingen ennå.",
+    "title": "Ingen innlegg lagt til i denne samlingen."
   },
   "collection-post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Legge til",
+    "description": "Legg til et innlegg i denne samlingen fra opprett ny innleggsflyt eller et eksisterende innlegg ved å klikke på mer-knappen i høyre hjørne av innlegget.",
+    "title": "Legg til det første innlegget ditt i denne samlingen."
   },
   "notifications": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
+    "title": "Ingen varsler ennå."
   },
   "post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Legge til",
+    "description": "Nå når du har et prosjekt, er det på tide å lage ditt første innlegg.",
+    "title": "2. Legg til ditt første innlegg."
   },
   "project-no-post": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Følg dette prosjektet nå og bli varslet når det oppdateres.",
+    "title": "Dette prosjektet har ingen innlegg ennå."
   },
   "project-post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Legge til",
+    "description": "Nå når du har et prosjekt, er det på tide å lage ditt første innlegg.",
+    "title": "Legg til ditt første innlegg."
   },
   "project": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Kom i gang",
+    "description": "La oss få fart på deg og lage ditt første prosjekt.",
+    "title": "1. Lag ditt første prosjekt."
   }
 }

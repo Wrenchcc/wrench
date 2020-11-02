@@ -1,6 +1,6 @@
 {
-  "add": "",
-  "collection": "",
-  "error": "",
-  "placeholder": ""
+  "add": "Del",
+  "collection": "Føj til samling",
+  "error": "Kunne ikke sende lige nu",
+  "placeholder": "Tilføj en tekst om dit indlæg"
 }

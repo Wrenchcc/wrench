@@ -3,6 +3,6 @@
   "recent": "Recente berichten",
   "share": "Delen",
   "similar": "Vergelijkbare projecten",
-  "title": "{{title}} - {{type}} <span>binnen</span> project",
+  "title": "{{count, humanFormat}} project",
   "description_plural": "{{followers, humanFormat}} volgers, {{posts, humanFormat}} berichten - {{fullName}} . (@ {{username}} ) op Wrench"
 }

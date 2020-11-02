@@ -1,6 +1,6 @@
 {
-  "cancel": "",
-  "headerTitle": "",
-  "placeholder": "",
-  "save": ""
+  "cancel": "Avbryt",
+  "headerTitle": "Rediger innlegget",
+  "placeholder": "Legg til en tekst om innlegget ditt",
+  "save": "Lagre"
 }

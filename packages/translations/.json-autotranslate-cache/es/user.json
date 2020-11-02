@@ -1,5 +1,5 @@
 {
-  "description": "Consulta los proyectos y publicaciones de Wrench de {{fullName}} . (@ {{username}} )",
+  "description": "Ver proyectos y publicaciones de Wrench de {{fullName}} . (@ {{username}} )",
   "image_alt": "SIN TRADUCCIÓN",
   "notfound": "Usuario no encontrado",
   "projects": "{{count, humanFormat}} proyecto",

@@ -42,15 +42,5 @@
   "title": "Innstillinger",
   "toast.error": "Noe gikk galt",
   "toast.saved": "Instillinger lagret",
-  "website": "Nettsted",
-  "field_bio": "Bio",
-  "field_firstname": "Fornavn",
-  "field_lastname": "Etternavn",
-  "field_website": "Nettsted",
-  "toast_error": "Noe gikk galt",
-  "toast_saved": "Instillinger lagret",
-  "sections_language": "Språk",
-  "sections_notifications": "Varsler",
-  "sections_profile": "Rediger profil",
-  "sections_support": "Brukerstøtte"
+  "website": "Nettsted"
 }

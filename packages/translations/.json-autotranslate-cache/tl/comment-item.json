@@ -1,7 +1,7 @@
 {
-  "like": "",
-  "like_plural": "",
-  "loadReplies": "",
-  "loadReplies_plural": "",
-  "reply": ""
+  "like": "{{count}} spark",
+  "like_plural": "{{count, humanFormat}} sparks",
+  "loadReplies": "Tingnan ang mga tugon ( {{count}} )",
+  "loadReplies_plural": "Tingnan ang mga tugon ( {{count}} )",
+  "reply": "Sumagot"
 }

@@ -1,13 +1,7 @@
 {
-  "like_0": "",
-  "like_1": "",
-  "like_2": "",
-  "loadReplies_0": "",
-  "loadReplies_1": "",
-  "loadReplies_2": "",
-  "reply": "",
   "like": "{{count}} искры",
   "like_plural": "{{count, humanFormat}} искр",
   "loadReplies": "Посмотреть ответы ( {{count}} )",
-  "loadReplies_plural": "Посмотреть ответы ( {{count}} )"
+  "loadReplies_plural": "Посмотреть ответы ( {{count}} )",
+  "reply": "Ответить"
 }

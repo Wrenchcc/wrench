@@ -1,34 +1,34 @@
 {
   "collection-no-post": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "El usuario aún no ha agregado ninguna publicación a esta colección.",
+    "title": "No se agregaron publicaciones a esta colección."
   },
   "collection-post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Añadir",
+    "description": "Agregue una publicación a esta colección desde el flujo de creación de publicaciones nuevas o una publicación existente haciendo clic en el botón más en la esquina derecha de la publicación.",
+    "title": "Agregue el primero para publicar en esta colección."
   },
   "notifications": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Aquí verá comentarios, nuevos seguidores y otras actividades.",
+    "title": "Aún no hay notificaciones."
   },
   "post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Añadir",
+    "description": "Ahora que tienes un proyecto, es el momento de crear tu primera publicación.",
+    "title": "2. Agregue su primera publicación."
   },
   "project-no-post": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Siga este proyecto ahora y reciba notificaciones cuando se actualice.",
+    "title": "Este proyecto aún no tiene publicaciones."
   },
   "project-post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Añadir",
+    "description": "Ahora que tienes un proyecto, es el momento de crear tu primera publicación.",
+    "title": "Agrega tu primera publicación."
   },
   "project": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Empezar",
+    "description": "Vamos a ponerlo al día y crear su primer proyecto.",
+    "title": "1. Crea tu primer proyecto."
   }
 }

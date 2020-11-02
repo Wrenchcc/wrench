@@ -1,7 +1,7 @@
 {
-  "add": "",
-  "delete": "",
-  "done": "",
-  "placeholder": "",
-  "title": ""
+  "add": "Legg til innlegg",
+  "delete": "Slett",
+  "done": "Ferdig",
+  "placeholder": "Eks. Ombygging av motor",
+  "title": "Informasjon"
 }

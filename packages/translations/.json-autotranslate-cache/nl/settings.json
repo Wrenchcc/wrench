@@ -42,15 +42,5 @@
   "title": "Instellingen",
   "toast.error": "Er is iets fout gegaan",
   "toast.saved": "Instellingen opgeslagen",
-  "website": "Website",
-  "field_bio": "Bio",
-  "field_firstname": "Voornaam",
-  "field_lastname": "Achternaam",
-  "field_website": "Website",
-  "toast_error": "Er is iets fout gegaan",
-  "toast_saved": "Instellingen opgeslagen",
-  "sections_language": "Taal",
-  "sections_notifications": "Meldingen",
-  "sections_profile": "Bewerk profiel",
-  "sections_support": "Ondersteuning"
+  "website": "Website"
 }

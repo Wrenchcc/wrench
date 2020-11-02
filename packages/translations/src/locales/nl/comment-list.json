@@ -1,4 +1,4 @@
 {
-  "loadMore": "",
-  "loadMore_plural": ""
+  "loadMore": "Bekijk 1 reactie",
+  "loadMore_plural": "Bekijk alle {{count, humanFormat}} reacties"
 }

@@ -1,8 +1,8 @@
 {
-  "next": "",
+  "next": "Suivant",
   "options": {
-    "cancel": "",
-    "discard": "",
-    "title": ""
+    "cancel": "Annuler",
+    "discard": "Jeter",
+    "title": "Si vous revenez maintenant, vos modifications seront supprimées."
   }
 }

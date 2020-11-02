@@ -50,15 +50,5 @@
     "error": "May nangyaring mali",
     "saved": "Na-save ang mga setting"
   },
-  "website": "Website",
-  "field_bio": "Bio",
-  "field_firstname": "Pangalan",
-  "field_lastname": "Huling pangalan",
-  "field_website": "Website",
-  "toast_error": "May nangyaring mali",
-  "toast_saved": "Na-save ang mga setting",
-  "sections_language": "Wika",
-  "sections_notifications": "Mga Abiso",
-  "sections_profile": "Ibahin ang profile",
-  "sections_support": "Suporta"
+  "website": "Website"
 }

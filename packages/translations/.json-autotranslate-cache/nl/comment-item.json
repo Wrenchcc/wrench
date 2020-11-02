@@ -1,7 +1,7 @@
 {
-  "like": "",
-  "like_plural": "",
-  "loadReplies": "",
-  "loadReplies_plural": "",
-  "reply": ""
+  "like": "{{count}} vonk",
+  "like_plural": "{{count, humanFormat}} vonken",
+  "loadReplies": "Reacties bekijken ( {{count}} )",
+  "loadReplies_plural": "Reacties bekijken ( {{count}} )",
+  "reply": "Antwoord"
 }

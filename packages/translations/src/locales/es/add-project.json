@@ -1,6 +1,6 @@
 {
-  "headerTitle": "",
-  "next": "",
-  "placeholder": "",
-  "title": ""
+  "headerTitle": "Agregar proyecto",
+  "next": "próximo",
+  "placeholder": "P.ej. Honda Cafe Racer",
+  "title": "Elija un título para su proyecto."
 }

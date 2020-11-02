@@ -1,9 +1,9 @@
 {
-  "alertTitle": "",
-  "cancel": "",
-  "collection": "",
-  "delete": "",
-  "edit": "",
-  "removeCollection": "",
-  "report": ""
+  "alertTitle": "Você tem certeza?",
+  "cancel": "Cancelar",
+  "collection": "Adicionar a coleção",
+  "delete": "Excluir",
+  "edit": "Editar",
+  "removeCollection": "Remover da coleção",
+  "report": "Relatório"
 }

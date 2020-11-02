@@ -1,6 +1,6 @@
 {
-  "approve": "",
-  "decline": "",
-  "description": "",
-  "title": ""
+  "approve": "Slå underretninger til",
+  "decline": "Nej tak",
+  "description": "Ved med det samme, når folk følger dine projekter eller synes godt om og kommenterer dine indlæg.",
+  "title": "Aktivér underretninger."
 }

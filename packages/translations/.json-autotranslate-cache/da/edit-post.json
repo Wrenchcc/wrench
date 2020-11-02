@@ -1,6 +1,6 @@
 {
-  "cancel": "",
-  "headerTitle": "",
-  "placeholder": "",
-  "save": ""
+  "cancel": "Afbestille",
+  "headerTitle": "Rediger indlæg",
+  "placeholder": "Tilføj en tekst om dit indlæg",
+  "save": "Gemme"
 }

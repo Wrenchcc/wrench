@@ -1,6 +1,6 @@
 {
-  "add": "",
-  "collection": "",
-  "error": "",
-  "placeholder": ""
+  "add": "Compartir",
+  "collection": "Añadir a la colección",
+  "error": "No se pudo publicar en este momento",
+  "placeholder": "Agrega un texto sobre tu publicación"
 }

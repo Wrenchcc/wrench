@@ -1,7 +1,7 @@
 {
-  "add": "",
-  "headerTitle": "",
-  "placeholder": "",
-  "skip": "",
-  "title": ""
+  "add": "Legge til",
+  "headerTitle": "Legg til prosjekt",
+  "placeholder": "F.eks. BMW R100 1981",
+  "skip": "Hopp over",
+  "title": "Søk og velg modellen din."
 }

@@ -1,7 +1,7 @@
 {
-  "add": "",
-  "headerTitle": "",
-  "placeholder": "",
-  "skip": "",
-  "title": ""
+  "add": "Ajouter",
+  "headerTitle": "Ajouter un projet",
+  "placeholder": "Par exemple. BMW R100 1981",
+  "skip": "Sauter",
+  "title": "Recherchez et choisissez votre modèle."
 }

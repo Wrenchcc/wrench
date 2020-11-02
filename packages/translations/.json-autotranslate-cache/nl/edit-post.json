@@ -1,6 +1,6 @@
 {
-  "cancel": "",
-  "headerTitle": "",
-  "placeholder": "",
-  "save": ""
+  "cancel": "annuleren",
+  "headerTitle": "Bericht bewerken",
+  "placeholder": "Voeg een tekst toe over je bericht",
+  "save": "Opslaan"
 }

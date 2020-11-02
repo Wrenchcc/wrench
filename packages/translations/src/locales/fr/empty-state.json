@@ -1,34 +1,34 @@
 {
   "collection-no-post": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "L'utilisateur n'a encore ajouté aucun message à cette collection.",
+    "title": "Aucun article ajouté à cette collection."
   },
   "collection-post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Ajouter",
+    "description": "Ajoutez une publication à cette collection à partir du flux de création de nouvelles publications ou d'une publication existante en cliquant sur le bouton Plus dans le coin droit de la publication.",
+    "title": "Ajoutez votre premier message à cette collection."
   },
   "notifications": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Ici, vous verrez des commentaires, de nouveaux abonnés et d'autres activités.",
+    "title": "Aucune notification pour le moment."
   },
   "post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Ajouter",
+    "description": "Maintenant, lorsque vous avez un projet, il est temps de créer votre premier message.",
+    "title": "2. Ajoutez votre premier message."
   },
   "project-no-post": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Suivez ce projet maintenant et recevez une notification dès sa mise à jour.",
+    "title": "Ce projet n'a pas encore de messages."
   },
   "project-post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Ajouter",
+    "description": "Maintenant, lorsque vous avez un projet, il est temps de créer votre premier message.",
+    "title": "Ajoutez votre premier message."
   },
   "project": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Commencer",
+    "description": "Mettons-nous au courant et créons votre premier projet.",
+    "title": "1. Créez votre premier projet."
   }
 }

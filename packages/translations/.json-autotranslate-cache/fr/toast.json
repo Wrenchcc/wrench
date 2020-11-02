@@ -1,4 +1,4 @@
 {
-  "network": "",
-  "spam": ""
+  "network": "Pas de connexion Internet",
+  "spam": "Action bloquée. Veuillez réessayer plus tard."
 }

@@ -1,6 +1,6 @@
 {
-  "cancel": "",
-  "headerTitle": "",
-  "placeholder": "",
-  "save": ""
+  "cancel": "Cancelar",
+  "headerTitle": "Editar post",
+  "placeholder": "Agrega un texto sobre tu publicación",
+  "save": "Salvar"
 }

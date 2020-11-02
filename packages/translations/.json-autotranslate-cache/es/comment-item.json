@@ -1,7 +1,7 @@
 {
-  "like": "",
-  "like_plural": "",
-  "loadReplies": "",
-  "loadReplies_plural": "",
-  "reply": ""
+  "like": "{{count}} chispa",
+  "like_plural": "{{count, humanFormat}} chispas",
+  "loadReplies": "Ver respuestas ( {{count}} )",
+  "loadReplies_plural": "Ver respuestas ( {{count}} )",
+  "reply": "Respuesta"
 }

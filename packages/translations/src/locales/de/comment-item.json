@@ -1,7 +1,7 @@
 {
-  "like": "",
-  "like_plural": "",
-  "loadReplies": "",
-  "loadReplies_plural": "",
-  "reply": ""
+  "like": "{{count}} Funken",
+  "like_plural": "{{count, humanFormat}} Funken",
+  "loadReplies": "Antworten anzeigen ( {{count}} )",
+  "loadReplies_plural": "Antworten anzeigen ( {{count}} )",
+  "reply": "Antworten"
 }

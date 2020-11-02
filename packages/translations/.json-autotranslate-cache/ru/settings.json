@@ -42,15 +42,5 @@
   "title": "Настройки",
   "toast.error": "Что-то пошло не так",
   "toast.saved": "Настройки сохранены",
-  "website": "Веб-сайт",
-  "field_bio": "Био",
-  "field_firstname": "Имя",
-  "field_lastname": "Фамилия",
-  "field_website": "Интернет сайт",
-  "toast_error": "Что-то пошло не так",
-  "toast_saved": "Настройки сохранены",
-  "sections_language": "Язык",
-  "sections_notifications": "Уведомления",
-  "sections_profile": "Редактировать профиль",
-  "sections_support": "Поддержка"
+  "website": "Веб-сайт"
 }

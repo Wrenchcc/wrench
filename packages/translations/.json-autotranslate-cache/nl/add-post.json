@@ -1,6 +1,6 @@
 {
-  "add": "",
-  "collection": "",
-  "error": "",
-  "placeholder": ""
+  "add": "Delen",
+  "collection": "Voeg toe aan collectie",
+  "error": "Kan nu niet posten",
+  "placeholder": "Voeg een tekst toe over je bericht"
 }

@@ -1,8 +1,8 @@
 {
-  "next": "",
+  "next": "Næste",
   "options": {
-    "cancel": "",
-    "discard": "",
-    "title": ""
+    "cancel": "Afbestille",
+    "discard": "Kassér",
+    "title": "Hvis du går tilbage nu, vil dine ændringer blive kasseret."
   }
 }

@@ -1,6 +1,6 @@
 {
-  "add": "",
-  "collection": "",
-  "error": "",
-  "placeholder": ""
+  "add": "Compartilhar",
+  "collection": "Adicionar a coleção",
+  "error": "Não foi possível postar agora",
+  "placeholder": "Adicione um texto sobre sua postagem"
 }

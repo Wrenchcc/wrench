@@ -1,11 +1,11 @@
 {
-  "options.alertTitle": "",
-  "options.cancel": "",
-  "options.collection": "",
-  "options.delete": "",
-  "options.edit": "",
-  "options.removeCollection": "",
-  "options.report": "",
-  "selectCollection": "",
-  "showCollection": ""
+  "options.alertTitle": "Êtes-vous sûr?",
+  "options.cancel": "Annuler",
+  "options.collection": "Ajouter à la collection",
+  "options.delete": "Supprimer",
+  "options.edit": "Éditer",
+  "options.removeCollection": "Retirer de la collection",
+  "options.report": "rapport",
+  "selectCollection": "Sélectionnez une collection",
+  "showCollection": "Afficher la collection"
 }

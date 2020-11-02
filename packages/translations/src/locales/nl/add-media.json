@@ -1,8 +1,8 @@
 {
-  "next": "",
+  "next": "De volgende",
   "options": {
-    "cancel": "",
-    "discard": "",
-    "title": ""
+    "cancel": "annuleren",
+    "discard": "Gooi weg",
+    "title": "Als u nu teruggaat, worden uw bewerkingen verwijderd."
   }
 }

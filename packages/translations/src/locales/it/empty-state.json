@@ -1,34 +1,34 @@
 {
   "collection-no-post": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "L'utente non ha ancora aggiunto alcun post a questa raccolta.",
+    "title": "Nessun post aggiunto a questa raccolta."
   },
   "collection-post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Inserisci",
+    "description": "Aggiungi un post a questa raccolta dal flusso di creazione di un nuovo post o da un post esistente facendo clic sul pulsante Altro nell'angolo destro del post.",
+    "title": "Aggiungi il tuo primo post a questa raccolta."
   },
   "notifications": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Qui vedrai commenti, nuovi follower e altre attività.",
+    "title": "Nessuna notifica ancora."
   },
   "post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Inserisci",
+    "description": "Ora, quando hai un progetto, è il momento di creare il tuo primo post.",
+    "title": "2. Aggiungi il tuo primo post."
   },
   "project-no-post": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Segui questo progetto ora e ricevi una notifica quando si aggiorna.",
+    "title": "Questo progetto non ha ancora alcun post."
   },
   "project-post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Inserisci",
+    "description": "Ora, quando hai un progetto, è il momento di creare il tuo primo post.",
+    "title": "Aggiungi il tuo primo post."
   },
   "project": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Iniziare",
+    "description": "Ti mettiamo al passo e creiamo il tuo primo progetto.",
+    "title": "1. Crea il tuo primo progetto."
   }
 }

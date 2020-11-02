@@ -1,7 +1,7 @@
 {
-  "add": "",
-  "delete": "",
-  "done": "",
-  "placeholder": "",
-  "title": ""
+  "add": "Aggiungi post",
+  "delete": "Elimina",
+  "done": "Fatto",
+  "placeholder": "Ex. Ricostruzione del motore",
+  "title": "Informazione"
 }

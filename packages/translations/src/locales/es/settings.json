@@ -1,5 +1,5 @@
 {
-  "chat": "Habla con nosotros",
+  "chat": "habla con nosotros",
   "clear": "Borrar datos guardados",
   "codepush": "Empuje de código",
   "contacts": "Mis contactos",
@@ -50,15 +50,5 @@
     "error": "Algo salió mal",
     "saved": "Ajustes guardados"
   },
-  "website": "Sitio web",
-  "field_bio": "Bio",
-  "field_firstname": "Nombre de pila",
-  "field_lastname": "Apellido",
-  "field_website": "Sitio web",
-  "toast_error": "Algo salió mal",
-  "toast_saved": "Se guardó la configuración",
-  "sections_language": "Idioma",
-  "sections_notifications": "Notificaciones",
-  "sections_profile": "Editar perfil",
-  "sections_support": "Apoyo"
+  "website": "Sitio web"
 }

@@ -1,68 +1,63 @@
 {
-  "CommentItem": {
-    "like": "",
-    "like_plural": "",
-    "reply": ""
-  },
   "add-collection": {
-    "add": "",
-    "done": "",
-    "placeholder": "",
-    "title": ""
+    "add": "Aggiungere nuova",
+    "done": "Fatto",
+    "placeholder": "Ex. Ricostruzione del motore",
+    "title": "Nuova collezione"
   },
   "add-media": {
-    "next": "",
+    "next": "Il prossimo",
     "options": {
-      "cancel": "",
-      "discard": "",
-      "title": ""
+      "cancel": "Annulla",
+      "discard": "Scartare",
+      "title": "Se torni indietro ora, le tue modifiche verranno eliminate."
     }
   },
   "add-post-to-collection": {
-    "done": "",
-    "title": ""
+    "done": "Fatto",
+    "title": "Aggiungi post"
   },
   "add-post": {
-    "add": "",
-    "collection": "",
-    "error": "",
-    "placeholder": ""
+    "add": "Condividere",
+    "collection": "Aggiungere alla collezione",
+    "error": "Impossibile pubblicare adesso",
+    "placeholder": "Aggiungi un testo sul tuo post"
   },
   "add-project-model": {
-    "add": "",
-    "headerTitle": "",
-    "placeholder": "",
-    "skip": "",
-    "title": ""
+    "add": "Inserisci",
+    "headerTitle": "Aggiungi progetto",
+    "placeholder": "Per esempio. BMW R100 1981",
+    "skip": "Salta",
+    "title": "Cerca e scegli il tuo modello."
   },
   "add-project-type": {
-    "headerTitle": "",
-    "title": ""
+    "headerTitle": "Aggiungi progetto",
+    "title": "Scegli la tua categoria"
   },
   "add-project": {
-    "headerTitle": "",
-    "next": "",
-    "placeholder": "",
-    "title": ""
+    "headerTitle": "Aggiungi progetto",
+    "next": "Il prossimo",
+    "placeholder": "Per esempio. Honda Cafe Racer",
+    "title": "Scegli un titolo per il tuo progetto."
   },
   "ask-for-permission": {
     "camera": {
-      "alertCancel": "NO_TRANSLATION",
-      "alertDescription": "NO_TRANSLATION",
-      "alertOpen": "NO_TRANSLATION",
-      "alertTitle": "NO_TRANSLATION",
-      "permissionButton": "NO_TRANSLATION",
-      "permissionDescription": "NO_TRANSLATION",
-      "permissionHeadline": "NO_TRANSLATION"
+      "alertCancel": "Annulla",
+      "alertDescription": "Si è verificato un problema durante l'ottenimento della tua autorizzazione. Si prega di abilitarlo dalle impostazioni.",
+      "alertOpen": "Apri Impostazioni",
+      "alertTitle": "Ops!",
+      "permissionButton": "Consenti accesso alla fotocamera",
+      "permissionDescription": "Consenti a Wrench di accedere alla tua fotocamera per scattare foto e registrare video all'interno dell'app.",
+      "permissionHeadline": "Scatta foto e registra video"
     },
     "photo": {
-      "alertCancel": "NO_TRANSLATION",
-      "alertDescription": "NO_TRANSLATION",
-      "alertOpen": "NO_TRANSLATION",
-      "alertTitle": "NO_TRANSLATION",
-      "permissionButton": "NO_TRANSLATION",
-      "permissionDescription": "NO_TRANSLATION",
-      "permissionHeadline": "NO_TRANSLATION"
+      "alertCancel": "Annulla",
+      "alertDescription": "Si è verificato un problema durante l'ottenimento della tua autorizzazione. Si prega di abilitarlo dalle impostazioni.",
+      "alertOpen": "Apri Impostazioni",
+      "alertTitle": "Ops!",
+      "permissionButton": "Abilita accesso alla libreria",
+      "permissionDescription": "Ciò consente a Wrench di condividere foto dalla tua libreria e di salvare le foto sul tuo rullino fotografico.",
+      "permissionHeadline": "Aggiungi foto e video"
     }
   },
   "blog-post": {
@@ -73,28 +68,28 @@
     "title": "Blog"
   },
   "bookmarks": {
-    "description": "",
-    "headerTitle": "",
-    "title": ""
+    "description": "Salva i post che desideri rivedere. Nessuno viene avvisato e solo tu puoi vedere cosa hai salvato.",
+    "headerTitle": "Post salvati",
+    "title": "Salva"
   },
   "collections": {
     "edit": "modificare",
-    "title": ""
+    "title": "Collezioni"
   },
   "comment-field": {
     "placeholder": "Aggiungi un commento...",
     "post": "Inviare"
   },
   "comment-item": {
-    "like": "",
-    "like_plural": "",
-    "loadReplies": "",
-    "loadReplies_plural": "",
-    "reply": ""
+    "like": "{{count}} scintilla",
+    "like_plural": "{{count, humanFormat}} scintille",
+    "loadReplies": "Visualizza risposte ( {{count}} )",
+    "loadReplies_plural": "Visualizza risposte ( {{count}} )",
+    "reply": "rispondere"
   },
   "comment-list": {
-    "loadMore": "",
-    "loadMore_plural": ""
+    "loadMore": "Visualizza 1 commento",
+    "loadMore_plural": "Visualizza tutti i {{count, humanFormat}} commenti"
   },
   "comments": {
     "load_replies": "NESSUNA TRADUZIONE",
@@ -111,96 +106,96 @@
     "title": "NESSUNA TRADUZIONE"
   },
   "edit-collection": {
-    "add": "",
-    "delete": "",
-    "done": "",
-    "placeholder": "",
-    "title": ""
+    "add": "Aggiungi post",
+    "delete": "Elimina",
+    "done": "Fatto",
+    "placeholder": "Ex. Ricostruzione del motore",
+    "title": "Informazione"
   },
   "edit-model": {
-    "headerTitle": "",
-    "placeholder": "",
-    "save": "",
-    "title": ""
+    "headerTitle": "Modifica modello",
+    "placeholder": "Per esempio. BMW R100 1981",
+    "save": "Salva",
+    "title": "Cerca e scegli il tuo modello."
   },
   "edit-post": {
-    "cancel": "",
-    "headerTitle": "",
-    "placeholder": "",
-    "save": ""
+    "cancel": "Annulla",
+    "headerTitle": "Modifica post",
+    "placeholder": "Aggiungi un testo sul tuo post",
+    "save": "Salva"
   },
   "edit-profile": {
-    "bio": "",
-    "change": "",
-    "firstName": "",
-    "headerTitle": "",
-    "imagePickerCancel": "",
-    "imagePickerLibrary": "",
-    "imagePickerPermissionOk": "",
-    "imagePickerPermissionRetry": "",
-    "imagePickerPermissionText": "",
-    "imagePickerPermissionTitle": "",
-    "imagePickerPhoto": "",
-    "imagePickerTitle": "",
-    "information": "",
-    "lastName": "",
-    "place": "",
-    "remove": "",
-    "save": "",
-    "username": "",
-    "validation": "",
-    "validationUsername": "",
-    "website": "",
-    "wrong": ""
+    "bio": "Bio",
+    "change": "Modificare",
+    "firstName": "nome di battesimo",
+    "headerTitle": "Modifica Profilo",
+    "imagePickerCancel": "Annulla",
+    "imagePickerLibrary": "Scegli dalla libreria…",
+    "imagePickerPermissionOk": "sono sicuro",
+    "imagePickerPermissionRetry": "riprova",
+    "imagePickerPermissionText": "Per poter scattare foto con la tua fotocamera e scegliere le immagini dalla tua libreria.",
+    "imagePickerPermissionTitle": "Permesso negato",
+    "imagePickerPhoto": "Fare foto…",
+    "imagePickerTitle": "Seleziona Avatar",
+    "information": "Informazione",
+    "lastName": "Cognome",
+    "place": "Città, Paese",
+    "remove": "Rimuovi la foto corrente",
+    "save": "Salva",
+    "username": "Nome utente",
+    "validation": "Si prega di controllare i campi obbligatori.",
+    "validationUsername": "Il nome utente è già stato utilizzato.",
+    "website": "Sito web",
+    "wrong": "Qualcosa è andato storto"
   },
   "edit-project": {
-    "cancel": "",
-    "delete": "",
-    "deleteAlert": "",
-    "deleteTitle": "",
-    "description": "",
-    "done": "",
-    "headerTitle": "",
-    "information": "",
-    "model": "",
-    "projectSettings": "",
-    "title": ""
+    "cancel": "Annulla",
+    "delete": "Elimina",
+    "deleteAlert": "Eliminare il progetto?",
+    "deleteTitle": "Elimina progetto",
+    "description": "Questa azione non può essere annullata.",
+    "done": "Fatto",
+    "headerTitle": "modificare",
+    "information": "Informazione",
+    "model": "Modifica modello",
+    "projectSettings": "Impostazioni del progetto",
+    "title": "Titolo"
   },
   "edit": {
-    "edit": ""
+    "edit": "modificare"
   },
   "empty-state": {
     "collection-no-post": {
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "description": "L'utente non ha ancora aggiunto alcun post a questa raccolta.",
+      "title": "Nessun post aggiunto a questa raccolta."
     },
     "collection-post": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Inserisci",
+      "description": "Aggiungi un post a questa raccolta dal flusso di creazione di un nuovo post o da un post esistente facendo clic sul pulsante Altro nell'angolo destro del post.",
+      "title": "Aggiungi il tuo primo post a questa raccolta."
     },
     "notifications": {
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "description": "Qui vedrai commenti, nuovi follower e altre attività.",
+      "title": "Nessuna notifica ancora."
     },
     "post": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Inserisci",
+      "description": "Ora, quando hai un progetto, è il momento di creare il tuo primo post.",
+      "title": "2. Aggiungi il tuo primo post."
     },
     "project-no-post": {
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "description": "Segui questo progetto ora e ricevi una notifica quando si aggiorna.",
+      "title": "Questo progetto non ha ancora alcun post."
     },
     "project-post": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Inserisci",
+      "description": "Ora, quando hai un progetto, è il momento di creare il tuo primo post.",
+      "title": "Aggiungi il tuo primo post."
     },
     "project": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Iniziare",
+      "description": "Ti mettiamo al passo e creiamo il tuo primo progetto.",
+      "title": "1. Crea il tuo primo progetto."
     }
   },
   "en": {
@@ -782,7 +777,7 @@
     }
   },
   "facebook": {
-    "button": ""
+    "button": "Continua con Facebook"
   },
   "feed": {
     "description": "NESSUNA TRADUZIONE",
@@ -792,8 +787,7 @@
     "follow": "Segui questo progetto",
     "followSmall": "Seguire",
     "unfollow": "A seguire",
-    "unfollowSmall": "A seguire",
-    "follow_short": "Seguire"
+    "unfollowSmall": "A seguire"
   },
   "followers": {
     "followers": "{{count, humanFormat}} seguace",
@@ -817,19 +811,19 @@
     "help": "Aiuto",
     "legal": "Legale",
     "mail": "Supporto per posta",
-    "policy": "Politica sulla riservatezza",
-    "press": "Stampa",
+    "policy": "politica sulla riservatezza",
+    "press": "stampa",
     "social": "Sociale",
     "status": "Stato",
     "terms": "Termini & Condizioni",
     "trademarks": "App Store è un marchio di servizio di Apple Inc. Google Play è un marchio di Google LLC."
   },
   "google": {
-    "button": ""
+    "button": "Continua con Google"
   },
   "hashtag": {
-    "posts": "",
-    "posts_plural": ""
+    "posts": "{{count, humanFormat}} post",
+    "posts_plural": "{{count, humanFormat}} messaggi"
   },
   "header": {
     "download": "Scarica app",
@@ -842,33 +836,33 @@
   },
   "home": {
     "description": "Documenta le tue build, condividi i tuoi progetti e impara da persone che la pensano allo stesso modo.",
-    "document_title": "Wrench | La tua community di motociclisti",
+    "document_title": "Chiave | La tua community di motociclisti",
     "explore": "Esplora altri progetti",
     "signup": "Iscriviti ora",
     "subtitle": "Comunità.",
     "title": "La tua moto"
   },
   "languages": {
-    "sv": "Svedese",
-    "en": "Inglese",
-    "es": "Spagnolo",
-    "it": "Italiano",
+    "sv": "svedese",
+    "en": "inglese",
+    "es": "spagnolo",
+    "it": "italiano",
     "de": "Tedesco",
-    "nl": "Olandese",
-    "fr": "Francese",
+    "nl": "olandese",
+    "fr": "francese",
     "tl": "Filippino",
-    "pt": "Portoghese",
-    "ru": "Russo",
-    "no": "Norvegese",
-    "da": "Danese"
+    "pt": "portoghese",
+    "ru": "russo",
+    "no": "norvegese",
+    "da": "danese"
   },
   "legal": {
     "description": "Continuando accetti di Wrench's",
     "link": "termini e condizioni."
   },
   "like-post": {
-    "like": "{{count}} spark",
-    "like_plural": "{{count, humanFormat}} sparks"
+    "like": "{{count}} scintilla",
+    "like_plural": "{{count, humanFormat}} scintille"
   },
   "list": {
     "load_more": "Visualizza 1 commento",
@@ -886,12 +880,12 @@
     "settings": "impostazioni"
   },
   "me": {
-    "bookmarks": "",
-    "edit": "",
-    "settings": ""
+    "bookmarks": "Post salvati",
+    "edit": "Modifica Profilo",
+    "settings": "impostazioni"
   },
   "media-picker-list": {
-    "deselectAll": ""
+    "deselectAll": "Deselezionare tutto"
   },
   "mobile-menu": {
     "download": "Scarica app",
@@ -902,7 +896,7 @@
     "sign_out": "disconnessione"
   },
   "no-results": {
-    "title": ""
+    "title": "nessun risultato trovato"
   },
   "notification": {
     "comment": "Ha commentato il tuo post",
@@ -937,13 +931,13 @@
     "title": "Cosa ti interessa?"
   },
   "options": {
-    "alertTitle": "",
-    "cancel": "",
-    "collection": "",
-    "delete": "",
-    "edit": "",
-    "removeCollection": "",
-    "report": ""
+    "alertTitle": "Sei sicuro?",
+    "cancel": "Annulla",
+    "collection": "Aggiungere alla collezione",
+    "delete": "Elimina",
+    "edit": "modificare",
+    "removeCollection": "Rimuovi dalla raccolta",
+    "report": "rapporto"
   },
   "popular": {
     "description": "Qui puoi vedere i progetti più popolari di questa settimana.",
@@ -952,48 +946,48 @@
     "title": "Progetti popolari"
   },
   "post-container": {
-    "loadMore": "",
-    "title": ""
+    "loadMore": "Carica più commenti",
+    "title": "Inviare"
   },
   "post": {
     "options": {
-      "alertTitle": "",
-      "cancel": "",
-      "collection": "",
-      "delete": "",
-      "edit": "",
-      "removeCollection": "",
-      "report": ""
+      "alertTitle": "Sei sicuro?",
+      "cancel": "Annulla",
+      "collection": "Aggiungere alla collezione",
+      "delete": "Elimina",
+      "edit": "modificare",
+      "removeCollection": "Rimuovi dalla raccolta",
+      "report": "rapporto"
     },
-    "selectCollection": "",
-    "showCollection": ""
+    "selectCollection": "Seleziona raccolta",
+    "showCollection": "Mostra raccolta"
   },
   "posting": {
-    "description": ""
+    "description": "Inserimento in corso ..."
   },
   "project-card": {
-    "follow": "",
-    "unfollow": ""
+    "follow": "Seguire",
+    "unfollow": "A seguire"
   },
   "project-suggestion": {
-    "description": "",
-    "title": "Aggiornati e segui alcuni progetti.",
+    "description": "Di seguito abbiamo selezionato alcuni progetti che potresti trovare interessanti.",
+    "title": "Mettiti al passo e segui alcuni progetti.",
     "title_small": "Suggerito per te"
   },
   "project-suggestions": {
-    "description": "",
-    "title": ""
+    "description": "Di seguito abbiamo selezionato alcuni progetti che potresti trovare interessanti.",
+    "title": "Mettiti al passo e segui alcuni progetti."
   },
   "project-types": {
-    "inspo": ""
+    "inspo": "Ispirazione"
   },
   "project": {
-    "description": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@{{username}}) sulla Wrench",
+    "description": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@ {{username}} ) sulla chiave",
     "recent": "Messaggi recenti",
     "share": "Condividere",
     "similar": "Progetti simili",
-    "title": "{{title}} - {{type}}  del progetto",
-    "description_plural": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@{{username}}) sulla Wrench"
+    "title": "<span><span>0-1</span></span> del progetto",
+    "description_plural": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@ {{username}} ) sulla chiave"
   },
   "promo": {
     "button_default": "Spedire",
@@ -1002,10 +996,10 @@
     "title": "Scarica l'app Wrench su Appstore e Google Play"
   },
   "push-notifications": {
-    "approve": "",
-    "decline": "",
-    "description": "",
-    "title": ""
+    "approve": "Attiva le notifiche",
+    "decline": "No grazie",
+    "description": "Scopri subito quando le persone seguono i tuoi progetti o mettono mi piace e commentano i tuoi post.",
+    "title": "Attiva le notifiche."
   },
   "result": {
     "not_found": "Nessun risultato di ricerca trovato.",
@@ -1013,11 +1007,11 @@
     "projects_plural": "{{count, humanFormat}} progetti"
   },
   "search-bar": {
-    "cancel": "",
-    "placeholder": ""
+    "cancel": "Annulla",
+    "placeholder": "Ricerca"
   },
   "search-location-footer": {
-    "poweredBy": ""
+    "poweredBy": "Offerto da"
   },
   "search-location": {
     "no_result": "Nessun risultato.",
@@ -1032,16 +1026,16 @@
     "users": "Utenti"
   },
   "searching-for": {
-    "title": ""
+    "title": "Alla ricerca di"
   },
   "sections": {
-    "language": "",
-    "notifications": "",
-    "profile": "",
-    "support": ""
+    "language": "linguaggio",
+    "notifications": "Notifiche",
+    "profile": "Profilo",
+    "support": "Supporto"
   },
   "select-project": {
-    "create": ""
+    "create": "Crea un nuovo progetto"
   },
   "settings": {
     "chat": "chatta con noi",
@@ -1095,42 +1089,32 @@
       "error": "Qualcosa è andato storto",
       "saved": "Impostazioni salvate"
     },
-    "website": "Sito web",
-    "field_bio": "Bio",
-    "field_firstname": "nome di battesimo",
-    "field_lastname": "Cognome",
-    "field_website": "Sito web",
-    "toast_error": "Qualcosa è andato storto",
-    "toast_saved": "Impostazioni salvate",
-    "sections_language": "linguaggio",
-    "sections_notifications": "Notifiche",
-    "sections_profile": "Modifica Profilo",
-    "sections_support": "Supporto"
+    "website": "Sito web"
   },
   "share": {
-    "share": ""
+    "share": "Condividere"
   },
   "show-latest": {
-    "button": ""
+    "button": "Nuovi post"
   },
   "sign-in": {
-    "description": "",
-    "headline": "",
-    "other": ""
+    "description": "Documenta le tue build, condividi i tuoi progetti e impara da persone che la pensano allo stesso modo.",
+    "headline": "Il tuo\nmotociclo\nComunità.",
+    "other": "Altre opzioni di accesso"
   },
   "similar-projects": {
-    "title": ""
+    "title": "Progetti simili"
   },
   "sparks": {
-    "title": ""
+    "title": "Scintille"
   },
   "suggestions": {
-    "description": "",
-    "headline": "",
-    "next": ""
+    "description": "Di seguito abbiamo selezionato alcuni progetti che potresti trovare interessanti.",
+    "headline": "Mettiti al passo e segui alcuni progetti.",
+    "next": "Il prossimo"
   },
   "text": {
-    "more": ""
+    "more": "Di Più"
   },
   "time": {
     "d": "{{count}} giorni fa",
@@ -1146,8 +1130,8 @@
     "y_plural": "{{count}} anni fa"
   },
   "toast": {
-    "network": "",
-    "spam": ""
+    "network": "Nessuna connessione internet",
+    "spam": "Azione bloccata. Per favore riprova più tardi."
   },
   "user-following-projects": {
     "description": "Ma ecco alcuni dei progetti che {{name}} segue.",
@@ -1167,6 +1151,6 @@
     "title": "{{fullName}} . (@ {{username}} ) - progetti e post"
   },
   "webview": {
-    "loading": ""
+    "loading": "Caricamento in corso..."
   }
 }

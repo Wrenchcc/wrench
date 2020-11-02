@@ -28,7 +28,7 @@
   "push-notifications": "Mitteilungen",
   "rate": "Geben Sie uns eine Bewertung",
   "report": "Melde einen technischen Fehler",
-  "save": "speichern",
+  "save": "sparen",
   "sections.language": "Sprache",
   "sections.notifications": "Mitteilungen",
   "sections.profile": "Profil bearbeiten",
@@ -42,15 +42,5 @@
   "title": "die Einstellungen",
   "toast.error": "Etwas ist schief gelaufen",
   "toast.saved": "Einstellungen gespeichert",
-  "website": "Webseite",
-  "field_bio": "Bio",
-  "field_firstname": "Vorname",
-  "field_lastname": "Familienname, Nachname",
-  "field_website": "Webseite",
-  "toast_error": "Etwas ist schief gelaufen",
-  "toast_saved": "Einstellungen gespeichert",
-  "sections_language": "Sprache",
-  "sections_notifications": "Benachrichtigungen",
-  "sections_profile": "Profil bearbeiten",
-  "sections_support": "Unterstützung"
+  "website": "Webseite"
 }

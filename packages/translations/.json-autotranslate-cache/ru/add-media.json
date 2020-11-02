@@ -1,6 +1,6 @@
 {
-  "next": "",
-  "options.cancel": "",
-  "options.discard": "",
-  "options.title": ""
+  "next": "следующий",
+  "options.cancel": "Отмена",
+  "options.discard": "Отменить",
+  "options.title": "Если вы вернетесь сейчас, ваши правки будут отменены."
 }

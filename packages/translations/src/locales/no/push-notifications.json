@@ -1,6 +1,6 @@
 {
-  "approve": "",
-  "decline": "",
-  "description": "",
-  "title": ""
+  "approve": "Slå på varsler",
+  "decline": "Nei takk",
+  "description": "Vet med en gang når folk følger prosjektene dine eller liker og kommenterer innleggene dine.",
+  "title": "Slå på varsler."
 }

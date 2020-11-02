@@ -1,6 +1,6 @@
 {
-  "cancel": "",
-  "headerTitle": "",
-  "placeholder": "",
-  "save": ""
+  "cancel": "Stornieren",
+  "headerTitle": "Beitrag bearbeiten",
+  "placeholder": "Fügen Sie einen Text zu Ihrem Beitrag hinzu",
+  "save": "sparen"
 }

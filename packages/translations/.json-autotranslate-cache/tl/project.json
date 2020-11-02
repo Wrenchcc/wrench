@@ -1,8 +1,8 @@
 {
-  "description": "{{followers, humanFormat}} Tagasunod, {{posts, humanFormat}} Post - {{fullName}} . (@{{username}}) sa Wrench",
+  "description": "{{followers, humanFormat}} Tagasunod, <span>1 Mga</span> Post - {{fullName}} . (@ {{username}} ) sa Wrench",
   "recent": "Kamakailang mga post",
   "share": "Magbahagi",
   "similar": "Katulad na mga proyekto",
-  "title": "{{title}} - {{type}} proyekto",
-  "description_plural": "{{followers, humanFormat}} Tagasunod, {{posts, humanFormat}} Post - {{fullName}} . (@ {{username}}) sa Wrench"
+  "title": "{{title}} - <span>1 na</span> proyekto",
+  "description_plural": "<span>0 Mga</span> Tagasunod, <span>1 Mga</span> Post - {{fullName}} . (@ {{username}} ) sa Wrench"
 }

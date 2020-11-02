@@ -1,13 +1,13 @@
 {
   "options": {
-    "alertTitle": "",
-    "cancel": "",
-    "collection": "",
-    "delete": "",
-    "edit": "",
-    "removeCollection": "",
-    "report": ""
+    "alertTitle": "Er du sikker?",
+    "cancel": "Avbryt",
+    "collection": "Legg til i samlingen",
+    "delete": "Slett",
+    "edit": "Redigere",
+    "removeCollection": "Fjern fra samlingen",
+    "report": "Rapportere"
   },
-  "selectCollection": "",
-  "showCollection": ""
+  "selectCollection": "Velg samling",
+  "showCollection": "Vis samling"
 }

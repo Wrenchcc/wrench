@@ -1,6 +1,6 @@
 {
-  "add": "",
-  "done": "",
-  "placeholder": "",
-  "title": ""
+  "add": "Ajouter nouveau",
+  "done": "Terminé",
+  "placeholder": "Ex. Reconstruction du moteur",
+  "title": "Nouvelle collection"
 }

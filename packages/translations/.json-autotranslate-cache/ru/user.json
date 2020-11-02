@@ -2,10 +2,7 @@
   "description": "Смотрите проекты Wrench и сообщения от {{fullName}} . (@ {{username}} )",
   "image_alt": "НЕТ ПЕРЕВОДА",
   "notfound": "Пользователь не найден",
-  "projects_0": "",
-  "projects_1": "",
-  "projects_2": "",
-  "title": "{{fullName}} . (@ {{username}} ) - проекты и посты",
   "projects": "{{count, humanFormat}} проект",
-  "projects_plural": "{{count, humanFormat}} проектов"
+  "projects_plural": "{{count, humanFormat}} проектов",
+  "title": "{{fullName}} . (@ {{username}} ) - проекты и посты"
 }

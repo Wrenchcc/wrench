@@ -1,7 +1,7 @@
 {
-  "add": "",
-  "delete": "",
-  "done": "",
-  "placeholder": "",
-  "title": ""
+  "add": "Voeg berichten toe",
+  "delete": "Verwijderen",
+  "done": "Gedaan",
+  "placeholder": "Ex. Motor herbouwd",
+  "title": "Informatie"
 }

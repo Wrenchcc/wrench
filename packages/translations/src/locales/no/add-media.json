@@ -1,8 +1,8 @@
 {
-  "next": "",
+  "next": "Neste",
   "options": {
-    "cancel": "",
-    "discard": "",
-    "title": ""
+    "cancel": "Avbryt",
+    "discard": "Kast",
+    "title": "Hvis du går tilbake nå, blir endringene dine kastet."
   }
 }

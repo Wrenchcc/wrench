@@ -1,34 +1,34 @@
 {
   "collection-no-post": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Brugeren har endnu ikke føjet nogen indlæg til denne samling.",
+    "title": "Ingen indlæg tilføjet til denne samling."
   },
   "collection-post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Tilføje",
+    "description": "Føj et indlæg til denne samling fra det oprettede nye indlægsflow eller et eksisterende indlæg ved at klikke på knappen mere i højre indlæg af indlægget.",
+    "title": "Føj din første til at skrive til denne samling."
   },
   "notifications": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
+    "title": "Ingen meddelelser endnu."
   },
   "post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Tilføje",
+    "description": "Når du nu har et projekt, er det tid til at oprette dit første indlæg.",
+    "title": "2. Tilføj dit første indlæg."
   },
   "project-no-post": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Følg dette projekt nu, og få besked, når det opdateres.",
+    "title": "Dette projekt har endnu ingen indlæg."
   },
   "project-post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Tilføje",
+    "description": "Når du nu har et projekt, er det tid til at oprette dit første indlæg.",
+    "title": "Tilføj dit første indlæg."
   },
   "project": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Kom igang",
+    "description": "Lad os komme i gang og oprette dit første projekt.",
+    "title": "1. Opret dit første projekt."
   }
 }

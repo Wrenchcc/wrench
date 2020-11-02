@@ -1,4 +1,4 @@
 {
-  "network": "",
-  "spam": ""
+  "network": "Ingen internetforbindelse",
+  "spam": "Handling blokeret. Prøv igen senere."
 }

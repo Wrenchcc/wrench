@@ -1,6 +1,6 @@
 {
-  "approve": "",
-  "decline": "",
-  "description": "",
-  "title": ""
+  "approve": "Benachrichtigungen einschalten",
+  "decline": "Nein Danke",
+  "description": "Erfahren Sie sofort, wann Leute Ihren Projekten folgen oder Ihre Beiträge mögen und kommentieren.",
+  "title": "Bitte aktivieren Sie Benachrichtigungen."
 }

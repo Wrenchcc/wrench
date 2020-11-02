@@ -1,7 +1,4 @@
 {
-  "loadMore_0": "",
-  "loadMore_1": "",
-  "loadMore_2": "",
   "loadMore": "Посмотреть 1 комментарий",
   "loadMore_plural": "Посмотреть все {{count, humanFormat}} комментариев"
 }

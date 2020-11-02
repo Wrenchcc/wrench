@@ -1,13 +1,13 @@
 {
-  "cancel": "",
-  "delete": "",
-  "deleteAlert": "",
-  "deleteTitle": "",
-  "description": "",
-  "done": "",
-  "headerTitle": "",
-  "information": "",
-  "model": "",
-  "projectSettings": "",
-  "title": ""
+  "cancel": "Cancelar",
+  "delete": "Excluir",
+  "deleteAlert": "Excluir projeto?",
+  "deleteTitle": "Excluir projeto",
+  "description": "Essa ação não pode ser desfeita.",
+  "done": "Feito",
+  "headerTitle": "Editar",
+  "information": "Em formação",
+  "model": "Editar modelo",
+  "projectSettings": "Configurações do projeto",
+  "title": "Título"
 }

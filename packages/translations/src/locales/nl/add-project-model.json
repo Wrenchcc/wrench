@@ -1,7 +1,7 @@
 {
-  "add": "",
-  "headerTitle": "",
-  "placeholder": "",
-  "skip": "",
-  "title": ""
+  "add": "Toevoegen",
+  "headerTitle": "Project toevoegen",
+  "placeholder": "Bijv. BMW R100 1981",
+  "skip": "Overspringen",
+  "title": "Zoek en kies uw model."
 }

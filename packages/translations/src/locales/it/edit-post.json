@@ -1,6 +1,6 @@
 {
-  "cancel": "",
-  "headerTitle": "",
-  "placeholder": "",
-  "save": ""
+  "cancel": "Annulla",
+  "headerTitle": "Modifica post",
+  "placeholder": "Aggiungi un testo sul tuo post",
+  "save": "Salva"
 }

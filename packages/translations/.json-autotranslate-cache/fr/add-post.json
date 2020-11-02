@@ -1,6 +1,6 @@
 {
-  "add": "",
-  "collection": "",
-  "error": "",
-  "placeholder": ""
+  "add": "Partager",
+  "collection": "Ajouter à la collection",
+  "error": "Impossible de publier pour le moment",
+  "placeholder": "Ajouter un texte sur votre message"
 }

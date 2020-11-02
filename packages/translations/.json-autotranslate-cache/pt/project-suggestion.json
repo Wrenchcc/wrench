@@ -1,6 +1,5 @@
 {
   "description": "Selecionamos alguns projetos abaixo que você pode achar interessantes.",
   "title": "Fique por dentro e acompanhe alguns projetos.",
-  "title_small": "Sugerido para você",
-  "description_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} postagens - {{fullName}} . (@ {{username}} ) na chave inglesa"
+  "title_small": "Sugerido para você"
 }

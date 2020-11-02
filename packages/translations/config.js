@@ -2,7 +2,7 @@ const { locales } = require('@wrench/translations')
 
 module.exports = {
   defaultNamespace: 'common',
-  defaultValue: 'NO_TRANSLATION',
+  defaultValue: '',
   indentation: 4,
   lexers: {
     js: ['JavascriptLexer'],

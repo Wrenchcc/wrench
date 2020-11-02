@@ -42,15 +42,5 @@
   "title": "Réglages",
   "toast.error": "Un problème est survenu",
   "toast.saved": "Paramètres sauvegardés",
-  "website": "Site Internet",
-  "field_bio": "Bio",
-  "field_firstname": "Prénom",
-  "field_lastname": "Nom de famille",
-  "field_website": "Site Internet",
-  "toast_error": "Un problème est survenu",
-  "toast_saved": "Paramètres sauvegardés",
-  "sections_language": "Langue",
-  "sections_notifications": "Notifications",
-  "sections_profile": "Editer le profil",
-  "sections_support": "Soutien"
+  "website": "Site Internet"
 }

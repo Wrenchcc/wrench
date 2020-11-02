@@ -1,34 +1,34 @@
 {
   "collection-no-post": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Пользователь еще не добавил ни одной записи в эту коллекцию.",
+    "title": "В эту коллекцию не добавлено никаких сообщений."
   },
   "collection-post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Добавить",
+    "description": "Добавьте сообщение в эту коллекцию из потока создания нового сообщения или существующего сообщения, нажав кнопку «Дополнительно» в правом углу сообщения.",
+    "title": "Добавьте свой первый пост в эту коллекцию."
   },
   "notifications": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Здесь вы увидите комментарии, новых подписчиков и другие действия.",
+    "title": "Уведомлений пока нет."
   },
   "post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Добавить",
+    "description": "Теперь, когда у вас есть проект, пора создать свой первый пост.",
+    "title": "2. Добавьте свой первый пост."
   },
   "project-no-post": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Следите за этим проектом сейчас и получайте уведомления, когда он обновляется.",
+    "title": "В этом проекте пока нет публикаций."
   },
   "project-post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Добавить",
+    "description": "Теперь, когда у вас есть проект, пора создать свой первый пост.",
+    "title": "Добавьте свой первый пост."
   },
   "project": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Начать",
+    "description": "Давайте быстро создадим ваш первый проект.",
+    "title": "1. Создайте свой первый проект."
   }
 }

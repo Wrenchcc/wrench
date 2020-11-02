@@ -1,20 +1,20 @@
 {
   "camera": {
-    "alertCancel": "NO_TRANSLATION",
-    "alertDescription": "NO_TRANSLATION",
-    "alertOpen": "NO_TRANSLATION",
-    "alertTitle": "NO_TRANSLATION",
-    "permissionButton": "NO_TRANSLATION",
-    "permissionDescription": "NO_TRANSLATION",
-    "permissionHeadline": "NO_TRANSLATION"
+    "alertCancel": "annuleren",
+    "alertDescription": "Er is een probleem opgetreden bij het verkrijgen van uw toestemming. Schakel het in via de instellingen.",
+    "alertOpen": "Open instellingen",
+    "alertTitle": "Oeps!",
+    "permissionButton": "Cameratoegang toestaan",
+    "permissionDescription": "Geef Wrench toegang tot uw camera om foto's te maken en video op te nemen in de app.",
+    "permissionHeadline": "Maak foto's en neem video's op"
   },
   "photo": {
-    "alertCancel": "NO_TRANSLATION",
-    "alertDescription": "NO_TRANSLATION",
-    "alertOpen": "NO_TRANSLATION",
-    "alertTitle": "NO_TRANSLATION",
-    "permissionButton": "NO_TRANSLATION",
-    "permissionDescription": "NO_TRANSLATION",
-    "permissionHeadline": "NO_TRANSLATION"
+    "alertCancel": "annuleren",
+    "alertDescription": "Er is een probleem opgetreden bij het verkrijgen van uw toestemming. Schakel het in via de instellingen.",
+    "alertOpen": "Open instellingen",
+    "alertTitle": "Oeps!",
+    "permissionButton": "Bibliotheektoegang inschakelen",
+    "permissionDescription": "Hierdoor kan Wrench foto's uit uw bibliotheek delen en foto's opslaan op uw filmrol.",
+    "permissionHeadline": "Voeg foto's en video's toe"
   }
 }

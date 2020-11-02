@@ -1,8 +1,8 @@
 {
-  "next": "",
+  "next": "Il prossimo",
   "options": {
-    "cancel": "",
-    "discard": "",
-    "title": ""
+    "cancel": "Annulla",
+    "discard": "Scartare",
+    "title": "Se torni indietro ora, le tue modifiche verranno eliminate."
   }
 }

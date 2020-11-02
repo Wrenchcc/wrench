@@ -1,6 +1,6 @@
 {
-  "next": "",
-  "options.cancel": "",
-  "options.discard": "",
-  "options.title": ""
+  "next": "Næste",
+  "options.cancel": "Afbestille",
+  "options.discard": "Kassér",
+  "options.title": "Hvis du går tilbage nu, vil dine ændringer blive kasseret."
 }

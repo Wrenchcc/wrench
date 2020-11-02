@@ -1,11 +1,11 @@
 {
-  "options.alertTitle": "",
-  "options.cancel": "",
-  "options.collection": "",
-  "options.delete": "",
-  "options.edit": "",
-  "options.removeCollection": "",
-  "options.report": "",
-  "selectCollection": "",
-  "showCollection": ""
+  "options.alertTitle": "Weet je zeker dat?",
+  "options.cancel": "annuleren",
+  "options.collection": "Voeg toe aan collectie",
+  "options.delete": "Verwijderen",
+  "options.edit": "Bewerk",
+  "options.removeCollection": "Verwijderen uit verzameling",
+  "options.report": "Verslag doen van",
+  "selectCollection": "Selecteer collectie",
+  "showCollection": "Toon collectie"
 }

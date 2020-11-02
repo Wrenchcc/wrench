@@ -1,8 +1,8 @@
 {
-  "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}})",
-  "image_alt": "NO_TRANSLATION",
+  "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}} )",
+  "image_alt": "",
   "notfound": "Bruger ikke fundet",
-  "projects": "<span>0-</span> projekt",
+  "projects": "{{count, humanFormat}} projekt",
   "projects_plural": "{{count, humanFormat}} projekter",
-  "title": "{{fullName}} . (@{{username}}) - projekter og stillinger"
+  "title": "{{fullName}} . (@ {{username}} ) - projekter og stillinger"
 }

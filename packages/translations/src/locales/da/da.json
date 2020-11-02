@@ -1,68 +1,63 @@
 {
-  "CommentItem": {
-    "like": "",
-    "like_plural": "",
-    "reply": ""
-  },
   "add-collection": {
-    "add": "",
-    "done": "",
-    "placeholder": "",
-    "title": ""
+    "add": "Tilføj ny",
+    "done": "Færdig",
+    "placeholder": "Eks. Genopbygning af motor",
+    "title": "Ny kollektion"
   },
   "add-media": {
-    "next": "",
+    "next": "Næste",
     "options": {
-      "cancel": "",
-      "discard": "",
-      "title": ""
+      "cancel": "Afbestille",
+      "discard": "Kassér",
+      "title": "Hvis du går tilbage nu, vil dine ændringer blive kasseret."
     }
   },
   "add-post-to-collection": {
-    "done": "",
-    "title": ""
+    "done": "Færdig",
+    "title": "Tilføj indlæg"
   },
   "add-post": {
-    "add": "",
-    "collection": "",
-    "error": "",
-    "placeholder": ""
+    "add": "Del",
+    "collection": "Føj til samling",
+    "error": "Kunne ikke sende lige nu",
+    "placeholder": "Tilføj en tekst om dit indlæg"
   },
   "add-project-model": {
-    "add": "",
-    "headerTitle": "",
-    "placeholder": "",
-    "skip": "",
-    "title": ""
+    "add": "Tilføje",
+    "headerTitle": "Tilføj projekt",
+    "placeholder": "F.eks. BMW R100 1981",
+    "skip": "Springe",
+    "title": "Søg og vælg din model."
   },
   "add-project-type": {
-    "headerTitle": "",
-    "title": ""
+    "headerTitle": "Tilføj projekt",
+    "title": "Vælg din kategori"
   },
   "add-project": {
-    "headerTitle": "",
-    "next": "",
-    "placeholder": "",
-    "title": ""
+    "headerTitle": "Tilføj projekt",
+    "next": "Næste",
+    "placeholder": "F.eks. Honda Cafe Racer",
+    "title": "Vælg en titel til dit projekt."
   },
   "ask-for-permission": {
     "camera": {
-      "alertCancel": "NO_TRANSLATION",
-      "alertDescription": "NO_TRANSLATION",
-      "alertOpen": "NO_TRANSLATION",
-      "alertTitle": "NO_TRANSLATION",
-      "permissionButton": "NO_TRANSLATION",
-      "permissionDescription": "NO_TRANSLATION",
-      "permissionHeadline": "NO_TRANSLATION"
+      "alertCancel": "Afbestille",
+      "alertDescription": "Der opstod et problem med at få din tilladelse. Aktiver det fra indstillinger.",
+      "alertOpen": "Åbn Indstillinger",
+      "alertTitle": "Ups!",
+      "permissionButton": "Tillad kameraadgang",
+      "permissionDescription": "Giv skruenøgle adgang til dit kamera for at tage billeder og optage video i appen.",
+      "permissionHeadline": "Tag fotos og optag videoer"
     },
     "photo": {
-      "alertCancel": "NO_TRANSLATION",
-      "alertDescription": "NO_TRANSLATION",
-      "alertOpen": "NO_TRANSLATION",
-      "alertTitle": "NO_TRANSLATION",
-      "permissionButton": "NO_TRANSLATION",
-      "permissionDescription": "NO_TRANSLATION",
-      "permissionHeadline": "NO_TRANSLATION"
+      "alertCancel": "Afbestille",
+      "alertDescription": "Der opstod et problem med at få din tilladelse. Aktiver det fra indstillinger.",
+      "alertOpen": "Åbn Indstillinger",
+      "alertTitle": "Ups!",
+      "permissionButton": "Aktivér biblioteksadgang",
+      "permissionDescription": "Dette giver skruenøgle mulighed for at dele fotos fra dit bibliotek og gemme fotos på din kamerarulle.",
+      "permissionHeadline": "Tilføj fotos og videoer"
     }
   },
   "blog-post": {
@@ -73,9 +68,9 @@
     "title": "Blog"
   },
   "bookmarks": {
-    "description": "",
-    "headerTitle": "",
-    "title": ""
+    "description": "Gem indlæg, som du vil se igen. Ingen får besked, og kun du kan se, hvad du har gemt.",
+    "headerTitle": "Gemte indlæg",
+    "title": "Gemme"
   },
   "collections": {
     "edit": "Redigere",
@@ -86,121 +81,121 @@
     "post": "Stolpe"
   },
   "comment-item": {
-    "like": "",
-    "like_plural": "",
-    "loadReplies": "",
-    "loadReplies_plural": "",
-    "reply": ""
+    "like": "{{count}} gnist",
+    "like_plural": "{{count, humanFormat}} gnister",
+    "loadReplies": "Se svar ( {{count}} )",
+    "loadReplies_plural": "Se svar ( {{count}} )",
+    "reply": "Svar"
   },
   "comment-list": {
-    "loadMore": "",
-    "loadMore_plural": ""
+    "loadMore": "Se 1 kommentar",
+    "loadMore_plural": "Se alle {{count, humanFormat}} kommentarer"
   },
   "comments": {
-    "load_replies": "NO_TRANSLATION",
-    "load_replies_plural": "NO_TRANSLATION",
+    "load_replies": "",
+    "load_replies_plural": "",
     "loadMore": "Indlæs flere kommentarer",
     "title": "Kommentarer"
   },
   "common": {
-    "description": "NO_TRANSLATION",
-    "like": "NO_TRANSLATION",
-    "like_plural": "NO_TRANSLATION",
-    "reply": "NO_TRANSLATION",
-    "settings": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "",
+    "like": "",
+    "like_plural": "",
+    "reply": "",
+    "settings": "",
+    "title": ""
   },
   "edit-collection": {
-    "add": "",
-    "delete": "",
-    "done": "",
-    "placeholder": "",
-    "title": ""
+    "add": "Tilføj indlæg",
+    "delete": "Slet",
+    "done": "Færdig",
+    "placeholder": "Eks. Genopbygning af motor",
+    "title": "Information"
   },
   "edit-model": {
-    "headerTitle": "",
-    "placeholder": "",
-    "save": "",
-    "title": ""
+    "headerTitle": "Rediger model",
+    "placeholder": "F.eks. BMW R100 1981",
+    "save": "Gemme",
+    "title": "Søg og vælg din model."
   },
   "edit-post": {
-    "cancel": "",
-    "headerTitle": "",
-    "placeholder": "",
-    "save": ""
+    "cancel": "Afbestille",
+    "headerTitle": "Rediger indlæg",
+    "placeholder": "Tilføj en tekst om dit indlæg",
+    "save": "Gemme"
   },
   "edit-profile": {
-    "bio": "",
-    "change": "",
-    "firstName": "",
-    "headerTitle": "",
-    "imagePickerCancel": "",
-    "imagePickerLibrary": "",
-    "imagePickerPermissionOk": "",
-    "imagePickerPermissionRetry": "",
-    "imagePickerPermissionText": "",
-    "imagePickerPermissionTitle": "",
-    "imagePickerPhoto": "",
-    "imagePickerTitle": "",
-    "information": "",
-    "lastName": "",
-    "place": "",
-    "remove": "",
-    "save": "",
-    "username": "",
-    "validation": "",
-    "validationUsername": "",
-    "website": "",
-    "wrong": ""
+    "bio": "Bio",
+    "change": "Lave om",
+    "firstName": "Fornavn",
+    "headerTitle": "Rediger profil",
+    "imagePickerCancel": "Afbestille",
+    "imagePickerLibrary": "Vælg fra bibliotek ...",
+    "imagePickerPermissionOk": "jeg er sikker",
+    "imagePickerPermissionRetry": "prøve igen",
+    "imagePickerPermissionText": "At være i stand til at tage billeder med dit kamera og vælge billeder fra dit bibliotek.",
+    "imagePickerPermissionTitle": "Adgang nægtet",
+    "imagePickerPhoto": "Tag et billede…",
+    "imagePickerTitle": "Vælg Avatar",
+    "information": "Information",
+    "lastName": "Efternavn",
+    "place": "By land",
+    "remove": "Fjern aktuelt billede",
+    "save": "Gemme",
+    "username": "Brugernavn",
+    "validation": "Kontroller de obligatoriske felter.",
+    "validationUsername": "Brugernavnet er allerede taget.",
+    "website": "Internet side",
+    "wrong": "Noget gik galt"
   },
   "edit-project": {
-    "cancel": "",
-    "delete": "",
-    "deleteAlert": "",
-    "deleteTitle": "",
-    "description": "",
-    "done": "",
-    "headerTitle": "",
-    "information": "",
-    "model": "",
-    "projectSettings": "",
-    "title": ""
+    "cancel": "Afbestille",
+    "delete": "Slet",
+    "deleteAlert": "Slet projekt?",
+    "deleteTitle": "Slet projekt",
+    "description": "Denne handling kan ikke fortrydes.",
+    "done": "Færdig",
+    "headerTitle": "Redigere",
+    "information": "Information",
+    "model": "Rediger model",
+    "projectSettings": "Projektindstillinger",
+    "title": "Titel"
   },
   "edit": {
-    "edit": ""
+    "edit": "Redigere"
   },
   "empty-state": {
     "collection-no-post": {
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "description": "Brugeren har endnu ikke føjet nogen indlæg til denne samling.",
+      "title": "Ingen indlæg tilføjet til denne samling."
     },
     "collection-post": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Tilføje",
+      "description": "Føj et indlæg til denne samling fra det oprettede nye indlægsflow eller et eksisterende indlæg ved at klikke på knappen mere i højre indlæg af indlægget.",
+      "title": "Føj din første til at skrive til denne samling."
     },
     "notifications": {
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
+      "title": "Ingen meddelelser endnu."
     },
     "post": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Tilføje",
+      "description": "Når du nu har et projekt, er det tid til at oprette dit første indlæg.",
+      "title": "2. Tilføj dit første indlæg."
     },
     "project-no-post": {
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "description": "Følg dette projekt nu, og få besked, når det opdateres.",
+      "title": "Dette projekt har endnu ingen indlæg."
     },
     "project-post": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Tilføje",
+      "description": "Når du nu har et projekt, er det tid til at oprette dit første indlæg.",
+      "title": "Tilføj dit første indlæg."
     },
     "project": {
-      "button": "NO_TRANSLATION",
-      "description": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "button": "Kom igang",
+      "description": "Lad os komme i gang og oprette dit første projekt.",
+      "title": "1. Opret dit første projekt."
     }
   },
   "en": {
@@ -257,7 +252,7 @@
       },
       "photo": {
         "alertCancel": "Afbestille",
-        "alertDescription": "Der opstod et problem med at få din tilladelse. Aktivér det fra indstillinger.",
+        "alertDescription": "Der opstod et problem med at få din tilladelse. Aktiver det fra indstillinger.",
         "alertOpen": "Åbn Indstillinger",
         "alertTitle": "Ups!",
         "permissionButton": "Aktivér biblioteksadgang",
@@ -297,18 +292,18 @@
       "loadMore_plural": "Se alle {{count, humanFormat}} kommentarer"
     },
     "comments": {
-      "load_replies": "NO_TRANSLATION",
-      "load_replies_plural": "NO_TRANSLATION",
+      "load_replies": "",
+      "load_replies_plural": "",
       "loadMore": "Indlæs flere kommentarer",
       "title": "Kommentarer"
     },
     "common": {
-      "description": "NO_TRANSLATION",
-      "like": "NO_TRANSLATION",
-      "like_plural": "NO_TRANSLATION",
-      "reply": "NO_TRANSLATION",
-      "settings": "NO_TRANSLATION",
-      "title": "NO_TRANSLATION"
+      "description": "",
+      "like": "",
+      "like_plural": "",
+      "reply": "",
+      "settings": "",
+      "title": ""
     },
     "edit-collection": {
       "add": "Tilføj indlæg",
@@ -407,7 +402,7 @@
       "button": "Fortsæt med Facebook"
     },
     "feed": {
-      "description": "NO_TRANSLATION",
+      "description": "",
       "title": "Foder"
     },
     "follow": {
@@ -744,17 +739,17 @@
       "more": "mere"
     },
     "time": {
-      "d": "<span>For 0</span> dage siden",
-      "d_plural": "<span>For 0</span> dage siden",
-      "h": "<span>For 0</span> timer siden",
-      "h_plural": "<span>For 0</span> timer siden",
-      "m": "<span>For 0</span> minut siden",
-      "m_plural": "<span>For 0</span> minutter siden",
+      "d": "For {{count}} dage siden",
+      "d_plural": "For {{count}} dage siden",
+      "h": "For {{count}} timer siden",
+      "h_plural": "For {{count}} timer siden",
+      "m": "For {{count}} minut siden",
+      "m_plural": "For {{count}} minutter siden",
       "mo": "{{count}} måneder siden",
-      "mo_plural": "<span>For 0</span> måneder siden",
+      "mo_plural": "For {{count}} måneder siden",
       "now": "lige nu",
       "y": "{{count}} år siden",
-      "y_plural": "<span>For 0</span> år siden"
+      "y_plural": "For {{count}} år siden"
     },
     "toast": {
       "network": "Ingen internetforbindelse",
@@ -762,7 +757,7 @@
     },
     "user-following-projects": {
       "description": "Men her er nogle af de projekter, {{name}} følger.",
-      "title": "Denne bruger har endnu ingen egne projekter."
+      "title": "Denne bruger har endnu ikke nogen egne projekter."
     },
     "user-projects": {
       "followers": "{{count, humanFormat}} følger",
@@ -771,7 +766,7 @@
     },
     "user": {
       "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}} )",
-      "image_alt": "NO_TRANSLATION",
+      "image_alt": "",
       "notfound": "Bruger ikke fundet",
       "projects": "<span>0-</span> projekt",
       "projects_plural": "{{count, humanFormat}} projekter",
@@ -782,18 +777,17 @@
     }
   },
   "facebook": {
-    "button": ""
+    "button": "Fortsæt med Facebook"
   },
   "feed": {
-    "description": "NO_TRANSLATION",
+    "description": "",
     "title": "Foder"
   },
   "follow": {
     "follow": "Følg dette projekt",
     "followSmall": "Følge med",
     "unfollow": "Følge",
-    "unfollowSmall": "Følge",
-    "follow_short": "Følge med"
+    "unfollowSmall": "Følge"
   },
   "followers": {
     "followers": "{{count, humanFormat}} følger",
@@ -825,11 +819,11 @@
     "trademarks": "App Store er et servicemærke tilhørende Apple Inc. Google Play er et varemærke tilhørende Google LLC."
   },
   "google": {
-    "button": ""
+    "button": "Fortsæt med Google"
   },
   "hashtag": {
-    "posts": "",
-    "posts_plural": ""
+    "posts": "{{count, humanFormat}} indlæg",
+    "posts_plural": "{{count, humanFormat}} indlæg"
   },
   "header": {
     "download": "Download apps",
@@ -850,17 +844,17 @@
   },
   "languages": {
     "sv": "Svensk",
-    "en": "Engelsk",
-    "es": "Spansk",
+    "en": "engelsk",
+    "es": "spansk",
     "it": "Italiensk",
-    "de": "Tysk",
-    "nl": "Hollandsk",
-    "fr": "Fransk",
+    "de": "tysk",
+    "nl": "hollandsk",
+    "fr": "fransk",
     "tl": "Filippinsk",
     "pt": "Portugisisk",
     "ru": "Russisk",
     "no": "Norsk",
-    "da": "Dansk"
+    "da": "dansk"
   },
   "legal": {
     "description": "Ved at fortsætte accepterer du skruenøgler",
@@ -886,12 +880,12 @@
     "settings": "Indstillinger"
   },
   "me": {
-    "bookmarks": "",
-    "edit": "",
-    "settings": ""
+    "bookmarks": "Gemte indlæg",
+    "edit": "Rediger profil",
+    "settings": "Indstillinger"
   },
   "media-picker-list": {
-    "deselectAll": ""
+    "deselectAll": "Fravælg alle"
   },
   "mobile-menu": {
     "download": "Download apps",
@@ -902,7 +896,7 @@
     "sign_out": "Log ud"
   },
   "no-results": {
-    "title": ""
+    "title": "Ingen resultater fundet"
   },
   "notification": {
     "comment": "Kommenterede dit indlæg",
@@ -937,13 +931,13 @@
     "title": "Hvad er du interesseret i?"
   },
   "options": {
-    "alertTitle": "",
-    "cancel": "",
-    "collection": "",
-    "delete": "",
-    "edit": "",
-    "removeCollection": "",
-    "report": ""
+    "alertTitle": "Er du sikker?",
+    "cancel": "Afbestille",
+    "collection": "Føj til samling",
+    "delete": "Slet",
+    "edit": "Redigere",
+    "removeCollection": "Fjern fra samlingen",
+    "report": "Rapport"
   },
   "popular": {
     "description": "Her ser du de mest populære projekter fra denne uge.",
@@ -952,28 +946,28 @@
     "title": "Populære projekter"
   },
   "post-container": {
-    "loadMore": "",
-    "title": ""
+    "loadMore": "Indlæs flere kommentarer",
+    "title": "Stolpe"
   },
   "post": {
     "options": {
-      "alertTitle": "",
-      "cancel": "",
-      "collection": "",
-      "delete": "",
-      "edit": "",
-      "removeCollection": "",
-      "report": ""
+      "alertTitle": "Er du sikker?",
+      "cancel": "Afbestille",
+      "collection": "Føj til samling",
+      "delete": "Slet",
+      "edit": "Redigere",
+      "removeCollection": "Fjern fra samlingen",
+      "report": "Rapport"
     },
-    "selectCollection": "",
-    "showCollection": ""
+    "selectCollection": "Vælg samling",
+    "showCollection": "Vis samling"
   },
   "posting": {
-    "description": ""
+    "description": "Indlæg ..."
   },
   "project-card": {
-    "follow": "",
-    "unfollow": ""
+    "follow": "Følge med",
+    "unfollow": "Følge"
   },
   "project-suggestion": {
     "description": "Vi har valgt nogle projekter nedenfor, som du måske finder interessante.",
@@ -981,19 +975,19 @@
     "title_small": "Foreslået til dig"
   },
   "project-suggestions": {
-    "description": "",
-    "title": ""
+    "description": "Vi har valgt nogle projekter nedenfor, som du måske finder interessante.",
+    "title": "Bliv opdateret og følg nogle projekter."
   },
   "project-types": {
-    "inspo": ""
+    "inspo": "Inspiration"
   },
   "project": {
-    "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} stillinger - {{fullName}} . (@{{username}}) på Wrench",
+    "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} stillinger - {{fullName}} . (@ {{username}} ) på skruenøgle",
     "recent": "Seneste indlæg",
     "share": "Del",
     "similar": "Lignende projekter",
     "title": "{{title}} - {{type}} projekt",
-    "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} indlæg - {{fullName}} . (@{{username}}) på Wrench"
+    "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} indlæg - {{fullName}} . (@ {{username}} ) på skruenøgle"
   },
   "promo": {
     "button_default": "Sende",
@@ -1002,22 +996,22 @@
     "title": "Download Wrench-appen på Appstore og Google play"
   },
   "push-notifications": {
-    "approve": "",
-    "decline": "",
-    "description": "",
-    "title": ""
+    "approve": "Slå underretninger til",
+    "decline": "Nej tak",
+    "description": "Ved med det samme, når folk følger dine projekter eller synes godt om og kommenterer dine indlæg.",
+    "title": "Aktivér underretninger."
   },
   "result": {
     "not_found": "Ingen søgeresultater fundet.",
-    "projects": "{{count, humanFormat}} projekt",
+    "projects": "<span>0-</span> projekt",
     "projects_plural": "{{count, humanFormat}} projekter"
   },
   "search-bar": {
-    "cancel": "",
-    "placeholder": ""
+    "cancel": "Afbestille",
+    "placeholder": "Søg"
   },
   "search-location-footer": {
-    "poweredBy": ""
+    "poweredBy": "Drevet af"
   },
   "search-location": {
     "no_result": "Ingen resultater.",
@@ -1032,16 +1026,16 @@
     "users": "Brugere"
   },
   "searching-for": {
-    "title": ""
+    "title": "leder efter"
   },
   "sections": {
-    "language": "",
-    "notifications": "",
-    "profile": "",
-    "support": ""
+    "language": "Sprog",
+    "notifications": "Meddelelser",
+    "profile": "Profil",
+    "support": "Support"
   },
   "select-project": {
-    "create": ""
+    "create": "Opret et nyt projekt"
   },
   "settings": {
     "chat": "Chat med os",
@@ -1095,3590 +1089,53 @@
       "error": "Noget gik galt",
       "saved": "Indstillinger gemt"
     },
-    "website": "Internet side",
-    "field_bio": "Bio",
-    "field_firstname": "Fornavn",
-    "field_lastname": "Efternavn",
-    "field_website": "Internet side",
-    "toast_error": "Noget gik galt",
-    "toast_saved": "Indstillinger gemt",
-    "sections_language": "Sprog",
-    "sections_notifications": "Meddelelser",
-    "sections_profile": "Rediger profil",
-    "sections_support": "Support"
+    "website": "Internet side"
   },
   "share": {
-    "share": ""
+    "share": "Del"
   },
   "show-latest": {
-    "button": ""
+    "button": "Nye indlæg"
   },
   "sign-in": {
-    "description": "",
-    "headline": "",
-    "other": ""
+    "description": "Dokumenter dine bygger, del dine projekter og lær af ligesindede.",
+    "headline": "Dit\nmotorcykel\nfællesskab.",
+    "other": "Andre loginmuligheder"
   },
   "similar-projects": {
-    "title": ""
+    "title": "Lignende projekter"
   },
   "sparks": {
-    "title": ""
+    "title": "Gnister"
   },
   "suggestions": {
-    "description": "",
-    "headline": "",
-    "next": ""
+    "description": "Vi har valgt nogle projekter nedenfor, som du måske finder interessante.",
+    "headline": "Bliv opdateret og følg nogle projekter.",
+    "next": "Næste"
   },
   "text": {
-    "more": ""
+    "more": "mere"
   },
   "time": {
-    "d": "{{count}} dage siden",
-    "d_plural": "{{count}} dage siden",
-    "h": "{{count}} timer siden",
-    "h_plural": "{{count}} timer siden",
-    "m": "{{count}} minut siden",
-    "m_plural": "{{count}} minutter siden",
+    "d": "<span>For 0</span> dage siden",
+    "d_plural": "<span>For 0</span> dage siden",
+    "h": "<span>For 0</span> timer siden",
+    "h_plural": "<span>For 0</span> timer siden",
+    "m": "<span>For 0</span> minut siden",
+    "m_plural": "<span>For 0</span> minutter siden",
     "mo": "{{count}} måneder siden",
-    "mo_plural": "{{count}} måneder siden",
+    "mo_plural": "<span>For 0</span> måneder siden",
     "now": "lige nu",
     "y": "{{count}} år siden",
-    "y_plural": "{{count}} år siden"
+    "y_plural": "<span>For 0</span> år siden"
   },
   "toast": {
-    "network": "",
-    "spam": ""
-  },
-  "translations": {
-    "CommentItem": {
-      "like": "",
-      "like_plural": "",
-      "reply": ""
-    },
-    "add-collection": {
-      "add": "",
-      "done": "",
-      "placeholder": "",
-      "title": ""
-    },
-    "add-media": {
-      "next": "",
-      "options": {
-        "cancel": "",
-        "discard": "",
-        "title": ""
-      }
-    },
-    "add-post-to-collection": {
-      "done": "",
-      "title": ""
-    },
-    "add-post": {
-      "add": "",
-      "collection": "",
-      "error": "",
-      "placeholder": ""
-    },
-    "add-project-model": {
-      "add": "",
-      "headerTitle": "",
-      "placeholder": "",
-      "skip": "",
-      "title": ""
-    },
-    "add-project-type": {
-      "headerTitle": "",
-      "title": ""
-    },
-    "add-project": {
-      "headerTitle": "",
-      "next": "",
-      "placeholder": "",
-      "title": ""
-    },
-    "blog-post": {
-      "back": "Tilbage til bloggen",
-      "title": "Blog"
-    },
-    "blog": {
-      "title": "Blog"
-    },
-    "bookmarks": {
-      "description": "",
-      "headerTitle": "",
-      "title": ""
-    },
-    "collections": {
-      "edit": "",
-      "title": "Samlinger"
-    },
-    "comment-field": {
-      "placeholder": "Tilføj en kommentar...",
-      "post": "Stolpe"
-    },
-    "comment-item": {
-      "loadReplies": "",
-      "loadReplies_plural": ""
-    },
-    "comment-list": {
-      "loadMore": "",
-      "loadMore_plural": ""
-    },
-    "comments": {
-      "load_replies": "Se svar ({{count}})",
-      "load_replies_plural": "",
-      "loadMore": "",
-      "title": ""
-    },
-    "common": {
-      "description": "",
-      "legal": "",
-      "like": "",
-      "like_plural": "",
-      "link": "",
-      "reply": "",
-      "title": ""
-    },
-    "common_old": {
-      "signout": "",
-      "download": "",
-      "explore": "",
-      "feed": "",
-      "login": "",
-      "register": "",
-      "sign_out": "",
-      "chat": "",
-      "feedback": "",
-      "field_bio": "",
-      "field_firstname": "",
-      "field_lastname": "",
-      "field_website": "",
-      "mail": "",
-      "save": "",
-      "sections_language": "",
-      "sections_notifications": "",
-      "sections_profile": "",
-      "sections_support": "",
-      "toast_error": "",
-      "toast_saved": ""
-    },
-    "edit-collection": {
-      "add": "",
-      "delete": "",
-      "done": "",
-      "placeholder": "",
-      "title": ""
-    },
-    "edit-model": {
-      "headerTitle": "",
-      "placeholder": "",
-      "save": "",
-      "title": ""
-    },
-    "edit-post": {
-      "cancel": "",
-      "headerTitle": "",
-      "placeholder": "",
-      "save": ""
-    },
-    "edit-profile": {
-      "bio": "",
-      "change": "",
-      "firstName": "",
-      "headerTitle": "",
-      "imagePickerCancel": "",
-      "imagePickerLibrary": "",
-      "imagePickerPermissionOk": "",
-      "imagePickerPermissionRetry": "",
-      "imagePickerPermissionText": "",
-      "imagePickerPermissionTitle": "",
-      "imagePickerPhoto": "",
-      "imagePickerTitle": "",
-      "information": "",
-      "lastName": "",
-      "place": "",
-      "remove": "",
-      "save": "",
-      "username": "",
-      "validation": "",
-      "validationUsername": "",
-      "website": "",
-      "wrong": ""
-    },
-    "edit-project": {
-      "cancel": "",
-      "delete": "",
-      "deleteAlert": "",
-      "deleteTitle": "",
-      "description": "",
-      "done": "",
-      "headerTitle": "",
-      "information": "",
-      "model": "",
-      "projectSettings": "",
-      "title": ""
-    },
-    "edit": {
-      "edit": ""
-    },
-    "facebook": {
-      "button": ""
-    },
-    "feed": {
-      "description": "",
-      "title": "Foder"
-    },
-    "follow": {
-      "follow": "Følg dette projekt",
-      "followSmall": "",
-      "unfollow": "Følge",
-      "unfollowSmall": "",
-      "follow_short": "Følge med"
-    },
-    "followers": {
-      "followers": "{{count, humanFormat}} følger",
-      "followers_plural": "{{count, humanFormat}} følgere",
-      "title": ""
-    },
-    "following-projects": {
-      "description": "",
-      "title": "Projekter, du følger"
-    },
-    "footer": {
-      "about": "Om",
-      "blog": "Blog",
-      "chat": "Chat med os",
-      "cookies": "Cookiepolitik",
-      "description": "Wrench er et projektsamfund grundlagt i 2018 i Sverige. Det er designet, bygget og kørt fra hjertet af Stockholm.",
-      "download": "Download apps",
-      "eula": "EULA",
-      "faq": "FAQ",
-      "feedback": "Feedback",
-      "help": "Hjælp",
-      "legal": "gyldige",
-      "mail": "Mail Support",
-      "policy": "Fortrolighedspolitik",
-      "press": "Trykke",
-      "social": "Social",
-      "status": "Status",
-      "terms": "Vilkår og Betingelser",
-      "trademarks": "App Store er et servicemærke tilhørende Apple Inc. Google Play er et varemærke tilhørende Google LLC."
-    },
-    "google": {
-      "button": ""
-    },
-    "hashtag": {
-      "posts": "",
-      "posts_plural": ""
-    },
-    "header": {
-      "download": "Download apps",
-      "explore": "Udforske",
-      "feed": "Foder",
-      "home": "",
-      "login": "Log på",
-      "notifications": "",
-      "register": "Tilmelde"
-    },
-    "home": {
-      "description": "Dokumenter dine bygger, del dine projekter og lær af ligesindede.",
-      "document_title": "Skruenøgle | Dit motorcykel samfund",
-      "explore": "Udforsk flere projekter",
-      "signup": "Tilmeld dig nu",
-      "subtitle": "fællesskab.",
-      "title": "Din motorcykel"
-    },
-    "languages": {
-      "sv": "Svensk",
-      "en": "Engelsk",
-      "es": "Spansk",
-      "it": "Italiensk",
-      "de": "Tysk",
-      "nl": "Hollandsk",
-      "fr": "Fransk",
-      "tl": "Filippinsk",
-      "pt": "Portugisisk",
-      "ru": "Russisk",
-      "no": "Norsk",
-      "da": "Dansk"
-    },
-    "legal": {
-      "description": "Ved at fortsætte accepterer du skruenøgler",
-      "link": "vilkår og betingelser."
-    },
-    "like-post": {
-      "like": "{{count}} gnist",
-      "like_plural": "{{count, humanFormat}} gnister"
-    },
-    "list": {
-      "load_more": "Se 1 kommentar",
-      "load_more_plural": "Se alle {{count, humanFormat}} kommentarer"
-    },
-    "login": {
-      "apple_button": "Fortsæt med Apple",
-      "fb_button": "Fortsæt med Facebook",
-      "google_button": "Fortsæt med Google",
-      "title": "Log ind for at følge dine yndlingsprojekter og mere."
-    },
-    "logout": {
-      "logout": "Log ud",
-      "profile": "Profil",
-      "settings": "Indstillinger"
-    },
-    "me": {
-      "bookmarks": "",
-      "edit": "",
-      "settings": ""
-    },
-    "media-picker-list": {
-      "deselectAll": ""
-    },
-    "mobile-menu": {
-      "download": "Download apps",
-      "explore": "Udforske",
-      "feed": "Foder",
-      "login": "Log på",
-      "register": "Tilmelde",
-      "sign_out": "Log ud"
-    },
-    "no-results": {
-      "title": ""
-    },
-    "notification": {
-      "comment": "Kommenterede dit indlæg",
-      "comment_like": "Udløste din kommentar",
-      "follow": "Nu følger dit projekt",
-      "mention": "Omtalte dig i en kommentar",
-      "post_like": "Udløste dit indlæg",
-      "reply": "Besvaret din kommentar"
-    },
-    "notifications": {
-      "comment": "",
-      "commentLike": "",
-      "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
-      "follow": "",
-      "mention": "",
-      "postLike": "",
-      "reply": "",
-      "title": "Ingen meddelelser endnu."
-    },
-    "onboarding": {
-      "description": "Vælg mindst tre kategorier, som du er interesseret i, og vi giver dig nogle gode projekter til at begynde med.",
-      "headerTitle": "",
-      "headline": "",
-      "next": "Næste",
-      "save": "",
-      "title": "Hvad er du interesseret i?"
-    },
-    "options": {
-      "alertTitle": "",
-      "cancel": "",
-      "collection": "",
-      "delete": "",
-      "edit": "",
-      "removeCollection": "",
-      "report": ""
-    },
-    "options_old": {
-      "discard": "",
-      "title": ""
-    },
-    "popular": {
-      "description": "Her ser du de mest populære projekter fra denne uge.",
-      "popular": "",
-      "recent": "",
-      "title": "Populære projekter"
-    },
-    "post-container": {
-      "loadMore": "",
-      "title": ""
-    },
-    "post": {
-      "selectCollection": "",
-      "showCollection": ""
-    },
-    "posting": {
-      "description": ""
-    },
-    "project-card": {
-      "follow": "",
-      "unfollow": ""
-    },
-    "project-suggestion": {
-      "description": "Vi har valgt nogle projekter nedenfor, som du måske finder interessante.",
-      "title": "Bliv opdateret og følg nogle projekter.",
-      "title_small": "Foreslået til dig"
-    },
-    "project-suggestion_old": {
-      "headline": "Bliv opdateret og følg nogle projekter."
-    },
-    "project-suggestions": {
-      "description": "",
-      "title": ""
-    },
-    "project-types": {
-      "inspo": ""
-    },
-    "project": {
-      "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} stillinger - {{fullName}} . (@{{username}}) på Wrench",
-      "recent": "",
-      "share": "Del",
-      "similar": "Lignende projekter",
-      "title": "{{title}} - {{type}} projekt",
-      "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} indlæg - {{fullName}} . (@{{username}}) på Wrench"
-    },
-    "promo": {
-      "button_default": "Sende",
-      "button_success": "Sendt",
-      "description": "Indtast dit nummer, og få et SMS-link engang.",
-      "title": "Download Wrench-appen på Appstore og Google play"
-    },
-    "push-notifications": {
-      "approve": "",
-      "decline": "",
-      "description": "",
-      "title": ""
-    },
-    "result": {
-      "not_found": "Ingen søgeresultater fundet.",
-      "projects": "{{count, humanFormat}} projekt",
-      "projects_plural": "{{count, humanFormat}} projekter"
-    },
-    "search-bar": {
-      "cancel": "",
-      "placeholder": ""
-    },
-    "search-location-footer": {
-      "poweredBy": ""
-    },
-    "search-location": {
-      "no_result": "Ingen resultater.",
-      "placeholder": "By land"
-    },
-    "search": {
-      "clear": "",
-      "placeholder": "Søg",
-      "recent": ""
-    },
-    "searching-for": {
-      "title": ""
-    },
-    "sections": {
-      "language": "",
-      "notifications": "",
-      "profile": "",
-      "support": ""
-    },
-    "select-project": {
-      "create": ""
-    },
-    "settings": {
-      "chat": "Chat med os",
-      "feedback": "Feedback",
-      "field": {
-        "bio": "",
-        "firstname": "",
-        "lastname": "",
-        "website": ""
-      },
-      "mail": "Mail Support",
-      "save": "Gemme",
-      "sections": {
-        "language": "",
-        "notifications": "",
-        "profile": "",
-        "support": ""
-      },
-      "title": "Indstillinger",
-      "toast": {
-        "error": "",
-        "saved": ""
-      },
-      "field_bio": "Bio",
-      "field_firstname": "Fornavn",
-      "field_lastname": "Efternavn",
-      "field_website": "Internet side",
-      "toast_error": "Noget gik galt",
-      "toast_saved": "Indstillinger gemt",
-      "sections_language": "Sprog",
-      "sections_notifications": "Meddelelser",
-      "sections_profile": "Rediger profil",
-      "sections_support": "Support"
-    },
-    "settings_old": {
-      "new_comment": "Kommentarer",
-      "new_mention": "Nævner",
-      "new_article": "Artikler",
-      "new_follower": "Følgere",
-      "similar_projects": "Lignende projekter",
-      "product_announcements": "Produktmeddelelser",
-      "sections:profile": ""
-    },
-    "share": {
-      "share": ""
-    },
-    "show-latest": {
-      "button": ""
-    },
-    "sign-in": {
-      "description": "",
-      "headline": "",
-      "other": ""
-    },
-    "similar-projects": {
-      "title": ""
-    },
-    "sparks": {
-      "title": ""
-    },
-    "suggestions": {
-      "description": "",
-      "headline": "",
-      "next": ""
-    },
-    "text": {
-      "more": ""
-    },
-    "time": {
-      "d": "{{count}} dage siden",
-      "d_plural": "{{count}} dage siden",
-      "h": "{{count}} timer siden",
-      "h_plural": "{{count}} timer siden",
-      "m": "{{count}} minut siden",
-      "m_plural": "{{count}} minutter siden",
-      "mo": "{{count}} måneder siden",
-      "mo_plural": "{{count}} måneder siden",
-      "now": "lige nu",
-      "y": "{{count}} år siden",
-      "y_plural": "{{count}} år siden"
-    },
-    "toast": {
-      "network": "",
-      "spam": ""
-    },
-    "translations": {
-      "CommentItem": {
-        "like": "",
-        "like_plural": "",
-        "reply": ""
-      },
-      "add-collection": {
-        "add": "",
-        "done": "",
-        "placeholder": "",
-        "title": ""
-      },
-      "add-media": {
-        "next": ""
-      },
-      "add-post-to-collection": {
-        "done": "",
-        "title": ""
-      },
-      "add-post": {
-        "add": "",
-        "collection": "",
-        "error": "",
-        "placeholder": ""
-      },
-      "add-project-model": {
-        "add": "",
-        "headerTitle": "",
-        "placeholder": "",
-        "skip": "",
-        "title": ""
-      },
-      "add-project-type": {
-        "headerTitle": "",
-        "title": ""
-      },
-      "add-project": {
-        "headerTitle": "",
-        "next": "",
-        "placeholder": "",
-        "title": ""
-      },
-      "blog-post": {
-        "back": "Tilbage til bloggen",
-        "title": "Blog"
-      },
-      "blog": {
-        "title": "Blog"
-      },
-      "bookmarks": {
-        "description": "",
-        "headerTitle": "",
-        "title": ""
-      },
-      "collections": {
-        "edit": "",
-        "title": "Samlinger"
-      },
-      "comment-field": {
-        "placeholder": "Tilføj en kommentar...",
-        "post": "Stolpe"
-      },
-      "comment-item": {
-        "loadReplies": "",
-        "loadReplies_plural": ""
-      },
-      "comment-list": {
-        "loadMore": "",
-        "loadMore_plural": ""
-      },
-      "comments": {
-        "load_replies": "Se svar ({{count}})",
-        "load_replies_plural": "",
-        "loadMore": "",
-        "title": ""
-      },
-      "common": {
-        "description": "",
-        "legal": "",
-        "like": "",
-        "like_plural": "",
-        "link": "",
-        "reply": "",
-        "title": ""
-      },
-      "common_old": {
-        "signout": "",
-        "download": "",
-        "explore": "",
-        "feed": "",
-        "login": "",
-        "register": "",
-        "sign_out": "",
-        "chat": "",
-        "feedback": "",
-        "field_bio": "",
-        "field_firstname": "",
-        "field_lastname": "",
-        "field_website": "",
-        "mail": "",
-        "save": "",
-        "sections_language": "",
-        "sections_notifications": "",
-        "sections_profile": "",
-        "sections_support": "",
-        "toast_error": "",
-        "toast_saved": ""
-      },
-      "edit-collection": {
-        "add": "",
-        "delete": "",
-        "done": "",
-        "placeholder": "",
-        "title": ""
-      },
-      "edit-model": {
-        "headerTitle": "",
-        "placeholder": "",
-        "save": "",
-        "title": ""
-      },
-      "edit-post": {
-        "cancel": "",
-        "headerTitle": "",
-        "placeholder": "",
-        "save": ""
-      },
-      "edit-profile": {
-        "bio": "",
-        "change": "",
-        "firstName": "",
-        "headerTitle": "",
-        "imagePickerCancel": "",
-        "imagePickerLibrary": "",
-        "imagePickerPermissionOk": "",
-        "imagePickerPermissionRetry": "",
-        "imagePickerPermissionText": "",
-        "imagePickerPermissionTitle": "",
-        "imagePickerPhoto": "",
-        "imagePickerTitle": "",
-        "information": "",
-        "lastName": "",
-        "place": "",
-        "remove": "",
-        "save": "",
-        "username": "",
-        "validation": "",
-        "validationUsername": "",
-        "website": "",
-        "wrong": ""
-      },
-      "edit-project": {
-        "cancel": "",
-        "delete": "",
-        "deleteAlert": "",
-        "deleteTitle": "",
-        "description": "",
-        "done": "",
-        "headerTitle": "",
-        "information": "",
-        "model": "",
-        "projectSettings": "",
-        "title": ""
-      },
-      "edit": {
-        "edit": ""
-      },
-      "facebook": {
-        "button": ""
-      },
-      "feed": {
-        "description": "",
-        "title": "Foder"
-      },
-      "follow": {
-        "follow": "Følg dette projekt",
-        "followSmall": "",
-        "unfollow": "Følge",
-        "unfollowSmall": "",
-        "follow_short": "Følge med"
-      },
-      "followers": {
-        "followers": "{{count, humanFormat}} følger",
-        "followers_plural": "{{count, humanFormat}} følgere",
-        "title": ""
-      },
-      "following-projects": {
-        "description": "",
-        "title": "Projekter, du følger"
-      },
-      "footer": {
-        "about": "Om",
-        "blog": "Blog",
-        "chat": "Chat med os",
-        "cookies": "Cookiepolitik",
-        "description": "Wrench er et projektsamfund grundlagt i 2018 i Sverige. Det er designet, bygget og kørt fra hjertet af Stockholm.",
-        "download": "Download apps",
-        "eula": "EULA",
-        "faq": "FAQ",
-        "feedback": "Feedback",
-        "help": "Hjælp",
-        "legal": "gyldige",
-        "mail": "Mail Support",
-        "policy": "Fortrolighedspolitik",
-        "press": "Trykke",
-        "social": "Social",
-        "status": "Status",
-        "terms": "Vilkår og Betingelser",
-        "trademarks": "App Store er et servicemærke tilhørende Apple Inc. Google Play er et varemærke tilhørende Google LLC."
-      },
-      "google": {
-        "button": ""
-      },
-      "hashtag": {
-        "posts": "",
-        "posts_plural": ""
-      },
-      "header": {
-        "download": "Download apps",
-        "explore": "Udforske",
-        "feed": "Foder",
-        "home": "",
-        "login": "Log på",
-        "notifications": "",
-        "register": "Tilmelde"
-      },
-      "home": {
-        "description": "Dokumenter dine bygger, del dine projekter og lær af ligesindede.",
-        "document_title": "Skruenøgle | Dit motorcykel samfund",
-        "explore": "Udforsk flere projekter",
-        "signup": "Tilmeld dig nu",
-        "subtitle": "fællesskab.",
-        "title": "Din motorcykel"
-      },
-      "languages": {
-        "sv": "Svensk",
-        "en": "Engelsk",
-        "es": "Spansk",
-        "it": "Italiensk",
-        "de": "Tysk",
-        "nl": "Hollandsk",
-        "fr": "Fransk",
-        "tl": "Filippinsk",
-        "pt": "Portugisisk",
-        "ru": "Russisk",
-        "no": "Norsk",
-        "da": "Dansk"
-      },
-      "legal": {
-        "description": "Ved at fortsætte accepterer du skruenøgler",
-        "link": "vilkår og betingelser."
-      },
-      "like-post": {
-        "like": "{{count}} gnist",
-        "like_plural": "{{count, humanFormat}} gnister"
-      },
-      "list": {
-        "load_more": "Se 1 kommentar",
-        "load_more_plural": "Se alle {{count, humanFormat}} kommentarer"
-      },
-      "login": {
-        "apple_button": "Fortsæt med Apple",
-        "fb_button": "Fortsæt med Facebook",
-        "google_button": "Fortsæt med Google",
-        "title": "Log ind for at følge dine yndlingsprojekter og mere."
-      },
-      "logout": {
-        "logout": "Log ud",
-        "profile": "Profil",
-        "settings": "Indstillinger"
-      },
-      "me": {
-        "bookmarks": "",
-        "edit": "",
-        "settings": ""
-      },
-      "media-picker-list": {
-        "deselectAll": ""
-      },
-      "mobile-menu": {
-        "download": "Download apps",
-        "explore": "Udforske",
-        "feed": "Foder",
-        "login": "Log på",
-        "register": "Tilmelde",
-        "sign_out": "Log ud"
-      },
-      "no-results": {
-        "title": ""
-      },
-      "notification": {
-        "comment": "Kommenterede dit indlæg",
-        "comment_like": "Udløste din kommentar",
-        "follow": "Nu følger dit projekt",
-        "mention": "Omtalte dig i en kommentar",
-        "post_like": "Udløste dit indlæg",
-        "reply": "Besvaret din kommentar"
-      },
-      "notifications": {
-        "comment": "",
-        "commentLike": "",
-        "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
-        "follow": "",
-        "mention": "",
-        "postLike": "",
-        "reply": "",
-        "title": "Ingen meddelelser endnu."
-      },
-      "onboarding": {
-        "description": "Vælg mindst tre kategorier, som du er interesseret i, og vi giver dig nogle gode projekter til at begynde med.",
-        "headerTitle": "",
-        "headline": "",
-        "next": "Næste",
-        "save": "",
-        "title": "Hvad er du interesseret i?"
-      },
-      "options": {
-        "alertTitle": "",
-        "cancel": "",
-        "collection": "",
-        "delete": "",
-        "discard": "",
-        "edit": "",
-        "removeCollection": "",
-        "report": "",
-        "title": ""
-      },
-      "popular": {
-        "description": "Her ser du de mest populære projekter fra denne uge.",
-        "popular": "",
-        "recent": "",
-        "title": "Populære projekter"
-      },
-      "post-container": {
-        "loadMore": "",
-        "title": ""
-      },
-      "post": {
-        "selectCollection": "",
-        "showCollection": ""
-      },
-      "posting": {
-        "description": ""
-      },
-      "project-card": {
-        "follow": "",
-        "unfollow": ""
-      },
-      "project-suggestion": {
-        "description": "Vi har valgt nogle projekter nedenfor, som du måske finder interessante.",
-        "title": "Bliv opdateret og følg nogle projekter.",
-        "title_small": "Foreslået til dig"
-      },
-      "project-suggestion_old": {
-        "headline": "Bliv opdateret og følg nogle projekter."
-      },
-      "project-suggestions": {
-        "description": "",
-        "title": ""
-      },
-      "project-types": {
-        "inspo": ""
-      },
-      "project": {
-        "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} stillinger - {{fullName}} . (@{{username}}) på Wrench",
-        "recent": "",
-        "share": "Del",
-        "similar": "Lignende projekter",
-        "title": "{{title}} - {{type}} projekt",
-        "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} indlæg - {{fullName}} . (@{{username}}) på Wrench"
-      },
-      "promo": {
-        "button_default": "Sende",
-        "button_success": "Sendt",
-        "description": "Indtast dit nummer, og få et SMS-link engang.",
-        "title": "Download Wrench-appen på Appstore og Google play"
-      },
-      "push-notifications": {
-        "approve": "",
-        "decline": "",
-        "description": "",
-        "title": ""
-      },
-      "result": {
-        "not_found": "Ingen søgeresultater fundet.",
-        "projects": "{{count, humanFormat}} projekt",
-        "projects_plural": "{{count, humanFormat}} projekter"
-      },
-      "search-bar": {
-        "cancel": "",
-        "placeholder": ""
-      },
-      "search-location-footer": {
-        "poweredBy": ""
-      },
-      "search-location": {
-        "no_result": "Ingen resultater.",
-        "placeholder": "By land"
-      },
-      "search": {
-        "clear": "",
-        "placeholder": "Søg",
-        "recent": ""
-      },
-      "searching-for": {
-        "title": ""
-      },
-      "sections": {
-        "language": "",
-        "notifications": "",
-        "profile": "",
-        "support": ""
-      },
-      "select-project": {
-        "create": ""
-      },
-      "settings": {
-        "chat": "Chat med os",
-        "feedback": "Feedback",
-        "field_bio": "Bio",
-        "field_firstname": "Fornavn",
-        "field_lastname": "Efternavn",
-        "field_website": "Internet side",
-        "mail": "Mail Support",
-        "save": "Gemme",
-        "sections": {
-          "language": "",
-          "notifications": "",
-          "profile": "",
-          "support": ""
-        },
-        "title": "Indstillinger",
-        "toast_error": "Noget gik galt",
-        "toast_saved": "Indstillinger gemt",
-        "sections_language": "Sprog",
-        "sections_notifications": "Meddelelser",
-        "sections_profile": "Rediger profil",
-        "sections_support": "Support"
-      },
-      "settings_old": {
-        "new_comment": "Kommentarer",
-        "new_mention": "Nævner",
-        "new_article": "Artikler",
-        "new_follower": "Følgere",
-        "similar_projects": "Lignende projekter",
-        "product_announcements": "Produktmeddelelser",
-        "sections:profile": ""
-      },
-      "share": {
-        "share": ""
-      },
-      "show-latest": {
-        "button": ""
-      },
-      "sign-in": {
-        "description": "",
-        "headline": "",
-        "other": ""
-      },
-      "similar-projects": {
-        "title": ""
-      },
-      "sparks": {
-        "title": ""
-      },
-      "suggestions": {
-        "description": "",
-        "headline": "",
-        "next": ""
-      },
-      "text": {
-        "more": ""
-      },
-      "time": {
-        "d": "{{count}} dage siden",
-        "d_plural": "{{count}} dage siden",
-        "h": "{{count}} timer siden",
-        "h_plural": "{{count}} timer siden",
-        "m": "{{count}} minut siden",
-        "m_plural": "{{count}} minutter siden",
-        "mo": "{{count}} måneder siden",
-        "mo_plural": "{{count}} måneder siden",
-        "now": "lige nu",
-        "y": "{{count}} år siden",
-        "y_plural": "{{count}} år siden"
-      },
-      "toast": {
-        "network": "",
-        "spam": ""
-      },
-      "translations": {
-        "CommentItem": {
-          "like": "",
-          "like_plural": "",
-          "reply": ""
-        },
-        "add-collection": {
-          "add": "",
-          "done": "",
-          "placeholder": "",
-          "title": ""
-        },
-        "add-media": {
-          "next": ""
-        },
-        "add-post-to-collection": {
-          "done": "",
-          "title": ""
-        },
-        "add-post": {
-          "add": "",
-          "collection": "",
-          "error": "",
-          "placeholder": ""
-        },
-        "add-project-model": {
-          "add": "",
-          "headerTitle": "",
-          "placeholder": "",
-          "skip": "",
-          "title": ""
-        },
-        "add-project-type": {
-          "headerTitle": "",
-          "title": ""
-        },
-        "add-project": {
-          "headerTitle": "",
-          "next": "",
-          "placeholder": "",
-          "title": ""
-        },
-        "blog-post": {
-          "back": "Tilbage til bloggen",
-          "title": "Blog"
-        },
-        "blog": {
-          "title": "Blog"
-        },
-        "bookmarks": {
-          "description": "",
-          "headerTitle": "",
-          "title": ""
-        },
-        "collections": {
-          "edit": "",
-          "title": "Samlinger"
-        },
-        "comment-field": {
-          "placeholder": "Tilføj en kommentar...",
-          "post": "Stolpe"
-        },
-        "comment-item": {
-          "loadReplies": "",
-          "loadReplies_plural": ""
-        },
-        "comment-list": {
-          "loadMore": "",
-          "loadMore_plural": ""
-        },
-        "comments": {
-          "load_replies": "Se svar ({{count}})",
-          "load_replies_plural": "",
-          "loadMore": "",
-          "title": ""
-        },
-        "common": {
-          "description": "",
-          "legal": "",
-          "like": "",
-          "like_plural": "",
-          "link": "",
-          "reply": "",
-          "title": ""
-        },
-        "common_old": {
-          "signout": "",
-          "download": "",
-          "explore": "",
-          "feed": "",
-          "login": "",
-          "register": "",
-          "sign_out": "",
-          "chat": "",
-          "feedback": "",
-          "field_bio": "",
-          "field_firstname": "",
-          "field_lastname": "",
-          "field_website": "",
-          "mail": "",
-          "save": "",
-          "sections_language": "",
-          "sections_notifications": "",
-          "sections_profile": "",
-          "sections_support": "",
-          "toast_error": "",
-          "toast_saved": ""
-        },
-        "edit-collection": {
-          "add": "",
-          "delete": "",
-          "done": "",
-          "placeholder": "",
-          "title": ""
-        },
-        "edit-model": {
-          "headerTitle": "",
-          "placeholder": "",
-          "save": "",
-          "title": ""
-        },
-        "edit-post": {
-          "cancel": "",
-          "headerTitle": "",
-          "placeholder": "",
-          "save": ""
-        },
-        "edit-profile": {
-          "bio": "",
-          "change": "",
-          "firstName": "",
-          "headerTitle": "",
-          "imagePickerCancel": "",
-          "imagePickerLibrary": "",
-          "imagePickerPermissionOk": "",
-          "imagePickerPermissionRetry": "",
-          "imagePickerPermissionText": "",
-          "imagePickerPermissionTitle": "",
-          "imagePickerPhoto": "",
-          "imagePickerTitle": "",
-          "information": "",
-          "lastName": "",
-          "place": "",
-          "remove": "",
-          "save": "",
-          "username": "",
-          "validation": "",
-          "validationUsername": "",
-          "website": "",
-          "wrong": ""
-        },
-        "edit-project": {
-          "cancel": "",
-          "delete": "",
-          "deleteAlert": "",
-          "deleteTitle": "",
-          "description": "",
-          "done": "",
-          "headerTitle": "",
-          "information": "",
-          "model": "",
-          "projectSettings": "",
-          "title": ""
-        },
-        "edit": {
-          "edit": ""
-        },
-        "facebook": {
-          "button": ""
-        },
-        "feed": {
-          "description": "",
-          "title": "Foder"
-        },
-        "follow": {
-          "follow": "Følg dette projekt",
-          "followSmall": "",
-          "unfollow": "Følge",
-          "unfollowSmall": "",
-          "follow_short": "Følge med"
-        },
-        "followers": {
-          "followers": "{{count, humanFormat}} følger",
-          "followers_plural": "{{count, humanFormat}} følgere",
-          "title": ""
-        },
-        "following-projects": {
-          "description": "",
-          "title": "Projekter, du følger"
-        },
-        "footer": {
-          "about": "Om",
-          "blog": "Blog",
-          "chat": "Chat med os",
-          "cookies": "Cookiepolitik",
-          "description": "Wrench er et projektsamfund grundlagt i 2018 i Sverige. Det er designet, bygget og kørt fra hjertet af Stockholm.",
-          "download": "Download apps",
-          "eula": "EULA",
-          "faq": "FAQ",
-          "feedback": "Feedback",
-          "help": "Hjælp",
-          "legal": "gyldige",
-          "mail": "Mail Support",
-          "policy": "Fortrolighedspolitik",
-          "press": "Trykke",
-          "social": "Social",
-          "status": "Status",
-          "terms": "Vilkår og Betingelser",
-          "trademarks": "App Store er et servicemærke tilhørende Apple Inc. Google Play er et varemærke tilhørende Google LLC."
-        },
-        "google": {
-          "button": ""
-        },
-        "hashtag": {
-          "posts": "",
-          "posts_plural": ""
-        },
-        "header": {
-          "download": "Download apps",
-          "explore": "Udforske",
-          "feed": "Foder",
-          "home": "",
-          "login": "Log på",
-          "notifications": "",
-          "register": "Tilmelde"
-        },
-        "home": {
-          "description": "Dokumenter dine bygger, del dine projekter og lær af ligesindede.",
-          "document_title": "Skruenøgle | Dit motorcykel samfund",
-          "explore": "Udforsk flere projekter",
-          "signup": "Tilmeld dig nu",
-          "subtitle": "fællesskab.",
-          "title": "Din motorcykel"
-        },
-        "languages": {
-          "sv": "Svensk",
-          "en": "Engelsk",
-          "es": "Spansk",
-          "it": "Italiensk",
-          "de": "Tysk",
-          "nl": "Hollandsk",
-          "fr": "Fransk",
-          "tl": "Filippinsk",
-          "pt": "Portugisisk",
-          "ru": "Russisk",
-          "no": "Norsk",
-          "da": "Dansk"
-        },
-        "legal": {
-          "description": "Ved at fortsætte accepterer du skruenøgler",
-          "link": "vilkår og betingelser."
-        },
-        "like-post": {
-          "like": "{{count}} gnist",
-          "like_plural": "{{count, humanFormat}} gnister"
-        },
-        "list": {
-          "load_more": "Se 1 kommentar",
-          "load_more_plural": "Se alle {{count, humanFormat}} kommentarer"
-        },
-        "login": {
-          "apple_button": "Fortsæt med Apple",
-          "fb_button": "Fortsæt med Facebook",
-          "google_button": "Fortsæt med Google",
-          "title": "Log ind for at følge dine yndlingsprojekter og mere."
-        },
-        "logout": {
-          "logout": "Log ud",
-          "profile": "Profil",
-          "settings": "Indstillinger"
-        },
-        "me": {
-          "bookmarks": "",
-          "edit": "",
-          "settings": ""
-        },
-        "media-picker-list": {
-          "deselectAll": ""
-        },
-        "mobile-menu": {
-          "download": "Download apps",
-          "explore": "Udforske",
-          "feed": "Foder",
-          "login": "Log på",
-          "register": "Tilmelde",
-          "sign_out": "Log ud"
-        },
-        "no-results": {
-          "title": ""
-        },
-        "notification": {
-          "comment": "Kommenterede dit indlæg",
-          "comment_like": "Udløste din kommentar",
-          "follow": "Nu følger dit projekt",
-          "mention": "Omtalte dig i en kommentar",
-          "post_like": "Udløste dit indlæg",
-          "reply": "Besvaret din kommentar"
-        },
-        "notifications": {
-          "comment": "",
-          "commentLike": "",
-          "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
-          "follow": "",
-          "mention": "",
-          "postLike": "",
-          "reply": "",
-          "title": "Ingen meddelelser endnu."
-        },
-        "onboarding": {
-          "description": "Vælg mindst tre kategorier, som du er interesseret i, og vi giver dig nogle gode projekter til at begynde med.",
-          "headerTitle": "",
-          "headline": "",
-          "next": "Næste",
-          "save": "",
-          "title": "Hvad er du interesseret i?"
-        },
-        "options": {
-          "alertTitle": "",
-          "cancel": "",
-          "collection": "",
-          "delete": "",
-          "discard": "",
-          "edit": "",
-          "removeCollection": "",
-          "report": "",
-          "title": ""
-        },
-        "popular": {
-          "description": "Her ser du de mest populære projekter fra denne uge.",
-          "popular": "",
-          "recent": "",
-          "title": "Populære projekter"
-        },
-        "post-container": {
-          "loadMore": "",
-          "title": ""
-        },
-        "post": {
-          "selectCollection": "",
-          "showCollection": ""
-        },
-        "posting": {
-          "description": ""
-        },
-        "project-card": {
-          "follow": "",
-          "unfollow": ""
-        },
-        "project-suggestion": {
-          "description": "Vi har valgt nogle projekter nedenfor, som du måske finder interessante.",
-          "title": "Bliv opdateret og følg nogle projekter.",
-          "title_small": "Foreslået til dig"
-        },
-        "project-suggestion_old": {
-          "headline": "Bliv opdateret og følg nogle projekter."
-        },
-        "project-suggestions": {
-          "description": "",
-          "title": ""
-        },
-        "project-types": {
-          "inspo": ""
-        },
-        "project": {
-          "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} stillinger - {{fullName}} . (@{{username}}) på Wrench",
-          "recent": "",
-          "share": "Del",
-          "similar": "Lignende projekter",
-          "title": "{{title}} - {{type}} projekt",
-          "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} indlæg - {{fullName}} . (@{{username}}) på Wrench"
-        },
-        "promo": {
-          "button_default": "Sende",
-          "button_success": "Sendt",
-          "description": "Indtast dit nummer, og få et SMS-link engang.",
-          "title": "Download Wrench-appen på Appstore og Google play"
-        },
-        "push-notifications": {
-          "approve": "",
-          "decline": "",
-          "description": "",
-          "title": ""
-        },
-        "result": {
-          "not_found": "Ingen søgeresultater fundet.",
-          "projects": "{{count, humanFormat}} projekt",
-          "projects_plural": "{{count, humanFormat}} projekter"
-        },
-        "search-bar": {
-          "cancel": "",
-          "placeholder": ""
-        },
-        "search-location-footer": {
-          "poweredBy": ""
-        },
-        "search-location": {
-          "no_result": "Ingen resultater.",
-          "placeholder": "By land"
-        },
-        "search": {
-          "clear": "",
-          "placeholder": "Søg",
-          "recent": ""
-        },
-        "searching-for": {
-          "title": ""
-        },
-        "sections": {
-          "language": "",
-          "notifications": "",
-          "profile": "",
-          "support": ""
-        },
-        "select-project": {
-          "create": ""
-        },
-        "settings": {
-          "chat": "Chat med os",
-          "feedback": "Feedback",
-          "field_bio": "Bio",
-          "field_firstname": "Fornavn",
-          "field_lastname": "Efternavn",
-          "field_website": "Internet side",
-          "mail": "Mail Support",
-          "save": "Gemme",
-          "sections": {
-            "language": "",
-            "notifications": "",
-            "profile": "",
-            "support": ""
-          },
-          "title": "Indstillinger",
-          "toast_error": "Noget gik galt",
-          "toast_saved": "Indstillinger gemt",
-          "sections_language": "Sprog",
-          "sections_notifications": "Meddelelser",
-          "sections_profile": "Rediger profil",
-          "sections_support": "Support"
-        },
-        "settings_old": {
-          "new_comment": "Kommentarer",
-          "new_mention": "Nævner",
-          "new_article": "Artikler",
-          "new_follower": "Følgere",
-          "similar_projects": "Lignende projekter",
-          "product_announcements": "Produktmeddelelser",
-          "sections:profile": ""
-        },
-        "share": {
-          "share": ""
-        },
-        "show-latest": {
-          "button": ""
-        },
-        "sign-in": {
-          "description": "",
-          "headline": "",
-          "other": ""
-        },
-        "similar-projects": {
-          "title": ""
-        },
-        "sparks": {
-          "title": ""
-        },
-        "suggestions": {
-          "description": "",
-          "headline": "",
-          "next": ""
-        },
-        "text": {
-          "more": ""
-        },
-        "time": {
-          "d": "{{count}} dage siden",
-          "d_plural": "{{count}} dage siden",
-          "h": "{{count}} timer siden",
-          "h_plural": "{{count}} timer siden",
-          "m": "{{count}} minut siden",
-          "m_plural": "{{count}} minutter siden",
-          "mo": "{{count}} måneder siden",
-          "mo_plural": "{{count}} måneder siden",
-          "now": "lige nu",
-          "y": "{{count}} år siden",
-          "y_plural": "{{count}} år siden"
-        },
-        "toast": {
-          "network": "",
-          "spam": ""
-        },
-        "translations": {
-          "CommentItem": {
-            "like": "",
-            "like_plural": "",
-            "reply": ""
-          },
-          "add-collection": {
-            "add": "",
-            "done": "",
-            "placeholder": "",
-            "title": ""
-          },
-          "add-media": {
-            "next": ""
-          },
-          "add-post-to-collection": {
-            "done": "",
-            "title": ""
-          },
-          "add-post": {
-            "add": "",
-            "collection": "",
-            "error": "",
-            "placeholder": ""
-          },
-          "add-project-model": {
-            "add": "",
-            "headerTitle": "",
-            "placeholder": "",
-            "skip": "",
-            "title": ""
-          },
-          "add-project-type": {
-            "headerTitle": "",
-            "title": ""
-          },
-          "add-project": {
-            "headerTitle": "",
-            "next": "",
-            "placeholder": "",
-            "title": ""
-          },
-          "blog-post": {
-            "back": "Tilbage til bloggen",
-            "title": "Blog"
-          },
-          "blog": {
-            "title": "Blog"
-          },
-          "bookmarks": {
-            "description": "",
-            "headerTitle": "",
-            "title": ""
-          },
-          "collections": {
-            "edit": "",
-            "title": "Samlinger"
-          },
-          "comment-field": {
-            "placeholder": "Tilføj en kommentar...",
-            "post": "Stolpe"
-          },
-          "comment-item": {
-            "loadReplies": "",
-            "loadReplies_plural": ""
-          },
-          "comment-list": {
-            "loadMore": "",
-            "loadMore_plural": ""
-          },
-          "comments": {
-            "load_replies": "Se svar ({{count}})",
-            "load_replies_plural": "",
-            "loadMore": "",
-            "title": ""
-          },
-          "common": {
-            "chat": "",
-            "description": "",
-            "feedback": "",
-            "field_bio": "",
-            "field_firstname": "",
-            "field_lastname": "",
-            "field_website": "",
-            "legal": "",
-            "like": "",
-            "like_plural": "",
-            "link": "",
-            "mail": "",
-            "reply": "",
-            "save": "",
-            "sections_language": "",
-            "sections_notifications": "",
-            "sections_profile": "",
-            "sections_support": "",
-            "title": "",
-            "toast_error": "",
-            "toast_saved": ""
-          },
-          "common_old": {
-            "signout": "",
-            "download": "",
-            "explore": "",
-            "feed": "",
-            "login": "",
-            "register": "",
-            "sign_out": ""
-          },
-          "edit-collection": {
-            "add": "",
-            "delete": "",
-            "done": "",
-            "placeholder": "",
-            "title": ""
-          },
-          "edit-model": {
-            "headerTitle": "",
-            "placeholder": "",
-            "save": "",
-            "title": ""
-          },
-          "edit-post": {
-            "cancel": "",
-            "headerTitle": "",
-            "placeholder": "",
-            "save": ""
-          },
-          "edit-profile": {
-            "bio": "",
-            "change": "",
-            "firstName": "",
-            "headerTitle": "",
-            "imagePickerCancel": "",
-            "imagePickerLibrary": "",
-            "imagePickerPermissionOk": "",
-            "imagePickerPermissionRetry": "",
-            "imagePickerPermissionText": "",
-            "imagePickerPermissionTitle": "",
-            "imagePickerPhoto": "",
-            "imagePickerTitle": "",
-            "information": "",
-            "lastName": "",
-            "place": "",
-            "remove": "",
-            "save": "",
-            "username": "",
-            "validation": "",
-            "validationUsername": "",
-            "website": "",
-            "wrong": ""
-          },
-          "edit-project": {
-            "cancel": "",
-            "delete": "",
-            "deleteAlert": "",
-            "deleteTitle": "",
-            "description": "",
-            "done": "",
-            "headerTitle": "",
-            "information": "",
-            "model": "",
-            "projectSettings": "",
-            "title": ""
-          },
-          "edit": {
-            "edit": ""
-          },
-          "facebook": {
-            "button": ""
-          },
-          "feed": {
-            "description": "",
-            "title": "Foder"
-          },
-          "follow": {
-            "follow": "Følg dette projekt",
-            "followSmall": "",
-            "unfollow": "Følge",
-            "unfollowSmall": "",
-            "follow_short": "Følge med"
-          },
-          "followers": {
-            "followers": "{{count, humanFormat}} følger",
-            "followers_plural": "{{count, humanFormat}} følgere",
-            "title": ""
-          },
-          "following-projects": {
-            "description": "",
-            "title": "Projekter, du følger"
-          },
-          "footer": {
-            "about": "Om",
-            "blog": "Blog",
-            "chat": "Chat med os",
-            "cookies": "Cookiepolitik",
-            "description": "Wrench er et projektsamfund grundlagt i 2018 i Sverige. Det er designet, bygget og kørt fra hjertet af Stockholm.",
-            "download": "Download apps",
-            "eula": "EULA",
-            "faq": "FAQ",
-            "feedback": "Feedback",
-            "help": "Hjælp",
-            "legal": "gyldige",
-            "mail": "Mail Support",
-            "policy": "Fortrolighedspolitik",
-            "press": "Trykke",
-            "social": "Social",
-            "status": "Status",
-            "terms": "Vilkår og Betingelser",
-            "trademarks": "App Store er et servicemærke tilhørende Apple Inc. Google Play er et varemærke tilhørende Google LLC."
-          },
-          "google": {
-            "button": ""
-          },
-          "hashtag": {
-            "posts": "",
-            "posts_plural": ""
-          },
-          "header": {
-            "download": "Download apps",
-            "explore": "Udforske",
-            "feed": "Foder",
-            "home": "",
-            "login": "Log på",
-            "notifications": "",
-            "register": "Tilmelde"
-          },
-          "home": {
-            "description": "Dokumenter dine bygger, del dine projekter og lær af ligesindede.",
-            "document_title": "Skruenøgle | Dit motorcykel samfund",
-            "explore": "Udforsk flere projekter",
-            "signup": "Tilmeld dig nu",
-            "subtitle": "fællesskab.",
-            "title": "Din motorcykel"
-          },
-          "languages": {
-            "sv": "Svensk",
-            "en": "Engelsk",
-            "es": "Spansk",
-            "it": "Italiensk",
-            "de": "Tysk",
-            "nl": "Hollandsk",
-            "fr": "Fransk",
-            "tl": "Filippinsk",
-            "pt": "Portugisisk",
-            "ru": "Russisk",
-            "no": "Norsk",
-            "da": "Dansk"
-          },
-          "legal": {
-            "description": "Ved at fortsætte accepterer du skruenøgler",
-            "link": "vilkår og betingelser."
-          },
-          "like-post": {
-            "like": "{{count}} gnist",
-            "like_plural": "{{count, humanFormat}} gnister"
-          },
-          "list": {
-            "load_more": "Se 1 kommentar",
-            "load_more_plural": "Se alle {{count, humanFormat}} kommentarer"
-          },
-          "login": {
-            "apple_button": "Fortsæt med Apple",
-            "fb_button": "Fortsæt med Facebook",
-            "google_button": "Fortsæt med Google",
-            "title": "Log ind for at følge dine yndlingsprojekter og mere."
-          },
-          "logout": {
-            "logout": "Log ud",
-            "profile": "Profil",
-            "settings": "Indstillinger"
-          },
-          "me": {
-            "bookmarks": "",
-            "edit": "",
-            "settings": ""
-          },
-          "media-picker-list": {
-            "deselectAll": ""
-          },
-          "mobile-menu": {
-            "download": "Download apps",
-            "explore": "Udforske",
-            "feed": "Foder",
-            "login": "Log på",
-            "register": "Tilmelde",
-            "sign_out": "Log ud"
-          },
-          "no-results": {
-            "title": ""
-          },
-          "notification": {
-            "comment": "Kommenterede dit indlæg",
-            "comment_like": "Udløste din kommentar",
-            "follow": "Nu følger dit projekt",
-            "mention": "Omtalte dig i en kommentar",
-            "post_like": "Udløste dit indlæg",
-            "reply": "Besvaret din kommentar"
-          },
-          "notifications": {
-            "comment": "",
-            "commentLike": "",
-            "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
-            "follow": "",
-            "mention": "",
-            "postLike": "",
-            "reply": "",
-            "title": "Ingen meddelelser endnu."
-          },
-          "onboarding": {
-            "description": "Vælg mindst tre kategorier, som du er interesseret i, og vi giver dig nogle gode projekter til at begynde med.",
-            "headerTitle": "",
-            "headline": "",
-            "next": "Næste",
-            "save": "",
-            "title": "Hvad er du interesseret i?"
-          },
-          "options": {
-            "alertTitle": "",
-            "cancel": "",
-            "collection": "",
-            "delete": "",
-            "discard": "",
-            "edit": "",
-            "removeCollection": "",
-            "report": "",
-            "title": ""
-          },
-          "popular": {
-            "description": "Her ser du de mest populære projekter fra denne uge.",
-            "popular": "",
-            "recent": "",
-            "title": "Populære projekter"
-          },
-          "post-container": {
-            "loadMore": "",
-            "title": ""
-          },
-          "post": {
-            "selectCollection": "",
-            "showCollection": ""
-          },
-          "posting": {
-            "description": ""
-          },
-          "project-card": {
-            "follow": "",
-            "unfollow": ""
-          },
-          "project-suggestion": {
-            "description": "Vi har valgt nogle projekter nedenfor, som du måske finder interessante.",
-            "title": "Bliv opdateret og følg nogle projekter.",
-            "title_small": "Foreslået til dig"
-          },
-          "project-suggestion_old": {
-            "headline": "Bliv opdateret og følg nogle projekter."
-          },
-          "project-suggestions": {
-            "description": "",
-            "title": ""
-          },
-          "project-types": {
-            "inspo": ""
-          },
-          "project": {
-            "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} stillinger - {{fullName}} . (@{{username}}) på Wrench",
-            "recent": "",
-            "share": "Del",
-            "similar": "Lignende projekter",
-            "title": "{{title}} - {{type}} projekt",
-            "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} indlæg - {{fullName}} . (@{{username}}) på Wrench"
-          },
-          "promo": {
-            "button_default": "Sende",
-            "button_success": "Sendt",
-            "description": "Indtast dit nummer, og få et SMS-link engang.",
-            "title": "Download Wrench-appen på Appstore og Google play"
-          },
-          "push-notifications": {
-            "approve": "",
-            "decline": "",
-            "description": "",
-            "title": ""
-          },
-          "result": {
-            "not_found": "Ingen søgeresultater fundet.",
-            "projects": "{{count, humanFormat}} projekt",
-            "projects_plural": "{{count, humanFormat}} projekter"
-          },
-          "search-bar": {
-            "cancel": "",
-            "placeholder": ""
-          },
-          "search-location-footer": {
-            "poweredBy": ""
-          },
-          "search-location": {
-            "no_result": "Ingen resultater.",
-            "placeholder": "By land"
-          },
-          "search": {
-            "clear": "",
-            "placeholder": "Søg",
-            "recent": ""
-          },
-          "searching-for": {
-            "title": ""
-          },
-          "select-project": {
-            "create": ""
-          },
-          "settings": {
-            "sections_profile": "Rediger profil"
-          },
-          "settings_old": {
-            "chat": "Chat med os",
-            "feedback": "Feedback",
-            "field_bio": "Bio",
-            "field_firstname": "Fornavn",
-            "field_lastname": "Efternavn",
-            "field_website": "Internet side",
-            "mail": "Mail Support",
-            "save": "Gemme",
-            "sections_language": "Sprog",
-            "sections_notifications": "Meddelelser",
-            "sections_support": "Support",
-            "title": "Indstillinger",
-            "toast_error": "Noget gik galt",
-            "toast_saved": "Indstillinger gemt",
-            "new_comment": "Kommentarer",
-            "new_mention": "Nævner",
-            "new_article": "Artikler",
-            "new_follower": "Følgere",
-            "similar_projects": "Lignende projekter",
-            "product_announcements": "Produktmeddelelser"
-          },
-          "share": {
-            "share": ""
-          },
-          "show-latest": {
-            "button": ""
-          },
-          "sign-in": {
-            "description": "",
-            "headline": "",
-            "other": ""
-          },
-          "similar-projects": {
-            "title": ""
-          },
-          "sparks": {
-            "title": ""
-          },
-          "suggestions": {
-            "description": "",
-            "headline": "",
-            "next": ""
-          },
-          "text": {
-            "more": ""
-          },
-          "time": {
-            "d": "{{count}} dage siden",
-            "d_plural": "{{count}} dage siden",
-            "h": "{{count}} timer siden",
-            "h_plural": "{{count}} timer siden",
-            "m": "{{count}} minut siden",
-            "m_plural": "{{count}} minutter siden",
-            "mo": "{{count}} måneder siden",
-            "mo_plural": "{{count}} måneder siden",
-            "now": "lige nu",
-            "y": "{{count}} år siden",
-            "y_plural": "{{count}} år siden"
-          },
-          "toast": {
-            "network": "",
-            "spam": ""
-          },
-          "translations": {
-            "CommentItem": {
-              "like": "",
-              "like_plural": "",
-              "reply": ""
-            },
-            "add-collection": {
-              "add": "",
-              "done": "",
-              "placeholder": "",
-              "title": ""
-            },
-            "add-media": {
-              "next": ""
-            },
-            "add-post-to-collection": {
-              "done": "",
-              "title": ""
-            },
-            "add-post": {
-              "add": "",
-              "collection": "",
-              "error": "",
-              "placeholder": ""
-            },
-            "add-project-model": {
-              "add": "",
-              "headerTitle": "",
-              "placeholder": "",
-              "skip": "",
-              "title": ""
-            },
-            "add-project-type": {
-              "headerTitle": "",
-              "title": ""
-            },
-            "add-project": {
-              "headerTitle": "",
-              "next": "",
-              "placeholder": "",
-              "title": ""
-            },
-            "blog-post": {
-              "back": "Tilbage til bloggen",
-              "title": "Blog"
-            },
-            "blog": {
-              "title": "Blog"
-            },
-            "bookmarks": {
-              "description": "",
-              "headerTitle": "",
-              "title": ""
-            },
-            "collections": {
-              "edit": "",
-              "title": "Samlinger"
-            },
-            "comment-field": {
-              "placeholder": "Tilføj en kommentar...",
-              "post": "Stolpe"
-            },
-            "comment-item": {
-              "loadReplies": "",
-              "loadReplies_plural": ""
-            },
-            "comment-list": {
-              "loadMore": "",
-              "loadMore_plural": ""
-            },
-            "comments": {
-              "load_replies": "Se svar ({{count}})",
-              "load_replies_plural": "",
-              "loadMore": "",
-              "title": ""
-            },
-            "common": {
-              "chat": "",
-              "description": "",
-              "feedback": "",
-              "field_bio": "",
-              "field_firstname": "",
-              "field_lastname": "",
-              "field_website": "",
-              "legal": "",
-              "like": "",
-              "like_plural": "",
-              "link": "",
-              "mail": "",
-              "reply": "",
-              "save": "",
-              "sections_language": "",
-              "sections_notifications": "",
-              "sections_profile": "",
-              "sections_support": "",
-              "title": "",
-              "toast_error": "",
-              "toast_saved": ""
-            },
-            "common_old": {
-              "signout": "",
-              "download": "",
-              "explore": "",
-              "feed": "",
-              "login": "",
-              "register": "",
-              "sign_out": ""
-            },
-            "edit-collection": {
-              "add": "",
-              "delete": "",
-              "done": "",
-              "placeholder": "",
-              "title": ""
-            },
-            "edit-model": {
-              "headerTitle": "",
-              "placeholder": "",
-              "save": "",
-              "title": ""
-            },
-            "edit-post": {
-              "cancel": "",
-              "headerTitle": "",
-              "placeholder": "",
-              "save": ""
-            },
-            "edit-profile": {
-              "bio": "",
-              "change": "",
-              "firstName": "",
-              "headerTitle": "",
-              "imagePickerCancel": "",
-              "imagePickerLibrary": "",
-              "imagePickerPermissionOk": "",
-              "imagePickerPermissionRetry": "",
-              "imagePickerPermissionText": "",
-              "imagePickerPermissionTitle": "",
-              "imagePickerPhoto": "",
-              "imagePickerTitle": "",
-              "information": "",
-              "lastName": "",
-              "place": "",
-              "remove": "",
-              "save": "",
-              "username": "",
-              "validation": "",
-              "validationUsername": "",
-              "website": "",
-              "wrong": ""
-            },
-            "edit-project": {
-              "cancel": "",
-              "delete": "",
-              "deleteAlert": "",
-              "deleteTitle": "",
-              "description": "",
-              "done": "",
-              "headerTitle": "",
-              "information": "",
-              "model": "",
-              "projectSettings": "",
-              "title": ""
-            },
-            "edit": {
-              "edit": ""
-            },
-            "facebook": {
-              "button": ""
-            },
-            "feed": {
-              "description": "",
-              "title": "Foder"
-            },
-            "follow": {
-              "follow": "Følg dette projekt",
-              "followSmall": "",
-              "unfollow": "Følge",
-              "unfollowSmall": "",
-              "follow_short": "Følge med"
-            },
-            "followers": {
-              "followers": "{{count, humanFormat}} følger",
-              "followers_plural": "{{count, humanFormat}} følgere",
-              "title": ""
-            },
-            "following-projects": {
-              "description": "",
-              "title": "Projekter, du følger"
-            },
-            "footer": {
-              "about": "Om",
-              "blog": "Blog",
-              "chat": "Chat med os",
-              "cookies": "Cookiepolitik",
-              "description": "Wrench er et projektsamfund grundlagt i 2018 i Sverige. Det er designet, bygget og kørt fra hjertet af Stockholm.",
-              "download": "Download apps",
-              "eula": "EULA",
-              "faq": "FAQ",
-              "feedback": "Feedback",
-              "help": "Hjælp",
-              "legal": "gyldige",
-              "mail": "Mail Support",
-              "policy": "Fortrolighedspolitik",
-              "press": "Trykke",
-              "social": "Social",
-              "status": "Status",
-              "terms": "Vilkår og Betingelser",
-              "trademarks": "App Store er et servicemærke tilhørende Apple Inc. Google Play er et varemærke tilhørende Google LLC."
-            },
-            "google": {
-              "button": ""
-            },
-            "hashtag": {
-              "posts": "",
-              "posts_plural": ""
-            },
-            "header": {
-              "download": "Download apps",
-              "explore": "Udforske",
-              "feed": "Foder",
-              "home": "",
-              "login": "Log på",
-              "notifications": "",
-              "register": "Tilmelde"
-            },
-            "home": {
-              "description": "Dokumenter dine bygger, del dine projekter og lær af ligesindede.",
-              "document_title": "Skruenøgle | Dit motorcykel samfund",
-              "explore": "Udforsk flere projekter",
-              "signup": "Tilmeld dig nu",
-              "subtitle": "fællesskab.",
-              "title": "Din motorcykel"
-            },
-            "languages": {
-              "sv": "Svensk",
-              "en": "Engelsk",
-              "es": "Spansk",
-              "it": "Italiensk",
-              "de": "Tysk",
-              "nl": "Hollandsk",
-              "fr": "Fransk",
-              "tl": "Filippinsk",
-              "pt": "Portugisisk",
-              "ru": "Russisk",
-              "no": "Norsk",
-              "da": "Dansk"
-            },
-            "legal": {
-              "description": "Ved at fortsætte accepterer du skruenøgler",
-              "link": "vilkår og betingelser."
-            },
-            "like-post": {
-              "like": "{{count}} gnist",
-              "like_plural": "{{count, humanFormat}} gnister"
-            },
-            "list": {
-              "load_more": "Se 1 kommentar",
-              "load_more_plural": "Se alle {{count, humanFormat}} kommentarer"
-            },
-            "login": {
-              "apple_button": "Fortsæt med Apple",
-              "fb_button": "Fortsæt med Facebook",
-              "google_button": "Fortsæt med Google",
-              "title": "Log ind for at følge dine yndlingsprojekter og mere."
-            },
-            "logout": {
-              "logout": "Log ud",
-              "profile": "Profil",
-              "settings": "Indstillinger"
-            },
-            "me": {
-              "bookmarks": "",
-              "edit": "",
-              "settings": ""
-            },
-            "media-picker-list": {
-              "deselectAll": ""
-            },
-            "mobile-menu": {
-              "download": "Download apps",
-              "explore": "Udforske",
-              "feed": "Foder",
-              "login": "Log på",
-              "register": "Tilmelde",
-              "sign_out": "Log ud"
-            },
-            "no-results": {
-              "title": ""
-            },
-            "notification": {
-              "comment": "Kommenterede dit indlæg",
-              "comment_like": "Udløste din kommentar",
-              "follow": "Nu følger dit projekt",
-              "mention": "Omtalte dig i en kommentar",
-              "post_like": "Udløste dit indlæg",
-              "reply": "Besvaret din kommentar"
-            },
-            "notifications": {
-              "comment": "",
-              "commentLike": "",
-              "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
-              "follow": "",
-              "mention": "",
-              "postLike": "",
-              "reply": "",
-              "title": "Ingen meddelelser endnu."
-            },
-            "onboarding": {
-              "description": "Vælg mindst tre kategorier, som du er interesseret i, og vi giver dig nogle gode projekter til at begynde med.",
-              "headerTitle": "",
-              "headline": "",
-              "next": "Næste",
-              "save": "",
-              "title": "Hvad er du interesseret i?"
-            },
-            "options": {
-              "alertTitle": "",
-              "cancel": "",
-              "collection": "",
-              "delete": "",
-              "discard": "",
-              "edit": "",
-              "removeCollection": "",
-              "report": "",
-              "title": ""
-            },
-            "popular": {
-              "description": "Her ser du de mest populære projekter fra denne uge.",
-              "popular": "",
-              "recent": "",
-              "title": "Populære projekter"
-            },
-            "post-container": {
-              "loadMore": "",
-              "title": ""
-            },
-            "post": {
-              "selectCollection": "",
-              "showCollection": ""
-            },
-            "posting": {
-              "description": ""
-            },
-            "project-card": {
-              "follow": "",
-              "unfollow": ""
-            },
-            "project-suggestion": {
-              "description": "Vi har valgt nogle projekter nedenfor, som du måske finder interessante.",
-              "title": "Bliv opdateret og følg nogle projekter.",
-              "title_small": "Foreslået til dig"
-            },
-            "project-suggestion_old": {
-              "headline": "Bliv opdateret og følg nogle projekter."
-            },
-            "project-suggestions": {
-              "description": "",
-              "title": ""
-            },
-            "project-types": {
-              "inspo": ""
-            },
-            "project": {
-              "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} stillinger - {{fullName}} . (@{{username}}) på Wrench",
-              "recent": "",
-              "share": "Del",
-              "similar": "Lignende projekter",
-              "title": "{{title}} - {{type}} projekt",
-              "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} indlæg - {{fullName}} . (@{{username}}) på Wrench"
-            },
-            "promo": {
-              "button_default": "Sende",
-              "button_success": "Sendt",
-              "description": "Indtast dit nummer, og få et SMS-link engang.",
-              "title": "Download Wrench-appen på Appstore og Google play"
-            },
-            "push-notifications": {
-              "approve": "",
-              "decline": "",
-              "description": "",
-              "title": ""
-            },
-            "result": {
-              "not_found": "Ingen søgeresultater fundet.",
-              "projects": "{{count, humanFormat}} projekt",
-              "projects_plural": "{{count, humanFormat}} projekter"
-            },
-            "search-bar": {
-              "cancel": "",
-              "placeholder": ""
-            },
-            "search-location-footer": {
-              "poweredBy": ""
-            },
-            "search-location": {
-              "no_result": "Ingen resultater.",
-              "placeholder": "By land"
-            },
-            "search": {
-              "clear": "",
-              "placeholder": "Søg",
-              "recent": ""
-            },
-            "searching-for": {
-              "title": ""
-            },
-            "select-project": {
-              "create": ""
-            },
-            "settings": {
-              "sections_profile": "Rediger profil"
-            },
-            "settings_old": {
-              "chat": "Chat med os",
-              "feedback": "Feedback",
-              "field_bio": "Bio",
-              "field_firstname": "Fornavn",
-              "field_lastname": "Efternavn",
-              "field_website": "Internet side",
-              "mail": "Mail Support",
-              "save": "Gemme",
-              "sections_language": "Sprog",
-              "sections_notifications": "Meddelelser",
-              "sections_support": "Support",
-              "title": "Indstillinger",
-              "toast_error": "Noget gik galt",
-              "toast_saved": "Indstillinger gemt",
-              "new_comment": "Kommentarer",
-              "new_mention": "Nævner",
-              "new_article": "Artikler",
-              "new_follower": "Følgere",
-              "similar_projects": "Lignende projekter",
-              "product_announcements": "Produktmeddelelser"
-            },
-            "share": {
-              "share": ""
-            },
-            "show-latest": {
-              "button": ""
-            },
-            "sign-in": {
-              "description": "",
-              "headline": "",
-              "other": ""
-            },
-            "similar-projects": {
-              "title": ""
-            },
-            "sparks": {
-              "title": ""
-            },
-            "suggestions": {
-              "description": "",
-              "headline": "",
-              "next": ""
-            },
-            "text": {
-              "more": ""
-            },
-            "time": {
-              "d": "{{count}} dage siden",
-              "d_plural": "{{count}} dage siden",
-              "h": "{{count}} timer siden",
-              "h_plural": "{{count}} timer siden",
-              "m": "{{count}} minut siden",
-              "m_plural": "{{count}} minutter siden",
-              "mo": "{{count}} måneder siden",
-              "mo_plural": "{{count}} måneder siden",
-              "now": "lige nu",
-              "y": "{{count}} år siden",
-              "y_plural": "{{count}} år siden"
-            },
-            "toast": {
-              "network": "",
-              "spam": ""
-            },
-            "translations": [
-              {
-                "CommentItem": {
-                  "like": "",
-                  "like_plural": "",
-                  "reply": ""
-                }
-              },
-              {
-                "add-collection": {
-                  "add": "",
-                  "done": "",
-                  "placeholder": "",
-                  "title": ""
-                }
-              },
-              {
-                "add-media": {
-                  "next": ""
-                }
-              },
-              {
-                "add-post-to-collection": {
-                  "done": "",
-                  "title": ""
-                }
-              },
-              {
-                "add-post": {
-                  "add": "",
-                  "collection": "",
-                  "error": "",
-                  "placeholder": ""
-                }
-              },
-              {
-                "add-project-model": {
-                  "add": "",
-                  "headerTitle": "",
-                  "placeholder": "",
-                  "skip": "",
-                  "title": ""
-                }
-              },
-              {
-                "add-project-type": {
-                  "headerTitle": "",
-                  "title": ""
-                }
-              },
-              {
-                "add-project": {
-                  "headerTitle": "",
-                  "next": "",
-                  "placeholder": "",
-                  "title": ""
-                }
-              },
-              {
-                "blog-post": {
-                  "back": "Tilbage til bloggen",
-                  "title": "Blog"
-                }
-              },
-              {
-                "blog": {
-                  "title": "Blog"
-                }
-              },
-              {
-                "bookmarks": {
-                  "description": "",
-                  "headerTitle": "",
-                  "title": ""
-                }
-              },
-              {
-                "collections": {
-                  "edit": "",
-                  "title": "Samlinger"
-                }
-              },
-              {
-                "comment-field": {
-                  "placeholder": "Tilføj en kommentar...",
-                  "post": "Stolpe"
-                }
-              },
-              {
-                "comment-item": {
-                  "loadReplies": "",
-                  "loadReplies_plural": ""
-                }
-              },
-              {
-                "comment-list": {
-                  "loadMore": "",
-                  "loadMore_plural": ""
-                }
-              },
-              {
-                "comments": {
-                  "load_replies": "Se svar ({{count}})",
-                  "load_replies_plural": "",
-                  "loadMore": "",
-                  "title": ""
-                }
-              },
-              {
-                "common": {
-                  "chat": "",
-                  "description": "",
-                  "feedback": "",
-                  "field_bio": "",
-                  "field_firstname": "",
-                  "field_lastname": "",
-                  "field_website": "",
-                  "legal": "",
-                  "like": "",
-                  "like_plural": "",
-                  "link": "",
-                  "mail": "",
-                  "reply": "",
-                  "save": "",
-                  "sections_language": "",
-                  "sections_notifications": "",
-                  "sections_profile": "",
-                  "sections_support": "",
-                  "title": "",
-                  "toast_error": "",
-                  "toast_saved": ""
-                }
-              },
-              {
-                "common_old": {
-                  "signout": "",
-                  "download": "",
-                  "explore": "",
-                  "feed": "",
-                  "login": "",
-                  "register": "",
-                  "sign_out": ""
-                }
-              },
-              {
-                "edit-collection": {
-                  "add": "",
-                  "delete": "",
-                  "done": "",
-                  "placeholder": "",
-                  "title": ""
-                }
-              },
-              {
-                "edit-model": {
-                  "headerTitle": "",
-                  "placeholder": "",
-                  "save": "",
-                  "title": ""
-                }
-              },
-              {
-                "edit-post": {
-                  "cancel": "",
-                  "headerTitle": "",
-                  "placeholder": "",
-                  "save": ""
-                }
-              },
-              {
-                "edit-profile": {
-                  "bio": "",
-                  "change": "",
-                  "firstName": "",
-                  "headerTitle": "",
-                  "imagePickerCancel": "",
-                  "imagePickerLibrary": "",
-                  "imagePickerPermissionOk": "",
-                  "imagePickerPermissionRetry": "",
-                  "imagePickerPermissionText": "",
-                  "imagePickerPermissionTitle": "",
-                  "imagePickerPhoto": "",
-                  "imagePickerTitle": "",
-                  "information": "",
-                  "lastName": "",
-                  "place": "",
-                  "remove": "",
-                  "save": "",
-                  "username": "",
-                  "validation": "",
-                  "validationUsername": "",
-                  "website": "",
-                  "wrong": ""
-                }
-              },
-              {
-                "edit-project": {
-                  "cancel": "",
-                  "delete": "",
-                  "deleteAlert": "",
-                  "deleteTitle": "",
-                  "description": "",
-                  "done": "",
-                  "headerTitle": "",
-                  "information": "",
-                  "model": "",
-                  "projectSettings": "",
-                  "title": ""
-                }
-              },
-              {
-                "edit": {
-                  "edit": ""
-                }
-              },
-              {
-                "facebook": {
-                  "button": ""
-                }
-              },
-              {
-                "feed": {
-                  "description": "",
-                  "title": "Foder"
-                }
-              },
-              {
-                "follow": {
-                  "follow": "Følg dette projekt",
-                  "followSmall": "",
-                  "unfollow": "Følge",
-                  "unfollowSmall": "",
-                  "follow_short": "Følge med"
-                }
-              },
-              {
-                "followers": {
-                  "followers": "{{count, humanFormat}} følger",
-                  "followers_plural": "{{count, humanFormat}} følgere",
-                  "title": ""
-                }
-              },
-              {
-                "following-projects": {
-                  "description": "",
-                  "title": "Projekter, du følger"
-                }
-              },
-              {
-                "footer": {
-                  "about": "Om",
-                  "blog": "Blog",
-                  "chat": "Chat med os",
-                  "cookies": "Cookiepolitik",
-                  "description": "Wrench er et projektsamfund grundlagt i 2018 i Sverige. Det er designet, bygget og kørt fra hjertet af Stockholm.",
-                  "download": "Download apps",
-                  "eula": "EULA",
-                  "faq": "FAQ",
-                  "feedback": "Feedback",
-                  "help": "Hjælp",
-                  "legal": "gyldige",
-                  "mail": "Mail Support",
-                  "policy": "Fortrolighedspolitik",
-                  "press": "Trykke",
-                  "social": "Social",
-                  "status": "Status",
-                  "terms": "Vilkår og Betingelser",
-                  "trademarks": "App Store er et servicemærke tilhørende Apple Inc. Google Play er et varemærke tilhørende Google LLC."
-                }
-              },
-              {
-                "google": {
-                  "button": ""
-                }
-              },
-              {
-                "hashtag": {
-                  "posts": "",
-                  "posts_plural": ""
-                }
-              },
-              {
-                "header": {
-                  "download": "Download apps",
-                  "explore": "Udforske",
-                  "feed": "Foder",
-                  "home": "",
-                  "login": "Log på",
-                  "notifications": "",
-                  "register": "Tilmelde"
-                }
-              },
-              {
-                "home": {
-                  "description": "Dokumenter dine bygger, del dine projekter og lær af ligesindede.",
-                  "document_title": "Skruenøgle | Dit motorcykel samfund",
-                  "explore": "Udforsk flere projekter",
-                  "signup": "Tilmeld dig nu",
-                  "subtitle": "fællesskab.",
-                  "title": "Din motorcykel"
-                }
-              },
-              {
-                "languages": {
-                  "sv": "Svensk",
-                  "en": "Engelsk",
-                  "es": "Spansk",
-                  "it": "Italiensk",
-                  "de": "Tysk",
-                  "nl": "Hollandsk",
-                  "fr": "Fransk",
-                  "tl": "Filippinsk",
-                  "pt": "Portugisisk",
-                  "ru": "Russisk",
-                  "no": "Norsk",
-                  "da": "Dansk"
-                }
-              },
-              {
-                "legal": {
-                  "description": "Ved at fortsætte accepterer du skruenøgler",
-                  "link": "vilkår og betingelser."
-                }
-              },
-              {
-                "like-post": {
-                  "like": "{{count}} gnist",
-                  "like_plural": "{{count, humanFormat}} gnister"
-                }
-              },
-              {
-                "list": {
-                  "load_more": "Se 1 kommentar",
-                  "load_more_plural": "Se alle {{count, humanFormat}} kommentarer"
-                }
-              },
-              {
-                "login": {
-                  "apple_button": "Fortsæt med Apple",
-                  "fb_button": "Fortsæt med Facebook",
-                  "google_button": "Fortsæt med Google",
-                  "title": "Log ind for at følge dine yndlingsprojekter og mere."
-                }
-              },
-              {
-                "logout": {
-                  "logout": "Log ud",
-                  "profile": "Profil",
-                  "settings": "Indstillinger"
-                }
-              },
-              {
-                "me": {
-                  "bookmarks": "",
-                  "edit": "",
-                  "settings": ""
-                }
-              },
-              {
-                "media-picker-list": {
-                  "deselectAll": ""
-                }
-              },
-              {
-                "mobile-menu": {
-                  "download": "Download apps",
-                  "explore": "Udforske",
-                  "feed": "Foder",
-                  "login": "Log på",
-                  "register": "Tilmelde",
-                  "sign_out": "Log ud"
-                }
-              },
-              {
-                "no-results": {
-                  "title": ""
-                }
-              },
-              {
-                "notification": {
-                  "comment": "Kommenterede dit indlæg",
-                  "comment_like": "Udløste din kommentar",
-                  "follow": "Nu følger dit projekt",
-                  "mention": "Omtalte dig i en kommentar",
-                  "post_like": "Udløste dit indlæg",
-                  "reply": "Besvaret din kommentar"
-                }
-              },
-              {
-                "notifications": {
-                  "comment": "",
-                  "commentLike": "",
-                  "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
-                  "follow": "",
-                  "mention": "",
-                  "postLike": "",
-                  "reply": "",
-                  "title": "Ingen meddelelser endnu."
-                }
-              },
-              {
-                "onboarding": {
-                  "description": "Vælg mindst tre kategorier, som du er interesseret i, og vi giver dig nogle gode projekter til at begynde med.",
-                  "headerTitle": "",
-                  "headline": "",
-                  "next": "Næste",
-                  "save": "",
-                  "title": "Hvad er du interesseret i?"
-                }
-              },
-              {
-                "options": {
-                  "alertTitle": "",
-                  "cancel": "",
-                  "collection": "",
-                  "delete": "",
-                  "discard": "",
-                  "edit": "",
-                  "removeCollection": "",
-                  "report": "",
-                  "title": ""
-                }
-              },
-              {
-                "popular": {
-                  "description": "Her ser du de mest populære projekter fra denne uge.",
-                  "popular": "",
-                  "recent": "",
-                  "title": "Populære projekter"
-                }
-              },
-              {
-                "post-container": {
-                  "loadMore": "",
-                  "title": ""
-                }
-              },
-              {
-                "post": {
-                  "selectCollection": "",
-                  "showCollection": ""
-                }
-              },
-              {
-                "posting": {
-                  "description": ""
-                }
-              },
-              {
-                "project-card": {
-                  "follow": "",
-                  "unfollow": ""
-                }
-              },
-              {
-                "project-suggestion": {
-                  "description": "Vi har valgt nogle projekter nedenfor, som du måske finder interessante.",
-                  "title": "Bliv opdateret og følg nogle projekter.",
-                  "title_small": "Foreslået til dig"
-                }
-              },
-              {
-                "project-suggestion_old": {
-                  "headline": "Bliv opdateret og følg nogle projekter."
-                }
-              },
-              {
-                "project-suggestions": {
-                  "description": "",
-                  "title": ""
-                }
-              },
-              {
-                "project-types": {
-                  "inspo": ""
-                }
-              },
-              {
-                "project": {
-                  "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} stillinger - {{fullName}} . (@{{username}}) på Wrench",
-                  "recent": "",
-                  "share": "Del",
-                  "similar": "Lignende projekter",
-                  "title": "{{title}} - {{type}} projekt",
-                  "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} indlæg - {{fullName}} . (@{{username}}) på Wrench"
-                }
-              },
-              {
-                "promo": {
-                  "button_default": "Sende",
-                  "button_success": "Sendt",
-                  "description": "Indtast dit nummer, og få et SMS-link engang.",
-                  "title": "Download Wrench-appen på Appstore og Google play"
-                }
-              },
-              {
-                "push-notifications": {
-                  "approve": "",
-                  "decline": "",
-                  "description": "",
-                  "title": ""
-                }
-              },
-              {
-                "result": {
-                  "not_found": "Ingen søgeresultater fundet.",
-                  "projects": "{{count, humanFormat}} projekt",
-                  "projects_plural": "{{count, humanFormat}} projekter"
-                }
-              },
-              {
-                "search-bar": {
-                  "cancel": "",
-                  "placeholder": ""
-                }
-              },
-              {
-                "search-location-footer": {
-                  "poweredBy": ""
-                }
-              },
-              {
-                "search-location": {
-                  "no_result": "Ingen resultater.",
-                  "placeholder": "By land"
-                }
-              },
-              {
-                "search": {
-                  "clear": "",
-                  "placeholder": "Søg",
-                  "recent": ""
-                }
-              },
-              {
-                "searching-for": {
-                  "title": ""
-                }
-              },
-              {
-                "select-project": {
-                  "create": ""
-                }
-              },
-              {
-                "settings": {
-                  "sections_profile": "Rediger profil"
-                }
-              },
-              {
-                "settings_old": {
-                  "chat": "Chat med os",
-                  "feedback": "Feedback",
-                  "field_bio": "Bio",
-                  "field_firstname": "Fornavn",
-                  "field_lastname": "Efternavn",
-                  "field_website": "Internet side",
-                  "mail": "Mail Support",
-                  "save": "Gemme",
-                  "sections_language": "Sprog",
-                  "sections_notifications": "Meddelelser",
-                  "sections_support": "Support",
-                  "title": "Indstillinger",
-                  "toast_error": "Noget gik galt",
-                  "toast_saved": "Indstillinger gemt",
-                  "new_comment": "Kommentarer",
-                  "new_mention": "Nævner",
-                  "new_article": "Artikler",
-                  "new_follower": "Følgere",
-                  "similar_projects": "Lignende projekter",
-                  "product_announcements": "Produktmeddelelser"
-                }
-              },
-              {
-                "share": {
-                  "share": ""
-                }
-              },
-              {
-                "show-latest": {
-                  "button": ""
-                }
-              },
-              {
-                "sign-in": {
-                  "description": "",
-                  "headline": "",
-                  "other": ""
-                }
-              },
-              {
-                "similar-projects": {
-                  "title": ""
-                }
-              },
-              {
-                "sparks": {
-                  "title": ""
-                }
-              },
-              {
-                "suggestions": {
-                  "description": "",
-                  "headline": "",
-                  "next": ""
-                }
-              },
-              {
-                "text": {
-                  "more": ""
-                }
-              },
-              {
-                "time": {
-                  "d": "{{count}} dage siden",
-                  "d_plural": "{{count}} dage siden",
-                  "h": "{{count}} timer siden",
-                  "h_plural": "{{count}} timer siden",
-                  "m": "{{count}} minut siden",
-                  "m_plural": "{{count}} minutter siden",
-                  "mo": "{{count}} måneder siden",
-                  "mo_plural": "{{count}} måneder siden",
-                  "now": "lige nu",
-                  "y": "{{count}} år siden",
-                  "y_plural": "{{count}} år siden"
-                }
-              },
-              {
-                "toast": {
-                  "network": "",
-                  "spam": ""
-                }
-              },
-              {
-                "translations": [
-                  {
-                    "blog-post": {
-                      "back": "Tilbage til bloggen",
-                      "title": "Blog"
-                    }
-                  },
-                  {
-                    "blog": {
-                      "title": "Blog"
-                    }
-                  },
-                  {
-                    "collections": {
-                      "title": "Samlinger"
-                    }
-                  },
-                  {
-                    "comment-field": {
-                      "placeholder": "Tilføj en kommentar...",
-                      "post": "Stolpe"
-                    }
-                  },
-                  {
-                    "comments": {
-                      "load_replies": "Se svar ({{count}})",
-                      "load_replies_plural": ""
-                    }
-                  },
-                  {
-                    "common": {
-                      "like": "",
-                      "like_plural": "",
-                      "reply": ""
-                    }
-                  },
-                  {
-                    "common_old": {
-                      "signout": "",
-                      "download": "",
-                      "explore": "",
-                      "feed": "",
-                      "login": "",
-                      "register": "",
-                      "sign_out": ""
-                    }
-                  },
-                  {
-                    "feed": {
-                      "description": "",
-                      "title": "Foder"
-                    }
-                  },
-                  {
-                    "follow": {
-                      "follow": "Følg dette projekt",
-                      "follow_short": "Følge med",
-                      "unfollow": "Følge"
-                    }
-                  },
-                  {
-                    "followers": {
-                      "followers": "{{count, humanFormat}} følger",
-                      "followers_plural": "{{count, humanFormat}} følgere"
-                    }
-                  },
-                  {
-                    "following-projects": {
-                      "title": "Projekter, du følger"
-                    }
-                  },
-                  {
-                    "footer": {
-                      "about": "Om",
-                      "blog": "Blog",
-                      "chat": "Chat med os",
-                      "cookies": "Cookiepolitik",
-                      "description": "Wrench er et projektsamfund grundlagt i 2018 i Sverige. Det er designet, bygget og kørt fra hjertet af Stockholm.",
-                      "download": "Download apps",
-                      "eula": "EULA",
-                      "faq": "FAQ",
-                      "feedback": "Feedback",
-                      "help": "Hjælp",
-                      "legal": "gyldige",
-                      "mail": "Mail Support",
-                      "policy": "Fortrolighedspolitik",
-                      "press": "Trykke",
-                      "social": "Social",
-                      "status": "Status",
-                      "terms": "Vilkår og Betingelser",
-                      "trademarks": "App Store er et servicemærke tilhørende Apple Inc. Google Play er et varemærke tilhørende Google LLC."
-                    }
-                  },
-                  {
-                    "header": {
-                      "download": "Download apps",
-                      "explore": "Udforske",
-                      "feed": "Foder",
-                      "login": "Log på",
-                      "register": "Tilmelde"
-                    }
-                  },
-                  {
-                    "home": {
-                      "description": "Dokumenter dine bygger, del dine projekter og lær af ligesindede.",
-                      "document_title": "Skruenøgle | Dit motorcykel samfund",
-                      "explore": "Udforsk flere projekter",
-                      "signup": "Tilmeld dig nu",
-                      "subtitle": "fællesskab.",
-                      "title": "Din motorcykel"
-                    }
-                  },
-                  {
-                    "languages": {
-                      "sv": "Svensk",
-                      "en": "Engelsk",
-                      "es": "Spansk",
-                      "it": "Italiensk",
-                      "de": "Tysk",
-                      "nl": "Hollandsk",
-                      "fr": "Fransk",
-                      "tl": "Filippinsk",
-                      "pt": "Portugisisk",
-                      "ru": "Russisk",
-                      "no": "Norsk",
-                      "da": "Dansk"
-                    }
-                  },
-                  {
-                    "legal": {
-                      "description": "Ved at fortsætte accepterer du skruenøgler",
-                      "link": "vilkår og betingelser."
-                    }
-                  },
-                  {
-                    "like-post": {
-                      "like": "{{count}} gnist",
-                      "like_plural": "{{count, humanFormat}} gnister"
-                    }
-                  },
-                  {
-                    "list": {
-                      "load_more": "Se 1 kommentar",
-                      "load_more_plural": "Se alle {{count, humanFormat}} kommentarer"
-                    }
-                  },
-                  {
-                    "login": {
-                      "apple_button": "Fortsæt med Apple",
-                      "fb_button": "Fortsæt med Facebook",
-                      "google_button": "Fortsæt med Google",
-                      "title": "Log ind for at følge dine yndlingsprojekter og mere."
-                    }
-                  },
-                  {
-                    "logout": {
-                      "logout": "Log ud",
-                      "profile": "Profil",
-                      "settings": "Indstillinger"
-                    }
-                  },
-                  {
-                    "mobile-menu": {
-                      "download": "Download apps",
-                      "explore": "Udforske",
-                      "feed": "Foder",
-                      "login": "Log på",
-                      "register": "Tilmelde",
-                      "sign_out": "Log ud"
-                    }
-                  },
-                  {
-                    "notification": {
-                      "comment": "Kommenterede dit indlæg",
-                      "comment_like": "Udløste din kommentar",
-                      "follow": "Nu følger dit projekt",
-                      "mention": "Omtalte dig i en kommentar",
-                      "post_like": "Udløste dit indlæg",
-                      "reply": "Besvaret din kommentar"
-                    }
-                  },
-                  {
-                    "notifications": {
-                      "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
-                      "title": "Ingen meddelelser endnu."
-                    }
-                  },
-                  {
-                    "onboarding": {
-                      "description": "Vælg mindst tre kategorier, som du er interesseret i, og vi giver dig nogle gode projekter til at begynde med.",
-                      "next": "Næste",
-                      "title": "Hvad er du interesseret i?"
-                    }
-                  },
-                  {
-                    "popular": {
-                      "description": "Her ser du de mest populære projekter fra denne uge.",
-                      "title": "Populære projekter"
-                    }
-                  },
-                  {
-                    "project-suggestion": {
-                      "description": "Vi har valgt nogle projekter nedenfor, som du måske finder interessante.",
-                      "title": "Bliv opdateret og følg nogle projekter.",
-                      "title_small": "Foreslået til dig"
-                    }
-                  },
-                  {
-                    "project-suggestion_old": {
-                      "headline": "Bliv opdateret og følg nogle projekter."
-                    }
-                  },
-                  {
-                    "project": {
-                      "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} stillinger - {{fullName}} . (@{{username}}) på Wrench",
-                      "share": "Del",
-                      "similar": "Lignende projekter",
-                      "title": "{{title}} - {{type}} projekt",
-                      "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} indlæg - {{fullName}} . (@{{username}}) på Wrench"
-                    }
-                  },
-                  {
-                    "promo": {
-                      "button_default": "Sende",
-                      "button_success": "Sendt",
-                      "description": "Indtast dit nummer, og få et SMS-link engang.",
-                      "title": "Download Wrench-appen på Appstore og Google play"
-                    }
-                  },
-                  {
-                    "result": {
-                      "projects": "{{count, humanFormat}} projekt",
-                      "projects_plural": "{{count, humanFormat}} projekter",
-                      "not_found": "Ingen søgeresultater fundet."
-                    }
-                  },
-                  {
-                    "search-location": {
-                      "no_result": "Ingen resultater.",
-                      "placeholder": "By land"
-                    }
-                  },
-                  {
-                    "search": {
-                      "placeholder": "Søg"
-                    }
-                  },
-                  {
-                    "settings": {
-                      "chat": "Chat med os",
-                      "feedback": "Feedback",
-                      "field_bio": "Bio",
-                      "field_firstname": "Fornavn",
-                      "field_lastname": "Efternavn",
-                      "field_website": "Internet side",
-                      "mail": "Mail Support",
-                      "save": "Gemme",
-                      "sections_language": "Sprog",
-                      "sections_notifications": "Meddelelser",
-                      "sections_profile": "Rediger profil",
-                      "sections_support": "Support",
-                      "title": "Indstillinger",
-                      "toast_error": "Noget gik galt",
-                      "toast_saved": "Indstillinger gemt",
-                      "new_comment": "Kommentarer",
-                      "new_mention": "Nævner",
-                      "new_article": "Artikler",
-                      "new_follower": "Følgere",
-                      "similar_projects": "Lignende projekter",
-                      "product_announcements": "Produktmeddelelser"
-                    }
-                  },
-                  {
-                    "time": {
-                      "d": "{{count}} dage siden",
-                      "d_plural": "{{count}} dage siden",
-                      "h": "{{count}} timer siden",
-                      "h_plural": "{{count}} timer siden",
-                      "m": "{{count}} minut siden",
-                      "m_plural": "{{count}} minutter siden",
-                      "mo": "{{count}} måneder siden",
-                      "mo_plural": "{{count}} måneder siden",
-                      "now": "lige nu",
-                      "y": "{{count}} år siden",
-                      "y_plural": "{{count}} år siden"
-                    }
-                  },
-                  {
-                    "translations": {
-                      "user": {
-                        "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}})",
-                        "image_alt": "",
-                        "title": "{{fullName}} . (@{{username}}) - projekter og stillinger"
-                      }
-                    }
-                  },
-                  {
-                    "user-following-projects": {
-                      "description": "Men her er nogle af de projekter, {{name}} følger.",
-                      "title": "Denne bruger har endnu ingen egne projekter."
-                    }
-                  },
-                  {
-                    "user-projects": {
-                      "followers": "{{count, humanFormat}} følger",
-                      "followers_plural": "{{count, humanFormat}} følgere",
-                      "title": "Projekter"
-                    }
-                  },
-                  {
-                    "user": {
-                      "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}})",
-                      "image_alt": "",
-                      "title": "{{fullName}} . (@{{username}}) - projekter og stillinger"
-                    }
-                  }
-                ]
-              },
-              {
-                "user-following-projects": {
-                  "description": "Men her er nogle af de projekter, {{name}} følger.",
-                  "title": "Denne bruger har endnu ingen egne projekter."
-                }
-              },
-              {
-                "user-projects": {
-                  "followers": "{{count, humanFormat}} følger",
-                  "followers_plural": "{{count, humanFormat}} følgere",
-                  "title": "Projekter"
-                }
-              },
-              {
-                "user": {
-                  "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}})",
-                  "image_alt": "",
-                  "notfound": "",
-                  "projects": "",
-                  "projects_plural": "",
-                  "title": "{{fullName}} . (@{{username}}) - projekter og stillinger"
-                }
-              },
-              {
-                "webview": {
-                  "loading": ""
-                }
-              }
-            ],
-            "user-following-projects": {
-              "description": "Men her er nogle af de projekter, {{name}} følger.",
-              "title": "Denne bruger har endnu ingen egne projekter."
-            },
-            "user-projects": {
-              "followers": "{{count, humanFormat}} følger",
-              "followers_plural": "{{count, humanFormat}} følgere",
-              "title": "Projekter"
-            },
-            "user": {
-              "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}})",
-              "image_alt": "",
-              "notfound": "",
-              "projects": "",
-              "projects_plural": "",
-              "title": "{{fullName}} . (@{{username}}) - projekter og stillinger"
-            },
-            "webview": {
-              "loading": ""
-            }
-          },
-          "user-following-projects": {
-            "description": "Men her er nogle af de projekter, {{name}} følger.",
-            "title": "Denne bruger har endnu ingen egne projekter."
-          },
-          "user-projects": {
-            "followers": "{{count, humanFormat}} følger",
-            "followers_plural": "{{count, humanFormat}} følgere",
-            "title": "Projekter"
-          },
-          "user": {
-            "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}})",
-            "image_alt": "",
-            "notfound": "",
-            "projects": "",
-            "projects_plural": "",
-            "title": "{{fullName}} . (@{{username}}) - projekter og stillinger"
-          },
-          "webview": {
-            "loading": ""
-          }
-        },
-        "user-following-projects": {
-          "description": "Men her er nogle af de projekter, {{name}} følger.",
-          "title": "Denne bruger har endnu ingen egne projekter."
-        },
-        "user-projects": {
-          "followers": "{{count, humanFormat}} følger",
-          "followers_plural": "{{count, humanFormat}} følgere",
-          "title": "Projekter"
-        },
-        "user": {
-          "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}})",
-          "image_alt": "",
-          "notfound": "",
-          "projects": "",
-          "projects_plural": "",
-          "title": "{{fullName}} . (@{{username}}) - projekter og stillinger"
-        },
-        "webview": {
-          "loading": ""
-        }
-      },
-      "user-following-projects": {
-        "description": "Men her er nogle af de projekter, {{name}} følger.",
-        "title": "Denne bruger har endnu ingen egne projekter."
-      },
-      "user-projects": {
-        "followers": "{{count, humanFormat}} følger",
-        "followers_plural": "{{count, humanFormat}} følgere",
-        "title": "Projekter"
-      },
-      "user": {
-        "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}})",
-        "image_alt": "",
-        "notfound": "",
-        "projects": "",
-        "projects_plural": "",
-        "title": "{{fullName}} . (@{{username}}) - projekter og stillinger"
-      },
-      "webview": {
-        "loading": ""
-      }
-    },
-    "user-following-projects": {
-      "description": "Men her er nogle af de projekter, {{name}} følger.",
-      "title": "Denne bruger har endnu ingen egne projekter."
-    },
-    "user-projects": {
-      "followers": "{{count, humanFormat}} følger",
-      "followers_plural": "{{count, humanFormat}} følgere",
-      "title": "Projekter"
-    },
-    "user": {
-      "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}})",
-      "image_alt": "",
-      "notfound": "",
-      "projects": "",
-      "projects_plural": "",
-      "title": "{{fullName}} . (@{{username}}) - projekter og stillinger"
-    },
-    "webview": {
-      "loading": ""
-    }
+    "network": "Ingen internetforbindelse",
+    "spam": "Handling blokeret. Prøv igen senere."
   },
   "user-following-projects": {
     "description": "Men her er nogle af de projekter, {{name}} følger.",
-    "title": "Denne bruger har endnu ingen egne projekter."
+    "title": "Denne bruger har endnu ikke nogen egne projekter."
   },
   "user-projects": {
     "followers": "{{count, humanFormat}} følger",
@@ -4686,14 +1143,14 @@
     "title": "Projekter"
   },
   "user": {
-    "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}})",
-    "image_alt": "NO_TRANSLATION",
+    "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}} )",
+    "image_alt": "",
     "notfound": "Bruger ikke fundet",
     "projects": "<span>0-</span> projekt",
     "projects_plural": "{{count, humanFormat}} projekter",
-    "title": "{{fullName}} . (@{{username}}) - projekter og stillinger"
+    "title": "{{fullName}} . (@ {{username}} ) - projekter og stillinger"
   },
   "webview": {
-    "loading": ""
+    "loading": "Indlæser..."
   }
 }

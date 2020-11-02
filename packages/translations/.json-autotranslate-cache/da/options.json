@@ -1,9 +1,9 @@
 {
-  "alertTitle": "",
-  "cancel": "",
-  "collection": "",
-  "delete": "",
-  "edit": "",
-  "removeCollection": "",
-  "report": ""
+  "alertTitle": "Er du sikker?",
+  "cancel": "Afbestille",
+  "collection": "Føj til samling",
+  "delete": "Slet",
+  "edit": "Redigere",
+  "removeCollection": "Fjern fra samlingen",
+  "report": "Rapport"
 }

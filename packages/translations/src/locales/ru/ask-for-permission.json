@@ -1,20 +1,20 @@
 {
   "camera": {
-    "alertCancel": "NO_TRANSLATION",
-    "alertDescription": "NO_TRANSLATION",
-    "alertOpen": "NO_TRANSLATION",
-    "alertTitle": "NO_TRANSLATION",
-    "permissionButton": "NO_TRANSLATION",
-    "permissionDescription": "NO_TRANSLATION",
-    "permissionHeadline": "NO_TRANSLATION"
+    "alertCancel": "Отмена",
+    "alertDescription": "Не удалось получить ваше разрешение. Пожалуйста, включите его в настройках.",
+    "alertOpen": "Открыть настройки",
+    "alertTitle": "Ой!",
+    "permissionButton": "Разрешить доступ к камере",
+    "permissionDescription": "Разрешите Wrench доступ к вашей камере, чтобы делать фотографии и записывать видео в приложении.",
+    "permissionHeadline": "Делайте фото и записывайте видео"
   },
   "photo": {
-    "alertCancel": "NO_TRANSLATION",
-    "alertDescription": "NO_TRANSLATION",
-    "alertOpen": "NO_TRANSLATION",
-    "alertTitle": "NO_TRANSLATION",
-    "permissionButton": "NO_TRANSLATION",
-    "permissionDescription": "NO_TRANSLATION",
-    "permissionHeadline": "NO_TRANSLATION"
+    "alertCancel": "Отмена",
+    "alertDescription": "Не удалось получить ваше разрешение. Пожалуйста, включите его в настройках.",
+    "alertOpen": "Открыть настройки",
+    "alertTitle": "Ой!",
+    "permissionButton": "Включить доступ к библиотеке",
+    "permissionDescription": "Это позволяет Wrench обмениваться фотографиями из вашей библиотеки и сохранять фотографии в фотопленке.",
+    "permissionHeadline": "Добавьте фото и видео"
   }
 }

@@ -1,6 +1,6 @@
 {
-  "add": "",
-  "collection": "",
-  "error": "",
-  "placeholder": ""
+  "add": "Teilen",
+  "collection": "Zur Sammlung hinzufügen",
+  "error": "Konnte momentan nicht posten",
+  "placeholder": "Fügen Sie einen Text zu Ihrem Beitrag hinzu"
 }

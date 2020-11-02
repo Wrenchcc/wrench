@@ -1,7 +1,4 @@
 {
-  "posts_0": "",
-  "posts_1": "",
-  "posts_2": "",
   "posts": "{{count, humanFormat}} сообщений",
   "posts_plural": "{{count, humanFormat}} сообщений"
 }

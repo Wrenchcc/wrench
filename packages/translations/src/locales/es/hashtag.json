@@ -1,4 +1,4 @@
 {
-  "posts": "",
-  "posts_plural": ""
+  "posts": "{{count, humanFormat}} publicación",
+  "posts_plural": "{{count, humanFormat}} publicaciones"
 }

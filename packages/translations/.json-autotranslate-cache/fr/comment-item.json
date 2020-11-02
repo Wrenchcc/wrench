@@ -1,7 +1,7 @@
 {
-  "like": "",
-  "like_plural": "",
-  "loadReplies": "",
-  "loadReplies_plural": "",
-  "reply": ""
+  "like": "{{count}} étincelle",
+  "like_plural": "{{count, humanFormat}} étincelle",
+  "loadReplies": "Afficher les réponses ( {{count}} )",
+  "loadReplies_plural": "Afficher les réponses ( {{count}} )",
+  "reply": "Répondre"
 }

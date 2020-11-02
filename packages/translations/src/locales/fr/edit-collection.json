@@ -1,7 +1,7 @@
 {
-  "add": "",
-  "delete": "",
-  "done": "",
-  "placeholder": "",
-  "title": ""
+  "add": "Ajouter des articles",
+  "delete": "Supprimer",
+  "done": "Terminé",
+  "placeholder": "Ex. Reconstruction du moteur",
+  "title": "Information"
 }

@@ -1,6 +1,6 @@
 {
-  "next": "",
-  "options.cancel": "",
-  "options.discard": "",
-  "options.title": ""
+  "next": "Próximo",
+  "options.cancel": "Cancelar",
+  "options.discard": "Descartar",
+  "options.title": "Se você voltar agora, suas edições serão descartadas."
 }

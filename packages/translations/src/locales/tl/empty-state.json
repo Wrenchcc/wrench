@@ -1,34 +1,34 @@
 {
   "collection-no-post": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Ang gumagamit ay hindi pa nagdagdag ng anumang mga post sa koleksyon na ito.",
+    "title": "Walang naidagdag na mga post sa koleksyon na ito."
   },
   "collection-post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Idagdag pa",
+    "description": "Magdagdag ng isang post sa koleksyon na ito mula sa lumikha ng bagong daloy ng post o isang mayroon nang post sa pamamagitan ng pag-click sa higit pang pindutan sa kanang sulok ng post.",
+    "title": "Idagdag ang iyong una upang mai-post sa koleksyon na ito."
   },
   "notifications": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Makikita mo rito ang mga komento, bagong tagasunod at iba pang mga aktibidad.",
+    "title": "Wala pang abiso."
   },
   "post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Idagdag pa",
+    "description": "Ngayon kapag mayroon kang isang proyekto oras na upang lumikha ng iyong unang post.",
+    "title": "2. Idagdag ang iyong unang post."
   },
   "project-no-post": {
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "description": "Sundin ang proyektong ito ngayon at maabisuhan kapag nag-update.",
+    "title": "Ang proyektong ito ay wala pang post."
   },
   "project-post": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Idagdag pa",
+    "description": "Ngayon kapag mayroon kang isang proyekto oras na upang lumikha ng iyong unang post.",
+    "title": "Idagdag ang iyong unang post."
   },
   "project": {
-    "button": "NO_TRANSLATION",
-    "description": "NO_TRANSLATION",
-    "title": "NO_TRANSLATION"
+    "button": "Magsimula",
+    "description": "Hayaan mong mapabilis ka at likhain ang iyong unang proyekto.",
+    "title": "1. Lumikha ng iyong unang proyekto."
   }
 }

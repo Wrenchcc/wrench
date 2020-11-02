@@ -1,7 +1,7 @@
 {
-  "add": "",
-  "delete": "",
-  "done": "",
-  "placeholder": "",
-  "title": ""
+  "add": "Tilføj indlæg",
+  "delete": "Slet",
+  "done": "Færdig",
+  "placeholder": "Eks. Genopbygning af motor",
+  "title": "Information"
 }

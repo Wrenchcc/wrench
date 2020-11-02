@@ -42,15 +42,5 @@
   "title": "Indstillinger",
   "toast.error": "Noget gik galt",
   "toast.saved": "Indstillinger gemt",
-  "website": "Internet side",
-  "field_bio": "Bio",
-  "field_firstname": "Fornavn",
-  "field_lastname": "Efternavn",
-  "field_website": "Internet side",
-  "toast_error": "Noget gik galt",
-  "toast_saved": "Indstillinger gemt",
-  "sections_language": "Sprog",
-  "sections_notifications": "Meddelelser",
-  "sections_profile": "Rediger profil",
-  "sections_support": "Support"
+  "website": "Internet side"
 }

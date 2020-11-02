@@ -1,20 +1,20 @@
 {
   "camera": {
-    "alertCancel": "NO_TRANSLATION",
-    "alertDescription": "NO_TRANSLATION",
-    "alertOpen": "NO_TRANSLATION",
-    "alertTitle": "NO_TRANSLATION",
-    "permissionButton": "NO_TRANSLATION",
-    "permissionDescription": "NO_TRANSLATION",
-    "permissionHeadline": "NO_TRANSLATION"
+    "alertCancel": "Cancelar",
+    "alertDescription": "Ocorreu um problema ao obter sua permissão. Ative-o nas configurações.",
+    "alertOpen": "Abrir configurações",
+    "alertTitle": "Opa!",
+    "permissionButton": "Permitir acesso à câmera",
+    "permissionDescription": "Permita o acesso da chave inglesa à sua câmera para tirar fotos e gravar vídeos dentro do aplicativo.",
+    "permissionHeadline": "Tire fotos e grave vídeos"
   },
   "photo": {
-    "alertCancel": "NO_TRANSLATION",
-    "alertDescription": "NO_TRANSLATION",
-    "alertOpen": "NO_TRANSLATION",
-    "alertTitle": "NO_TRANSLATION",
-    "permissionButton": "NO_TRANSLATION",
-    "permissionDescription": "NO_TRANSLATION",
-    "permissionHeadline": "NO_TRANSLATION"
+    "alertCancel": "Cancelar",
+    "alertDescription": "Ocorreu um problema ao obter sua permissão. Ative-o nas configurações.",
+    "alertOpen": "Abrir configurações",
+    "alertTitle": "Opa!",
+    "permissionButton": "Habilitar acesso à biblioteca",
+    "permissionDescription": "Isso permite que o Wrench compartilhe fotos de sua biblioteca e salve-as no rolo da câmera.",
+    "permissionHeadline": "Adicionar fotos e vídeos"
   }
 }
