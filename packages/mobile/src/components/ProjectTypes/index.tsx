@@ -34,7 +34,7 @@ function ProjectTypes({ visible }) {
     })
   }, [])
 
-  if (loadingTypes) {
+  if (!typesData.types && loadingTypes) {
     return (
       <Base>
         <CategoriesPlaceholder />

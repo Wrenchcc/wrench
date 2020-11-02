@@ -34,10 +34,10 @@ let backendOptions = [
 
 // Development
 // Note: We just want FileBackend in dev to notice missing keys
-// if (__DEV__) {
-//   backends = [FileBackend]
-//   backendOptions = [{}]
-// }
+if (__DEV__) {
+  backends = [FileBackend]
+  backendOptions = [{}]
+}
 
 i18next
   .use(initReactI18next)

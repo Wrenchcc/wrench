@@ -95,7 +95,7 @@ function Settings({ section }) {
     []
   )
 
-  if (loading) {
+  if (!data?.user && loading) {
     return null
   }
 

@@ -10,10 +10,10 @@ export default isAuthenticated(async (_, { id }, ctx) => {
     return new ForbiddenError('You can’t follow your own project.')
   }
 
-  await Promise.all([
-    ctx.redis.delete(`follower:followers:${id}:*`),
-    // ctx.redis.delete(`project:followersConnection:${id}:*`),
-  ])
+  // await Promise.all([
+  // ctx.redis.delete(`follower:followers:${id}:*`),
+  // ctx.redis.delete(`project:followersConnection:${id}:*`),
+  // ])
 
   if (isFollower) {
     await ctx.db.Following.delete({ projectId: id, userId: ctx.userId })
