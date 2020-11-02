@@ -43,7 +43,7 @@ function Press() {
           <Column>
             <Image width={208} height={208} src={founders[0]} />
             <br />
-            <Text medium>Viktor - founder</Text>
+            <Text medium>Viktor - CPO</Text>
             <Text fontSize={15} color="accent" underline>
               Download
             </Text>
@@ -51,7 +51,7 @@ function Press() {
           <Column>
             <Image width={208} height={208} src={founders[1]} />
             <br />
-            <Text medium>Pontus - founder</Text>
+            <Text medium>Pontus - CEO</Text>
             <Text fontSize={15} color="accent" underline>
               Download
             </Text>
@@ -59,7 +59,7 @@ function Press() {
           <Column>
             <Image width={208} height={208} src={founders[2]} />
             <br />
-            <Text medium>Felix - founder</Text>
+            <Text medium>Felix - CMO</Text>
             <Text fontSize={15} color="accent" underline>
               Download
             </Text>
