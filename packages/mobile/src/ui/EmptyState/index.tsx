@@ -39,6 +39,31 @@ const showButton = (type) => {
   }
 }
 
+// t('collection-no-post.title')
+// t('collection-no-post.description')
+
+// t('collection-post.title')
+// t('collection-post.description')
+// t('collection-post.button')
+
+// t('project.title')
+// t('project.description')
+// t('project.button')
+
+// t('post.title')
+// t('post.description')
+// t('post.button')
+
+// t('project-no-post.title')
+// t('project-no-post.description')
+
+// t('project-post.title')
+// t('project-post.description')
+// t('project-post.button')
+
+// t('notifications.title')
+// t('notifications.description')
+
 function EmptyState({ type = TYPES.PROJECT, params = {} }) {
   const { t } = useTranslation('empty-state')
   const { showModal } = useNavigation()
@@ -46,12 +71,12 @@ function EmptyState({ type = TYPES.PROJECT, params = {} }) {
 
   return (
     <Base>
-      <Title>{t(`${type}:title`)}</Title>
-      <Description color="neutral">{t(`${type}:description`)}</Description>
+      <Title>{t(`${type}.title`)}</Title>
+      <Description color="neutral">{t(`${type}.description`)}</Description>
       {showButton(type) && (
         <Button onPress={handleNavigation}>
           <Text medium fontSize={15} color="black">
-            {t(`${type}:button`)}
+            {t(`${type}.button`)}
           </Text>
         </Button>
       )}

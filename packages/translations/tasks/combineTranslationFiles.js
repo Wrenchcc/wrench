@@ -10,8 +10,14 @@ const getDirectories = (source) =>
 const dirs = getDirectories(LOCALES_PATH)
 
 dirs.map((locale) => {
-  const filePath = `${LOCALES_PATH}/${locale}`
   let translations = {}
+
+  const filePath = `${LOCALES_PATH}/${locale}`
+  const localeFile = `${filePath}/${locale}.json`
+
+  if (existsSync(localeFile)) {
+    unlinkSync(localeFile)
+  }
 
   readdirSync(filePath).forEach((file) => {
     if (file.includes('_old')) {
@@ -23,12 +29,6 @@ dirs.map((locale) => {
 
     translations = { ...translations, [namespace]: data }
   })
-
-  const localeFile = `${filePath}/${locale}.json`
-
-  if (existsSync(localeFile)) {
-    unlinkSync(localeFile)
-  }
 
   writeFileSync(localeFile, JSON.stringify(translations, null, 2), 'utf8')
 })
