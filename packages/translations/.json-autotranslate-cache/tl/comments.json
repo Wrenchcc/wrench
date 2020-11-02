@@ -1,4 +1,6 @@
 {
-  "load_replies": "Tingnan ang mga tugon ( {{count}} )",
-  "load_replies_plural": ""
+  "load_replies": "NO_TRANSLATION",
+  "load_replies_plural": "NO_TRANSLATION",
+  "loadMore": "Mag-load ng maraming mga komento",
+  "title": "Mga Komento"
 }

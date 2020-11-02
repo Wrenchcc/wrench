@@ -1,13 +1,13 @@
 {
-    "d": "{{count}} dagen geleden",
-    "d_plural": "{{count}} dagen geleden",
-    "h": "{{count}} uur geleden",
-    "h_plural": "{{count}} uur geleden",
-    "m": "{{count}} minuut geleden",
-    "m_plural": "{{count}} minuten geleden",
-    "mo": "{{count}} maand geleden",
-    "mo_plural": "{{count}} maanden geleden",
-    "now": "net nu",
-    "y": "{{count}} jaar geleden",
-    "y_plural": "{{count}} jaar geleden"
+  "d": "{{count}} dagen geleden",
+  "d_plural": "{{count}} dagen geleden",
+  "h": "{{count}} uur geleden",
+  "h_plural": "{{count}} uur geleden",
+  "m": "{{count}} minuut geleden",
+  "m_plural": "{{count}} minuten geleden",
+  "mo": "{{count}} maand geleden",
+  "mo_plural": "{{count}} maanden geleden",
+  "now": "net nu",
+  "y": "{{count}} jaar geleden",
+  "y_plural": "{{count}} jaar geleden"
 }

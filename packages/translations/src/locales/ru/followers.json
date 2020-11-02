@@ -1,6 +1,8 @@
 {
-    "followers_0": "",
-    "followers_1": "",
-    "followers_2": "",
-    "title": ""
+  "followers_0": "",
+  "followers_1": "",
+  "followers_2": "",
+  "title": "Подписчики",
+  "followers": "{{count, humanFormat}} последователей",
+  "followers_plural": "{{count, humanFormat}} подписчиков"
 }

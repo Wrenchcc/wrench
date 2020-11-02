@@ -1,4 +1,16 @@
 {
+  "comment": "Kommenterade ditt inlägg",
+  "commentLike": "Utlöste din kommentar",
   "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter.",
+  "follow": "Nu följer ditt projekt",
+  "mention": "Nämnde dig i en kommentar",
+  "NEW_ARTICLE": "Artiklar",
+  "NEW_COMMENT": "Kommentarer",
+  "NEW_FOLLOWER": "Följare",
+  "NEW_MENTION": "Nämnder",
+  "postLike": "Utlöste ditt inlägg",
+  "PRODUCT_ANNOUNCEMENTS": "Produktmeddelanden",
+  "reply": "Svarade på din kommentar",
+  "SIMILAR_PROJECTS": "Liknande projekt",
   "title": "Inga notifikationer ännu."
 }

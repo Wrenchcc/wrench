@@ -1,34 +1,34 @@
 {
-    "collection-no-post": {
-        "description": "Användaren har ännu inte lagt till några inlägg i den här samlingen.",
-        "title": "Inga inlägg har lagts till i denna samling."
-    },
-    "collection-post": {
-        "button": "Lägg till",
-        "description": "Lägg till ett inlägg i den här samlingen genom att skapa ett nytt inlägg eller använd ett befintligt inlägg genom att klicka på knappen Mer i inläggets högra hörn.",
-        "title": "Lägg till ditt första inlägg i denna samling."
-    },
-    "notifications": {
-        "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter.",
-        "title": "Inga notifikationer ännu."
-    },
-    "post": {
-        "button": "Lägg till",
-        "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg.",
-        "title": "2. Lägg till ditt första inlägg."
-    },
-    "project-no-post": {
-        "description": "Följ detta projekt nu och få en notifikation när det uppdateras.",
-        "title": "Det här projektet har inga inlägg ännu."
-    },
-    "project-post": {
-        "button": "Lägg till",
-        "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg",
-        "title": "Lägg till ditt första inlägg"
-    },
-    "project": {
-        "button": "Kom igång",
-        "description": "Kom igång och skapa ditt första projekt.",
-        "title": "1. Skapa ditt första projekt."
-    }
+  "collection-no-post": {
+    "description": "Användaren har ännu inte lagt till några inlägg i den här samlingen.",
+    "title": "Inga inlägg har lagts till i denna samling."
+  },
+  "collection-post": {
+    "button": "Lägg till",
+    "description": "Lägg till ett inlägg i den här samlingen genom att skapa ett nytt inlägg eller använd ett befintligt inlägg genom att klicka på knappen Mer i inläggets högra hörn.",
+    "title": "Lägg till ditt första inlägg i denna samling."
+  },
+  "notifications": {
+    "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter.",
+    "title": "Inga notifikationer ännu."
+  },
+  "post": {
+    "button": "Lägg till",
+    "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg.",
+    "title": "2. Lägg till ditt första inlägg."
+  },
+  "project-no-post": {
+    "description": "Följ detta projekt nu och få en notifikation när det uppdateras.",
+    "title": "Det här projektet har inga inlägg ännu."
+  },
+  "project-post": {
+    "button": "Lägg till",
+    "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg",
+    "title": "Lägg till ditt första inlägg"
+  },
+  "project": {
+    "button": "Kom igång",
+    "description": "Kom igång och skapa ditt första projekt.",
+    "title": "1. Skapa ditt första projekt."
+  }
 }

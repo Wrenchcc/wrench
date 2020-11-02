@@ -1,34 +1,34 @@
 {
-    "collection-no-post": {
-        "description": "NO_TRANSLATION",
-        "title": "NO_TRANSLATION"
-    },
-    "collection-post": {
-        "button": "NO_TRANSLATION",
-        "description": "NO_TRANSLATION",
-        "title": "NO_TRANSLATION"
-    },
-    "notifications": {
-        "description": "NO_TRANSLATION",
-        "title": "NO_TRANSLATION"
-    },
-    "post": {
-        "button": "NO_TRANSLATION",
-        "description": "NO_TRANSLATION",
-        "title": "NO_TRANSLATION"
-    },
-    "project-no-post": {
-        "description": "NO_TRANSLATION",
-        "title": "NO_TRANSLATION"
-    },
-    "project-post": {
-        "button": "NO_TRANSLATION",
-        "description": "NO_TRANSLATION",
-        "title": "NO_TRANSLATION"
-    },
-    "project": {
-        "button": "NO_TRANSLATION",
-        "description": "NO_TRANSLATION",
-        "title": "NO_TRANSLATION"
-    }
+  "collection-no-post": {
+    "description": "NO_TRANSLATION",
+    "title": "NO_TRANSLATION"
+  },
+  "collection-post": {
+    "button": "NO_TRANSLATION",
+    "description": "NO_TRANSLATION",
+    "title": "NO_TRANSLATION"
+  },
+  "notifications": {
+    "description": "NO_TRANSLATION",
+    "title": "NO_TRANSLATION"
+  },
+  "post": {
+    "button": "NO_TRANSLATION",
+    "description": "NO_TRANSLATION",
+    "title": "NO_TRANSLATION"
+  },
+  "project-no-post": {
+    "description": "NO_TRANSLATION",
+    "title": "NO_TRANSLATION"
+  },
+  "project-post": {
+    "button": "NO_TRANSLATION",
+    "description": "NO_TRANSLATION",
+    "title": "NO_TRANSLATION"
+  },
+  "project": {
+    "button": "NO_TRANSLATION",
+    "description": "NO_TRANSLATION",
+    "title": "NO_TRANSLATION"
+  }
 }

@@ -1,8 +1,8 @@
 {
-    "clear": "",
-    "hashtags": "",
-    "placeholder": "Chercher",
-    "projects": "",
-    "recent": "",
-    "users": ""
+  "clear": "Tout effacer",
+  "hashtags": "Hashtags",
+  "placeholder": "Chercher",
+  "projects": "Projets",
+  "recent": "Récent",
+  "users": "Utilisateurs"
 }

@@ -1,0 +1,11 @@
+{
+  "options.alertTitle": "Är du säker?",
+  "options.cancel": "Avbryt",
+  "options.collection": "Lägga till i samling",
+  "options.delete": "Radera",
+  "options.edit": "Redigera",
+  "options.removeCollection": "Radera från samling",
+  "options.report": "Rapportera",
+  "selectCollection": "Välj samling",
+  "showCollection": "Visa samling"
+}

@@ -1,8 +1,8 @@
 {
-    "clear": "",
-    "hashtags": "",
-    "placeholder": "Maghanap",
-    "projects": "",
-    "recent": "",
-    "users": ""
+  "clear": "Alisin lahat",
+  "hashtags": "Hashtags",
+  "placeholder": "Maghanap",
+  "projects": "Mga Proyekto",
+  "recent": "Kamakailan",
+  "users": "Mga gumagamit"
 }

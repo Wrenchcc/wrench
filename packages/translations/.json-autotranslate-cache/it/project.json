@@ -1,5 +1,6 @@
 {
   "description": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@{{username}}) sulla Wrench",
+  "recent": "Messaggi recenti",
   "share": "Condividere",
   "similar": "Progetti simili",
   "title": "{{title}} - {{type}}  del progetto",

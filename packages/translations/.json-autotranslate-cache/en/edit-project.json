@@ -1,0 +1,13 @@
+{
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleteAlert": "Delete project?",
+    "deleteTitle": "Delete project",
+    "description": "This action cannot be undone.",
+    "done": "Done",
+    "headerTitle": "Edit",
+    "information": "Information",
+    "model": "Edit model",
+    "projectSettings": "Project settings",
+    "title": "Title"
+}

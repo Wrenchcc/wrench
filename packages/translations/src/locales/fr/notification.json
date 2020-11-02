@@ -1,8 +1,8 @@
 {
-    "comment": "A commenté votre message",
-    "comment_like": "A suscité votre commentaire",
-    "follow": "Suit maintenant votre projet",
-    "mention": "Vous a mentionné dans un commentaire",
-    "post_like": "A suscité votre message",
-    "reply": "A répondu à votre commentaire"
+  "comment": "A commenté votre message",
+  "comment_like": "A suscité votre commentaire",
+  "follow": "Suit maintenant votre projet",
+  "mention": "Vous a mentionné dans un commentaire",
+  "post_like": "A suscité votre message",
+  "reply": "A répondu à votre commentaire"
 }

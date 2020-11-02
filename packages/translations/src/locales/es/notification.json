@@ -1,8 +1,8 @@
 {
-    "comment": "Comentó tu publicación",
-    "comment_like": "Provocó tu comentario",
-    "follow": "Ahora sigue tu proyecto",
-    "mention": "Te mencioné en un comentario",
-    "post_like": "Encendió tu publicación",
-    "reply": "Respondió a su comentario"
+  "comment": "Comentó tu publicación",
+  "comment_like": "Provocó tu comentario",
+  "follow": "Ahora sigue tu proyecto",
+  "mention": "Te mencioné en un comentario",
+  "post_like": "Encendió tu publicación",
+  "reply": "Respondió a su comentario"
 }

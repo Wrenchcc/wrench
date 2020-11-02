@@ -1,8 +1,8 @@
 {
-    "description": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@{{username}}) sulla Wrench",
-    "recent": "",
-    "share": "Condividere",
-    "similar": "Progetti simili",
-    "title": "{{title}} - {{type}}  del progetto",
-    "description_plural": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@{{username}}) sulla Wrench"
+  "description": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@{{username}}) sulla Wrench",
+  "recent": "Messaggi recenti",
+  "share": "Condividere",
+  "similar": "Progetti simili",
+  "title": "{{title}} - {{type}}  del progetto",
+  "description_plural": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@{{username}}) sulla Wrench"
 }

@@ -1,8 +1,8 @@
 {
-    "download": "Descargar aplicaciones",
-    "explore": "Explorar",
-    "feed": "Alimentar",
-    "login": "Iniciar sesión",
-    "register": "Regístrate",
-    "sign_out": "desconectar"
+  "download": "Descargar aplicaciones",
+  "explore": "Explorar",
+  "feed": "Alimentar",
+  "login": "Iniciar sesión",
+  "register": "Regístrate",
+  "sign_out": "desconectar"
 }

@@ -79,7 +79,7 @@
     "title": ""
   },
   "collections": {
-    "edit": "",
+    "edit": "редактировать",
     "title": ""
   },
   "comment-field": {
@@ -93,28 +93,38 @@
     "loadReplies_0": "",
     "loadReplies_1": "",
     "loadReplies_2": "",
-    "reply": ""
+    "reply": "",
+    "like": "{{count}} искры",
+    "like_plural": "{{count, humanFormat}} искр",
+    "loadReplies": "Посмотреть ответы ( {{count}} )",
+    "loadReplies_plural": "Посмотреть ответы ( {{count}} )"
   },
   "comment-list": {
     "loadMore_0": "",
     "loadMore_1": "",
-    "loadMore_2": ""
+    "loadMore_2": "",
+    "loadMore": "Посмотреть 1 комментарий",
+    "loadMore_plural": "Посмотреть все {{count, humanFormat}} комментариев"
   },
   "comments": {
     "load_replies_0": "",
     "load_replies_1": "",
     "load_replies_2": "",
-    "loadMore": "",
-    "title": ""
+    "loadMore": "Загрузить больше комментариев",
+    "title": "Комментарии",
+    "load_replies": "НЕТ ПЕРЕВОДА",
+    "load_replies_plural": "НЕТ ПЕРЕВОДА"
   },
   "common": {
-    "description": "",
+    "description": "НЕТ ПЕРЕВОДА",
     "like_0": "",
     "like_1": "",
     "like_2": "",
-    "reply": "",
-    "settings": "",
-    "title": ""
+    "reply": "НЕТ ПЕРЕВОДА",
+    "settings": "НЕТ ПЕРЕВОДА",
+    "title": "НЕТ ПЕРЕВОДА",
+    "like": "НЕТ ПЕРЕВОДА",
+    "like_plural": "НЕТ ПЕРЕВОДА"
   },
   "edit-collection": {
     "add": "",
@@ -209,29 +219,609 @@
       "title": "NO_TRANSLATION"
     }
   },
+  "en": {
+    "add-collection": {
+      "add": "Добавить новое",
+      "done": "Выполнено",
+      "placeholder": "Ex. Ремонт двигателя",
+      "title": "Новая коллекция"
+    },
+    "add-media": {
+      "next": "следующий",
+      "options": {
+        "cancel": "Отмена",
+        "discard": "Отменить",
+        "title": "Если вы вернетесь сейчас, ваши правки будут отменены."
+      }
+    },
+    "add-post-to-collection": {
+      "done": "Выполнено",
+      "title": "Добавить сообщения"
+    },
+    "add-post": {
+      "add": "доля",
+      "collection": "Добавить в коллекцию",
+      "error": "Не удалось опубликовать прямо сейчас",
+      "placeholder": "Добавьте текст о своем сообщении"
+    },
+    "add-project-model": {
+      "add": "Добавить",
+      "headerTitle": "Добавить проект",
+      "placeholder": "Например. BMW R100 1981 года",
+      "skip": "Пропускать",
+      "title": "Найдите и выберите свою модель."
+    },
+    "add-project-type": {
+      "headerTitle": "Добавить проект",
+      "title": "Выберите свою категорию"
+    },
+    "add-project": {
+      "headerTitle": "Добавить проект",
+      "next": "следующий",
+      "placeholder": "Например. Honda Cafe Racer",
+      "title": "Выберите название для вашего проекта."
+    },
+    "ask-for-permission": {
+      "camera": {
+        "alertCancel": "Отмена",
+        "alertDescription": "Не удалось получить ваше разрешение. Пожалуйста, включите его в настройках.",
+        "alertOpen": "Открыть настройки",
+        "alertTitle": "Ой!",
+        "permissionButton": "Разрешить доступ к камере",
+        "permissionDescription": "Разрешите Wrench доступ к вашей камере, чтобы делать фотографии и записывать видео в приложении.",
+        "permissionHeadline": "Делайте фото и записывайте видео"
+      },
+      "photo": {
+        "alertCancel": "Отмена",
+        "alertDescription": "Не удалось получить ваше разрешение. Пожалуйста, включите его в настройках.",
+        "alertOpen": "Открыть настройки",
+        "alertTitle": "Ой!",
+        "permissionButton": "Включить доступ к библиотеке",
+        "permissionDescription": "Это позволяет Wrench обмениваться фотографиями из вашей библиотеки и сохранять фотографии в фотопленке.",
+        "permissionHeadline": "Добавьте фото и видео"
+      }
+    },
+    "blog-post": {
+      "back": "Вернуться в блог",
+      "title": "Блог"
+    },
+    "blog": {
+      "title": "Блог"
+    },
+    "bookmarks": {
+      "description": "Сохраняйте сообщения, которые хотите увидеть снова. Никто не получает уведомления, и только вы можете видеть, что сохранили.",
+      "headerTitle": "Сохраненные сообщения",
+      "title": "Сохранить"
+    },
+    "collections": {
+      "edit": "редактировать",
+      "title": "Коллекции"
+    },
+    "comment-field": {
+      "placeholder": "Добавить комментарий...",
+      "post": "Почта"
+    },
+    "comment-item": {
+      "like": "{{count}} искры",
+      "like_plural": "{{count, humanFormat}} искр",
+      "loadReplies": "Посмотреть ответы ( {{count}} )",
+      "loadReplies_plural": "Посмотреть ответы ( {{count}} )",
+      "reply": "Ответить"
+    },
+    "comment-list": {
+      "loadMore": "Посмотреть 1 комментарий",
+      "loadMore_plural": "Посмотреть все {{count, humanFormat}} комментариев"
+    },
+    "comments": {
+      "load_replies": "НЕТ ПЕРЕВОДА",
+      "load_replies_plural": "НЕТ ПЕРЕВОДА",
+      "loadMore": "Загрузить больше комментариев",
+      "title": "Комментарии"
+    },
+    "common": {
+      "description": "НЕТ ПЕРЕВОДА",
+      "like": "НЕТ ПЕРЕВОДА",
+      "like_plural": "НЕТ ПЕРЕВОДА",
+      "reply": "НЕТ ПЕРЕВОДА",
+      "settings": "НЕТ ПЕРЕВОДА",
+      "title": "НЕТ ПЕРЕВОДА"
+    },
+    "edit-collection": {
+      "add": "Добавить сообщения",
+      "delete": "удалять",
+      "done": "Выполнено",
+      "placeholder": "Ex. Ремонт двигателя",
+      "title": "Информация"
+    },
+    "edit-model": {
+      "headerTitle": "Редактировать модель",
+      "placeholder": "Например. BMW R100 1981 года",
+      "save": "Сохранить",
+      "title": "Найдите и выберите свою модель."
+    },
+    "edit-post": {
+      "cancel": "Отмена",
+      "headerTitle": "Редактировать пост",
+      "placeholder": "Добавьте текст о своем сообщении",
+      "save": "Сохранить"
+    },
+    "edit-profile": {
+      "bio": "Био",
+      "change": "+ Изменить",
+      "firstName": "Имя",
+      "headerTitle": "Редактировать профиль",
+      "imagePickerCancel": "Отмена",
+      "imagePickerLibrary": "Выбрать из библиотеки…",
+      "imagePickerPermissionOk": "Я уверен",
+      "imagePickerPermissionRetry": "повторить попытку",
+      "imagePickerPermissionText": "Чтобы иметь возможность делать снимки с помощью камеры и выбирать изображения из своей библиотеки.",
+      "imagePickerPermissionTitle": "В доступе отказано",
+      "imagePickerPhoto": "Фотографировать…",
+      "imagePickerTitle": "Выберите аватар",
+      "information": "Информация",
+      "lastName": "Фамилия",
+      "place": "Столица",
+      "remove": "Удалить текущую фотографию",
+      "save": "Сохранить",
+      "username": "Имя пользователя",
+      "validation": "Пожалуйста, проверьте обязательные поля.",
+      "validationUsername": "Имя пользователя уже используется.",
+      "website": "Веб-сайт",
+      "wrong": "Что-то пошло не так"
+    },
+    "edit-project": {
+      "cancel": "Отмена",
+      "delete": "удалять",
+      "deleteAlert": "Удалить проект?",
+      "deleteTitle": "Удалить проект",
+      "description": "Это действие не может быть отменено.",
+      "done": "Выполнено",
+      "headerTitle": "редактировать",
+      "information": "Информация",
+      "model": "Редактировать модель",
+      "projectSettings": "Настройки проекта",
+      "title": "заглавие"
+    },
+    "edit": {
+      "edit": "редактировать"
+    },
+    "empty-state": {
+      "collection-no-post": {
+        "description": "Пользователь еще не добавил ни одной записи в эту коллекцию.",
+        "title": "В эту коллекцию не добавлено никаких сообщений."
+      },
+      "collection-post": {
+        "button": "Добавить",
+        "description": "Добавьте сообщение в эту коллекцию из потока создания нового сообщения или существующего сообщения, нажав кнопку «Дополнительно» в правом углу сообщения.",
+        "title": "Добавьте свой первый пост в эту коллекцию."
+      },
+      "notifications": {
+        "description": "Здесь вы увидите комментарии, новых подписчиков и другие действия.",
+        "title": "Уведомлений пока нет."
+      },
+      "post": {
+        "button": "Добавить",
+        "description": "Теперь, когда у вас есть проект, пора создать свой первый пост.",
+        "title": "2. Добавьте свой первый пост."
+      },
+      "project-no-post": {
+        "description": "Следите за этим проектом сейчас и получайте уведомления, когда он обновляется.",
+        "title": "В этом проекте пока нет публикаций."
+      },
+      "project-post": {
+        "button": "Добавить",
+        "description": "Теперь, когда у вас есть проект, пора создать свой первый пост.",
+        "title": "Добавьте свой первый пост."
+      },
+      "project": {
+        "button": "Начать",
+        "description": "Давайте быстро создадим ваш первый проект.",
+        "title": "1. Создайте свой первый проект."
+      }
+    },
+    "facebook": {
+      "button": "Продолжить с Facebook"
+    },
+    "feed": {
+      "description": "НЕТ ПЕРЕВОДА",
+      "title": "Корм"
+    },
+    "follow": {
+      "follow": "Следите за этим проектом",
+      "followSmall": "следить",
+      "unfollow": "Следующий",
+      "unfollowSmall": "Следующий"
+    },
+    "followers": {
+      "followers": "{{count, humanFormat}} последователей",
+      "followers_plural": "{{count, humanFormat}} подписчиков",
+      "title": "Подписчики"
+    },
+    "following-projects": {
+      "description": "Но вот некоторые из проектов {{name}} следует.",
+      "title": "У этого пользователя пока нет собственных проектов."
+    },
+    "footer": {
+      "about": "Около",
+      "blog": "Блог",
+      "chat": "Поболтай с нами",
+      "cookies": "Политика использования файлов cookie",
+      "description": "Wrench - проектное сообщество, основанное в 2018 году в Швеции. Он спроектирован, построен и управляется в самом сердце Стокгольма.",
+      "download": "Скачать приложения",
+      "eula": "EULA",
+      "faq": "часто задаваемые вопросы",
+      "feedback": "Обратная связь",
+      "help": "Помогите",
+      "legal": "Юридический",
+      "mail": "Почта поддержки",
+      "policy": "политика конфиденциальности",
+      "press": "Нажмите",
+      "social": "Социальное",
+      "status": "Положение дел",
+      "terms": "Условия и положения",
+      "trademarks": "App Store является знаком обслуживания Apple Inc. Google Play является товарным знаком Google LLC."
+    },
+    "google": {
+      "button": "Продолжить с Google"
+    },
+    "hashtag": {
+      "posts": "{{count, humanFormat}} сообщений",
+      "posts_plural": "{{count, humanFormat}} сообщений"
+    },
+    "header": {
+      "download": "Скачать приложения",
+      "explore": "Исследовать",
+      "feed": "Корм",
+      "home": "Дом",
+      "login": "Авторизоваться",
+      "notifications": "Уведомления",
+      "register": "зарегистрироваться"
+    },
+    "home": {
+      "description": "Документируйте свои сборки, делитесь своими проектами и учитесь у единомышленников.",
+      "document_title": "Гаечный ключ | Ваше сообщество мотоциклистов",
+      "explore": "Узнайте больше о проектах",
+      "signup": "Зарегистрироваться сейчас",
+      "subtitle": "сообщество.",
+      "title": "Ваш мотоцикл"
+    },
+    "languages": {
+      "sv": "Шведский",
+      "en": "английский",
+      "es": "испанский",
+      "it": "Итальянский",
+      "de": "Немецкий",
+      "nl": "Голландский",
+      "fr": "французкий язык",
+      "tl": "Филиппинский",
+      "pt": "португальский",
+      "ru": "русский",
+      "no": "норвежский язык",
+      "da": "Датский"
+    },
+    "legal": {
+      "description": "Продолжая, вы соглашаетесь с Wrench's",
+      "link": "условия и положения."
+    },
+    "like-post": {
+      "like": "{{count}} искры",
+      "like_plural": "{{count, humanFormat}} искр"
+    },
+    "list": {
+      "load_more": "Посмотреть 1 комментарий",
+      "load_more_plural": "Посмотреть все {{count, humanFormat}} комментариев"
+    },
+    "login": {
+      "apple_button": "Продолжить с Apple",
+      "fb_button": "Продолжить с Facebook",
+      "google_button": "Продолжить с Google",
+      "title": "Войдите, чтобы подписаться на свои любимые проекты и многое другое."
+    },
+    "logout": {
+      "logout": "Выйти",
+      "profile": "Профиль",
+      "settings": "Настройки"
+    },
+    "me": {
+      "bookmarks": "Сохраненные сообщения",
+      "edit": "Редактировать профиль",
+      "settings": "Настройки"
+    },
+    "media-picker-list": {
+      "deselectAll": "Убрать выделение со всего"
+    },
+    "mobile-menu": {
+      "download": "Скачать приложения",
+      "explore": "Исследовать",
+      "feed": "Корм",
+      "login": "Авторизоваться",
+      "register": "зарегистрироваться",
+      "sign_out": "выход"
+    },
+    "no-results": {
+      "title": "результаты не найдены"
+    },
+    "notification": {
+      "comment": "Прокомментировал ваш пост",
+      "comment_like": "Вызвал ваш комментарий",
+      "follow": "Теперь следит за вашим проектом",
+      "mention": "Упомянул вас в комментарии",
+      "post_like": "Зажег твой пост",
+      "reply": "Ответил на ваш комментарий"
+    },
+    "notifications": {
+      "comment": "Прокомментировал ваш пост",
+      "commentLike": "Вызвал ваш комментарий",
+      "description": "Здесь вы увидите комментарии, новых подписчиков и другие действия.",
+      "follow": "Теперь следит за вашим проектом",
+      "mention": "Упомянул вас в комментарии",
+      "NEW_ARTICLE": "Статьи",
+      "NEW_COMMENT": "Комментарии",
+      "NEW_FOLLOWER": "Подписчики",
+      "NEW_MENTION": "Упоминания",
+      "postLike": "Зажег твой пост",
+      "PRODUCT_ANNOUNCEMENTS": "Анонсы продуктов",
+      "reply": "Ответил на ваш комментарий",
+      "SIMILAR_PROJECTS": "Похожие проекты",
+      "title": "Уведомлений пока нет."
+    },
+    "onboarding": {
+      "description": "Выберите хотя бы три категории, которые вас интересуют, и мы предложим вам для начала несколько интересных проектов.",
+      "headerTitle": "Настройте свои интересы",
+      "headline": "Чем ты интересуешься?",
+      "next": "следующий",
+      "save": "Сохранить",
+      "title": "Чем ты интересуешься?"
+    },
+    "options": {
+      "alertTitle": "Ты уверен?",
+      "cancel": "Отмена",
+      "collection": "Добавить в коллекцию",
+      "delete": "удалять",
+      "edit": "редактировать",
+      "removeCollection": "Удалить из коллекции",
+      "report": "Отчет"
+    },
+    "popular": {
+      "description": "Здесь вы видите самые популярные проекты этой недели.",
+      "popular": "Популярные проекты",
+      "recent": "Недавние Посты",
+      "title": "Популярные проекты"
+    },
+    "post-container": {
+      "loadMore": "Загрузить больше комментариев",
+      "title": "Почта"
+    },
+    "post": {
+      "options": {
+        "alertTitle": "Ты уверен?",
+        "cancel": "Отмена",
+        "collection": "Добавить в коллекцию",
+        "delete": "удалять",
+        "edit": "редактировать",
+        "removeCollection": "Удалить из коллекции",
+        "report": "Отчет"
+      },
+      "selectCollection": "Выбрать коллекцию",
+      "showCollection": "Показать коллекцию"
+    },
+    "posting": {
+      "description": "Публикация ..."
+    },
+    "project-card": {
+      "follow": "следить",
+      "unfollow": "Следующий"
+    },
+    "project-suggestion": {
+      "description": "Ниже мы выбрали несколько проектов, которые могут вас заинтересовать.",
+      "title": "Развивайте скорость и следите за некоторыми проектами.",
+      "title_small": "Предлагается для вас"
+    },
+    "project-suggestions": {
+      "description": "Ниже мы выбрали несколько проектов, которые могут вас заинтересовать.",
+      "title": "Развивайте скорость и следите за некоторыми проектами."
+    },
+    "project-types": {
+      "inspo": "Вдохновение"
+    },
+    "project": {
+      "description": "{{followers, humanFormat}} подписчиков, {{posts, humanFormat}} сообщений - {{fullName}} . (@ {{username}} ) гаечный ключ",
+      "recent": "Недавние Посты",
+      "share": "доля",
+      "similar": "Похожие проекты",
+      "title": "{{title}} - {{type}} проект",
+      "description_plural": "{{followers, humanFormat}} подписчиков, {{posts, humanFormat}} сообщений - {{fullName}} . (@ {{username}} ) гаечный ключ"
+    },
+    "promo": {
+      "button_default": "послать",
+      "button_success": "Отправлено",
+      "description": "Введите свой номер и получите одноразовую SMS-ссылку.",
+      "title": "Загрузите приложение Wrench в Appstore и Google Play"
+    },
+    "push-notifications": {
+      "approve": "Включите уведомления",
+      "decline": "Нет, спасибо",
+      "description": "Сразу узнавайте, когда люди следят за вашими проектами, ставят лайки и комментируют ваши публикации.",
+      "title": "Пожалуйста, включите уведомления."
+    },
+    "result": {
+      "not_found": "Ничего не найдено.",
+      "projects": "{{count, humanFormat}} проект",
+      "projects_plural": "{{count, humanFormat}} проектов"
+    },
+    "search-bar": {
+      "cancel": "Отмена",
+      "placeholder": "Поиск"
+    },
+    "search-location-footer": {
+      "poweredBy": "Питаться от"
+    },
+    "search-location": {
+      "no_result": "Нет результатов.",
+      "placeholder": "Столица"
+    },
+    "search": {
+      "clear": "Очистить все",
+      "hashtags": "Хештеги",
+      "placeholder": "Поиск",
+      "projects": "Проекты",
+      "recent": "Недавние",
+      "users": "Пользователи"
+    },
+    "searching-for": {
+      "title": "В поисках"
+    },
+    "sections": {
+      "language": "Язык",
+      "notifications": "Уведомления",
+      "profile": "Профиль",
+      "support": "Поддержка"
+    },
+    "select-project": {
+      "create": "Создать новый проект"
+    },
+    "settings": {
+      "chat": "Поболтай с нами",
+      "clear": "Очистить сохраненные данные",
+      "codepush": "Код Push",
+      "contacts": "Мои контакты",
+      "credits": "Кредиты",
+      "customize-interests": "Настройте свои интересы",
+      "delete": "Удалить аккаунт",
+      "deleteCancel": "Отмена",
+      "deleteDescription": "Если вы решите удалить свою учетную запись, вы не сможете войти снова. Перед удалением учетной записи удалите свои проекты.",
+      "deleteOk": "ОК",
+      "deleteTitle": "Удалить аккаунт",
+      "developer": "Разработчик",
+      "email-notifications": "Уведомления по электронной почте",
+      "facebook": "Facebook",
+      "faq": "часто задаваемые вопросы",
+      "feedback": "Обратная связь",
+      "field": {
+        "bio": "Био",
+        "firstname": "Имя",
+        "lastname": "Фамилия",
+        "website": "Веб-сайт"
+      },
+      "general": "Генеральная",
+      "invite": "Пригласить людей",
+      "language": "Язык",
+      "logout": "Выйти",
+      "mail": "Почта",
+      "membership": "Членство",
+      "push-notifications": "Всплывающие напоминания",
+      "rate": "Оставьте нам отзыв",
+      "report": "Сообщить об ошибке",
+      "save": "Сохранить",
+      "sections": {
+        "language": "Язык",
+        "notifications": "Уведомления",
+        "profile": "Редактировать профиль",
+        "support": "Поддержка"
+      },
+      "settings": "Настройки",
+      "share": "Поделитесь с нами",
+      "stages": {
+        "production": "Производство",
+        "staging": "Постановка"
+      },
+      "support": "Поддержка",
+      "terms": "Условия и положения",
+      "title": "Настройки",
+      "toast": {
+        "error": "Что-то пошло не так",
+        "saved": "Настройки сохранены"
+      },
+      "website": "Веб-сайт"
+    },
+    "share": {
+      "share": "доля"
+    },
+    "show-latest": {
+      "button": "Новые сообщения"
+    },
+    "sign-in": {
+      "description": "Документируйте свои сборки, делитесь своими проектами и учитесь у единомышленников.",
+      "headline": "Ваш\nмотоцикл\nсообщество.",
+      "other": "Другие варианты входа"
+    },
+    "similar-projects": {
+      "title": "Похожие проекты"
+    },
+    "sparks": {
+      "title": "Искры"
+    },
+    "suggestions": {
+      "description": "Ниже мы выбрали несколько проектов, которые могут вас заинтересовать.",
+      "headline": "Развивайте скорость и следите за некоторыми проектами.",
+      "next": "следующий"
+    },
+    "text": {
+      "more": "Больше"
+    },
+    "time": {
+      "d": "{{count}} дней назад",
+      "d_plural": "{{count}} дней назад",
+      "h": "{{count}} часов назад",
+      "h_plural": "{{count}} часов назад",
+      "m": "{{count}} минут назад",
+      "m_plural": "{{count}} минут назад",
+      "mo": "{{count}} месяцев назад",
+      "mo_plural": "{{count}} месяцев назад",
+      "now": "прямо сейчас",
+      "y": "{{count}} год назад",
+      "y_plural": "{{count}} лет назад"
+    },
+    "toast": {
+      "network": "Подключение к Интернету отсутствует",
+      "spam": "Действие заблокировано. Пожалуйста, повторите попытку позже."
+    },
+    "user-following-projects": {
+      "description": "Но вот некоторые из проектов {{name}} следует.",
+      "title": "У этого пользователя пока нет собственных проектов."
+    },
+    "user-projects": {
+      "followers": "{{count, humanFormat}} последователей",
+      "followers_plural": "{{count, humanFormat}} подписчиков",
+      "title": "Проекты"
+    },
+    "user": {
+      "description": "Смотрите проекты Wrench и сообщения от {{fullName}} . (@ {{username}} )",
+      "image_alt": "НЕТ ПЕРЕВОДА",
+      "notfound": "Пользователь не найден",
+      "projects": "{{count, humanFormat}} проект",
+      "projects_plural": "{{count, humanFormat}} проектов",
+      "title": "{{fullName}} . (@ {{username}} ) - проекты и посты"
+    },
+    "webview": {
+      "loading": "Загружается ..."
+    }
+  },
   "facebook": {
     "button": ""
   },
   "feed": {
-    "description": "",
+    "description": "НЕТ ПЕРЕВОДА",
     "title": "Корм"
   },
   "follow": {
     "follow": "Следите за этим проектом",
-    "followSmall": "",
+    "followSmall": "следить",
     "unfollow": "Следующий",
-    "unfollowSmall": "",
+    "unfollowSmall": "Следующий",
     "follow_short": "следить"
   },
   "followers": {
     "followers_0": "",
     "followers_1": "",
     "followers_2": "",
-    "title": ""
+    "title": "Подписчики",
+    "followers": "{{count, humanFormat}} последователей",
+    "followers_plural": "{{count, humanFormat}} подписчиков"
   },
   "following-projects": {
-    "description": "",
-    "title": "Проекты, за которыми вы следите"
+    "description": "Но вот некоторые из проектов {{name}} следует.",
+    "title": "У этого пользователя пока нет собственных проектов."
   },
   "footer": {
     "about": "Около",
@@ -259,15 +849,17 @@
   "hashtag": {
     "posts_0": "",
     "posts_1": "",
-    "posts_2": ""
+    "posts_2": "",
+    "posts": "{{count, humanFormat}} сообщений",
+    "posts_plural": "{{count, humanFormat}} сообщений"
   },
   "header": {
     "download": "Скачать приложения",
     "explore": "Проводить исследования",
     "feed": "Корм",
-    "home": "",
+    "home": "Дом",
     "login": "Авторизоваться",
-    "notifications": "",
+    "notifications": "Уведомления",
     "register": "зарегистрироваться"
   },
   "home": {
@@ -299,12 +891,16 @@
   "like-post": {
     "like_0": "",
     "like_1": "",
-    "like_2": ""
+    "like_2": "",
+    "like": "{{count}} искры",
+    "like_plural": "{{count, humanFormat}} искр"
   },
   "list": {
     "load_more_0": "",
     "load_more_1": "",
-    "load_more_2": ""
+    "load_more_2": "",
+    "load_more": "Посмотреть 1 комментарий",
+    "load_more_plural": "Посмотреть все {{count, humanFormat}} комментариев"
   },
   "login": {
     "apple_button": "Продолжить с Apple",
@@ -345,27 +941,27 @@
     "reply": "Ответил на ваш комментарий"
   },
   "notifications": {
-    "comment": "",
-    "commentLike": "",
+    "comment": "Прокомментировал ваш пост",
+    "commentLike": "Вызвал ваш комментарий",
     "description": "Здесь вы увидите комментарии, новых подписчиков и другие действия.",
-    "follow": "",
-    "mention": "",
-    "NEW_ARTICLE": "",
-    "NEW_COMMENT": "",
-    "NEW_FOLLOWER": "",
-    "NEW_MENTION": "",
-    "postLike": "",
-    "PRODUCT_ANNOUNCEMENTS": "NO_TRANSLATION",
-    "reply": "",
-    "SIMILAR_PROJECTS": "",
+    "follow": "Теперь следит за вашим проектом",
+    "mention": "Упомянул вас в комментарии",
+    "NEW_ARTICLE": "Статьи",
+    "NEW_COMMENT": "Комментарии",
+    "NEW_FOLLOWER": "Подписчики",
+    "NEW_MENTION": "Упоминания",
+    "postLike": "Зажег твой пост",
+    "PRODUCT_ANNOUNCEMENTS": "Анонсы продуктов",
+    "reply": "Ответил на ваш комментарий",
+    "SIMILAR_PROJECTS": "Похожие проекты",
     "title": "Уведомлений пока нет."
   },
   "onboarding": {
     "description": "Выберите хотя бы три категории, которые вас интересуют, и мы предложим вам для начала несколько интересных проектов.",
-    "headerTitle": "",
-    "headline": "",
+    "headerTitle": "Настройте свои интересы",
+    "headline": "Чем ты интересуешься?",
     "next": "следующий",
-    "save": "",
+    "save": "Сохранить",
     "title": "Чем ты интересуешься?"
   },
   "options": {
@@ -379,8 +975,8 @@
   },
   "popular": {
     "description": "Здесь вы видите самые популярные проекты этой недели.",
-    "popular": "",
-    "recent": "",
+    "popular": "Популярные проекты",
+    "recent": "Недавние Посты",
     "title": "Популярные проекты"
   },
   "post-container": {
@@ -422,7 +1018,7 @@
   },
   "project": {
     "description": "{{followers, humanFormat}} подписчиков, {{posts, humanFormat}} сообщений - {{fullName}} . (@ {{username}} ) гаечный ключ",
-    "recent": "",
+    "recent": "Недавние Посты",
     "share": "Поделиться",
     "similar": "Похожие проекты",
     "title": "{{title}} - {{type}} проект",
@@ -444,7 +1040,9 @@
     "not_found": "Ничего не найдено.",
     "projects_0": "",
     "projects_1": "",
-    "projects_2": ""
+    "projects_2": "",
+    "projects": "{{count, humanFormat}} проект",
+    "projects_plural": "{{count, humanFormat}} проектов"
   },
   "search-bar": {
     "cancel": "",
@@ -458,12 +1056,12 @@
     "placeholder": "Столица"
   },
   "search": {
-    "clear": "",
-    "hashtags": "",
+    "clear": "Очистить все",
+    "hashtags": "Хештеги",
     "placeholder": "Поиск",
-    "projects": "",
-    "recent": "",
-    "users": ""
+    "projects": "Проекты",
+    "recent": "Недавние",
+    "users": "Пользователи"
   },
   "searching-for": {
     "title": ""
@@ -479,57 +1077,57 @@
   },
   "settings": {
     "chat": "Поболтай с нами",
-    "clear": "",
-    "codepush": "",
-    "contacts": "NO_TRANSLATION",
-    "credits": "",
-    "customize-interests": "",
-    "delete": "",
-    "deleteCancel": "NO_TRANSLATION",
-    "deleteDescription": "NO_TRANSLATION",
-    "deleteOk": "NO_TRANSLATION",
-    "deleteTitle": "NO_TRANSLATION",
-    "developer": "",
-    "email-notifications": "NO_TRANSLATION",
-    "facebook": "NO_TRANSLATION",
-    "faq": "NO_TRANSLATION",
+    "clear": "Очистить сохраненные данные",
+    "codepush": "Код Push",
+    "contacts": "Мои контакты",
+    "credits": "Кредиты",
+    "customize-interests": "Настройте свои интересы",
+    "delete": "Удалить аккаунт",
+    "deleteCancel": "Отмена",
+    "deleteDescription": "Если вы решите удалить свою учетную запись, вы не сможете войти снова. Перед удалением учетной записи удалите свои проекты.",
+    "deleteOk": "ОК",
+    "deleteTitle": "Удалить аккаунт",
+    "developer": "Разработчик",
+    "email-notifications": "Уведомления по электронной почте",
+    "facebook": "Facebook",
+    "faq": "часто задаваемые вопросы",
     "feedback": "Обратная связь",
     "field": {
-      "bio": "",
-      "firstname": "",
-      "lastname": "",
-      "website": ""
+      "bio": "Био",
+      "firstname": "Имя",
+      "lastname": "Фамилия",
+      "website": "Веб-сайт"
     },
-    "general": "",
-    "invite": "",
-    "language": "",
-    "logout": "",
-    "mail": "Почта поддержки",
-    "membership": "NO_TRANSLATION",
-    "push-notifications": "NO_TRANSLATION",
-    "rate": "",
-    "report": "NO_TRANSLATION",
+    "general": "Генеральная",
+    "invite": "Пригласить людей",
+    "language": "Язык",
+    "logout": "Выйти",
+    "mail": "Почта",
+    "membership": "Членство",
+    "push-notifications": "Всплывающие напоминания",
+    "rate": "Оставьте нам отзыв",
+    "report": "Сообщить об ошибке",
     "save": "Сохранить",
     "sections": {
-      "language": "",
-      "notifications": "",
-      "profile": "",
-      "support": ""
+      "language": "Язык",
+      "notifications": "Уведомления",
+      "profile": "Редактировать профиль",
+      "support": "Поддержка"
     },
-    "settings": "",
-    "share": "",
+    "settings": "Настройки",
+    "share": "Поделитесь с нами",
     "stages": {
-      "production": "NO_TRANSLATION",
-      "staging": "NO_TRANSLATION"
+      "production": "Производство",
+      "staging": "Постановка"
     },
-    "support": "",
-    "terms": "",
+    "support": "Поддержка",
+    "terms": "Условия и положения",
     "title": "Настройки",
     "toast": {
-      "error": "",
-      "saved": ""
+      "error": "Что-то пошло не так",
+      "saved": "Настройки сохранены"
     },
-    "website": "",
+    "website": "Веб-сайт",
     "field_bio": "Био",
     "field_firstname": "Имя",
     "field_lastname": "Фамилия",
@@ -582,7 +1180,17 @@
     "now": "прямо сейчас",
     "y_0": "",
     "y_1": "",
-    "y_2": ""
+    "y_2": "",
+    "d": "{{count}} дней назад",
+    "d_plural": "{{count}} дней назад",
+    "h": "{{count}} часов назад",
+    "h_plural": "{{count}} часов назад",
+    "m": "{{count}} минут назад",
+    "m_plural": "{{count}} минут назад",
+    "mo": "{{count}} месяцев назад",
+    "mo_plural": "{{count}} месяцев назад",
+    "y": "{{count}} год назад",
+    "y_plural": "{{count}} лет назад"
   },
   "toast": {
     "network": "",
@@ -596,16 +1204,20 @@
     "followers_0": "",
     "followers_1": "",
     "followers_2": "",
-    "title": "Проекты"
+    "title": "Проекты",
+    "followers": "{{count, humanFormat}} последователей",
+    "followers_plural": "{{count, humanFormat}} подписчиков"
   },
   "user": {
     "description": "Смотрите проекты Wrench и сообщения от {{fullName}} . (@ {{username}} )",
-    "image_alt": "",
-    "notfound": "",
+    "image_alt": "НЕТ ПЕРЕВОДА",
+    "notfound": "Пользователь не найден",
     "projects_0": "",
     "projects_1": "",
     "projects_2": "",
-    "title": "{{fullName}} . (@ {{username}} ) - проекты и посты"
+    "title": "{{fullName}} . (@ {{username}} ) - проекты и посты",
+    "projects": "{{count, humanFormat}} проект",
+    "projects_plural": "{{count, humanFormat}} проектов"
   },
   "webview": {
     "loading": ""

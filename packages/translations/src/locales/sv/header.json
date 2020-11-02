@@ -1,9 +1,9 @@
 {
-    "download": "Ladda ner Appar",
-    "explore": "Utforska",
-    "feed": "Feed",
-    "home": "Hem",
-    "login": "Logga in",
-    "notifications": "Notifikationer",
-    "register": "Registrera dig"
+  "download": "Ladda ner Appar",
+  "explore": "Utforska",
+  "feed": "Feed",
+  "home": "Hem",
+  "login": "Logga in",
+  "notifications": "Meddelanden",
+  "register": "Registrera dig"
 }

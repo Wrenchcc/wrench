@@ -1,3 +1,8 @@
 {
-  "placeholder": "Поиск"
+  "clear": "Очистить все",
+  "hashtags": "Хештеги",
+  "placeholder": "Поиск",
+  "projects": "Проекты",
+  "recent": "Недавние",
+  "users": "Пользователи"
 }

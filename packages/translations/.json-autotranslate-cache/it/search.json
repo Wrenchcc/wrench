@@ -1,3 +1,8 @@
 {
-  "placeholder": "Ricerca"
+  "clear": "Cancella tutto",
+  "hashtags": "Hashtag",
+  "placeholder": "Ricerca",
+  "projects": "Progetti",
+  "recent": "Recente",
+  "users": "Utenti"
 }

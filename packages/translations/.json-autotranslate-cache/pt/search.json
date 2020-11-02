@@ -1,3 +1,8 @@
 {
-  "placeholder": "Pesquisa"
+  "clear": "Limpar tudo",
+  "hashtags": "Hashtags",
+  "placeholder": "Pesquisa",
+  "projects": "Projetos",
+  "recent": "Recente",
+  "users": "Comercial"
 }

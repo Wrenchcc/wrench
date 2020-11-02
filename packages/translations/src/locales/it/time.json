@@ -1,13 +1,13 @@
 {
-    "d": "{{count}} giorni fa",
-    "d_plural": "{{count}} giorni fa",
-    "h": "{{count}} ora fa",
-    "h_plural": "{{count}} ore fa",
-    "m": "{{count}} minuto fa",
-    "m_plural": "{{count}} minuti fa",
-    "mo": "{{count}} mesi fa",
-    "mo_plural": "{{count}} mesi fa",
-    "now": "proprio adesso",
-    "y": "{{count}} anno fa",
-    "y_plural": "{{count}} anni fa"
+  "d": "{{count}} giorni fa",
+  "d_plural": "{{count}} giorni fa",
+  "h": "{{count}} ora fa",
+  "h_plural": "{{count}} ore fa",
+  "m": "{{count}} minuto fa",
+  "m_plural": "{{count}} minuti fa",
+  "mo": "{{count}} mesi fa",
+  "mo_plural": "{{count}} mesi fa",
+  "now": "proprio adesso",
+  "y": "{{count}} anno fa",
+  "y_plural": "{{count}} anni fa"
 }

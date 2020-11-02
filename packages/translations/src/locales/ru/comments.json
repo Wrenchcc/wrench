@@ -1,7 +1,9 @@
 {
-    "load_replies_0": "",
-    "load_replies_1": "",
-    "load_replies_2": "",
-    "loadMore": "",
-    "title": ""
+  "load_replies_0": "",
+  "load_replies_1": "",
+  "load_replies_2": "",
+  "loadMore": "Загрузить больше комментариев",
+  "title": "Комментарии",
+  "load_replies": "НЕТ ПЕРЕВОДА",
+  "load_replies_plural": "НЕТ ПЕРЕВОДА"
 }

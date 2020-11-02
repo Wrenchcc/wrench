@@ -1,4 +1,4 @@
 {
-    "like": "{{count}} chispa",
-    "like_plural": "{{count, humanFormat}} chispas"
+  "like": "{{count}} chispa",
+  "like_plural": "{{count, humanFormat}} chispas"
 }

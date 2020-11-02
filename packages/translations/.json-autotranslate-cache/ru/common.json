@@ -1,8 +1,11 @@
 {
+  "description": "НЕТ ПЕРЕВОДА",
   "like_0": "",
   "like_1": "",
   "like_2": "",
-  "reply": "",
-  "like": "",
-  "like_plural": ""
+  "reply": "НЕТ ПЕРЕВОДА",
+  "settings": "НЕТ ПЕРЕВОДА",
+  "title": "НЕТ ПЕРЕВОДА",
+  "like": "НЕТ ПЕРЕВОДА",
+  "like_plural": "НЕТ ПЕРЕВОДА"
 }

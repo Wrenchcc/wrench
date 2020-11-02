@@ -1,8 +1,8 @@
 {
-    "description": "Se skiftenøkkelprosjekter og innlegg fra {{fullName}} . (@ {{username}} )",
-    "image_alt": "",
-    "notfound": "",
-    "projects": "",
-    "projects_plural": "",
-    "title": "{{fullName}} . (@ {{username}} ) - prosjekter og innlegg"
+  "description": "Se skiftenøkkelprosjekter og innlegg fra {{fullName}} . (@ {{username}} )",
+  "image_alt": "INGEN OVERSETTELSE",
+  "notfound": "Bruker ikke funnet",
+  "projects": "{{count, humanFormat}} prosjekt",
+  "projects_plural": "{{count, humanFormat}} prosjekter",
+  "title": "{{fullName}} . (@ {{username}} ) - prosjekter og innlegg"
 }

@@ -1,8 +1,8 @@
 {
-    "description": "Choisissez au moins trois catégories qui vous intéressent et nous vous proposerons de jolis projets pour commencer.",
-    "headerTitle": "",
-    "headline": "",
-    "next": "Suivant",
-    "save": "",
-    "title": "Qu'est-ce qui vous intéresse?"
+  "description": "Choisissez au moins trois catégories qui vous intéressent et nous vous proposerons de jolis projets pour commencer.",
+  "headerTitle": "Personnalisez vos centres d'intérêt",
+  "headline": "Qu'est-ce qui vous intéresse?",
+  "next": "Suivant",
+  "save": "sauvegarder",
+  "title": "Qu'est-ce qui vous intéresse?"
 }

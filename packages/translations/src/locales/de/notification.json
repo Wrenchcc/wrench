@@ -1,8 +1,8 @@
 {
-    "comment": "Kommentiert Ihren Beitrag",
-    "comment_like": "Hat Ihren Kommentar ausgelöst",
-    "follow": "Nun folgt Ihr Projekt",
-    "mention": "Dich in einem Kommentar erwähnt",
-    "post_like": "Hat deinen Beitrag ausgelöst",
-    "reply": "Auf Ihren Kommentar geantwortet"
+  "comment": "Kommentiert Ihren Beitrag",
+  "comment_like": "Hat Ihren Kommentar ausgelöst",
+  "follow": "Nun folgt Ihr Projekt",
+  "mention": "Dich in einem Kommentar erwähnt",
+  "post_like": "Hat deinen Beitrag ausgelöst",
+  "reply": "Auf Ihren Kommentar geantwortet"
 }

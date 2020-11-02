@@ -1,20 +1,20 @@
 {
-    "camera": {
-        "alertCancel": "NO_TRANSLATION",
-        "alertDescription": "NO_TRANSLATION",
-        "alertOpen": "NO_TRANSLATION",
-        "alertTitle": "NO_TRANSLATION",
-        "permissionButton": "NO_TRANSLATION",
-        "permissionDescription": "NO_TRANSLATION",
-        "permissionHeadline": "NO_TRANSLATION"
-    },
-    "photo": {
-        "alertCancel": "NO_TRANSLATION",
-        "alertDescription": "NO_TRANSLATION",
-        "alertOpen": "NO_TRANSLATION",
-        "alertTitle": "NO_TRANSLATION",
-        "permissionButton": "NO_TRANSLATION",
-        "permissionDescription": "NO_TRANSLATION",
-        "permissionHeadline": "NO_TRANSLATION"
-    }
+  "camera": {
+    "alertCancel": "NO_TRANSLATION",
+    "alertDescription": "NO_TRANSLATION",
+    "alertOpen": "NO_TRANSLATION",
+    "alertTitle": "NO_TRANSLATION",
+    "permissionButton": "NO_TRANSLATION",
+    "permissionDescription": "NO_TRANSLATION",
+    "permissionHeadline": "NO_TRANSLATION"
+  },
+  "photo": {
+    "alertCancel": "NO_TRANSLATION",
+    "alertDescription": "NO_TRANSLATION",
+    "alertOpen": "NO_TRANSLATION",
+    "alertTitle": "NO_TRANSLATION",
+    "permissionButton": "NO_TRANSLATION",
+    "permissionDescription": "NO_TRANSLATION",
+    "permissionHeadline": "NO_TRANSLATION"
+  }
 }

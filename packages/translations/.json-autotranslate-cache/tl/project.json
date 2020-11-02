@@ -1,5 +1,6 @@
 {
   "description": "{{followers, humanFormat}} Tagasunod, {{posts, humanFormat}} Post - {{fullName}} . (@{{username}}) sa Wrench",
+  "recent": "Kamakailang mga post",
   "share": "Magbahagi",
   "similar": "Katulad na mga proyekto",
   "title": "{{title}} - {{type}} proyekto",

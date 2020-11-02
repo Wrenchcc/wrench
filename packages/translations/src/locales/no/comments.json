@@ -1,6 +1,6 @@
 {
-    "load_replies": "Se svar ( {{count}} )",
-    "load_replies_plural": "",
-    "loadMore": "",
-    "title": ""
+  "load_replies": "INGEN OVERSETTELSE",
+  "load_replies_plural": "INGEN OVERSETTELSE",
+  "loadMore": "Last inn flere kommentarer",
+  "title": "Kommentarer"
 }

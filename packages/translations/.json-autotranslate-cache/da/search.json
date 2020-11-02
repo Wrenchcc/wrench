@@ -1,3 +1,8 @@
 {
-  "placeholder": "Søg"
+  "clear": "Slet alt",
+  "hashtags": "Hashtags",
+  "placeholder": "Søg",
+  "projects": "Projekter",
+  "recent": "Nylig",
+  "users": "Brugere"
 }

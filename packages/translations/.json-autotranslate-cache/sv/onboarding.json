@@ -1,5 +1,8 @@
 {
   "description": "Välj minst tre kategorier som du är intresserad av och vi ger dig några trevliga projekt att börja med.",
+  "headerTitle": "Anpassa dina intressen",
+  "headline": "Vad är du intresserad av?",
   "next": "Nästa",
+  "save": "Spara",
   "title": "Vad är du intresserad av?"
 }

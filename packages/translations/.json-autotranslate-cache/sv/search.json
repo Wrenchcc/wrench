@@ -1,3 +1,8 @@
 {
-  "placeholder": "Sök"
+  "clear": "Rensa alla",
+  "hashtags": "Hashtags",
+  "placeholder": "Sök",
+  "projects": "Projekt",
+  "recent": "Nyligen",
+  "users": "Användare"
 }

@@ -1,6 +1,6 @@
 {
-    "description": "Qui puoi vedere i progetti più popolari di questa settimana.",
-    "popular": "",
-    "recent": "",
-    "title": "Progetti popolari"
+  "description": "Qui puoi vedere i progetti più popolari di questa settimana.",
+  "popular": "Progetti popolari",
+  "recent": "Messaggi recenti",
+  "title": "Progetti popolari"
 }

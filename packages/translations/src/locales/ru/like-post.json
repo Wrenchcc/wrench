@@ -1,5 +1,7 @@
 {
-    "like_0": "",
-    "like_1": "",
-    "like_2": ""
+  "like_0": "",
+  "like_1": "",
+  "like_2": "",
+  "like": "{{count}} искры",
+  "like_plural": "{{count, humanFormat}} искр"
 }

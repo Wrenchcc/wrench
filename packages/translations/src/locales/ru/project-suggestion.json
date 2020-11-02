@@ -1,6 +1,6 @@
 {
-    "description": "Ниже мы выбрали несколько проектов, которые могут вас заинтересовать.",
-    "title": "Развивайте скорость и следите за некоторыми проектами.",
-    "title_small": "Предлагается для вас",
-    "description_plural": "{{followers, humanFormat}} подписчиков, {{posts, humanFormat}} сообщений - {{fullName}} . (@ {{username}} ) гаечный ключ"
+  "description": "Ниже мы выбрали несколько проектов, которые могут вас заинтересовать.",
+  "title": "Развивайте скорость и следите за некоторыми проектами.",
+  "title_small": "Предлагается для вас",
+  "description_plural": "{{followers, humanFormat}} подписчиков, {{posts, humanFormat}} сообщений - {{fullName}} . (@ {{username}} ) гаечный ключ"
 }

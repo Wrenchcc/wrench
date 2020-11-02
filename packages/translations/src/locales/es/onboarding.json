@@ -1,8 +1,8 @@
 {
-    "description": "Elija al menos tres categorías que le interesen y le ofreceremos algunos proyectos interesantes para empezar.",
-    "headerTitle": "",
-    "headline": "",
-    "next": "próximo",
-    "save": "",
-    "title": "¿En que estas interesado?"
+  "description": "Elija al menos tres categorías que le interesen y le ofreceremos algunos proyectos interesantes para empezar.",
+  "headerTitle": "Personaliza tus intereses",
+  "headline": "¿En que estas interesado?",
+  "next": "próximo",
+  "save": "Salvar",
+  "title": "¿En que estas interesado?"
 }

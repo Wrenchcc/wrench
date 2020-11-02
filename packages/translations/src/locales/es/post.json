@@ -1,13 +1,13 @@
 {
-    "options": {
-        "alertTitle": "",
-        "cancel": "",
-        "collection": "",
-        "delete": "",
-        "edit": "",
-        "removeCollection": "",
-        "report": ""
-    },
-    "selectCollection": "",
-    "showCollection": ""
+  "options": {
+    "alertTitle": "",
+    "cancel": "",
+    "collection": "",
+    "delete": "",
+    "edit": "",
+    "removeCollection": "",
+    "report": ""
+  },
+  "selectCollection": "",
+  "showCollection": ""
 }

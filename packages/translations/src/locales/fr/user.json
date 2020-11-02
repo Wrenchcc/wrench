@@ -1,8 +1,8 @@
 {
-    "description": "Voir les projets et publications de Wrench à partir de {{fullName}} . (@ {{username}} )",
-    "image_alt": "",
-    "notfound": "",
-    "projects": "",
-    "projects_plural": "",
-    "title": "{{fullName}} . (@ {{username}} ) - projets et posts"
+  "description": "Voir les projets et publications de Wrench à partir de {{fullName}} . (@ {{username}} )",
+  "image_alt": "PAS DE TRADUCTION",
+  "notfound": "Utilisateur non trouvé",
+  "projects": "{{count, humanFormat}} projet",
+  "projects_plural": "{{count, humanFormat}} projets",
+  "title": "{{fullName}} . (@ {{username}} ) - projets et posts"
 }

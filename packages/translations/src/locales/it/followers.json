@@ -1,5 +1,5 @@
 {
-    "followers": "{{count, humanFormat}} seguace",
-    "followers_plural": "{{count, humanFormat}} seguaci",
-    "title": ""
+  "followers": "{{count, humanFormat}} seguace",
+  "followers_plural": "{{count, humanFormat}} seguaci",
+  "title": "Seguaci"
 }

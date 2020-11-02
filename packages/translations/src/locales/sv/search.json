@@ -1,8 +1,8 @@
 {
-    "clear": "Rensa",
-    "hashtags": "Taggar",
-    "placeholder": "Sök",
-    "projects": "Projekt",
-    "recent": "Senast",
-    "users": "Personer"
+  "clear": "Rensa alla",
+  "hashtags": "Hashtags",
+  "placeholder": "Sök",
+  "projects": "Projekt",
+  "recent": "Nyligen",
+  "users": "Användare"
 }

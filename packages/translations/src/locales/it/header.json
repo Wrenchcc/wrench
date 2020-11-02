@@ -1,9 +1,9 @@
 {
-    "download": "Scarica app",
-    "explore": "Esplorare",
-    "feed": "Alimentazione",
-    "home": "",
-    "login": "Accesso",
-    "notifications": "",
-    "register": "Iscriviti"
+  "download": "Scarica app",
+  "explore": "Esplorare",
+  "feed": "Alimentazione",
+  "home": "Casa",
+  "login": "Accesso",
+  "notifications": "Notifiche",
+  "register": "Iscriviti"
 }
