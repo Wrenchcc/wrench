@@ -1,33 +1,54 @@
 {
-    "chat": "Chat med os",
-    "feedback": "Feedback",
-    "field": {
-        "bio": "",
-        "firstname": "",
-        "lastname": "",
-        "website": ""
-    },
-    "mail": "Mail Support",
-    "save": "Gemme",
-    "sections": {
-        "language": "",
-        "notifications": "",
-        "profile": "",
-        "support": ""
-    },
-    "title": "Indstillinger",
-    "toast": {
-        "error": "",
-        "saved": ""
-    },
-    "field_bio": "Bio",
-    "field_firstname": "Fornavn",
-    "field_lastname": "Efternavn",
-    "field_website": "Internet side",
-    "toast_error": "Noget gik galt",
-    "toast_saved": "Indstillinger gemt",
-    "sections_language": "Sprog",
-    "sections_notifications": "Meddelelser",
-    "sections_profile": "Rediger profil",
-    "sections_support": "Support"
+  "chat": "Chat med os",
+  "clear": "Ryd gemte data",
+  "codepush": "Kode skub",
+  "contacts": "Mine kontakter",
+  "credits": "Kreditter",
+  "customize-interests": "Tilpas dine interesser",
+  "delete": "Slet konto",
+  "deleteCancel": "Afbestille",
+  "deleteDescription": "Hvis du beslutter at slette din konto, kan du ikke logge ind igen. Slet dine projekter, før du sletter din konto.",
+  "deleteOk": "Okay",
+  "deleteTitle": "Slet konto",
+  "developer": "Udvikler",
+  "email-notifications": "E-mail-underretninger",
+  "facebook": "Facebook",
+  "faq": "FAQ",
+  "feedback": "Feedback",
+  "field": {
+    "bio": "Bio",
+    "firstname": "Fornavn",
+    "lastname": "Efternavn",
+    "website": "Internet side"
+  },
+  "general": "Generel",
+  "invite": "Inviter folk",
+  "language": "Sprog",
+  "logout": "Log ud",
+  "mail": "Post",
+  "membership": "Medlemskab",
+  "push-notifications": "Push-meddelelser",
+  "rate": "Giv os en anmeldelse",
+  "report": "Anmeld en fejl",
+  "save": "Gemme",
+  "sections": {
+    "language": "Sprog",
+    "notifications": "Meddelelser",
+    "profile": "Rediger profil",
+    "support": "Support"
+  },
+  "settings": "Indstillinger",
+  "share": "Del os",
+  "stages": {
+    "production": "Produktion",
+    "staging": "Iscenesættelse"
+  },
+  "support": "Support",
+  "terms": "Vilkår og betingelser",
+  "title": "Indstillinger",
+  "toast": {
+    "error": "Noget gik galt",
+    "saved": "Indstillinger gemt"
+  },
+  "website": "Internet side"
 }

@@ -1,0 +1,34 @@
+{
+    "collection-no-post": {
+        "description": "The user hasn’t added any posts to this collection yet.",
+        "title": "No posts added to this collection."
+    },
+    "collection-post": {
+        "button": "Add",
+        "description": "Add a post to this collection from the create new post flow or an existing post by clicking the more button in the right corner of the post.",
+        "title": "Add your first to post to this collection."
+    },
+    "notifications": {
+        "description": "Here you will see comments, new followers and other activities.",
+        "title": "No notifications yet."
+    },
+    "post": {
+        "button": "Add",
+        "description": "Now when you have a project it’s time to create your first post.",
+        "title": "2. Add your first post."
+    },
+    "project-no-post": {
+        "description": "Follow this project now and get notified when it updates.",
+        "title": "This project doesn’t have any posts yet."
+    },
+    "project-post": {
+        "button": "Add",
+        "description": "Now when you have a project it’s time to create your first post.",
+        "title": "Add your first post."
+    },
+    "project": {
+        "button": "Get started",
+        "description": "Let’s get you up to speed and create your first project.",
+        "title": "1. Create your first project."
+    }
+}

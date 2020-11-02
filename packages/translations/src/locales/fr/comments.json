@@ -1,6 +1,6 @@
 {
-    "load_replies": "Afficher les réponses ( {{count}} )",
-    "load_replies_plural": "",
-    "loadMore": "",
-    "title": ""
+  "load_replies": "PAS DE TRADUCTION",
+  "load_replies_plural": "PAS DE TRADUCTION",
+  "loadMore": "Charger plus de commentaires",
+  "title": "commentaires"
 }

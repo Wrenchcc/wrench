@@ -1,13 +1,35 @@
 {
     "chat": "Chat with us",
+    "clear": "Clear saved data",
+    "codepush": "Code Push",
+    "contacts": "My contacts",
+    "credits": "Credits",
+    "customize-interests": "Customize your interests",
+    "delete": "Delete account",
+    "deleteCancel": "Cancel",
+    "deleteDescription": "If you decide to delete your account you will not be able to sign in again. Delete your projects before you delete your account.",
+    "deleteOk": "OK",
+    "deleteTitle": "Delete account",
+    "developer": "Developer",
+    "email-notifications": "Email notifications",
+    "facebook": "Facebook",
+    "faq": "FAQ",
     "feedback": "Feedback",
     "field": {
         "bio": "Bio",
-        "firstname": "",
-        "lastname": "",
+        "firstname": "Firstname",
+        "lastname": "Lastname",
         "website": "Website"
     },
+    "general": "General",
+    "invite": "Invite people",
+    "language": "Language",
+    "logout": "Logout",
     "mail": "Mail",
+    "membership": "Membership",
+    "push-notifications": "Push notifications",
+    "rate": "Give us a review",
+    "report": "Report a bug",
     "save": "Save",
     "sections": {
         "language": "Language",
@@ -15,9 +37,18 @@
         "profile": "Edit profile",
         "support": "Support"
     },
+    "settings": "Settings",
+    "share": "Share us",
+    "stages": {
+        "production": "Production",
+        "staging": "Staging"
+    },
+    "support": "Support",
+    "terms": "Terms and conditions",
     "title": "Settings",
     "toast": {
         "error": "Something went wrong",
         "saved": "Settings saved"
-    }
+    },
+    "website": "Website"
 }

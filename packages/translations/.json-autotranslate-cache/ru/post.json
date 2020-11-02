@@ -1,0 +1,11 @@
+{
+  "options.alertTitle": "Ты уверен?",
+  "options.cancel": "Отмена",
+  "options.collection": "Добавить в коллекцию",
+  "options.delete": "удалять",
+  "options.edit": "редактировать",
+  "options.removeCollection": "Удалить из коллекции",
+  "options.report": "Отчет",
+  "selectCollection": "Выбрать коллекцию",
+  "showCollection": "Показать коллекцию"
+}

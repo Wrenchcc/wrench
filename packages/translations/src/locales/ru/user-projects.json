@@ -1,6 +1,5 @@
 {
-    "followers_0": "",
-    "followers_1": "",
-    "followers_2": "",
-    "title": "Проекты"
+  "followers": "{{count, humanFormat}} последователей",
+  "followers_plural": "{{count, humanFormat}} подписчиков",
+  "title": "Проекты"
 }

@@ -1,4 +1,5 @@
 {
     "followers": "{{count, humanFormat}} follower",
-    "followers_plural": "{{count, humanFormat}} followers"
+    "followers_plural": "{{count, humanFormat}} followers",
+    "title": "Followers"
 }

@@ -1,6 +1,6 @@
 {
-    "button_default": "Sende",
-    "button_success": "Sendt",
-    "description": "Indtast dit nummer, og få et SMS-link engang.",
-    "title": "Download Wrench-appen på Appstore og Google play"
+  "button_default": "Sende",
+  "button_success": "Sendt",
+  "description": "Indtast dit nummer, og få et SMS-link engang.",
+  "title": "Download Wrench-appen på Appstore og Google play"
 }

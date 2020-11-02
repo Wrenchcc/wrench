@@ -1,5 +1,6 @@
 {
   "description": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} postagens - {{fullName}} . (@ {{username}} ) na chave inglesa",
+  "recent": "Postagens recentes",
   "share": "Compartilhar",
   "similar": "Projetos semelhantes",
   "title": "{{title}} - {{type}} projeto",

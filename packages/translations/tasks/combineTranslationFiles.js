@@ -1,34 +1,34 @@
-// const { readdirSync, readFileSync, writeFileSync, unlinkSync, existsSync } = require('fs')
+const { readdirSync, readFileSync, writeFileSync, unlinkSync, existsSync } = require('fs')
 
-// const LOCALES_PATH = 'src/locales'
+const LOCALES_PATH = 'src/locales'
 
-// const getDirectories = (source) =>
-//   readdirSync(source, { withFileTypes: true })
-//     .filter((dirent) => dirent.isDirectory())
-//     .map((dirent) => dirent.name)
+const getDirectories = (source) =>
+  readdirSync(source, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name)
 
-// const dirs = getDirectories(LOCALES_PATH)
+const dirs = getDirectories(LOCALES_PATH)
 
-// dirs.map((locale) => {
-//   const filePath = `${LOCALES_PATH}/${locale}`
-//   let translations = {}
+dirs.map((locale) => {
+  let translations = {}
 
-//   readdirSync(filePath).forEach((file) => {
-//     if (file.includes('_old')) {
-//       return null
-//     }
+  const filePath = `${LOCALES_PATH}/${locale}`
+  const localeFile = `${filePath}/${locale}.json`
 
-//     const namespace = file.replace('.json', '')
-//     const data = JSON.parse(readFileSync(`${filePath}/${file}`, 'utf8'))
+  if (existsSync(localeFile)) {
+    unlinkSync(localeFile)
+  }
 
-//     translations = { ...translations, [namespace]: data }
-//   })
+  readdirSync(filePath).forEach((file) => {
+    if (file.includes('_old')) {
+      return null
+    }
 
-//   const localeFile = `${filePath}/${locale}.json`
+    const namespace = file.replace('.json', '')
+    const data = JSON.parse(readFileSync(`${filePath}/${file}`, 'utf8'))
 
-//   if (existsSync(localeFile)) {
-//     unlinkSync(localeFile)
-//   }
+    translations = { ...translations, [namespace]: data }
+  })
 
-//   writeFileSync(localeFile, JSON.stringify(translations, null, 2), 'utf8')
-// })
+  writeFileSync(localeFile, JSON.stringify(translations, null, 2), 'utf8')
+})

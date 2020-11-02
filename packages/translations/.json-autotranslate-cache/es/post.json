@@ -1,0 +1,11 @@
+{
+  "options.alertTitle": "¿Estás seguro?",
+  "options.cancel": "Cancelar",
+  "options.collection": "Añadir a la colección",
+  "options.delete": "Eliminar",
+  "options.edit": "Editar",
+  "options.removeCollection": "Quitar de la colección",
+  "options.report": "Reporte",
+  "selectCollection": "Seleccionar colección",
+  "showCollection": "Mostrar colección"
+}

@@ -1,0 +1,16 @@
+{
+  "camera.alertCancel": "Avbryt",
+  "camera.alertDescription": "Det gick inte att få tillstånd. Aktivera det från inställningar.",
+  "camera.alertOpen": "Öppna inställningar",
+  "camera.alertTitle": "Whoops!",
+  "camera.permissionButton": "Tillåt kameraåtkomst",
+  "camera.permissionDescription": "Tillåt Wrench att få åtkomst till din kamera för att kunna ta bilder och spela in video.",
+  "camera.permissionHeadline": "Ta bilder och spela in videoklipp",
+  "photo.alertCancel": "Avbryt",
+  "photo.alertDescription": "Det gick inte att få tillstånd. Aktivera det från inställningar.",
+  "photo.alertOpen": "Öppna inställningar",
+  "photo.alertTitle": "Whoops!",
+  "photo.permissionButton": "Aktivera biblioteksåtkomst",
+  "photo.permissionDescription": "Detta gör att Wrench kan dela dina foton från din bibliotek och spara foton till din kamerarulle.",
+  "photo.permissionHeadline": "Lägg till foton och videoklipp"
+}

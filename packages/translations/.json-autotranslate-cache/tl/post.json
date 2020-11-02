@@ -1,0 +1,11 @@
+{
+  "options.alertTitle": "Sigurado ka ba?",
+  "options.cancel": "Kanselahin",
+  "options.collection": "Idagdag sa Koleksiyon",
+  "options.delete": "Tanggalin",
+  "options.edit": "I-edit",
+  "options.removeCollection": "Alisin mula sa koleksyon",
+  "options.report": "Iulat",
+  "selectCollection": "Piliin ang koleksyon",
+  "showCollection": "Ipakita ang koleksyon"
+}

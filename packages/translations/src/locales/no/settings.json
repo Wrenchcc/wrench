@@ -1,33 +1,54 @@
 {
-    "chat": "snakk med oss",
-    "feedback": "Tilbakemelding",
-    "field": {
-        "bio": "",
-        "firstname": "",
-        "lastname": "",
-        "website": ""
-    },
-    "mail": "E-poststøtte",
-    "save": "Lagre",
-    "sections": {
-        "language": "",
-        "notifications": "",
-        "profile": "",
-        "support": ""
-    },
-    "title": "Innstillinger",
-    "toast": {
-        "error": "",
-        "saved": ""
-    },
-    "field_bio": "Bio",
-    "field_firstname": "Fornavn",
-    "field_lastname": "Etternavn",
-    "field_website": "Nettsted",
-    "toast_error": "Noe gikk galt",
-    "toast_saved": "Instillinger lagret",
-    "sections_language": "Språk",
-    "sections_notifications": "Varsler",
-    "sections_profile": "Rediger profil",
-    "sections_support": "Brukerstøtte"
+  "chat": "snakk med oss",
+  "clear": "Fjern lagrede data",
+  "codepush": "Kode Push",
+  "contacts": "Kontaktene mine",
+  "credits": "Studiepoeng",
+  "customize-interests": "Tilpass interessene dine",
+  "delete": "Slett konto",
+  "deleteCancel": "Avbryt",
+  "deleteDescription": "Hvis du bestemmer deg for å slette kontoen din, vil du ikke kunne logge på igjen. Slett prosjektene dine før du sletter kontoen.",
+  "deleteOk": "OK",
+  "deleteTitle": "Slett konto",
+  "developer": "Utvikler",
+  "email-notifications": "E-postvarsler",
+  "facebook": "Facebook",
+  "faq": "FAQ",
+  "feedback": "Tilbakemelding",
+  "field": {
+    "bio": "Bio",
+    "firstname": "Fornavn",
+    "lastname": "Etternavn",
+    "website": "Nettsted"
+  },
+  "general": "Generell",
+  "invite": "Inviter folk",
+  "language": "Språk",
+  "logout": "Logg ut",
+  "mail": "Post",
+  "membership": "Medlemskap",
+  "push-notifications": "Push-varsler",
+  "rate": "Gi oss en anmeldelse",
+  "report": "Rapporter en feil",
+  "save": "Lagre",
+  "sections": {
+    "language": "Språk",
+    "notifications": "Varsler",
+    "profile": "Rediger profil",
+    "support": "Brukerstøtte"
+  },
+  "settings": "Innstillinger",
+  "share": "Del oss",
+  "stages": {
+    "production": "Produksjon",
+    "staging": "Iscenesettelse"
+  },
+  "support": "Brukerstøtte",
+  "terms": "Vilkår og betingelser",
+  "title": "Innstillinger",
+  "toast": {
+    "error": "Noe gikk galt",
+    "saved": "Instillinger lagret"
+  },
+  "website": "Nettsted"
 }

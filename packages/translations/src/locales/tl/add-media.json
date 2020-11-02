@@ -1,8 +1,8 @@
 {
-    "next": "",
-    "options": {
-        "cancel": "",
-        "discard": "",
-        "title": ""
-    }
+  "next": "Susunod",
+  "options": {
+    "cancel": "Kanselahin",
+    "discard": "Itapon",
+    "title": "Kung babalik ka ngayon, itatapon ang iyong mga pag-edit."
+  }
 }

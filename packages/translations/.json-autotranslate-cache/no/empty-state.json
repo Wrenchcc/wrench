@@ -1,0 +1,20 @@
+{
+  "collection-no-post.description": "Brukeren har ikke lagt til noen innlegg i denne samlingen ennå.",
+  "collection-no-post.title": "Ingen innlegg lagt til i denne samlingen.",
+  "collection-post.button": "Legge til",
+  "collection-post.description": "Legg til et innlegg i denne samlingen fra opprett ny innleggsflyt eller et eksisterende innlegg ved å klikke på mer-knappen i høyre hjørne av innlegget.",
+  "collection-post.title": "Legg til det første innlegget ditt i denne samlingen.",
+  "notifications.description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
+  "notifications.title": "Ingen varsler ennå.",
+  "post.button": "Legge til",
+  "post.description": "Nå når du har et prosjekt, er det på tide å lage ditt første innlegg.",
+  "post.title": "2. Legg til ditt første innlegg.",
+  "project-no-post.description": "Følg dette prosjektet nå og bli varslet når det oppdateres.",
+  "project-no-post.title": "Dette prosjektet har ingen innlegg ennå.",
+  "project-post.button": "Legge til",
+  "project-post.description": "Nå når du har et prosjekt, er det på tide å lage ditt første innlegg.",
+  "project-post.title": "Legg til ditt første innlegg.",
+  "project.button": "Kom i gang",
+  "project.description": "La oss få fart på deg og lage ditt første prosjekt.",
+  "project.title": "1. Lag ditt første prosjekt."
+}

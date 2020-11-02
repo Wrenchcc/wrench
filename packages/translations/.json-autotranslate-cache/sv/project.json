@@ -1,5 +1,6 @@
 {
   "description": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench",
+  "recent": "Nya Inlägg",
   "share": "Dela",
   "similar": "Liknande project",
   "title": "{{title}} - {{type}} projekt",

@@ -1,8 +1,8 @@
 {
-    "next": "",
-    "options": {
-        "cancel": "",
-        "discard": "",
-        "title": ""
-    }
+  "next": "Nächster",
+  "options": {
+    "cancel": "Stornieren",
+    "discard": "Verwerfen",
+    "title": "Wenn Sie jetzt zurückgehen, werden Ihre Änderungen verworfen."
+  }
 }

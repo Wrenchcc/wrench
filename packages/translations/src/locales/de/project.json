@@ -1,8 +1,8 @@
 {
-    "description": "",
-    "recent": "",
-    "share": "",
-    "similar": "",
-    "title": "",
-    "description_plural": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Beiträge - {{fullName}} . (@ {{username}} ) am Schraubenschlüssel"
+  "description": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Beiträge - {{fullName}} . (@ {{username}} ) am Schraubenschlüssel",
+  "recent": "Kürzliche Posts",
+  "share": "Teilen",
+  "similar": "Ähnliche Projekte",
+  "title": "{{title}} - {{type}} Projekt",
+  "description_plural": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Beiträge - {{fullName}} . (@ {{username}} ) am Schraubenschlüssel"
 }

@@ -1,4 +1,16 @@
 {
+    "comment": "Commented on your post",
+    "commentLike": "Sparked your comment",
     "description": "Here you will see comments, new followers and other activities.",
+    "follow": "Now follows your project",
+    "mention": "Mentioned you in a comment",
+    "NEW_ARTICLE": "Articles",
+    "NEW_COMMENT": "Comments",
+    "NEW_FOLLOWER": "Followers",
+    "NEW_MENTION": "Mentions",
+    "postLike": "Sparked your post",
+    "PRODUCT_ANNOUNCEMENTS": "Product announcements",
+    "reply": "Replied to your comment",
+    "SIMILAR_PROJECTS": "Similar projects",
     "title": "No notifications yet."
 }

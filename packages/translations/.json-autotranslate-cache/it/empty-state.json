@@ -1,0 +1,20 @@
+{
+  "collection-no-post.description": "L'utente non ha ancora aggiunto alcun post a questa raccolta.",
+  "collection-no-post.title": "Nessun post aggiunto a questa raccolta.",
+  "collection-post.button": "Inserisci",
+  "collection-post.description": "Aggiungi un post a questa raccolta dal flusso di creazione di un nuovo post o da un post esistente facendo clic sul pulsante Altro nell'angolo destro del post.",
+  "collection-post.title": "Aggiungi il tuo primo post a questa raccolta.",
+  "notifications.description": "Qui vedrai commenti, nuovi follower e altre attività.",
+  "notifications.title": "Nessuna notifica ancora.",
+  "post.button": "Inserisci",
+  "post.description": "Ora, quando hai un progetto, è il momento di creare il tuo primo post.",
+  "post.title": "2. Aggiungi il tuo primo post.",
+  "project-no-post.description": "Segui questo progetto ora e ricevi una notifica quando si aggiorna.",
+  "project-no-post.title": "Questo progetto non ha ancora alcun post.",
+  "project-post.button": "Inserisci",
+  "project-post.description": "Ora, quando hai un progetto, è il momento di creare il tuo primo post.",
+  "project-post.title": "Aggiungi il tuo primo post.",
+  "project.button": "Iniziare",
+  "project.description": "Ti mettiamo al passo e creiamo il tuo primo progetto.",
+  "project.title": "1. Crea il tuo primo progetto."
+}

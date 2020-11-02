@@ -1,13 +1,13 @@
 {
-    "options": {
-        "alertTitle": "",
-        "cancel": "",
-        "collection": "",
-        "delete": "",
-        "edit": "",
-        "removeCollection": "",
-        "report": ""
-    },
-    "selectCollection": "",
-    "showCollection": ""
+  "options": {
+    "alertTitle": "Bist du sicher?",
+    "cancel": "Stornieren",
+    "collection": "Zur Sammlung hinzufügen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "removeCollection": "Aus der Sammlung entfernen",
+    "report": "Bericht"
+  },
+  "selectCollection": "Sammlung auswählen",
+  "showCollection": "Sammlung anzeigen"
 }

@@ -1,5 +1,8 @@
 {
   "description": "Wählen Sie mindestens drei Kategorien aus, an denen Sie interessiert sind, und wir geben Ihnen zunächst einige nette Projekte.",
+  "headerTitle": "Passen Sie Ihre Interessen an",
+  "headline": "Was interessiert dich?",
   "next": "Nächster",
+  "save": "sparen",
   "title": "Was interessiert dich?"
 }

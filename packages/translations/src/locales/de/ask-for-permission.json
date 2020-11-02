@@ -1,0 +1,20 @@
+{
+  "camera": {
+    "alertCancel": "Stornieren",
+    "alertDescription": "Es gab ein Problem beim Einholen Ihrer Erlaubnis. Bitte aktivieren Sie es über Einstellungen.",
+    "alertOpen": "Einstellungen öffnen",
+    "alertTitle": "Hoppla!",
+    "permissionButton": "Kamerazugriff zulassen",
+    "permissionDescription": "Ermöglichen Sie Wrench den Zugriff auf Ihre Kamera, um Fotos und Videos in der App aufzunehmen.",
+    "permissionHeadline": "Nehmen Sie Fotos auf und nehmen Sie Videos auf"
+  },
+  "photo": {
+    "alertCancel": "Stornieren",
+    "alertDescription": "Es gab ein Problem beim Einholen Ihrer Erlaubnis. Bitte aktivieren Sie es über Einstellungen.",
+    "alertOpen": "Einstellungen öffnen",
+    "alertTitle": "Hoppla!",
+    "permissionButton": "Aktivieren Sie den Bibliothekszugriff",
+    "permissionDescription": "Auf diese Weise kann Wrench Fotos aus Ihrer Bibliothek freigeben und Fotos auf Ihrer Kamerarolle speichern.",
+    "permissionHeadline": "Fügen Sie Fotos und Videos hinzu"
+  }
+}

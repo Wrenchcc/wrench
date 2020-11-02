@@ -21,7 +21,7 @@ const AnimationBackground = {
   dark: '#242424',
 }
 
-export const PlaceholderAnimation = (props) => {
+export const PlaceholderAnimation = ({ ref, ...props }) => {
   const colorScheme = useColorScheme()
   const backgroundColor = AnimationBackground[colorScheme]
 

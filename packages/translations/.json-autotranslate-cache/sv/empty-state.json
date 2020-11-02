@@ -1,0 +1,20 @@
+{
+  "collection-no-post.description": "Användaren har ännu inte lagt till några inlägg i den här samlingen.",
+  "collection-no-post.title": "Inga inlägg har lagts till i denna samling.",
+  "collection-post.button": "Lägg till",
+  "collection-post.description": "Lägg till ett inlägg i den här samlingen genom att skapa ett nytt inlägg eller använd ett befintligt inlägg genom att klicka på knappen Mer i inläggets högra hörn.",
+  "collection-post.title": "Lägg till ditt första inlägg i denna samling.",
+  "notifications.description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter.",
+  "notifications.title": "Inga notifikationer ännu.",
+  "post.button": "Lägg till",
+  "post.description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg.",
+  "post.title": "2. Lägg till ditt första inlägg.",
+  "project-no-post.description": "Följ detta projekt nu och få en notifikation när det uppdateras.",
+  "project-no-post.title": "Det här projektet har inga inlägg ännu.",
+  "project-post.button": "Lägg till",
+  "project-post.description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg",
+  "project-post.title": "Lägg till ditt första inlägg",
+  "project.button": "Kom igång",
+  "project.description": "Kom igång och skapa ditt första projekt.",
+  "project.title": "1. Skapa ditt första projekt."
+}

@@ -4,7 +4,6 @@ module.exports = {
   defaultNamespace: 'common',
   defaultValue: '',
   indentation: 4,
-  // createOldCatalogs: true,
   lexers: {
     js: ['JavascriptLexer'],
     ts: ['JsxLexer'],

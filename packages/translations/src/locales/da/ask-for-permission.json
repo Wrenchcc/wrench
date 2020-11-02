@@ -1,0 +1,20 @@
+{
+  "camera": {
+    "alertCancel": "Afbestille",
+    "alertDescription": "Der opstod et problem med at få din tilladelse. Aktiver det fra indstillinger.",
+    "alertOpen": "Åbn Indstillinger",
+    "alertTitle": "Ups!",
+    "permissionButton": "Tillad kameraadgang",
+    "permissionDescription": "Giv skruenøgle adgang til dit kamera for at tage billeder og optage video i appen.",
+    "permissionHeadline": "Tag fotos og optag videoer"
+  },
+  "photo": {
+    "alertCancel": "Afbestille",
+    "alertDescription": "Der opstod et problem med at få din tilladelse. Aktiver det fra indstillinger.",
+    "alertOpen": "Åbn Indstillinger",
+    "alertTitle": "Ups!",
+    "permissionButton": "Aktivér biblioteksadgang",
+    "permissionDescription": "Dette giver skruenøgle mulighed for at dele fotos fra dit bibliotek og gemme fotos på din kamerarulle.",
+    "permissionHeadline": "Tilføj fotos og videoer"
+  }
+}

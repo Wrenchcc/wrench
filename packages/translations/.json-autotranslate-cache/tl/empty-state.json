@@ -1,0 +1,20 @@
+{
+  "collection-no-post.description": "Ang gumagamit ay hindi pa nagdagdag ng anumang mga post sa koleksyon na ito.",
+  "collection-no-post.title": "Walang naidagdag na mga post sa koleksyon na ito.",
+  "collection-post.button": "Idagdag pa",
+  "collection-post.description": "Magdagdag ng isang post sa koleksyon na ito mula sa lumikha ng bagong daloy ng post o isang mayroon nang post sa pamamagitan ng pag-click sa higit pang pindutan sa kanang sulok ng post.",
+  "collection-post.title": "Idagdag ang iyong una upang mai-post sa koleksyon na ito.",
+  "notifications.description": "Makikita mo rito ang mga komento, bagong tagasunod at iba pang mga aktibidad.",
+  "notifications.title": "Wala pang abiso.",
+  "post.button": "Idagdag pa",
+  "post.description": "Ngayon kapag mayroon kang isang proyekto oras na upang lumikha ng iyong unang post.",
+  "post.title": "2. Idagdag ang iyong unang post.",
+  "project-no-post.description": "Sundin ang proyektong ito ngayon at maabisuhan kapag nag-update.",
+  "project-no-post.title": "Ang proyektong ito ay wala pang post.",
+  "project-post.button": "Idagdag pa",
+  "project-post.description": "Ngayon kapag mayroon kang isang proyekto oras na upang lumikha ng iyong unang post.",
+  "project-post.title": "Idagdag ang iyong unang post.",
+  "project.button": "Magsimula",
+  "project.description": "Hayaan mong mapabilis ka at likhain ang iyong unang proyekto.",
+  "project.title": "1. Lumikha ng iyong unang proyekto."
+}

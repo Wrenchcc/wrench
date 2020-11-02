@@ -1,0 +1,20 @@
+{
+  "collection-no-post.description": "L'utilisateur n'a encore ajouté aucun message à cette collection.",
+  "collection-no-post.title": "Aucun article ajouté à cette collection.",
+  "collection-post.button": "Ajouter",
+  "collection-post.description": "Ajoutez une publication à cette collection à partir du flux de création de nouvelles publications ou d'une publication existante en cliquant sur le bouton Plus dans le coin droit de la publication.",
+  "collection-post.title": "Ajoutez votre premier message à cette collection.",
+  "notifications.description": "Ici, vous verrez des commentaires, de nouveaux abonnés et d'autres activités.",
+  "notifications.title": "Aucune notification pour le moment.",
+  "post.button": "Ajouter",
+  "post.description": "Maintenant, lorsque vous avez un projet, il est temps de créer votre premier message.",
+  "post.title": "2. Ajoutez votre premier message.",
+  "project-no-post.description": "Suivez ce projet maintenant et recevez une notification dès sa mise à jour.",
+  "project-no-post.title": "Ce projet n'a pas encore de messages.",
+  "project-post.button": "Ajouter",
+  "project-post.description": "Maintenant, lorsque vous avez un projet, il est temps de créer votre premier message.",
+  "project-post.title": "Ajoutez votre premier message.",
+  "project.button": "Commencer",
+  "project.description": "Mettons-nous au courant et créons votre premier projet.",
+  "project.title": "1. Créez votre premier projet."
+}

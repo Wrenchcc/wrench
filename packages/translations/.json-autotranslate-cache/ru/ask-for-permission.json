@@ -1,0 +1,16 @@
+{
+  "camera.alertCancel": "Отмена",
+  "camera.alertDescription": "Не удалось получить ваше разрешение. Пожалуйста, включите его в настройках.",
+  "camera.alertOpen": "Открыть настройки",
+  "camera.alertTitle": "Ой!",
+  "camera.permissionButton": "Разрешить доступ к камере",
+  "camera.permissionDescription": "Разрешите Wrench доступ к вашей камере, чтобы делать фотографии и записывать видео в приложении.",
+  "camera.permissionHeadline": "Делайте фото и записывайте видео",
+  "photo.alertCancel": "Отмена",
+  "photo.alertDescription": "Не удалось получить ваше разрешение. Пожалуйста, включите его в настройках.",
+  "photo.alertOpen": "Открыть настройки",
+  "photo.alertTitle": "Ой!",
+  "photo.permissionButton": "Включить доступ к библиотеке",
+  "photo.permissionDescription": "Это позволяет Wrench обмениваться фотографиями из вашей библиотеки и сохранять фотографии в фотопленке.",
+  "photo.permissionHeadline": "Добавьте фото и видео"
+}

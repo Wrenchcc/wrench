@@ -1,0 +1,20 @@
+{
+  "camera": {
+    "alertCancel": "Annuler",
+    "alertDescription": "Un problème est survenu lors de l'obtention de votre autorisation. Veuillez l'activer à partir des paramètres.",
+    "alertOpen": "Ouvrir les paramètres",
+    "alertTitle": "Oups!",
+    "permissionButton": "Autoriser l'accès à la caméra",
+    "permissionDescription": "Autorisez Wrench à accéder à votre appareil photo pour prendre des photos et enregistrer des vidéos dans l'application.",
+    "permissionHeadline": "Prenez des photos et enregistrez des vidéos"
+  },
+  "photo": {
+    "alertCancel": "Annuler",
+    "alertDescription": "Un problème est survenu lors de l'obtention de votre autorisation. Veuillez l'activer à partir des paramètres.",
+    "alertOpen": "Ouvrir les paramètres",
+    "alertTitle": "Oups!",
+    "permissionButton": "Activer l'accès à la bibliothèque",
+    "permissionDescription": "Cela permet à Wrench de partager des photos de votre bibliothèque et d'enregistrer des photos sur votre pellicule.",
+    "permissionHeadline": "Ajouter des photos et des vidéos"
+  }
+}

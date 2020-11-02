@@ -1,0 +1,11 @@
+{
+  "options.alertTitle": "Er du sikker?",
+  "options.cancel": "Avbryt",
+  "options.collection": "Legg til i samlingen",
+  "options.delete": "Slett",
+  "options.edit": "Redigere",
+  "options.removeCollection": "Fjern fra samlingen",
+  "options.report": "Rapportere",
+  "selectCollection": "Velg samling",
+  "showCollection": "Vis samling"
+}

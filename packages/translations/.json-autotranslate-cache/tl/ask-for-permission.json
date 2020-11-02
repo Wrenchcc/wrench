@@ -1,0 +1,16 @@
+{
+  "camera.alertCancel": "Kanselahin",
+  "camera.alertDescription": "Mayroong isang problema sa pagkuha ng iyong pahintulot. Mangyaring paganahin ito mula sa mga setting.",
+  "camera.alertOpen": "Buksan ang settings",
+  "camera.alertTitle": "Aba!",
+  "camera.permissionButton": "Payagan ang Pag-access sa Camera",
+  "camera.permissionDescription": "Payagan ang pag-access ng Wrench sa iyong camera upang kumuha ng mga larawan at magrekord ng video sa loob ng app.",
+  "camera.permissionHeadline": "Kumuha ng mga larawan at magrekord ng mga video",
+  "photo.alertCancel": "Kanselahin",
+  "photo.alertDescription": "Mayroong isang problema sa pagkuha ng iyong pahintulot. Mangyaring paganahin ito mula sa mga setting.",
+  "photo.alertOpen": "Buksan ang settings",
+  "photo.alertTitle": "Aba!",
+  "photo.permissionButton": "Paganahin ang Pag-access sa Library",
+  "photo.permissionDescription": "Pinapayagan nitong magbahagi si Wrench ng mga larawan mula sa iyong library at i-save ang mga larawan sa iyong camera roll.",
+  "photo.permissionHeadline": "Magdagdag ng mga larawan at video"
+}

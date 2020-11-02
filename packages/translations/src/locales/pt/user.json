@@ -1,8 +1,8 @@
 {
-    "description": "Veja projetos de chave inglesa e postagens de {{fullName}} (@ {{username}} )",
-    "image_alt": "",
-    "notfound": "",
-    "projects": "",
-    "projects_plural": "",
-    "title": "{{fullName}} (@ {{username}} ) - projetos e postagens"
+  "description": "Veja projetos de chave inglesa e postagens de {{fullName}} . (@ {{username}} )",
+  "image_alt": "NO_TRANSLATION",
+  "notfound": "Usuário não encontrado",
+  "projects": "{{count, humanFormat}} projeto",
+  "projects_plural": "{{count, humanFormat}} projetos",
+  "title": "{{fullName}} (@ {{username}} ) - projetos e postagens"
 }

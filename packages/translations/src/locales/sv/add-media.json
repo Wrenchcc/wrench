@@ -1,8 +1,8 @@
 {
-    "next": "",
-    "options": {
-        "cancel": "",
-        "discard": "",
-        "title": ""
-    }
+  "next": "Nästa",
+  "options": {
+    "cancel": "Avbryt",
+    "discard": "Släng",
+    "title": "Om du går tillbaka kommer dina val att ignoreras."
+  }
 }

@@ -1,5 +1,6 @@
 {
   "follow": "Segui questo progetto",
-  "follow_short": "Seguire",
-  "unfollow": "A seguire"
+  "followSmall": "Seguire",
+  "unfollow": "A seguire",
+  "unfollowSmall": "A seguire"
 }

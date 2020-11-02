@@ -1,6 +1,7 @@
 {
   "description": "{{followers, humanFormat}} подписчиков, {{posts, humanFormat}} сообщений - {{fullName}} . (@ {{username}} ) гаечный ключ",
-  "share": "Поделиться",
+  "recent": "Недавние Посты",
+  "share": "доля",
   "similar": "Похожие проекты",
   "title": "{{title}} - {{type}} проект",
   "description_plural": "{{followers, humanFormat}} подписчиков, {{posts, humanFormat}} сообщений - {{fullName}} . (@ {{username}} ) гаечный ключ"

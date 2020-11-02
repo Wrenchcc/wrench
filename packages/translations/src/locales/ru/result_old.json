@@ -1,4 +1,0 @@
-{
-    "projects": "{{count, humanFormat}} проект",
-    "projects_plural": "{{count, humanFormat}} проектов"
-}

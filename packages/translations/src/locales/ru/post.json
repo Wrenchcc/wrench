@@ -1,13 +1,13 @@
 {
-    "options": {
-        "alertTitle": "",
-        "cancel": "",
-        "collection": "",
-        "delete": "",
-        "edit": "",
-        "removeCollection": "",
-        "report": ""
-    },
-    "selectCollection": "",
-    "showCollection": ""
+  "options": {
+    "alertTitle": "Ты уверен?",
+    "cancel": "Отмена",
+    "collection": "Добавить в коллекцию",
+    "delete": "удалять",
+    "edit": "редактировать",
+    "removeCollection": "Удалить из коллекции",
+    "report": "Отчет"
+  },
+  "selectCollection": "Выбрать коллекцию",
+  "showCollection": "Показать коллекцию"
 }

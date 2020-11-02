@@ -1,4 +1,16 @@
 {
+  "comment": "Kommenterede dit indlæg",
+  "commentLike": "Udløste din kommentar",
   "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
+  "follow": "Nu følger dit projekt",
+  "mention": "Omtalte dig i en kommentar",
+  "NEW_ARTICLE": "Artikler",
+  "NEW_COMMENT": "Kommentarer",
+  "NEW_FOLLOWER": "Følgere",
+  "NEW_MENTION": "Nævner",
+  "postLike": "Udløste dit indlæg",
+  "PRODUCT_ANNOUNCEMENTS": "Produktmeddelelser",
+  "reply": "Besvaret din kommentar",
+  "SIMILAR_PROJECTS": "Lignende projekter",
   "title": "Ingen meddelelser endnu."
 }

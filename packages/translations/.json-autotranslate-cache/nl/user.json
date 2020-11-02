@@ -1,5 +1,8 @@
 {
   "description": "Zie Moersleutelprojecten en berichten van {{fullName}} . (@ {{username}} )",
-  "image_alt": "",
+  "image_alt": "GEEN VERTALING",
+  "notfound": "Gebruiker niet gevonden",
+  "projects": "{{count, humanFormat}} project",
+  "projects_plural": "{{count, humanFormat}} projecten",
   "title": "{{fullName}} . (@ {{username}} ) - projecten en berichten"
 }

@@ -1,10 +1,16 @@
 {
-    "comment": "",
-    "commentLike": "",
-    "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
-    "follow": "",
-    "mention": "",
-    "postLike": "",
-    "reply": "",
-    "title": "Ingen varsler ennå."
+  "comment": "Kommenterte innlegget ditt",
+  "commentLike": "Utløste kommentaren din",
+  "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
+  "follow": "Nå følger prosjektet ditt",
+  "mention": "Nevnte deg i en kommentar",
+  "NEW_ARTICLE": "Artikler",
+  "NEW_COMMENT": "Kommentarer",
+  "NEW_FOLLOWER": "Følgere",
+  "NEW_MENTION": "Nevner",
+  "postLike": "Utløste innlegget ditt",
+  "PRODUCT_ANNOUNCEMENTS": "Produkt kunngjøringer",
+  "reply": "Svarte på kommentaren din",
+  "SIMILAR_PROJECTS": "Lignende prosjekter",
+  "title": "Ingen varsler ennå."
 }

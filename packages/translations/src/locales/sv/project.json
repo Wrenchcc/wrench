@@ -1,8 +1,8 @@
 {
-    "description": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench",
-    "recent": "",
-    "share": "Dela",
-    "similar": "Liknande project",
-    "title": "{{title}} - {{type}} projekt",
-    "description_plural": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench"
+  "description": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench",
+  "recent": "Nya Inlägg",
+  "share": "Dela",
+  "similar": "Liknande project",
+  "title": "{{title}} - {{type}} projekt",
+  "description_plural": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench"
 }

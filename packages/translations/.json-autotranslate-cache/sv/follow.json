@@ -1,5 +1,7 @@
 {
   "follow": "Följ projekt",
-  "follow_short": "Följ",
-  "unfollow": "Följer"
+  "followSmall": "Följ",
+  "unfollow": "Följer",
+  "unfollowSmall": "Följande",
+  "follow_short": "Följ"
 }

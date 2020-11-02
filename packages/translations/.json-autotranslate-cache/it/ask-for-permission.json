@@ -1,0 +1,16 @@
+{
+  "camera.alertCancel": "Annulla",
+  "camera.alertDescription": "Si è verificato un problema durante l'ottenimento della tua autorizzazione. Si prega di abilitarlo dalle impostazioni.",
+  "camera.alertOpen": "Apri Impostazioni",
+  "camera.alertTitle": "Ops!",
+  "camera.permissionButton": "Consenti accesso alla fotocamera",
+  "camera.permissionDescription": "Consenti a Wrench di accedere alla tua fotocamera per scattare foto e registrare video all'interno dell'app.",
+  "camera.permissionHeadline": "Scatta foto e registra video",
+  "photo.alertCancel": "Annulla",
+  "photo.alertDescription": "Si è verificato un problema durante l'ottenimento della tua autorizzazione. Si prega di abilitarlo dalle impostazioni.",
+  "photo.alertOpen": "Apri Impostazioni",
+  "photo.alertTitle": "Ops!",
+  "photo.permissionButton": "Abilita accesso alla libreria",
+  "photo.permissionDescription": "Ciò consente a Wrench di condividere foto dalla tua libreria e di salvare le foto sul tuo rullino fotografico.",
+  "photo.permissionHeadline": "Aggiungi foto e video"
+}

@@ -1,33 +1,54 @@
 {
-    "chat": "Поболтай с нами",
-    "feedback": "Обратная связь",
-    "field": {
-        "bio": "",
-        "firstname": "",
-        "lastname": "",
-        "website": ""
-    },
-    "mail": "Почта поддержки",
-    "save": "Сохранить",
-    "sections": {
-        "language": "",
-        "notifications": "",
-        "profile": "",
-        "support": ""
-    },
-    "title": "Настройки",
-    "toast": {
-        "error": "",
-        "saved": ""
-    },
-    "field_bio": "Био",
-    "field_firstname": "Имя",
-    "field_lastname": "Фамилия",
-    "field_website": "Интернет сайт",
-    "toast_error": "Что-то пошло не так",
-    "toast_saved": "Настройки сохранены",
-    "sections_language": "Язык",
-    "sections_notifications": "Уведомления",
-    "sections_profile": "Редактировать профиль",
-    "sections_support": "Поддержка"
+  "chat": "Поболтай с нами",
+  "clear": "Очистить сохраненные данные",
+  "codepush": "Код Push",
+  "contacts": "Мои контакты",
+  "credits": "Кредиты",
+  "customize-interests": "Настройте свои интересы",
+  "delete": "Удалить аккаунт",
+  "deleteCancel": "Отмена",
+  "deleteDescription": "Если вы решите удалить свою учетную запись, вы не сможете войти снова. Перед удалением учетной записи удалите свои проекты.",
+  "deleteOk": "ОК",
+  "deleteTitle": "Удалить аккаунт",
+  "developer": "Разработчик",
+  "email-notifications": "Уведомления по электронной почте",
+  "facebook": "Facebook",
+  "faq": "часто задаваемые вопросы",
+  "feedback": "Обратная связь",
+  "field": {
+    "bio": "Био",
+    "firstname": "Имя",
+    "lastname": "Фамилия",
+    "website": "Веб-сайт"
+  },
+  "general": "Генеральная",
+  "invite": "Пригласить людей",
+  "language": "Язык",
+  "logout": "Выйти",
+  "mail": "Почта",
+  "membership": "Членство",
+  "push-notifications": "Всплывающие напоминания",
+  "rate": "Оставьте нам отзыв",
+  "report": "Сообщить об ошибке",
+  "save": "Сохранить",
+  "sections": {
+    "language": "Язык",
+    "notifications": "Уведомления",
+    "profile": "Редактировать профиль",
+    "support": "Поддержка"
+  },
+  "settings": "Настройки",
+  "share": "Поделитесь с нами",
+  "stages": {
+    "production": "Производство",
+    "staging": "Постановка"
+  },
+  "support": "Поддержка",
+  "terms": "Условия и положения",
+  "title": "Настройки",
+  "toast": {
+    "error": "Что-то пошло не так",
+    "saved": "Настройки сохранены"
+  },
+  "website": "Веб-сайт"
 }

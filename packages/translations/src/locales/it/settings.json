@@ -1,33 +1,54 @@
 {
-    "chat": "chatta con noi",
-    "feedback": "Risposta",
-    "field": {
-        "bio": "",
-        "firstname": "",
-        "lastname": "",
-        "website": ""
-    },
-    "mail": "Supporto per posta",
-    "save": "Salva",
-    "sections": {
-        "language": "",
-        "notifications": "",
-        "profile": "",
-        "support": ""
-    },
-    "title": "impostazioni",
-    "toast": {
-        "error": "",
-        "saved": ""
-    },
-    "field_bio": "Bio",
-    "field_firstname": "nome di battesimo",
-    "field_lastname": "Cognome",
-    "field_website": "Sito web",
-    "toast_error": "Qualcosa è andato storto",
-    "toast_saved": "Impostazioni salvate",
-    "sections_language": "linguaggio",
-    "sections_notifications": "Notifiche",
-    "sections_profile": "Modifica Profilo",
-    "sections_support": "Supporto"
+  "chat": "chatta con noi",
+  "clear": "Cancella i dati salvati",
+  "codepush": "Codice push",
+  "contacts": "I miei contatti",
+  "credits": "Crediti",
+  "customize-interests": "Personalizza i tuoi interessi",
+  "delete": "Eliminare l'account",
+  "deleteCancel": "Annulla",
+  "deleteDescription": "Se decidi di eliminare il tuo account, non potrai più accedere. Elimina i tuoi progetti prima di eliminare il tuo account.",
+  "deleteOk": "ok",
+  "deleteTitle": "Eliminare l'account",
+  "developer": "Sviluppatore",
+  "email-notifications": "Notifiche di posta elettronica",
+  "facebook": "Facebook",
+  "faq": "FAQ",
+  "feedback": "Risposta",
+  "field": {
+    "bio": "Bio",
+    "firstname": "Nome di battesimo",
+    "lastname": "Cognome",
+    "website": "Sito web"
+  },
+  "general": "Generale",
+  "invite": "Invita persone",
+  "language": "linguaggio",
+  "logout": "Disconnettersi",
+  "mail": "Mail",
+  "membership": "Appartenenza",
+  "push-notifications": "Notifiche push",
+  "rate": "Dacci una recensione",
+  "report": "Segnalare un bug",
+  "save": "Salva",
+  "sections": {
+    "language": "linguaggio",
+    "notifications": "Notifiche",
+    "profile": "Modifica Profilo",
+    "support": "Supporto"
+  },
+  "settings": "impostazioni",
+  "share": "Condivideteci",
+  "stages": {
+    "production": "Produzione",
+    "staging": "Messa in scena"
+  },
+  "support": "Supporto",
+  "terms": "Termini e condizioni",
+  "title": "impostazioni",
+  "toast": {
+    "error": "Qualcosa è andato storto",
+    "saved": "Impostazioni salvate"
+  },
+  "website": "Sito web"
 }

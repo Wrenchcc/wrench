@@ -1,10 +1,16 @@
 {
-    "comment": "",
-    "commentLike": "",
-    "description": "Aqui você verá comentários, novos seguidores e outras atividades.",
-    "follow": "",
-    "mention": "",
-    "postLike": "",
-    "reply": "",
-    "title": "Ainda não há notificações."
+  "comment": "Comentou em sua postagem",
+  "commentLike": "Provocou seu comentário",
+  "description": "Aqui você verá comentários, novos seguidores e outras atividades.",
+  "follow": "Agora segue seu projeto",
+  "mention": "Você mencionou em um comentário",
+  "NEW_ARTICLE": "Artigos",
+  "NEW_COMMENT": "Comentários",
+  "NEW_FOLLOWER": "Seguidores",
+  "NEW_MENTION": "Menções",
+  "postLike": "Despertou sua postagem",
+  "PRODUCT_ANNOUNCEMENTS": "Anúncios de produtos",
+  "reply": "Respondeu ao seu comentário",
+  "SIMILAR_PROJECTS": "Projetos semelhantes",
+  "title": "Ainda não há notificações."
 }

@@ -1,8 +1,8 @@
 {
-    "clear": "",
-    "hashtags": "",
-    "placeholder": "Zoeken",
-    "projects": "",
-    "recent": "",
-    "users": ""
+  "clear": "Wis alles",
+  "hashtags": "Hashtags",
+  "placeholder": "Zoeken",
+  "projects": "Projecten",
+  "recent": "Recent",
+  "users": "Gebruikers"
 }

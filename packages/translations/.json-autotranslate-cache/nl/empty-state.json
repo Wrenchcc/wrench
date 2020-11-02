@@ -1,0 +1,20 @@
+{
+  "collection-no-post.description": "De gebruiker heeft nog geen berichten aan deze verzameling toegevoegd.",
+  "collection-no-post.title": "Geen posts toegevoegd aan deze collectie.",
+  "collection-post.button": "Toevoegen",
+  "collection-post.description": "Voeg een bericht toe aan deze verzameling vanuit de stroom voor het maken van een nieuw bericht of een bestaand bericht door op de knop meer in de rechterhoek van het bericht te klikken.",
+  "collection-post.title": "Voeg uw eerste post toe aan deze collectie.",
+  "notifications.description": "Hier zie je reacties, nieuwe volgers en andere activiteiten.",
+  "notifications.title": "Nog geen notificaties.",
+  "post.button": "Toevoegen",
+  "post.description": "Als je nu een project hebt, is het tijd om je eerste bericht te maken.",
+  "post.title": "2. Voeg je eerste bericht toe.",
+  "project-no-post.description": "Volg dit project nu en ontvang een melding wanneer het wordt bijgewerkt.",
+  "project-no-post.title": "Dit project heeft nog geen posts.",
+  "project-post.button": "Toevoegen",
+  "project-post.description": "Als je nu een project hebt, is het tijd om je eerste bericht te maken.",
+  "project-post.title": "Voeg je eerste bericht toe.",
+  "project.button": "Begin",
+  "project.description": "Laten we u op weg helpen en uw eerste project maken.",
+  "project.title": "1. Creëer uw eerste project."
+}

@@ -1,33 +1,64 @@
 {
-    "chat": "Chatta med oss",
-    "feedback": "Feedback",
-    "field": {
-        "bio": "",
-        "firstname": "",
-        "lastname": "",
-        "website": ""
-    },
-    "mail": "Mail Support",
-    "save": "Spara",
-    "sections": {
-        "language": "",
-        "notifications": "",
-        "profile": "",
-        "support": ""
-    },
-    "title": "Inställningar",
-    "toast": {
-        "error": "",
-        "saved": ""
-    },
-    "field_bio": "Beskrivning",
-    "field_firstname": "Förnamn",
-    "field_lastname": "Efternamn",
-    "field_website": "Hemsida",
-    "toast_error": "Något gick fel",
-    "toast_saved": "Inställningar Sparade",
-    "sections_language": "Språk",
-    "sections_notifications": "Notifikationer",
-    "sections_profile": "Redigera profil",
-    "sections_support": "Support"
+  "chat": "Chatta med oss",
+  "clear": "Rensa sparade data",
+  "codepush": "Kodtryck",
+  "contacts": "Mina kontakter",
+  "credits": "Krediter",
+  "customize-interests": "Anpassa dina intressen",
+  "delete": "Radera konto",
+  "deleteCancel": "Annullera",
+  "deleteDescription": "Om du väljer att radera ditt konto kommer du inte att kunna logga in igen. Ta bort dina projekt innan du tar bort ditt konto.",
+  "deleteOk": "OK",
+  "deleteTitle": "Radera konto",
+  "developer": "Utvecklare",
+  "email-notifications": "E-postaviseringar",
+  "facebook": "Facebook",
+  "faq": "FAQ",
+  "feedback": "Feedback",
+  "field": {
+    "bio": "Bio",
+    "firstname": "Förnamn",
+    "lastname": "Efternamn",
+    "website": "Hemsida"
+  },
+  "general": "Allmän",
+  "invite": "Bjuda folk",
+  "language": "Språk",
+  "logout": "Logga ut",
+  "mail": "Post",
+  "membership": "Medlemskap",
+  "push-notifications": "Pushmeddelanden",
+  "rate": "Ge oss en recension",
+  "report": "Rapportera en bugg",
+  "save": "Spara",
+  "sections": {
+    "language": "Språk",
+    "notifications": "Anmälningar",
+    "profile": "Redigera profil",
+    "support": "Stöd"
+  },
+  "settings": "inställningar",
+  "share": "Dela oss",
+  "stages": {
+    "production": "Produktion",
+    "staging": "Iscensättning"
+  },
+  "support": "Stöd",
+  "terms": "Villkor",
+  "title": "Inställningar",
+  "toast": {
+    "error": "Något gick fel",
+    "saved": "Inställningar Sparade"
+  },
+  "website": "Hemsida",
+  "field_bio": "Beskrivning",
+  "field_firstname": "Förnamn",
+  "field_lastname": "Efternamn",
+  "field_website": "Hemsida",
+  "toast_error": "Något gick fel",
+  "toast_saved": "Inställningar Sparade",
+  "sections_language": "Språk",
+  "sections_notifications": "Notifikationer",
+  "sections_profile": "Redigera profil",
+  "sections_support": "Support"
 }

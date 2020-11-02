@@ -11,7 +11,7 @@ export const ChangeAvatar = styled.View`
   overflow: hidden;
 `
 
-export const Overlay = styled.Pressable`
+export const Overlay = styled.TouchableOpacity`
   position: absolute;
   border-radius: 60px;
   background-color: rgba(000, 000, 000, 0.3);
@@ -24,7 +24,7 @@ export const Overlay = styled.Pressable`
 `
 
 export const Row = styled.View`
-  margin-top: ${props => (props.first ? 30 : 0)}px;
+  margin-top: ${(props) => (props.first ? 30 : 0)}px;
 `
 
 export const Counter = styled(UiText)`
@@ -45,5 +45,5 @@ export const Location = styled.View`
   justify-content: center;
   border-bottom-width: 1px;
   padding-right: 30px;
-  border-bottom-color: ${props => props.theme.colors.divider};
+  border-bottom-color: ${(props) => props.theme.colors.divider};
 `

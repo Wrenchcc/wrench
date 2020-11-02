@@ -1,4 +1,4 @@
 {
-    "loadMore": "",
-    "loadMore_plural": ""
+  "loadMore": "Tingnan ang 1 komento",
+  "loadMore_plural": "Tingnan ang lahat ng {{count, humanFormat}} komento"
 }

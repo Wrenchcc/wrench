@@ -1,13 +1,13 @@
 {
-    "d": "<span>Il y a 0</span> jour",
-    "d_plural": "<span>Il y a 0</span> jours",
-    "h": "<span>Il y a 0</span> heure",
-    "h_plural": "<span>Il y a 0</span> heures",
-    "m": "<span>Il y a 0</span> minute",
-    "m_plural": "<span>Il y a 0</span> minutes",
-    "mo": "<span>Il y a 0</span> mois",
-    "mo_plural": "<span>Il y a 0</span> mois",
-    "now": "juste maintenant",
-    "y": "<span>Il y a 0</span> an",
-    "y_plural": "Il y a {{count}} ans"
+  "d": "Il y a {{count}} jour",
+  "d_plural": "Il y a {{count}} jours",
+  "h": "Il y a {{count}} heure",
+  "h_plural": "Il y a {{count}} heures",
+  "m": "Il y a {{count}} minute",
+  "m_plural": "Il y a {{count}} minutes",
+  "mo": "Il y a {{count}} mois",
+  "mo_plural": "Il y a {{count}} mois",
+  "now": "juste maintenant",
+  "y": "Il y a {{count}} an",
+  "y_plural": "Il y a {{count}} ans"
 }

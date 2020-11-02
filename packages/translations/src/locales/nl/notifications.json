@@ -1,10 +1,16 @@
 {
-    "comment": "",
-    "commentLike": "",
-    "description": "Hier zie je reacties, nieuwe volgers en andere activiteiten.",
-    "follow": "",
-    "mention": "",
-    "postLike": "",
-    "reply": "",
-    "title": "Nog geen notificaties."
+  "comment": "Heeft gereageerd op je bericht",
+  "commentLike": "Wekte uw opmerking op",
+  "description": "Hier zie je reacties, nieuwe volgers en andere activiteiten.",
+  "follow": "Volgt nu uw project",
+  "mention": "Vermeldde U in een opmerking",
+  "NEW_ARTICLE": "Lidwoord",
+  "NEW_COMMENT": "Opmerkingen",
+  "NEW_FOLLOWER": "Volgers",
+  "NEW_MENTION": "Vermeldt",
+  "postLike": "Heeft je post aangewakkerd",
+  "PRODUCT_ANNOUNCEMENTS": "Productaankondigingen",
+  "reply": "Heeft op je opmerking gereageerd",
+  "SIMILAR_PROJECTS": "Vergelijkbare projecten",
+  "title": "Nog geen notificaties."
 }

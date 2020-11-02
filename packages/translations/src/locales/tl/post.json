@@ -1,13 +1,13 @@
 {
-    "options": {
-        "alertTitle": "",
-        "cancel": "",
-        "collection": "",
-        "delete": "",
-        "edit": "",
-        "removeCollection": "",
-        "report": ""
-    },
-    "selectCollection": "",
-    "showCollection": ""
+  "options": {
+    "alertTitle": "Sigurado ka ba?",
+    "cancel": "Kanselahin",
+    "collection": "Idagdag sa Koleksiyon",
+    "delete": "Tanggalin",
+    "edit": "I-edit",
+    "removeCollection": "Alisin mula sa koleksyon",
+    "report": "Iulat"
+  },
+  "selectCollection": "Piliin ang koleksyon",
+  "showCollection": "Ipakita ang koleksyon"
 }

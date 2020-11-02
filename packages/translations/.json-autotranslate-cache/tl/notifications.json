@@ -1,4 +1,16 @@
 {
+  "comment": "Nagkomento sa iyong post",
+  "commentLike": "Nagpahayag ng iyong puna",
   "description": "Makikita mo rito ang mga komento, bagong tagasunod at iba pang mga aktibidad.",
+  "follow": "Sinusundan ngayon ang iyong proyekto",
+  "mention": "Nabanggit ka sa isang komento",
+  "NEW_ARTICLE": "Mga Artikulo",
+  "NEW_COMMENT": "Mga Komento",
+  "NEW_FOLLOWER": "Mga tagasunod",
+  "NEW_MENTION": "Nabanggit",
+  "postLike": "Sparked iyong post",
+  "PRODUCT_ANNOUNCEMENTS": "Mga anunsyo ng produkto",
+  "reply": "Tumugon sa iyong puna",
+  "SIMILAR_PROJECTS": "Katulad na mga proyekto",
   "title": "Wala pang abiso."
 }

@@ -1,3 +1,8 @@
 {
-    "placeholder": "Search"
+    "clear": "Clear all",
+    "hashtags": "Hashtags",
+    "placeholder": "Search",
+    "projects": "Projects",
+    "recent": "Recent",
+    "users": "Users"
 }

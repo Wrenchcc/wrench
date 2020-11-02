@@ -1,0 +1,34 @@
+{
+  "collection-no-post": {
+    "description": "Der Benutzer hat dieser Sammlung noch keine Beiträge hinzugefügt.",
+    "title": "Keine Beiträge zu dieser Sammlung hinzugefügt."
+  },
+  "collection-post": {
+    "button": "Hinzufügen",
+    "description": "Fügen Sie dieser Sammlung einen Beitrag aus dem neuen Beitragsfluss oder einem vorhandenen Beitrag hinzu, indem Sie auf die Schaltfläche Mehr in der rechten Ecke des Beitrags klicken.",
+    "title": "Fügen Sie Ihren ersten Beitrag zu dieser Sammlung hinzu."
+  },
+  "notifications": {
+    "description": "Hier sehen Sie Kommentare, neue Follower und andere Aktivitäten.",
+    "title": "Noch keine Benachrichtigungen."
+  },
+  "post": {
+    "button": "Hinzufügen",
+    "description": "Wenn Sie jetzt ein Projekt haben, ist es Zeit, Ihren ersten Beitrag zu erstellen.",
+    "title": "2. Fügen Sie Ihren ersten Beitrag hinzu."
+  },
+  "project-no-post": {
+    "description": "Folgen Sie diesem Projekt jetzt und werden Sie benachrichtigt, wenn es aktualisiert wird.",
+    "title": "Dieses Projekt hat noch keine Beiträge."
+  },
+  "project-post": {
+    "button": "Hinzufügen",
+    "description": "Wenn Sie jetzt ein Projekt haben, ist es Zeit, Ihren ersten Beitrag zu erstellen.",
+    "title": "Fügen Sie Ihren ersten Beitrag hinzu."
+  },
+  "project": {
+    "button": "Loslegen",
+    "description": "Lassen Sie sich auf den neuesten Stand bringen und Ihr erstes Projekt erstellen.",
+    "title": "1. Erstellen Sie Ihr erstes Projekt."
+  }
+}

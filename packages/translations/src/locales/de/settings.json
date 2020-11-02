@@ -1,33 +1,54 @@
 {
-    "chat": "chatte mit uns",
-    "feedback": "Feedback",
-    "field": {
-        "bio": "",
-        "firstname": "",
-        "lastname": "",
-        "website": ""
-    },
-    "mail": "Mail-Support",
-    "save": "speichern",
-    "sections": {
-        "language": "",
-        "notifications": "",
-        "profile": "",
-        "support": ""
-    },
-    "title": "die Einstellungen",
-    "toast": {
-        "error": "",
-        "saved": ""
-    },
-    "field_bio": "Bio",
-    "field_firstname": "Vorname",
-    "field_lastname": "Familienname, Nachname",
-    "field_website": "Webseite",
-    "toast_error": "Etwas ist schief gelaufen",
-    "toast_saved": "Einstellungen gespeichert",
-    "sections_language": "Sprache",
-    "sections_notifications": "Benachrichtigungen",
-    "sections_profile": "Profil bearbeiten",
-    "sections_support": "Unterstützung"
+  "chat": "chatte mit uns",
+  "clear": "Gespeicherte Daten löschen",
+  "codepush": "Code Push",
+  "contacts": "Meine Kontakte",
+  "credits": "Credits",
+  "customize-interests": "Passen Sie Ihre Interessen an",
+  "delete": "Konto löschen",
+  "deleteCancel": "Stornieren",
+  "deleteDescription": "Wenn Sie Ihr Konto löschen möchten, können Sie sich nicht erneut anmelden. Löschen Sie Ihre Projekte, bevor Sie Ihr Konto löschen.",
+  "deleteOk": "OK",
+  "deleteTitle": "Konto löschen",
+  "developer": "Entwickler",
+  "email-notifications": "E-Mail Benachrichtigungen",
+  "facebook": "Facebook",
+  "faq": "FAQ",
+  "feedback": "Feedback",
+  "field": {
+    "bio": "Bio",
+    "firstname": "Vorname",
+    "lastname": "Familienname, Nachname",
+    "website": "Webseite"
+  },
+  "general": "Allgemeines",
+  "invite": "Menschen einladen",
+  "language": "Sprache",
+  "logout": "Ausloggen",
+  "mail": "Mail",
+  "membership": "Mitgliedschaft",
+  "push-notifications": "Mitteilungen",
+  "rate": "Geben Sie uns eine Bewertung",
+  "report": "Melde einen technischen Fehler",
+  "save": "sparen",
+  "sections": {
+    "language": "Sprache",
+    "notifications": "Mitteilungen",
+    "profile": "Profil bearbeiten",
+    "support": "Unterstützung"
+  },
+  "settings": "die Einstellungen",
+  "share": "Teile uns",
+  "stages": {
+    "production": "Produktion",
+    "staging": "Inszenierung"
+  },
+  "support": "Unterstützung",
+  "terms": "Geschäftsbedingungen",
+  "title": "die Einstellungen",
+  "toast": {
+    "error": "Etwas ist schief gelaufen",
+    "saved": "Einstellungen gespeichert"
+  },
+  "website": "Webseite"
 }

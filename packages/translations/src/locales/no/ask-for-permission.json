@@ -1,0 +1,20 @@
+{
+  "camera": {
+    "alertCancel": "Avbryt",
+    "alertDescription": "Det oppsto et problem med å få din tillatelse. Aktiver det fra innstillingene.",
+    "alertOpen": "Åpne innstillinger",
+    "alertTitle": "Oj!",
+    "permissionButton": "Tillat kameratilgang",
+    "permissionDescription": "Gi skiftenøkkel tilgang til kameraet ditt for å ta bilder og ta opp video i appen.",
+    "permissionHeadline": "Ta bilder og ta opp videoer"
+  },
+  "photo": {
+    "alertCancel": "Avbryt",
+    "alertDescription": "Det oppsto et problem med å få din tillatelse. Aktiver det fra innstillingene.",
+    "alertOpen": "Åpne innstillinger",
+    "alertTitle": "Oj!",
+    "permissionButton": "Aktiver tilgang til biblioteket",
+    "permissionDescription": "Dette gjør at skiftenøkkel kan dele bilder fra biblioteket ditt og lagre bilder på kamerarullen.",
+    "permissionHeadline": "Legg til bilder og videoer"
+  }
+}

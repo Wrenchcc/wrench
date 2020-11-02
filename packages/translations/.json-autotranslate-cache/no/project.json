@@ -1,5 +1,6 @@
 {
   "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} innlegg - {{fullName}} . (@ {{username}} ) på skiftenøkkel",
+  "recent": "Siste innlegg",
   "share": "Dele",
   "similar": "Lignende prosjekter",
   "title": "{{title}} - {{type}} prosjekt",

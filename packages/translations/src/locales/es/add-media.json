@@ -1,8 +1,8 @@
 {
-    "next": "",
-    "options": {
-        "cancel": "",
-        "discard": "",
-        "title": ""
-    }
+  "next": "próximo",
+  "options": {
+    "cancel": "Cancelar",
+    "discard": "Descarte",
+    "title": "Si regresa ahora, sus ediciones se descartarán."
+  }
 }

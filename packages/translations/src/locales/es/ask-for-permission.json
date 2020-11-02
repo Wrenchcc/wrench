@@ -1,0 +1,20 @@
+{
+  "camera": {
+    "alertCancel": "Cancelar",
+    "alertDescription": "Hubo un problema para obtener su permiso. Habilítelo desde la configuración.",
+    "alertOpen": "Configuración abierta",
+    "alertTitle": "¡Ups!",
+    "permissionButton": "Permitir acceso a la cámara",
+    "permissionDescription": "Permita que Wrench acceda a su cámara para tomar fotos y grabar videos dentro de la aplicación.",
+    "permissionHeadline": "Toma fotos y graba videos"
+  },
+  "photo": {
+    "alertCancel": "Cancelar",
+    "alertDescription": "Hubo un problema para obtener su permiso. Habilítelo desde la configuración.",
+    "alertOpen": "Configuración abierta",
+    "alertTitle": "¡Ups!",
+    "permissionButton": "Habilitar el acceso a la biblioteca",
+    "permissionDescription": "Esto le permite a Wrench compartir fotos de su biblioteca y guardarlas en el carrete de su cámara.",
+    "permissionHeadline": "Agregar fotos y videos"
+  }
+}

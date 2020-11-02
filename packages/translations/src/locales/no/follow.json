@@ -1,7 +1,6 @@
 {
-    "follow": "Følg dette prosjektet",
-    "followSmall": "",
-    "unfollow": "Følgende",
-    "unfollowSmall": "",
-    "follow_short": "Følg"
+  "follow": "Følg dette prosjektet",
+  "followSmall": "Følg",
+  "unfollow": "Følgende",
+  "unfollowSmall": "Følgende"
 }
