@@ -50,6 +50,7 @@
 		94F177B08D61476794C558FF /* inter_ui_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = inter_ui_medium.ttf; path = ../assets/fonts/inter_ui_medium.ttf; sourceTree = "<group>"; };
 		D2002BD723959FD800BF4AD8 /* Wrench-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wrench-Bridging-Header.h"; sourceTree = "<group>"; };
 		D2002BDA2395A01800BF4AD8 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		D203D56825504913004FCD27 /* background.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background.mp4; sourceTree = "<group>"; };
 		D20CE5F0254F0E2100C09B7C /* da.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = da.json; path = ../../translations/src/locales/da/da.json; sourceTree = "<group>"; };
 		D20CE5F3254F0E3600C09B7C /* de.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = de.json; path = ../../translations/src/locales/de/de.json; sourceTree = "<group>"; };
 		D20CE5F6254F0E4800C09B7C /* en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en.json; path = ../../translations/src/locales/en/en.json; sourceTree = "<group>"; };
@@ -154,6 +155,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				D203D56825504913004FCD27 /* background.mp4 */,
 				D2AC5214254F5BAA00D6C898 /* en.json */,
 				D2AC5204254F336E00D6C898 /* da */,
 				D2AC51FB254F336D00D6C898 /* de */,
