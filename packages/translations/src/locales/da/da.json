@@ -231,7 +231,7 @@
     "faq": "FAQ",
     "feedback": "Feedback",
     "help": "Hjælp",
-    "legal": "gyldige",
+    "legal": "Gyldige",
     "mail": "Mail Support",
     "policy": "Fortrolighedspolitik",
     "press": "Trykke",
@@ -266,17 +266,17 @@
   },
   "languages": {
     "sv": "Svensk",
-    "en": "engelsk",
-    "es": "spansk",
+    "en": "Engelsk",
+    "es": "Spansk",
     "it": "Italiensk",
-    "de": "tysk",
-    "nl": "hollandsk",
-    "fr": "fransk",
+    "de": "Tysk",
+    "nl": "Hollandsk",
+    "fr": "Fransk",
     "tl": "Filippinsk",
     "pt": "Portugisisk",
     "ru": "Russisk",
     "no": "Norsk",
-    "da": "dansk"
+    "da": "Dansk"
   },
   "legal": {
     "description": "Ved at fortsætte accepterer du skruenøgler",

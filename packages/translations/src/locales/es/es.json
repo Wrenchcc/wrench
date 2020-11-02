@@ -223,7 +223,7 @@
   "footer": {
     "about": "Acerca de",
     "blog": "Blog",
-    "chat": "habla con nosotros",
+    "chat": "Habla con nosotros",
     "cookies": "Política de cookies",
     "description": "Wrench es una comunidad de proyectos fundada en 2018 en Suecia. Está diseñado, construido y dirigido desde el corazón de Estocolmo.",
     "download": "Descargar aplicaciones",
@@ -234,7 +234,7 @@
     "legal": "Legal",
     "mail": "Soporte por correo",
     "policy": "Política de privacidad",
-    "press": "prensa",
+    "press": "Prensa",
     "social": "Social",
     "status": "Estado",
     "terms": "Términos y condiciones",
@@ -265,18 +265,18 @@
     "title": "Tu motocicleta"
   },
   "languages": {
-    "sv": "sueco",
+    "sv": "Sueco",
     "en": "Inglés",
     "es": "Español",
-    "it": "italiano",
-    "de": "alemán",
-    "nl": "holandés",
-    "fr": "francés",
+    "it": "Italiano",
+    "de": "Alemán",
+    "nl": "Holandés",
+    "fr": "Francés",
     "tl": "Filipino",
-    "pt": "portugués",
-    "ru": "ruso",
-    "no": "noruego",
-    "da": "danés"
+    "pt": "Portugués",
+    "ru": "Ruso",
+    "no": "Noruego",
+    "da": "Danés"
   },
   "legal": {
     "description": "Al continuar, acepta las",

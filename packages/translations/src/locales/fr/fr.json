@@ -234,10 +234,10 @@
     "legal": "Légal",
     "mail": "Assistance par courrier",
     "policy": "Politique de confidentialité",
-    "press": "presse",
+    "press": "Presse",
     "social": "Social",
     "status": "Statut",
-    "terms": "termes et conditions",
+    "terms": "Termes et conditions",
     "trademarks": "App Store est une marque de service d'Apple Inc. Google Play est une marque de commerce de Google LLC."
   },
   "google": {
@@ -265,18 +265,18 @@
     "title": "Votre moto"
   },
   "languages": {
-    "sv": "suédois",
+    "sv": "Suédois",
     "en": "Anglais",
     "es": "Espagnol",
-    "it": "italien",
-    "de": "allemand",
-    "nl": "néerlandais",
-    "fr": "français",
+    "it": "Italien",
+    "de": "Allemand",
+    "nl": "Néerlandais",
+    "fr": "Français",
     "tl": "Philippin",
     "pt": "Portugais",
-    "ru": "russe",
-    "no": "norvégien",
-    "da": "danois"
+    "ru": "Russe",
+    "no": "Norvégien",
+    "da": "Danois"
   },
   "legal": {
     "description": "En continuant, vous acceptez Wrench's",

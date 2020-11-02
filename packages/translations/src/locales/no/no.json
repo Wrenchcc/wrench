@@ -223,7 +223,7 @@
   "footer": {
     "about": "Om",
     "blog": "Blogg",
-    "chat": "snakk med oss",
+    "chat": "Snakk med oss",
     "cookies": "Retningslinjer for informasjonskapsler",
     "description": "Wrench er et prosjektfellesskap grunnlagt i 2018 i Sverige. Den er designet, bygget og kjørt fra hjertet av Stockholm.",
     "download": "Last ned apper",
@@ -234,7 +234,7 @@
     "legal": "Lovlig",
     "mail": "E-poststøtte",
     "policy": "Personvernregler",
-    "press": "trykk",
+    "press": "Trykk",
     "social": "Sosial",
     "status": "Status",
     "terms": "Betingelser og vilkår",
@@ -265,18 +265,18 @@
     "title": "Motoren din"
   },
   "languages": {
-    "sv": "svensk",
+    "sv": "Svensk",
     "en": "Engelsk",
     "es": "Spansk",
     "it": "Italiensk",
-    "de": "tysk",
-    "nl": "nederlandsk",
-    "fr": "fransk",
+    "de": "Tysk",
+    "nl": "Nederlandsk",
+    "fr": "Fransk",
     "tl": "Filippinsk",
     "pt": "Portugisisk",
     "ru": "Russisk",
-    "no": "norsk",
-    "da": "dansk"
+    "no": "Norsk",
+    "da": "Dansk"
   },
   "legal": {
     "description": "Ved å fortsette godtar du Wrench's",

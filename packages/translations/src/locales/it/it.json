@@ -223,7 +223,7 @@
   "footer": {
     "about": "Di",
     "blog": "Blog",
-    "chat": "chatta con noi",
+    "chat": "Chatta con noi",
     "cookies": "Politica sui cookie",
     "description": "Wrench è una community di progetto fondata nel 2018 in Svezia. È progettato, costruito e gestito dal cuore di Stoccolma.",
     "download": "Scarica app",
@@ -233,8 +233,8 @@
     "help": "Aiuto",
     "legal": "Legale",
     "mail": "Supporto per posta",
-    "policy": "politica sulla riservatezza",
-    "press": "stampa",
+    "policy": "Politica sulla riservatezza",
+    "press": "Stampa",
     "social": "Sociale",
     "status": "Stato",
     "terms": "Termini & Condizioni",
@@ -265,18 +265,18 @@
     "title": "La tua moto"
   },
   "languages": {
-    "sv": "svedese",
-    "en": "inglese",
-    "es": "spagnolo",
-    "it": "italiano",
+    "sv": "Svedese",
+    "en": "Inglese",
+    "es": "Spagnolo",
+    "it": "Italiano",
     "de": "Tedesco",
-    "nl": "olandese",
-    "fr": "francese",
+    "nl": "Olandese",
+    "fr": "Francese",
     "tl": "Filippino",
-    "pt": "portoghese",
-    "ru": "russo",
-    "no": "norvegese",
-    "da": "danese"
+    "pt": "Portoghese",
+    "ru": "Russo",
+    "no": "Norvegese",
+    "da": "Danese"
   },
   "legal": {
     "description": "Continuando accetti di Wrench's",
