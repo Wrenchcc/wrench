@@ -42,7 +42,7 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
                   },
                   statusBar: {
                     backgroundColor: hasProject ? LIGHT_THEME.black : dynamicColor,
-                    style: hasProject ? dynamicStatusbar : 'light',
+                    style: hasProject ? 'light' : dynamicStatusbar,
                   },
                 },
               },

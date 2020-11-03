@@ -19,11 +19,11 @@ function Footer() {
                   <a>{t('about')}</a>
                 </Link>
               </NavItem>
-              <NavItem>
+              {/* <NavItem>
                 <Link href="/press">
                   <a>{t('press')}</a>
                 </Link>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
                 <Link href="/blog">
                   <a>{t('blog')}</a>
