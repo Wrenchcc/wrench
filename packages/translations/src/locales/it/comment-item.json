@@ -3,5 +3,5 @@
   "like_plural": "{{count, humanFormat}} scintille",
   "loadReplies": "Visualizza risposte ( {{count}} )",
   "loadReplies_plural": "Visualizza risposte ( {{count}} )",
-  "reply": "rispondere"
+  "reply": "Rispondere"
 }

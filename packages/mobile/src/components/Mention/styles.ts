@@ -5,7 +5,7 @@ import { keyboardHeight } from 'utils/platform'
 const INPUT_HEIGHT = 60
 
 export const Base = styled.View`
-  background-color: ${props => props.theme.colors.default};
+  background-color: ${(props) => props.theme.colors.default};
   bottom: ${keyboardHeight + INPUT_HEIGHT}px;
   left: 0;
   position: absolute;

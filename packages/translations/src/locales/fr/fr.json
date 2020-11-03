@@ -70,7 +70,7 @@
   "bookmarks": {
     "description": "Enregistrez les publications que vous souhaitez revoir. Personne n'est averti, et vous seul pouvez voir ce que vous avez enregistré.",
     "headerTitle": "Messages enregistrés",
-    "title": "sauvegarder"
+    "title": "Sauvegarder"
   },
   "collections": {
     "edit": "Éditer",
@@ -95,7 +95,7 @@
     "load_replies": "PAS DE TRADUCTION",
     "load_replies_plural": "PAS DE TRADUCTION",
     "loadMore": "Charger plus de commentaires",
-    "title": "commentaires"
+    "title": "Commentaires"
   },
   "common": {
     "description": "PAS DE TRADUCTION",
@@ -115,14 +115,14 @@
   "edit-model": {
     "headerTitle": "Modifier le modèle",
     "placeholder": "Par exemple. BMW R100 1981",
-    "save": "sauvegarder",
+    "save": "Sauvegarder",
     "title": "Recherchez et choisissez votre modèle."
   },
   "edit-post": {
     "cancel": "Annuler",
     "headerTitle": "Modifier le message",
     "placeholder": "Ajouter un texte sur votre message",
-    "save": "sauvegarder"
+    "save": "Sauvegarder"
   },
   "edit-profile": {
     "bio": "Bio",
@@ -141,7 +141,7 @@
     "lastName": "Nom de famille",
     "place": "Ville Pays",
     "remove": "Enlever la photo actuelle",
-    "save": "sauvegarder",
+    "save": "Sauvegarder",
     "username": "Nom d'utilisateur",
     "validation": "Veuillez vérifier les champs obligatoires.",
     "validationUsername": "Nom d'utilisateur déjà pris.",
@@ -335,7 +335,7 @@
     "follow": "Suit maintenant votre projet",
     "mention": "Vous a mentionné dans un commentaire",
     "NEW_ARTICLE": "Des articles",
-    "NEW_COMMENT": "commentaires",
+    "NEW_COMMENT": "Commentaires",
     "NEW_FOLLOWER": "Suiveurs",
     "NEW_MENTION": "Mentions",
     "postLike": "A suscité votre message",
@@ -349,7 +349,7 @@
     "headerTitle": "Personnalisez vos centres d'intérêt",
     "headline": "Qu'est-ce qui vous intéresse?",
     "next": "Suivant",
-    "save": "sauvegarder",
+    "save": "Sauvegarder",
     "title": "Qu'est-ce qui vous intéresse?"
   },
   "options": {
@@ -491,7 +491,7 @@
     "push-notifications": "Notifications push",
     "rate": "Donnez-nous un avis",
     "report": "Signaler un bug",
-    "save": "sauvegarder",
+    "save": "Sauvegarder",
     "sections": {
       "language": "Langue",
       "notifications": "Notifications",
@@ -565,12 +565,12 @@
     "title": "Projets"
   },
   "user": {
-    "description": "Voir les projets et publications de Wrench à partir de {{fullName}} . (@ {{username}} )",
+    "description": "Voir les projets et publications de Wrench à partir de {{fullName}} . (@{{username}})",
     "image_alt": "PAS DE TRADUCTION",
     "notfound": "Utilisateur non trouvé",
     "projects": "{{count, humanFormat}} projet",
     "projects_plural": "{{count, humanFormat}} projets",
-    "title": "{{fullName}} . (@ {{username}} ) - projets et posts"
+    "title": "{{fullName}} . (@{{username}}) - projets et posts"
   },
   "webview": {
     "loading": "Chargement..."

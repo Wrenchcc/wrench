@@ -131,8 +131,8 @@
     "headerTitle": "Rediger profil",
     "imagePickerCancel": "Afbestille",
     "imagePickerLibrary": "Vælg fra bibliotek ...",
-    "imagePickerPermissionOk": "jeg er sikker",
-    "imagePickerPermissionRetry": "prøve igen",
+    "imagePickerPermissionOk": "Jeg er sikker",
+    "imagePickerPermissionRetry": "Prøve igen",
     "imagePickerPermissionText": "At være i stand til at tage billeder med dit kamera og vælge billeder fra dit bibliotek.",
     "imagePickerPermissionTitle": "Adgang nægtet",
     "imagePickerPhoto": "Tag et billede…",
@@ -448,7 +448,7 @@
     "users": "Brugere"
   },
   "searching-for": {
-    "title": "leder efter"
+    "title": "Leder efter"
   },
   "sections": {
     "language": "Sprog",

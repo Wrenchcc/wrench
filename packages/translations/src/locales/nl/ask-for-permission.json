@@ -1,6 +1,6 @@
 {
   "camera": {
-    "alertCancel": "annuleren",
+    "alertCancel": "Annuleren",
     "alertDescription": "Er is een probleem opgetreden bij het verkrijgen van uw toestemming. Schakel het in via de instellingen.",
     "alertOpen": "Open instellingen",
     "alertTitle": "Oeps!",
@@ -9,7 +9,7 @@
     "permissionHeadline": "Maak foto's en neem video's op"
   },
   "photo": {
-    "alertCancel": "annuleren",
+    "alertCancel": "Annuleren",
     "alertDescription": "Er is een probleem opgetreden bij het verkrijgen van uw toestemming. Schakel het in via de instellingen.",
     "alertOpen": "Open instellingen",
     "alertTitle": "Oeps!",

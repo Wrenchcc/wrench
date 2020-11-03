@@ -36,7 +36,7 @@
   },
   "add-project": {
     "headerTitle": "Agregar proyecto",
-    "next": "próximo",
+    "next": "Próximo",
     "placeholder": "P.ej. Honda Cafe Racer",
     "title": "Elija un título para su proyecto."
   },
@@ -132,7 +132,7 @@
     "imagePickerCancel": "Cancelar",
     "imagePickerLibrary": "Elige de la biblioteca…",
     "imagePickerPermissionOk": "Estoy seguro",
-    "imagePickerPermissionRetry": "rever",
+    "imagePickerPermissionRetry": "Rever",
     "imagePickerPermissionText": "Para poder tomar fotografías con tu cámara y elegir imágenes de tu biblioteca.",
     "imagePickerPermissionTitle": "Permiso denegado",
     "imagePickerPhoto": "Tomar foto…",
@@ -261,7 +261,7 @@
     "document_title": "Llave inglesa Tu comunidad de motociclistas",
     "explore": "Explore más proyectos",
     "signup": "Regístrate ahora",
-    "subtitle": "comunidad.",
+    "subtitle": "Comunidad.",
     "title": "Tu motocicleta"
   },
   "languages": {
@@ -315,7 +315,7 @@
     "feed": "Alimentar",
     "login": "Iniciar sesión",
     "register": "Regístrate",
-    "sign_out": "desconectar"
+    "sign_out": "Desconectar"
   },
   "no-results": {
     "title": "No se han encontrado resultados"
@@ -460,7 +460,7 @@
     "create": "Crea un nuevo proyecto"
   },
   "settings": {
-    "chat": "habla con nosotros",
+    "chat": "Habla con nosotros",
     "clear": "Borrar datos guardados",
     "codepush": "Empuje de código",
     "contacts": "Mis contactos",
@@ -528,12 +528,12 @@
     "title": "Proyectos similares"
   },
   "sparks": {
-    "title": "chispas"
+    "title": "Chispas"
   },
   "suggestions": {
     "description": "Hemos seleccionado algunos proyectos a continuación que pueden resultarle interesantes.",
     "headline": "Ponte al día y sigue algunos proyectos.",
-    "next": "próximo"
+    "next": "Próximo"
   },
   "text": {
     "more": "más"

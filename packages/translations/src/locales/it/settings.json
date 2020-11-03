@@ -1,5 +1,5 @@
 {
-  "chat": "chatta con noi",
+  "chat": "Chatta con noi",
   "clear": "Cancella i dati salvati",
   "codepush": "Codice push",
   "contacts": "I miei contatti",
@@ -8,7 +8,7 @@
   "delete": "Eliminare l'account",
   "deleteCancel": "Annulla",
   "deleteDescription": "Se decidi di eliminare il tuo account, non potrai più accedere. Elimina i tuoi progetti prima di eliminare il tuo account.",
-  "deleteOk": "ok",
+  "deleteOk": "OK",
   "deleteTitle": "Eliminare l'account",
   "developer": "Sviluppatore",
   "email-notifications": "Notifiche di posta elettronica",
@@ -23,7 +23,7 @@
   },
   "general": "Generale",
   "invite": "Invita persone",
-  "language": "linguaggio",
+  "language": "Linguaggio",
   "logout": "Disconnettersi",
   "mail": "Mail",
   "membership": "Appartenenza",
@@ -32,12 +32,12 @@
   "report": "Segnalare un bug",
   "save": "Salva",
   "sections": {
-    "language": "linguaggio",
+    "language": "Linguaggio",
     "notifications": "Notifiche",
     "profile": "Modifica Profilo",
     "support": "Supporto"
   },
-  "settings": "impostazioni",
+  "settings": "Impostazioni",
   "share": "Condivideteci",
   "stages": {
     "production": "Produzione",
@@ -45,7 +45,7 @@
   },
   "support": "Supporto",
   "terms": "Termini e condizioni",
-  "title": "impostazioni",
+  "title": "Impostazioni",
   "toast": {
     "error": "Qualcosa è andato storto",
     "saved": "Impostazioni salvate"

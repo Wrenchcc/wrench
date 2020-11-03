@@ -90,6 +90,7 @@ export default function registerScreens(client) {
         Navigation.registerComponent(SCREENS.LIKES, () =>
           HOC(require('features/project/containers/Likes').default)
         )
+
       case SCREENS.HALFPANEL:
         Navigation.registerComponent(SCREENS.HALFPANEL, () =>
           HOC(require('navigation/Halfpanel').default)

@@ -8,7 +8,7 @@
   "add-media": {
     "next": "De volgende",
     "options": {
-      "cancel": "annuleren",
+      "cancel": "Annuleren",
       "discard": "Gooi weg",
       "title": "Als u nu teruggaat, worden uw bewerkingen verwijderd."
     }
@@ -42,7 +42,7 @@
   },
   "ask-for-permission": {
     "camera": {
-      "alertCancel": "annuleren",
+      "alertCancel": "Annuleren",
       "alertDescription": "Er is een probleem opgetreden bij het verkrijgen van uw toestemming. Schakel het in via de instellingen.",
       "alertOpen": "Open instellingen",
       "alertTitle": "Oeps!",
@@ -51,7 +51,7 @@
       "permissionHeadline": "Maak foto's en neem video's op"
     },
     "photo": {
-      "alertCancel": "annuleren",
+      "alertCancel": "Annuleren",
       "alertDescription": "Er is een probleem opgetreden bij het verkrijgen van uw toestemming. Schakel het in via de instellingen.",
       "alertOpen": "Open instellingen",
       "alertTitle": "Oeps!",
@@ -119,7 +119,7 @@
     "title": "Zoek en kies uw model."
   },
   "edit-post": {
-    "cancel": "annuleren",
+    "cancel": "Annuleren",
     "headerTitle": "Bericht bewerken",
     "placeholder": "Voeg een tekst toe over je bericht",
     "save": "Opslaan"
@@ -132,7 +132,7 @@
     "imagePickerCancel": "annuleren",
     "imagePickerLibrary": "Kies uit bibliotheek ...",
     "imagePickerPermissionOk": "Ik ben er zeker van",
-    "imagePickerPermissionRetry": "probeer het opnieuw",
+    "imagePickerPermissionRetry": "Probeer het opnieuw",
     "imagePickerPermissionText": "Om foto's te kunnen maken met uw camera en afbeeldingen uit uw bibliotheek te kunnen kiezen.",
     "imagePickerPermissionTitle": "Geen toestemming",
     "imagePickerPhoto": "Foto maken ...",
@@ -149,7 +149,7 @@
     "wrong": "Er is iets fout gegaan"
   },
   "edit-project": {
-    "cancel": "annuleren",
+    "cancel": "Annuleren",
     "delete": "Verwijderen",
     "deleteAlert": "Project verwijderen?",
     "deleteTitle": "Project verwijderen",
@@ -258,10 +258,10 @@
   },
   "home": {
     "description": "Documenteer uw builds, deel uw projecten en leer van gelijkgestemden.",
-    "document_title": "Moersleutel | Uw motorgemeenschap",
+    "document_title": "Wrench | Uw motorgemeenschap",
     "explore": "Ontdek meer projecten",
     "signup": "Meld u nu aan",
-    "subtitle": "gemeenschap.",
+    "subtitle": "Gemeenschap.",
     "title": "Uw motorfiets"
   },
   "languages": {
@@ -318,7 +318,7 @@
     "sign_out": "Afmelden"
   },
   "no-results": {
-    "title": "geen resultaten gevonden"
+    "title": "Geen resultaten gevonden"
   },
   "notification": {
     "comment": "Heeft gereageerd op je bericht",
@@ -354,7 +354,7 @@
   },
   "options": {
     "alertTitle": "Weet je zeker dat?",
-    "cancel": "annuleren",
+    "cancel": "Annuleren",
     "collection": "Voeg toe aan collectie",
     "delete": "Verwijderen",
     "edit": "Bewerk",
@@ -374,7 +374,7 @@
   "post": {
     "options": {
       "alertTitle": "Weet je zeker dat?",
-      "cancel": "annuleren",
+      "cancel": "Annuleren",
       "collection": "Voeg toe aan collectie",
       "delete": "Verwijderen",
       "edit": "Bewerk",
@@ -429,7 +429,7 @@
     "projects_plural": "{{count, humanFormat}} projecten"
   },
   "search-bar": {
-    "cancel": "annuleren",
+    "cancel": "Annuleren",
     "placeholder": "Zoeken"
   },
   "search-location-footer": {
@@ -460,7 +460,7 @@
     "create": "Maak een nieuw project"
   },
   "settings": {
-    "chat": "chat met ons",
+    "chat": "Chat met ons",
     "clear": "Wis opgeslagen gegevens",
     "codepush": "Code Push",
     "contacts": "Mijn contacten",
@@ -565,12 +565,12 @@
     "title": "Projecten"
   },
   "user": {
-    "description": "Zie Moersleutelprojecten en berichten van {{fullName}} . (@ {{username}} )",
+    "description": "Zie Moersleutelprojecten en berichten van {{fullName}} . (@{{username}})",
     "image_alt": "GEEN VERTALING",
     "notfound": "Gebruiker niet gevonden",
     "projects": "{{count, humanFormat}} project",
     "projects_plural": "{{count, humanFormat}} projecten",
-    "title": "{{fullName}} . (@ {{username}} ) - projecten en berichten"
+    "title": "{{fullName}} . (@{{username}}) - projecten en berichten"
   },
   "webview": {
     "loading": "Bezig met laden..."
