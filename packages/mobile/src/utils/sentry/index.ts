@@ -1,5 +1,4 @@
 import * as Sentry from '@sentry/react-native'
-import codePush from 'react-native-code-push'
 import Config from 'react-native-config'
 import { readableVersion } from 'utils/appVersion'
 
@@ -9,15 +8,10 @@ async function setupSentry() {
   if (!__DEV__) {
     const environment = Config.ENVIRONMENT === 'production' ? 'production' : 'test'
 
-    codePush.getUpdateMetadata().then((update) => {
-      if (update) {
-        SentryInstance.init({
-          dsn: Config.SENTRY_DSN,
-          release: `${update.appVersion}+codepush:${update.label}`,
-          dist: readableVersion,
-          environment,
-        })
-      }
+    SentryInstance.init({
+      dsn: Config.SENTRY_DSN,
+      dist: readableVersion,
+      environment,
     })
   } else {
     SentryInstance = {

@@ -3,7 +3,7 @@
   "clear": "Rensa sparade data",
   "codepush": "Kodtryck",
   "contacts": "Mina kontakter",
-  "credits": "Krediter",
+  "credits": "Tack till",
   "customize-interests": "Anpassa dina intressen",
   "delete": "Radera konto",
   "deleteCancel": "Annullera",
@@ -27,7 +27,7 @@
   "logout": "Logga ut",
   "mail": "Post",
   "membership": "Medlemskap",
-  "push-notifications": "Pushmeddelanden",
+  "push-notifications": "Push-meddelanden",
   "rate": "Ge oss en recension",
   "report": "Rapportera en bugg",
   "save": "Spara",
@@ -37,7 +37,7 @@
     "profile": "Redigera profil",
     "support": "Stöd"
   },
-  "settings": "inställningar",
+  "settings": "Inställningar",
   "share": "Dela oss",
   "stages": {
     "production": "Produktion",

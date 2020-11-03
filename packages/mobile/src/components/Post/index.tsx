@@ -20,6 +20,7 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
   const { t } = useTranslation('post')
   const { navigate, showEditPost, showHalfpanel, dismissHalfpanel } = useNavigation()
   const dynamicColor = useDynamicColor('inverse')
+  const dynamicBackgroundColor = useDynamicColor('default')
   const [deletePost] = useDeletePostMutation()
   const [toggleLike] = useLikePostMutation()
   const [editPost] = useEditPostMutation()
@@ -236,6 +237,9 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
           destructiveButtonIndex: 2,
           cancelButtonIndex: 3,
           tintColor: dynamicColor,
+          containerStyle: {
+            backgroundColor: dynamicBackgroundColor
+          }
         },
         (index) => {
           if (index === 0) {
@@ -279,6 +283,9 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
           destructiveButtonIndex: 0,
           cancelButtonIndex: 1,
           tintColor: dynamicColor,
+          containerStyle: {
+            backgroundColor: dynamicBackgroundColor
+          }
         },
         (index) => {
           if (index === 0) {
@@ -287,7 +294,7 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
         }
       )
     }
-  }, [handleEdit, onDelete, showActionSheetWithOptions])
+  }, [handleEdit, onDelete, showActionSheetWithOptions, dynamicColor, dynamicBackgroundColor])
 
   return (
     <Base paddingBottom={paddingBottom}>

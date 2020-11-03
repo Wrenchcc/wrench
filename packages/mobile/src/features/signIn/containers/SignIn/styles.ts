@@ -38,13 +38,13 @@ export const Content = styled.View`
 `
 
 export const Headline = styled(Title)`
-  color: ${props => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.white};
 `
 
 export const Description = styled(Text)`
   padding-top: 30px;
   line-height: 30px;
-  color: ${props => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.white};
 `
 
 export const Options = styled(Touchable)`

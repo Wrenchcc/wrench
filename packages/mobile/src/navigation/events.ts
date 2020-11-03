@@ -26,7 +26,7 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
       const { data } = await getCurrentUserProjects()
       const hasProject = data.user.projects.edges.length > 0
       const screen = hasProject ? SCREENS.ADD_MEDIA : SCREENS.ADD_PROJECT
-
+      
       Navigation.showModal({
         stack: {
           children: [

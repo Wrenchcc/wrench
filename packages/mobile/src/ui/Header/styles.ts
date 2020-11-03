@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { NAVIGATION } from 'navigation/constants'
+import { hasNotch } from 'utils/platform'
 
 export const Background = styled.View`
   z-index: 10;
@@ -12,7 +13,7 @@ export const Base = styled.View`
   align-items: center;
   justify-content: space-between;
   padding: 0 20px 20px;
-  margin-top: ${NAVIGATION.STATUS_BAR_HEIGHT}px;
+  margin-top: ${hasNotch ? 0 : 10}px;
   height: ${NAVIGATION.TOP_BAR_HEIGHT}px;
 `
 

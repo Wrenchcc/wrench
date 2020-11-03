@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useAddCollectionMutation, CollectionFragmentDoc } from '@wrench/common'
 import { store } from 'gql'
 import { useNavigation, SCREENS } from 'navigation'
-import { keyboardHeight } from 'utils/platform'
+import { keyboardHeight, isIphone } from 'utils/platform'
 import { Icon, Title } from 'ui'
 import { Base, Center, Input, Text, Content, Inner } from './styles'
 import { add } from 'images'
@@ -94,7 +94,7 @@ function AddCollection({ projectId, style = {}, disableModal }) {
     }
 
     showHalfpanel({
-      height: HALFPANEL_HEIGHT + keyboardHeight,
+      height: HALFPANEL_HEIGHT + (isIphone ? keyboardHeight : 0),
       renderContent: () => <Form projectId={projectId} disableModal={disableModal} />,
     })
   }, [showHalfpanel, isHalpanelOpen])

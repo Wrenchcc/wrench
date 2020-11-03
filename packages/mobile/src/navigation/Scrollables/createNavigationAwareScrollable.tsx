@@ -7,7 +7,7 @@ import { CONTENT_INSET } from '../constants'
 import { keyExtractor } from '../utils'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
-const KEYBOARD_OFFSET = isAndroid ? 35 : 10
+const KEYBOARD_OFFSET = 10
 
 // NOTE: https://github.com/facebook/react-native/issues/23364
 const keyboardDismissProp = isAndroid

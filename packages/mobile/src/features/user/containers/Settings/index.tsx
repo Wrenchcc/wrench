@@ -49,7 +49,6 @@ function Settings({ section }) {
   // t('settings:rate')
   // t('settings:logout')
   // t('settings:developer')
-  // t('settings:codepush')
   // t('settings:clear')
   // t('settings:share')
   // t('settings:settings')

@@ -12,7 +12,6 @@
 #import "RNSplashScreen.h"
 #import "SDImageCodersManager.h"
 #import <AVFoundation/AVFoundation.h>
-#import <CodePush/CodePush.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <Firebase.h>
 #import <ReactNativeNavigation/ReactNativeNavigation.h>
@@ -85,7 +84,7 @@ static void InitializeFlipper(UIApplication *application) {
   #ifdef DEBUG
     return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"packages/mobile/index" fallbackResource:nil];
   #else
-    return [CodePush bundleURL];
+    return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
   #endif
 }
 

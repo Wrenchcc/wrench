@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import BottomSheet from 'reanimated-bottom-sheet'
 import AskForPermission from 'components/AskForPermission'
 import { SELECTED_ALBUM_KEY } from 'utils/storage/constants'
-import { isIphone, isAndroid, hasNotch } from 'utils/platform'
+import { isIphone, isAndroid } from 'utils/platform'
 import { Icon } from 'ui'
 import { album } from 'images'
 import List from './List'
@@ -14,7 +14,7 @@ import { Base, OpenAlbum } from './styles'
 
 const { height } = Dimensions.get('window')
 
-const BOTTOM_SHEET_HEIGHT = height - (isAndroid ? 24 : hasNotch ? 44 : 20) // TODO: fix status bar constant from navigation
+const BOTTOM_SHEET_HEIGHT = height / 2
 
 const PERMISSION = isIphone
   ? PERMISSIONS.IOS.PHOTO_LIBRARY

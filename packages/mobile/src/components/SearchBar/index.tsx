@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { search, close } from 'images'
 import { Text } from 'ui'
 import { Base, Inner, Input, SearchIcon, CloseIcon } from './styles'
+import { useDynamicColor } from 'utils/hooks'
 
 function SearchBar({
   onChangeQuery,
@@ -16,6 +17,7 @@ function SearchBar({
 }) {
   const inputRef = useRef(null)
   const { t } = useTranslation('search-bar')
+  const dynamicPlaceholderTextColor = useDynamicColor('neutral')
 
   const handleFocus = useCallback(() => {
     if (onSearchFocus) {
@@ -67,6 +69,7 @@ function SearchBar({
           onFocus={handleFocus}
           onChangeText={handleQueryChange}
           value={query}
+          placeholderTextColor={dynamicPlaceholderTextColor}
         />
 
         <SearchIcon source={search} color="accent" />

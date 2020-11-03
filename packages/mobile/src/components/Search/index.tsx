@@ -7,6 +7,7 @@ import Users from './Users'
 import Projects from './Projects'
 import Hashtags from './Hashtags'
 import { Base } from './styles'
+import { isAndroid } from 'utils/platform'
 
 const initialLayout = {
   width: Dimensions.get('window').width,
@@ -53,6 +54,8 @@ function Search({ query }) {
     tabBar: {
       backgroundColor: colorScheme === 'dark' ? 'black' : 'white',
       elevation: 0,
+      height: isAndroid ? 65 : 50,
+      justifyContent: 'center'
     },
   }
 

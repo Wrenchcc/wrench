@@ -5,6 +5,8 @@ import { SCREENS, BOTTOM_TABS_ID } from './constants'
 import defaultOptions from './defaultOptions'
 
 export function Bootstrap() {
+  Navigation.setDefaultOptions(defaultOptions)
+
   Navigation.setRoot({
     root: {
       component: {
@@ -15,16 +17,7 @@ export function Bootstrap() {
 }
 
 export function AuthNavigation() {
-  Navigation.setDefaultOptions({
-    modalPresentationStyle: 'fullScreen',
-    navigationBar: {
-      backgroundColor: COLORS.DARK,
-    },
-    topBar: {
-      drawBehind: true,
-      visible: false,
-    },
-  })
+  Navigation.setDefaultOptions(defaultOptions)
 
   Navigation.setRoot({
     root: {
