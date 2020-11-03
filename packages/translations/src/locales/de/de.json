@@ -70,7 +70,7 @@
   "bookmarks": {
     "description": "Speichern Sie Beiträge, die Sie erneut sehen möchten. Niemand wird benachrichtigt, und nur Sie können sehen, was Sie gespeichert haben.",
     "headerTitle": "Gespeicherte Beiträge",
-    "title": "sparen"
+    "title": "Sparen"
   },
   "collections": {
     "edit": "Bearbeiten",
@@ -115,14 +115,14 @@
   "edit-model": {
     "headerTitle": "Modell bearbeiten",
     "placeholder": "Z.B. BMW R100 1981",
-    "save": "sparen",
+    "save": "Sparen",
     "title": "Suchen und wählen Sie Ihr Modell."
   },
   "edit-post": {
     "cancel": "Stornieren",
     "headerTitle": "Beitrag bearbeiten",
     "placeholder": "Fügen Sie einen Text zu Ihrem Beitrag hinzu",
-    "save": "sparen"
+    "save": "Sparen"
   },
   "edit-profile": {
     "bio": "Bio",
@@ -141,7 +141,7 @@
     "lastName": "Familienname, Nachname",
     "place": "Stadt Land",
     "remove": "Lösche das aktuelle Foto",
-    "save": "sparen",
+    "save": "Sparen",
     "username": "Nutzername",
     "validation": "Bitte überprüfen Sie die erforderlichen Felder.",
     "validationUsername": "Benutzername ist bereits vergeben.",
@@ -299,12 +299,12 @@
   "logout": {
     "logout": "Ausloggen",
     "profile": "Profil",
-    "settings": "die Einstellungen"
+    "settings": "Die Einstellungen"
   },
   "me": {
     "bookmarks": "Gespeicherte Beiträge",
     "edit": "Profil bearbeiten",
-    "settings": "die Einstellungen"
+    "settings": "Die Einstellungen"
   },
   "media-picker-list": {
     "deselectAll": "Alle abwählen"
@@ -349,7 +349,7 @@
     "headerTitle": "Passen Sie Ihre Interessen an",
     "headline": "Was interessiert dich?",
     "next": "Nächster",
-    "save": "sparen",
+    "save": "Sparen",
     "title": "Was interessiert dich?"
   },
   "options": {
@@ -460,7 +460,7 @@
     "create": "Erstellen Sie ein neues Projekt"
   },
   "settings": {
-    "chat": "chatte mit uns",
+    "chat": "Chatte mit uns",
     "clear": "Gespeicherte Daten löschen",
     "codepush": "Code Push",
     "contacts": "Meine Kontakte",
@@ -491,14 +491,14 @@
     "push-notifications": "Mitteilungen",
     "rate": "Geben Sie uns eine Bewertung",
     "report": "Melde einen technischen Fehler",
-    "save": "sparen",
+    "save": "Sparen",
     "sections": {
       "language": "Sprache",
       "notifications": "Mitteilungen",
       "profile": "Profil bearbeiten",
       "support": "Unterstützung"
     },
-    "settings": "die Einstellungen",
+    "settings": "Die Einstellungen",
     "share": "Teile uns",
     "stages": {
       "production": "Produktion",
@@ -506,7 +506,7 @@
     },
     "support": "Unterstützung",
     "terms": "Geschäftsbedingungen",
-    "title": "die Einstellungen",
+    "title": "Die Einstellungen",
     "toast": {
       "error": "Etwas ist schief gelaufen",
       "saved": "Einstellungen gespeichert"

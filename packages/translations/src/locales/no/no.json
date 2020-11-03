@@ -131,8 +131,8 @@
     "headerTitle": "Rediger profil",
     "imagePickerCancel": "Avbryt",
     "imagePickerLibrary": "Velg fra bibliotek…",
-    "imagePickerPermissionOk": "jeg er sikker",
-    "imagePickerPermissionRetry": "prøv på nytt",
+    "imagePickerPermissionOk": "Jeg er sikker",
+    "imagePickerPermissionRetry": "Prøv på nytt",
     "imagePickerPermissionText": "For å kunne ta bilder med kameraet ditt og velge bilder fra biblioteket ditt.",
     "imagePickerPermissionTitle": "Tillatelse avslått",
     "imagePickerPhoto": "Ta bilde…",
@@ -258,7 +258,7 @@
   },
   "home": {
     "description": "Dokumenter dine bygg, del prosjektene dine og lær av likesinnede.",
-    "document_title": "Skiftenøkkel | Motorsykkel samfunnet",
+    "document_title": "Wrench | Motorsykkel samfunnet",
     "explore": "Utforsk flere prosjekter",
     "signup": "Registrer deg nå",
     "subtitle": "samfunnet.",
@@ -404,12 +404,12 @@
     "inspo": "Inspirasjon"
   },
   "project": {
-    "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} innlegg - {{fullName}} . (@ {{username}} ) på skiftenøkkel",
+    "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} innlegg - {{fullName}} . (@{{username}}) på Wrench",
     "recent": "Siste innlegg",
     "share": "Dele",
     "similar": "Lignende prosjekter",
     "title": "{{title}} - {{type}} prosjekt",
-    "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} innlegg - {{fullName}} . (@ {{username}} ) på skiftenøkkel"
+    "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} innlegg - {{fullName}} . (@{{username}}) på Wrench"
   },
   "promo": {
     "button_default": "Sende",
@@ -460,7 +460,7 @@
     "create": "Lag et nytt prosjekt"
   },
   "settings": {
-    "chat": "snakk med oss",
+    "chat": "Snakk med oss",
     "clear": "Fjern lagrede data",
     "codepush": "Kode Push",
     "contacts": "Kontaktene mine",
@@ -565,12 +565,12 @@
     "title": "Prosjekter"
   },
   "user": {
-    "description": "Se skiftenøkkelprosjekter og innlegg fra {{fullName}} . (@ {{username}} )",
+    "description": "Se Wrench prosjekter og innlegg fra {{fullName}} . (@{{username}})",
     "image_alt": "",
     "notfound": "Bruker ikke funnet",
     "projects": "{{count, humanFormat}} prosjekt",
     "projects_plural": "{{count, humanFormat}} prosjekter",
-    "title": "{{fullName}} . (@ {{username}} ) - prosjekter og innlegg"
+    "title": "{{fullName}} . (@{{username}}) - prosjekter og innlegg"
   },
   "webview": {
     "loading": "Laster inn ..."

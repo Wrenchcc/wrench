@@ -70,7 +70,7 @@
   "bookmarks": {
     "description": "Salve as postagens que você deseja ver novamente. Ninguém é notificado e só você pode ver o que salvou.",
     "headerTitle": "Postagens salvas",
-    "title": "Salve "
+    "title": "Salve"
   },
   "collections": {
     "edit": "Editar",
@@ -83,8 +83,8 @@
   "comment-item": {
     "like": "{{count}} faísca",
     "like_plural": "{{count, humanFormat}} faíscas",
-    "loadReplies": "Ver respostas ( {{count}} )",
-    "loadReplies_plural": "Ver respostas ( {{count}} )",
+    "loadReplies": "Ver respostas ({{count}})",
+    "loadReplies_plural": "Ver respostas ({{count}})",
     "reply": "Resposta"
   },
   "comment-list": {
@@ -115,18 +115,18 @@
   "edit-model": {
     "headerTitle": "Editar modelo",
     "placeholder": "Por exemplo. BMW R100 1981",
-    "save": "Salve ",
+    "save": "Salve",
     "title": "Pesquise e escolha o seu modelo."
   },
   "edit-post": {
     "cancel": "Cancelar",
     "headerTitle": "Editar post",
     "placeholder": "Adicione um texto sobre sua postagem",
-    "save": "Salve "
+    "save": "Salve"
   },
   "edit-profile": {
     "bio": "Bio",
-    "change": "mudança",
+    "change": "Mudança",
     "firstName": "Primeiro nome",
     "headerTitle": "Editar Perfil",
     "imagePickerCancel": "Cancelar",
@@ -141,7 +141,7 @@
     "lastName": "Último nome",
     "place": "Cidade, país",
     "remove": "Remover foto atual",
-    "save": "Salve ",
+    "save": "Salve",
     "username": "Nome do usuário",
     "validation": "Verifique os campos obrigatórios.",
     "validationUsername": "O nome de usuário já está em uso.",
@@ -254,11 +254,11 @@
     "home": "Casa",
     "login": "Conecte-se",
     "notifications": "Notificações",
-    "register": "inscrever-se"
+    "register": "Inscrever-se"
   },
   "home": {
     "description": "Documente suas construções, compartilhe seus projetos e aprenda com pessoas que pensam como você.",
-    "document_title": "Chave inglesa | Sua comunidade de motocicletas",
+    "document_title": "Wrench | Sua comunidade de motocicletas",
     "explore": "Explore mais projetos",
     "signup": "Inscreva-se agora",
     "subtitle": "comunidade.",
@@ -314,7 +314,7 @@
     "explore": "Explorar",
     "feed": "Alimentação",
     "login": "Conecte-se",
-    "register": "inscrever-se",
+    "register": "Inscrever-se",
     "sign_out": "Sair"
   },
   "no-results": {
@@ -349,7 +349,7 @@
     "headerTitle": "Personalize seus interesses",
     "headline": "Em quê você está interessado?",
     "next": "Próximo",
-    "save": "Salve ",
+    "save": "Salve",
     "title": "Em quê você está interessado?"
   },
   "options": {
@@ -404,12 +404,12 @@
     "inspo": "Inspiração"
   },
   "project": {
-    "description": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} postagens - {{fullName}} . (@ {{username}} ) na chave inglesa",
+    "description": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} postagens - {{fullName}} . (@{{username}}) na chave Wrench",
     "recent": "Postagens recentes",
     "share": "Compartilhar",
     "similar": "Projetos semelhantes",
     "title": "{{title}} - {{type}} projeto",
-    "description_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} postagens - {{fullName}} . (@ {{username}} ) na chave inglesa"
+    "description_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} postagens - {{fullName}} . (@{{username}}) na chave Wrench"
   },
   "promo": {
     "button_default": "Enviar",
@@ -491,7 +491,7 @@
     "push-notifications": "Notificações via push",
     "rate": "Dê-nos uma revisão",
     "report": "Reportar um erro",
-    "save": "Salve ",
+    "save": "Salve",
     "sections": {
       "language": "Língua",
       "notifications": "Notificações",
@@ -565,12 +565,12 @@
     "title": "Projetos"
   },
   "user": {
-    "description": "Veja projetos de chave inglesa e postagens de {{fullName}} . (@ {{username}} )",
+    "description": "Veja projetos de Wrench e postagens de {{fullName}} . (@{{username}})",
     "image_alt": "NO_TRANSLATION",
     "notfound": "Usuário não encontrado",
     "projects": "{{count, humanFormat}} projeto",
     "projects_plural": "{{count, humanFormat}} projetos",
-    "title": "{{fullName}} (@ {{username}} ) - projetos e postagens"
+    "title": "{{fullName}} (@{{username}}) - projetos e postagens"
   },
   "webview": {
     "loading": "Carregando..."

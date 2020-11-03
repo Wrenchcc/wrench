@@ -73,7 +73,7 @@
     "title": "Salva"
   },
   "collections": {
-    "edit": "modificare",
+    "edit": "Modificare",
     "title": "Collezioni"
   },
   "comment-field": {
@@ -85,7 +85,7 @@
     "like_plural": "{{count, humanFormat}} scintille",
     "loadReplies": "Visualizza risposte ( {{count}} )",
     "loadReplies_plural": "Visualizza risposte ( {{count}} )",
-    "reply": "rispondere"
+    "reply": "Rispondere"
   },
   "comment-list": {
     "loadMore": "Visualizza 1 commento",
@@ -127,12 +127,12 @@
   "edit-profile": {
     "bio": "Bio",
     "change": "Modificare",
-    "firstName": "nome di battesimo",
+    "firstName": "Nome di battesimo",
     "headerTitle": "Modifica Profilo",
     "imagePickerCancel": "Annulla",
     "imagePickerLibrary": "Scegli dalla libreria…",
-    "imagePickerPermissionOk": "sono sicuro",
-    "imagePickerPermissionRetry": "riprova",
+    "imagePickerPermissionOk": "Sono sicuro",
+    "imagePickerPermissionRetry": "Riprova",
     "imagePickerPermissionText": "Per poter scattare foto con la tua fotocamera e scegliere le immagini dalla tua libreria.",
     "imagePickerPermissionTitle": "Permesso negato",
     "imagePickerPhoto": "Fare foto…",
@@ -162,7 +162,7 @@
     "title": "Titolo"
   },
   "edit": {
-    "edit": "modificare"
+    "edit": "Modificare"
   },
   "empty-state": {
     "collection-no-post": {
@@ -258,7 +258,7 @@
   },
   "home": {
     "description": "Documenta le tue build, condividi i tuoi progetti e impara da persone che la pensano allo stesso modo.",
-    "document_title": "Chiave | La tua community di motociclisti",
+    "document_title": "Wrench | La tua community di motociclisti",
     "explore": "Esplora altri progetti",
     "signup": "Iscriviti ora",
     "subtitle": "Comunità.",
@@ -280,7 +280,7 @@
   },
   "legal": {
     "description": "Continuando accetti di Wrench's",
-    "link": "termini e condizioni."
+    "link": "Termini e condizioni."
   },
   "like-post": {
     "like": "{{count}} scintilla",
@@ -299,12 +299,12 @@
   "logout": {
     "logout": "Disconnettersi",
     "profile": "Profilo",
-    "settings": "impostazioni"
+    "settings": "Impostazioni"
   },
   "me": {
     "bookmarks": "Post salvati",
     "edit": "Modifica Profilo",
-    "settings": "impostazioni"
+    "settings": "Impostazioni"
   },
   "media-picker-list": {
     "deselectAll": "Deselezionare tutto"
@@ -315,10 +315,10 @@
     "feed": "Alimentazione",
     "login": "Accesso",
     "register": "Iscriviti",
-    "sign_out": "disconnessione"
+    "sign_out": "Disconnessione"
   },
   "no-results": {
-    "title": "nessun risultato trovato"
+    "title": "Nessun risultato trovato"
   },
   "notification": {
     "comment": "Ha commentato il tuo post",
@@ -357,9 +357,9 @@
     "cancel": "Annulla",
     "collection": "Aggiungere alla collezione",
     "delete": "Elimina",
-    "edit": "modificare",
+    "edit": "Modificare",
     "removeCollection": "Rimuovi dalla raccolta",
-    "report": "rapporto"
+    "report": "Rapporto"
   },
   "popular": {
     "description": "Qui puoi vedere i progetti più popolari di questa settimana.",
@@ -379,7 +379,7 @@
       "delete": "Elimina",
       "edit": "modificare",
       "removeCollection": "Rimuovi dalla raccolta",
-      "report": "rapporto"
+      "report": "Rapporto"
     },
     "selectCollection": "Seleziona raccolta",
     "showCollection": "Mostra raccolta"
@@ -451,7 +451,7 @@
     "title": "Alla ricerca di"
   },
   "sections": {
-    "language": "linguaggio",
+    "language": "Linguaggio",
     "notifications": "Notifiche",
     "profile": "Profilo",
     "support": "Supporto"
@@ -460,7 +460,7 @@
     "create": "Crea un nuovo progetto"
   },
   "settings": {
-    "chat": "chatta con noi",
+    "chat": "Chatta con noi",
     "clear": "Cancella i dati salvati",
     "codepush": "Codice push",
     "contacts": "I miei contatti",
@@ -469,7 +469,7 @@
     "delete": "Eliminare l'account",
     "deleteCancel": "Annulla",
     "deleteDescription": "Se decidi di eliminare il tuo account, non potrai più accedere. Elimina i tuoi progetti prima di eliminare il tuo account.",
-    "deleteOk": "ok",
+    "deleteOk": "OK",
     "deleteTitle": "Eliminare l'account",
     "developer": "Sviluppatore",
     "email-notifications": "Notifiche di posta elettronica",
@@ -484,7 +484,7 @@
     },
     "general": "Generale",
     "invite": "Invita persone",
-    "language": "linguaggio",
+    "language": "Linguaggio",
     "logout": "Disconnettersi",
     "mail": "Mail",
     "membership": "Appartenenza",
@@ -493,12 +493,12 @@
     "report": "Segnalare un bug",
     "save": "Salva",
     "sections": {
-      "language": "linguaggio",
+      "language": "Linguaggio",
       "notifications": "Notifiche",
       "profile": "Modifica Profilo",
       "support": "Supporto"
     },
-    "settings": "impostazioni",
+    "settings": "Impostazioni",
     "share": "Condivideteci",
     "stages": {
       "production": "Produzione",
@@ -506,7 +506,7 @@
     },
     "support": "Supporto",
     "terms": "Termini e condizioni",
-    "title": "impostazioni",
+    "title": "Impostazioni",
     "toast": {
       "error": "Qualcosa è andato storto",
       "saved": "Impostazioni salvate"
@@ -565,12 +565,12 @@
     "title": "Progetti"
   },
   "user": {
-    "description": "Vedi progetti e post di Wrench da {{fullName}} . (@ {{username}} )",
+    "description": "Vedi progetti e post di Wrench da {{fullName}} . (@{{username}})",
     "image_alt": "NESSUNA TRADUZIONE",
     "notfound": "Utente non trovato",
     "projects": "{{count, humanFormat}} progetto",
     "projects_plural": "{{count, humanFormat}} progetti",
-    "title": "{{fullName}} . (@ {{username}} ) - progetti e post"
+    "title": "{{fullName}} . (@{{username}}) - progetti e post"
   },
   "webview": {
     "loading": "Caricamento in corso..."
