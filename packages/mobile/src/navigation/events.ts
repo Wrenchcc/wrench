@@ -20,13 +20,15 @@ Navigation.events().registerComponentDidAppearListener(({ componentId: id, compo
 const dynamicColor =
   Appearance.getColorScheme() === 'dark' ? DARK_THEME.default : LIGHT_THEME.default
 
+const dynamicStatusbar = Appearance.getColorScheme() === 'dark' ? 'light' : 'dark'
+
 Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
   if (tabIndex === TABS_INDEX.ADD) {
     try {
       const { data } = await getCurrentUserProjects()
       const hasProject = data.user.projects.edges.length > 0
       const screen = hasProject ? SCREENS.ADD_MEDIA : SCREENS.ADD_PROJECT
-      
+
       Navigation.showModal({
         stack: {
           children: [
@@ -39,7 +41,8 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
                     componentBackgroundColor: hasProject ? LIGHT_THEME.black : dynamicColor,
                   },
                   statusBar: {
-                    style: 'light'
+                    backgroundColor: hasProject ? LIGHT_THEME.black : dynamicColor,
+                    style: hasProject ? dynamicStatusbar : 'light',
                   },
                 },
               },
