@@ -17,7 +17,13 @@ export function Bootstrap() {
 }
 
 export function AuthNavigation() {
-  Navigation.setDefaultOptions(defaultOptions)
+  Navigation.setDefaultOptions({
+    ...defaultOptions,
+    statusBar: {
+      drawBehind: false,
+      style: 'light',
+    },
+  })
 
   Navigation.setRoot({
     root: {

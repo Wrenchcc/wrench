@@ -87,6 +87,7 @@ function SignIn() {
       options: {
         statusBar: {
           style: colorScheme === 'dark' ? STATUS_BAR.LIGHT : STATUS_BAR.DARK,
+          drawBehind: true,
         },
         layout: {
           componentBackgroundColor:
