@@ -42,7 +42,7 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
                   },
                   statusBar: {
                     backgroundColor: hasProject ? LIGHT_THEME.black : dynamicColor,
-                    style: hasProject ? dynamicStatusbar : 'light',
+                    style: hasProject ? 'light' : dynamicStatusbar,
                   },
                 },
               },
@@ -54,4 +54,43 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
       logError(err)
     }
   }
+})
+
+Appearance.addChangeListener(({ colorScheme }) => {
+  const dynamicColor = colorScheme === 'dark' ? 'black' : 'white'
+  const dynamicStatusBar = colorScheme === 'dark' ? 'light' : 'dark'
+
+  Navigation.addLayoutProcessor((layout) => {
+    if (layout.component) {
+      layout.component.options = {
+        statusBar: {
+          style: dynamicStatusbar,
+          backgroundColor: dynamicColor,
+          ...layout.component.options?.statusBar,
+        },
+        layout: {
+          backgroundColor: dynamicColor,
+          componentBackgroundColor: dynamicColor,
+        },
+      }
+    }
+
+    layout.stack?.children?.forEach((child) => {
+      if (!child.component) {
+        return
+      }
+
+      child.component.options = {
+        statusBar: {
+          style: dynamicStatusBar,
+          ...child.component.options?.statusBar,
+        },
+        layout: {
+          backgroundColor: dynamicColor,
+          componentBackgroundColor: dynamicColor,
+        },
+      }
+    })
+    return layout
+  })
 })
