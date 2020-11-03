@@ -39,7 +39,7 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
                     componentBackgroundColor: hasProject ? LIGHT_THEME.black : dynamicColor,
                   },
                   statusBar: {
-                    visible: hasProject ? false : true,
+                    style: 'light'
                   },
                 },
               },

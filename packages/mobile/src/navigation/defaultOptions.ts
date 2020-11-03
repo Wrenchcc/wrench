@@ -24,6 +24,7 @@ export default {
   },
   layout: {
     backgroundColor: dynamicColor,
+    componentBackgroundColor: dynamicColor,
     orientation: ['portrait'],
   },
   overlay: {
