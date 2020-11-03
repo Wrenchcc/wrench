@@ -12,7 +12,6 @@ import { ActivityIndicator, Header, Title, Text, Input, Icon, KeyboardAvoidingVi
 import { arrowLeft } from 'images'
 import SearchModel from 'features/project/components/SearchModel'
 import { COLORS } from 'ui/constants'
-import { isIphone } from 'utils/platform'
 
 function formatModel(model) {
   return `${model.brand.name} ${model.model} ${model.year}`
@@ -111,11 +110,6 @@ function AddProjectModel() {
         options: {
           layout: {
             componentBackgroundColor: COLORS.DARK,
-          },
-          statusBar: {
-            backgroundColor: 'black',
-            style: 'light',
-            visible: isIphone ? false : true,
           },
         },
       })

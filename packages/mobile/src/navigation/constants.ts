@@ -1,5 +1,5 @@
 import Constants from 'expo-constants'
-import { hasNotch, isAndroid } from 'utils/platform'
+import { hasNotch } from 'utils/platform'
 
 export enum NAVIGATION {
   LIST_INSET_TOP = 30,

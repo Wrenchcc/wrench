@@ -1,16 +1,11 @@
 import styled from 'styled-components/native'
-import { hasNotch, isIphone } from 'utils/platform'
 import { NAVIGATION } from 'navigation/constants'
 
 export const Base = styled.View`
   align-self: center;
   align-items: center;
   justify-content: center;
-  top: ${hasNotch
-    ? NAVIGATION.STATUS_BAR_HEIGHT + 10
-    : isIphone
-    ? NAVIGATION.STATUS_BAR_HEIGHT
-    : 16}px;
+  top: ${NAVIGATION.STATUS_BAR_HEIGHT + 10}px;
   z-index: 100;
   width: 45%;
   position: absolute;
