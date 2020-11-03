@@ -26,8 +26,6 @@ import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationPackage;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 
-import com.microsoft.codepush.react.CodePush;
-
 public class MainApplication extends NavigationApplication {
 
     private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(new BasePackageList().getPackageList(), null);
@@ -36,11 +34,6 @@ public class MainApplication extends NavigationApplication {
         @Override
         protected String getJSMainModuleName() {
             return "packages/mobile/index";
-        }
-
-        @Override
-        protected String getJSBundleFile() {
-            return CodePush.getJSBundleFile();
         }
 
         @Override

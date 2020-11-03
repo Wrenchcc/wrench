@@ -1,6 +1,5 @@
 import { Alert } from 'react-native'
 import NativeShare from 'react-native-share'
-import AsyncStorage from '@react-native-community/async-storage'
 import { locales } from '@wrench/translations'
 import i18next from 'i18next'
 import { setLocale, updateUserLocale } from 'i18n'
@@ -9,8 +8,6 @@ import { client } from 'gql'
 import { askForRating } from 'utils/rate'
 import openLink from 'utils/openLink'
 import { logError } from 'utils/sentry'
-import { isAdmin } from 'utils/permissions'
-import { setDeploymentKey, DEPLOYMENT_KEY_STAGING, DEPLOYMENT_KEY_PRODUCTION } from 'utils/codepush'
 
 const WEBSITE_URL = 'https://wrench.cc'
 
@@ -233,25 +230,6 @@ const sections = ({ t, ...props }) => {
         ],
       },
     ],
-    codepush: [
-      {
-        headerTitle: t('credits'),
-        data: [
-          {
-            title: t('settings:stages.production'),
-            onPress: async () => setDeploymentKey(DEPLOYMENT_KEY_PRODUCTION),
-            type: 'selector',
-            selected: false,
-          },
-          {
-            title: t('settings:stages.staging'),
-            onPress: async () => setDeploymentKey(DEPLOYMENT_KEY_STAGING),
-            type: 'selector',
-            selected: false,
-          },
-        ],
-      },
-    ],
     credits: [
       {
         headerTitle: t('credits'),
@@ -280,26 +258,6 @@ const sections = ({ t, ...props }) => {
         ],
       },
     ],
-  }
-
-  if (props.user && isAdmin(props.user)) {
-    data.settings.push({
-      title: t('developer'),
-      data: [
-        {
-          title: t('codepush'),
-          hasChildren: true,
-          onPress: () =>
-            props.navigate(SCREENS.SETTINGS, {
-              section: 'codepush',
-            }),
-        },
-        {
-          title: t('clear'),
-          onPress: async () => AsyncStorage.clear(),
-        },
-      ],
-    })
   }
 
   return data

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "postinstall": "yarn copy:locales:android",
     "emulator:create": "tasks/emulator_create",
     "emulator:ensureready": "tasks/emulator_ensureready",
     "emulator:start": "tasks/emulator_start",
@@ -11,7 +12,8 @@
     "start:android": "tasks/start_android",
     "start:ios": "tasks/start_ios",
     "start:packager": "react-native start --reset-cache",
-    "check:types": "tsc --noEmit"
+    "check:types": "tsc --noEmit",
+    "copy:locales:android": "node tasks/copy_locales.js"
   },
   "dependencies": {
     "@apollo/client": "3.3.0-beta.16",
@@ -35,6 +37,7 @@
     "apollo3-cache-persist": "^0.8.0",
     "expo-apple-authentication": "^2.2.1",
     "expo-camera": "^9.0.0",
+    "expo-constants": "^9.2.0",
     "expo-haptics": "^8.3.0",
     "expo-image-manipulator": "^8.3.0",
     "expo-image-picker": "^9.1.1",
@@ -52,7 +55,6 @@
     "react-i18next": "^11.7.3",
     "react-native": "^0.63.3",
     "react-native-bundle-splitter": "^1.0.9",
-    "react-native-code-push": "^6.3.0",
     "react-native-config": "^1.4.0",
     "react-native-deep-linking": "^2.2.0",
     "react-native-device-info": "^7.0.2",

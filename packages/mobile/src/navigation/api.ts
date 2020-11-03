@@ -17,13 +17,17 @@ export function navigateWithoutContext(
   screen: SCREENS,
   { options = {}, ...passProps }: OptionsWithPassProps = {}
 ) {
-  Navigation.push(componentId, {
-    component: {
-      name: screen,
-      options,
-      passProps,
-    },
-  })
+  try {
+    Navigation.push(componentId, {
+      component: {
+        name: screen,
+        options,
+        passProps,
+      },
+    })
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 export function selectTabIndex(currentTabIndex: number) {
@@ -38,96 +42,128 @@ export function showModal(
   screen: SCREENS,
   { options = {}, ...passProps }: OptionsWithPassProps = {}
 ) {
-  Navigation.showModal({
-    stack: {
-      children: [
-        {
-          component: {
-            id: screen,
-            name: screen,
-            options,
-            passProps,
+  try {
+    Navigation.showModal({
+      stack: {
+        children: [
+          {
+            component: {
+              id: screen,
+              name: screen,
+              options,
+              passProps,
+            },
           },
-        },
-      ],
-    },
-  })
+        ],
+      },
+    })
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 export function showHalfpanel(passProps: PassProps) {
-  if (!isHalpanelOpen) {
-    Navigation.showModal({
-      component: {
-        id: SCREENS.HALFPANEL,
-        name: SCREENS.HALFPANEL,
-        options: {
-          modalPresentationStyle: OptionsModalPresentationStyle.overCurrentContext,
-          layout: {
-            backgroundColor: 'transparent',
-            componentBackgroundColor: 'transparent',
-          },
-          animations: {
-            showModal: {
-              enabled: false,
-              waitForRender: true,
+  try {
+    if (!isHalpanelOpen) {
+      Navigation.showModal({
+        component: {
+          id: SCREENS.HALFPANEL,
+          name: SCREENS.HALFPANEL,
+          options: {
+            modalPresentationStyle: OptionsModalPresentationStyle.overCurrentContext,
+            layout: {
+              backgroundColor: 'transparent',
+              componentBackgroundColor: 'transparent',
             },
-            dismissModal: {
-              enabled: false,
+            animations: {
+              showModal: {
+                enabled: false,
+                waitForRender: true,
+              },
+              dismissModal: {
+                enabled: false,
+              },
             },
           },
+          passProps,
         },
-        passProps,
-      },
-    })
+      })
+    }
+    isHalpanelOpen = true
+  } catch (err) {
+    isHalpanelOpen = true
+    console.log(err)
   }
-  isHalpanelOpen = true
 }
 
 export function dismissHalfpanel() {
-  Navigation.dismissModal(SCREENS.HALFPANEL)
-  isHalpanelOpen = false
+  try {
+    Navigation.dismissModal(SCREENS.HALFPANEL)
+    isHalpanelOpen = false
+  } catch (err) {
+    isHalpanelOpen = false
+    console.log(err)
+  }
 }
 
 export function showMention(passProps: PassProps) {
-  if (!isMentionOpen) {
+  try {
+    if (!isMentionOpen) {
+      Navigation.showOverlay({
+        component: {
+          id: SCREENS.MENTION,
+          name: SCREENS.MENTION,
+          options: {
+            layout: {
+              componentBackgroundColor: 'transparent',
+            },
+          },
+          passProps,
+        },
+      })
+    }
+    isMentionOpen = true
+  } catch (err) {
+    isMentionOpen = true
+    console.log(err)
+  }
+}
+
+export function dismissMention() {
+  try {
+    Navigation.dismissOverlay(SCREENS.MENTION)
+    isMentionOpen = false
+  } catch (err) {
+    isMentionOpen = false
+    console.log(err)
+  }
+}
+
+export function showEditPost(passProps: PassProps) {
+  try {
     Navigation.showOverlay({
       component: {
-        id: SCREENS.MENTION,
-        name: SCREENS.MENTION,
+        id: SCREENS.EDIT_POST,
+        name: SCREENS.EDIT_POST,
         options: {
-          layout: {
-            componentBackgroundColor: 'transparent',
+          overlay: {
+            handleKeyboardEvents: true,
           },
         },
         passProps,
       },
     })
+  } catch (err) {
+    console.log(err)
   }
-  isMentionOpen = true
-}
-
-export function dismissMention() {
-  Navigation.dismissOverlay(SCREENS.MENTION)
-  isMentionOpen = false
-}
-
-export function showEditPost(passProps: PassProps) {
-  Navigation.showOverlay({
-    component: {
-      id: SCREENS.EDIT_POST,
-      name: SCREENS.EDIT_POST,
-      options: {
-        overlay: {
-          handleKeyboardEvents: true,
-        },
-      },
-      passProps,
-    },
-  })
 }
 
 export function dismissEditPost() {
-  Navigation.dismissOverlay(SCREENS.EDIT_POST)
+  try {
+    Navigation.dismissOverlay(SCREENS.EDIT_POST)
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 export function showNotificationBadge() {

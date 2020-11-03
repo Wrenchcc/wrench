@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useReactiveVar } from '@apollo/client'
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import { store } from 'gql'
-import { useNavigation, SCREENS } from 'navigation'
+import { useNavigation, SCREENS, NAVIGATION } from 'navigation'
 import { ActivityIndicator, Header, Text, Icon, Touchable } from 'ui'
 import cropImage from 'utils/cropImage'
 import { useDynamicColor } from 'utils/hooks'
@@ -12,8 +12,11 @@ import { logError } from 'utils/sentry'
 import Camera from 'components/Camera'
 import ImageEditor from 'components/ImageEditor'
 import MediaPicker from 'components/MediaPicker'
+import { hasNotch } from 'utils/platform'
 import SelectProject from '../../components/SelectProject'
 import { Base } from './styles'
+
+const headerTop = hasNotch ? NAVIGATION.STATUS_BAR_HEIGHT : 0
 
 function AddMedia({ id }) {
   const { t } = useTranslation('add-media')
@@ -83,6 +86,7 @@ function AddMedia({ id }) {
   return (
     <Base>
       <Header
+        top={headerTop}
         headerLeft={<Icon source={close} onPress={handleDismissModal} color="white" />}
         headerRight={
           isLoading ? (

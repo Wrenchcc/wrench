@@ -34,7 +34,7 @@ function ProjectTypes({ visible }) {
     })
   }, [])
 
-  if (!typesData.types && loadingTypes) {
+  if (!typesData?.types && loadingTypes) {
     return (
       <Base>
         <CategoriesPlaceholder />
@@ -44,7 +44,7 @@ function ProjectTypes({ visible }) {
 
   const data = sort(
     (a) => (userData?.user.interestedIn.some((item) => item.id === a.id) ? -1 : 1),
-    typesData.types
+    typesData?.types
   )
 
   return (
@@ -60,7 +60,7 @@ function ProjectTypes({ visible }) {
           {data.map((category, index) => (
             <Wrapper
               key={category.id}
-              last={index === typesData.types.length - 1}
+              last={index === typesData.types?.length - 1}
               onPress={() => handleNavigation(category)}
             >
               <Text fontSize={15} medium>

@@ -1,9 +1,10 @@
-import { hasNotch } from 'utils/platform'
+import Constants from 'expo-constants'
+import { hasNotch, isAndroid } from 'utils/platform'
 
 export enum NAVIGATION {
   LIST_INSET_TOP = 30,
   LIST_OFFSET = hasNotch ? 120 : 90,
-  STATUS_BAR_HEIGHT = hasNotch ? 44 : 20,
+  STATUS_BAR_HEIGHT = Constants.statusBarHeight,
   TAB_HEIGHT = 60,
   TOP_BAR_HEIGHT = 60,
   TOTAL_TOP_BAR_HEIGHT = hasNotch ? 104 : 80,
