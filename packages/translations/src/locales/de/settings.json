@@ -1,5 +1,5 @@
 {
-  "chat": "chatte mit uns",
+  "chat": "Chatte mit uns",
   "clear": "Gespeicherte Daten löschen",
   "codepush": "Code Push",
   "contacts": "Meine Kontakte",
@@ -30,14 +30,14 @@
   "push-notifications": "Mitteilungen",
   "rate": "Geben Sie uns eine Bewertung",
   "report": "Melde einen technischen Fehler",
-  "save": "sparen",
+  "save": "Sparen",
   "sections": {
     "language": "Sprache",
     "notifications": "Mitteilungen",
     "profile": "Profil bearbeiten",
     "support": "Unterstützung"
   },
-  "settings": "die Einstellungen",
+  "settings": "Die Einstellungen",
   "share": "Teile uns",
   "stages": {
     "production": "Produktion",
@@ -45,7 +45,7 @@
   },
   "support": "Unterstützung",
   "terms": "Geschäftsbedingungen",
-  "title": "die Einstellungen",
+  "title": "Die Einstellungen",
   "toast": {
     "error": "Etwas ist schief gelaufen",
     "saved": "Einstellungen gespeichert"

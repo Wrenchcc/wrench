@@ -5,7 +5,7 @@ export const isAndroid = Platform.OS === 'android'
 export const isIphone = Platform.OS === 'ios'
 export const hasNotch = DeviceInfo.hasNotch()
 
-export let keyboardHeight = 400 // default just to be sure
+export let keyboardHeight = 0
 
 const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', setKeyboardHeight)
 

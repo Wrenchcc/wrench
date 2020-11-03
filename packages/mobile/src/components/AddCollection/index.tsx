@@ -94,7 +94,7 @@ function AddCollection({ projectId, style = {}, disableModal }) {
     }
 
     showHalfpanel({
-      height: HALFPANEL_HEIGHT + (isIphone ? keyboardHeight : 0),
+      height: HALFPANEL_HEIGHT + (isIphone ? keyboardHeight || 400 : 0), // default just to be sure
       renderContent: () => <Form projectId={projectId} disableModal={disableModal} />,
     })
   }, [showHalfpanel, isHalpanelOpen])

@@ -1,7 +1,7 @@
 {
   "options": {
     "alertTitle": "Weet je zeker dat?",
-    "cancel": "annuleren",
+    "cancel": "Annuleren",
     "collection": "Voeg toe aan collectie",
     "delete": "Verwijderen",
     "edit": "Bewerk",

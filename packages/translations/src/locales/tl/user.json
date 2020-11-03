@@ -1,5 +1,5 @@
 {
-  "description": "Tingnan ang mga proyekto sa Wrench at post mula sa {{fullName}} . (@ {{username}} )",
+  "description": "Tingnan ang mga proyekto sa Wrench at post mula sa {{fullName}} . (@{{username}})",
   "image_alt": "NO_TRANSLATION",
   "notfound": "Hindi nahanap ang gumagamit",
   "projects": "{{count, humanFormat}} proyekto",
