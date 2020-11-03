@@ -147,7 +147,7 @@ function AddProjectModel() {
       {isSearching && <SearchModel query={query} onPress={handleModelChange} />}
 
       <KeyboardAvoidingView keyboardVerticalOffset={20}>
-        <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
+        <Title large numberOfLines={0} style={{ marginBottom: 30 }}>
           {t('title')}
         </Title>
 

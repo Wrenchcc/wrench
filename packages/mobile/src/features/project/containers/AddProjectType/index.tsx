@@ -44,7 +44,7 @@ function AddProjectType() {
       />
       <ProjectCategories
         ListHeaderComponent={
-          <Title large numberOfLines={0} style={{ paddingHorizontal: 20, paddingVertical: 50 }}>
+          <Title large numberOfLines={0} style={{ paddingHorizontal: 20, paddingBottom: 40 }}>
             {t('title')}
           </Title>
         }

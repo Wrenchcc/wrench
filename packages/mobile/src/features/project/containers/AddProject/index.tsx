@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { useReactiveVar } from '@apollo/client'
 import { useTranslation } from 'react-i18next'
 import { store, PROJECT } from 'gql'
-import { useNavigation, SCREENS, ScrollView } from 'navigation'
+import { useNavigation, SCREENS } from 'navigation'
 import { Header, Icon, Title, Text, Input, KeyboardAvoidingView } from 'ui'
 import { close } from 'images'
 
@@ -35,24 +35,24 @@ function AddProject() {
           )
         }
       />
-      <KeyboardAvoidingView paddingHorizontal={0}>
-        <ScrollView keyboardDismissMode="on-drag">
-          <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
-            {t('title')}
-          </Title>
-          <Input
-            placeholder={t('placeholder')}
-            large
-            onChangeText={onChangeText}
-            value={title}
-            borderColor="dark"
-            autoFocus
-            color="dark"
-            returnKeyType="next"
-            enablesReturnKeyAutomatically
-            onSubmitEditing={title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
-          />
-        </ScrollView>
+      <KeyboardAvoidingView keyboardVerticalOffset={20}>
+        <Title large numberOfLines={0} style={{ marginBottom: 30 }}>
+          {t('title')}
+        </Title>
+
+        <Input
+          numberOfLines={1}
+          placeholder={t('placeholder')}
+          large
+          onChangeText={onChangeText}
+          value={title}
+          borderColor="dark"
+          autoFocus
+          color="dark"
+          returnKeyType="next"
+          enablesReturnKeyAutomatically
+          onSubmitEditing={title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
+        />
       </KeyboardAvoidingView>
     </>
   )
