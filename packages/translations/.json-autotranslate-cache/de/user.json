@@ -1,6 +1,6 @@
 {
   "description": "Siehe Schraubenschlüsselprojekte und Beiträge von {{fullName}} . (@ {{username}} )",
-  "image_alt": "KEINE ÜBERSETZUNG",
+  "image_alt": "",
   "notfound": "Benutzer nicht gefunden",
   "projects": "{{count, humanFormat}} Projekt",
   "projects_plural": "{{count, humanFormat}} Projekte",

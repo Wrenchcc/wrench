@@ -7,5 +7,8 @@
   "options.removeCollection": "Remover da coleção",
   "options.report": "Relatório",
   "selectCollection": "Selecione a coleção",
-  "showCollection": "Mostrar coleção"
+  "showCollection": "Mostrar coleção",
+  "loading": "Carregando...",
+  "translation": "ver tradução",
+  "original": "Ver Original"
 }

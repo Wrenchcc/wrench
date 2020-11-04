@@ -7,5 +7,8 @@
   "options.removeCollection": "Alisin mula sa koleksyon",
   "options.report": "Iulat",
   "selectCollection": "Piliin ang koleksyon",
-  "showCollection": "Ipakita ang koleksyon"
+  "showCollection": "Ipakita ang koleksyon",
+  "loading": "Naglo-load ...",
+  "translation": "Tingnan ang Pagsasalin",
+  "original": "Tingnan ang Orihinal"
 }

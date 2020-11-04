@@ -9,5 +9,8 @@
     "report": "Verslag doen van"
   },
   "selectCollection": "Selecteer collectie",
-  "showCollection": "Toon collectie"
+  "showCollection": "Toon collectie",
+  "loading": "Bezig met laden...",
+  "translation": "Zie Vertaling",
+  "original": "Zie Origineel"
 }

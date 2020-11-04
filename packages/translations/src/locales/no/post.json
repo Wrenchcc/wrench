@@ -9,5 +9,8 @@
     "report": "Rapportere"
   },
   "selectCollection": "Velg samling",
-  "showCollection": "Vis samling"
+  "showCollection": "Vis samling",
+  "loading": "Laster inn ...",
+  "translation": "Se oversettelse",
+  "original": "Se Original"
 }

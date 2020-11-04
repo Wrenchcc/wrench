@@ -5,7 +5,10 @@
   "options.delete": "Elimina",
   "options.edit": "modificare",
   "options.removeCollection": "Rimuovi dalla raccolta",
-  "options.report": "rapporto",
+  "options.report": "Rapporto",
   "selectCollection": "Seleziona raccolta",
-  "showCollection": "Mostra raccolta"
+  "showCollection": "Mostra raccolta",
+  "loading": "Caricamento in corso...",
+  "translation": "guarda la traduzione",
+  "original": "Vedi originale"
 }

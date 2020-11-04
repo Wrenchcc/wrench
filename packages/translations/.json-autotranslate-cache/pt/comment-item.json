@@ -1,7 +1,7 @@
 {
   "like": "{{count}} faísca",
   "like_plural": "{{count, humanFormat}} faíscas",
-  "loadReplies": "Ver respostas ( {{count}} )",
-  "loadReplies_plural": "Ver respostas ( {{count}} )",
+  "loadReplies": "Ver respostas ({{count}})",
+  "loadReplies_plural": "Ver respostas ({{count}})",
   "reply": "Resposta"
 }

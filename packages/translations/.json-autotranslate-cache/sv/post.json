@@ -7,5 +7,8 @@
   "options.removeCollection": "Radera från samling",
   "options.report": "Rapportera",
   "selectCollection": "Välj samling",
-  "showCollection": "Visa samling"
+  "showCollection": "Visa samling",
+  "loading": "Läser in...",
+  "translation": "se översättning",
+  "original": "Se original"
 }

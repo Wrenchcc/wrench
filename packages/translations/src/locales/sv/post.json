@@ -9,5 +9,8 @@
     "report": "Rapportera"
   },
   "selectCollection": "Välj samling",
-  "showCollection": "Visa samling"
+  "showCollection": "Visa samling",
+  "loading": "Läser in...",
+  "translation": "Se översättning",
+  "original": "Se original"
 }
