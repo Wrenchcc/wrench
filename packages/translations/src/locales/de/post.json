@@ -9,5 +9,8 @@
     "report": "Bericht"
   },
   "selectCollection": "Sammlung auswählen",
-  "showCollection": "Sammlung anzeigen"
+  "showCollection": "Sammlung anzeigen",
+  "loading": "Wird geladen...",
+  "translation": "Siehe Übersetzung",
+  "original": "Siehe Original"
 }

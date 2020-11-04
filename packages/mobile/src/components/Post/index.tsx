@@ -1,29 +1,48 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import { Alert, View, Animated } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useDeletePostMutation, useLikePostMutation, useEditPostMutation } from '@wrench/common'
+import {
+  useDeletePostMutation,
+  useLikePostMutation,
+  useEditPostMutation,
+  useTranslatePostMutation,
+} from '@wrench/common'
 import { State, TapGestureHandler } from 'react-native-gesture-handler'
 import * as Haptics from 'expo-haptics'
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import { useNavigation, SCREENS } from 'navigation'
 import openLink from 'utils/openLink'
+import Collections from 'features/project/components/Collections'
 import { useDynamicColor } from 'utils/hooks'
 import { keyboardHeight } from 'utils/platform'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo } from 'ui'
 import LikePost from 'components/LikePost'
 import Bookmark from 'components/Bookmark'
 import { share, sparkMega, arrowRightSmall } from 'images'
-import { Base, Top, Headline, Content, Spacer, Row, Collection } from './styles'
-import Collections from 'features/project/components/Collections'
+import { Base, Top, Headline, Content, Spacer, Row, Collection, Bottom } from './styles'
 
 function Post({ post, withoutTitle, withoutComments, withoutCollections, paddingBottom }) {
   const { t } = useTranslation('post')
   const { navigate, showEditPost, showHalfpanel, dismissHalfpanel } = useNavigation()
+  const [original, setOriginal] = useState(true)
   const dynamicColor = useDynamicColor('inverse')
   const dynamicBackgroundColor = useDynamicColor('default')
   const [deletePost] = useDeletePostMutation()
   const [toggleLike] = useLikePostMutation()
   const [editPost] = useEditPostMutation()
+
+  const [translatePost, { loading: translationLoading }] = useTranslatePostMutation()
+
+  const handleTranslation = useCallback(() => {
+    setOriginal(!original)
+
+    translatePost({
+      variables: {
+        id: post.id,
+        original: !original,
+      },
+    })
+  }, [post, original])
 
   const handleEdit = useCallback(() => showEditPost({ post }), [post])
 
@@ -183,7 +202,6 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
     },
     [deletePost]
   )
-
   const { showActionSheetWithOptions } = useActionSheet()
 
   const navigateToProject = useCallback(() => {
@@ -238,8 +256,8 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
           cancelButtonIndex: 3,
           tintColor: dynamicColor,
           containerStyle: {
-            backgroundColor: dynamicBackgroundColor
-          }
+            backgroundColor: dynamicBackgroundColor,
+          },
         },
         (index) => {
           if (index === 0) {
@@ -284,8 +302,8 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
           cancelButtonIndex: 1,
           tintColor: dynamicColor,
           containerStyle: {
-            backgroundColor: dynamicBackgroundColor
-          }
+            backgroundColor: dynamicBackgroundColor,
+          },
         },
         (index) => {
           if (index === 0) {
@@ -377,9 +395,27 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
         <LikePost post={post} />
         <Bookmark post={post} />
       </Row>
-
       {!withoutComments && <Comments data={post} />}
-      <TimeAgo date={post.createdAt} long />
+
+      <Bottom>
+        <TimeAgo date={post.createdAt} long />
+        {post.translatable && (
+          <>
+            <Text color="neutral" medium fontSize={12} style={{ marginLeft: 7, marginRight: 7 }}>
+              •
+            </Text>
+            {translationLoading ? (
+              <Text color="inverse" medium fontSize={12}>
+                {t('loading')}
+              </Text>
+            ) : (
+              <Text color="inverse" medium fontSize={12} onPress={handleTranslation}>
+                {original ? t('translation') : t('original')}
+              </Text>
+            )}
+          </>
+        )}
+      </Bottom>
     </Base>
   )
 }

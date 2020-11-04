@@ -1,6 +1,6 @@
 {
   "bio": "Bio",
-  "change": "mudança",
+  "change": "Mudança",
   "firstName": "Primeiro nome",
   "headerTitle": "Editar Perfil",
   "imagePickerCancel": "Cancelar",
@@ -15,7 +15,7 @@
   "lastName": "Último nome",
   "place": "Cidade, país",
   "remove": "Remover foto atual",
-  "save": "Salve ",
+  "save": "Salve",
   "username": "Nome do usuário",
   "validation": "Verifique os campos obrigatórios.",
   "validationUsername": "O nome de usuário já está em uso.",

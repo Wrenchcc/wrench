@@ -382,7 +382,10 @@
       "report": "Rapport"
     },
     "selectCollection": "Vælg samling",
-    "showCollection": "Vis samling"
+    "showCollection": "Vis samling",
+    "loading": "Indlæser...",
+    "translation": "Se oversættelse",
+    "original": "Se original"
   },
   "posting": {
     "description": "Indlæg ..."

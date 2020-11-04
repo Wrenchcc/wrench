@@ -6,6 +6,7 @@ import * as google from './google'
 import * as mail from './mail'
 import * as s3 from './s3'
 import * as sns from './sns'
+import * as translate from './translate'
 
 export default {
   apple,
@@ -16,4 +17,5 @@ export default {
   mail,
   s3,
   sns,
+  translate,
 }

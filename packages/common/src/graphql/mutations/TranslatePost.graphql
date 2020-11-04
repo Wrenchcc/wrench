@@ -1,0 +1,7 @@
+mutation translatePost($id: ID!, $original: Boolean) {
+  translatePost(id: $id, original: $original) {
+    id
+    translatable
+    caption
+  }
+}

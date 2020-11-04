@@ -224,6 +224,8 @@ export declare type Post = {
     likes?: Maybe<Likes>;
     bookmarks?: Maybe<Bookmarks>;
     collection?: Maybe<Collection>;
+    translatable?: Maybe<Scalars['Boolean']>;
+    language?: Maybe<Scalars['String']>;
     filesConnection?: Maybe<FileConnection>;
     commentsConnection?: Maybe<CommentConnection>;
     likesConnection?: Maybe<LikeConnection>;
@@ -501,6 +503,8 @@ export declare type Comment = {
     user?: Maybe<User>;
     postId?: Maybe<Scalars['ID']>;
     permissions?: Maybe<CommentPermissions>;
+    translatable?: Maybe<Scalars['Boolean']>;
+    language?: Maybe<Scalars['String']>;
     repliesConnection?: Maybe<CommentConnection>;
     likes?: Maybe<Likes>;
 };
@@ -689,6 +693,7 @@ export declare type Mutation = {
     addComment?: Maybe<Comment>;
     editComment?: Maybe<Comment>;
     deleteComment?: Maybe<Scalars['Boolean']>;
+    translateComment?: Maybe<Comment>;
     addCollection?: Maybe<Collection>;
     deleteCollection?: Maybe<Collection>;
     editCollection?: Maybe<Collection>;
@@ -702,6 +707,7 @@ export declare type Mutation = {
     deletePost?: Maybe<Post>;
     addPost?: Maybe<Post>;
     editPost?: Maybe<Post>;
+    translatePost?: Maybe<Post>;
     followProject?: Maybe<Project>;
     addProject?: Maybe<Project>;
     editProject?: Maybe<Project>;
@@ -750,6 +756,10 @@ export declare type MutationEditCommentArgs = {
 export declare type MutationDeleteCommentArgs = {
     id: Scalars['ID'];
 };
+export declare type MutationTranslateCommentArgs = {
+    id: Scalars['ID'];
+    original?: Maybe<Scalars['Boolean']>;
+};
 export declare type MutationAddCollectionArgs = {
     projectId: Scalars['ID'];
     name: Scalars['String'];
@@ -791,6 +801,10 @@ export declare type MutationAddPostArgs = {
 export declare type MutationEditPostArgs = {
     id: Scalars['ID'];
     input: EditPostInput;
+};
+export declare type MutationTranslatePostArgs = {
+    id: Scalars['ID'];
+    original?: Maybe<Scalars['Boolean']>;
 };
 export declare type MutationFollowProjectArgs = {
     id: Scalars['ID'];
@@ -970,7 +984,7 @@ export declare type CommentAndRepliesFragment = ({
 } & CommentFragment);
 export declare type CommentFragment = ({
     __typename?: 'Comment';
-} & Pick<Comment, 'id' | 'text' | 'createdAt'> & {
+} & Pick<Comment, 'id' | 'text' | 'createdAt' | 'translatable'> & {
     permissions?: Maybe<({
         __typename?: 'CommentPermissions';
     } & Pick<CommentPermissions, 'isOwner'>)>;
@@ -1010,7 +1024,7 @@ export declare type NotificationFragment = ({
 });
 export declare type PostFragment = ({
     __typename?: 'Post';
-} & Pick<Post, 'id' | 'caption' | 'createdAt'> & {
+} & Pick<Post, 'id' | 'caption' | 'createdAt' | 'translatable'> & {
     user?: Maybe<({
         __typename?: 'User';
     } & UserFragment)>;
@@ -1491,6 +1505,28 @@ export declare type ToggleNotificationSettingsMutation = ({
     toggleNotificationSettings?: Maybe<({
         __typename?: 'User';
     } & UserSettingsFragment)>;
+});
+export declare type TranslateCommentMutationVariables = Exact<{
+    id: Scalars['ID'];
+    original?: Maybe<Scalars['Boolean']>;
+}>;
+export declare type TranslateCommentMutation = ({
+    __typename?: 'Mutation';
+} & {
+    translateComment?: Maybe<({
+        __typename?: 'Comment';
+    } & Pick<Comment, 'id' | 'translatable' | 'text'>)>;
+});
+export declare type TranslatePostMutationVariables = Exact<{
+    id: Scalars['ID'];
+    original?: Maybe<Scalars['Boolean']>;
+}>;
+export declare type TranslatePostMutation = ({
+    __typename?: 'Mutation';
+} & {
+    translatePost?: Maybe<({
+        __typename?: 'Post';
+    } & Pick<Post, 'id' | 'translatable' | 'caption'>)>;
 });
 export declare type BlogPostQueryVariables = Exact<{
     slug?: Maybe<Scalars['LowercaseString']>;
@@ -3174,6 +3210,60 @@ export declare function useToggleNotificationSettingsMutation(baseOptions?: Apol
 export declare type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
 export declare type ToggleNotificationSettingsMutationResult = Apollo.MutationResult<ToggleNotificationSettingsMutation>;
 export declare type ToggleNotificationSettingsMutationOptions = Apollo.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+export declare const TranslateCommentDocument: Apollo.DocumentNode;
+export declare type TranslateCommentMutationFn = Apollo.MutationFunction<TranslateCommentMutation, TranslateCommentMutationVariables>;
+/**
+ * __useTranslateCommentMutation__
+ *
+ * To run a mutation, you first call `useTranslateCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useTranslateCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [translateCommentMutation, { data, loading, error }] = useTranslateCommentMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      original: // value for 'original'
+ *   },
+ * });
+ */
+export declare function useTranslateCommentMutation(baseOptions?: Apollo.MutationHookOptions<TranslateCommentMutation, TranslateCommentMutationVariables>): Apollo.MutationTuple<TranslateCommentMutation, Exact<{
+    id: string;
+    original?: boolean | null | undefined;
+}>>;
+export declare type TranslateCommentMutationHookResult = ReturnType<typeof useTranslateCommentMutation>;
+export declare type TranslateCommentMutationResult = Apollo.MutationResult<TranslateCommentMutation>;
+export declare type TranslateCommentMutationOptions = Apollo.BaseMutationOptions<TranslateCommentMutation, TranslateCommentMutationVariables>;
+export declare const TranslatePostDocument: Apollo.DocumentNode;
+export declare type TranslatePostMutationFn = Apollo.MutationFunction<TranslatePostMutation, TranslatePostMutationVariables>;
+/**
+ * __useTranslatePostMutation__
+ *
+ * To run a mutation, you first call `useTranslatePostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useTranslatePostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [translatePostMutation, { data, loading, error }] = useTranslatePostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      original: // value for 'original'
+ *   },
+ * });
+ */
+export declare function useTranslatePostMutation(baseOptions?: Apollo.MutationHookOptions<TranslatePostMutation, TranslatePostMutationVariables>): Apollo.MutationTuple<TranslatePostMutation, Exact<{
+    id: string;
+    original?: boolean | null | undefined;
+}>>;
+export declare type TranslatePostMutationHookResult = ReturnType<typeof useTranslatePostMutation>;
+export declare type TranslatePostMutationResult = Apollo.MutationResult<TranslatePostMutation>;
+export declare type TranslatePostMutationOptions = Apollo.BaseMutationOptions<TranslatePostMutation, TranslatePostMutationVariables>;
 export declare const BlogPostDocument: Apollo.DocumentNode;
 /**
  * __useBlogPostQuery__

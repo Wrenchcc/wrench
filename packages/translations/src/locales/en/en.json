@@ -382,7 +382,10 @@
       "report": "Report"
     },
     "selectCollection": "Select collection",
-    "showCollection": "Show collection"
+    "showCollection": "Show collection",
+    "loading": "Loading...",
+    "translation": "See Translation",
+    "original": "See Original"
   },
   "posting": {
     "description": "Posting..."

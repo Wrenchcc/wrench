@@ -1,13 +1,13 @@
 {
-  "d": "<span>For 0</span> dage siden",
-  "d_plural": "<span>For 0</span> dage siden",
-  "h": "<span>For 0</span> timer siden",
-  "h_plural": "<span>For 0</span> timer siden",
-  "m": "<span>For 0</span> minut siden",
-  "m_plural": "<span>For 0</span> minutter siden",
+  "d": "For {{count}} dage siden",
+  "d_plural": "For {{count}} dage siden",
+  "h": "For {{count}} timer siden",
+  "h_plural": "For {{count}} timer siden",
+  "m": "For {{count}} minut siden",
+  "m_plural": "For {{count}} minutter siden",
   "mo": "{{count}} måneder siden",
-  "mo_plural": "<span>For 0</span> måneder siden",
+  "mo_plural": "For {{count}} måneder siden",
   "now": "lige nu",
   "y": "{{count}} år siden",
-  "y_plural": "<span>For 0</span> år siden"
+  "y_plural": "For {{count}} år siden"
 }

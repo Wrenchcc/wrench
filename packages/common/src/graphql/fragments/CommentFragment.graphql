@@ -11,6 +11,7 @@ fragment Comment on Comment {
     isLiked
     totalCount
   }
+  translatable
   user {
     ...User
   }

@@ -1,7 +1,11 @@
-import React, { useCallback, useRef, useEffect } from 'react'
+import React, { useCallback, useRef, useState, useEffect } from 'react'
 import { View, Image, Animated, Dimensions } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useDeleteCommentMutation, CommentsDocument } from '@wrench/common'
+import {
+  useDeleteCommentMutation,
+  CommentsDocument,
+  useTranslateCommentMutation,
+} from '@wrench/common'
 import Swipeable from 'react-native-gesture-handler/Swipeable'
 import { useNavigation, SCREENS } from 'navigation'
 import { useDynamicColor } from 'utils/hooks'
@@ -43,10 +47,12 @@ function Item({
   text,
   user,
   permissions,
+  translatable,
   likes,
   postId,
 }) {
   const { t } = useTranslation('comment-item')
+  const [original, setOriginal] = useState(true)
   const { navigate } = useNavigation()
   const animatedValue = useRef(new Animated.Value(0))
   const dynamicColor = useDynamicColor('placeholder')
@@ -68,6 +74,19 @@ function Item({
       }),
     [user, commentOrReplyId, onReply]
   )
+
+  const [translateComment, { loading: translationLoading }] = useTranslateCommentMutation()
+
+  const handleTranslation = useCallback(() => {
+    setOriginal(!original)
+
+    translateComment({
+      variables: {
+        id,
+        original: !original,
+      },
+    })
+  }, [id, original])
 
   const [deleteComment] = useDeleteCommentMutation()
 
@@ -220,6 +239,7 @@ function Item({
               <Action>
                 <TimeAgo date={createdAt} />
               </Action>
+
               {!first && likes.totalCount > 0 && (
                 <Action>
                   <Text medium color="accent" fontSize={12}>
@@ -227,6 +247,7 @@ function Item({
                   </Text>
                 </Action>
               )}
+
               {!first && (
                 <Action>
                   <Reply
@@ -240,6 +261,31 @@ function Item({
                   </Reply>
                 </Action>
               )}
+
+              <Action>
+                {translatable && (
+                  <>
+                    <Text color="neutral" medium fontSize={12} style={{ marginRight: 9 }}>
+                      •
+                    </Text>
+                    {translationLoading ? (
+                      <Text color="inverse" medium fontSize={12}>
+                        {t('post:loading')}
+                      </Text>
+                    ) : (
+                      <Text
+                        color="inverse"
+                        medium
+                        fontSize={12}
+                        onPress={handleTranslation}
+                        numberOfLines={1}
+                      >
+                        {original ? t('post:translation') : t('post:original')}
+                      </Text>
+                    )}
+                  </>
+                )}
+              </Action>
             </Row>
           </Content>
 

@@ -15,6 +15,7 @@ export default isAuthenticated(async (_, { id, input }, ctx) => {
 
   ctx.redis.delete(`post:filesConnection:${id}:*`)
   ctx.redis.delete(`project:cover:${id}`)
+  ctx.db.PostTranslation.delete({ postId: id })
 
   // Add new project if projectId is defined or use currenct project
   const project = await ctx.db.Project.findOne(input.projectId || post.projectId)

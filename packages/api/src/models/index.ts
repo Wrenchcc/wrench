@@ -6,6 +6,7 @@ import BlogPost from './BlogPost'
 import Brand from './Brand'
 import Collection from './Collection'
 import Comment from './Comment'
+import CommentTranslation from './CommentTranslation'
 import DeviceToken from './DeviceToken'
 import File from './File'
 import Following from './Following'
@@ -14,6 +15,7 @@ import Like from './Like'
 import Model from './Model'
 import Notification from './Notification'
 import Post from './Post'
+import PostTranslation from './PostTranslation'
 import PostCollection from './PostCollection'
 import Project from './Project'
 import ProjectCollection from './ProjectCollection'
@@ -43,6 +45,7 @@ export const options: ConnectionOptions = {
     Brand,
     Collection,
     Comment,
+    CommentTranslation,
     DeviceToken,
     File,
     Following,
@@ -52,6 +55,7 @@ export const options: ConnectionOptions = {
     Notification,
     Post,
     PostCollection,
+    PostTranslation,
     Project,
     ProjectCollection,
     ProjectType,
@@ -77,6 +81,7 @@ export const db = {
   Brand,
   Collection,
   Comment,
+  CommentTranslation,
   DeviceToken,
   File,
   Following,
@@ -86,6 +91,7 @@ export const db = {
   Notification,
   Post,
   PostCollection,
+  PostTranslation,
   Project,
   ProjectCollection,
   ProjectType,

@@ -1,0 +1,7 @@
+mutation translateComment($id: ID!, $original: Boolean) {
+  translateComment(id: $id, original: $original) {
+    id
+    translatable
+    text
+  }
+}

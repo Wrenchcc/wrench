@@ -382,7 +382,10 @@
       "report": "Reporte"
     },
     "selectCollection": "Seleccionar colección",
-    "showCollection": "Mostrar colección"
+    "showCollection": "Mostrar colección",
+    "loading": "Cargando...",
+    "translation": "Ver traducción",
+    "original": "Ver original"
   },
   "posting": {
     "description": "Destino..."

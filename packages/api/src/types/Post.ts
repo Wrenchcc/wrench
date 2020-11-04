@@ -13,6 +13,8 @@ export default gql`
     likes: Likes
     bookmarks: Bookmarks
     collection: Collection
+    translatable: Boolean
+    language: String
 
     filesConnection(
       first: Int = 10
@@ -71,5 +73,6 @@ export default gql`
     deletePost(id: ID!): Post
     addPost(input: PostInput!): Post
     editPost(id: ID!, input: EditPostInput!): Post
+    translatePost(id: ID!, original: Boolean): Post
   }
 `

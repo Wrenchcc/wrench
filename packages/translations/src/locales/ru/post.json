@@ -9,5 +9,8 @@
     "report": "Отчет"
   },
   "selectCollection": "Выбрать коллекцию",
-  "showCollection": "Показать коллекцию"
+  "showCollection": "Показать коллекцию",
+  "loading": "Загружается ...",
+  "translation": "Посмотреть перевод",
+  "original": "Посмотреть оригинал"
 }

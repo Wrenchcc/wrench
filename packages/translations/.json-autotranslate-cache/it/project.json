@@ -3,6 +3,6 @@
   "recent": "Messaggi recenti",
   "share": "Condividere",
   "similar": "Progetti simili",
-  "title": "<span><span>0-1</span></span> del progetto",
+  "title": "{{count, humanFormat}} del progetto",
   "description_plural": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@ {{username}} ) sulla chiave"
 }

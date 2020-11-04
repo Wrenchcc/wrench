@@ -11,6 +11,10 @@ export const Top = styled.View`
   align-items: center;
 `
 
+export const Bottom = styled.View`
+  flex-direction: row;
+`
+
 export const Content = styled.View`
   padding-top: 18px;
 `

@@ -19,6 +19,7 @@ export default isAuthenticated(async (_, { id, input }, ctx) => {
   //   ctx.redis.delete(cacheKey3),
   //   ctx.redis.delete(cacheKey4),
   // ])
+  ctx.db.CommentTranslation.delete({ commentId: id })
 
   return ctx.db.Comment.save({
     ...comment,

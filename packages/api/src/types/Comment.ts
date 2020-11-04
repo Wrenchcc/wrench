@@ -10,6 +10,9 @@ export default gql`
     user: User
     postId: ID
     permissions: CommentPermissions
+    translatable: Boolean
+    language: String
+
     repliesConnection(
       first: Int = 10
       after: String
@@ -42,6 +45,7 @@ export default gql`
     addComment(postId: ID!, commentId: ID, input: CommentInput!): Comment
     editComment(id: ID!, input: CommentInput!): Comment
     deleteComment(id: ID!): Boolean
+    translateComment(id: ID!, original: Boolean): Comment
   }
 
   extend type Query {
