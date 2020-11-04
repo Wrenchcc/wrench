@@ -114,9 +114,6 @@ export function showMention(passProps: PassProps) {
           id: SCREENS.MENTION,
           name: SCREENS.MENTION,
           options: {
-            overlay: {
-              handleKeyboardEvents: true,
-            },
             layout: {
               componentBackgroundColor: 'transparent',
             },
