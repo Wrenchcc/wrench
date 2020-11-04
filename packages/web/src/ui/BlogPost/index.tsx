@@ -3,7 +3,7 @@ import React from 'react'
 import Link from 'next/link'
 import { TimeAgo, Avatar } from 'ui'
 import { Base, Title, Content, Top, Name } from './styles'
-import Image from 'ui/Image'
+import Image from 'ui/NextImage'
 
 export const getText = (content) => {
   const data = JSON.parse(content)
@@ -48,7 +48,7 @@ function formatContent(content) {
       return (
         <div style={{ marginBottom: 20 }} key={i}>
           <Image
-            source={data.file.url}
+            src={data.file.url}
             title={data.caption}
             width={770}
             height={400}
