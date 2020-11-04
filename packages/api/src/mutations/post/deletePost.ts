@@ -19,6 +19,8 @@ export default isAuthenticated(async (_, { id }, ctx) => {
   ctx.redis.delete(`project:cover:${id}`)
   ctx.db.File.delete({ postId: id })
   ctx.db.Post.delete(id)
+  ctx.db.PostTranslation.delete({ postId: id })
+
 
   return post
 })

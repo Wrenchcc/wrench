@@ -274,6 +274,8 @@ export type Post = {
   likes?: Maybe<Likes>;
   bookmarks?: Maybe<Bookmarks>;
   collection?: Maybe<Collection>;
+  translatable?: Maybe<Scalars['Boolean']>;
+  language?: Maybe<Scalars['String']>;
   filesConnection?: Maybe<FileConnection>;
   commentsConnection?: Maybe<CommentConnection>;
   likesConnection?: Maybe<LikeConnection>;
@@ -838,6 +840,7 @@ export type Mutation = {
   deletePost?: Maybe<Post>;
   addPost?: Maybe<Post>;
   editPost?: Maybe<Post>;
+  translatePost?: Maybe<Post>;
   followProject?: Maybe<Project>;
   addProject?: Maybe<Project>;
   editProject?: Maybe<Project>;
@@ -971,6 +974,12 @@ export type MutationAddPostArgs = {
 export type MutationEditPostArgs = {
   id: Scalars['ID'];
   input: EditPostInput;
+};
+
+
+export type MutationTranslatePostArgs = {
+  id: Scalars['ID'];
+  original?: Maybe<Scalars['Boolean']>;
 };
 
 
@@ -1244,7 +1253,7 @@ export type NotificationFragment = (
 
 export type PostFragment = (
   { __typename?: 'Post' }
-  & Pick<Post, 'id' | 'caption' | 'createdAt'>
+  & Pick<Post, 'id' | 'caption' | 'createdAt' | 'translatable'>
   & { user?: Maybe<(
     { __typename?: 'User' }
     & UserFragment
@@ -1821,6 +1830,20 @@ export type ToggleNotificationSettingsMutation = (
   & { toggleNotificationSettings?: Maybe<(
     { __typename?: 'User' }
     & UserSettingsFragment
+  )> }
+);
+
+export type TranslatePostMutationVariables = Exact<{
+  id: Scalars['ID'];
+  original?: Maybe<Scalars['Boolean']>;
+}>;
+
+
+export type TranslatePostMutation = (
+  { __typename?: 'Mutation' }
+  & { translatePost?: Maybe<(
+    { __typename?: 'Post' }
+    & Pick<Post, 'id' | 'translatable' | 'caption'>
   )> }
 );
 
@@ -2829,6 +2852,7 @@ export const PostFragmentDoc = gql`
   id
   caption
   createdAt
+  translatable
   user {
     ...User
   }
@@ -4017,6 +4041,41 @@ export function useToggleNotificationSettingsMutation(baseOptions?: Apollo.Mutat
 export type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
 export type ToggleNotificationSettingsMutationResult = Apollo.MutationResult<ToggleNotificationSettingsMutation>;
 export type ToggleNotificationSettingsMutationOptions = Apollo.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+export const TranslatePostDocument = gql`
+    mutation translatePost($id: ID!, $original: Boolean) {
+  translatePost(id: $id, original: $original) {
+    id
+    translatable
+    caption
+  }
+}
+    `;
+export type TranslatePostMutationFn = Apollo.MutationFunction<TranslatePostMutation, TranslatePostMutationVariables>;
+
+/**
+ * __useTranslatePostMutation__
+ *
+ * To run a mutation, you first call `useTranslatePostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useTranslatePostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [translatePostMutation, { data, loading, error }] = useTranslatePostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      original: // value for 'original'
+ *   },
+ * });
+ */
+export function useTranslatePostMutation(baseOptions?: Apollo.MutationHookOptions<TranslatePostMutation, TranslatePostMutationVariables>) {
+        return Apollo.useMutation<TranslatePostMutation, TranslatePostMutationVariables>(TranslatePostDocument, baseOptions);
+      }
+export type TranslatePostMutationHookResult = ReturnType<typeof useTranslatePostMutation>;
+export type TranslatePostMutationResult = Apollo.MutationResult<TranslatePostMutation>;
+export type TranslatePostMutationOptions = Apollo.BaseMutationOptions<TranslatePostMutation, TranslatePostMutationVariables>;
 export const BlogPostDocument = gql`
     query blogPost($slug: LowercaseString, $id: ID) {
   blogPost(slug: $slug, id: $id) {

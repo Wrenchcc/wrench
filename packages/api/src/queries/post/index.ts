@@ -9,6 +9,7 @@ import post from './post'
 import posts from './posts'
 import project from './project'
 import user from './user'
+import translatable from './translatable'
 
 export default {
   Post: {
@@ -22,6 +23,7 @@ export default {
     postPermissions: permissions, // TODO: Remove
     project,
     user,
+    translatable,
   },
   Query: {
     post,

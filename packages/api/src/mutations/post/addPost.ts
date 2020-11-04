@@ -9,6 +9,8 @@ const debug = require('debug')('api:mutations:post:add-post')
 const SPAM_LMIT = 10
 
 export default isAuthenticated(async (_, { input }, ctx) => {
+  let language
+
   const project = await ctx.db.Project.findOne(input.projectId)
   const userPreviousPublishedPosts = await ctx.db.Post.userPreviousPublished(
     '5 minutes',
@@ -56,10 +58,15 @@ export default isAuthenticated(async (_, { input }, ctx) => {
     ctx.db.Hashtag.findOrCreate(hashtags)
   }
 
+  if(input.caption?.length) {
+    language = await ctx.services.translate.detect(input.caption)
+  }
+
   const post = await ctx.db.Post.save({
     caption: input.caption && trim(input.caption),
     files,
     project,
+    language,
     userId: ctx.userId,
   })
 

@@ -14,6 +14,7 @@ import Like from './Like'
 import Model from './Model'
 import Notification from './Notification'
 import Post from './Post'
+import PostTranslation from './PostTranslation'
 import PostCollection from './PostCollection'
 import Project from './Project'
 import ProjectCollection from './ProjectCollection'
@@ -52,6 +53,7 @@ export const options: ConnectionOptions = {
     Notification,
     Post,
     PostCollection,
+    PostTranslation,
     Project,
     ProjectCollection,
     ProjectType,
@@ -86,6 +88,7 @@ export const db = {
   Notification,
   Post,
   PostCollection,
+  PostTranslation,
   Project,
   ProjectCollection,
   ProjectType,

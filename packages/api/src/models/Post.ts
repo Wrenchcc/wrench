@@ -53,4 +53,7 @@ export default class Post extends BaseEntity {
 
   @Column('text', { nullable: true })
   public caption: string
+
+  @Column({ default: 'en' })
+  public language: string
 }

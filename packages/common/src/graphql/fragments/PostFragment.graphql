@@ -6,6 +6,7 @@ fragment Post on Post {
   id
   caption
   createdAt
+  translatable
   user {
     ...User
   }
