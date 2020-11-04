@@ -281,6 +281,12 @@
 				da,
 				nb,
 				"fil-PH",
+				"en-GB",
+				"en-AU",
+				"en-IN",
+				"es-419",
+				"pt-BR",
+				"fr-CA",
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
