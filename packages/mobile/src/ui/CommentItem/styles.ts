@@ -56,4 +56,5 @@ export const LoadReplies = styled.View`
 
 export const Action = styled.View`
   margin-right: 10px;
+  flex-direction: row;
 `

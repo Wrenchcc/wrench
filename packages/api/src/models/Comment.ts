@@ -21,10 +21,10 @@ export default class Comment extends BaseEntity {
       .getRawOne()
   }
 
-  @ManyToOne(() => User, user => user.comments)
+  @ManyToOne(() => User, (user) => user.comments)
   public user: User
 
-  @ManyToOne(() => Post, post => post.comments, { onDelete: 'CASCADE' })
+  @ManyToOne(() => Post, (post) => post.comments, { onDelete: 'CASCADE' })
   public post: Post
 
   @PrimaryGeneratedColumn('uuid')
@@ -47,4 +47,7 @@ export default class Comment extends BaseEntity {
 
   @Column('text')
   public text: string
+
+  @Column({ default: 'en' })
+  public language: string
 }

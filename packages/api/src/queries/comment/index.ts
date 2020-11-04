@@ -6,6 +6,7 @@ import permissions from './permissions'
 import repliesConnection from './repliesConnection'
 import recentComments from './recentComments'
 import user from './user'
+import translatable from './translatable'
 
 export default {
   Comment: {
@@ -14,6 +15,7 @@ export default {
     permissions,
     repliesConnection,
     user,
+    translatable,
   },
   Query: {
     comment,

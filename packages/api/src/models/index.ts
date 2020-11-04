@@ -6,6 +6,7 @@ import BlogPost from './BlogPost'
 import Brand from './Brand'
 import Collection from './Collection'
 import Comment from './Comment'
+import CommentTranslation from './CommentTranslation'
 import DeviceToken from './DeviceToken'
 import File from './File'
 import Following from './Following'
@@ -44,6 +45,7 @@ export const options: ConnectionOptions = {
     Brand,
     Collection,
     Comment,
+    CommentTranslation,
     DeviceToken,
     File,
     Following,
@@ -79,6 +81,7 @@ export const db = {
   Brand,
   Collection,
   Comment,
+  CommentTranslation,
   DeviceToken,
   File,
   Following,

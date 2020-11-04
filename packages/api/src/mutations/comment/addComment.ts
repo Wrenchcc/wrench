@@ -9,6 +9,8 @@ const debug = require('debug')('api:mutations:comment:add-comment')
 const SPAM_LMIT = 10
 
 export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
+  let language
+
   const userPreviousPublishedPosts = await ctx.db.Comment.userPreviousPublished(
     '5 minutes',
     ctx.userId
@@ -40,8 +42,14 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
   const project = await ctx.db.Project.findOne(post.projectId)
   const text = input.text && trim(input.text)
 
+  if (text) {
+    const response = await ctx.services.translate.detect(text)
+    language = response?.language
+  }
+
   const comment = await ctx.db.Comment.save({
     commentId,
+    language,
     postId: post.id,
     text,
     userId: ctx.userId,

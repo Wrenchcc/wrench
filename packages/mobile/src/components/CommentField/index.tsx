@@ -60,6 +60,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
           __typename: 'Comment',
           createdAt: new Date().toISOString(),
           id: optimisticId(),
+          translatable: false,
           likes: {
             __typename: 'Likes',
             isLiked: false,

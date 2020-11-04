@@ -58,8 +58,9 @@ export default isAuthenticated(async (_, { input }, ctx) => {
     ctx.db.Hashtag.findOrCreate(hashtags)
   }
 
-  if(input.caption?.length) {
-    language = await ctx.services.translate.detect(input.caption)
+  if (input.caption) {
+    const response = await ctx.services.translate.detect(input.caption)
+    language = response?.language
   }
 
   const post = await ctx.db.Post.save({

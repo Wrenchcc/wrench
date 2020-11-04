@@ -20,6 +20,8 @@ export default isAuthenticated(async (_, { id }, ctx) => {
   //   ctx.redis.delete(cacheKey4)
   // ])
 
+  ctx.db.CommentTranslation.delete({ commentId: id })
+
   await Promise.resolve([
     ctx.db.Comment.delete(id),
     // NOTE: Delete replies

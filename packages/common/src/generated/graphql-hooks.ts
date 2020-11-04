@@ -606,6 +606,8 @@ export type Comment = {
   user?: Maybe<User>;
   postId?: Maybe<Scalars['ID']>;
   permissions?: Maybe<CommentPermissions>;
+  translatable?: Maybe<Scalars['Boolean']>;
+  language?: Maybe<Scalars['String']>;
   repliesConnection?: Maybe<CommentConnection>;
   likes?: Maybe<Likes>;
 };
@@ -827,6 +829,7 @@ export type Mutation = {
   addComment?: Maybe<Comment>;
   editComment?: Maybe<Comment>;
   deleteComment?: Maybe<Scalars['Boolean']>;
+  translateComment?: Maybe<Comment>;
   addCollection?: Maybe<Collection>;
   deleteCollection?: Maybe<Collection>;
   editCollection?: Maybe<Collection>;
@@ -908,6 +911,12 @@ export type MutationEditCommentArgs = {
 
 export type MutationDeleteCommentArgs = {
   id: Scalars['ID'];
+};
+
+
+export type MutationTranslateCommentArgs = {
+  id: Scalars['ID'];
+  original?: Maybe<Scalars['Boolean']>;
 };
 
 
@@ -1211,7 +1220,7 @@ export type CommentAndRepliesFragment = (
 
 export type CommentFragment = (
   { __typename?: 'Comment' }
-  & Pick<Comment, 'id' | 'text' | 'createdAt'>
+  & Pick<Comment, 'id' | 'text' | 'createdAt' | 'translatable'>
   & { permissions?: Maybe<(
     { __typename?: 'CommentPermissions' }
     & Pick<CommentPermissions, 'isOwner'>
@@ -1830,6 +1839,20 @@ export type ToggleNotificationSettingsMutation = (
   & { toggleNotificationSettings?: Maybe<(
     { __typename?: 'User' }
     & UserSettingsFragment
+  )> }
+);
+
+export type TranslateCommentMutationVariables = Exact<{
+  id: Scalars['ID'];
+  original?: Maybe<Scalars['Boolean']>;
+}>;
+
+
+export type TranslateCommentMutation = (
+  { __typename?: 'Mutation' }
+  & { translateComment?: Maybe<(
+    { __typename?: 'Comment' }
+    & Pick<Comment, 'id' | 'translatable' | 'text'>
   )> }
 );
 
@@ -2764,6 +2787,7 @@ export const CommentFragmentDoc = gql`
     isLiked
     totalCount
   }
+  translatable
   user {
     ...User
   }
@@ -4041,6 +4065,41 @@ export function useToggleNotificationSettingsMutation(baseOptions?: Apollo.Mutat
 export type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
 export type ToggleNotificationSettingsMutationResult = Apollo.MutationResult<ToggleNotificationSettingsMutation>;
 export type ToggleNotificationSettingsMutationOptions = Apollo.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+export const TranslateCommentDocument = gql`
+    mutation translateComment($id: ID!, $original: Boolean) {
+  translateComment(id: $id, original: $original) {
+    id
+    translatable
+    text
+  }
+}
+    `;
+export type TranslateCommentMutationFn = Apollo.MutationFunction<TranslateCommentMutation, TranslateCommentMutationVariables>;
+
+/**
+ * __useTranslateCommentMutation__
+ *
+ * To run a mutation, you first call `useTranslateCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useTranslateCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [translateCommentMutation, { data, loading, error }] = useTranslateCommentMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      original: // value for 'original'
+ *   },
+ * });
+ */
+export function useTranslateCommentMutation(baseOptions?: Apollo.MutationHookOptions<TranslateCommentMutation, TranslateCommentMutationVariables>) {
+        return Apollo.useMutation<TranslateCommentMutation, TranslateCommentMutationVariables>(TranslateCommentDocument, baseOptions);
+      }
+export type TranslateCommentMutationHookResult = ReturnType<typeof useTranslateCommentMutation>;
+export type TranslateCommentMutationResult = Apollo.MutationResult<TranslateCommentMutation>;
+export type TranslateCommentMutationOptions = Apollo.BaseMutationOptions<TranslateCommentMutation, TranslateCommentMutationVariables>;
 export const TranslatePostDocument = gql`
     mutation translatePost($id: ID!, $original: Boolean) {
   translatePost(id: $id, original: $original) {
