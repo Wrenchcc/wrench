@@ -20,13 +20,3 @@ export const Inner = styled(Animated.View)`
   justify-content: space-between;
   padding-horizontal: 20px;
 `
-
-export const Left = styled.View`
-  align-items: flex-start;
-  flex: 2;
-`
-
-export const Right = styled.View`
-  align-items: flex-end;
-  flex: 2;
-`
