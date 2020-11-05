@@ -22,6 +22,11 @@ export const Bottom = styled.div`
   margin-top: 20px;
 `
 
+export const Footer = styled.div`
+  flex-direction: row;
+  display: flex;
+`
+
 export const Title = styled(UiTitle)`
   margin-bottom: 10px;
 `
@@ -29,4 +34,15 @@ export const Title = styled(UiTitle)`
 export const Comments = styled(UiComments)`
   margin-top: 10px;
   margin-bottom: 10px;
+`
+
+export const Collection = styled.div`
+  cursor: pointer;
+  height: 40px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom-width: 1px;
+  border-bottom-color: ${(props) => props.theme.colors.divider};
 `

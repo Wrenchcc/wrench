@@ -20,6 +20,8 @@ import {
   FacebookIcon,
   MessengerIcon,
   TwitterIcon,
+  ChevronRightIcon,
+  BookmarkIcon,
 } from '.'
 
 storiesOf('Icons', module)
@@ -44,3 +46,6 @@ storiesOf('Icons', module)
   .add('MessengerIcon', () => <MessengerIcon />)
   .add('TwitterIcon', () => <TwitterIcon />)
   .add('CheckMarkIcon', () => <CheckMarkIcon />)
+  .add('ChevronRightIcon', () => <ChevronRightIcon />)
+  .add('BookmarkIcon', () => <BookmarkIcon />)
+  .add('BookmarkIcon - Selected', () => <BookmarkIcon fill="black" color="black" />)

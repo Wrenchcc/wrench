@@ -36,7 +36,6 @@ const styles = {
       maxHeight: 368,
       overflow: 'auto',
     },
-
     item: {
       padding: '0 20px',
       boxSizing: 'border-box',
@@ -48,7 +47,6 @@ const styles = {
       },
     },
   },
-
   input: {
     border: 0,
     width: '100%',
@@ -133,7 +131,7 @@ const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' },
   ))
 
   const handleOnKeyDown = useCallback(
-    evt => {
+    (evt) => {
       if (evt.keyCode == 13 && evt.shiftKey == false) {
         evt.preventDefault()
         handleSubmit()

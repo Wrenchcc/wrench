@@ -5,5 +5,4 @@ export const Base = styled.div`
   align-items: center;
   cursor: pointer;
   display: inline-flex;
-  margin-top: 20px;
 `

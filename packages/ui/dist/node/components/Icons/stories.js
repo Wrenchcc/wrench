@@ -28,5 +28,8 @@ react_2.storiesOf('Icons', module)
     .add('FacebookIcon', function () { return react_1.default.createElement(_1.FacebookIcon, null); })
     .add('MessengerIcon', function () { return react_1.default.createElement(_1.MessengerIcon, null); })
     .add('TwitterIcon', function () { return react_1.default.createElement(_1.TwitterIcon, null); })
-    .add('CheckMarkIcon', function () { return react_1.default.createElement(_1.CheckMarkIcon, null); });
+    .add('CheckMarkIcon', function () { return react_1.default.createElement(_1.CheckMarkIcon, null); })
+    .add('ChevronRightIcon', function () { return react_1.default.createElement(_1.ChevronRightIcon, null); })
+    .add('BookmarkIcon', function () { return react_1.default.createElement(_1.BookmarkIcon, null); })
+    .add('BookmarkIcon - Selected', function () { return react_1.default.createElement(_1.BookmarkIcon, { fill: "black", color: "black" }); });
 //# sourceMappingURL=stories.js.map

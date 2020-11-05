@@ -1075,7 +1075,7 @@ export declare type PostFragment = ({
     })>;
     collection?: Maybe<({
         __typename?: 'Collection';
-    } & Pick<Collection, 'id' | 'name'>)>;
+    } & Pick<Collection, 'id' | 'name' | 'slug'>)>;
 });
 export declare type ProjectFragment = ({
     __typename?: 'Project';

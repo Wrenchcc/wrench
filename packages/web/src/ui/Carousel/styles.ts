@@ -10,6 +10,8 @@ import UiImage from 'ui/Image'
 import { DEVICE } from 'ui/constants'
 
 export const Base = styled.div`
+  margin-bottom: 20px;
+
   @media ${DEVICE.TABLET} {
     margin-left: -20px;
     margin-right: -20px;

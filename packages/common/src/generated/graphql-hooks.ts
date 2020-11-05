@@ -1308,7 +1308,7 @@ export type PostFragment = (
     )>> }
   )>, collection?: Maybe<(
     { __typename?: 'Collection' }
-    & Pick<Collection, 'id' | 'name'>
+    & Pick<Collection, 'id' | 'name' | 'slug'>
   )> }
 );
 
@@ -2921,6 +2921,7 @@ export const PostFragmentDoc = gql`
   collection {
     id
     name
+    slug
   }
 }
     ${UserFragmentDoc}

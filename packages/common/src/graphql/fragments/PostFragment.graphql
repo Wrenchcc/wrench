@@ -51,5 +51,6 @@ fragment Post on Post {
   collection {
     id
     name
+    slug
   }
 }
