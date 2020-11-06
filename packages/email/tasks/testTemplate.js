@@ -35,7 +35,7 @@ if (!template) {
     TemplateData: fixtures,
   }
 
-  ses.sendTemplatedEmail(message, error => {
+  ses.sendTemplatedEmail(message, (error) => {
     if (error) {
       debug('Error sending message: %o', error.stack)
     } else {

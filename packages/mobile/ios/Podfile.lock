@@ -496,12 +496,12 @@ PODS:
     - React-Core (= 0.63.3)
     - React-cxxreact (= 0.63.3)
     - React-jsi (= 0.63.3)
-  - ReactNativeNavigation (7.2.0):
+  - ReactNativeNavigation (7.3.0):
     - React-Core
     - React-RCTImage
     - React-RCTText
-    - ReactNativeNavigation/Core (= 7.2.0)
-  - ReactNativeNavigation/Core (7.2.0):
+    - ReactNativeNavigation/Core (= 7.3.0)
+  - ReactNativeNavigation/Core (7.3.0):
     - React-Core
     - React-RCTImage
     - React-RCTText
@@ -538,7 +538,7 @@ PODS:
   - RNSentry (2.0.0):
     - React-Core
     - Sentry (~> 6.0.3)
-  - RNShare (4.0.4):
+  - RNShare (4.1.0):
     - React-Core
   - SDWebImage (5.9.4):
     - SDWebImage/Core (= 5.9.4)
@@ -941,7 +941,7 @@ SPEC CHECKSUMS:
   React-RCTText: 65a6de06a7389098ce24340d1d3556015c38f746
   React-RCTVibration: 8e9fb25724a0805107fc1acc9075e26f814df454
   ReactCommon: 4167844018c9ed375cc01a843e9ee564399e53c3
-  ReactNativeNavigation: 2f6571c37eaeb7d472fe8a3779d49d7aae32e75a
+  ReactNativeNavigation: c2dcda2b86e32090c443182206c915107d03106f
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
   RNDeviceInfo: e1d82a27d0c1ea6278e3b141784dc38e51fc90f4
   RNFastImage: ff7e055d085abe465b358ce5aa51e3c6d64b1efd
@@ -954,7 +954,7 @@ SPEC CHECKSUMS:
   RNPermissions: 5df468064df661a4c8c017e2791ce90d7695eea5
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNSentry: cb4ef23400fb6690f6ac8f6acef0c023a8a4f37d
-  RNShare: af2aeae0587bf3e40e5268f1ef96aa162f1a6ac9
+  RNShare: 106a76243ac90f43ddb9028dcb78ade406b8adff
   SDWebImage: b69257f4ab14e9b6a2ef53e910fdf914d8f757c1
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   Sentry: e2c691627ae1dc0029acebbd1b0b4af4df12af73

@@ -8,6 +8,7 @@ import {
   useTranslatePostMutation,
 } from '@wrench/common'
 import { State, TapGestureHandler } from 'react-native-gesture-handler'
+import NativeShare from 'react-native-share'
 import * as Haptics from 'expo-haptics'
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import { useNavigation, SCREENS } from 'navigation'
@@ -244,6 +245,8 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
     if (post.permissions.isOwner) {
       const options = [
         t('options.edit'),
+        t('options.copy'),
+        t('options.share'),
         post.collection ? t('options.removeCollection') : t('options.collection'),
         t('options.delete'),
         t('options.cancel'),
@@ -252,8 +255,8 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
       showActionSheetWithOptions(
         {
           options,
-          destructiveButtonIndex: 2,
-          cancelButtonIndex: 3,
+          destructiveButtonIndex: 4,
+          cancelButtonIndex: 5,
           tintColor: dynamicColor,
           containerStyle: {
             backgroundColor: dynamicBackgroundColor,
@@ -264,12 +267,24 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
             handleEdit()
           }
 
+          // Copy link
           if (index === 1) {
+          }
+
+          // Share
+          if (index === 2) {
+            NativeShare.open({
+              title: t('shareContent'),
+              url: `https://wrench.cc/p/${post.id}`,
+            }).catch(() => {})
+          }
+
+          if (index === 3) {
             if (post.collection) {
               removeFromCollection()
             } else {
               showHalfpanel({
-                height: keyboardHeight,
+                height: keyboardHeight || 400,
                 renderContent: () => (
                   <>
                     <Spacer />
@@ -288,18 +303,23 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
             }
           }
 
-          if (index === 2) {
+          if (index === 4) {
             onDelete()
           }
         }
       )
     } else {
-      const options = [t('options.report'), t('options.cancel')]
+      const options = [
+        t('options.report'),
+        t('options.copy'),
+        t('options.share'),
+        t('options.cancel'),
+      ]
       showActionSheetWithOptions(
         {
           options,
           destructiveButtonIndex: 0,
-          cancelButtonIndex: 1,
+          cancelButtonIndex: 3,
           tintColor: dynamicColor,
           containerStyle: {
             backgroundColor: dynamicBackgroundColor,
