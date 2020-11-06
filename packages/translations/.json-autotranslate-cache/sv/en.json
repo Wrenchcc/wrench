@@ -260,6 +260,9 @@
   "post.options.report": "Rapportera",
   "post.selectCollection": "Välj samling",
   "post.showCollection": "Visa samling",
+  "post.loading": "Läser in...",
+  "post.translation": "se översättning",
+  "post.original": "Se original",
   "posting.description": "Publicerar ...",
   "project-card.follow": "Följ",
   "project-card.unfollow": "Följande",
@@ -277,7 +280,7 @@
   "project.description_plural": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@ {{username}} ) på skiftnyckel",
   "promo.button_default": "Skicka",
   "promo.button_success": "Skickat",
-  "promo.description": "Ange ditt nummer och få en engångs SMS-länk.",
+  "promo.description": "Ange ditt nummer och få en SMS-länk en gång.",
   "promo.title": "Ladda ner Wrench-appen på Appstore och Google play",
   "push-notifications.approve": "Sätt på notifikationer",
   "push-notifications.decline": "Nej tack",
@@ -382,8 +385,5 @@
   "user.projects": "<span>0-</span> projekt",
   "user.projects_plural": "{{count, humanFormat}} projekt",
   "user.title": "{{fullName}} . (@ {{username}} ) - projekt och inlägg",
-  "webview.loading": "Läser in...",
-  "post.loading": "Läser in...",
-  "post.translation": "se översättning",
-  "post.original": "Se original"
+  "webview.loading": "Läser in..."
 }

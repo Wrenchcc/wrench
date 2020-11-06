@@ -10,7 +10,7 @@ function mapTypeToColor(type: TOAST_TYPES, colors) {
     case TOAST_TYPES.ERROR:
       return colors.error
     case TOAST_TYPES.SUCCESS:
-      return colors.inverse
+      return colors.success
     default:
       return colors.accent
   }

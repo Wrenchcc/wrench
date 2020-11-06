@@ -14,5 +14,7 @@
   "showCollection": "Mostrar colección",
   "loading": "Cargando...",
   "translation": "Ver traducción",
-  "original": "Ver original"
+  "original": "Ver original",
+  "copySuccess": "link copiado al portapapeles",
+  "shareContent": "<span>Publicación</span> de {{fullName}}"
 }

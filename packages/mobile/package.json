@@ -24,6 +24,7 @@
     "@apollo/react-hooks": "^4.0.0",
     "@expo/react-native-action-sheet": "^3.8.0",
     "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-community/clipboard": "^1.5.1",
     "@react-native-community/google-signin": "^5.0.0",
     "@react-native-community/netinfo": "^5.9.7",
     "@react-native-firebase/analytics": "^7.6.9",

@@ -6,11 +6,13 @@
   "options.edit": "Éditer",
   "options.removeCollection": "Retirer de la collection",
   "options.report": "rapport",
+  "options.copy": "Copier le lien",
+  "options.share": "Partager à...",
   "selectCollection": "Sélectionnez une collection",
   "showCollection": "Afficher la collection",
   "loading": "Chargement...",
   "translation": "Voir la traduction",
   "original": "Voir l'original",
-  "options.copy": "Copier le lien",
-  "options.share": "Partager à..."
+  "copySuccess": "Lien copié dans le presse-papiers",
+  "shareContent": "<span>Message</span> de {{fullName}}"
 }

@@ -25,7 +25,7 @@
   "add-project.placeholder": "F.eks. Honda Cafe Racer",
   "add-project.title": "Vælg en titel til dit projekt.",
   "ask-for-permission.camera.alertCancel": "Afbestille",
-  "ask-for-permission.camera.alertDescription": "Der opstod et problem med at få din tilladelse. Aktivér det fra indstillinger.",
+  "ask-for-permission.camera.alertDescription": "Der opstod et problem med at få din tilladelse. Aktiver det fra indstillinger.",
   "ask-for-permission.camera.alertOpen": "Åbn Indstillinger",
   "ask-for-permission.camera.alertTitle": "Ups!",
   "ask-for-permission.camera.permissionButton": "Tillad kameraadgang",

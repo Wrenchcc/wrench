@@ -14,5 +14,7 @@
     "showCollection": "Show collection",
     "loading": "Loading...",
     "translation": "See Translation",
-    "original": "See Original"
+    "original": "See Original",
+    "copySuccess": "Link copied to clipboard",
+    "shareContent": "{{fullName}}'s post"
 }

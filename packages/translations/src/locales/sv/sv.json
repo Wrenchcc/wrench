@@ -583,7 +583,10 @@
         "report": "Rapportera"
       },
       "selectCollection": "Välj samling",
-      "showCollection": "Visa samling"
+      "showCollection": "Visa samling",
+      "loading": "Läser in...",
+      "translation": "se översättning",
+      "original": "Se original"
     },
     "posting": {
       "description": "Publicerar ..."
@@ -615,7 +618,7 @@
     "promo": {
       "button_default": "Skicka",
       "button_success": "Skickat",
-      "description": "Ange ditt nummer och få en engångs SMS-länk.",
+      "description": "Ange ditt nummer och få en SMS-länk en gång.",
       "title": "Ladda ner Wrench-appen på Appstore och Google play"
     },
     "push-notifications": {
@@ -951,6 +954,9 @@
     "loadMore": "Ladda fler kommentarer",
     "title": "Inlägg"
   },
+  "post-page": {
+    "title": "{{fullName}} på Wrench: {{caption}}"
+  },
   "post": {
     "options": {
       "alertTitle": "Är du säker?",
@@ -959,13 +965,17 @@
       "delete": "Radera",
       "edit": "Redigera",
       "removeCollection": "Radera från samling",
-      "report": "Rapportera"
+      "report": "Rapportera",
+      "copy": "Kopiera länk",
+      "share": "Dela till..."
     },
     "selectCollection": "Välj samling",
     "showCollection": "Visa samling",
     "loading": "Laddar...",
     "translation": "Se översättning",
-    "original": "Se original"
+    "original": "Se original",
+    "copySuccess": "Länken kopierades till Urklipp",
+    "shareContent": "{{fullName}} inlägg"
   },
   "posting": {
     "description": "Postar..."

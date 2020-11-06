@@ -14,5 +14,7 @@
   "showCollection": "Visa samling",
   "loading": "Laddar...",
   "translation": "Se översättning",
-  "original": "Se original"
+  "original": "Se original",
+  "copySuccess": "Länken kopierades till Urklipp",
+  "shareContent": "{{fullName}} inlägg"
 }

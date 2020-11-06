@@ -198,6 +198,587 @@
       "title": "1. Lumikha ng iyong unang proyekto."
     }
   },
+  "en": {
+    "add-collection": {
+      "add": "Magdagdag ng bago",
+      "done": "Tapos na",
+      "placeholder": "Hal. Muling itayo ang makina",
+      "title": "Bagong Koleksyon"
+    },
+    "add-media": {
+      "next": "Susunod",
+      "options": {
+        "cancel": "Kanselahin",
+        "discard": "Itapon",
+        "title": "Kung babalik ka ngayon, itatapon ang iyong mga pag-edit."
+      }
+    },
+    "add-post-to-collection": {
+      "done": "Tapos na",
+      "title": "Magdagdag ng mga post"
+    },
+    "add-post": {
+      "add": "Magbahagi",
+      "collection": "Idagdag sa Koleksiyon",
+      "error": "Hindi ma-post ngayon",
+      "placeholder": "Magdagdag ng isang teksto tungkol sa iyong post"
+    },
+    "add-project-model": {
+      "add": "Idagdag pa",
+      "headerTitle": "Magdagdag ng proyekto",
+      "placeholder": "Hal. BMW R100 1981",
+      "skip": "Laktawan",
+      "title": "Maghanap at piliin ang iyong modelo."
+    },
+    "add-project-type": {
+      "headerTitle": "Magdagdag ng proyekto",
+      "title": "Piliin ang iyong kategorya"
+    },
+    "add-project": {
+      "headerTitle": "Magdagdag ng proyekto",
+      "next": "Susunod",
+      "placeholder": "Hal. Honda Cafe Racer",
+      "title": "Pumili ng isang pamagat para sa iyong proyekto."
+    },
+    "ask-for-permission": {
+      "camera": {
+        "alertCancel": "Kanselahin",
+        "alertDescription": "Mayroong isang problema sa pagkuha ng iyong pahintulot. Mangyaring paganahin ito mula sa mga setting.",
+        "alertOpen": "Buksan ang settings",
+        "alertTitle": "Aba!",
+        "permissionButton": "Payagan ang Pag-access sa Camera",
+        "permissionDescription": "Payagan ang pag-access ng Wrench sa iyong camera upang kumuha ng mga larawan at magrekord ng video sa loob ng app.",
+        "permissionHeadline": "Kumuha ng mga larawan at magrekord ng mga video"
+      },
+      "photo": {
+        "alertCancel": "Kanselahin",
+        "alertDescription": "Mayroong isang problema sa pagkuha ng iyong pahintulot. Mangyaring paganahin ito mula sa mga setting.",
+        "alertOpen": "Buksan ang settings",
+        "alertTitle": "Aba!",
+        "permissionButton": "Paganahin ang Pag-access sa Library",
+        "permissionDescription": "Pinapayagan nitong magbahagi si Wrench ng mga larawan mula sa iyong library at i-save ang mga larawan sa iyong camera roll.",
+        "permissionHeadline": "Magdagdag ng mga larawan at video"
+      }
+    },
+    "blog-post": {
+      "back": "Bumalik sa blog",
+      "title": "Blog"
+    },
+    "blog": {
+      "title": "Blog"
+    },
+    "bookmarks": {
+      "description": "I-save ang mga post na nais mong makita muli. Walang naabisuhan, at ikaw lamang ang makakakita kung ano ang nai-save mo.",
+      "headerTitle": "Nai-save na mga post",
+      "title": "Magtipid"
+    },
+    "collections": {
+      "edit": "I-edit",
+      "title": "Mga Koleksyon"
+    },
+    "comment-field": {
+      "placeholder": "Magdagdag ng komento...",
+      "post": "Post"
+    },
+    "comment-item": {
+      "like": "{{count}} spark",
+      "like_plural": "{{count, humanFormat}} sparks",
+      "loadReplies": "Tingnan ang mga tugon ( {{count}} )",
+      "loadReplies_plural": "Tingnan ang mga tugon ( {{count}} )",
+      "reply": "Sumagot"
+    },
+    "comment-list": {
+      "loadMore": "Tingnan ang 1 komento",
+      "loadMore_plural": "Tingnan ang lahat ng <span>0 mga</span> komento"
+    },
+    "comments": {
+      "load_replies": "NO_TRANSLATION",
+      "load_replies_plural": "NO_TRANSLATION",
+      "loadMore": "Mag-load ng maraming mga komento",
+      "title": "Mga Komento"
+    },
+    "common": {
+      "description": "NO_TRANSLATION",
+      "like": "NO_TRANSLATION",
+      "like_plural": "NO_TRANSLATION",
+      "reply": "NO_TRANSLATION",
+      "settings": "NO_TRANSLATION",
+      "title": "NO_TRANSLATION"
+    },
+    "edit-collection": {
+      "add": "Magdagdag ng mga post",
+      "delete": "Tanggalin",
+      "done": "Tapos na",
+      "placeholder": "Hal. Muling itayo ang makina",
+      "title": "Impormasyon"
+    },
+    "edit-model": {
+      "headerTitle": "I-edit ang modelo",
+      "placeholder": "Hal. BMW R100 1981",
+      "save": "Magtipid",
+      "title": "Maghanap at piliin ang iyong modelo."
+    },
+    "edit-post": {
+      "cancel": "Kanselahin",
+      "headerTitle": "I-edit ang post",
+      "placeholder": "Magdagdag ng isang teksto tungkol sa iyong post",
+      "save": "Magtipid"
+    },
+    "edit-profile": {
+      "bio": "Bio",
+      "change": "Magbago",
+      "firstName": "Pangalan",
+      "headerTitle": "Ibahin ang profile",
+      "imagePickerCancel": "Kanselahin",
+      "imagePickerLibrary": "Pumili Mula sa Library…",
+      "imagePickerPermissionOk": "Sigurado ako",
+      "imagePickerPermissionRetry": "subukang muli",
+      "imagePickerPermissionText": "Upang makapag-larawan sa iyong camera at pumili ng mga imahe mula sa iyong silid-aklatan.",
+      "imagePickerPermissionTitle": "Tinanggihan ang pahintulot",
+      "imagePickerPhoto": "Kunan ng litrato…",
+      "imagePickerTitle": "Piliin ang Avatar",
+      "information": "Impormasyon",
+      "lastName": "Huling pangalan",
+      "place": "Lungsod, Bansa",
+      "remove": "Alisin ang Kasalukuyang Larawan",
+      "save": "Magtipid",
+      "username": "Username",
+      "validation": "Mangyaring suriin ang kinakailangang mga patlang.",
+      "validationUsername": "Nakuha na ang username.",
+      "website": "Website",
+      "wrong": "May nangyaring mali"
+    },
+    "edit-project": {
+      "cancel": "Kanselahin",
+      "delete": "Tanggalin",
+      "deleteAlert": "Tanggalin ang proyekto?",
+      "deleteTitle": "Tanggalin ang proyekto",
+      "description": "Ang gawaing ito ay hindi pwedeng baguhin.",
+      "done": "Tapos na",
+      "headerTitle": "I-edit",
+      "information": "Impormasyon",
+      "model": "I-edit ang modelo",
+      "projectSettings": "Mga setting ng proyekto",
+      "title": "Pamagat"
+    },
+    "edit": {
+      "edit": "I-edit"
+    },
+    "empty-state": {
+      "collection-no-post": {
+        "description": "Ang gumagamit ay hindi pa nagdagdag ng anumang mga post sa koleksyon na ito.",
+        "title": "Walang naidagdag na mga post sa koleksyon na ito."
+      },
+      "collection-post": {
+        "button": "Idagdag pa",
+        "description": "Magdagdag ng isang post sa koleksyon na ito mula sa lumikha ng bagong daloy ng post o isang mayroon nang post sa pamamagitan ng pag-click sa higit pang pindutan sa kanang sulok ng post.",
+        "title": "Idagdag ang iyong una upang mai-post sa koleksyon na ito."
+      },
+      "notifications": {
+        "description": "Makikita mo rito ang mga komento, bagong tagasunod at iba pang mga aktibidad.",
+        "title": "Wala pang abiso."
+      },
+      "post": {
+        "button": "Idagdag pa",
+        "description": "Ngayon kapag mayroon kang isang proyekto oras na upang lumikha ng iyong unang post.",
+        "title": "2. Idagdag ang iyong unang post."
+      },
+      "project-no-post": {
+        "description": "Sundin ang proyektong ito ngayon at maabisuhan kapag nag-update.",
+        "title": "Ang proyektong ito ay wala pang post."
+      },
+      "project-post": {
+        "button": "Idagdag pa",
+        "description": "Ngayon kapag mayroon kang isang proyekto oras na upang lumikha ng iyong unang post.",
+        "title": "Idagdag ang iyong unang post."
+      },
+      "project": {
+        "button": "Magsimula",
+        "description": "Hayaan mong mapabilis ka at likhain ang iyong unang proyekto.",
+        "title": "1. Lumikha ng iyong unang proyekto."
+      }
+    },
+    "facebook": {
+      "button": "Magpatuloy sa Facebook"
+    },
+    "feed": {
+      "description": "NO_TRANSLATION",
+      "title": "Magpakain"
+    },
+    "follow": {
+      "follow": "Sundin ang proyektong ito",
+      "followSmall": "Sundan",
+      "unfollow": "Sumusunod",
+      "unfollowSmall": "Sumusunod"
+    },
+    "followers": {
+      "followers": "{{count, humanFormat}} tagasunod",
+      "followers_plural": "{{count, humanFormat}} tagasunod",
+      "title": "Mga tagasunod"
+    },
+    "following-projects": {
+      "description": "Ngunit narito ang ilan sa mga proyekto na sumusunod sa {{name}} .",
+      "title": "Ang gumagamit na ito ay wala pang sariling mga proyekto."
+    },
+    "footer": {
+      "about": "Tungkol sa",
+      "blog": "Blog",
+      "chat": "Makipag-usap ka sa amin",
+      "cookies": "Patakaran sa Cookies",
+      "description": "Ang Wrench ay isang pamayanan ng proyekto na itinatag noong 2018 sa Sweden. Ito ay dinisenyo, binuo at pinapatakbo mula sa gitna ng Stockholm.",
+      "download": "Mag-download ng Mga App",
+      "eula": "EULA",
+      "faq": "FAQ",
+      "feedback": "Puna",
+      "help": "Tulong",
+      "legal": "Ligal",
+      "mail": "Suporta sa Mail",
+      "policy": "Patakaran sa Pagkapribado",
+      "press": "Pindutin",
+      "social": "Panlipunan",
+      "status": "Katayuan",
+      "terms": "Mga Tuntunin at Kundisyon",
+      "trademarks": "Ang App Store ay isang markang serbisyo ng Apple Inc. Ang Google Play ay isang trademark ng Google LLC."
+    },
+    "google": {
+      "button": "Magpatuloy sa Google"
+    },
+    "hashtag": {
+      "posts": "{{count, humanFormat}} post",
+      "posts_plural": "<span>0 mga</span> post"
+    },
+    "header": {
+      "download": "Mag-download ng Mga App",
+      "explore": "Galugarin",
+      "feed": "Magpakain",
+      "home": "Bahay",
+      "login": "Mag log in",
+      "notifications": "Mga Abiso",
+      "register": "Mag-sign up"
+    },
+    "home": {
+      "description": "Idokumento ang iyong mga build, ibahagi ang iyong mga proyekto at alamin mula sa parehong pag-iisip.",
+      "document_title": "Wrench | Ang iyong pamayanan ng motorsiklo",
+      "explore": "Galugarin ang higit pang mga proyekto",
+      "signup": "Mag-sign up na",
+      "subtitle": "pamayanan",
+      "title": "Ang iyong motorsiklo"
+    },
+    "languages": {
+      "sv": "Suweko",
+      "en": "Ingles",
+      "es": "Espanyol",
+      "it": "Italyano",
+      "de": "Aleman",
+      "nl": "Dutch",
+      "fr": "Pranses",
+      "tl": "Pilipino",
+      "pt": "Portuges",
+      "ru": "Russian",
+      "no": "Norwegian",
+      "da": "Danish"
+    },
+    "legal": {
+      "description": "Sa pamamagitan ng pagpapatuloy sumasang-ayon ka sa Wrench's",
+      "link": "mga tuntunin at kundisyon."
+    },
+    "like-post": {
+      "like": "{{count}} spark",
+      "like_plural": "{{count, humanFormat}} sparks"
+    },
+    "list": {
+      "load_more": "Tingnan ang 1 komento",
+      "load_more_plural": "Tingnan ang lahat ng <span>0 mga</span> komento"
+    },
+    "login": {
+      "apple_button": "Magpatuloy sa Apple",
+      "fb_button": "Magpatuloy sa Facebook",
+      "google_button": "Magpatuloy sa Google",
+      "title": "Mag-sign in upang sundin ang iyong mga paboritong proyekto at marami pa."
+    },
+    "logout": {
+      "logout": "Pag-logout",
+      "profile": "Profile",
+      "settings": "Mga setting"
+    },
+    "me": {
+      "bookmarks": "Nai-save na mga post",
+      "edit": "Ibahin ang profile",
+      "settings": "Mga setting"
+    },
+    "media-picker-list": {
+      "deselectAll": "Alisin sa pagkakapili ang lahat"
+    },
+    "mobile-menu": {
+      "download": "Mag-download ng Mga App",
+      "explore": "Galugarin",
+      "feed": "Magpakain",
+      "login": "Mag log in",
+      "register": "Mag-sign up",
+      "sign_out": "Mag-sign out"
+    },
+    "no-results": {
+      "title": "Walang nahanap na resulta"
+    },
+    "notification": {
+      "comment": "Nagkomento sa iyong post",
+      "comment_like": "Nagpahayag ng iyong puna",
+      "follow": "Sinusundan ngayon ang iyong proyekto",
+      "mention": "Nabanggit ka sa isang komento",
+      "post_like": "Sparked iyong post",
+      "reply": "Tumugon sa iyong puna"
+    },
+    "notifications": {
+      "comment": "Nagkomento sa iyong post",
+      "commentLike": "Nagpahayag ng iyong puna",
+      "description": "Makikita mo rito ang mga komento, bagong tagasunod at iba pang mga aktibidad.",
+      "follow": "Sinusundan ngayon ang iyong proyekto",
+      "mention": "Nabanggit ka sa isang komento",
+      "NEW_ARTICLE": "Mga Artikulo",
+      "NEW_COMMENT": "Mga Komento",
+      "NEW_FOLLOWER": "Mga tagasunod",
+      "NEW_MENTION": "Nabanggit",
+      "postLike": "Sparked iyong post",
+      "PRODUCT_ANNOUNCEMENTS": "Mga anunsyo ng produkto",
+      "reply": "Tumugon sa iyong puna",
+      "SIMILAR_PROJECTS": "Katulad na mga proyekto",
+      "title": "Wala pang abiso."
+    },
+    "onboarding": {
+      "description": "Pumili ng hindi bababa sa tatlong mga kategorya na interesado ka at bibigyan ka namin ng ilang magagandang proyekto upang magsimula ka.",
+      "headerTitle": "Ipasadya ang iyong mga interes",
+      "headline": "Ano ang mga bagay na pinagkaka interesan mo?",
+      "next": "Susunod",
+      "save": "Magtipid",
+      "title": "Ano ang mga bagay na pinagkaka interesan mo?"
+    },
+    "options": {
+      "alertTitle": "Sigurado ka ba?",
+      "cancel": "Kanselahin",
+      "collection": "Idagdag sa Koleksiyon",
+      "delete": "Tanggalin",
+      "edit": "I-edit",
+      "removeCollection": "Alisin mula sa koleksyon",
+      "report": "Iulat"
+    },
+    "popular": {
+      "description": "Makikita mo rito ang pinakatanyag na mga proyekto mula sa linggong ito.",
+      "popular": "Mga patok na proyekto",
+      "recent": "Kamakailang mga post",
+      "title": "Mga patok na proyekto"
+    },
+    "post-container": {
+      "loadMore": "Mag-load ng maraming mga komento",
+      "title": "Post"
+    },
+    "post": {
+      "options": {
+        "alertTitle": "Sigurado ka ba?",
+        "cancel": "Kanselahin",
+        "collection": "Idagdag sa Koleksiyon",
+        "delete": "Tanggalin",
+        "edit": "I-edit",
+        "removeCollection": "Alisin mula sa koleksyon",
+        "report": "Iulat"
+      },
+      "selectCollection": "Piliin ang koleksyon",
+      "showCollection": "Ipakita ang koleksyon",
+      "loading": "Naglo-load ...",
+      "translation": "Tingnan ang Pagsasalin",
+      "original": "Tingnan ang Orihinal"
+    },
+    "posting": {
+      "description": "Nag-post ..."
+    },
+    "project-card": {
+      "follow": "Sundan",
+      "unfollow": "Sumusunod"
+    },
+    "project-suggestion": {
+      "description": "Pinili namin ang ilang mga proyekto sa ibaba na maaari mong makita na kawili-wili.",
+      "title": "Bumangon upang tulin at sundin ang ilang mga proyekto.",
+      "title_small": "Iminungkahi para sa iyo"
+    },
+    "project-suggestions": {
+      "description": "Pinili namin ang ilang mga proyekto sa ibaba na maaari mong makita na kawili-wili.",
+      "title": "Bumangon upang tulin at sundin ang ilang mga proyekto."
+    },
+    "project-types": {
+      "inspo": "Inspirasyon"
+    },
+    "project": {
+      "description": "{{followers, humanFormat}} Tagasunod, <span>1 Mga</span> Post - {{fullName}} . (@ {{username}} ) sa Wrench",
+      "recent": "Kamakailang mga post",
+      "share": "Magbahagi",
+      "similar": "Katulad na mga proyekto",
+      "title": "{{title}} - <span>1 na</span> proyekto",
+      "description_plural": "<span>0 Mga</span> Tagasunod, <span>1 Mga</span> Post - {{fullName}} . (@ {{username}} ) sa Wrench"
+    },
+    "promo": {
+      "button_default": "Ipadala",
+      "button_success": "Ipinadala",
+      "description": "Ipasok ang iyong numero at makakuha ng isang isang beses na link sa SMS.",
+      "title": "I-download ang Wrench app sa Appstore at Google play"
+    },
+    "push-notifications": {
+      "approve": "I-on ang Mga Abiso",
+      "decline": "Salamat nalang",
+      "description": "Alamin kaagad kapag sinusunod ng mga tao ang iyong mga proyekto o gusto at nagkomento sa iyong mga post.",
+      "title": "Mangyaring i-on ang Mga Abiso."
+    },
+    "result": {
+      "not_found": "Walang nahanap na mga resulta sa paghahanap.",
+      "projects": "<span>0 na</span> proyekto",
+      "projects_plural": "<span>0 na</span> proyekto"
+    },
+    "search-bar": {
+      "cancel": "Kanselahin",
+      "placeholder": "Maghanap"
+    },
+    "search-location-footer": {
+      "poweredBy": "Pinatatakbo ng"
+    },
+    "search-location": {
+      "no_result": "Walang resulta.",
+      "placeholder": "Lungsod, Bansa"
+    },
+    "search": {
+      "clear": "Alisin lahat",
+      "hashtags": "Hashtags",
+      "placeholder": "Maghanap",
+      "projects": "Mga Proyekto",
+      "recent": "Kamakailan",
+      "users": "Mga gumagamit"
+    },
+    "searching-for": {
+      "title": "Naghahanap para sa"
+    },
+    "sections": {
+      "language": "Wika",
+      "notifications": "Mga notificaitons",
+      "profile": "Profile",
+      "support": "Suporta"
+    },
+    "select-project": {
+      "create": "Lumikha ng isang bagong proyekto"
+    },
+    "settings": {
+      "chat": "Makipag-usap ka sa amin",
+      "clear": "I-clear ang nai-save na data",
+      "codepush": "Code Push",
+      "contacts": "Ang aking mga Contacts",
+      "credits": "Mga Kredito",
+      "customize-interests": "Ipasadya ang iyong mga interes",
+      "delete": "Tanggalin ang account",
+      "deleteCancel": "Kanselahin",
+      "deleteDescription": "Kung magpapasya kang tanggalin ang iyong account hindi ka na muling mag-sign in. Tanggalin ang iyong mga proyekto bago mo i-delete ang iyong account.",
+      "deleteOk": "OK lang",
+      "deleteTitle": "Tanggalin ang account",
+      "developer": "Developer",
+      "email-notifications": "Mga abiso sa email",
+      "facebook": "Facebook",
+      "faq": "FAQ",
+      "feedback": "Puna",
+      "field": {
+        "bio": "Bio",
+        "firstname": "Pangalan",
+        "lastname": "Huling pangalan",
+        "website": "Website"
+      },
+      "general": "Pangkalahatan",
+      "invite": "Mag-imbita ng mga tao",
+      "language": "Wika",
+      "logout": "Pag-logout",
+      "mail": "Mail",
+      "membership": "Pagiging kasapi",
+      "push-notifications": "Itulak ang mga abiso",
+      "rate": "Bigyan kami ng isang pagsusuri",
+      "report": "Mag-ulat ng isang bug",
+      "save": "Magtipid",
+      "sections": {
+        "language": "Wika",
+        "notifications": "Mga notificaitons",
+        "profile": "Ibahin ang profile",
+        "support": "Suporta"
+      },
+      "settings": "Mga setting",
+      "share": "Ibahagi sa amin",
+      "stages": {
+        "production": "Paggawa",
+        "staging": "Pagtatanghal ng dula"
+      },
+      "support": "Suporta",
+      "terms": "Mga tuntunin at kundisyon",
+      "title": "Mga setting",
+      "toast": {
+        "error": "May nangyaring mali",
+        "saved": "Na-save ang mga setting"
+      },
+      "website": "Website"
+    },
+    "share": {
+      "share": "Magbahagi"
+    },
+    "show-latest": {
+      "button": "Mga bagong post"
+    },
+    "sign-in": {
+      "description": "Idokumento ang iyong mga build, ibahagi ang iyong mga proyekto at alamin mula sa parehong pag-iisip.",
+      "headline": "Iyong\nmotorsiklo\npamayanan",
+      "other": "Iba pang mga pagpipilian sa pag-sign in"
+    },
+    "similar-projects": {
+      "title": "Katulad na mga proyekto"
+    },
+    "sparks": {
+      "title": "Spark"
+    },
+    "suggestions": {
+      "description": "Pinili namin ang ilang mga proyekto sa ibaba na maaari mong makita na kawili-wili.",
+      "headline": "Bumangon upang tulin at sundin ang ilang mga proyekto.",
+      "next": "Susunod"
+    },
+    "text": {
+      "more": "higit pa"
+    },
+    "time": {
+      "d": "{{count}} araw na ang nakakalipas",
+      "d_plural": "{{count}} araw na ang nakakalipas",
+      "h": "{{count}} oras na ang nakalipas",
+      "h_plural": "{{count}} oras ang nakalipas",
+      "m": "{{count}} minuto na ang nakakalipas",
+      "m_plural": "{{count}} minuto na ang nakakalipas",
+      "mo": "{{count}} buwan ang nakalipas",
+      "mo_plural": "{{count}} buwan na ang nakakaraan",
+      "now": "ngayon lang",
+      "y": "{{count}} taon na ang nakakaraan",
+      "y_plural": "{{count}} taon na ang nakakaraan"
+    },
+    "toast": {
+      "network": "Walang koneksyon sa internet",
+      "spam": "Na-block ang pagkilos. Subukang muli mamaya."
+    },
+    "user-following-projects": {
+      "description": "Ngunit narito ang ilan sa mga proyekto na sumusunod sa {{name}} .",
+      "title": "Ang gumagamit na ito ay wala pang sariling mga proyekto."
+    },
+    "user-projects": {
+      "followers": "{{count, humanFormat}} tagasunod",
+      "followers_plural": "{{count, humanFormat}} tagasunod",
+      "title": "Mga Proyekto"
+    },
+    "user": {
+      "description": "Tingnan ang mga proyekto sa Wrench at post mula sa {{fullName}} . (@ {{username}} )",
+      "image_alt": "NO_TRANSLATION",
+      "notfound": "Hindi nahanap ang gumagamit",
+      "projects": "<span>0 na</span> proyekto",
+      "projects_plural": "<span>0 na</span> proyekto",
+      "title": "{{fullName}} (@ {{username}} ) - mga proyekto at post"
+    },
+    "webview": {
+      "loading": "Naglo-load ..."
+    }
+  },
   "facebook": {
     "button": "Magpatuloy sa Facebook"
   },
@@ -371,6 +952,9 @@
     "loadMore": "Mag-load ng maraming mga komento",
     "title": "Post"
   },
+  "post-page": {
+    "title": "{{fullName}} sa Wrench: {{caption}}"
+  },
   "post": {
     "options": {
       "alertTitle": "Sigurado ka ba?",
@@ -379,13 +963,17 @@
       "delete": "Tanggalin",
       "edit": "I-edit",
       "removeCollection": "Alisin mula sa koleksyon",
-      "report": "Iulat"
+      "report": "Iulat",
+      "copy": "Kopyahin ang link",
+      "share": "Ibahagi sa ..."
     },
     "selectCollection": "Piliin ang koleksyon",
     "showCollection": "Ipakita ang koleksyon",
     "loading": "Naglo-load ...",
     "translation": "Tingnan ang Pagsasalin",
-    "original": "Tingnan ang Orihinal"
+    "original": "Tingnan ang Orihinal",
+    "copySuccess": "Nakopya ang link sa clipboard",
+    "shareContent": "<span>0 ang</span> post ni"
   },
   "posting": {
     "description": "Nag-post ..."

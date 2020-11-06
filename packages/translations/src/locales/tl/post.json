@@ -14,5 +14,7 @@
   "showCollection": "Ipakita ang koleksyon",
   "loading": "Naglo-load ...",
   "translation": "Tingnan ang Pagsasalin",
-  "original": "Tingnan ang Orihinal"
+  "original": "Tingnan ang Orihinal",
+  "copySuccess": "Nakopya ang link sa clipboard",
+  "shareContent": "<span>0 ang</span> post ni"
 }

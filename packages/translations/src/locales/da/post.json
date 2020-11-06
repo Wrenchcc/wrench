@@ -14,5 +14,7 @@
   "showCollection": "Vis samling",
   "loading": "Indlæser...",
   "translation": "Se oversættelse",
-  "original": "Se original"
+  "original": "Se original",
+  "copySuccess": "Linket blev kopieret til udklipsholderen",
+  "shareContent": "{{fullName}} &#39;s indlæg"
 }

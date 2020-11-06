@@ -6,11 +6,13 @@
   "options.edit": "Bearbeiten",
   "options.removeCollection": "Aus der Sammlung entfernen",
   "options.report": "Bericht",
+  "options.copy": "Link kopieren",
+  "options.share": "Teilen mit...",
   "selectCollection": "Sammlung auswählen",
   "showCollection": "Sammlung anzeigen",
   "loading": "Wird geladen...",
   "translation": "Siehe Übersetzung",
   "original": "Siehe Original",
-  "options.copy": "Link kopieren",
-  "options.share": "Teilen mit..."
+  "copySuccess": "Link in die Zwischenablage kopiert",
+  "shareContent": "{{fullName}} &#39;s Beitrag"
 }

@@ -6,11 +6,13 @@
   "options.edit": "Editar",
   "options.removeCollection": "Quitar de la colección",
   "options.report": "Reporte",
+  "options.copy": "Copiar link",
+  "options.share": "Compartir a...",
   "selectCollection": "Seleccionar colección",
   "showCollection": "Mostrar colección",
   "loading": "Cargando...",
   "translation": "Ver traducción",
   "original": "Ver original",
-  "options.copy": "Copiar link",
-  "options.share": "Compartir a..."
+  "copySuccess": "link copiado al portapapeles",
+  "shareContent": "<span>Publicación</span> de {{fullName}}"
 }

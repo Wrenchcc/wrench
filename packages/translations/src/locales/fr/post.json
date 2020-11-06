@@ -14,5 +14,7 @@
   "showCollection": "Afficher la collection",
   "loading": "Chargement...",
   "translation": "Voir la traduction",
-  "original": "Voir l'original"
+  "original": "Voir l'original",
+  "copySuccess": "Lien copié dans le presse-papiers",
+  "shareContent": "<span>Message</span> de {{fullName}}"
 }

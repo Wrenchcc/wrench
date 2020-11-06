@@ -371,6 +371,9 @@
     "loadMore": "Load more comments",
     "title": "Post"
   },
+  "post-page": {
+    "title": "{{fullName}} on Wrench: {{caption}}"
+  },
   "post": {
     "options": {
       "alertTitle": "Are you sure?",
@@ -379,13 +382,17 @@
       "delete": "Delete",
       "edit": "Edit",
       "removeCollection": "Remove from collection",
-      "report": "Report"
+      "report": "Report",
+      "copy": "Copy link",
+      "share": "Share to..."
     },
     "selectCollection": "Select collection",
     "showCollection": "Show collection",
     "loading": "Loading...",
     "translation": "See Translation",
-    "original": "See Original"
+    "original": "See Original",
+    "copySuccess": "Link copied to clipboard",
+    "shareContent": "{{fullName}}'s post"
   },
   "posting": {
     "description": "Posting..."

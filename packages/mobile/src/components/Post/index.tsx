@@ -9,6 +9,7 @@ import {
 } from '@wrench/common'
 import { State, TapGestureHandler } from 'react-native-gesture-handler'
 import NativeShare from 'react-native-share'
+import {useClipboard} from '@react-native-community/clipboard';
 import * as Haptics from 'expo-haptics'
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import { useNavigation, SCREENS } from 'navigation'
@@ -16,7 +17,9 @@ import openLink from 'utils/openLink'
 import Collections from 'features/project/components/Collections'
 import { useDynamicColor } from 'utils/hooks'
 import { keyboardHeight } from 'utils/platform'
+import { store } from 'gql'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo } from 'ui'
+import { TOAST_TYPES } from 'utils/enums'
 import LikePost from 'components/LikePost'
 import Bookmark from 'components/Bookmark'
 import { share, sparkMega, arrowRightSmall } from 'images'
@@ -31,6 +34,8 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
   const [deletePost] = useDeletePostMutation()
   const [toggleLike] = useLikePostMutation()
   const [editPost] = useEditPostMutation()
+  const [, setString] = useClipboard();
+
 
   const [translatePost, { loading: translationLoading }] = useTranslatePostMutation()
 
@@ -269,12 +274,17 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
 
           // Copy link
           if (index === 1) {
+            setString(`https://wrench.cc/p/${post.id}`)
+            store.toast.show({
+              content: t('copySuccess'),
+              dismissAfter: 6000,
+              type: TOAST_TYPES.SUCCESS,
+            })
           }
 
           // Share
           if (index === 2) {
             NativeShare.open({
-              title: t('shareContent'),
               url: `https://wrench.cc/p/${post.id}`,
             }).catch(() => {})
           }
@@ -328,6 +338,22 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
         (index) => {
           if (index === 0) {
             openLink(`mailto:report@wrench.cc?subject=Report%20post:%20${post.id}`)
+          }
+
+          if (index === 1) {
+            setString(`https://wrench.cc/p/${post.id}`)
+            store.toast.show({
+              content: t('copySuccess'),
+              dismissAfter: 6000,
+              type: TOAST_TYPES.SUCCESS,
+            })
+          }
+
+          // Share
+          if (index === 2) {
+            NativeShare.open({
+              url: `https://wrench.cc/p/${post.id}`,
+            }).catch(() => {})
           }
         }
       )

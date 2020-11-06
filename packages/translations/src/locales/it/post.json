@@ -14,5 +14,7 @@
   "showCollection": "Mostra raccolta",
   "loading": "Caricamento in corso...",
   "translation": "Guarda la traduzione",
-  "original": "Vedi originale"
+  "original": "Vedi originale",
+  "copySuccess": "Link copiato negli appunti",
+  "shareContent": "Il post di {{fullName}}"
 }

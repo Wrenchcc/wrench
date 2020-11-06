@@ -14,5 +14,7 @@
   "showCollection": "Sammlung anzeigen",
   "loading": "Wird geladen...",
   "translation": "Siehe Übersetzung",
-  "original": "Siehe Original"
+  "original": "Siehe Original",
+  "copySuccess": "Link in die Zwischenablage kopiert",
+  "shareContent": "{{fullName}} &#39;s Beitrag"
 }

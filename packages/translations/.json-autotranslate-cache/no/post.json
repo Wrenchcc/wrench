@@ -6,11 +6,13 @@
   "options.edit": "Redigere",
   "options.removeCollection": "Fjern fra samlingen",
   "options.report": "Rapportere",
+  "options.copy": "Kopier link",
+  "options.share": "Del til ...",
   "selectCollection": "Velg samling",
   "showCollection": "Vis samling",
   "loading": "Laster inn ...",
   "translation": "Se oversettelse",
   "original": "Se Original",
-  "options.copy": "Kopier link",
-  "options.share": "Del til ..."
+  "copySuccess": "Link kopiert til utklippstavlen",
+  "shareContent": "{{fullName}} &#39;s innlegg"
 }

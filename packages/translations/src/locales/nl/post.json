@@ -14,5 +14,7 @@
   "showCollection": "Toon collectie",
   "loading": "Bezig met laden...",
   "translation": "Zie Vertaling",
-  "original": "Zie Origineel"
+  "original": "Zie Origineel",
+  "copySuccess": "Link gekopieerd naar klembord",
+  "shareContent": "{{fullName}} &#39;s bericht"
 }
