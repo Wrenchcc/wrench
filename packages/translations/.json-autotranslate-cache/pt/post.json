@@ -9,6 +9,8 @@
   "selectCollection": "Selecione a coleção",
   "showCollection": "Mostrar coleção",
   "loading": "Carregando...",
-  "translation": "ver tradução",
-  "original": "Ver Original"
+  "translation": "Ver tradução",
+  "original": "Ver Original",
+  "options.copy": "Link de cópia",
+  "options.share": "Compartilhar com..."
 }

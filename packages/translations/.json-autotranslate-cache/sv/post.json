@@ -8,7 +8,9 @@
   "options.report": "Rapportera",
   "selectCollection": "Välj samling",
   "showCollection": "Visa samling",
-  "loading": "Läser in...",
-  "translation": "se översättning",
-  "original": "Se original"
+  "loading": "Laddar...",
+  "translation": "Se översättning",
+  "original": "Se original",
+  "options.copy": "Kopiera länk",
+  "options.share": "Dela till..."
 }

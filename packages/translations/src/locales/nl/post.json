@@ -6,7 +6,9 @@
     "delete": "Verwijderen",
     "edit": "Bewerk",
     "removeCollection": "Verwijderen uit verzameling",
-    "report": "Verslag doen van"
+    "report": "Verslag doen van",
+    "copy": "Kopieer link",
+    "share": "Delen naar..."
   },
   "selectCollection": "Selecteer collectie",
   "showCollection": "Toon collectie",

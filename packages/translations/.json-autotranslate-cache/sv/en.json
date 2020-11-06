@@ -382,5 +382,8 @@
   "user.projects": "<span>0-</span> projekt",
   "user.projects_plural": "{{count, humanFormat}} projekt",
   "user.title": "{{fullName}} . (@ {{username}} ) - projekt och inlägg",
-  "webview.loading": "Läser in..."
+  "webview.loading": "Läser in...",
+  "post.loading": "Läser in...",
+  "post.translation": "se översättning",
+  "post.original": "Se original"
 }

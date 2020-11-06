@@ -10,5 +10,7 @@
   "showCollection": "Toon collectie",
   "loading": "Bezig met laden...",
   "translation": "Zie Vertaling",
-  "original": "Zie Origineel"
+  "original": "Zie Origineel",
+  "options.copy": "Kopieer link",
+  "options.share": "Delen naar..."
 }

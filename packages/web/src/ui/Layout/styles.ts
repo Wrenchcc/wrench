@@ -21,6 +21,7 @@ export const Top = styled.div`
 export const Inner = styled.div`
   display: flex;
   flex-direction: ${(props) => (props.column ? 'column' : 'row')};
+  justify-content: ${(props) => (props.center ? 'center' : 'flex-start')};
 
   @media ${DEVICE.TABLET} {
     flex-direction: column;

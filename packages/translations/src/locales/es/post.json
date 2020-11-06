@@ -6,7 +6,9 @@
     "delete": "Eliminar",
     "edit": "Editar",
     "removeCollection": "Quitar de la colección",
-    "report": "Reporte"
+    "report": "Reporte",
+    "copy": "Copiar link",
+    "share": "Compartir a..."
   },
   "selectCollection": "Seleccionar colección",
   "showCollection": "Mostrar colección",

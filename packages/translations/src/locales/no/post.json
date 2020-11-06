@@ -6,7 +6,9 @@
     "delete": "Slett",
     "edit": "Redigere",
     "removeCollection": "Fjern fra samlingen",
-    "report": "Rapportere"
+    "report": "Rapportere",
+    "copy": "Kopier link",
+    "share": "Del til ..."
   },
   "selectCollection": "Velg samling",
   "showCollection": "Vis samling",

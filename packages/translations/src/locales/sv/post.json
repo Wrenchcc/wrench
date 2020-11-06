@@ -6,7 +6,9 @@
     "delete": "Radera",
     "edit": "Redigera",
     "removeCollection": "Radera från samling",
-    "report": "Rapportera"
+    "report": "Rapportera",
+    "copy": "Kopiera länk",
+    "share": "Dela till..."
   },
   "selectCollection": "Välj samling",
   "showCollection": "Visa samling",

@@ -10,5 +10,7 @@
   "showCollection": "Vis samling",
   "loading": "Laster inn ...",
   "translation": "Se oversettelse",
-  "original": "Se Original"
+  "original": "Se Original",
+  "options.copy": "Kopier link",
+  "options.share": "Del til ..."
 }

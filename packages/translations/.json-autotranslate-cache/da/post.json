@@ -9,6 +9,8 @@
   "selectCollection": "Vælg samling",
   "showCollection": "Vis samling",
   "loading": "Indlæser...",
-  "translation": "se oversættelse",
-  "original": "Se original"
+  "translation": "Se oversættelse",
+  "original": "Se original",
+  "options.copy": "Kopier link",
+  "options.share": "Del til ..."
 }

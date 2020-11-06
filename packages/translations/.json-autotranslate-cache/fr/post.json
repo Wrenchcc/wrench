@@ -10,5 +10,7 @@
   "showCollection": "Afficher la collection",
   "loading": "Chargement...",
   "translation": "Voir la traduction",
-  "original": "Voir l'original"
+  "original": "Voir l'original",
+  "options.copy": "Copier le lien",
+  "options.share": "Partager à..."
 }

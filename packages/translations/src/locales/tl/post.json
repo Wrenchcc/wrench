@@ -6,7 +6,9 @@
     "delete": "Tanggalin",
     "edit": "I-edit",
     "removeCollection": "Alisin mula sa koleksyon",
-    "report": "Iulat"
+    "report": "Iulat",
+    "copy": "Kopyahin ang link",
+    "share": "Ibahagi sa ..."
   },
   "selectCollection": "Piliin ang koleksyon",
   "showCollection": "Ipakita ang koleksyon",
