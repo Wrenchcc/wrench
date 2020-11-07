@@ -21,6 +21,10 @@ DeepLinking.addRoute('/post/:id', ({ id }) => {
   return navigateWithoutContext(SCREENS.POST, { postId: id })
 })
 
+DeepLinking.addRoute('/p/:id', ({ id }) => {
+  return navigateWithoutContext(SCREENS.POST, { postId: id })
+})
+
 DeepLinking.addRoute('/settings/:section', ({ section }) => {
   selectTabIndex(TABS_INDEX.ME)
 

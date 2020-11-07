@@ -10,8 +10,13 @@ export const Base = styled.div`
   margin-bottom: ${props => props.marginBottom || 70}px;
 
   @media ${DEVICE.TABLET} {
-    margin-left: 10px;
+    margin-left: 10px !important;
     width: 180px;
+
+    svg {
+      width: 180px;
+      height: 180px;
+    }
   }
 `
 

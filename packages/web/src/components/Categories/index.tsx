@@ -8,15 +8,19 @@ import { usePaginatedQuery, ProjectsDocument } from '@wrench/common'
 import { Post, Layout, Loader } from 'ui'
 import Popular from 'components/Popular'
 import ProjectTypes from 'components/ProjectTypes'
+import Placeholder from 'ui/Card/Placeholder'
 import { List, Title, Card } from './styles'
 
 export default function Categories() {
+  let content
+
   const router = useRouter()
   const { id } = router.query
 
   const {
     data: { edges },
     fetchMore,
+    isFetching,
     hasNextPage,
   } = usePaginatedQuery(['projects'])(ProjectsDocument, {
     variables: {
@@ -25,6 +29,21 @@ export default function Categories() {
       first: 8,
     },
   })
+
+
+  if(isFetching) {
+    content = new Array(8).fill({}).map((_, index) => (<Placeholder />))
+   } else {
+     content = edges?.map(({ node }) => (
+      <Card
+        key={node.id}
+        image={node.cover.uri}
+        title={node.title}
+        slug={node.slug}
+        user={node.user}
+      />
+    ))
+   }
 
   return (
     <Layout column paddingTop={40}>
@@ -39,16 +58,7 @@ export default function Categories() {
       {/* <Title medium>Recent posts</Title> */}
       <InfiniteScroll loadMore={fetchMore} hasMore={hasNextPage} loader={<Loader key={0} />}>
         <List>
-          {edges &&
-            edges.map(({ node }) => (
-              <Card
-                key={node.id}
-                image={node.cover.uri}
-                title={node.title}
-                slug={node.slug}
-                user={node.user}
-              />
-            ))}
+          {content}
         </List>
       </InfiniteScroll>
     </Layout>
