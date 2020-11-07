@@ -9,7 +9,7 @@ import {
 } from '@wrench/common'
 import { State, TapGestureHandler } from 'react-native-gesture-handler'
 import NativeShare from 'react-native-share'
-import {useClipboard} from '@react-native-community/clipboard';
+import Clipboard from '@react-native-community/clipboard'
 import * as Haptics from 'expo-haptics'
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import { useNavigation, SCREENS } from 'navigation'
@@ -34,8 +34,6 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
   const [deletePost] = useDeletePostMutation()
   const [toggleLike] = useLikePostMutation()
   const [editPost] = useEditPostMutation()
-  const [, setString] = useClipboard();
-
 
   const [translatePost, { loading: translationLoading }] = useTranslatePostMutation()
 
@@ -274,7 +272,7 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
 
           // Copy link
           if (index === 1) {
-            setString(`https://wrench.cc/p/${post.id}`)
+            Clipboard.setString(`https://wrench.cc/p/${post.id}`)
             store.toast.show({
               content: t('copySuccess'),
               dismissAfter: 6000,
@@ -341,7 +339,8 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
           }
 
           if (index === 1) {
-            setString(`https://wrench.cc/p/${post.id}`)
+            Clipboard.setString(`https://wrench.cc/p/${post.id}`)
+
             store.toast.show({
               content: t('copySuccess'),
               dismissAfter: 6000,
