@@ -1,3 +1,5 @@
+import { Placeholder } from 'components/Promo/styles'
+
 export { default as Post } from './Post'
 export { default as Title } from './Title'
 export { default as Carousel } from './Carousel'
@@ -22,3 +24,4 @@ export { default as SearchLocation } from './SearchLocation'
 export { default as BlogPost } from './BlogPost'
 export { default as Icon } from './Icon'
 export { default as LanguageSelector } from './LanguageSelector'
+export { default as Placeholder } from './Placeholder'
