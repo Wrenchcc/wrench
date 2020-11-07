@@ -1,8 +1,8 @@
 import React, { useCallback, memo } from 'react'
-import { sort } from 'rambda'
+// import { sort } from 'rambda'
 import { useTranslation } from 'react-i18next'
 import { ScrollView } from 'react-native'
-import { useProjectTypesQuery, useCurrentUserQuery } from '@wrench/common'
+import { useProjectTypesQuery } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
 import CategoriesPlaceholder from './Placeholder'
@@ -11,7 +11,7 @@ import { Base, Wrapper } from './styles'
 function ProjectTypes({ visible }) {
   const { t } = useTranslation('project-types')
   const { data: typesData, loading: loadingTypes } = useProjectTypesQuery()
-  const { data: userData } = useCurrentUserQuery()
+  // const { data: userData } = useCurrentUserQuery()
 
   const { navigate } = useNavigation()
 
@@ -42,10 +42,10 @@ function ProjectTypes({ visible }) {
     )
   }
 
-  const data = sort(
-    (a) => (userData?.user.interestedIn.some((item) => item.id === a.id) ? -1 : 1),
-    typesData?.types
-  )
+  // const data = sort(
+  //   (a) => (userData?.user.interestedIn.some((item) => item.id === a.id) ? -1 : 1),
+  //   typesData?.types
+  // )
 
   return (
     visible && (
@@ -57,7 +57,7 @@ function ProjectTypes({ visible }) {
             </Text>
           </Wrapper>
 
-          {data.map((category, index) => (
+          {typesData.types.map((category, index) => (
             <Wrapper
               key={category.id}
               last={index === typesData.types?.length - 1}

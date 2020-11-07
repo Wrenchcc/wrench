@@ -21,6 +21,7 @@ function AddMedia({ id }) {
   const [isLoading, setLoading] = useState(false)
   const { showActionSheetWithOptions } = useActionSheet()
   const dynamicColor = useDynamicColor('inverse')
+  const dynamicBackgroundColor = useDynamicColor('default')
 
   const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
   const selectedFileId = useReactiveVar(store.files.selectedFileIdVar)
@@ -57,6 +58,9 @@ function AddMedia({ id }) {
           destructiveButtonIndex: 0,
           cancelButtonIndex: 1,
           tintColor: dynamicColor,
+          containerStyle: {
+            backgroundColor: dynamicBackgroundColor,
+          },
         },
         (index) => {
           if (index === 0) {
