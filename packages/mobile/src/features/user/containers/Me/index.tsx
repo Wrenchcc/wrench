@@ -16,7 +16,7 @@ const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 const renderItem = ({ item }) => <Post post={item.node} />
 
 function Me() {
-  const { t } = useTranslation('me')
+  const { t } = useTranslation(['me', 'select-project'])
   const scrollRef = useRef(null)
 
   const {
@@ -35,6 +35,7 @@ function Me() {
   const navigateEditProfile = useCallback(() => showModal(SCREENS.EDIT_PROFILE), [])
   const navigateSettings = useCallback(() => navigate(SCREENS.SETTINGS), [])
   const navigateBookmarks = useCallback(() => navigate(SCREENS.BOOKMARKS), [])
+  const navigateAddProject = useCallback(() => showModal(SCREENS.ADD_PROJECT), [])
 
   const hasPosts = edges && edges.length > 0
 
@@ -62,6 +63,10 @@ function Me() {
                   {
                     title: t('bookmarks'),
                     onPress: navigateBookmarks,
+                  },
+                  {
+                    title: t('select-project:create'),
+                    onPress: navigateAddProject,
                   },
                 ],
               })
