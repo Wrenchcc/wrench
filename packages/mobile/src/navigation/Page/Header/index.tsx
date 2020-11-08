@@ -34,19 +34,7 @@ function Header({
 }: HeaderProps) {
   const { navigateBack } = useNavigation()
   const handleNavigation = useCallback(() => navigateBack(), [])
-  const [headerLeftWidth, setHeaderLeft] = useState(0)
   const [headerActionsWidth, setHeaderActionsWidth] = useState(0)
-
-  const handleLeftLayout = useCallback(
-    (e: LayoutChangeEvent) => {
-      const { width } = e.nativeEvent.layout
-
-      if (width !== headerLeftWidth) {
-        setHeaderLeft(width)
-      }
-    },
-    [headerLeftWidth]
-  )
 
   const handleHeaderRightLayout = useCallback(
     (e: LayoutChangeEvent) => {
@@ -67,13 +55,13 @@ function Header({
         })
       : 1
 
-  const maxWidthHeaderWidth = screenWidth - headerActionsWidth - headerLeftWidth - 80
+  const maxWidthHeaderWidth = screenWidth - headerActionsWidth * 2 - 80
 
   return (
     <>
       <Base inline={inline}>
         <Inner>
-          <View onLayout={handleLeftLayout} style={{ width: headerActionsWidth }}>
+          <View style={{ width: headerActionsWidth }}>
             {headerLeft || <Icon onPress={handleNavigation} source={arrowLeft} />}
           </View>
           <Animated.View style={{ opacity, maxWidth: maxWidthHeaderWidth }}>
@@ -86,11 +74,7 @@ function Header({
               </Text>
             )}
           </Animated.View>
-          <View onLayout={handleHeaderRightLayout}>
-            <Text numberOfLines={1} center>
-              {headerRight}
-            </Text>
-          </View>
+          <View onLayout={handleHeaderRightLayout}>{headerRight}</View>
         </Inner>
       </Base>
 

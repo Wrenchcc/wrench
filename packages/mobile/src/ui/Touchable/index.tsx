@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
+import { Pressable, PressableProps } from 'react-native'
 import evenHitSlop from 'utils/hitSlop'
 
 export type PressablePropsType = {
@@ -7,9 +7,8 @@ export type PressablePropsType = {
   hitSlop?: number
   android_disableSound?: boolean
   onPress?: () => void
-} & TouchableOpacityProps
+} & PressableProps
 
-// Pressable does not work on Android devmode
 const Touchable = ({
   children,
   hitSlop = 10,
@@ -18,9 +17,14 @@ const Touchable = ({
   ...props
 }: PressablePropsType) => {
   return (
-    <TouchableOpacity onPress={onPress} hitSlop={evenHitSlop(hitSlop)} activeOpacity={1} {...props}>
+    <Pressable
+      onPress={onPress}
+      hitSlop={evenHitSlop(hitSlop)}
+      android_disableSound={android_disableSound}
+      {...props}
+    >
       {children}
-    </TouchableOpacity>
+    </Pressable>
   )
 }
 
