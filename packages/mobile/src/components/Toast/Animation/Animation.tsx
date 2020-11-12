@@ -5,7 +5,7 @@ import { useTransition, useSetTimeout } from './animationRunners'
 
 const TOP = hasNotch ? 60 : 40
 
-const { eq, interpolate } = Animated
+const { eq, interpolateNode } = Animated
 
 type Props = {
   children: React.ReactNode
@@ -34,7 +34,7 @@ const Animation: React.FC<Props> = ({
     },
   })
 
-  const translateY = interpolate(animation, {
+  const translateY = interpolateNode(animation, {
     inputRange: [0, 1],
     outputRange: [-TOP, HEIGHT],
   })

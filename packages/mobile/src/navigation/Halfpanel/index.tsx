@@ -6,7 +6,7 @@ import { useNavigation } from 'navigation'
 import { Text } from 'ui'
 import { Base, Bar, Row } from './styles'
 
-const { Value, interpolate } = Animated
+const { Value, interpolateNode } = Animated
 
 function Halfpanel({ renderContent = () => null, renderHeader = () => null, height = 300, data }) {
   const bottomSheet = useRef(null)
@@ -22,7 +22,7 @@ function Halfpanel({ renderContent = () => null, renderHeader = () => null, heig
 
   const closeKeyboard = useCallback(() => Keyboard.dismiss(), [])
 
-  const backgroundOpacity = interpolate(fall.current, {
+  const backgroundOpacity = interpolateNode(fall.current, {
     inputRange: [0, 1],
     outputRange: [0.55, 0],
     extrapolate: Animated.Extrapolate.CLAMP,

@@ -66,7 +66,7 @@
     "react-native-navigation": "^7.3.0",
     "react-native-permissions": "^2.2.2",
     "react-native-pinchable": "^0.1.2",
-    "react-native-reanimated": "1.4.0",
+    "react-native-reanimated": "alpha",
     "react-native-redash": "9.6.0",
     "react-native-responsive-dimensions": "^3.1.1",
     "react-native-share": "^4.1.0",

@@ -32,7 +32,7 @@ function Feed() {
 
   const scrollToTop = useCallback(() => {
     if (scrollRef.current) {
-      scrollRef.current.getNode().scrollToOffset({ offset: -10000000 })
+      scrollRef.current.scrollToOffset({ offset: -10000000 })
     }
   }, [scrollRef])
 
