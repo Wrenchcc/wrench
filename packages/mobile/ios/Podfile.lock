@@ -10,6 +10,8 @@ PODS:
   - DoubleConversion (1.1.6)
   - EXAppleAuthentication (2.2.1):
     - UMCore
+  - EXBlur (8.2.0):
+    - UMCore
   - EXCamera (9.0.0):
     - UMBarCodeScannerInterface
     - UMCore
@@ -600,6 +602,7 @@ PODS:
 DEPENDENCIES:
   - DoubleConversion (from `../../../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXAppleAuthentication (from `../../../node_modules/expo-apple-authentication/ios`)
+  - EXBlur (from `../../../node_modules/expo-blur/ios`)
   - EXCamera (from `../../../node_modules/expo-camera/ios`)
   - EXConstants (from `../../../node_modules/expo-constants/ios`)
   - EXFileSystem (from `../../../node_modules/expo-file-system/ios`)
@@ -745,6 +748,8 @@ EXTERNAL SOURCES:
     :podspec: "../../../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   EXAppleAuthentication:
     :path: "../../../node_modules/expo-apple-authentication/ios"
+  EXBlur:
+    :path: "../../../node_modules/expo-blur/ios"
   EXCamera:
     :path: "../../../node_modules/expo-camera/ios"
   EXConstants:
@@ -899,6 +904,7 @@ SPEC CHECKSUMS:
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   EXAppleAuthentication: 5b3da71bada29e2423d8ea27e5538ef0d75aba62
+  EXBlur: 84c07f6396daf07125fd1202da48cdf2137c29c5
   EXCamera: 05687ee8f0618820d3b45e54b129a1a535537e8c
   EXConstants: f486f6b4a36b86e47ab258d4d2b7b2699786fdce
   EXFileSystem: afe9b1fd937d30270bf5108ba44e2f4a1d1ad694
