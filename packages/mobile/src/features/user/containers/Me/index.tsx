@@ -16,7 +16,7 @@ const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 const renderItem = ({ item }) => <Post post={item.node} />
 
 function Me() {
-  const { t } = useTranslation(['me', 'select-project'])
+  const { t } = useTranslation(['me', 'select-project', 'edit-collection'])
   const scrollRef = useRef(null)
 
   const {
@@ -53,7 +53,7 @@ function Me() {
                 height: 330,
                 data: [
                   {
-                    title: t('me:add'),
+                    title: t('edit-collection:add'),
                     onPress: navigateToAddPost,
                   },
                   {
