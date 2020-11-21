@@ -1,5 +1,5 @@
 import React, { useRef, useCallback } from 'react'
-import { KeyboardAvoidingView, View } from 'react-native'
+import { KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Layout, FlatList, SCREENS, useScrollToTop, useNavigation } from 'navigation'
 import { usePaginatedQuery, CurrentUserProfileDocument } from '@wrench/common'
@@ -38,9 +38,23 @@ function Me() {
   const navigateAddProject = useCallback(() => showModal(SCREENS.ADD_PROJECT), [])
   const navigateToAddPost = useCallback(() => showModal(SCREENS.ADD_MEDIA), [])
 
-  const hasPosts = edges && edges.length > 0
+  const hasPosts = edges?.length > 0
 
-  const emptyState = user && user.projects.edges.length > 0 ? TYPES.POST : TYPES.PROJECT
+  const emptyState = user?.projects.edges.length > 0 ? TYPES.POST : TYPES.PROJECT
+
+  const addOptions = [
+    {
+      title: t('select-project:create'),
+      onPress: navigateAddProject,
+    },
+  ]
+
+  if (user?.projects.edges.length > 0) {
+    addOptions.push({
+      title: t('edit-collection:add'),
+      onPress: navigateToAddPost,
+    })
+  }
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
@@ -50,17 +64,8 @@ function Me() {
             source={add}
             onPress={() =>
               showHalfpanel({
-                height: 330,
-                data: [
-                  {
-                    title: t('edit-collection:add'),
-                    onPress: navigateToAddPost,
-                  },
-                  {
-                    title: t('select-project:create'),
-                    onPress: navigateAddProject,
-                  },
-                ],
+                height: 270,
+                data: addOptions,
               })
             }
           />

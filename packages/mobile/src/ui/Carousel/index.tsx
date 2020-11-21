@@ -1,7 +1,8 @@
 import React, { memo, useState, useCallback } from 'react'
 import { FlatList, View } from 'react-native'
 import Pinchable from 'react-native-pinchable'
-import Video from 'components/Video'
+import { FILE_TYPES } from 'utils/enums'
+// import Video from 'components/Video'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import Pagination from './Pagination'
 import { Picture, SIZE, GUTTER } from './styles'
@@ -32,11 +33,11 @@ function Carousel({ files }) {
   )
 
   const renderType = (item, index) => {
-    // if (true || item.node.type === 'VIDEO') {
+    // if (true || item.node.type === FILE_TYPES.VIDEO) {
     //   return <Video uri="http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4" size={SIZE} />
     // }
 
-    if (item.node.type === 'IMAGE') {
+    if (item.node.type === FILE_TYPES.IMAGE) {
       return (
         <Picture
           showIndicator

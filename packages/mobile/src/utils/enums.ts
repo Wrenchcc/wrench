@@ -21,6 +21,7 @@ export enum PROJECT_SORT_TYPES {
 
 export enum FILE_TYPES {
   IMAGE = 'IMAGE',
+  VIDEO = 'VIDEO',
 }
 
 export enum TOAST_TYPES {
