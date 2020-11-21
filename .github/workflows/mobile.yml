@@ -24,6 +24,7 @@ jobs:
           tag-prefix: ''
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
           
       - name: Build number
         uses: einaregilsson/build-number@v2 
