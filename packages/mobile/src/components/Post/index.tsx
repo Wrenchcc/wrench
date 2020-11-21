@@ -23,7 +23,7 @@ import { TOAST_TYPES } from 'utils/enums'
 import LikePost from 'components/LikePost'
 import Bookmark from 'components/Bookmark'
 import { share, sparkMega, arrowRightSmall } from 'images'
-import { Base, Top, Headline, Content, Spacer, Row, Collection, Bottom } from './styles'
+import { Base, Top, Left, Headline, Content, Spacer, Row, Collection, Bottom } from './styles'
 
 function Post({ post, withoutTitle, withoutComments, withoutCollections, paddingBottom }) {
   const { t } = useTranslation('post')
@@ -364,13 +364,24 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
   return (
     <Base paddingBottom={paddingBottom}>
       <Top>
-        <Avatar
-          uri={post.user.avatarUrl}
-          onPress={navigateToUser}
-          isOnline={post.user.isOnline}
-          fallback={post.user.isSilhouette}
-          fullName={post.user.fullName}
-        />
+        <Left>
+          <Avatar
+            uri={post.user.avatarUrl}
+            onPress={navigateToUser}
+            isOnline={post.user.isOnline}
+            fallback={post.user.isSilhouette}
+            fullName={post.user.fullName}
+          />
+          <Text
+            medium
+            onPress={navigateToUser}
+            style={{ marginLeft: 10 }}
+            fontSize={14}
+            numberOfLines={1}
+          >
+            {post.user.fullName}
+          </Text>
+        </Left>
         <Icon source={share} onPress={handleActionSheet} hitSlop={20} />
       </Top>
       <Content>

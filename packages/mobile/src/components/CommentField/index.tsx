@@ -29,14 +29,16 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
 
   const query = store.mention.mentionVar()
 
-  const { data } = useCurrentUserQuery()
-
   useEffect(() => {
     if (username) {
       setText(`${MENTION.TRIGGER}${username} `)
       inputRef.current.focus()
     }
   }, [inputRef, username, commentId])
+
+  const { data } = useCurrentUserQuery({
+    fetchPolicy: 'cache-only',
+  })
 
   const handleSubmit = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)

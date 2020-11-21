@@ -11,6 +11,13 @@ export const Top = styled.View`
   align-items: center;
 `
 
+export const Left = styled.View`
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+  margin-right: 60px;
+`
+
 export const Bottom = styled.View`
   flex-direction: row;
 `
