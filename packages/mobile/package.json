@@ -16,7 +16,7 @@
     "copy:locales:android": "node tasks/copy_locales.js"
   },
   "dependencies": {
-    "@apollo/client": "3.3.0-beta.16",
+    "@apollo/client": "^3.3.0-rc.3",
     "@apollo/link-batch-http": "^2.0.0-beta.3",
     "@apollo/link-context": "^2.0.0-beta.3",
     "@apollo/link-error": "^2.0.0-beta.3",

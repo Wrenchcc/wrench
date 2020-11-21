@@ -24,12 +24,13 @@ jobs:
           tag-prefix: ''
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
           
       - name: Build number
         uses: einaregilsson/build-number@v2 
         with:
           token: ${{secrets.GITHUB_TOKEN}} 
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
      
       - name: Upload build number
         uses: actions/upload-artifact@v1
