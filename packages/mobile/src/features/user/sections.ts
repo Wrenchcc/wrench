@@ -170,7 +170,6 @@ const sections = ({ t, ...props }) => {
           {
             title: t('settings:logout'),
             onPress: () => client.clearStore(),
-            important: true,
           },
         ],
       },

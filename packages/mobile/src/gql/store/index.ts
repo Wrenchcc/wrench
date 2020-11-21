@@ -5,6 +5,7 @@ import * as notification from './notification'
 import * as post from './post'
 import * as project from './project'
 import * as toast from './toast'
+import * as video from './video'
 
 export default {
   collection,
@@ -14,4 +15,5 @@ export default {
   post,
   project,
   toast,
+  video,
 }

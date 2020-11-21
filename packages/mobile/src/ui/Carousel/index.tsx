@@ -1,6 +1,7 @@
 import React, { memo, useState, useCallback } from 'react'
 import { FlatList, View } from 'react-native'
 import Pinchable from 'react-native-pinchable'
+import Video from 'components/Video'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import Pagination from './Pagination'
 import { Picture, SIZE, GUTTER } from './styles'
@@ -30,18 +31,30 @@ function Carousel({ files }) {
     [currentIndex, setCurrentIndex]
   )
 
+  const renderType = (item, index) => {
+    // if (true || item.node.type === 'VIDEO') {
+    //   return <Video uri="http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4" size={SIZE} />
+    // }
+
+    if (item.node.type === 'IMAGE') {
+      return (
+        <Picture
+          showIndicator
+          width={SIZE}
+          height={SIZE}
+          source={{ uri: item.node.uri }}
+          priority={index < 2 ? IMAGE_PRIORITY.HIGH : IMAGE_PRIORITY.LOW}
+        />
+      )
+    }
+
+    return null
+  }
+
   const renderItem = useCallback(
     ({ item, index }) => (
       <View key={item.node.uri}>
-        <Pinchable maximumZoomScale={5}>
-          <Picture
-            showIndicator
-            width={SIZE}
-            height={SIZE}
-            source={{ uri: item.node.uri }}
-            priority={index < 2 ? IMAGE_PRIORITY.HIGH : IMAGE_PRIORITY.LOW}
-          />
-        </Pinchable>
+        <Pinchable maximumZoomScale={5}>{renderType(item, index)}</Pinchable>
       </View>
     ),
     []

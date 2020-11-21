@@ -9,7 +9,7 @@ import Header from 'features/user/components/Header'
 import { TYPES } from 'ui/EmptyState/constants'
 import UserProjects from 'features/user/components/UserProjects'
 import { isIphone } from 'utils/platform'
-import { menu } from 'images'
+import { menu, add } from 'images'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
@@ -36,6 +36,7 @@ function Me() {
   const navigateSettings = useCallback(() => navigate(SCREENS.SETTINGS), [])
   const navigateBookmarks = useCallback(() => navigate(SCREENS.BOOKMARKS), [])
   const navigateAddProject = useCallback(() => showModal(SCREENS.ADD_PROJECT), [])
+  const navigateToAddPost = useCallback(() => showModal(SCREENS.ADD_MEDIA), [])
 
   const hasPosts = edges && edges.length > 0
 
@@ -44,7 +45,26 @@ function Me() {
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
       <Layout
-        headerLeft={<View />}
+        headerLeft={
+          <Icon
+            source={add}
+            onPress={() =>
+              showHalfpanel({
+                height: 330,
+                data: [
+                  {
+                    title: t('me:add'),
+                    onPress: navigateToAddPost,
+                  },
+                  {
+                    title: t('select-project:create'),
+                    onPress: navigateAddProject,
+                  },
+                ],
+              })
+            }
+          />
+        }
         headerRight={
           <Icon
             source={menu}
@@ -63,10 +83,6 @@ function Me() {
                   {
                     title: t('bookmarks'),
                     onPress: navigateBookmarks,
-                  },
-                  {
-                    title: t('select-project:create'),
-                    onPress: navigateAddProject,
                   },
                 ],
               })

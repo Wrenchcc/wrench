@@ -13,7 +13,7 @@ fragment Post on Post {
   permissions {
     isOwner
   }
-  files: filesConnection(type: IMAGE) {
+  files: filesConnection {
     edges {
       node {
         id

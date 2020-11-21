@@ -6,6 +6,7 @@ import {
   CurrentUserDocument,
 } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
+import NativeShare from 'react-native-share'
 import { SCREENS, useNavigation, ScrollView } from 'navigation'
 import Header from 'navigation/Page/Header'
 import { ActivityIndicator, Text, Title, Icon, Input, SelectionItem } from 'ui'
@@ -13,7 +14,7 @@ import { close } from 'images'
 import { Inner, Spacing } from './styles'
 
 function EditProject({ project, onDeleteCallback }) {
-  const { t } = useTranslation('edit-project')
+  const { t } = useTranslation(['edit-project', 'share'])
   const { navigate, dismissModal } = useNavigation()
 
   const [editProject] = useEditProjectMutation()
@@ -29,6 +30,13 @@ function EditProject({ project, onDeleteCallback }) {
 
   const onChangeText = useCallback((text) => setTitle(text), [])
   const handleClose = useCallback(() => dismissModal(), [])
+
+  const handleShare = useCallback(() => {
+    NativeShare.open({
+      url: `https://wrench.cc/project/${project.slug}`,
+      title: project.title,
+    }).catch(() => {})
+  }, [project])
 
   const handleEditProject = useCallback(async () => {
     setIsSaving(true)
@@ -167,13 +175,15 @@ function EditProject({ project, onDeleteCallback }) {
         </Inner>
 
         <Inner>
+          <Title>{t('share:share')}</Title>
+          <Spacing large />
+
+          <Text onPress={handleShare}>{t('share:share')}</Text>
+        </Inner>
+
+        <Inner>
           <Title>{t('projectSettings')}</Title>
-          <SelectionItem
-            last
-            important
-            title={t('deleteTitle')}
-            onPress={toggleActionSheet}
-          />
+          <SelectionItem last important title={t('deleteTitle')} onPress={toggleActionSheet} />
         </Inner>
       </ScrollView>
     </>
