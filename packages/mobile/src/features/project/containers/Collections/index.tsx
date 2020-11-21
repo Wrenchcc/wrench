@@ -32,6 +32,8 @@ function Collections({ id, name, projectId, isOwner, projectSlug, slug }) {
   } = usePaginatedQuery(['collections'])(CollectionsDocument, {
     variables: {
       id,
+      slug,
+      projectSlug,
       projectId,
       first: 3,
     },

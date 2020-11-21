@@ -17,6 +17,10 @@ DeepLinking.addRoute('/project/:slug', ({ slug }) => {
   return navigateWithoutContext(SCREENS.PROJECT, { slug })
 })
 
+DeepLinking.addRoute('/project/:projectSlug/collection/:slug', ({ slug, projectSlug }) => {
+  return navigateWithoutContext(SCREENS.COLLECTIONS, { slug, projectSlug })
+})
+
 DeepLinking.addRoute('/post/:id', ({ id }) => {
   return navigateWithoutContext(SCREENS.POST, { postId: id })
 })
