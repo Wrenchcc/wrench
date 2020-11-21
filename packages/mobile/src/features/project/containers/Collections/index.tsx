@@ -2,13 +2,13 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedQuery, CollectionsDocument } from '@wrench/common'
 import { FlatList, Page, useNavigation, SCREENS } from 'navigation'
-import { Text, EmptyState } from 'ui'
+import { Text, EmptyState, Share } from 'ui'
 import Post from 'components/Post'
 import { TYPES } from 'ui/EmptyState/constants'
 
 const renderItem = ({ item }) => <Post post={item.node} withoutCollections />
 
-function Collections({ id, name, projectId, isOwner }) {
+function Collections({ id, name, projectId, isOwner, projectSlug, slug }) {
   const { t } = useTranslation('collections')
   const { showModal, navigateBack } = useNavigation()
 
@@ -18,6 +18,8 @@ function Collections({ id, name, projectId, isOwner }) {
       name,
       projectId,
       onDelete: navigateBack,
+      projectSlug,
+      slug,
     })
 
   const {
@@ -43,10 +45,12 @@ function Collections({ id, name, projectId, isOwner }) {
       headerTitle={name}
       headerAnimation={false}
       headerRight={
-        isOwner && (
+        isOwner ? (
           <Text medium onPress={navigateToEdit}>
             {t('edit')}
           </Text>
+        ) : (
+          <Share text url={`https://wrench.cc/project/${projectSlug}/collection/${slug}`} />
         )
       }
     >

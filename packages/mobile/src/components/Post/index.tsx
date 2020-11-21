@@ -91,10 +91,12 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
   const navigateToCollection = useCallback(
     () =>
       navigate(SCREENS.COLLECTIONS, {
-        name: post?.collection.name,
         id: post.collection.id,
-        projectId: post.project.id,
         isOwner: post.permissions.isOwner,
+        name: post?.collection.name,
+        projectId: post.project.id,
+        projectSlug: post.project.slug,
+        slug: post.collection.slug,
       }),
     [post]
   )

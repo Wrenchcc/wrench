@@ -134,7 +134,7 @@ function ProjectHeader({ project, spacingHorizontal }) {
 
       {!isOwner && <Spacing />}
 
-      <Collections isOwner={isOwner} projectId={project.id} />
+      <Collections isOwner={isOwner} projectId={project.id} projectSlug={project.slug} />
     </Base>
   )
 }

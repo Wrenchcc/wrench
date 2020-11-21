@@ -1,12 +1,13 @@
 import React, { useState, useCallback } from 'react'
 import { useDeleteCollectionMutation, useEditCollectionMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
+import NativeShare from 'react-native-share'
 import { ScrollView, Page, useNavigation, SCREENS } from 'navigation'
 import { ActivityIndicator, Text, Title, Icon, Input, SelectionItem } from 'ui'
 import { close } from 'images'
 import { Inner } from './styles'
 
-function EditCollection({ id, name, projectId, onDelete }) {
+function EditCollection({ id, name, projectId, projectSlug, slug, onDelete }) {
   const { t } = useTranslation('edit-collection')
   const [isSaving, setIsSaving] = useState(false)
   const { dismissModal, showModal } = useNavigation()
@@ -25,6 +26,13 @@ function EditCollection({ id, name, projectId, onDelete }) {
       }),
     []
   )
+
+  const handleShare = useCallback(() => {
+    console.log(`https://wrench.cc/project/${projectSlug}/collection/${slug}`)
+    NativeShare.open({
+      url: `https://wrench.cc/project/${projectSlug}/collection/${slug}`,
+    }).catch(() => {})
+  }, [])
 
   const handleDismiss = () => dismissModal()
 
@@ -97,6 +105,8 @@ function EditCollection({ id, name, projectId, onDelete }) {
               onSubmitEditing={() => {}}
               returnKeyType="done"
             />
+
+            <SelectionItem title={t('share:share')} onPress={handleShare} />
             <SelectionItem title={t('add')} onPress={navigateToAddPosts} />
             <SelectionItem important title={t('delete')} onPress={handleDelete} />
           </Inner>

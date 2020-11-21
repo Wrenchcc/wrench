@@ -5,7 +5,15 @@ import AddCollection from 'components/AddCollection'
 import Placeholder from './Placeholder'
 import { Collection, GUTTER } from './styles'
 
-function Collections({ isOwner, projectId, onPress, onSave, selectedId, disableModal = false }) {
+function Collections({
+  isOwner,
+  projectId,
+  projectSlug,
+  onPress,
+  onSave,
+  selectedId,
+  disableModal = false,
+}) {
   const {
     data: { edges },
     isFetching,
@@ -35,7 +43,9 @@ function Collections({ isOwner, projectId, onPress, onSave, selectedId, disableM
       key={node.id}
       last={index === edges && edges.length - 1}
       projectId={projectId}
+      projectSlug={projectSlug}
       id={node.id}
+      slug={node.slug}
       selected={node.id === selectedId}
       onPress={onPress}
       isOwner={isOwner}
