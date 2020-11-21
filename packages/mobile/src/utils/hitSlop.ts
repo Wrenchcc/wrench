@@ -1,4 +1,4 @@
-export default number => ({
+export default (number) => ({
   top: number,
   right: number,
   bottom: number,
