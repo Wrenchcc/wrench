@@ -15,10 +15,11 @@ const InAppNotificationMessage: React.FunctionComponent<InAppNotificationMessage
   title,
   avatarUrl,
   onFadeOutAnimationEnd,
-}: InAppNotificationMessageProps) => (
-  <AnimationWrapper onFadeOut={onFadeOutAnimationEnd} visible={visible} onPress={onPress}>
-    <MessageLayout body={body} title={title} avatarUrl={avatarUrl} />
-  </AnimationWrapper>
-)
+}: InAppNotificationMessageProps) => null
+//  (
+//   <AnimationWrapper onFadeOut={onFadeOutAnimationEnd} visible={visible} onPress={onPress}>
+//     <MessageLayout body={body} title={title} avatarUrl={avatarUrl} />
+//   </AnimationWrapper>
+// )
 
 export default InAppNotificationMessage

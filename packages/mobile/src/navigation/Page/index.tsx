@@ -22,13 +22,13 @@ function Page({
 
   const scrollToTop = useCallback(() => {
     if (scrollRef.current) {
-      scrollRef.current.getNode().scrollToOffset({ offset: -NAVIGATION.LIST_OFFSET })
+      scrollRef.current.scrollToOffset({ offset: -NAVIGATION.LIST_OFFSET })
     }
   }, [scrollRef])
 
   useEffect(() => {
     if (scrollToIndex && scrollRef.current) {
-      scrollRef.current.getNode().scrollToOffset({ top: 600 })
+      scrollRef.current.scrollToOffset({ top: 600 })
     }
   }, [scrollRef, scrollToIndex])
 
