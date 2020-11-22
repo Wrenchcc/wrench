@@ -1,0 +1,414 @@
+import React, { useRef, useState, useCallback, useEffect } from 'react'
+import { ActivityIndicator, View, TouchableOpacity, Text } from 'react-native'
+import Animated, {
+  useSharedValue,
+  useDerivedValue,
+  interpolate,
+  withTiming,
+  useAnimatedStyle,
+  useAnimatedGestureHandler,
+  useAnimatedScrollHandler,
+} from 'react-native-reanimated'
+import { PanGestureHandler, FlatList } from 'react-native-gesture-handler'
+import { clamp, snapPoint } from 'react-native-redash'
+// import * as Permissions from 'expo-permissions'
+import * as MediaLibrary from 'expo-media-library'
+import { Video } from 'expo-av'
+import Item, { MARGIN, ITEM_SIZE } from '../Item'
+import Header from '../Header'
+import ImageEditor from '../ImageEditor'
+import Albums from '../Albums'
+import {
+  HEADER_HEIGHT,
+  CROP_FULLY_DOWN,
+  INITIAL_PAGE_SIZE,
+  PAGE_SIZE,
+  CROP_FULLY_UP,
+  TIMING_DURATION,
+  CROP_AREA,
+  DRAG_BAR,
+  TAB_BAR_HEIGHT,
+  ALBUM_FULLY_DOWN,
+  ALBUM_FULLY_UP,
+} from '../constants'
+
+const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
+
+function Library({ active, animatedValue, setAlert }) {
+  const videoRef = useRef(null)
+  const cropAreaY = useSharedValue(CROP_FULLY_DOWN)
+  const translationY = useSharedValue(0)
+  const albumTranslateY = useSharedValue(ALBUM_FULLY_DOWN)
+  const isUp = useSharedValue(false)
+  const rotation = useSharedValue(0)
+  const headerOpacity = useSharedValue(1)
+
+  const [selectedAlbum, setSelectedAlbum] = useState(null)
+  const [isPaused, setPaused] = useState(false)
+  const [selectedFile, selectFile] = useState([])
+  const [assets, setAssets] = useState([])
+  const [hasNextPage, setHasNextPage] = useState(true)
+  const [endCursor, setEndCursor] = useState()
+  const [lastEndCursor, setLastEndCursor] = useState()
+
+  useEffect(() => {
+    // ;(async () => {
+    //   // Permissions.askAsync(Permissions.CAMERA_ROLL)
+    // })()
+
+    fetchInitialAssets()
+  }, [])
+
+  useEffect(() => {
+    // if (active && !isPaused) {
+    //   videoRef?.current?.playAsync()
+    // } else {
+    //   videoRef?.current?.pauseAsync()
+    // }
+  }, [active, videoRef, isPaused])
+
+  const fetchInitialAssets = useCallback(async (album) => {
+    try {
+      const result = await MediaLibrary.getAssetsAsync({
+        first: INITIAL_PAGE_SIZE,
+        album: album?.id || null,
+        mediaType: [MediaLibrary.MediaType.photo, MediaLibrary.MediaType.video],
+        sortBy: MediaLibrary.SortBy.creationTime,
+      })
+
+      selectFile(result.assets[0])
+
+      setAssets(result.assets)
+      setHasNextPage(result.hasNextPage)
+      setEndCursor(result.endCursor)
+    } catch {}
+  }, [])
+
+  const fetchMoreAssets = useCallback(
+    async (after) => {
+      if (!hasNextPage) {
+        return
+      }
+
+      // NOTE: Dirty fix for fetching same data
+      setLastEndCursor(after)
+
+      try {
+        const result = await MediaLibrary.getAssetsAsync({
+          after,
+          album: selectedAlbum.id,
+          first: PAGE_SIZE,
+          sortBy: [[MediaLibrary.SortBy.creationTime, false]],
+        })
+
+        // NOTE: Dirty fix for fetching same data
+        if (after !== lastEndCursor) {
+          setAssets((p) => p.concat(result.assets))
+        }
+
+        setHasNextPage(result.hasNextPage)
+        setEndCursor(result.endCursor)
+      } catch (err) {
+        // logError(err)
+      }
+    },
+    [hasNextPage, setAssets, setHasNextPage, setEndCursor, lastEndCursor, selectedAlbum]
+  )
+
+  const handleChangeAlbum = (album) => {
+    handleToggleAlbum()
+    setSelectedAlbum(album)
+    fetchInitialAssets(album)
+  }
+
+  const handleToggleAlbum = () => {
+    const toggleValue = (isUp.value = !isUp.value)
+
+    rotation.value = withTiming(toggleValue ? 180 : 0, {
+      duration: TIMING_DURATION,
+    })
+
+    headerOpacity.value = withTiming(toggleValue ? 0 : 1, {
+      duration: TIMING_DURATION,
+    })
+
+    animatedValue.value = withTiming(toggleValue ? TAB_BAR_HEIGHT : 0, {
+      duration: TIMING_DURATION / 1.5,
+    })
+
+    albumTranslateY.value = withTiming(toggleValue ? ALBUM_FULLY_UP : ALBUM_FULLY_DOWN, {
+      duration: TIMING_DURATION,
+    })
+  }
+
+  const handleToggleVideo = () => {
+    setPaused(!isPaused)
+
+    // if (isPaused) {
+    //   videoRef.current.playAsync()
+    // } else {
+    //   videoRef.current.pauseAsync()
+    // }
+  }
+
+  const handleCancel = () => {
+    setAlert({
+      visible: true,
+      type: 'library',
+      onDiscard: () => {},
+    })
+  }
+
+  const onEndReached = useCallback(() => {
+    if (hasNextPage) {
+      fetchMoreAssets(endCursor)
+    }
+  }, [hasNextPage, endCursor, fetchMoreAssets])
+
+  const scrollHandler = useAnimatedScrollHandler((event) => {
+    translationY.value = event.contentOffset.y
+  })
+
+  const gestureHandler = useAnimatedGestureHandler({
+    onStart: (_, ctx) => {
+      ctx.startY = cropAreaY.value;
+    },
+    onActive: (event, ctx) => {
+      cropAreaY.value = clamp(
+        ctx.startY + event.translationY,
+        CROP_FULLY_UP,
+        CROP_FULLY_DOWN
+      );
+    },
+    onEnd: (event) => {
+      cropAreaY.value = withTiming(
+        snapPoint(cropAreaY.value * 1.7, event.velocityX, [
+          CROP_FULLY_UP,
+          CROP_FULLY_DOWN,
+        ]),
+        {
+          duration: TIMING_DURATION,
+        }
+      );
+    },
+  });
+
+  const handleOnselect = (item) => {
+    selectFile(item)
+    setPaused(false)
+
+    cropAreaY.value = withTiming(CROP_FULLY_DOWN, {
+      duration: TIMING_DURATION,
+    })
+  }
+
+  const opacity = useDerivedValue(() => {
+    return interpolate(cropAreaY.value, [CROP_FULLY_DOWN, CROP_FULLY_UP], [0, 0.5])
+  })
+
+  const spacing = useDerivedValue(() => {
+    if (Math.abs(CROP_FULLY_UP) > translationY.value) {
+      return CROP_AREA - DRAG_BAR - Math.abs(cropAreaY.value) + HEADER_HEIGHT
+    }
+  })
+
+  const cropAreaStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateY: cropAreaY.value,
+        },
+      ],
+    }
+  })
+
+  const opacityStyle = useAnimatedStyle(() => ({
+    opacity: opacity.value,
+  }))
+
+  const spacingStyle = useAnimatedStyle(() => ({
+    height: spacing.value,
+  }))
+
+  const arrowStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ rotateZ: `${rotation.value}deg` }],
+    }
+  })
+
+  const headerLeftStyle = useAnimatedStyle(() => ({
+    opacity: headerOpacity.value,
+  }))
+
+  const headerRightStyle = useAnimatedStyle(() => ({
+    opacity: headerOpacity.value,
+  }))
+
+  const renderFooter = useCallback(() => {
+    if (hasNextPage && assets.length) {
+      return (
+        <View style={{ paddingTop: 30, paddingBottom: 30 }}>
+          <ActivityIndicator color="white" />
+        </View>
+      )
+    }
+
+    return null
+  }, [hasNextPage, assets])
+
+  return (
+    <>
+      <View style={{ flex: 1, backgroundColor: 'black' }}>
+        <Animated.View
+          style={[
+            {
+              position: 'absolute',
+              zIndex: 1000,
+              width: CROP_AREA,
+              height: CROP_AREA + HEADER_HEIGHT,
+              backgroundColor: '#222',
+            },
+            cropAreaStyle,
+          ]}
+        >
+          <Header
+            headerLeftStyle={headerLeftStyle}
+            headerRightStyle={headerRightStyle}
+            arrowStyle={arrowStyle}
+            selectedAlbum={selectedAlbum}
+            toggleAlbum={handleToggleAlbum}
+            headerLeft={
+              <TouchableOpacity onPress={handleCancel}>
+                <Text
+                  style={{
+                    color: 'white',
+                    margin: 8,
+                    fontWeight: '500',
+                    fontSize: 16,
+                  }}
+                >
+                  Cancel
+                </Text>
+              </TouchableOpacity>
+            }
+            headerRight={
+              <TouchableOpacity onPress={() => alert('Go to post')} disabled={!selectedFile}>
+                <Text
+                  style={{
+                    color: 'white',
+                    margin: 8,
+                    fontWeight: '500',
+                    fontSize: 16,
+                    opacity: !selectedFile ? 0.5 : 1,
+                  }}
+                >
+                  Next
+                </Text>
+              </TouchableOpacity>
+            }
+            animatedValue={animatedValue}
+          />
+
+          {selectedFile.mediaType === 'video' ? (
+            <TouchableOpacity
+              activeOpacity={1}
+              onPress={handleToggleVideo}
+              style={{
+                width: CROP_AREA,
+                height: CROP_AREA,
+                position: 'absolute',
+                top: HEADER_HEIGHT,
+              }}
+            >
+              <Video
+                ref={videoRef}
+                style={{
+                  flex: 1,
+                }}
+                source={selectedFile}
+                isMuted
+                resizeMode="cover"
+                shouldPlay
+                isLooping
+              />
+
+              {/* {isPaused && (
+                <Image
+                  source={require('../../../assets/play.png')}
+                  style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    marginLeft: -12,
+                    marginTop: -12,
+                  }}
+                />
+              )} */}
+            </TouchableOpacity>
+          ) : (
+            <ImageEditor source={selectedFile} />
+          )}
+          <Animated.View
+            pointerEvents="none"
+            style={[
+              {
+                position: 'absolute',
+                zIndex: 1,
+                top: HEADER_HEIGHT,
+                width: CROP_AREA,
+                height: CROP_AREA,
+                backgroundColor: '#000',
+              },
+              opacityStyle,
+            ]}
+          />
+
+          <PanGestureHandler onGestureEvent={gestureHandler}>
+            <Animated.View
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                zIndex: 100,
+                width: '100%',
+                height: DRAG_BAR,
+              }}
+            />
+          </PanGestureHandler>
+        </Animated.View>
+
+        <Animated.View style={{ flex: 1, marginTop: DRAG_BAR, marginBottom: TAB_BAR_HEIGHT }}>
+          <AnimatedFlatList
+            ListHeaderComponent={<Animated.View style={[{ width: '100%' }, spacingStyle]} />}
+            onScroll={scrollHandler}
+            scrollEventThrottle={1}
+            automaticallyAdjustContentInsets={false}
+            numColumns={4}
+            windowSize={17}
+            ListFooterComponent={renderFooter}
+            data={assets}
+            keyExtractor={(item) => item.id}
+            initialNumToRender={PAGE_SIZE}
+            style={{ marginLeft: -MARGIN }}
+            getItemLayout={(_, index) => ({
+              length: ITEM_SIZE,
+              offset: ITEM_SIZE * index,
+              index,
+            })}
+            renderItem={({ item }) => (
+              <Item onPress={handleOnselect} item={item} selected={selectedFile.id === item.id} />
+            )}
+            onEndReached={onEndReached}
+          />
+        </Animated.View>
+      </View>
+
+      <Albums
+        onPress={handleChangeAlbum}
+        setInitialAlbum={setSelectedAlbum}
+        translateY={albumTranslateY}
+      />
+    </>
+  )
+}
+
+export default Library
