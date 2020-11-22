@@ -14,6 +14,8 @@ PODS:
     - UMCore
     - UMFileSystemInterface
     - UMPermissionsInterface
+  - EXBlur (8.2.0):
+    - UMCore
   - EXCamera (9.0.0):
     - UMBarCodeScannerInterface
     - UMCore
@@ -532,7 +534,7 @@ PODS:
     - React-Core
   - RNPermissions (2.2.2):
     - React-Core
-  - RNReanimated (2.0.0-alpha.9):
+  - RNReanimated (2.0.0-alpha.9.1):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -566,9 +568,9 @@ PODS:
     - Sentry (= 6.0.9)
   - RNShare (4.1.0):
     - React-Core
-  - SDWebImage (5.9.5):
-    - SDWebImage/Core (= 5.9.5)
-  - SDWebImage/Core (5.9.5)
+  - SDWebImage (5.10.0):
+    - SDWebImage/Core (= 5.10.0)
+  - SDWebImage/Core (5.10.0)
   - SDWebImageWebPCoder (0.6.1):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.7)
@@ -598,6 +600,7 @@ DEPENDENCIES:
   - DoubleConversion (from `../../../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXAppleAuthentication (from `../../../node_modules/expo-apple-authentication/ios`)
   - EXAV (from `../../../node_modules/expo-av/ios`)
+  - EXBlur (from `../../../node_modules/expo-blur/ios`)
   - EXCamera (from `../../../node_modules/expo-camera/ios`)
   - EXConstants (from `../../../node_modules/expo-constants/ios`)
   - EXFileSystem (from `../../../node_modules/expo-file-system/ios`)
@@ -743,6 +746,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/expo-apple-authentication/ios"
   EXAV:
     :path: "../../../node_modules/expo-av/ios"
+  EXBlur:
+    :path: "../../../node_modules/expo-blur/ios"
   EXCamera:
     :path: "../../../node_modules/expo-camera/ios"
   EXConstants:
@@ -896,6 +901,7 @@ SPEC CHECKSUMS:
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   EXAppleAuthentication: 5b3da71bada29e2423d8ea27e5538ef0d75aba62
   EXAV: 1f679b57367f8889b5ea15067413c9e2d95039fb
+  EXBlur: 84c07f6396daf07125fd1202da48cdf2137c29c5
   EXCamera: 05687ee8f0618820d3b45e54b129a1a535537e8c
   EXConstants: f486f6b4a36b86e47ab258d4d2b7b2699786fdce
   EXFileSystem: afe9b1fd937d30270bf5108ba44e2f4a1d1ad694
@@ -980,10 +986,10 @@ SPEC CHECKSUMS:
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNPermissions: 5df468064df661a4c8c017e2791ce90d7695eea5
-  RNReanimated: 51c39025c22b505646c853544600b28f3172cdb5
+  RNReanimated: 134a90b150d6ced792147229cc57f221bede860e
   RNSentry: 5ebc2926dbcbb9b77857ba6df0754a869037123d
   RNShare: 106a76243ac90f43ddb9028dcb78ade406b8adff
-  SDWebImage: 0b2ba0d56479bf6a45ecddbfd5558bea93150d25
+  SDWebImage: 9169792e9eec3e45bba2a0c02f74bf8bd922d1ee
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   Sentry: 388c9dc093b2fd3a264466a5c5b21e25959610a9
   UMAppLoader: 5db5dc03176c6238da9c8b3657a370137882a4ad
