@@ -46,8 +46,7 @@ export default function createNavigationAwareScrollable(Component) {
     useEffect(() => {
       const keyboardEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, () => {
         const currentlyFocusedInput = findNodeHandle(TextInput.State.currentlyFocusedInput())
-        const scrollResponder =
-          scrollRef.current && scrollRef.current.getNode().getScrollResponder()
+        const scrollResponder = scrollRef.current.getScrollResponder()
 
         if (!scrollResponder || !currentlyFocusedInput) {
           return

@@ -10,7 +10,7 @@ const {
   clockRunning,
   cond,
   eq,
-  interpolate,
+  interpolateNode,
   set,
   startClock,
   stopClock,
@@ -86,7 +86,7 @@ export const useSetTimeout = ({
     []
   )
 
-  const ready = interpolate(timer.clock, {
+  const ready = interpolateNode(timer.clock, {
     inputRange: [timer.start, add(timer.start, timeout)],
     outputRange: [0, 1],
     extrapolate: Extrapolate.CLAMP,
