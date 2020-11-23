@@ -9,15 +9,20 @@ import Animated, {
   withTiming,
   withDelay,
 } from 'react-native-reanimated'
+import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { Camera } from 'expo-camera'
 import { Video as VideoPlayer } from 'expo-av'
 import { BlurView } from 'expo-blur'
 import { useNavigation } from 'navigation'
+import { isIphone } from 'utils/platform'
+import AskForPermission from 'components/AskForPermission'
 import Header from '../Header'
 import { CAMERA_SIZE, TAB_BAR_HEIGHT, TIMING_DURATION, MAX_DURATION } from '../constants'
 import { formatTime } from '../utils'
 
 const AnimatedBlurView = Animated.createAnimatedComponent(BlurView)
+
+const PERMISSION = isIphone ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
 
 function Video({ active, animatedValue, setAlert }) {
   const cameraRef = useRef(null)
@@ -32,31 +37,36 @@ function Video({ active, animatedValue, setAlert }) {
   const fadeOpacity = useSharedValue(0)
   const { dismissModal } = useNavigation()
 
+  const [isLoading, setLoading] = useState(true)
+  const [permission, setPermission] = useState('')
   const [mediaType, setMediaType] = useState(null)
   const [video, setVideo] = useState(null)
   const [picture, setPicture] = useState(null)
   const [shouldDelete, setDelete] = useState(false)
-  // const [hasPermission, setHasPermission] = useState(null);
   const [isRecording, setIsRecording] = useState(false)
   const [seconds, setSeconds] = useState(0)
   const [type, setType] = useState(Camera.Constants.Type.back)
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const { status } = await Camera.requestPermissionsAsync();
-  //     setHasPermission(status === 'granted');
-  //   })();
-  // }, []);
+  useEffect(() => {
+    check(PERMISSION).then((response) => {
+      setLoading(false)
+      setPermission(response)
+    })
+  }, [])
 
   useEffect(() => {
     InteractionManager.runAfterInteractions(() => {
       if (active) {
-        cameraRef.current.resumePreview()
+        if (cameraRef.current) {
+          cameraRef.current.resumePreview()
+        }
         fadeOpacity.value = withTiming(0, {
           duration: TIMING_DURATION,
         })
       } else {
-        cameraRef.current.pausePreview()
+        if (cameraRef.current) {
+          cameraRef.current.pausePreview()
+        }
         fadeOpacity.value = withTiming(1, {
           duration: TIMING_DURATION,
         })
@@ -102,6 +112,8 @@ function Video({ active, animatedValue, setAlert }) {
     }
     return () => clearInterval(interval)
   }, [isRecording, seconds, cameraRef])
+
+  const handlePermission = useCallback(() => setPermission(RESULTS.GRANTED), [])
 
   const handleCameraType = useCallback(() => {
     setType(
@@ -240,7 +252,7 @@ function Video({ active, animatedValue, setAlert }) {
     }
   }
 
-  const handleOnCancel = () => {
+  const handleCancel = () => {
     if (!!video || !!picture) {
       setAlert({
         visible: true,
@@ -294,6 +306,35 @@ function Video({ active, animatedValue, setAlert }) {
     opacity: fadeOpacity.value,
   }))
 
+  if (isLoading) {
+    return null
+  }
+
+  if (permission !== RESULTS.GRANTED) {
+    return (
+      <>
+        <AskForPermission permission={PERMISSION} onSuccess={handlePermission} type="camera" />
+
+        <Header
+          headerLeft={
+            <TouchableOpacity onPress={handleCancel}>
+              <Text
+                style={{
+                  color: 'white',
+                  margin: 8,
+                  fontWeight: '500',
+                  fontSize: 16,
+                }}
+              >
+                Cancel
+              </Text>
+            </TouchableOpacity>
+          }
+        />
+      </>
+    )
+  }
+
   return (
     <View style={{ flex: 1 }}>
       <Header
@@ -303,7 +344,7 @@ function Video({ active, animatedValue, setAlert }) {
             <Animated.View
               style={[{ bottom: -17, position: 'absolute', zIndex: 999 }, opacityCancelStyle]}
             >
-              <TouchableOpacity onPress={handleOnCancel}>
+              <TouchableOpacity onPress={handleCancel}>
                 <Text
                   style={{
                     color: 'white',

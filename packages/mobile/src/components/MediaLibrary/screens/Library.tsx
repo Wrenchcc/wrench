@@ -12,8 +12,11 @@ import Animated, {
 import { PanGestureHandler, FlatList } from 'react-native-gesture-handler'
 import { clamp, snapPoint } from 'react-native-redash'
 // import * as Permissions from 'expo-permissions'
+import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import * as MediaLibrary from 'expo-media-library'
 import { Video } from 'expo-av'
+import AskForPermission from 'components/AskForPermission'
+import { isIphone, isAndroid } from 'utils/platform'
 import Item, { MARGIN, ITEM_SIZE } from '../Item'
 import Header from '../Header'
 import ImageEditor from '../ImageEditor'
@@ -32,6 +35,12 @@ import {
   ALBUM_FULLY_UP,
 } from '../constants'
 
+const PERMISSION = isIphone
+  ? PERMISSIONS.IOS.PHOTO_LIBRARY
+  : PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE
+
+const WRITE_EXTERNAL_STORAGE_PERMISSION = PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE
+
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
 function Library({ active, animatedValue, setAlert }) {
@@ -43,6 +52,9 @@ function Library({ active, animatedValue, setAlert }) {
   const rotation = useSharedValue(0)
   const headerOpacity = useSharedValue(1)
 
+  const [isLoading, setLoading] = useState(true)
+  const [checkingPermission, setCheckingPermission] = useState(true)
+  const [photoPermission, setPhotoPermission] = useState('')
   const [selectedAlbum, setSelectedAlbum] = useState(null)
   const [isPaused, setPaused] = useState(false)
   const [selectedFile, selectFile] = useState([])
@@ -52,9 +64,21 @@ function Library({ active, animatedValue, setAlert }) {
   const [lastEndCursor, setLastEndCursor] = useState()
 
   useEffect(() => {
-    // ;(async () => {
-    //   // Permissions.askAsync(Permissions.CAMERA_ROLL)
-    // })()
+    check(PERMISSION).then((res) => {
+      setLoading(false)
+      setPhotoPermission(res)
+      setCheckingPermission(false)
+    })
+
+    // NOTE: For saving image
+    if (isAndroid) {
+      check(WRITE_EXTERNAL_STORAGE_PERMISSION).then((res) => {
+        // NOTE: Need to ask for permission here
+        if (res !== RESULTS.GRANTED) {
+          request(WRITE_EXTERNAL_STORAGE_PERMISSION)
+        }
+      })
+    }
 
     fetchInitialAssets()
   }, [])
@@ -67,12 +91,17 @@ function Library({ active, animatedValue, setAlert }) {
     // }
   }, [active, videoRef, isPaused])
 
+  const permissionAuthorized = useCallback(() => {
+    setPhotoPermission(RESULTS.GRANTED)
+  }, [setPhotoPermission])
+
   const fetchInitialAssets = useCallback(async (album) => {
     try {
       const result = await MediaLibrary.getAssetsAsync({
         first: INITIAL_PAGE_SIZE,
         album: album?.id || null,
-        mediaType: [MediaLibrary.MediaType.photo, MediaLibrary.MediaType.video],
+        // mediaType: [MediaLibrary.MediaType.photo, MediaLibrary.MediaType.video],
+        mediaType: [MediaLibrary.MediaType.photo],
         sortBy: MediaLibrary.SortBy.creationTime,
       })
 
@@ -171,27 +200,20 @@ function Library({ active, animatedValue, setAlert }) {
 
   const gestureHandler = useAnimatedGestureHandler({
     onStart: (_, ctx) => {
-      ctx.startY = cropAreaY.value;
+      ctx.startY = cropAreaY.value
     },
     onActive: (event, ctx) => {
-      cropAreaY.value = clamp(
-        ctx.startY + event.translationY,
-        CROP_FULLY_UP,
-        CROP_FULLY_DOWN
-      );
+      cropAreaY.value = clamp(ctx.startY + event.translationY, CROP_FULLY_UP, CROP_FULLY_DOWN)
     },
     onEnd: (event) => {
       cropAreaY.value = withTiming(
-        snapPoint(cropAreaY.value * 1.7, event.velocityX, [
-          CROP_FULLY_UP,
-          CROP_FULLY_DOWN,
-        ]),
+        snapPoint(cropAreaY.value * 1.7, event.velocityX, [CROP_FULLY_UP, CROP_FULLY_DOWN]),
         {
           duration: TIMING_DURATION,
         }
-      );
+      )
     },
-  });
+  })
 
   const handleOnselect = (item) => {
     selectFile(item)
@@ -255,6 +277,35 @@ function Library({ active, animatedValue, setAlert }) {
 
     return null
   }, [hasNextPage, assets])
+
+  if (checkingPermission || isLoading) {
+    return null
+  }
+
+  if (photoPermission !== RESULTS.GRANTED) {
+    return (
+      <>
+        <AskForPermission permission={PERMISSION} onSuccess={permissionAuthorized} type="photo" />
+
+        <Header
+          headerLeft={
+            <TouchableOpacity onPress={handleCancel}>
+              <Text
+                style={{
+                  color: 'white',
+                  margin: 8,
+                  fontWeight: '500',
+                  fontSize: 16,
+                }}
+              >
+                Cancel
+              </Text>
+            </TouchableOpacity>
+          }
+        />
+      </>
+    )
+  }
 
   return (
     <>
