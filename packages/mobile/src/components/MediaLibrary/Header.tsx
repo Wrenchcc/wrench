@@ -1,7 +1,8 @@
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import Animated from 'react-native-reanimated';
-import { HEADER_HEIGHT } from './constants';
+import React from 'react'
+import { View, Text, TouchableOpacity } from 'react-native'
+import Animated from 'react-native-reanimated'
+import { HEADER_HEIGHT } from './constants'
+import { arrowDown } from 'images'
 
 function Header({
   headerTitle,
@@ -32,9 +33,7 @@ function Header({
             flex: 1,
           }}
         >
-          <Animated.View style={[{ width: 70 }, headerLeftStyle]}>
-            {headerLeft}
-          </Animated.View>
+          <Animated.View style={[{ width: 70 }, headerLeftStyle]}>{headerLeft}</Animated.View>
 
           {headerTitle ? (
             <Text
@@ -48,39 +47,36 @@ function Header({
               {headerTitle}
             </Text>
           ) : (
-            <TouchableOpacity
-              onPress={toggleAlbum}
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <Text
+            selectedAlbum && (
+              <TouchableOpacity
+                onPress={toggleAlbum}
                 style={{
-                  color: 'white',
-                  margin: 8,
-                  fontWeight: '600',
-                  fontSize: 16,
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
               >
-                {selectedAlbum?.title}
-              </Text>
+                <Text
+                  style={{
+                    color: 'white',
+                    margin: 8,
+                    fontWeight: '600',
+                    fontSize: 16,
+                  }}
+                >
+                  {selectedAlbum?.title}
+                </Text>
 
-              {/* <Animated.Image
-                source={require('../../assets/chevronDown.png')}
-                style={[{ tintColor: 'white' }, arrowStyle]}
-              /> */}
-            </TouchableOpacity>
+                <Animated.Image source={arrowDown} style={[{ tintColor: 'white' }, arrowStyle]} />
+              </TouchableOpacity>
+            )
           )}
 
-          <Animated.View style={[{ width: 60 }, headerRightStyle]}>
-            {headerRight}
-          </Animated.View>
+          <Animated.View style={[{ width: 60 }, headerRightStyle]}>{headerRight}</Animated.View>
         </View>
       </View>
     </>
-  );
+  )
 }
 
-export default Header;
+export default Header
