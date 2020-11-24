@@ -15,10 +15,10 @@ target 'Wrench' do
   
   use_react_native!(:path => "#{root_path}/react-native", :hermes_enabled => true)
 
-  # permissions_path = "#{root_path}/react-native-permissions/ios"
-  # pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
-  # pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone.podspec"
-  # pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
+  permissions_path = "#{root_path}/react-native-permissions/ios"
+  pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
+  pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone.podspec"
+  pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
 
   # Required by Facebook
   pod 'FBSDKCoreKit'
