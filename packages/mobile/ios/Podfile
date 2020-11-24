@@ -14,11 +14,12 @@ target 'Wrench' do
   config = use_native_modules!
   
   use_react_native!(:path => "#{root_path}/react-native")
+  # use_react_native!(:path => config[:reactNativePath])
 
-  permissions_path = "#{root_path}/react-native-permissions/ios"
-  pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
-  pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone.podspec"
-  pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
+  # permissions_path = "#{root_path}/react-native-permissions/ios"
+  # pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
+  # pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone.podspec"
+  # pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
 
   # Required by Facebook
   pod 'FBSDKCoreKit'
@@ -39,6 +40,10 @@ target 'Wrench' do
       'unimodules-task-manager-interface'
     ]
   )
+
+  # pre_install do |installer|
+  #   codegen_pre_install(installer)
+  # end
   
   # Enables Flipper.
   #

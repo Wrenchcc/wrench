@@ -8,6 +8,7 @@ const config = {
       return {
         transform: {
           experimentalImportSupport: true,
+          inlineRequires: true,
         },
       }
     },
