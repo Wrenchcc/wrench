@@ -1,6 +1,6 @@
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
-platform :ios, '11.0'
+platform :ios, '9.0'
 
 root_path = "../../../node_modules"
 
@@ -59,7 +59,7 @@ target 'Wrench' do
       # - https://apontious.com/2020/08/23/arm-wrestling-your-ios-simulator-builds/
       config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
     end
-    
+
     flipper_post_install(installer)
   end
 end
