@@ -12,7 +12,7 @@
     "@apollo/react-hooks": "^4.0.0",
     "graphql": "^15.3.0",
     "rambda": "^6.2.0",
-    "react": "^16.13.1"
+    "react": "^17.0.1"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.17.10",

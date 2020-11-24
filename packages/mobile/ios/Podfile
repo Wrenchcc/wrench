@@ -13,7 +13,7 @@ install! 'cocoapods', :deterministic_uuids => false
 target 'Wrench' do
   config = use_native_modules!
   
-  use_react_native!(:path => "#{root_path}/react-native")
+  use_react_native!(:path => "#{root_path}/react-native", :hermes_enabled => true)
 
   permissions_path = "#{root_path}/react-native-permissions/ios"
   pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
@@ -39,6 +39,10 @@ target 'Wrench' do
       'unimodules-task-manager-interface'
     ]
   )
+
+  pre_install do |installer|
+    codegen_pre_install(installer, :path => "#{root_path}/react-native")
+  end
   
   # Enables Flipper.
   #

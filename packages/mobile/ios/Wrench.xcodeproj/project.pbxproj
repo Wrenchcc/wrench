@@ -228,6 +228,7 @@
 				221ED1C8FA630DD86F6ADFE4 /* [CP] Copy Pods Resources */,
 				8529B91D924A44ECAC981A2A /* Upload Debug Symbols to Sentry */,
 				4558DBA22236B2D5C67C8CFB /* [CP-User] [RNFB] Core Configuration */,
+				0573B7AAFF6870806E1F0809 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -341,6 +342,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export BUNDLE_COMMAND=\"ram-bundle\"\nexport NODE_BINARY=node\nexport EXTRA_PACKAGER_ARGS=\"--entry-file packages/mobile/index.js\"\nexport SENTRY_PROPERTIES=sentry.properties \\\n\nexport PROJECT_ROOT=$PWD/..\n\n../../../node_modules/@sentry/cli/bin/sentry-cli react-native xcode \\\n  ../../../node_modules/react-native/scripts/react-native-xcode.sh\n";
+		};
+		0573B7AAFF6870806E1F0809 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wrench/Pods-Wrench-frameworks.sh",
+				"${PODS_ROOT}/hermes-engine/destroot/Library/Frameworks/iphoneos/hermes.framework",
+				"${PODS_ROOT}/hermes-engine/destroot/Library/Frameworks/iphoneos/hermes.framework.dSYM",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/hermes.framework.dSYM",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wrench/Pods-Wrench-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		0AF81E7812D4CC4727DD7D92 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
