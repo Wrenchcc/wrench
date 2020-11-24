@@ -585,20 +585,20 @@ PODS:
 
 DEPENDENCIES:
   - DoubleConversion (from `../../../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
-  - "EXAppleAuthentication (from `../../../node_modules/@wrench/mobile/node_modules/expo-apple-authentication/ios`)"
-  - "EXAV (from `../../../node_modules/@wrench/mobile/node_modules/expo-av/ios`)"
-  - "EXCamera (from `../../../node_modules/@wrench/mobile/node_modules/expo-camera/ios`)"
+  - EXAppleAuthentication (from `../../../node_modules/expo-apple-authentication/ios`)
+  - EXAV (from `../../../node_modules/expo-av/ios`)
+  - EXCamera (from `../../../node_modules/expo-camera/ios`)
   - EXConstants (from `../../../node_modules/expo-constants/ios`)
   - EXFileSystem (from `../../../node_modules/expo-file-system/ios`)
   - EXHaptics (from `../../../node_modules/expo-haptics/ios`)
   - EXImageLoader (from `../../../node_modules/expo-image-loader/ios`)
   - EXImageManipulator (from `../../../node_modules/expo-image-manipulator/ios`)
   - EXImagePicker (from `../../../node_modules/expo-image-picker/ios`)
-  - "EXLinearGradient (from `../../../node_modules/@wrench/mobile/node_modules/expo-linear-gradient/ios`)"
+  - EXLinearGradient (from `../../../node_modules/expo-linear-gradient/ios`)
   - EXLocalization (from `../../../node_modules/expo-localization/ios`)
-  - "EXMediaLibrary (from `../../../node_modules/@wrench/mobile/node_modules/expo-media-library/ios`)"
+  - EXMediaLibrary (from `../../../node_modules/expo-media-library/ios`)
   - EXPermissions (from `../../../node_modules/expo-permissions/ios`)
-  - "EXStoreReview (from `../../../node_modules/@wrench/mobile/node_modules/expo-store-review/ios`)"
+  - EXStoreReview (from `../../../node_modules/expo-store-review/ios`)
   - FBLazyVector (from `../../../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../../../node_modules/react-native/Libraries/FBReactNativeSpec`)
   - FBSDKCoreKit
@@ -656,20 +656,20 @@ DEPENDENCIES:
   - React-RCTVibration (from `../../../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../../../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../../../node_modules/react-native/ReactCommon`)
-  - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
-  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
-  - "RNCClipboard (from `../node_modules/@react-native-community/clipboard`)"
+  - ReactNativeNavigation (from `../../../node_modules/react-native-navigation`)
+  - "RNCAsyncStorage (from `../../../node_modules/@react-native-community/async-storage`)"
+  - "RNCClipboard (from `../../../node_modules/@react-native-community/clipboard`)"
   - RNDeviceInfo (from `../../../node_modules/react-native-device-info`)
-  - RNFastImage (from `../node_modules/react-native-fast-image`)
+  - RNFastImage (from `../../../node_modules/react-native-fast-image`)
   - "RNFBAnalytics (from `../../../node_modules/@react-native-firebase/analytics`)"
-  - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
-  - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
+  - "RNFBApp (from `../../../node_modules/@react-native-firebase/app`)"
+  - "RNFBMessaging (from `../../../node_modules/@react-native-firebase/messaging`)"
   - RNFS (from `../../../node_modules/react-native-fs`)
   - RNGestureHandler (from `../../../node_modules/react-native-gesture-handler`)
-  - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
-  - RNPermissions (from `../node_modules/react-native-permissions`)
+  - "RNGoogleSignin (from `../../../node_modules/@react-native-community/google-signin`)"
+  - RNPermissions (from `../../../node_modules/react-native-permissions`)
   - RNReanimated (from `../../../node_modules/react-native-reanimated`)
-  - "RNSentry (from `../node_modules/@sentry/react-native`)"
+  - "RNSentry (from `../../../node_modules/@sentry/react-native`)"
   - RNShare (from `../../../node_modules/react-native-share`)
   - SDWebImageWebPCoder
   - Sentry
@@ -728,11 +728,11 @@ EXTERNAL SOURCES:
   DoubleConversion:
     :podspec: "../../../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   EXAppleAuthentication:
-    :path: "../../../node_modules/@wrench/mobile/node_modules/expo-apple-authentication/ios"
+    :path: "../../../node_modules/expo-apple-authentication/ios"
   EXAV:
-    :path: "../../../node_modules/@wrench/mobile/node_modules/expo-av/ios"
+    :path: "../../../node_modules/expo-av/ios"
   EXCamera:
-    :path: "../../../node_modules/@wrench/mobile/node_modules/expo-camera/ios"
+    :path: "../../../node_modules/expo-camera/ios"
   EXConstants:
     :path: "../../../node_modules/expo-constants/ios"
   EXFileSystem:
@@ -746,15 +746,15 @@ EXTERNAL SOURCES:
   EXImagePicker:
     :path: "../../../node_modules/expo-image-picker/ios"
   EXLinearGradient:
-    :path: "../../../node_modules/@wrench/mobile/node_modules/expo-linear-gradient/ios"
+    :path: "../../../node_modules/expo-linear-gradient/ios"
   EXLocalization:
     :path: "../../../node_modules/expo-localization/ios"
   EXMediaLibrary:
-    :path: "../../../node_modules/@wrench/mobile/node_modules/expo-media-library/ios"
+    :path: "../../../node_modules/expo-media-library/ios"
   EXPermissions:
     :path: "../../../node_modules/expo-permissions/ios"
   EXStoreReview:
-    :path: "../../../node_modules/@wrench/mobile/node_modules/expo-store-review/ios"
+    :path: "../../../node_modules/expo-store-review/ios"
   FBLazyVector:
     :path: "../../../node_modules/react-native/Libraries/FBLazyVector"
   FBReactNativeSpec:
@@ -820,33 +820,33 @@ EXTERNAL SOURCES:
   ReactCommon:
     :path: "../../../node_modules/react-native/ReactCommon"
   ReactNativeNavigation:
-    :path: "../node_modules/react-native-navigation"
+    :path: "../../../node_modules/react-native-navigation"
   RNCAsyncStorage:
-    :path: "../node_modules/@react-native-community/async-storage"
+    :path: "../../../node_modules/@react-native-community/async-storage"
   RNCClipboard:
-    :path: "../node_modules/@react-native-community/clipboard"
+    :path: "../../../node_modules/@react-native-community/clipboard"
   RNDeviceInfo:
     :path: "../../../node_modules/react-native-device-info"
   RNFastImage:
-    :path: "../node_modules/react-native-fast-image"
+    :path: "../../../node_modules/react-native-fast-image"
   RNFBAnalytics:
     :path: "../../../node_modules/@react-native-firebase/analytics"
   RNFBApp:
-    :path: "../node_modules/@react-native-firebase/app"
+    :path: "../../../node_modules/@react-native-firebase/app"
   RNFBMessaging:
-    :path: "../node_modules/@react-native-firebase/messaging"
+    :path: "../../../node_modules/@react-native-firebase/messaging"
   RNFS:
     :path: "../../../node_modules/react-native-fs"
   RNGestureHandler:
     :path: "../../../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
-    :path: "../node_modules/@react-native-community/google-signin"
+    :path: "../../../node_modules/@react-native-community/google-signin"
   RNPermissions:
-    :path: "../node_modules/react-native-permissions"
+    :path: "../../../node_modules/react-native-permissions"
   RNReanimated:
     :path: "../../../node_modules/react-native-reanimated"
   RNSentry:
-    :path: "../node_modules/@sentry/react-native"
+    :path: "../../../node_modules/@sentry/react-native"
   RNShare:
     :path: "../../../node_modules/react-native-share"
   UMAppLoader:
@@ -879,7 +879,7 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
-  DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
+  DoubleConversion: cde416483dac037923206447da6e1454df403714
   EXAppleAuthentication: 5b3da71bada29e2423d8ea27e5538ef0d75aba62
   EXAV: 1f679b57367f8889b5ea15067413c9e2d95039fb
   EXCamera: 05687ee8f0618820d3b45e54b129a1a535537e8c
@@ -913,7 +913,7 @@ SPEC CHECKSUMS:
   Flipper-PeerTalk: 116d8f857dc6ef55c7a5a75ea3ceaafe878aadc9
   Flipper-RSocket: 64e7431a55835eb953b0bf984ef3b90ae9fdddd7
   FlipperKit: ab353d41aea8aae2ea6daaf813e67496642f3d7d
-  glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
+  glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   GoogleAppMeasurement: 89e1a64593f968713b0506ba1b53b38a154bf9a5
   GoogleDataTransport: e4085e6762f36a6141738f46b0153473ce57fb18
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
@@ -985,6 +985,6 @@ SPEC CHECKSUMS:
   Yoga: a560f1bf2f0ac8b047ba341f5bddbb3b87e2ac70
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 3c9624ce28adfa731e16d14f028ea56a7d73be6c
+PODFILE CHECKSUM: 990faab34d2a711b1d7d55be96858947b7f0f6f5
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.8.4
