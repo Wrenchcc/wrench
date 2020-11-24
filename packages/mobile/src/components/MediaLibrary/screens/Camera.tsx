@@ -16,6 +16,7 @@ import { BlurView } from 'expo-blur'
 import { useNavigation } from 'navigation'
 import { isIphone } from 'utils/platform'
 import AskForPermission from 'components/AskForPermission'
+import { flip, flash } from 'images'
 import Header from '../Header'
 import { CAMERA_SIZE, TAB_BAR_HEIGHT, TIMING_DURATION, MAX_DURATION } from '../constants'
 import { formatTime } from '../utils'
@@ -142,7 +143,7 @@ function Video({ active, animatedValue, setAlert }) {
   }
 
   const handleTakePicture = () => {
-    showTooltip()
+    // showTooltip()
 
     InteractionManager.runAfterInteractions(async () => {
       const data = await cameraRef.current.takePictureAsync({
@@ -447,11 +448,11 @@ function Video({ active, animatedValue, setAlert }) {
             ]}
           >
             <TouchableOpacity onPress={handleCameraType}>
-              {/* <Animated.Image source={require('../../../assets/flip.png')} style={animatedStyle} /> */}
+              <Animated.Image source={flip} style={animatedStyle} />
             </TouchableOpacity>
 
             <TouchableOpacity>
-              {/* <Image source={require('../../../assets/flash.png')} /> */}
+              <Image source={flash} />
             </TouchableOpacity>
           </Animated.View>
         </View>
@@ -532,27 +533,27 @@ function Video({ active, animatedValue, setAlert }) {
           </Animated.View>
 
           <TouchableOpacity onPress={handleTakePicture} activeOpacity={0.98} disabled={!!video}>
-            <LongPressGestureHandler onHandlerStateChange={handleRecordVideo} minDurationMs={200}>
+            {/* <LongPressGestureHandler onHandlerStateChange={handleRecordVideo} minDurationMs={200}> */}
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: 90,
+                height: 90,
+                backgroundColor: '#ccc',
+                borderRadius: 90,
+              }}
+            >
               <View
                 style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  width: 90,
-                  height: 90,
-                  backgroundColor: '#ccc',
-                  borderRadius: 90,
+                  width: 60,
+                  height: 60,
+                  backgroundColor: '#FEFFFF',
+                  borderRadius: 60,
                 }}
-              >
-                <View
-                  style={{
-                    width: 60,
-                    height: 60,
-                    backgroundColor: '#FEFFFF',
-                    borderRadius: 60,
-                  }}
-                />
-              </View>
-            </LongPressGestureHandler>
+              />
+            </View>
+            {/* </LongPressGestureHandler> */}
           </TouchableOpacity>
         </View>
       </View>
