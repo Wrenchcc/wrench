@@ -208,6 +208,8 @@ PODS:
   - GTMSessionFetcher/Core (1.5.0)
   - GTMSessionFetcher/Full (1.5.0):
     - GTMSessionFetcher/Core (= 1.5.0)
+  - hermes-engine (0.7.1)
+  - libevent (2.1.11)
   - libwebp (1.1.0):
     - libwebp/demux (= 1.1.0)
     - libwebp/mux (= 1.1.0)
@@ -235,6 +237,11 @@ PODS:
     - boost-for-react-native
     - DoubleConversion
     - glog
+  - RCT-Folly/Futures (2020.01.13.00):
+    - boost-for-react-native
+    - DoubleConversion
+    - glog
+    - libevent
   - RCTRequired (0.64.0-rc.0)
   - RCTTypeSafety (0.64.0-rc.0):
     - FBLazyVector (= 0.64.0-rc.0)
@@ -290,6 +297,16 @@ PODS:
     - React-jsi (= 0.64.0-rc.0)
     - React-jsiexecutor (= 0.64.0-rc.0)
     - React-jsinspector (= 0.64.0-rc.0)
+    - React-perflogger (= 0.64.0-rc.0)
+    - Yoga
+  - React-Core/Hermes (0.64.0-rc.0):
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2020.01.13.00)
+    - RCT-Folly/Futures
+    - React-cxxreact (= 0.64.0-rc.0)
+    - React-jsi (= 0.64.0-rc.0)
+    - React-jsiexecutor (= 0.64.0-rc.0)
     - React-perflogger (= 0.64.0-rc.0)
     - Yoga
   - React-Core/RCTActionSheetHeaders (0.64.0-rc.0):
@@ -625,6 +642,8 @@ DEPENDENCIES:
   - FlipperKit/SKIOSNetworkPlugin (~> 0.54.0)
   - glog (from `../../../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - GoogleSignIn
+  - hermes-engine (~> 0.7.1)
+  - libevent (from `../../../node_modules/react-native/third-party-podspecs/libevent.podspec`)
   - RCT-Folly (from `../../../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../../../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../../../node_modules/react-native/Libraries/TypeSafety`)
@@ -632,6 +651,7 @@ DEPENDENCIES:
   - React-callinvoker (from `../../../node_modules/react-native/ReactCommon/callinvoker`)
   - React-Core (from `../../../node_modules/react-native/`)
   - React-Core/DevSupport (from `../../../node_modules/react-native/`)
+  - React-Core/Hermes (from `../../../node_modules/react-native/`)
   - React-Core/RCTWebSocket (from `../../../node_modules/react-native/`)
   - React-CoreModules (from `../../../node_modules/react-native/React/CoreModules`)
   - React-cxxreact (from `../../../node_modules/react-native/ReactCommon/cxxreact`)
@@ -715,6 +735,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
+    - hermes-engine
     - libwebp
     - nanopb
     - OpenSSL-Universal
@@ -761,6 +782,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/react-native/Libraries/FBReactNativeSpec"
   glog:
     :podspec: "../../../node_modules/react-native/third-party-podspecs/glog.podspec"
+  libevent:
+    :podspec: "../../../node_modules/react-native/third-party-podspecs/libevent.podspec"
   RCT-Folly:
     :podspec: "../../../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTRequired:
@@ -920,6 +943,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
+  hermes-engine: 2d25059126292d4375a46b65704767b3b0f529aa
+  libevent: b00601ac33d4bf2545a3ded65f5c05c6f5fdc0d4
   libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   OpenSSL-Universal: ff34003318d5e1163e9529b08470708e389ffcdd
@@ -985,6 +1010,6 @@ SPEC CHECKSUMS:
   Yoga: a560f1bf2f0ac8b047ba341f5bddbb3b87e2ac70
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 990faab34d2a711b1d7d55be96858947b7f0f6f5
+PODFILE CHECKSUM: 2cd014c65f4676181fda5bfbd56fa39a34cf9b7d
 
 COCOAPODS: 1.8.4
