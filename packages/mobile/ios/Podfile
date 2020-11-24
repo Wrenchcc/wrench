@@ -1,6 +1,6 @@
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
-platform :ios, '9.0'
+platform :ios, '11.0'
 
 root_path = "../../../node_modules"
 
@@ -48,7 +48,7 @@ target 'Wrench' do
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
   # you should disable these next few lines.
-  use_flipper!
+  # use_flipper!
   post_install do |installer|
     installer.pods_project.build_configurations.each do |config|
       # Needed for now as Xcode 12 now tries to build/link both arm64 and x86_64 slices for the simulator
@@ -59,7 +59,7 @@ target 'Wrench' do
       # - https://apontious.com/2020/08/23/arm-wrestling-your-ios-simulator-builds/
       config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
     end
-
-    flipper_post_install(installer)
+    
+    # flipper_post_install(installer)
   end
 end
