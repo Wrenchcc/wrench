@@ -49,7 +49,7 @@
     "react-phone-input-2": "^2.13.8",
     "react-scroll": "^1.8.1",
     "react-scrollable-anchor": "^0.6.1",
-    "styled-components": "5.1.1",
+    "styled-components": "^5.2.1",
     "styled-reset": "^4.3.0",
     "universal-cookie": "^4.0.4"
   },
