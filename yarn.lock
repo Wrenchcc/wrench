@@ -12352,10 +12352,10 @@ expo-permissions@~9.3.0:
   resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-9.3.0.tgz#b90c7e9e411d306c1c7ba2bae18d5c53c201affd"
   integrity sha512-ylSJZVvEGJVFTKsFrUL2S6gCvFt+/o8TJ3xT4WaMjHe2/2Z7R8ng6NR47Kt54t7XBIV/SZ7DIY9uRiR7TPuNYA==
 
-expo-store-review@2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/expo-store-review/-/expo-store-review-2.1.2.tgz#77ac276c79b409b43b76fc60ee95d744223205aa"
-  integrity sha512-BufOvg62SkX+cD8poUcfpAOXUyAp9S6vVzHzU3QJIU/s2gTlqq05GdnU1ZDEz6oBpjie9aimjGaR53FFDGjCkg==
+expo-store-review@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/expo-store-review/-/expo-store-review-2.2.0.tgz#99ba2c2f0396bd2553b36cbd077de92f32841ea1"
+  integrity sha512-FaLC05g0lHl40DX62iXz+aluV16QCupaNiURS1jW4Idefw5rOUrlV1hPe8SD9TJREbBahcSI9v/hw3ji+xD7sw==
 
 express@^4.17.0, express@^4.17.1:
   version "4.17.1"

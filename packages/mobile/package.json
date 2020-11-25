@@ -46,7 +46,7 @@
     "expo-linear-gradient": "^8.3.1",
     "expo-localization": "^9.0.0",
     "expo-media-library": "^9.2.1",
-    "expo-store-review": "2.1.2",
+    "expo-store-review": "^2.2.0",
     "human-format": "^0.11.0",
     "i18next": "^19.8.4",
     "i18next-chained-backend": "^2.0.1",
