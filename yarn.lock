@@ -21214,11 +21214,6 @@ react-mentions@^4.0.2:
     prop-types "^15.5.8"
     substyle "^9.1.0"
 
-react-native-bundle-splitter@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/react-native-bundle-splitter/-/react-native-bundle-splitter-1.0.9.tgz#0b4851c005a2db3d4fc3b3402f922c8b3e9d0a5e"
-  integrity sha512-wPnYzvmKg1fORwJlsgI6Symh6t8oK18VLBd2BwTwFfUbzIjyzwLmZLODfj+ScQSvSbqJawAMnv272Ij8aDgvLQ==
-
 react-native-codegen@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/react-native-codegen/-/react-native-codegen-0.0.6.tgz#b3173faa879cf71bfade8d030f9c4698388f6909"
