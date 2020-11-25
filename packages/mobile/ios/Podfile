@@ -52,14 +52,14 @@ target 'Wrench' do
   post_install do |installer|
     flipper_post_install(installer)
 
-    installer.pods_project.targets.each do |target|
-      target.build_configurations.each do |config|
-        config.build_settings["ENABLE_BITCODE"] = "NO"
-        if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] == '8.0'
-          config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
-        end
-      end
-    end
+    # installer.pods_project.targets.each do |target|
+    #   target.build_configurations.each do |config|
+    #     config.build_settings["ENABLE_BITCODE"] = "NO"
+    #     if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] == '8.0'
+    #       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
+    #     end
+    #   end
+    # end
 
     installer.pods_project.build_configurations.each do |config|
       # Needed for now as Xcode 12 now tries to build/link both arm64 and x86_64 slices for the simulator
