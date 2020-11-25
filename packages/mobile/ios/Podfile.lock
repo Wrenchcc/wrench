@@ -53,7 +53,7 @@ PODS:
   - EXPermissions (9.3.0):
     - UMCore
     - UMPermissionsInterface
-  - EXStoreReview (2.1.2):
+  - EXStoreReview (2.2.0):
     - UMCore
   - FBLazyVector (0.64.0-rc.0)
   - FBReactNativeSpec (0.64.0-rc.0):
@@ -931,7 +931,7 @@ SPEC CHECKSUMS:
   EXLocalization: 8621f60b37c3d3ad8c8e27c2cb3b05ebc7b484a2
   EXMediaLibrary: 876e417918fbb1a3a521b3465b8034ef41d5d16a
   EXPermissions: 30cbe5b72bd209b65c00884180ad058a60bb413d
-  EXStoreReview: 2b9bdb91b3ed4319b4f6a4cb4647ba48a6ab67c8
+  EXStoreReview: e847ad9367e8d9ab0d856e6aa21e16c1d30f118e
   FBLazyVector: 8c03d80704d9dc2c78c621fecbcbb7903274fd76
   FBReactNativeSpec: 1d3710df075757cc3276883ae72b8c090f1c17aa
   FBSDKCoreKit: 4afd6ff53d8133a433dbcda44451c9498f8c6ce4

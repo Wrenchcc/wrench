@@ -12335,6 +12335,15 @@ expo-linear-gradient@^8.3.1:
   resolved "https://registry.yarnpkg.com/expo-linear-gradient/-/expo-linear-gradient-8.3.1.tgz#5dd3878c0700035d55241a4a453c5e224acc60ff"
   integrity sha512-zlWGua8vm7+af4otaSpJlzu0SYIr0aWbL0qICySCDUEKkqig6MqfuI69NYHC0w9ocWZuh2xyj6Rbfy01UqcVSg==
 
+expo-linking@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/expo-linking/-/expo-linking-1.0.5.tgz#c6999c8a245de8bec3936d02d95382804d8ae2ec"
+  integrity sha512-LH26/ilFU0rCdsO1SJbNqoii3jTBqHdEfSloXhEb73aKdQT2BG6z5IjFIQXV2RiCmxNJbotdbfXyWSPqPoCEwg==
+  dependencies:
+    expo-constants "~9.2.0"
+    qs "^6.5.0"
+    url-parse "^1.4.4"
+
 expo-localization@^9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/expo-localization/-/expo-localization-9.0.0.tgz#1a61582f9ffb3cd28879a917dec347c444bff54e"
@@ -12352,10 +12361,10 @@ expo-permissions@~9.3.0:
   resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-9.3.0.tgz#b90c7e9e411d306c1c7ba2bae18d5c53c201affd"
   integrity sha512-ylSJZVvEGJVFTKsFrUL2S6gCvFt+/o8TJ3xT4WaMjHe2/2Z7R8ng6NR47Kt54t7XBIV/SZ7DIY9uRiR7TPuNYA==
 
-expo-store-review@2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/expo-store-review/-/expo-store-review-2.1.2.tgz#77ac276c79b409b43b76fc60ee95d744223205aa"
-  integrity sha512-BufOvg62SkX+cD8poUcfpAOXUyAp9S6vVzHzU3QJIU/s2gTlqq05GdnU1ZDEz6oBpjie9aimjGaR53FFDGjCkg==
+expo-store-review@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/expo-store-review/-/expo-store-review-2.2.0.tgz#99ba2c2f0396bd2553b36cbd077de92f32841ea1"
+  integrity sha512-FaLC05g0lHl40DX62iXz+aluV16QCupaNiURS1jW4Idefw5rOUrlV1hPe8SD9TJREbBahcSI9v/hw3ji+xD7sw==
 
 express@^4.17.0, express@^4.17.1:
   version "4.17.1"
@@ -20792,7 +20801,7 @@ qs@6.7.0:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
-qs@^6.4.0, qs@^6.5.1, qs@^6.6.0:
+qs@^6.4.0, qs@^6.5.0, qs@^6.5.1, qs@^6.6.0:
   version "6.9.4"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.4.tgz#9090b290d1f91728d3c22e54843ca44aea5ab687"
   integrity sha512-A1kFqHekCTM7cz0udomYUoYNWjBebHm/5wzU/XqrBRBNWectVH0QIiN+NEcZ0Dte5hvzHwbr8+XQmguPhJ6WdQ==
