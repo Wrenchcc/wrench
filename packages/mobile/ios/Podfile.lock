@@ -551,14 +551,14 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.8)
     - SDWebImageWebPCoder (~> 0.6.1)
-  - RNFBAnalytics (10.0.0):
+  - RNFBAnalytics (10.1.0):
     - Firebase/Analytics (~> 7.1.0)
     - React-Core
     - RNFBApp
-  - RNFBApp (10.0.0):
+  - RNFBApp (10.1.0):
     - Firebase/CoreOnly (~> 7.1.0)
     - React-Core
-  - RNFBMessaging (10.0.0):
+  - RNFBMessaging (10.1.0):
     - Firebase/Messaging (~> 7.1.0)
     - React-Core
     - RNFBApp
@@ -1001,9 +1001,9 @@ SPEC CHECKSUMS:
   RNCClipboard: 41d8d918092ae8e676f18adada19104fa3e68495
   RNDeviceInfo: 6cf87235aa11e675b93b31aa9b88a825753eea2f
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
-  RNFBAnalytics: 56ceefdcff33238b7817d164ebabb4863a3fed92
-  RNFBApp: dd793eec42bce8d09391bd95e42f2ed7511e7fef
-  RNFBMessaging: b61a2478fd3fb05bd2f72f18ad194cfb93e682f2
+  RNFBAnalytics: 0a98aff1ad9abee16de201012f03179246c2e5bb
+  RNFBApp: 2b4e07dfca4cf780b9e2d61bcc21e34d890cd654
+  RNFBMessaging: 483093ab71fb3de1d5b410fbf8ecdd32b84b5f78
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
   RNGestureHandler: 9b7e605a741412e20e13c512738a31bd1611759b
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499

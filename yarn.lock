@@ -4076,23 +4076,23 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-5.9.9.tgz#5e022637f5e08bd74bf94a0c3315748acd4589f9"
   integrity sha512-Gp0XV4BgabvzkL4Dp6JAsA2l9LcmgBAq3erCLdvRZmEFz7guCWTogQWVfFtl+IbU0uqfwfo9fm2+mQiwdudLCw==
 
-"@react-native-firebase/analytics@^10.0.0":
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-10.0.0.tgz#257f08f053e3982048810480c5eb6e362b9500e7"
-  integrity sha512-ux/i/3F6rMFz8O6Yv26yHrtgdJ7iyJh/06JLoADx3jm9QpwyJeymrdupz/s4ee35Zhp8yQ3OGYCQ4+vDN4WRZA==
+"@react-native-firebase/analytics@^10.1.0":
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-10.1.0.tgz#8b503f08051ff3cf730ad83d418a307ffd32f11c"
+  integrity sha512-upTGcw5wl47lIeyhjsKFlXuJz2Fg7BbuAcgwq+FJ9sqkTJxDPRW/aHACsd9+WAs/UiwcGEpcT8gzgkvoJp68dg==
 
-"@react-native-firebase/app@^10.0.0":
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-10.0.0.tgz#dc18af26accb31028eab00dd36f486fee046e63e"
-  integrity sha512-hvmEOj3vMeaoYX8Q7f2UZCSVGv0VMvTR/RUUka0y7Xmyzg3kpdb2EHCOoqLIN9ySPf5b/At5I6GVazQugbZqLA==
+"@react-native-firebase/app@^10.1.0":
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-10.1.0.tgz#4242933c52b4b753ba48216092c0447677118342"
+  integrity sha512-O8IxJU0K3mmmxaz2EZW+BuC08agr3m2eybxBq+SkcJri1fv95qVsNabABWPS7h4uSHQ5m1qHCtQJnvbnHwMrvA==
   dependencies:
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/messaging@^10.0.0":
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-10.0.0.tgz#fe0bd993e80dbccffd7c5c21ee04754f2196ad81"
-  integrity sha512-XSoHSVvxR5MRzkJ/RQWzO3LQ29N13fWckttd5oxur2OtEMHZM7CseWqlN3fcWcoGNZXh17HXu9XlxsznE/kzxA==
+"@react-native-firebase/messaging@^10.1.0":
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-10.1.0.tgz#adbeaae52db5c2aea2f61a98490bd107dd444e97"
+  integrity sha512-g8lDlkxcA/0AXtfx79DQiELtvX9z81mskxEA0wJLEd1QetP1sQsvIvoMzHIsj8Zzj3+Gn0Hz+qFcz/pJJ8ceRQ==
 
 "@react-native/assets@1.0.0":
   version "1.0.0"
