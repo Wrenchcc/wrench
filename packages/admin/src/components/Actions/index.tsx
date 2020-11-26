@@ -3,6 +3,8 @@ import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 import SlidingPanel from 'react-sliding-side-panel'
 import useClickOutside from '../../utils/useClickOutside'
+import DotsIcon from './dots.svg'
+import CloseIcon from './close.svg'
 
 const Base = styled.div``
 
@@ -53,19 +55,21 @@ function Actions({ component, onDelete, disableEdit }) {
   return (
     <Base ref={ref}>
       <Button onClick={handleToggle}>
-        <img src={require('./dots.svg')} style={{ width: 25, marginTop: -10 }} alt="Open" />
+        <img src={DotsIcon} style={{ width: 25, marginTop: -10 }} alt="Open" />
       </Button>
 
       {isOpen && (
         <Menu>
-          {!disableEdit && <Action
-            onClick={() => {
-              document.body.style.overflow = 'hidden'
-              setOpenPanel(true)
-            }}
-          >
-            Edit
-          </Action>}
+          {!disableEdit && (
+            <Action
+              onClick={() => {
+                document.body.style.overflow = 'hidden'
+                setOpenPanel(true)
+              }}
+            >
+              Edit
+            </Action>
+          )}
           <Action style={{ color: '#ec6d2f' }} onClick={() => onDelete()}>
             Delete
           </Action>
@@ -80,7 +84,7 @@ function Actions({ component, onDelete, disableEdit }) {
               setOpenPanel(false)
             }}
           >
-            <img src={require('./close.svg')} alt="Close" />
+            <img src={CloseIcon} alt="Close" />
           </Close>
           <Inner>{component}</Inner>
         </div>

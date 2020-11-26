@@ -3,6 +3,23 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import useLocalStorage from '../../utils/useLocalStorage'
 import styled from 'styled-components'
+import Dashboard from '../../pages/Dashboard'
+import DashboardIcon from './dashboard.svg'
+import PostsIcon from './posts.svg'
+import ProjectsIcon from './projects.svg'
+import UsersIcon from './users.svg'
+import CommentsIcon from './comments.svg'
+import ReviewsIcon from './reviews.svg'
+import NewsIcon from './news.svg'
+import PushNotificationsIcon from './push-notifications.svg'
+import GoogleAnalyticsIcon from './google.svg'
+import AppradarIcon from './appradar.svg'
+import DeployIcon from './deploy.svg'
+import SentryIcon from './sentry.svg'
+import FirebaseIcon from './firebase.svg'
+import AppleIcon from './appstore.svg'
+import GoogleIcon from './google-play.svg'
+import AwsIcon from './aws.svg'
 
 export const Base = styled.div`
   width: 270px;
@@ -79,7 +96,7 @@ function Panel({ setAuthenticated }) {
 
           <ul>
             <Link>
-              <Icon src={require('./dashboard.svg')} />
+              <Icon src={DashboardIcon} />
               <NavLink
                 exact
                 activeStyle={{
@@ -92,7 +109,7 @@ function Panel({ setAuthenticated }) {
               </NavLink>
             </Link>
             <Link>
-              <Icon src={require('./posts.svg')} />
+              <Icon src={PostsIcon} />
               <NavLink
                 activeStyle={{
                   fontWeight: '500',
@@ -104,7 +121,7 @@ function Panel({ setAuthenticated }) {
               </NavLink>
             </Link>
             <Link>
-              <Icon src={require('./projects.svg')} />
+              <Icon src={ProjectsIcon} />
               <NavLink
                 activeStyle={{
                   fontWeight: '500',
@@ -116,7 +133,7 @@ function Panel({ setAuthenticated }) {
               </NavLink>
             </Link>
             <Link>
-              <Icon src={require('./users.svg')} />
+              <Icon src={UsersIcon} />
               <NavLink
                 activeStyle={{
                   fontWeight: '500',
@@ -128,7 +145,7 @@ function Panel({ setAuthenticated }) {
               </NavLink>
             </Link>
             <Link>
-              <Icon src={require('./comments.svg')} />
+              <Icon src={CommentsIcon} />
               <NavLink
                 activeStyle={{
                   fontWeight: '500',
@@ -140,7 +157,7 @@ function Panel({ setAuthenticated }) {
               </NavLink>
             </Link>
             <Link>
-              <Icon src={require('./reviews.svg')} />
+              <Icon src={ReviewsIcon} />
               <NavLink
                 activeStyle={{
                   fontWeight: '500',
@@ -159,7 +176,7 @@ function Panel({ setAuthenticated }) {
 
           <ul>
             <Link>
-              <Icon src={require('./news.svg')} />
+              <Icon src={NewsIcon} />
               <NavLink
                 activeStyle={{
                   fontWeight: '500',
@@ -172,7 +189,7 @@ function Panel({ setAuthenticated }) {
             </Link>
 
             <Link>
-              <Icon src={require('./push-notifications.svg')} />
+              <Icon src={PushNotificationsIcon} />
               <NavLink
                 activeStyle={{
                   fontWeight: '500',
@@ -183,16 +200,16 @@ function Panel({ setAuthenticated }) {
                 Push notifications
               </NavLink>
             </Link>
-            
+
             <Link>
-              <Icon src={require('./google.svg')} />
+              <Icon src={GoogleAnalyticsIcon} />
               <a href="https://analytics.google.com/analytics/web/#/p178012703/reports/home">
                 Google Analytics
               </a>
             </Link>
 
             <Link>
-              <Icon src={require('./appradar.svg')} />
+              <Icon src={AppradarIcon} />
               <a href="https://web.appradar.com/projects">AppRadar</a>
             </Link>
           </ul>
@@ -202,7 +219,7 @@ function Panel({ setAuthenticated }) {
           <Section>Developer</Section>
           <ul>
             <Link>
-              <Icon src={require('./deploy.svg')} />
+              <Icon src={DeployIcon} />
               <NavLink
                 activeStyle={{
                   fontWeight: '500',
@@ -214,29 +231,29 @@ function Panel({ setAuthenticated }) {
               </NavLink>
             </Link>
             <Link>
-              <Icon src={require('./sentry.svg')} />
+              <Icon src={SentryIcon} />
               <a href="https://sentry.io/organizations/wrench/issues/?project=1354419">Sentry</a>
             </Link>
             <Link>
-              <Icon src={require('./firebase.svg')} />
+              <Icon src={FirebaseIcon} />
               <a href="https://console.firebase.google.com/u/0/project/wrench-app/overview">
                 Firebase
               </a>
             </Link>
             <Link>
-              <Icon src={require('./appstore.svg')} />
+              <Icon src={AppleIcon} />
               <a href="https://appstoreconnect.apple.com/WebObjects/iTunesConnect.woa/ra/ng/app/1450213123">
                 App Store Connect
               </a>
             </Link>
             <Link>
-              <Icon src={require('./google-play.svg')} />
+              <Icon src={GoogleIcon} />
               <a href="https://play.google.com/apps/publish/?account=7089963842901266485#AppDashboardPlace:p=com.wrench&appid=4976310944626164906">
                 Google Play
               </a>
             </Link>
             <Link>
-              <Icon src={require('./aws.svg')} />
+              <Icon src={AwsIcon} />
               <a href="https://eu-west-1.console.aws.amazon.com/console/home?region=eu-west-1">
                 AWS
               </a>

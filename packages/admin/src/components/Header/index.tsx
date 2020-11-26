@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import LogoIcon from './logo.svg'
 
 export const Base = styled.header`
   position: fixed;
@@ -26,7 +27,7 @@ function Header() {
   return (
     <Base>
       <Link to="/">
-        <img src={require('./logo.svg')} alt="logo" />
+        <img src={LogoIcon} alt="logo" />
       </Link>
       <Title>Admin</Title>
     </Base>
