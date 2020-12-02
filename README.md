@@ -44,7 +44,8 @@ wrench/
 ├── resizer        # Resize service
 ├── mobile         # Mobile apps
 ├── ui             # UI library
-└── web            # Web app
+├── ui             # Web app
+└── workflow       # Worker servers (email, push)
 ```
 
 ### Mobile apps

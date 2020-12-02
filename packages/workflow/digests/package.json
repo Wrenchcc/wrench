@@ -1,0 +1,20 @@
+{
+  "name": "@wrench/queues",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "deploy": "sls deploy -s production -r eu-west-1 --aws-profile ci",
+    "log": "sls logs -f bikeexif -r eu-west-1 --aws-profile ci -s production",
+    "invoke": "serverless invoke local --function weekly"
+  },
+  "devDependencies": {
+    "serverless": "^2.13.0",
+    "serverless-plugin-typescript": "^1.1.9",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.800.0",
+    "rambda": "^6.4.0"
+  }
+}

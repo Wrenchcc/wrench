@@ -1,0 +1,17 @@
+service: digests
+
+useDotenv: true
+
+provider:
+ name: aws
+ runtime: nodejs12.x
+ timeout: 120
+
+plugins:
+  - serverless-plugin-typescript
+
+functions:
+  weekly:
+    handler: ./src/weekly.default
+    # events:
+    #   - schedule: cron(00 10 * * SAT)
