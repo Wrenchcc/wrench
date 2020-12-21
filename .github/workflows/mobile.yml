@@ -112,6 +112,11 @@ jobs:
         with:
           xcode-version: '12.3'
 
+      - name: Install ruby version
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '>= 2.6'
+
       - name: Uses Node.js 14
         uses: actions/setup-node@v1
         with:
@@ -134,7 +139,7 @@ jobs:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
       - name: Deploy iOS
-        uses: maierj/fastlane-action@v1.4.0
+        uses: maierj/fastlane-action@v2.0.0
         with:
           lane: 'ios'
           subdirectory: 'fastlane'
@@ -153,7 +158,7 @@ jobs:
           FASTLANE_SESSION: ${{secrets.FASTLANE_SESSION}}
           FASTLANE_PASSWORD: ${{secrets.FASTLANE_PASSWORD}}
           FASTLANE_USER: ${{secrets.FASTLANE_USER}}
-          DEVELOPER_DIR: /Applications/Xcode_11.2.1.app/Contents/Developer
+          DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
           SLACK_URL: ${{secrets.SLACK_URL}}
           CODEPUSH_KEY_IOS_STAGING: ${{secrets.CODEPUSH_KEY_IOS_STAGING}}
           CODEPUSH_KEY_IOS_PRODUCTION: ${{secrets.CODEPUSH_KEY_IOS_PRODUCTION}}
