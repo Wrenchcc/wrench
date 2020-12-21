@@ -12,6 +12,8 @@ package = File.read("../package.json")
 version = JSON.parse(package)["version"]
 build_number = ENV["BUILD_NUMBER"] || "1"
 
+xcversion(version: "12.2")
+
 # Slack error message
 error do |lane, exception|
   slack_notification(
