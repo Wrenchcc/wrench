@@ -23,6 +23,13 @@
         @font-face{font-family:'Inter var';font-style:normal;font-weight:500;src:url("https://edge-files.wrench.cc/static/fonts/Inter-UI-Medium.woff2") format("woff2"), url("https://edge-files.wrench.cc/static/fonts/Inter-UI-Medium.woff") format("woff");}
         @font-face{font-family:'Inter var';font-style:normal;font-weight:700;src:url("https://edge-files.wrench.cc/static/fonts/Inter-UI-Bold.woff2") format("woff2"), url("https://edge-files.wrench.cc/static/fonts/Inter-UI-Bold.woff") format("woff");}
 
+        @media only screen and (max-width: 480px) {
+            .full {
+               display:block;
+               width:100%;
+            }
+         }
+         
          body {
          -webkit-font-smoothing: antialiased;
          }
@@ -30,6 +37,9 @@
          body,
          center {
          background-color: #000000 !important;
+         }
+         tr {
+            line-height:30px;
          }
          /* Shows Dark Mode-Only Content, Like Images */
          .dark-img { display:block !important; width: auto !important; overflow: visible !important; float: none !important; max-height:inherit !important; max-width:inherit !important; line-height: auto !important; margin-top:0px !important; visibility:inherit !important; }
@@ -53,20 +63,59 @@
             >
             Wrench - weekly digests
          </div>
-         <div style="max-width: 500px; margin: auto; padding: 20px; background: #ffffff;" class="darkmode">
-            <!--[if (gte mso 9)|(IE)]>
-            <table cellspacing="0" cellpadding="0" border="0" width="600" align="center">
-               <tr>
-                  <td>
-                     <![endif]-->
-                     <table
+         <div style="max-width: 600px; margin: auto; padding: 20px; background: #ffffff;" class="darkmode">
+   
+                  <table
+                     cellspacing="0"
+                     cellpadding="0"
+                     border="0"
+                     align="center"
+                     bgcolor="#ffffff"
+                     width="100%"
+                     style="max-width: 600px;"
+                     class="darkmode"
+                  >
+                     <tr>
+                        <td style="padding: 40px 0 20px 0;">
+                           <img
+                              class="light-img"
+                              alt="Wrench"
+                              src="https://edge-files.wrench.cc/static/email/logo.jpg?w=60&h=60&dpr=3"
+                              width="60"
+                              height="60"
+                              style="font-family: sans-serif; color: #ffffff; font-size: 20px; display: block; padding-bottom: 20px;"
+                              border="0"
+                              />
+                           <img
+                              class="dark-img"
+                              alt="Wrench"
+                              src="https://edge-files.wrench.cc/static/email/logo-inverted.jpg?w=60&h=60&dpr=3"
+                              width="60"
+                              height="60"
+                              style="font-family: sans-serif; color: #ffffff; font-size: 20px; display: block; padding-bottom: 20px;"
+                              border="0"
+                              />
+                        </td>
+                     </tr>
+                        <tr>
+                           <td width="50%" dir="ltr" class="full">
+                              wefwef
+                           </td>
+
+                           <td width="50%" dir="ltr" class="full">
+                             gwefef
+                           </td>
+                        </tr>
+                     </table>
+
+                     <!-- <table
                         cellspacing="0"
                         cellpadding="0"
                         border="0"
                         align="center"
                         bgcolor="#ffffff"
                         width="100%"
-                        style="max-width: 500px;"
+                        style="max-width: 600px;"
                         class="darkmode"
                         >
                         <tr>
@@ -94,19 +143,98 @@
                         <tr>
                            <td>
                               <table cellspacing="0" cellpadding="0" border="0" width="100%">
-                                 <tr>
-                                    <td
-                                       style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 17px; mso-height-rule: exactly; line-height: 25px; color: #000000;"
-                                       class="darkmode"
-                                       >
-                                      
+                                 <tr style="margin-bottom: 60px;">
+                                    <td>
+                                       <div style="display:block">
+                                          <div style="height: 180px;overflow: hidden; margin-bottom: 10px;">
+                                             <img src="https://edge-files.wrench.cc/images/66a0bbae-af24-4991-9444-2391f7f27623.jpg?w=290" width="290" />
+                                          </div>
+                                          <span style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 17px; mso-height-rule: exactly; line-height: 25px; color: #000000; display: block;" class="darkmode">BMW R100 project</span>
+                                          <span style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 15px; mso-height-rule: exactly; line-height: 22px; color: #6d6f76 !important; display: block;">12K followers</span>
+                                       </div>
+                                    </td>
+
+                                    <td>
+                                       <div style="display:block">
+                                          <div style="height: 180px;overflow: hidden; margin-bottom: 10px;">
+                                             <img src="https://edge-files.wrench.cc/images/66a0bbae-af24-4991-9444-2391f7f27623.jpg?w=290" width="290" />
+                                          </div>
+                                          <span style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 17px; mso-height-rule: exactly; line-height: 25px; color: #000000; display: block;" class="darkmode">BMW R100 project</span>
+                                          <span style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 15px; mso-height-rule: exactly; line-height: 22px; color: #6d6f76 !important; display: block;">12K followers</span>
+                                       </div>
+                                    </td>
+                                 </tr>
+
+                                 <tr style="margin-bottom: 60px;">
+                                    <td>
+                                       <div style="display:block">
+                                          <div style="height: 180px;overflow: hidden; margin-bottom: 10px;">
+                                             <img src="https://edge-files.wrench.cc/images/66a0bbae-af24-4991-9444-2391f7f27623.jpg?w=290" width="290" />
+                                          </div>
+                                          <span style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 17px; mso-height-rule: exactly; line-height: 25px; color: #000000; display: block;" class="darkmode">BMW R100 project</span>
+                                          <span style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 15px; mso-height-rule: exactly; line-height: 22px; color: #6d6f76 !important; display: block;">12K followers</span>
+                                       </div>
+                                    </td>
+
+                                    <td>
+                                       <div style="display:block">
+                                          <div style="height: 180px;overflow: hidden; margin-bottom: 10px;">
+                                             <img src="https://edge-files.wrench.cc/images/66a0bbae-af24-4991-9444-2391f7f27623.jpg?w=290" width="290" />
+                                          </div>
+                                          <span style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 17px; mso-height-rule: exactly; line-height: 25px; color: #000000; display: block;" class="darkmode">BMW R100 project</span>
+                                          <span style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 15px; mso-height-rule: exactly; line-height: 22px; color: #6d6f76 !important; display: block;">12K followers</span>
+                                       </div>
+                                    </td>
+                                 </tr>
+
+                                 <tr style="margin-bottom: 60px;">
+                                    <td>
+                                       <div style="display:block">
+                                          <div style="height: 180px;overflow: hidden; margin-bottom: 10px;">
+                                             <img src="https://edge-files.wrench.cc/images/66a0bbae-af24-4991-9444-2391f7f27623.jpg?w=290" width="290" />
+                                          </div>
+                                          <span style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 17px; mso-height-rule: exactly; line-height: 25px; color: #000000; display: block;" class="darkmode">BMW R100 project</span>
+                                          <span style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 15px; mso-height-rule: exactly; line-height: 22px; color: #6d6f76 !important; display: block;">12K followers</span>
+                                       </div>
+                                    </td>
+
+                                    <td>
+                                       <div style="display:block">
+                                          <div style="height: 180px;overflow: hidden; margin-bottom: 10px;">
+                                             <img src="https://edge-files.wrench.cc/images/66a0bbae-af24-4991-9444-2391f7f27623.jpg?w=290" width="290" />
+                                          </div>
+                                          <span style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 17px; mso-height-rule: exactly; line-height: 25px; color: #000000; display: block;" class="darkmode">BMW R100 project</span>
+                                          <span style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 15px; mso-height-rule: exactly; line-height: 22px; color: #6d6f76 !important; display: block;">12K followers</span>
+                                       </div>
+                                    </td>
+                                 </tr>
+
+                                 <tr >
+                                    <td>
+                                       <div style="display:block">
+                                          <div style="height: 180px;overflow: hidden; margin-bottom: 10px;">
+                                             <img src="https://edge-files.wrench.cc/images/66a0bbae-af24-4991-9444-2391f7f27623.jpg?w=290" width="290" />
+                                          </div>
+                                          <span style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 17px; mso-height-rule: exactly; line-height: 25px; color: #000000; display: block;" class="darkmode">BMW R100 project</span>
+                                          <span style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 15px; mso-height-rule: exactly; line-height: 22px; color: #6d6f76 !important; display: block;">12K followers</span>
+                                       </div>
+                                    </td>
+
+                                    <td>
+                                       <div style="display:block">
+                                          <div style="height: 180px;overflow: hidden; margin-bottom: 10px;">
+                                             <img src="https://edge-files.wrench.cc/images/66a0bbae-af24-4991-9444-2391f7f27623.jpg?w=290" width="290" />
+                                          </div>
+                                          <span style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 17px; mso-height-rule: exactly; line-height: 25px; color: #000000; display: block;" class="darkmode">BMW R100 project</span>
+                                          <span style="font-family: 'Inter var', sans-serif; font-weight: normal; font-size: 15px; mso-height-rule: exactly; line-height: 22px; color: #6d6f76 !important; display: block;">12K followers</span>
+                                       </div>
                                     </td>
                                  </tr>
                               </table>
                            </td>
                         </tr>
                         <!-- 1 Column Text + Button : BEGIN -->
-                     </table>
+                     <!-- </table>   -->
                      <!-- Email Body : END -->
                      <!-- Email Footer : BEGIN -->
                      <!-- Email Footer : END -->

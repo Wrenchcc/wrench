@@ -6,7 +6,7 @@
   "scripts": {
     "deploy": "sls deploy -s production -r eu-west-1 --aws-profile ci",
     "log": "sls logs -f bikeexif -r eu-west-1 --aws-profile ci -s production",
-    "invoke": "serverless invoke local --function weekly"
+    "send:weekly": "serverless invoke local --function weekly"
   },
   "devDependencies": {
     "serverless": "^2.13.0",

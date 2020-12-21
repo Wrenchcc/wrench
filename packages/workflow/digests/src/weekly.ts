@@ -5,7 +5,7 @@ const { AWS_SES_REGION, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } = process.env
 
 const BULK_LIMIT = 2
 
-const TEMPLATE_NAME = 'welcome' //'weekly'
+const TEMPLATE_NAME = 'weekly
 
 const DEFAULT_TEMPLATE_DATA = {
   firstName: 'unknown',
@@ -27,13 +27,94 @@ async function sendEmails() {
     subject: 'Wrench - weekly digests',
     unsubscribe:
       'https://wrench.cc/emails/unsubscribe/reminders?user_id=8307592319&sig=AU86YUwCx7WgFZ-e',
-    projects: [{ id: 1, title: 'CB750 Cafe racer', cover: 'https://edge-files.wrench.cc' }],
+    projects: [
+      {
+        id: 1,
+        title: 'BMW K1100 cafe racer',
+        user: {
+          fullName: 'Lysmotorcycles Dim',
+        },
+        cover: {
+          uri: 'https://edge-files.wrench.cc/images/66a0bbae-af24-4991-9444-2391f7f27623.jpg?w=320',
+        },
+      },
+      {
+        id: 1,
+        title: 'BMW K1100 cafe racer',
+        user: {
+          fullName: 'Lysmotorcycles Dim',
+        },
+        cover: {
+          uri: 'https://edge-files.wrench.cc/images/66a0bbae-af24-4991-9444-2391f7f27623.jpg?w=320',
+        },
+      },
+      {
+        id: 1,
+        title: 'BMW K1100 cafe racer',
+        user: {
+          fullName: 'Lysmotorcycles Dim',
+        },
+        cover: {
+          uri: 'https://edge-files.wrench.cc/images/66a0bbae-af24-4991-9444-2391f7f27623.jpg?w=320',
+        },
+      },
+      {
+        id: 1,
+        title: 'BMW K1100 cafe racer',
+        user: {
+          fullName: 'Lysmotorcycles Dim',
+        },
+        cover: {
+          uri: 'https://edge-files.wrench.cc/images/66a0bbae-af24-4991-9444-2391f7f27623.jpg?w=320',
+        },
+      },
+      {
+        id: 1,
+        title: 'BMW K1100 cafe racer',
+        user: {
+          fullName: 'Lysmotorcycles Dim',
+        },
+        cover: {
+          uri: 'https://edge-files.wrench.cc/images/66a0bbae-af24-4991-9444-2391f7f27623.jpg?w=320',
+        },
+      },
+      {
+        id: 1,
+        title: 'BMW K1100 cafe racer',
+        user: {
+          fullName: 'Lysmotorcycles Dim',
+        },
+        cover: {
+          uri: 'https://edge-files.wrench.cc/images/66a0bbae-af24-4991-9444-2391f7f27623.jpg?w=320',
+        },
+      },
+      {
+        id: 1,
+        title: 'BMW K1100 cafe racer',
+        user: {
+          fullName: 'Lysmotorcycles Dim',
+        },
+        cover: {
+          uri: 'https://edge-files.wrench.cc/images/66a0bbae-af24-4991-9444-2391f7f27623.jpg?w=320',
+        },
+      },
+      {
+        id: 1,
+        title: 'BMW K1100 cafe racer',
+        user: {
+          fullName: 'Lysmotorcycles Dim',
+        },
+        cover: {
+          uri: 'https://edge-files.wrench.cc/images/66a0bbae-af24-4991-9444-2391f7f27623.jpg?w=320',
+        },
+      },
+    ],
   }
 
   const users = [
     { firstName: 'Pontus', email: 'pontus@wrench.cc', id: 1 },
-    { firstName: 'Viktor', email: 'viktor@wrench.cc', id: 2 },
-    { firstName: 'Felix', email: 'felix@wrench.cc', id: 3 },
+    // { firstName: 'Viktor', email: 'viktor@wrench.cc', id: 2 },
+    // { firstName: 'Felix', email: 'felix@wrench.cc', id: 3 },
   ]
 
   const chunkedUsers = splitEvery(BULK_LIMIT, users)
@@ -61,8 +142,6 @@ async function sendEmails() {
         Template: TEMPLATE_NAME,
         DefaultTemplateData: JSON.stringify(DEFAULT_TEMPLATE_DATA),
       }
-
-      // console.log(params)
 
       await ses.sendBulkTemplatedEmail(params).promise()
     } catch (err) {
