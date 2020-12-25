@@ -8,7 +8,7 @@ module.exports = {
   target: 'serverless',
   images: {
     domains: ['edge-files.wrench.cc'],
-    loader: 'edge',
+    loader: 'default', // 'edge',
     deviceSizes: [320, 420, 768, 1024, 1200],
     // imageSizes: [80, 50, 40, 30],
   },

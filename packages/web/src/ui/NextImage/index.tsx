@@ -112,7 +112,7 @@ type CallLoaderProps = {
 }
 
 function callLoader(loaderProps: CallLoaderProps) {
-  const load = loaders.get(configLoader)
+  const load = loaders.get('edge') // TODO: use default Image component when supporting cutsom loaders
   return load({ root: configPath, ...loaderProps })
 }
 
