@@ -1,5 +1,3 @@
-import { Placeholder } from 'components/Promo/styles'
-
 export { default as Post } from './Post'
 export { default as Title } from './Title'
 export { default as Carousel } from './Carousel'

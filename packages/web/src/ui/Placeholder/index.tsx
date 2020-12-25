@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { withTheme } from 'styled-components'
 import ContentLoader from 'react-content-loader'

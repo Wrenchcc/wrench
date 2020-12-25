@@ -1,3 +1,4 @@
+// @ts-nocheck
 import ContentLoader from 'ui/Placeholder'
 import { Base } from './styles'
 
