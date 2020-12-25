@@ -23,26 +23,26 @@
   "dependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-native": "^0.63.3",
+    "react-native": "^0.63.4",
     "styled-components": "^5.2.1",
     "styled-normalize": "^8.0.7",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@storybook/addon-actions": "^6.0.27",
+    "@babel/core": "^7.12.10",
+    "@storybook/addon-actions": "^6.1.11",
     "@storybook/addon-console": "^1.2.2",
-    "@storybook/addon-links": "^6.0.27",
-    "@storybook/addon-storysource": "^6.0.27",
-    "@storybook/addons": "^6.0.27",
-    "@storybook/react": "^6.0.27",
-    "@svgr/cli": "^5.4.0",
-    "@types/react": "^16.9.55",
-    "@types/styled-components": "^5.1.4",
+    "@storybook/addon-links": "^6.1.11",
+    "@storybook/addon-storysource": "^6.1.11",
+    "@storybook/addons": "^6.1.11",
+    "@storybook/react": "^6.1.11",
+    "@svgr/cli": "^5.5.0",
+    "@types/react": "^17.0.0",
+    "@types/styled-components": "^5.1.7",
     "@types/styled-system": "^5.1.10",
-    "babel-loader": "^8.1.0",
-    "serverless": "^2.10.0",
-    "storybook-dark-mode": "^1.0.3",
-    "typescript": "^4.0.5"
+    "babel-loader": "^8.2.2",
+    "serverless": "^2.16.1",
+    "storybook-dark-mode": "^1.0.4",
+    "typescript": "^4.1.3"
   }
 }
