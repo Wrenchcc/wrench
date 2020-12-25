@@ -126,7 +126,7 @@ function About() {
                 <br />
                 <br />
 
-                <Text bold>2 open posistions</Text>
+                <Text bold>2 open positions</Text>
                 <Text color="neutral">Fullstack developers (JS)</Text>
                 <br />
                 <a href="mailto:work@wrench.cc">work@wrench.cc</a>
