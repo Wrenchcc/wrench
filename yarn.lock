@@ -7827,7 +7827,7 @@ aws-sdk@2.728.0:
     uuid "3.3.2"
     xml2js "0.4.19"
 
-aws-sdk@2.817.0, aws-sdk@^2.387.0, aws-sdk@^2.488.0, aws-sdk@^2.702.0, aws-sdk@^2.761.0, aws-sdk@^2.786.0, aws-sdk@^2.815.0:
+aws-sdk@2.817.0, aws-sdk@^2.387.0, aws-sdk@^2.488.0, aws-sdk@^2.702.0, aws-sdk@^2.761.0, aws-sdk@^2.815.0, aws-sdk@^2.817.0:
   version "2.817.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.817.0.tgz#3a97b690b0ec494cf8ee927affb3973cf26abcc8"
   integrity sha512-DZIdWpkcqbqsCz0MEskHsyFaqc6Tk9XIFqXAg1AKHbOgC8nU45bz+Y2osX77pU01JkS/G7OhGtGmlKDrOPvFwg==
@@ -14789,7 +14789,7 @@ i18next-http-middleware@^3.0.2:
   resolved "https://registry.yarnpkg.com/i18next-http-middleware/-/i18next-http-middleware-3.0.6.tgz#79c4fbac8fbf5a610152ef7bd80e4ab02c5a3032"
   integrity sha512-zXZyLF+s2NexjFiJ9qV7GPdN8MCEaEk6NGirTQR994eT/PzOqSODlizewsl3n/BvfhTALgYclr1xPV50i+zxCA==
 
-i18next-parser@^3.3.0:
+i18next-parser@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/i18next-parser/-/i18next-parser-3.6.0.tgz#10d6b9acf5d170fe342ac359c95f7bee9d50ea32"
   integrity sha512-XMXvMp+qSs7NOwDoEUipkT/PHesGyvw0tjIBR1w1+ROYYxCMqn8zd/UAtBHq3wKLjqWLtL+/JCS5aO+NxKsqjw==
