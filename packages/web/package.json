@@ -63,8 +63,6 @@
     "@types/styled-components": "^5.1.7",
     "babel-plugin-module-resolver": "^4.1.0",
     "cross-env": "^7.0.3",
-    "dotenv": "^8.2.0",
-    "dotenv-webpack": "6.0.0",
     "fs-extra": "^9.0.1",
     "imagemin-svgo": "^8.0.0",
     "serverless": "^2.16.1",

@@ -234,7 +234,7 @@ PODS:
     - RNPermissions
   - Permission-PhotoLibrary (3.0.0):
     - RNPermissions
-  - PromisesObjC (1.2.11)
+  - PromisesObjC (1.2.12)
   - RCT-Folly (2020.01.13.00):
     - boost-for-react-native
     - DoubleConversion
@@ -533,12 +533,12 @@ PODS:
     - React-cxxreact (= 0.64.0-rc.2)
     - React-jsi (= 0.64.0-rc.2)
     - React-perflogger (= 0.64.0-rc.2)
-  - ReactNativeNavigation (7.6.0):
+  - ReactNativeNavigation (7.7.0):
     - React-Core
     - React-RCTImage
     - React-RCTText
-    - ReactNativeNavigation/Core (= 7.6.0)
-  - ReactNativeNavigation/Core (7.6.0):
+    - ReactNativeNavigation/Core (= 7.7.0)
+  - ReactNativeNavigation/Core (7.7.0):
     - React-Core
     - React-RCTImage
     - React-RCTText
@@ -967,7 +967,7 @@ SPEC CHECKSUMS:
   Permission-Camera: 119b01de97a5b3edb637999e38476b68143b9d17
   Permission-Microphone: e426a115ddf9591e8c30c55ea2b28572d4cbd07e
   Permission-PhotoLibrary: cb9cdc1e3744e26ab404297a8e289d50c8ee27e8
-  PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
+  PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: fa44b153ba69cb9dd6cec5084b86719e3be7c90b
   RCTTypeSafety: 8e815e0f29ed65901e4e2963a90063a4cfcb7d5e
@@ -997,7 +997,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: 93c2f243bebd392a4fad35f55e3d79dd096a4f92
   React-runtimeexecutor: 15492c8842d72b14765986b5bfbaaf5468210f13
   ReactCommon: c8ae344df0376e043f2899a5badb60709d24821e
-  ReactNativeNavigation: 91c082139a6ee8ef7d5c04c70995fdd2e8ababc9
+  ReactNativeNavigation: 8a9cf15040eeffcf4a6c750ae7e9a63042aea0aa
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
   RNCClipboard: 41d8d918092ae8e676f18adada19104fa3e68495
   RNDeviceInfo: 6ecb1d1c87d20e4c62354be0348de23362824dcd

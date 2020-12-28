@@ -11422,24 +11422,10 @@ dotenv-defaults@^1.0.2:
   dependencies:
     dotenv "^6.2.0"
 
-dotenv-defaults@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/dotenv-defaults/-/dotenv-defaults-2.0.1.tgz#ea6f9632b3b5cc55e48b736760def5561f1cb7c0"
-  integrity sha512-ugFCyBF7ILuwpmznduHPQZBMucHHJ8T4OBManTEVjemxCm2+nqifSuW2lD2SNKdiKSH1E324kZSdJ8M04b4I/A==
-  dependencies:
-    dotenv "^8.2.0"
-
 dotenv-expand@5.1.0, dotenv-expand@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-5.1.0.tgz#3fbaf020bfd794884072ea26b1e9791d45a629f0"
   integrity sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==
-
-dotenv-webpack@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/dotenv-webpack/-/dotenv-webpack-6.0.0.tgz#cd42454ee754fe8b7adb4fb70196f6e45f41876c"
-  integrity sha512-u/ycyUq7+x407HNTTqJDJelX64Pjmtm96IskgV4ZPPqTdE5d7+p8GzK7OW4sOoPxnwiLQ3iM6zjauYqFU8KdNg==
-  dependencies:
-    dotenv-defaults "^2.0.1"
 
 dotenv-webpack@^1.7.0:
   version "1.8.0"
@@ -21752,10 +21738,18 @@ react-hotkeys@2.0.0:
   dependencies:
     prop-types "^15.6.1"
 
-react-i18next@^11.7.3, react-i18next@^11.8.4:
+react-i18next@^11.7.3:
   version "11.8.4"
   resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.8.4.tgz#5407d2edcaa704c38e4034e7ac06413914ed6e6d"
   integrity sha512-QlPJfX+Roi+jEQ6frBSsLHHH+VWbUoCl6wZDT8XHMd6PsSgepjgD2sZf/h7F46JnHeuy0U+SxY3TtrJF+aDIyg==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    html-parse-stringify2 "2.0.1"
+
+react-i18next@^11.8.5:
+  version "11.8.5"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.8.5.tgz#a093335822e36252cda6efc0f55facef6253643f"
+  integrity sha512-2jY/8NkhNv2KWBnZuhHxTn13aMxAbvhiDUNskm+1xVVnrPId78l8fA7fCyVeO3XU1kptM0t4MtvxV1Nu08cjLw==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
@@ -21871,10 +21865,10 @@ react-native-get-random-values@^1.4.0:
   dependencies:
     fast-base64-decode "^1.0.0"
 
-react-native-navigation@^7.6.0:
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.6.0.tgz#8f28018f8801b9871d085b105f6300c1c12039d1"
-  integrity sha512-loCSdGCoic8UtcANm0uPugWBJTJgxDlfQgvgkH7dFtMkj/bqRpKOvJD1Pt79Tx9v2McZzNTrNu2symkmmN6tGg==
+react-native-navigation@^7.7.0:
+  version "7.7.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.7.0.tgz#e71b7dd40a5798effbd1b188341a89b7a80c4f9f"
+  integrity sha512-k53wBnMa24OQoS+dYyhuvbK6qsvnG0+rSf/mg9l6ENxU1JFz3jvWwS7RHvHNKkucSnloHNTlL32Pv4zPCWVM2Q==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"

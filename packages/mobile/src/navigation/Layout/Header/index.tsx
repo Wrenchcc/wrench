@@ -8,7 +8,6 @@ import { Base, Background, Content, Inner } from './styles'
 
 const { interpolate } = Animated
 
-
 // NOTE: Used to create translation files
 // t('notifications')
 // t('home')
