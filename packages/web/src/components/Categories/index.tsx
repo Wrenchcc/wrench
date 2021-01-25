@@ -30,11 +30,10 @@ export default function Categories() {
     },
   })
 
-
-  if(isFetching) {
-    content = new Array(8).fill({}).map((_, index) => (<Placeholder />))
-   } else {
-     content = edges?.map(({ node }) => (
+  if (isFetching && !edges?.length) {
+    content = new Array(8).fill({}).map((_, index) => <Placeholder />)
+  } else {
+    content = edges?.map(({ node }) => (
       <Card
         key={node.id}
         image={node.cover.uri}
@@ -43,7 +42,7 @@ export default function Categories() {
         user={node.user}
       />
     ))
-   }
+  }
 
   return (
     <Layout column paddingTop={40}>
@@ -57,9 +56,7 @@ export default function Categories() {
 
       {/* <Title medium>Recent posts</Title> */}
       <InfiniteScroll loadMore={fetchMore} hasMore={hasNextPage} loader={<Loader key={0} />}>
-        <List>
-          {content}
-        </List>
+        <List>{content}</List>
       </InfiniteScroll>
     </Layout>
   )
