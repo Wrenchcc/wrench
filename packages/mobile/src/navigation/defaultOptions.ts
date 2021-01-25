@@ -16,6 +16,7 @@ export default {
   bottomTabs: {
     backgroundColor: COLORS.DARK,
     titleDisplayMode: 'alwaysHide',
+    tabsAttachMode: 'afterInitialTab',
   },
   statusBar: {
     drawBehind: true,
