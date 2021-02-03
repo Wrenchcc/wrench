@@ -36,7 +36,7 @@ target 'Wrench' do
     modules_paths: [root_path],
     exclude: [ 
       'unimodules-sensors-interface', 
-      'unimodules-task-manager-interface'
+      'unimodules-task-manager-interface',
     ]
   )
   

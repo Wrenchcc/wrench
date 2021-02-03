@@ -22,7 +22,7 @@ PODS:
     - UMFileSystemInterface
     - UMImageLoaderInterface
     - UMPermissionsInterface
-  - EXConstants (10.0.0):
+  - EXConstants (10.0.1):
     - UMConstantsInterface
     - UMCore
   - EXFileSystem (9.3.0):
@@ -101,17 +101,17 @@ PODS:
     - FirebaseCoreDiagnostics (~> 7.4)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
-  - FirebaseCoreDiagnostics (7.4.0):
+  - FirebaseCoreDiagnostics (7.5.0):
     - GoogleDataTransport (~> 8.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
     - nanopb (~> 2.30907.0)
-  - FirebaseInstallations (7.4.0):
+  - FirebaseInstallations (7.5.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
     - PromisesObjC (~> 1.2)
-  - FirebaseInstanceID (7.4.0):
+  - FirebaseInstanceID (7.5.0):
     - FirebaseCore (~> 7.0)
     - FirebaseInstallations (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
@@ -469,7 +469,7 @@ PODS:
     - React
   - react-native-splash-screen (3.2.0):
     - React
-  - react-native-webview (11.2.0):
+  - react-native-webview (11.2.1):
     - React-Core
   - React-perflogger (0.64.0-rc.2)
   - React-RCTActionSheet (0.64.0-rc.2):
@@ -576,20 +576,20 @@ PODS:
     - React-Core
   - RNReanimated (1.4.0):
     - React
-  - RNSentry (2.1.1):
+  - RNSentry (2.2.0):
     - React-Core
-    - Sentry (= 6.0.9)
+    - Sentry (= 6.1.4)
   - RNShare (5.1.0):
     - React-Core
-  - SDWebImage (5.10.3):
-    - SDWebImage/Core (= 5.10.3)
-  - SDWebImage/Core (5.10.3)
+  - SDWebImage (5.10.4):
+    - SDWebImage/Core (= 5.10.4)
+  - SDWebImage/Core (5.10.4)
   - SDWebImageWebPCoder (0.6.1):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.7)
-  - Sentry (6.0.9):
-    - Sentry/Core (= 6.0.9)
-  - Sentry/Core (6.0.9)
+  - Sentry (6.1.4):
+    - Sentry/Core (= 6.1.4)
+  - Sentry/Core (6.1.4)
   - UMAppLoader (1.4.0)
   - UMBarCodeScannerInterface (5.4.0)
   - UMCameraInterface (5.4.0)
@@ -927,7 +927,7 @@ SPEC CHECKSUMS:
   EXAppleAuthentication: f808549b4f641a2915b1c892b4b21b77f5998e8b
   EXAV: 398170ec4fb575be375f76b65a7218e097f89b30
   EXCamera: f2b0990f5316abb64b0688ffbbf7d88909084b10
-  EXConstants: 07a3effb73d2f73b61079703f810bbdd5364a1c5
+  EXConstants: d9483a8fe0a963dd7ee3389f371303773e6ecd37
   EXFileSystem: 0e4974ab77bff04cda68d2886d070cbe64b93a6b
   EXHaptics: 685bcf63881af13bbd657ad148292db1f7370268
   EXImageLoader: f96ec9992733a4224418bbd9382e5485c8948944
@@ -946,9 +946,9 @@ SPEC CHECKSUMS:
   Firebase: 09fb40287b6dfc8ee65f726fa0b788719d3f2a07
   FirebaseAnalytics: adb3c8f02f83d00661cdaac6dbb4d54e9720d1b6
   FirebaseCore: 99c06e5a1e8d6952e75cb1f0a6d0b23c0f5ccdcf
-  FirebaseCoreDiagnostics: 3770093ac4f2be4590fa03cfa1d3a6e5602d4557
-  FirebaseInstallations: 30646fc9a61c6f4ee3cd7a8b7231721842b40c95
-  FirebaseInstanceID: 46d93d287108246fabbd85371ca27141d2c21ff9
+  FirebaseCoreDiagnostics: 35685db68b11fe7d19d2d8b557fd7e3a56ac81cc
+  FirebaseInstallations: a46ae59915f0931e18814164849cd0354bea24ed
+  FirebaseInstanceID: 47fcb3b70d6349cfd471f430b01bbd01a7698e8f
   FirebaseMessaging: 6112b5cd04e0ff58c4a9920e5e29cf193ea88439
   Flipper: be611d4b742d8c87fbae2ca5f44603a02539e365
   Flipper-DoubleConversion: 38631e41ef4f9b12861c67d17cb5518d06badc41
@@ -990,7 +990,7 @@ SPEC CHECKSUMS:
   react-native-netinfo: 30fb89fa913c342be82a887b56e96be6d71201dd
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
-  react-native-webview: 944b6b607b3e362437dfdaf3ba979e47f4e1c939
+  react-native-webview: a4751ec8f0a6a397026f22ed54c1efeec4540555
   React-perflogger: bca76d7279e5fb9863de266154026e0d5bd79f86
   React-RCTActionSheet: 685edbce7c0ea41c467539899a8c2eea4dc8fde9
   React-RCTAnimation: 325fad5fe7d13823c46753bb76db756737a4df8c
@@ -1016,11 +1016,11 @@ SPEC CHECKSUMS:
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNPermissions: 99dd8d4a30ff13509b949ca63cd1f69edc461775
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
-  RNSentry: 6b46b6fc1d715a378fbaa5d7d43bc9ce99b500e5
+  RNSentry: 6aeba1adc242fd22a6826acae92f430697b47a9c
   RNShare: fed99fd743f80ca255903c1da46fc9a6430efab6
-  SDWebImage: e378178472b735e84b007bfb55514c97948a0598
+  SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
-  Sentry: 388c9dc093b2fd3a264466a5c5b21e25959610a9
+  Sentry: 9d055e2de30a77685e86b219acf02e59b82091fc
   UMAppLoader: 92d044af52626af3d81a69796ad666fc7a9a7d78
   UMBarCodeScannerInterface: 3f6c1b09ef4b867ce752b8c0b3893bcf9cd85f32
   UMCameraInterface: d516032121192fee9a6c93bdfff0bb2cc7282796
@@ -1035,6 +1035,6 @@ SPEC CHECKSUMS:
   Yoga: 17d4f4db4e2efbaa7c3bc316ce4f762d02c4023d
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: a93b96548bd3b0df43caac3bf70985d918297f4e
+PODFILE CHECKSUM: 9e84e3f63a95709da3d3e259a1f3188b43199910
 
 COCOAPODS: 1.10.0

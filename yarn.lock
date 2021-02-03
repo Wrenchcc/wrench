@@ -12962,7 +12962,15 @@ expo-camera@^10.0.0:
     invariant "2.2.4"
     lodash "^4.6.0"
 
-expo-constants@^10.0.0, expo-constants@~10.0.0:
+expo-constants@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-10.0.1.tgz#a6cf6998c70ef6e1772a7c4096723482194c5828"
+  integrity sha512-SnMIX1PnTz3AgGcFd+paCb8Ur0WfEiBjEZ7TxCdwpk7XVQO4etCzn6auNutCd4PBc4YVNvmKF9e0WFgLxy4NRQ==
+  dependencies:
+    "@expo/config" "^3.3.18"
+    uuid "^3.3.2"
+
+expo-constants@~10.0.0:
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-10.0.0.tgz#284a24897f151aa227fa6eef55163ddf70193aa9"
   integrity sha512-UA+mCQlwdqKTR/ND6qs+Cezabq7eXrurz8vh7tHBew72tQ2mNcuq/MNIEO4RjHg1El0f2C6LwZcm01hcpZ3w5A==
@@ -15241,10 +15249,10 @@ i18next-http-backend@^1.0.17:
   dependencies:
     node-fetch "2.6.1"
 
-i18next-http-backend@^1.0.22:
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/i18next-http-backend/-/i18next-http-backend-1.0.22.tgz#30b639d08aac443eb58706bee48573198806b25b"
-  integrity sha512-rJXovQirK4kLYD8zF4pRi1CwVGtL2WrHXndU89Ds20CimAc7InYjBHmcJFurWPZlz/zgThRNbMuSDP0GYOISMA==
+i18next-http-backend@^1.0.24:
+  version "1.0.24"
+  resolved "https://registry.yarnpkg.com/i18next-http-backend/-/i18next-http-backend-1.0.24.tgz#3a52e4f5506339cb6178ef27c5a2a44321b7787a"
+  integrity sha512-sjHB9DrpGOVsXQmOYTrc9kHCrVeuO55m7DzoDS4ceITVmiLW3bVogHADQBqf+77jsLGDB623brSS/wsMA7dV9g==
   dependencies:
     node-fetch "2.6.1"
 
@@ -15275,10 +15283,17 @@ i18next-parser@^3.6.0:
     vinyl-fs "^3.0.2"
     vue-template-compiler "^2.6.11"
 
-i18next@*, i18next@^19.0.1, i18next@^19.6.3, i18next@^19.8.4:
+i18next@*, i18next@^19.0.1, i18next@^19.6.3:
   version "19.8.4"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.8.4.tgz#447718f2a26319b8debdbcc6fbc1a9761be7316b"
   integrity sha512-FfVPNWv+felJObeZ6DSXZkj9QM1Ivvh7NcFCgA8XPtJWHz0iXVa9BUy+QY8EPrCLE+vWgDfV/sc96BgXVo6HAA==
+  dependencies:
+    "@babel/runtime" "^7.12.0"
+
+i18next@^19.8.5:
+  version "19.8.5"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.8.5.tgz#8275c98ab98faffa348de2c34c2fd80ffeadb999"
+  integrity sha512-mDuH/mvnNXZmvqxl3akSZuJtbX7ou7M66kzfXQTfRngTZ9cAjktlx4yVzA+gS9VPZp51eZOQAGfEDbFcnyvliw==
   dependencies:
     "@babel/runtime" "^7.12.0"
 
@@ -22562,48 +22577,15 @@ react-native-unimodules@^0.12.0:
     unimodules-sensors-interface "~5.4.0"
     unimodules-task-manager-interface "~5.4.0"
 
-react-native-webview@^11.2.0:
-  version "11.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-11.2.0.tgz#6ae73b17743c25c6fff4ff36a060ba52597fccd9"
-  integrity sha512-ZmJlCnBIoh4/d8Bd4St7GPTlPxLs3reHcRdTeOhPKjwuqE194BTfwie5t0QO+l0C1ms2RXrcLrUYV3uBbgpCkA==
+react-native-webview@^11.2.1:
+  version "11.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-11.2.1.tgz#abe68c38808f34aeed0a10740b2efba74ac610b8"
+  integrity sha512-dfChyqqWVJe0kdCuDZ4mJt+RgOYNie+rCjCrZ55OW6X7f/rvNVd3Mbnv/1mbYjU8wm5C3/1/oqVJoTB/7GAGjQ==
   dependencies:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
 
-react-native@^0.63.4:
-  version "0.63.4"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.63.4.tgz#2210fdd404c94a5fa6b423c6de86f8e48810ec36"
-  integrity sha512-I4kM8kYO2mWEYUFITMcpRulcy4/jd+j9T6PbIzR0FuMcz/xwd+JwHoLPa1HmCesvR1RDOw9o4D+OFLwuXXfmGw==
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-    "@react-native-community/cli" "^4.10.0"
-    "@react-native-community/cli-platform-android" "^4.10.0"
-    "@react-native-community/cli-platform-ios" "^4.10.0"
-    abort-controller "^3.0.0"
-    anser "^1.4.9"
-    base64-js "^1.1.2"
-    event-target-shim "^5.0.1"
-    fbjs "^1.0.0"
-    fbjs-scripts "^1.1.0"
-    hermes-engine "~0.5.0"
-    invariant "^2.2.4"
-    jsc-android "^245459.0.0"
-    metro-babel-register "0.59.0"
-    metro-react-native-babel-transformer "0.59.0"
-    metro-source-map "0.59.0"
-    nullthrows "^1.1.1"
-    pretty-format "^24.9.0"
-    promise "^8.0.3"
-    prop-types "^15.7.2"
-    react-devtools-core "^4.6.0"
-    react-refresh "^0.4.0"
-    regenerator-runtime "^0.13.2"
-    scheduler "0.19.1"
-    stacktrace-parser "^0.1.3"
-    use-subscription "^1.0.0"
-    whatwg-fetch "^3.0.0"
-
-react-native@^0.64.0-rc.2:
+react-native@0.64.0-rc.2:
   version "0.64.0-rc.2"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.64.0-rc.2.tgz#fd9f273255ac61bd23abd4a1251a6d6fba5ee343"
   integrity sha512-c9eZEHnAtoEIlfm1AmCjobCeGqxcb7046U6CaWNKScE+Plf+A8Kq62k7kTianQHrC5mba9SyoMx01gox0w6xbg==
@@ -22639,6 +22621,39 @@ react-native@^0.64.0-rc.2:
     use-subscription "^1.0.0"
     whatwg-fetch "^3.0.0"
     ws "^6.1.4"
+
+react-native@^0.63.4:
+  version "0.63.4"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.63.4.tgz#2210fdd404c94a5fa6b423c6de86f8e48810ec36"
+  integrity sha512-I4kM8kYO2mWEYUFITMcpRulcy4/jd+j9T6PbIzR0FuMcz/xwd+JwHoLPa1HmCesvR1RDOw9o4D+OFLwuXXfmGw==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@react-native-community/cli" "^4.10.0"
+    "@react-native-community/cli-platform-android" "^4.10.0"
+    "@react-native-community/cli-platform-ios" "^4.10.0"
+    abort-controller "^3.0.0"
+    anser "^1.4.9"
+    base64-js "^1.1.2"
+    event-target-shim "^5.0.1"
+    fbjs "^1.0.0"
+    fbjs-scripts "^1.1.0"
+    hermes-engine "~0.5.0"
+    invariant "^2.2.4"
+    jsc-android "^245459.0.0"
+    metro-babel-register "0.59.0"
+    metro-react-native-babel-transformer "0.59.0"
+    metro-source-map "0.59.0"
+    nullthrows "^1.1.1"
+    pretty-format "^24.9.0"
+    promise "^8.0.3"
+    prop-types "^15.7.2"
+    react-devtools-core "^4.6.0"
+    react-refresh "^0.4.0"
+    regenerator-runtime "^0.13.2"
+    scheduler "0.19.1"
+    stacktrace-parser "^0.1.3"
+    use-subscription "^1.0.0"
+    whatwg-fetch "^3.0.0"
 
 react-phone-input-2@^2.13.9:
   version "2.13.9"
