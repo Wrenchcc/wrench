@@ -339,7 +339,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "../../../node_modules/react-native/scripts/react-native-xcode.sh\n\n#export SENTRY_PROPERTIES=sentry.properties\n\n#../../../node_modules/@sentry/cli/bin/sentry-cli react-native xcode \\  ../../../node_modules/react-native/scripts/react-native-xcode.sh\n";
+			shellScript = "../../../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		0AF81E7812D4CC4727DD7D92 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

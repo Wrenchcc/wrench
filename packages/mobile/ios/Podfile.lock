@@ -20,7 +20,7 @@ PODS:
     - UMFileSystemInterface
     - UMImageLoaderInterface
     - UMPermissionsInterface
-  - EXConstants (10.0.0):
+  - EXConstants (10.0.1):
     - UMConstantsInterface
     - UMCore
   - EXFileSystem (9.3.0):
@@ -837,7 +837,7 @@ SPEC CHECKSUMS:
   EXAppleAuthentication: f808549b4f641a2915b1c892b4b21b77f5998e8b
   EXAV: 398170ec4fb575be375f76b65a7218e097f89b30
   EXCamera: f2b0990f5316abb64b0688ffbbf7d88909084b10
-  EXConstants: 07a3effb73d2f73b61079703f810bbdd5364a1c5
+  EXConstants: d9483a8fe0a963dd7ee3389f371303773e6ecd37
   EXFileSystem: 0e4974ab77bff04cda68d2886d070cbe64b93a6b
   EXHaptics: 685bcf63881af13bbd657ad148292db1f7370268
   EXImageLoader: f96ec9992733a4224418bbd9382e5485c8948944
