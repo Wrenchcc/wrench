@@ -13,6 +13,7 @@ function Initializing() {
 
       if (!accessToken) {
         SplashScreen.hide()
+
         return AuthNavigation()
       }
 
