@@ -1,4 +1,3 @@
-// Blah
 import 'react-native-gesture-handler'
 import 'i18n'
 
