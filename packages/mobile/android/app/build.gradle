@@ -3,7 +3,6 @@ import groovy.json.JsonSlurper
 
 apply plugin: "com.android.application"
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
-apply plugin: "io.fabric"
 apply from: '../../../../node_modules/react-native-unimodules/gradle.groovy'
 
 def projectRoot = "../../../../";
@@ -124,15 +123,6 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
-// NOTE: Fixes blank splash when using abb (Remove when using RN 0.62)
-// https://github.com/facebook/react-native/issues/26400
-configurations.all {
-    resolutionStrategy {
-        force "com.facebook.soloader:soloader:0.8.0"
-    }
-}
-
-
 android {
     ndkVersion rootProject.ext.ndkVersion
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -227,7 +217,6 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
-
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'
@@ -240,7 +229,7 @@ dependencies {
         exclude group:'com.squareup.okhttp3', module:'okhttp'
     }
 
-    implementation "com.google.android.gms:play-services-base:17.3.0"
+    implementation "com.google.android.gms:play-services-base:17.6.0"
     
     addUnimodulesDependencies([modulesPaths: ['../../../../node_modules/']])
 }
