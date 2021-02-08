@@ -13,12 +13,12 @@ on:
 jobs:
   version_tag:
     name: Version
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: '2.7.2'
+          ruby-version: '2.6'
 
       - name: Version Bump
         uses: "phips28/gh-action-bump-version@master"
@@ -109,7 +109,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: '2.7.2'
+          ruby-version: '2.6'
         
       - name: Install Xcode
         uses: maxim-lobanov/setup-xcode@v1

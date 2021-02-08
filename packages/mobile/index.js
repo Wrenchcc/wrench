@@ -19,6 +19,7 @@ Navigation.events().registerAppLaunchedListener(async () => {
 
   registerScreens(client)
 
+  // TODO: await and skip setTimeout
   Bootstrap()
 
   Linking.addEventListener('url', createDeepLinkingHandler)
