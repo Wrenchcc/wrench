@@ -2,12 +2,11 @@ import React, { useCallback, useState } from 'react'
 import { LayoutChangeEvent, Dimensions, View } from 'react-native'
 import Animated from 'react-native-reanimated'
 import { Text, Icon } from 'ui'
-import Toast from 'components/Toast'
 import { arrowLeft } from 'images'
 import { useNavigation } from '../../hooks'
 import { Base, Inner } from './styles'
 
-const { interpolate, Extrapolate } = Animated
+const { interpolateNode, Extrapolate } = Animated
 
 const { width: screenWidth } = Dimensions.get('window')
 
@@ -48,7 +47,7 @@ function Header({
 
   const opacity =
     scrollY && headerAnimation
-      ? interpolate(scrollY, {
+      ? interpolateNode(scrollY, {
           extrapolate: Extrapolate.CLAMP,
           inputRange: [0, 50],
           outputRange: [0, 1],
@@ -77,8 +76,6 @@ function Header({
           <View onLayout={handleHeaderRightLayout}>{headerRight}</View>
         </Inner>
       </Base>
-
-      <Toast />
     </>
   )
 }

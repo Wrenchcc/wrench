@@ -1,9 +1,9 @@
 import { Navigation } from 'react-native-navigation'
-import { Appearance } from 'react-native'
-import { DARK_THEME, LIGHT_THEME } from '@wrench/ui'
+// import { Appearance } from 'react-native'
 import { getCurrentUserProjects } from 'gql'
 import { logError } from 'utils/sentry'
 import { trackScreen } from 'utils/analytics'
+import PlatformColor from 'ui/PlatformColor'
 import { SCREENS, TABS_INDEX } from './constants'
 
 // TODO: Find a way to know when pressing tab from
@@ -17,10 +17,10 @@ Navigation.events().registerComponentDidAppearListener(({ componentId: id, compo
   trackScreen(componentName)
 })
 
-const dynamicColor =
-  Appearance.getColorScheme() === 'dark' ? DARK_THEME.default : LIGHT_THEME.default
+// const dynamicColor =
+//   Appearance.getColorScheme() === 'dark' ? DARK_THEME.default : LIGHT_THEME.default
 
-const dynamicStatusbar = Appearance.getColorScheme() === 'dark' ? 'light' : 'dark'
+// const dynamicStatusbar = Appearance.getColorScheme() === 'dark' ? 'light' : 'dark'
 
 Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
   if (tabIndex === TABS_INDEX.ADD) {
@@ -38,11 +38,15 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
                 name: screen,
                 options: {
                   layout: {
-                    componentBackgroundColor: hasProject ? LIGHT_THEME.black : dynamicColor,
+                    componentBackgroundColor: hasProject
+                      ? PlatformColor.blackColor
+                      : PlatformColor.defaultColor,
                   },
                   statusBar: {
-                    backgroundColor: hasProject ? LIGHT_THEME.black : dynamicColor,
-                    style: hasProject ? 'light' : dynamicStatusbar,
+                    backgroundColor: hasProject
+                      ? PlatformColor.blackColor
+                      : PlatformColor.defaultColor,
+                    // style: hasProject ? 'light' : dynamicStatusbar,
                   },
                 },
               },

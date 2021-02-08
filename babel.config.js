@@ -13,8 +13,8 @@ const alias = {
   videos: './packages/mobile/assets/videos',
 
   ...readdirSync(MOBILE_FOLDER, { withFileTypes: true })
-    .filter(dirent => dirent.isDirectory())
-    .map(dirent => dirent.name)
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name)
     .reduce(
       (res, item) => ({
         ...res,
@@ -35,5 +35,6 @@ module.exports = {
         alias,
       },
     ],
+    ['react-native-reanimated/plugin'],
   ],
 }

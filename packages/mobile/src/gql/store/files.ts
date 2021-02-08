@@ -24,21 +24,6 @@ export const select = async (payload) => {
   const isPrevious = selectedFileIdVar() === currentId
   const currentIndex = selectedFiles.findIndex((e) => e.id === currentId)
 
-  // If camera
-  if (payload.camera && !selectedFiles.length) {
-    // Save file
-    try {
-      const file = await MediaLibrary.createAssetAsync(payload.uri)
-
-      selectedFileIdVar(file.id)
-      selectedFilesVar([{ ...file, camera: true }])
-
-      return
-    } catch (err) {
-      logError(err)
-    }
-  }
-
   if (!isPrevious && !isAdded && selectedFiles.length === MAX_SELECTED_FILES) {
     return
   }

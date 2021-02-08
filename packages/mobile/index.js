@@ -48,12 +48,12 @@ Navigation.events().registerAppLaunchedListener(async () => {
     }
   })
 
-  messaging().onMessage((remoteMessage) => {
-    store.notification.showNotification({
-      body: remoteMessage.notification?.body,
-      title: remoteMessage.data?.title,
-      avatarUrl: remoteMessage.data?.avatarUrl,
-      path: remoteMessage.data?.path,
-    })
-  })
+  // messaging().onMessage((remoteMessage) => {
+  //   store.notification.showNotification({
+  //     body: remoteMessage.notification?.body,
+  //     title: remoteMessage.data?.title,
+  //     avatarUrl: remoteMessage.data?.avatarUrl,
+  //     path: remoteMessage.data?.path,
+  //   })
+  // })
 })

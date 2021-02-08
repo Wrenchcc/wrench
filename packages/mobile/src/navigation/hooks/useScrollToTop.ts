@@ -38,7 +38,7 @@ function getScrollableNode(ref: React.RefObject<ScrollableWrapper>) {
     // we need to use `getNode` to get the ref to the actual scrollview.
     // Note that `getNode` is deprecated in newer versions of react-native
     // this is why we check if we already have a scrollable node above.
-    return ref.current.getNode()
+    return ref.current
   } else {
     return ref.current
   }

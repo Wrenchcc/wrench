@@ -1,12 +1,8 @@
 import { Options, OptionsModalPresentationStyle } from 'react-native-navigation'
-import { COLORS } from 'ui/constants'
-import { Appearance } from 'react-native'
-import { DARK_THEME, LIGHT_THEME } from '@wrench/ui'
+import PlatformColor from 'ui/PlatformColor'
+// import { Appearance } from 'react-native'
 
-const dynamicColor =
-  Appearance.getColorScheme() === 'dark' ? DARK_THEME.default : LIGHT_THEME.default
-
-const dynamicStatusbar = Appearance.getColorScheme() === 'dark' ? 'light' : 'dark'
+// const dynamicStatusbar = Appearance.getColorScheme() === 'dark' ? 'light' : 'dark'
 
 export default {
   modalPresentationStyle: OptionsModalPresentationStyle.fullScreen,
@@ -14,18 +10,18 @@ export default {
     titleDisplayMode: 'alwaysHide',
   },
   bottomTabs: {
-    backgroundColor: COLORS.DARK,
+    backgroundColor: PlatformColor.blackColor,
     titleDisplayMode: 'alwaysHide',
     tabsAttachMode: 'afterInitialTab',
   },
   statusBar: {
     drawBehind: true,
-    style: dynamicStatusbar,
-    backgroundColor: dynamicColor,
+    // style: dynamicStatusbar,
+    backgroundColor: PlatformColor.defaultColor,
   },
   layout: {
-    backgroundColor: dynamicColor,
-    componentBackgroundColor: dynamicColor,
+    backgroundColor: PlatformColor.defaultColor,
+    componentBackgroundColor: PlatformColor.defaultColor,
     orientation: ['portrait'],
   },
   overlay: {
@@ -36,6 +32,6 @@ export default {
     visible: false,
   },
   navigationBar: {
-    backgroundColor: COLORS.DARK,
+    backgroundColor: PlatformColor.blackColor,
   },
 } as Options

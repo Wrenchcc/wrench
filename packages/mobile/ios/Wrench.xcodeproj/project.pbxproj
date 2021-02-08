@@ -10,11 +10,11 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		166474C825D15BBA00794493 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 166474C725D15BBA00794493 /* Assets.xcassets */; };
 		37AEB748558644E38B0C637D /* inter_ui_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C53EA82FD9743C29DB6E400 /* inter_ui_bold.ttf */; };
 		485DD1115132424A8A015872 /* inter_ui.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA315EC66CEF43E0ADFD646E /* inter_ui.ttf */; };
 		71B31E1FE5BC847380864790 /* libPods-Wrench.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE884EF522CA1F6927430315 /* libPods-Wrench.a */; };
 		D2002BDB2395A01800BF4AD8 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2002BDA2395A01800BF4AD8 /* File.swift */; };
-		D21FAE152449C104005868E7 /* MediaLibraryImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D21FAE142449C104005868E7 /* MediaLibraryImageLoader.m */; };
 		D2AC5215254F5BAA00D6C898 /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = D2AC5214254F5BAA00D6C898 /* en.json */; };
 		D2AC5217254F5BB200D6C898 /* sv.json in Resources */ = {isa = PBXBuildFile; fileRef = D20CE60E254F0EE400C09B7C /* sv.json */; };
 		D2AC5219254F616700D6C898 /* tl.json in Resources */ = {isa = PBXBuildFile; fileRef = D20CE611254F0EFA00C09B7C /* tl.json */; };
@@ -44,6 +44,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Wrench/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Wrench/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Wrench/main.m; sourceTree = "<group>"; };
+		166474C725D15BBA00794493 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C53EA82FD9743C29DB6E400 /* inter_ui_bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = inter_ui_bold.ttf; path = ../assets/fonts/inter_ui_bold.ttf; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		81E226C05F726DE1097FFE7F /* Pods-Wrench.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wrench.debug.xcconfig"; path = "Target Support Files/Pods-Wrench/Pods-Wrench.debug.xcconfig"; sourceTree = "<group>"; };
@@ -62,8 +63,6 @@
 		D20CE60B254F0ED100C09B7C /* ru.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = ru.json; path = ../../translations/src/locales/ru/ru.json; sourceTree = "<group>"; };
 		D20CE60E254F0EE400C09B7C /* sv.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = sv.json; path = ../../translations/src/locales/sv/sv.json; sourceTree = "<group>"; };
 		D20CE611254F0EFA00C09B7C /* tl.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = tl.json; path = ../../translations/src/locales/tl/tl.json; sourceTree = "<group>"; };
-		D21FAE132449C104005868E7 /* MediaLibraryImageLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaLibraryImageLoader.h; path = Wrench/MediaLibraryImageLoader.h; sourceTree = "<group>"; };
-		D21FAE142449C104005868E7 /* MediaLibraryImageLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MediaLibraryImageLoader.m; path = Wrench/MediaLibraryImageLoader.m; sourceTree = "<group>"; };
 		D22319F722009AC40067C6BD /* Wrench.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Wrench.entitlements; path = Wrench/Wrench.entitlements; sourceTree = "<group>"; };
 		D2AC51FB254F336D00D6C898 /* de */ = {isa = PBXFileReference; lastKnownFileType = folder; name = de; path = ../../translations/src/locales/de; sourceTree = "<group>"; };
 		D2AC51FC254F336D00D6C898 /* sv */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sv; path = ../../translations/src/locales/sv; sourceTree = "<group>"; };
@@ -113,6 +112,7 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				166474C725D15BBA00794493 /* Assets.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -140,15 +140,6 @@
 				DA315EC66CEF43E0ADFD646E /* inter_ui.ttf */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				D21FAE132449C104005868E7 /* MediaLibraryImageLoader.h */,
-				D21FAE142449C104005868E7 /* MediaLibraryImageLoader.m */,
-			);
-			name = Libraries;
 			sourceTree = "<group>";
 		};
 		83CBB9F61A601CBA00E9B192 = {
@@ -182,7 +173,6 @@
 				D2002BDA2395A01800BF4AD8 /* File.swift */,
 				D2F146272200A9B000E8A474 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* Wrench */,
-				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				667F5285967449079E56D0E4 /* Resources */,
@@ -316,6 +306,7 @@
 				D2AC5217254F5BB200D6C898 /* sv.json in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				D2F146A22200B0D100E8A474 /* notification.aiff in Resources */,
+				166474C825D15BBA00794493 /* Assets.xcassets in Resources */,
 				37AEB748558644E38B0C637D /* inter_ui_bold.ttf in Resources */,
 				E8A6BC359299405F9EAC7025 /* inter_ui_medium.ttf in Resources */,
 				D5A8E72924BB99E70061305F /* LaunchScreen.storyboard in Resources */,
@@ -437,7 +428,6 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				D2002BDB2395A01800BF4AD8 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				D21FAE152449C104005868E7 /* MediaLibraryImageLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,8 @@ PODS:
     - UMCore
     - UMFileSystemInterface
     - UMPermissionsInterface
+  - EXBlur (9.0.0):
+    - UMCore
   - EXCamera (10.0.0):
     - UMBarCodeScannerInterface
     - UMCameraInterface
@@ -521,8 +523,35 @@ PODS:
     - React-Core
   - RNPermissions (3.0.0):
     - React-Core
-  - RNReanimated (1.4.0):
+  - RNReanimated (2.0.0-rc.3):
+    - DoubleConversion
+    - FBLazyVector
+    - FBReactNativeSpec
+    - glog
+    - RCT-Folly
+    - RCTRequired
+    - RCTTypeSafety
     - React
+    - React-callinvoker
+    - React-Core
+    - React-Core/DevSupport
+    - React-Core/RCTWebSocket
+    - React-CoreModules
+    - React-cxxreact
+    - React-jsi
+    - React-jsiexecutor
+    - React-jsinspector
+    - React-RCTActionSheet
+    - React-RCTAnimation
+    - React-RCTBlob
+    - React-RCTImage
+    - React-RCTLinking
+    - React-RCTNetwork
+    - React-RCTSettings
+    - React-RCTText
+    - React-RCTVibration
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNSentry (2.2.0):
     - React-Core
     - Sentry (= 6.1.4)
@@ -558,6 +587,7 @@ DEPENDENCIES:
   - DoubleConversion (from `../../../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXAppleAuthentication (from `../../../node_modules/expo-apple-authentication/ios`)
   - EXAV (from `../../../node_modules/expo-av/ios`)
+  - EXBlur (from `../../../node_modules/expo-blur/ios`)
   - EXCamera (from `../../../node_modules/expo-camera/ios`)
   - EXConstants (from `../../../node_modules/expo-constants/ios`)
   - EXFileSystem (from `../../../node_modules/expo-file-system/ios`)
@@ -679,6 +709,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/expo-apple-authentication/ios"
   EXAV:
     :path: "../../../node_modules/expo-av/ios"
+  EXBlur:
+    :path: "../../../node_modules/expo-blur/ios"
   EXCamera:
     :path: "../../../node_modules/expo-camera/ios"
   EXConstants:
@@ -836,6 +868,7 @@ SPEC CHECKSUMS:
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   EXAppleAuthentication: f808549b4f641a2915b1c892b4b21b77f5998e8b
   EXAV: 398170ec4fb575be375f76b65a7218e097f89b30
+  EXBlur: 1d3a68f80ebbbf94f4517e7b071e4d86530e74a0
   EXCamera: f2b0990f5316abb64b0688ffbbf7d88909084b10
   EXConstants: d9483a8fe0a963dd7ee3389f371303773e6ecd37
   EXFileSystem: 0e4974ab77bff04cda68d2886d070cbe64b93a6b
@@ -916,7 +949,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: 9b7e605a741412e20e13c512738a31bd1611759b
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNPermissions: 99dd8d4a30ff13509b949ca63cd1f69edc461775
-  RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
+  RNReanimated: 31d4b60fe6509e161b4c461dee70d98a9c7af6b6
   RNSentry: 6aeba1adc242fd22a6826acae92f430697b47a9c
   RNShare: fed99fd743f80ca255903c1da46fc9a6430efab6
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84

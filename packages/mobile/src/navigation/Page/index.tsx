@@ -1,6 +1,5 @@
 import React, { useRef, cloneElement, useEffect, useCallback } from 'react'
 import Animated from 'react-native-reanimated'
-import InAppNotification from 'components/InAppNotification'
 import Header from './Header'
 import { NAVIGATION } from '../constants'
 
@@ -22,13 +21,13 @@ function Page({
 
   const scrollToTop = useCallback(() => {
     if (scrollRef.current) {
-      scrollRef.current.getNode().scrollToOffset({ offset: -NAVIGATION.LIST_OFFSET })
+      scrollRef.current.scrollToOffset({ offset: -NAVIGATION.LIST_OFFSET })
     }
   }, [scrollRef])
 
   useEffect(() => {
     if (scrollToIndex && scrollRef.current) {
-      scrollRef.current.getNode().scrollToOffset({ top: 600 })
+      scrollRef.current.scrollToOffset({ top: 600 })
     }
   }, [scrollRef, scrollToIndex])
 
@@ -43,8 +42,6 @@ function Page({
         headerAnimation={headerAnimation}
         onPress={scrollToTop}
       />
-
-      <InAppNotification />
 
       {view
         ? children
