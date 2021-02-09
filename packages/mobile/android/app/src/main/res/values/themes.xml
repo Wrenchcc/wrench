@@ -1,0 +1,11 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/default_color</item>
+        <item name="android:statusBarColor">@color/default_color</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">@color/black_color</item>
+    </style>
+
+    <style name="SplashScreenTheme" parent="AppTheme" />
+</resources>
+

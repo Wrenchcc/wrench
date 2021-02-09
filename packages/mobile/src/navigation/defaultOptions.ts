@@ -1,8 +1,7 @@
 import { Options, OptionsModalPresentationStyle } from 'react-native-navigation'
+import { Appearance } from 'react-native'
 import PlatformColor from 'ui/PlatformColor'
-// import { Appearance } from 'react-native'
-
-// const dynamicStatusbar = Appearance.getColorScheme() === 'dark' ? 'light' : 'dark'
+import { isAndroid } from 'utils/platform'
 
 export default {
   modalPresentationStyle: OptionsModalPresentationStyle.fullScreen,
@@ -16,8 +15,10 @@ export default {
   },
   statusBar: {
     drawBehind: true,
-    // style: dynamicStatusbar,
-    backgroundColor: PlatformColor.defaultColor,
+    backgroundColor: 'transparent',
+    translucent: false,
+    // NOTE: Android does not resolve correct style automaticlly like iOS
+    ...(isAndroid && { style: Appearance.getColorScheme() === 'dark' ? 'light' : 'dark' }),
   },
   layout: {
     backgroundColor: PlatformColor.defaultColor,

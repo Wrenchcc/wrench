@@ -1,7 +1,5 @@
 import { makeVar } from '@apollo/client'
-import * as MediaLibrary from 'expo-media-library'
 import { assocPath } from 'rambda'
-import { logError } from 'utils/sentry'
 import { MAX_SELECTED_FILES } from './constants'
 
 export const croppedFilesVar = makeVar([])

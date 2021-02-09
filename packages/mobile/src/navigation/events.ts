@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation'
-// import { Appearance } from 'react-native'
+import { Appearance } from 'react-native'
 import { getCurrentUserProjects } from 'gql'
 import { logError } from 'utils/sentry'
 import { trackScreen } from 'utils/analytics'
@@ -17,10 +17,7 @@ Navigation.events().registerComponentDidAppearListener(({ componentId: id, compo
   trackScreen(componentName)
 })
 
-// const dynamicColor =
-//   Appearance.getColorScheme() === 'dark' ? DARK_THEME.default : LIGHT_THEME.default
-
-// const dynamicStatusbar = Appearance.getColorScheme() === 'dark' ? 'light' : 'dark'
+const dynamicStatusbar = Appearance.getColorScheme() === 'dark' ? 'light' : 'dark'
 
 Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
   if (tabIndex === TABS_INDEX.ADD) {
@@ -46,7 +43,7 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
                     backgroundColor: hasProject
                       ? PlatformColor.blackColor
                       : PlatformColor.defaultColor,
-                    // style: hasProject ? 'light' : dynamicStatusbar,
+                    style: hasProject ? 'light' : dynamicStatusbar,
                   },
                 },
               },

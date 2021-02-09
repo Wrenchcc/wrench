@@ -11,7 +11,6 @@ import Animated, {
 } from 'react-native-reanimated'
 import { PanGestureHandler, FlatList } from 'react-native-gesture-handler'
 import { clamp, snapPoint } from 'react-native-redash'
-// import * as Permissions from 'expo-permissions'
 import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import * as MediaLibrary from 'expo-media-library'
 import { Video } from 'expo-av'

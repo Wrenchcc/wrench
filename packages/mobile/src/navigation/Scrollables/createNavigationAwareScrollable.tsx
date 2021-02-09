@@ -101,9 +101,11 @@ export default function createNavigationAwareScrollable(Component) {
         onRefresh={refetch}
         onEndReached={onEndReached}
         refreshing={isRefetching}
+        // TODO: Remove transparent when fixed: https://github.com/facebook/react-native/issues/30912
         refreshControl={
           refetch && (
             <RefreshControl
+              style={{ backgroundColor: 'transparent' }}
               progressViewOffset={VIEW_OFFSET}
               refreshing={isRefetching}
               onRefresh={refetch}
