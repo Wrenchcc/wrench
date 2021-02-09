@@ -11,20 +11,8 @@ import org.devio.rn.splashscreen.SplashScreen;
 public class MainActivity extends NavigationActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-      switch (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) {
-        case Configuration.UI_MODE_NIGHT_YES:
-            setTheme(R.style.DarkTheme);
-
-            break;
-        case Configuration.UI_MODE_NIGHT_NO:
-            setTheme(R.style.LightTheme);
-            break;
-        default:
-            setTheme(R.style.LightTheme);
-      }
-
-      SplashScreen.show(this, true);
       super.onCreate(savedInstanceState);
+      SplashScreen.show(this, R.style.SplashScreenTheme); 
     }
 
     @Override

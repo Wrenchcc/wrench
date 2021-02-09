@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { FlatList, Keyboard } from 'react-native'
+import { FlatList, Keyboard, RefreshControl } from 'react-native'
 import { isAndroid } from 'utils/platform'
 import Border from 'ui/Border'
 import Loader from 'ui/Loader'
@@ -45,6 +45,16 @@ function InfiniteList({
     <FlatList
       style={{ flex: 1 }}
       data={data}
+      // TODO: Remove when fixed: https://github.com/facebook/react-native/issues/30912
+      refreshControl={
+        refetch && (
+          <RefreshControl
+            style={{ backgroundColor: 'transparent' }}
+            refreshing={isRefetching}
+            onRefresh={refetch}
+          />
+        )
+      }
       keyExtractor={keyExtractor}
       onRefresh={refetch}
       onEndReached={onEndReached}

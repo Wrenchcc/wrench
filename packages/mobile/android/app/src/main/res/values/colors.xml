@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="white">#ffffff</color>
-    <color name="black">#000000</color>
+    <color name="black_color">#000000</color>
+    <color name="white_color">#ffffff</color>
+    <color name="default_color">#FFFFFF</color>
+    <color name="divider_color">#E6E7E9</color>
+    <color name="error_color">#EC6D2F</color>
+    <color name="inverse_color">#000000</color>
+    <color name="neutral_color">#6D6F76</color>
+    <color name="placeholder_color">#E6E7E9</color>
+    <color name="subtle_color">#E6E7E9</color>
+    <color name="accent_color">#A8A8AD</color>
+    <color name="success_color">#2DB22F</color>
+    <color name="warning_color">#EEC530</color>
 </resources>

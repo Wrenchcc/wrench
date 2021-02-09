@@ -19,9 +19,20 @@ export function Bootstrap() {
 export function AuthNavigation() {
   Navigation.setDefaultOptions({
     ...defaultOptions,
+    animations: {
+      setRoot: {
+        waitForRender: true,
+        alpha: {
+          from: 0,
+          to: 1,
+          duration: 350,
+        },
+      },
+    },
     statusBar: {
-      drawBehind: false,
+      drawBehind: true,
       style: 'light',
+      backgroundColor: 'transparent',
     },
   })
 
@@ -35,7 +46,19 @@ export function AuthNavigation() {
 }
 
 export function AppNavigation(onboarding: boolean) {
-  Navigation.setDefaultOptions(defaultOptions)
+  Navigation.setDefaultOptions({
+    ...defaultOptions,
+    animations: {
+      setRoot: {
+        waitForRender: true,
+        alpha: {
+          from: 0,
+          to: 1,
+          duration: 350,
+        },
+      },
+    },
+  })
 
   if (onboarding) {
     Navigation.setRoot({

@@ -3,11 +3,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/backgroundColor"
+    android:background="@color/default_color"
     android:gravity="center">
     <ImageView
       android:layout_width="60dp"
       android:layout_height="60dp"
-      android:src="?attr/icon"
+      android:src="@drawable/icon"
     />
 </LinearLayout>
