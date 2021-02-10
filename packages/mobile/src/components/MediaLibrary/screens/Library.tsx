@@ -42,7 +42,7 @@ const WRITE_EXTERNAL_STORAGE_PERMISSION = PERMISSIONS.ANDROID.WRITE_EXTERNAL_STO
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
-function Library({ active, animatedValue, setAlert }) {
+function Library({ active, animatedValue, dismissModal }) {
   const videoRef = useRef(null)
   const cropAreaY = useSharedValue(CROP_FULLY_DOWN)
   const translationY = useSharedValue(0)
@@ -179,14 +179,6 @@ function Library({ active, animatedValue, setAlert }) {
     // }
   }
 
-  const handleCancel = () => {
-    setAlert({
-      visible: true,
-      type: 'library',
-      onDiscard: () => {},
-    })
-  }
-
   const onEndReached = useCallback(() => {
     if (hasNextPage) {
       fetchMoreAssets(endCursor)
@@ -288,7 +280,7 @@ function Library({ active, animatedValue, setAlert }) {
 
         <Header
           headerLeft={
-            <TouchableOpacity onPress={handleCancel}>
+            <TouchableOpacity onPress={dismissModal}>
               <Text
                 style={{
                   color: 'white',
@@ -328,7 +320,7 @@ function Library({ active, animatedValue, setAlert }) {
             selectedAlbum={selectedAlbum}
             toggleAlbum={handleToggleAlbum}
             headerLeft={
-              <TouchableOpacity onPress={handleCancel}>
+              <TouchableOpacity onPress={dismissModal}>
                 <Text
                   style={{
                     color: 'white',

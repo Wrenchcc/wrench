@@ -44,7 +44,9 @@ function MediaLibrary() {
   const renderScene = ({ route }) => {
     switch (route.key) {
       case 'library':
-        return <Library active={index === 0} animatedValue={animatedValue} setAlert={setAlert} />
+        return (
+          <Library active={index === 0} animatedValue={animatedValue} dismissModal={dismissModal} />
+        )
       case 'camera':
         return <Camera active={index === 1} animatedValue={animatedValue} setAlert={setAlert} />
       default:

@@ -1,19 +1,18 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { Text, View, TouchableOpacity, Image, StyleSheet, InteractionManager } from 'react-native'
-import { LongPressGestureHandler, State } from 'react-native-gesture-handler'
+// import { LongPressGestureHandler, State } from 'react-native-gesture-handler'
 import Animated, {
   useSharedValue,
   useDerivedValue,
   useAnimatedStyle,
-  withRepeat,
+  // withRepeat,
   withTiming,
-  withDelay,
+  // withDelay,
 } from 'react-native-reanimated'
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
-import { Camera } from 'expo-camera'
+import { Camera as EXCamera } from 'expo-camera'
 import { Video as VideoPlayer } from 'expo-av'
 import { BlurView } from 'expo-blur'
-import { useNavigation } from 'navigation'
 import { isIphone } from 'utils/platform'
 import AskForPermission from 'components/AskForPermission'
 import { flip, flash } from 'images'
@@ -25,7 +24,7 @@ const AnimatedBlurView = Animated.createAnimatedComponent(BlurView)
 
 const PERMISSION = isIphone ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
 
-function Video({ active, animatedValue, setAlert }) {
+function Camera({ active, animatedValue, setAlert }) {
   const cameraRef = useRef(null)
   const videoRef = useRef(null)
   const opacityCancel = useSharedValue(1)
@@ -36,7 +35,6 @@ function Video({ active, animatedValue, setAlert }) {
   const deletePosition = useSharedValue(50)
   const tooltip = useSharedValue(0)
   const fadeOpacity = useSharedValue(0)
-  const { dismissModal } = useNavigation()
 
   const [isLoading, setLoading] = useState(true)
   const [permission, setPermission] = useState('')
@@ -46,7 +44,7 @@ function Video({ active, animatedValue, setAlert }) {
   const [shouldDelete, setDelete] = useState(false)
   const [isRecording, setIsRecording] = useState(false)
   const [seconds, setSeconds] = useState(0)
-  const [type, setType] = useState(Camera.Constants.Type.back)
+  const [type, setType] = useState(EXCamera.Constants.Type.back)
 
   useEffect(() => {
     check(PERMISSION).then((response) => {
@@ -118,7 +116,9 @@ function Video({ active, animatedValue, setAlert }) {
 
   const handleCameraType = useCallback(() => {
     setType(
-      type === Camera.Constants.Type.back ? Camera.Constants.Type.front : Camera.Constants.Type.back
+      type === EXCamera.Constants.Type.back
+        ? EXCamera.Constants.Type.front
+        : EXCamera.Constants.Type.back
     )
 
     rotation.value = withTiming(type === 1 ? 180 : 0, {
@@ -126,21 +126,21 @@ function Video({ active, animatedValue, setAlert }) {
     })
   }, [type])
 
-  const showTooltip = () => {
-    tooltip.value = withTiming(
-      1,
-      {
-        duration: TIMING_DURATION,
-      },
-      () =>
-        (tooltip.value = withDelay(
-          4500,
-          withTiming(0, {
-            duration: TIMING_DURATION,
-          })
-        ))
-    )
-  }
+  // const showTooltip = () => {
+  //   tooltip.value = withTiming(
+  //     1,
+  //     {
+  //       duration: TIMING_DURATION,
+  //     },
+  //     () =>
+  //       (tooltip.value = withDelay(
+  //         4500,
+  //         withTiming(0, {
+  //           duration: TIMING_DURATION,
+  //         })
+  //       ))
+  //   )
+  // }
 
   const handleTakePicture = () => {
     // showTooltip()
@@ -167,62 +167,62 @@ function Video({ active, animatedValue, setAlert }) {
     })
   }
 
-  const handleRecordVideo = useCallback(
-    ({ nativeEvent }) => {
-      if (nativeEvent.state === State.ACTIVE) {
-        tooltip.value = 0
-        setMediaType('video')
+  // const handleRecordVideo = useCallback(
+  //   ({ nativeEvent }) => {
+  //     if (nativeEvent.state === State.ACTIVE) {
+  //       tooltip.value = 0
+  //       setMediaType('video')
 
-        opacity.value = withRepeat(
-          withTiming(1, {
-            duration: 800,
-          }),
-          0,
-          true
-        )
+  //       opacity.value = withRepeat(
+  //         withTiming(1, {
+  //           duration: 800,
+  //         }),
+  //         0,
+  //         true
+  //       )
 
-        opacityActions.value = withTiming(0, {
-          duration: TIMING_DURATION,
-        })
+  //       opacityActions.value = withTiming(0, {
+  //         duration: TIMING_DURATION,
+  //       })
 
-        animatedValue.value = withTiming(
-          TAB_BAR_HEIGHT,
-          {
-            duration: TIMING_DURATION / 1.5,
-          },
-          async () => {
-            setIsRecording(true)
+  //       animatedValue.value = withTiming(
+  //         TAB_BAR_HEIGHT,
+  //         {
+  //           duration: TIMING_DURATION / 1.5,
+  //         },
+  //         async () => {
+  //           setIsRecording(true)
 
-            try {
-              const video = await cameraRef.current.recordAsync({
-                maxDuration: MAX_DURATION,
-                quality: '720p',
-              })
+  //           try {
+  //             const video = await cameraRef.current.recordAsync({
+  //               maxDuration: MAX_DURATION,
+  //               quality: '720p',
+  //             })
 
-              setVideo(video)
-            } catch (err) {
-              // console.log(err);
-            }
-          }
-        )
-      }
+  //             setVideo(video)
+  //           } catch (err) {
+  //             // console.log(err);
+  //           }
+  //         }
+  //       )
+  //     }
 
-      if (nativeEvent.state === State.END) {
-        setIsRecording(false)
+  //     if (nativeEvent.state === State.END) {
+  //       setIsRecording(false)
 
-        deletePosition.value = withTiming(
-          -70,
-          {
-            duration: TIMING_DURATION / 1.5,
-          },
-          () => {
-            cameraRef.current.stopRecording()
-          }
-        )
-      }
-    },
-    [cameraRef]
-  )
+  //       deletePosition.value = withTiming(
+  //         -70,
+  //         {
+  //           duration: TIMING_DURATION / 1.5,
+  //         },
+  //         () => {
+  //           cameraRef.current.stopRecording()
+  //         }
+  //       )
+  //     }
+  //   },
+  //   [cameraRef]
+  // )
 
   const deleteState = () => {
     setDelete(false)
@@ -417,7 +417,7 @@ function Video({ active, animatedValue, setAlert }) {
             />
           )}
 
-          <Camera
+          <EXCamera
             ref={cameraRef}
             ratio="1:1"
             style={{
@@ -432,7 +432,7 @@ function Video({ active, animatedValue, setAlert }) {
               tint="dark"
               style={[StyleSheet.absoluteFill, , fadeStyle]}
             />
-          </Camera>
+          </EXCamera>
 
           <Animated.View
             style={[
@@ -587,4 +587,4 @@ function Video({ active, animatedValue, setAlert }) {
   )
 }
 
-export default Video
+export default Camera
