@@ -4281,23 +4281,23 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-5.9.10.tgz#97d3a9fa62a3a4838ec7a6ec91cfec5a26e365b6"
   integrity sha512-1NPlBA2Hu/KWc3EnQcDRPRX0x8Dg9tuQlQQVWVQjlg+u+PjCq7ANEtbikOFKp5yQqfF8tqzU5+84/IfDO8zpiA==
 
-"@react-native-firebase/analytics@^10.6.4":
-  version "10.6.4"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-10.6.4.tgz#6b1c52c46faa61e4e374bac1fa413e5b7f60b673"
-  integrity sha512-VEDJLIDHum9cKAAVwGt46l+FS0goCUR1AXtgYALfwp+vNTGra4sMwmzba2/ujpyxy/JJla9e2I22DC6ZFbh4qA==
+"@react-native-firebase/analytics@^10.7.0":
+  version "10.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-10.7.0.tgz#6178028c34903d8b6300ce119b750a5ad8083f63"
+  integrity sha512-cdPf6UtjWQVOYYWJIyNLRJcHcCizdCx/Emqo19zXN69nTf/pCF5RFWJQdFdI7iDmOl48EMrVZ6bLpFvpvKBgug==
 
-"@react-native-firebase/app@^10.6.4":
-  version "10.6.4"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-10.6.4.tgz#ab4a8d4833422326c79e915fcdcb8b6fea920e50"
-  integrity sha512-DIigHYpYwuVQFOlD5qrYoGvKdGgbXR0rFdjpKYd81HI/3OCcferPSOlNorAHncQmEpkZnOl0B2zig4ydCOZjmw==
+"@react-native-firebase/app@^10.7.0":
+  version "10.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-10.7.0.tgz#db0cd77c2d5e83024797073256d471dc9b27085c"
+  integrity sha512-C8H90p7lf+ZIxA22lxypuA7uJOWRX4GLlll6EXZTnUXHNYaIM8zW8/RPHECJZRPYwisbe+2pIlDwFJjyiRM+Jw==
   dependencies:
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/messaging@^10.6.4":
-  version "10.6.4"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-10.6.4.tgz#694403d801f6ce4763aa846e732be5fc6ba7a9a9"
-  integrity sha512-Yx0azyf/s9aEDGm0w5RS+ozkFE4BWo8icj/Vnx3uhObb6T5L1nPpnFj/7mOz55yGpiF6VZ14kGSq9TzbsTFLaw==
+"@react-native-firebase/messaging@^10.7.0":
+  version "10.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-10.7.0.tgz#b9ac816a55cb59630cc107ebbcab1de487759cca"
+  integrity sha512-FMjh/QTyZzZ6GKfQZBW7xZSBzrSMILGNk+EP3RG5cyPVqbsYFxqBkxeFUnZEIc0q9YCHMB1hH1aKIthpPsRX3A==
 
 "@react-native/assets@1.0.0":
   version "1.0.0"
@@ -21947,10 +21947,10 @@ react-native-permissions@^3.0.0:
   resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-3.0.0.tgz#d9d107700741d41f8392f202f35a61f481fb0e68"
   integrity sha512-zBvf+o3NhgKmBk1I06GzZXaDfc9SUyO4M5TMcaCF1pwG1h4sI+XAv3gWSbryl6WnaZQc1zA+g7SocSoYcpJN5g==
 
-react-native-pinchable@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-pinchable/-/react-native-pinchable-0.1.2.tgz#e0c75b51d1d4c62e08289fe5f6afb69e349426de"
-  integrity sha512-MtZTakXy8U8J6HF9G9rkggExlHIrrdpiU7qON/QuB8jrBH+7AMvQujgIPS/dJDOA+0RQjTIxy6aEq2w7RAAbXg==
+react-native-pinchable@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-pinchable/-/react-native-pinchable-0.2.0.tgz#78310f9a6f533d948ba765693687e0b5b92a79ea"
+  integrity sha512-7b1Zn0tYzngg27S6FAKPKM8Y75KdHVebipEmTFrpQ09BYUpj6AyB8w0uEPI5AWX6K0yMxyf4Lhp9Zf/2FRJffg==
 
 react-native-reanimated@^2.0.0-rc.3:
   version "2.0.0-rc.3"
@@ -22020,10 +22020,10 @@ react-native-unimodules@^0.12.0:
     unimodules-sensors-interface "~5.4.0"
     unimodules-task-manager-interface "~5.4.0"
 
-react-native-webview@^11.2.1:
-  version "11.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-11.2.1.tgz#abe68c38808f34aeed0a10740b2efba74ac610b8"
-  integrity sha512-dfChyqqWVJe0kdCuDZ4mJt+RgOYNie+rCjCrZ55OW6X7f/rvNVd3Mbnv/1mbYjU8wm5C3/1/oqVJoTB/7GAGjQ==
+react-native-webview@^11.2.2:
+  version "11.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-11.2.2.tgz#dcc6138f0a07d889d14e11a45d54ec79178c5b5d"
+  integrity sha512-N2BEcK+md0gY1Ej26ocRy3Khtukjv2FeO+z25i+jxiGDRrwYRs8ElRnM3ObQgfnV76UL67FwJlskydX6iB9PDg==
   dependencies:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
@@ -25425,6 +25425,11 @@ typescript@^3.6.4:
   version "3.9.7"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
   integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
+
+typescript@^4.1.4:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.4.tgz#f058636e2f4f83f94ddaae07b20fd5e14598432f"
+  integrity sha512-+Uru0t8qIRgjuCpiSPpfGuhHecMllk5Zsazj5LZvVsEStEjmIRRBZe+jHjGQvsgS7M1wONy2PQXd67EMyV6acg==
 
 ua-parser-js@^0.7.18:
   version "0.7.23"

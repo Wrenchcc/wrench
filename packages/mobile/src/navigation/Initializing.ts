@@ -28,12 +28,12 @@ function Initializing() {
 
         updateNotificationToken()
 
-        AppNavigation(showOnboarding)
+        await AppNavigation(showOnboarding)
       } else {
-        AuthNavigation()
+        await AuthNavigation()
       }
     } catch {
-      AuthNavigation()
+      await AuthNavigation()
     }
 
     SplashScreen.hide()

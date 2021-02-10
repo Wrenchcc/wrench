@@ -4,10 +4,10 @@ import { feed, explore, notification, profile, add } from 'images'
 import { SCREENS, BOTTOM_TABS_ID } from './constants'
 import defaultOptions from './defaultOptions'
 
-export function Bootstrap() {
+export async function Bootstrap() {
   Navigation.setDefaultOptions(defaultOptions)
 
-  Navigation.setRoot({
+  await Navigation.setRoot({
     root: {
       component: {
         name: SCREENS.INITIALIZING,
@@ -16,7 +16,7 @@ export function Bootstrap() {
   })
 }
 
-export function AuthNavigation() {
+export async function AuthNavigation() {
   Navigation.setDefaultOptions({
     ...defaultOptions,
     animations: {
@@ -36,7 +36,7 @@ export function AuthNavigation() {
     },
   })
 
-  Navigation.setRoot({
+  await Navigation.setRoot({
     root: {
       component: {
         name: SCREENS.SIGN_IN,
@@ -45,7 +45,7 @@ export function AuthNavigation() {
   })
 }
 
-export function AppNavigation(onboarding: boolean) {
+export async function AppNavigation(onboarding: boolean) {
   Navigation.setDefaultOptions({
     ...defaultOptions,
     animations: {
@@ -61,7 +61,7 @@ export function AppNavigation(onboarding: boolean) {
   })
 
   if (onboarding) {
-    Navigation.setRoot({
+    await Navigation.setRoot({
       root: {
         stack: {
           children: [
@@ -75,7 +75,7 @@ export function AppNavigation(onboarding: boolean) {
       },
     })
   } else {
-    Navigation.setRoot({
+    await Navigation.setRoot({
       root: {
         bottomTabs: {
           id: BOTTOM_TABS_ID,

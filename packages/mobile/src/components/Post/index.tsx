@@ -17,9 +17,9 @@ import openLink from 'utils/openLink'
 import Collections from 'features/project/components/Collections'
 import { useDynamicColor } from 'utils/hooks'
 import { keyboardHeight } from 'utils/platform'
-import { store } from 'gql'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo } from 'ui'
 import { TOAST_TYPES } from 'utils/enums'
+import { showToast } from 'navigation/Banner'
 import LikePost from 'components/LikePost'
 import Bookmark from 'components/Bookmark'
 import { share, sparkMega, arrowRightSmall } from 'images'
@@ -275,9 +275,9 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
           // Copy link
           if (index === 1) {
             Clipboard.setString(`https://wrench.cc/p/${post.id}`)
-            store.toast.show({
+
+            showToast({
               content: t('copySuccess'),
-              dismissAfter: 6000,
               type: TOAST_TYPES.SUCCESS,
             })
           }
@@ -305,7 +305,7 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
                       projectId={post.project.id}
                       isOwner
                       onSave={addToCollection}
-                      loading={true}
+                      loading
                     />
                   </>
                 ),
@@ -343,9 +343,8 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
           if (index === 1) {
             Clipboard.setString(`https://wrench.cc/p/${post.id}`)
 
-            store.toast.show({
+            showToast({
               content: t('copySuccess'),
-              dismissAfter: 6000,
               type: TOAST_TYPES.SUCCESS,
             })
           }

@@ -1,5 +1,6 @@
 import { Navigation } from 'react-native-navigation'
 import { Appearance } from 'react-native'
+import { NAVIGATION_BANNER } from 'navigation/Banner'
 import { getCurrentUserProjects } from 'gql'
 import { logError } from 'utils/sentry'
 import { trackScreen } from 'utils/analytics'
@@ -12,6 +13,12 @@ export let currentComponentName
 export let componentId
 
 Navigation.events().registerComponentDidAppearListener(({ componentId: id, componentName }) => {
+  // NOTE: Do not update id for banner
+  // Navigation will not work in current stack
+  if (componentName === NAVIGATION_BANNER) {
+    return
+  }
+
   componentId = id
   currentComponentName = componentName
   trackScreen(componentName)

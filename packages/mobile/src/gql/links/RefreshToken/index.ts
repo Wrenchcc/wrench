@@ -1,11 +1,12 @@
 import { Observable } from '@apollo/client'
 import { onError } from '@apollo/link-error'
 import { RefreshTokenDocument } from '@wrench/common'
-import { store } from 'gql'
+// import { store } from 'gql'
 import { getRefreshToken, setTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
-import { ERROR_CODES } from 'utils/enums'
+import { showToast } from 'navigation/Banner'
+import { ERROR_CODES, TOAST_TYPES } from 'utils/enums'
 import { client } from '../../client'
 
 function refreshTokenFailed() {
@@ -24,7 +25,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
     const { extensions } = graphQLErrors[0]
 
     if (extensions && extensions.code === ERROR_CODES.SPAM) {
-      store.toast.show({ dismissAfter: 6000 })
+      showToast({ dismissAfter: 3000, type: TOAST_TYPES.SPAM })
     }
 
     if (extensions && extensions.code === ERROR_CODES.UNAUTHENTICATED) {

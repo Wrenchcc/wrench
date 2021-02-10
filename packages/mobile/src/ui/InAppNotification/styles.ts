@@ -8,6 +8,7 @@ export const Base = styled.View`
   background-color: ${(props) =>
     props.theme.mode === 'dark' ? 'rgba(25, 25, 26, 0.98)' : 'rgba(255, 255, 255, 0.98)'};
   box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 `
 
 export const Content = styled.View`
