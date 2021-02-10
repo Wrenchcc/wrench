@@ -50,7 +50,6 @@ function EditProfile({ onboarding }) {
     onError: () => {
       showToast({
         content: t('validationUsername'),
-        dismissAfter: 6000,
         type: TOAST_TYPES.ERROR,
       })
     },
@@ -87,7 +86,6 @@ function EditProfile({ onboarding }) {
     if (hasErrors) {
       showToast({
         content: t('validation'),
-        dismissAfter: 6000,
         type: TOAST_TYPES.ERROR,
       })
 
@@ -112,7 +110,6 @@ function EditProfile({ onboarding }) {
 
           return showToast({
             content: t('wrong'),
-            dismissAfter: 6000,
             type: TOAST_TYPES.ERROR,
           })
         }
@@ -142,7 +139,6 @@ function EditProfile({ onboarding }) {
     } catch (err) {
       showToast({
         content: t('wrong'),
-        dismissAfter: 6000,
         type: TOAST_TYPES.ERROR,
       })
 

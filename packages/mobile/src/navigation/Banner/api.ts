@@ -1,7 +1,7 @@
 import { InAppNotification, Toast } from 'ui'
 import NavigationBanner from './NavigationBanner'
 
-export const showToast = ({ dismissAfter = 0, ...props }) => {
+export const showToast = ({ dismissAfter = 3000, ...props }) => {
   NavigationBanner.show({
     component: Toast,
     dismissAfter,

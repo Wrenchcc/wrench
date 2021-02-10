@@ -12,28 +12,29 @@ import { clamp, snapPoint } from 'react-native-redash'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import { Pressable } from 'react-native'
 
+const FULLY_UP = -100
+const FULLY_DOWN = 50
+
 const styles = {
   base: {
     top: 0,
-    // opacity: cond(isHeightReady, 1, 0),
     position: 'absolute',
     width: '100%',
     zIndex: 1000,
-    // top: sub(0, height),
   },
 }
 
-function Animation({ children, dismissAfter, onSlideIn, onSlideOut, onPress }) {
-  const translateY = useSharedValue(-100)
+function Animation({ children, dismissAfter, onSlideIn, onSlideOut, onPress, gestureEnabled }) {
+  const translateY = useSharedValue(FULLY_UP)
 
   useEffect(() => {
-    translateY.value = withSpring(50, { mass: 0.5 }, (isFinished) => {
+    translateY.value = withSpring(FULLY_DOWN, { mass: 0.5 }, (isFinished) => {
       runOnJS(onSlideIn)()
 
       if (isFinished && dismissAfter) {
         translateY.value = withDelay(
           dismissAfter,
-          withSpring(-100, { mass: 0.5 }, (isFinished) => {
+          withSpring(FULLY_UP, { mass: 0.5 }, (isFinished) => {
             if (isFinished) {
               runOnJS(onSlideOut)()
             }
@@ -48,12 +49,12 @@ function Animation({ children, dismissAfter, onSlideIn, onSlideOut, onPress }) {
       ctx.startY = translateY.value
     },
     onActive: (evt, ctx) => {
-      translateY.value = clamp(ctx.startY + evt.translationY, -100, 50)
+      translateY.value = clamp(ctx.startY + evt.translationY, FULLY_UP, FULLY_DOWN)
     },
     onEnd: (evt) => {
       translateY.value = withTiming(
         // WTF
-        snapPoint(translateY.value * -5, evt.velocityX, [-100, 50]),
+        snapPoint(translateY.value * -5, evt.velocityX, [FULLY_UP, FULLY_DOWN]),
         null,
         () => {
           runOnJS(onSlideOut)()
@@ -76,7 +77,7 @@ function Animation({ children, dismissAfter, onSlideIn, onSlideOut, onPress }) {
     if (onPress) {
       onPress()
 
-      translateY.value = withSpring(-100, { mass: 0.5 }, (isFinished) => {
+      translateY.value = withSpring(FULLY_UP, { mass: 0.5 }, (isFinished) => {
         if (isFinished) {
           runOnJS(onSlideOut)()
         }
@@ -86,7 +87,7 @@ function Animation({ children, dismissAfter, onSlideIn, onSlideOut, onPress }) {
 
   return (
     <Pressable onPress={handleOnPress} disabled={!!onPress}>
-      <PanGestureHandler onGestureEvent={gestureHandler}>
+      <PanGestureHandler onGestureEvent={gestureHandler} enabled={gestureEnabled}>
         <Animated.View style={[styles.base, animatedStyle]}>{children}</Animated.View>
       </PanGestureHandler>
     </Pressable>

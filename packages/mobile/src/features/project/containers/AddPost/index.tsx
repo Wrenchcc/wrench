@@ -112,7 +112,6 @@ function AddPost() {
 
       showToast({
         content: t('error'),
-        dismissAfter: 6000,
         type: TOAST_TYPES.ERROR,
       })
 

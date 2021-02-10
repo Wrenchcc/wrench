@@ -11,6 +11,7 @@ export default function createBannerListeners() {
       NavigationBanner.dismiss()
     } else {
       showToast({
+        dismissAfter: 0,
         type: TOAST_TYPES.NETWORK,
       })
     }
@@ -24,34 +25,4 @@ export default function createBannerListeners() {
       onPress: () => createPushNotificationsHandler(remoteMessage.data?.path),
     })
   })
-
-  setTimeout(() => {
-    showNotification({
-      title: 'wfwef1',
-      body: 'wefwef',
-      avatarUrl:
-        'https://edge-files.wrench.cc/avatar/cf89d01d-ee9e-4575-94da-9289dd831dac.jpg?w=320',
-      onPress: () => {},
-    })
-  }, 2000)
-
-  // setTimeout(() => {
-  //   showNotification({
-  //     title: 'wfwef2',
-  //     body: 'wefwef',
-  //     avatarUrl:
-  //       'https://edge-files.wrench.cc/avatar/cf89d01d-ee9e-4575-94da-9289dd831dac.jpg?w=320',
-  //     onPress: () => {},
-  //   })
-  // }, 3000)
-
-  // setTimeout(() => {
-  //   showNotification({
-  //     title: 'wfwef3',
-  //     body: 'wefwef',
-  //     avatarUrl:
-  //       'https://edge-files.wrench.cc/avatar/cf89d01d-ee9e-4575-94da-9289dd831dac.jpg?w=320',
-  //     onPress: () => {},
-  //   })
-  // }, 4000)
 }

@@ -95,8 +95,8 @@ export default class NavigationBanner {
     // NOTE: props is component specific props
     const {
       onPress,
-      gestureEnabled,
-      dismissAfter,
+      gestureEnabled = false,
+      dismissAfter = 0,
       onSlideIn,
       onSlideOut,
       props,
@@ -106,10 +106,6 @@ export default class NavigationBanner {
       if (onPress) {
         onPress(props)
       }
-    }
-
-    const handleDismiss = () => {
-      this.animationRef.onDismiss()
     }
 
     const handleOnSlideOut = () => {
@@ -134,14 +130,13 @@ export default class NavigationBanner {
 
     return (
       <Animation
-        // ref={(ref) => (this.animationRef = ref)}
         onSlideOut={handleOnSlideOut}
         onSlideIn={handleOnSlideIn}
         onPress={handleOnPress}
-        // gestureEnabled={gestureEnabled}
+        gestureEnabled={gestureEnabled}
         dismissAfter={dismissAfter}
       >
-        <Component {...props} onDismiss={handleDismiss} />
+        <Component {...props} />
       </Animation>
     )
   }

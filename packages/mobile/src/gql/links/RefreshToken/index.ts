@@ -25,7 +25,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
     const { extensions } = graphQLErrors[0]
 
     if (extensions && extensions.code === ERROR_CODES.SPAM) {
-      showToast({ dismissAfter: 6000, type: TOAST_TYPES.SPAM })
+      showToast({ dismissAfter: 3000, type: TOAST_TYPES.SPAM })
     }
 
     if (extensions && extensions.code === ERROR_CODES.UNAUTHENTICATED) {

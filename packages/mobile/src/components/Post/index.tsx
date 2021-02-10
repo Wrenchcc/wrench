@@ -278,7 +278,6 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
 
             showToast({
               content: t('copySuccess'),
-              dismissAfter: 6000,
               type: TOAST_TYPES.SUCCESS,
             })
           }
@@ -346,7 +345,6 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
 
             showToast({
               content: t('copySuccess'),
-              dismissAfter: 6000,
               type: TOAST_TYPES.SUCCESS,
             })
           }
