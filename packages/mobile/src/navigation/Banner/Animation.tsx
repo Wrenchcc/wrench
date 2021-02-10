@@ -11,9 +11,10 @@ import Animated, {
 import { clamp, snapPoint } from 'react-native-redash'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import { Pressable } from 'react-native'
+import { NAVIGATION } from 'navigation/constants'
 
 const FULLY_UP = -100
-const FULLY_DOWN = 50
+const FULLY_DOWN = NAVIGATION.STATUS_BAR_HEIGHT + 5
 
 const styles = {
   base: {

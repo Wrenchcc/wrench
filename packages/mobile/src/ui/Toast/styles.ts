@@ -26,4 +26,5 @@ export const Base = styled.View<BaseProps>`
   padding-horizontal: 14px;
   margin-horizontal: 10px;
   padding-vertical: 12px;
+  border-radius: 8px;
 `
