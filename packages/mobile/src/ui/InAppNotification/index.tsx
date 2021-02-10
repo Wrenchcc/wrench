@@ -2,13 +2,13 @@ import React from 'react'
 import { Text, Avatar } from 'ui'
 import { Base, Content } from './styles'
 
-interface MessageLayoutProps {
+interface InAppNotificationProps {
   title: string
   body: string
   avatarUrl: string
 }
 
-const MessageLayout = ({ body, title, avatarUrl }: MessageLayoutProps) => {
+const InAppNotification = ({ body, title, avatarUrl }: InAppNotificationProps) => {
   return (
     <Base>
       <Avatar size={40} uri={avatarUrl} style={{ flex: 1 }} />
@@ -25,4 +25,4 @@ const MessageLayout = ({ body, title, avatarUrl }: MessageLayoutProps) => {
   )
 }
 
-export default MessageLayout
+export default InAppNotification

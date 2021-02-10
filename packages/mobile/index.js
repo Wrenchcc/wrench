@@ -5,6 +5,7 @@ import { Linking } from 'react-native'
 import NetInfo from '@react-native-community/netinfo'
 import { Navigation } from 'react-native-navigation'
 import messaging from '@react-native-firebase/messaging'
+import { NavigationBanner, createBannerProvider, createBannerListeners } from 'navigation/Banner'
 import { store } from 'gql'
 import { TOAST_TYPES } from 'utils/enums'
 import { Bootstrap, registerScreens, defaultOptions } from 'navigation'
@@ -19,18 +20,18 @@ Navigation.events().registerAppLaunchedListener(async () => {
 
   registerScreens(client)
 
+  NavigationBanner.register((Component) =>
+    createBannerProvider({
+      Component,
+    })
+  )
+
+  createBannerListeners()
+
   // TODO: await
   Bootstrap()
 
   Linking.addEventListener('url', createDeepLinkingHandler)
-
-  NetInfo.addEventListener((state) => {
-    if (state.isConnected) {
-      store.toast.hide()
-    } else {
-      store.toast.show({ type: TOAST_TYPES.NETWORK })
-    }
-  })
 
   const notificationOpen = await messaging().getInitialNotification()
 
@@ -46,14 +47,5 @@ Navigation.events().registerAppLaunchedListener(async () => {
         createPushNotificationsHandler(data.path)
       }, 500)
     }
-  })
-
-  messaging().onMessage((remoteMessage) => {
-    // store.notification.showNotification({
-    //   body: remoteMessage.notification?.body,
-    //   title: remoteMessage.data?.title,
-    //   avatarUrl: remoteMessage.data?.avatarUrl,
-    //   path: remoteMessage.data?.path,
-    // })
   })
 })

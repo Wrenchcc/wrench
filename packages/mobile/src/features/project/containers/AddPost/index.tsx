@@ -7,6 +7,7 @@ import { useNavigation } from 'navigation'
 import { store } from 'gql'
 import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from 'utils/enums'
+import { showToast } from 'navigation/Banner'
 import uploadToS3Async from 'utils/storage/uploadToS3Async'
 import Collections from 'features/project/components/Collections'
 import { Header, Input, KeyboardAvoidingView, Icon, Text, Title } from 'ui'
@@ -109,7 +110,7 @@ function AddPost() {
     } catch (err) {
       store.post.isPostingVar(false)
 
-      store.toast.show({
+      showToast({
         content: t('error'),
         dismissAfter: 6000,
         type: TOAST_TYPES.ERROR,

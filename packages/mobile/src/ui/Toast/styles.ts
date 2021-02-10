@@ -21,7 +21,9 @@ type BaseProps = { type?: TOAST_TYPES; theme: ThemeInterface }
 export const Base = styled.View<BaseProps>`
   background-color: ${(props) => mapTypeToColor(props.type, props.theme.colors)};
   justify-content: center;
-  opacity: 0.96;
-  width: 100%;
+  opacity: 0.98;
   height: 40px;
+  padding-horizontal: 14px;
+  margin-horizontal: 10px;
+  padding-vertical: 12px;
 `
