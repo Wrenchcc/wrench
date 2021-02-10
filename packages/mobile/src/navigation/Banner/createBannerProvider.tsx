@@ -1,7 +1,6 @@
 import React from 'react'
 import { useColorScheme } from 'react-native'
 import { ThemeProvider } from '@wrench/ui'
-import { NavigationContext } from '../context'
 
 export default function createBannerProvider(Component) {
   function Screen({ componentId, ...props }) {
@@ -9,9 +8,7 @@ export default function createBannerProvider(Component) {
 
     return (
       <ThemeProvider mode={colorScheme}>
-        <NavigationContext.Provider value={componentId}>
-          <Component {...{ componentId, ...props }} />
-        </NavigationContext.Provider>
+        <Component {...{ componentId, ...props }} />
       </ThemeProvider>
     )
   }

@@ -132,7 +132,7 @@ export default class NavigationBanner {
       <Animation
         onSlideOut={handleOnSlideOut}
         onSlideIn={handleOnSlideIn}
-        onPress={handleOnPress}
+        onPress={onPress && handleOnPress}
         gestureEnabled={gestureEnabled}
         dismissAfter={dismissAfter}
       >

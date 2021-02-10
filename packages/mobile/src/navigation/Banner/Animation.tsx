@@ -86,7 +86,7 @@ function Animation({ children, dismissAfter, onSlideIn, onSlideOut, onPress, ges
   }, [onPress, translateY])
 
   return (
-    <Pressable onPress={handleOnPress} disabled={!!onPress}>
+    <Pressable onPress={handleOnPress} disabled={!Boolean(onPress)}>
       <PanGestureHandler onGestureEvent={gestureHandler} enabled={gestureEnabled}>
         <Animated.View style={[styles.base, animatedStyle]}>{children}</Animated.View>
       </PanGestureHandler>
