@@ -44,7 +44,7 @@ function Facebook() {
       const { data } = await getCurrentUser()
 
       if (data.user) {
-        AppNavigation(!data.user.interestedIn)
+        await AppNavigation(!data.user.interestedIn)
       }
     } catch (err) {
       setIsLoading(false)

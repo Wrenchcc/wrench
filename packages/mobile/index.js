@@ -20,32 +20,23 @@ Navigation.events().registerAppLaunchedListener(async () => {
 
   registerScreens(client)
 
-  NavigationBanner.register((Component) =>
-    createBannerProvider({
-      Component,
-    })
-  )
+  NavigationBanner.register((Component) => createBannerProvider(Component))
 
-  createBannerListeners()
-
-  // TODO: await
-  Bootstrap()
+  await Bootstrap()
 
   Linking.addEventListener('url', createDeepLinkingHandler)
 
   const notificationOpen = await messaging().getInitialNotification()
 
   if (notificationOpen?.data) {
-    setTimeout(() => {
-      createPushNotificationsHandler(notificationOpen.data.path)
-    }, 500)
+    createPushNotificationsHandler(notificationOpen.data.path)
   }
 
   messaging().onNotificationOpenedApp(({ data }) => {
     if (data) {
-      setTimeout(() => {
-        createPushNotificationsHandler(data.path)
-      }, 500)
+      createPushNotificationsHandler(data.path)
     }
   })
+
+  createBannerListeners()
 })

@@ -1,8 +1,7 @@
 import React from 'react'
 import { Navigation } from 'react-native-navigation'
 import Animation from './Animation'
-
-const OVERLAY_NAME = 'navigation/banner'
+import { NAVIGATION_BANNER } from './constants'
 
 type BannerProps = {
   component: any
@@ -18,7 +17,6 @@ type BannerOptions = {
   onSlideOut?: (props: any) => any
   persist?: boolean
   props?: any
-  safeInsetTop?: number
 }
 
 export default class NavigationBanner {
@@ -36,9 +34,10 @@ export default class NavigationBanner {
   private static async showBanner(options: any): Promise<void> {
     try {
       this.setVisible(true)
+
       await Navigation.showOverlay({
         component: {
-          name: OVERLAY_NAME,
+          name: NAVIGATION_BANNER,
           passProps: options,
           options: {
             layout: {
@@ -100,7 +99,6 @@ export default class NavigationBanner {
       dismissAfter,
       onSlideIn,
       onSlideOut,
-      safeInsetTop,
       props,
     }: BannerOptions = options
 
@@ -116,6 +114,7 @@ export default class NavigationBanner {
 
     const handleOnSlideOut = () => {
       this.dismiss()
+
       if (onSlideOut) {
         onSlideOut(props)
       }
@@ -135,13 +134,12 @@ export default class NavigationBanner {
 
     return (
       <Animation
-      // ref={(ref) => (this.animationRef = ref)}
-      // onSlideOut={handleOnSlideOut}
-      // onSlideIn={handleOnSlideIn}
-      // onPress={handleOnPress}
-      // gestureEnabled={gestureEnabled}
-      // dismissAfter={dismissAfter}
-      // safeInsetTop={safeInsetTop}
+        // ref={(ref) => (this.animationRef = ref)}
+        onSlideOut={handleOnSlideOut}
+        onSlideIn={handleOnSlideIn}
+        onPress={handleOnPress}
+        // gestureEnabled={gestureEnabled}
+        dismissAfter={dismissAfter}
       >
         <Component {...props} onDismiss={handleDismiss} />
       </Animation>
@@ -149,6 +147,6 @@ export default class NavigationBanner {
   }
 
   public static register(fn: any): void {
-    Navigation.registerComponent(OVERLAY_NAME, () => fn(this.BannerWrapper))
+    Navigation.registerComponent(NAVIGATION_BANNER, () => fn(this.BannerWrapper))
   }
 }

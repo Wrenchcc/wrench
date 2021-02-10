@@ -135,7 +135,7 @@ function EditProfile({ onboarding }) {
       setSaving(false)
 
       if (onboarding) {
-        AppNavigation()
+        await AppNavigation()
       } else {
         dismissModal()
       }
