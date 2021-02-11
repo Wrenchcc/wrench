@@ -5,7 +5,6 @@ import { NAVIGATION_BANNER } from './constants'
 
 type BannerProps = {
   component: any
-  componentId: string
   options: BannerOptions
 }
 type BannerOptions = {
@@ -69,9 +68,16 @@ export default class NavigationBanner {
     }
   }
 
-  public static async dismiss(): Promise<void> {
+  public static dismiss() {
+    if (this.animationRef) {
+      this.animationRef.onDismiss()
+    }
+  }
+
+  private static async internalDismiss(): Promise<void> {
     try {
       await Navigation.dismissAllOverlays()
+
       this.setVisible(false)
 
       const [currentBanner, ...otherBanners] = this.queue
@@ -87,11 +93,7 @@ export default class NavigationBanner {
 
   // NOTE: We need to register a component, we will pass the
   // Content thru passProps from RNN as a child
-  private static BannerWrapper: React.FC<BannerProps> = ({
-    component,
-    componentId,
-    ...options
-  }) => {
+  private static BannerWrapper: React.FC<BannerProps> = ({ component, ...options }) => {
     // NOTE: props is component specific props
     const {
       onPress,
@@ -109,7 +111,7 @@ export default class NavigationBanner {
     }
 
     const handleOnSlideOut = () => {
-      this.dismiss()
+      this.internalDismiss()
 
       if (onSlideOut) {
         onSlideOut(props)
@@ -130,6 +132,7 @@ export default class NavigationBanner {
 
     return (
       <Animation
+        ref={(ref) => (this.animationRef = ref)}
         onSlideOut={handleOnSlideOut}
         onSlideIn={handleOnSlideIn}
         onPress={onPress && handleOnPress}

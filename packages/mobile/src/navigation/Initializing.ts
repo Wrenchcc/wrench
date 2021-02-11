@@ -5,6 +5,7 @@ import { getCurrentUser } from 'gql'
 import { SentryInstance } from 'utils/sentry'
 import { updateNotificationToken } from 'utils/pushNotifications/register'
 import { AuthNavigation, AppNavigation } from './navigation'
+import { registerUserLocale } from 'i18n'
 
 function Initializing() {
   const loadInitialState = async () => {
@@ -27,6 +28,7 @@ function Initializing() {
         })
 
         updateNotificationToken()
+        registerUserLocale(data.user)
 
         await AppNavigation(showOnboarding)
       } else {

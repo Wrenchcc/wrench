@@ -11,7 +11,7 @@
     "run:ios": "tasks/run_ios",
     "start:android": "tasks/start_android",
     "start:ios": "tasks/start_ios",
-    "start:packager": "react-native start --reset-cache --verbose",
+    "start:packager": "react-native start --reset-cache",
     "check:types": "tsc --noEmit",
     "copy:locales:android": "node tasks/copy_locales.js"
   },
@@ -75,7 +75,7 @@
     "react-native-status-bar-height": "^2.6.0",
     "react-native-tab-view": "^2.15.2",
     "react-native-unimodules": "^0.12.0",
-    "react-native-webview": "^11.2.2",
+    "react-native-webview": "^11.2.3",
     "reanimated-bottom-sheet": "^1.0.0-alpha.22",
     "rn-placeholder": "^3.0.3",
     "styled-components": "^5.2.1",
