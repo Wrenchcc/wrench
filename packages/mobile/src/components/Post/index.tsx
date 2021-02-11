@@ -115,7 +115,7 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
 
         animatedValue.value = withSequence(
-          withSpring(1, { mass: 1, stiffness: 250, damping: 15 }),
+          withSpring(1, { mass: 1, stiffness: 400, damping: 14 }),
           withSpring(0, { mass: 1 })
         )
 
