@@ -22,9 +22,8 @@ export const Base = styled.View<BaseProps>`
   background-color: ${(props) => mapTypeToColor(props.type, props.theme.colors)};
   justify-content: center;
   opacity: 0.98;
-  height: 40px;
   padding-horizontal: 14px;
   margin-horizontal: 10px;
-  padding-vertical: 12px;
+  padding-vertical: 10px;
   border-radius: 8px;
 `

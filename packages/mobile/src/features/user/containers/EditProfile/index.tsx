@@ -232,6 +232,7 @@ function EditProfile({ onboarding }) {
           <ChangeAvatar>
             {/* NOTE: Use image Avatar can't handle file:// Android format */}
             <Image
+              fadeDuration={0}
               style={{ width: 120, height: 120, borderRadius: 120 }}
               source={{
                 uri: avatarUrl,

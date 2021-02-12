@@ -89,6 +89,7 @@ function Albums({ onPress, setInitialAlbum, translateY }) {
                 style={{ flexDirection: 'row' }}
               >
                 <Image
+                  fadeDuration={0}
                   source={preview}
                   style={{ width: 80, height: 80, backgroundColor: '#222' }}
                 />

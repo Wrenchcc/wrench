@@ -66,7 +66,7 @@
     "react-native-gesture-handler": "1.9.0",
     "react-native-navigation": "7.9.0",
     "react-native-permissions": "^3.0.0",
-    "react-native-pinchable": "^0.1.2",
+    "react-native-pinchable": "github:oblador/react-native-pinchable",
     "react-native-reanimated": "^2.0.0-rc.3",
     "react-native-redash": "^16.0.8",
     "react-native-responsive-dimensions": "^3.1.1",
@@ -82,8 +82,8 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.13",
-    "@babel/core": "^7.12.13",
+    "@babel/cli": "^7.12.16",
+    "@babel/core": "^7.12.16",
     "@babel/runtime": "^7.12.13",
     "@types/react-native-share": "^3.3.1",
     "babel-plugin-module-resolver": "^4.1.0",

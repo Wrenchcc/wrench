@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Video as RVideo } from 'expo-av'
 import { Text, Title, Touchable } from 'ui'
 import { NAVIGATION } from 'navigation'
+import { isAndroid } from 'utils/platform'
 
 export const Base = styled.SafeAreaView`
   flex: 1;
@@ -29,7 +30,7 @@ export const Overlay = styled.View`
 export const Inner = styled.View`
   flex: 1;
   padding: 20px;
-  padding-top: ${NAVIGATION.STATUS_BAR_HEIGHT + 20}px;
+  padding-top: ${isAndroid ? NAVIGATION.STATUS_BAR_HEIGHT + 20 : 20}px;
 `
 
 export const Content = styled.View`

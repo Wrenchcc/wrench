@@ -89,6 +89,7 @@ function Image({
         source={{
           uri: placeholder,
         }}
+        fadeDuration={0}
         style={[{ width, height }, style]}
         blurRadius={3}
       />

@@ -26,6 +26,7 @@ function Item({ onPress, item, selected }) {
         </Text>
       )}
       <Image
+        fadeDuration={0}
         style={{
           marginLeft: MARGIN,
           marginTop: MARGIN,

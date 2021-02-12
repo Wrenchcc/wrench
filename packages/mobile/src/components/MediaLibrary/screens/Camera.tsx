@@ -1,24 +1,15 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { Text, View, TouchableOpacity, Image, StyleSheet, InteractionManager } from 'react-native'
-// import { LongPressGestureHandler, State } from 'react-native-gesture-handler'
-import Animated, {
-  useSharedValue,
-  useDerivedValue,
-  useAnimatedStyle,
-  // withRepeat,
-  withTiming,
-  // withDelay,
-} from 'react-native-reanimated'
+import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated'
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { Camera as EXCamera } from 'expo-camera'
-import { Video as VideoPlayer } from 'expo-av'
 import { BlurView } from 'expo-blur'
+import { useNavigation, SCREENS } from 'navigation'
 import { isIphone } from 'utils/platform'
 import AskForPermission from 'components/AskForPermission'
 import { flip, flash } from 'images'
 import Header from '../Header'
-import { CAMERA_SIZE, TAB_BAR_HEIGHT, TIMING_DURATION, MAX_DURATION } from '../constants'
-import { formatTime } from '../utils'
+import { CAMERA_SIZE, TAB_BAR_HEIGHT, TIMING_DURATION } from '../constants'
 
 const AnimatedBlurView = Animated.createAnimatedComponent(BlurView)
 
@@ -26,25 +17,24 @@ const PERMISSION = isIphone ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMER
 
 function Camera({ active, animatedValue, setAlert }) {
   const cameraRef = useRef(null)
-  const videoRef = useRef(null)
   const opacityCancel = useSharedValue(1)
   const opacityActions = useSharedValue(1)
-  const progress = useSharedValue(0)
-  const opacity = useSharedValue(0)
   const rotation = useSharedValue(0)
   const deletePosition = useSharedValue(50)
-  const tooltip = useSharedValue(0)
   const fadeOpacity = useSharedValue(0)
 
   const [isLoading, setLoading] = useState(true)
   const [permission, setPermission] = useState('')
   const [mediaType, setMediaType] = useState(null)
-  const [video, setVideo] = useState(null)
   const [picture, setPicture] = useState(null)
   const [shouldDelete, setDelete] = useState(false)
-  const [isRecording, setIsRecording] = useState(false)
-  const [seconds, setSeconds] = useState(0)
   const [type, setType] = useState(EXCamera.Constants.Type.back)
+
+  const { dismissModal, navigate } = useNavigation()
+
+  const navigateToAddPost = useCallback(() => {
+    navigate(SCREENS.ADD_POST)
+  }, [])
 
   useEffect(() => {
     check(PERMISSION).then((response) => {
@@ -79,7 +69,7 @@ function Camera({ active, animatedValue, setAlert }) {
       })
     }
 
-    if ((active && !!video) || (active && !!picture)) {
+    if (active && !!picture) {
       opacityActions.value = withTiming(0, {
         duration: TIMING_DURATION,
       })
@@ -88,29 +78,7 @@ function Camera({ active, animatedValue, setAlert }) {
         duration: TIMING_DURATION,
       })
     }
-  }, [active, video])
-
-  useEffect(() => {
-    let interval = null
-    if (isRecording) {
-      interval = setInterval(() => {
-        progress.value = seconds + 1
-        setSeconds((seconds) => {
-          const duration = seconds + 1
-
-          if (duration === MAX_DURATION) {
-            cameraRef.current.stopRecording()
-            setIsRecording(false)
-          }
-
-          return duration
-        })
-      }, 1000)
-    } else if (!isRecording && seconds !== 0) {
-      clearInterval(interval)
-    }
-    return () => clearInterval(interval)
-  }, [isRecording, seconds, cameraRef])
+  }, [active])
 
   const handlePermission = useCallback(() => setPermission(RESULTS.GRANTED), [])
 
@@ -126,25 +94,7 @@ function Camera({ active, animatedValue, setAlert }) {
     })
   }, [type])
 
-  // const showTooltip = () => {
-  //   tooltip.value = withTiming(
-  //     1,
-  //     {
-  //       duration: TIMING_DURATION,
-  //     },
-  //     () =>
-  //       (tooltip.value = withDelay(
-  //         4500,
-  //         withTiming(0, {
-  //           duration: TIMING_DURATION,
-  //         })
-  //       ))
-  //   )
-  // }
-
   const handleTakePicture = () => {
-    // showTooltip()
-
     InteractionManager.runAfterInteractions(async () => {
       const data = await cameraRef.current.takePictureAsync({
         aspect: [4, 4],
@@ -167,70 +117,10 @@ function Camera({ active, animatedValue, setAlert }) {
     })
   }
 
-  // const handleRecordVideo = useCallback(
-  //   ({ nativeEvent }) => {
-  //     if (nativeEvent.state === State.ACTIVE) {
-  //       tooltip.value = 0
-  //       setMediaType('video')
-
-  //       opacity.value = withRepeat(
-  //         withTiming(1, {
-  //           duration: 800,
-  //         }),
-  //         0,
-  //         true
-  //       )
-
-  //       opacityActions.value = withTiming(0, {
-  //         duration: TIMING_DURATION,
-  //       })
-
-  //       animatedValue.value = withTiming(
-  //         TAB_BAR_HEIGHT,
-  //         {
-  //           duration: TIMING_DURATION / 1.5,
-  //         },
-  //         async () => {
-  //           setIsRecording(true)
-
-  //           try {
-  //             const video = await cameraRef.current.recordAsync({
-  //               maxDuration: MAX_DURATION,
-  //               quality: '720p',
-  //             })
-
-  //             setVideo(video)
-  //           } catch (err) {
-  //             // console.log(err);
-  //           }
-  //         }
-  //       )
-  //     }
-
-  //     if (nativeEvent.state === State.END) {
-  //       setIsRecording(false)
-
-  //       deletePosition.value = withTiming(
-  //         -70,
-  //         {
-  //           duration: TIMING_DURATION / 1.5,
-  //         },
-  //         () => {
-  //           cameraRef.current.stopRecording()
-  //         }
-  //       )
-  //     }
-  //   },
-  //   [cameraRef]
-  // )
-
   const deleteState = () => {
     setDelete(false)
     setMediaType(null)
-    setVideo(null)
     setPicture(null)
-    setSeconds(0)
-    progress.value = 0
 
     animatedValue.value = withTiming(0, {
       duration: TIMING_DURATION,
@@ -253,37 +143,17 @@ function Camera({ active, animatedValue, setAlert }) {
     }
   }
 
-  const handleCancel = () => {
-    if (!!video || !!picture) {
+  const handleCancel = useCallback(() => {
+    if (!!picture) {
       setAlert({
         visible: true,
         type: mediaType,
         onDiscard: deleteState,
       })
     } else {
-      // Close
+      dismissModal()
     }
-  }
-
-  const width = useDerivedValue(() => {
-    return (progress.value * 100) / MAX_DURATION
-  })
-
-  const animatedWidthStyle = useAnimatedStyle(() => {
-    return {
-      width: `${width.value}%`,
-    }
-  })
-
-  const animatedDotStyle = useAnimatedStyle(() => {
-    return {
-      opacity: opacity.value,
-    }
-  })
-
-  const opacityTooltipStyle = useAnimatedStyle(() => ({
-    opacity: tooltip.value,
-  }))
+  }, [picture])
 
   const opacityActionsStyle = useAnimatedStyle(() => ({
     opacity: opacityActions.value,
@@ -361,14 +231,14 @@ function Camera({ active, animatedValue, setAlert }) {
           </>
         }
         headerRight={
-          <TouchableOpacity onPress={() => alert('Go to post')} disabled={!!video || !!picture}>
+          <TouchableOpacity onPress={navigateToAddPost} disabled={!!picture}>
             <Text
               style={{
                 color: 'white',
                 margin: 8,
                 fontWeight: '500',
                 fontSize: 16,
-                opacity: !!video || !!picture ? 1 : 0.5,
+                opacity: !!picture ? 1 : 0.5,
               }}
             >
               Next
@@ -390,24 +260,9 @@ function Camera({ active, animatedValue, setAlert }) {
             overflow: 'hidden',
           }}
         >
-          {mediaType === 'video' && !!video && (
-            <VideoPlayer
-              ref={videoRef}
-              style={{
-                backgroundColor: '#222',
-                width: CAMERA_SIZE,
-                height: CAMERA_SIZE,
-              }}
-              source={video}
-              isMuted
-              resizeMode="cover"
-              shouldPlay
-              isLooping
-            />
-          )}
-
           {mediaType === 'picture' && !!picture && (
             <Image
+              fadeDuration={0}
               style={{
                 backgroundColor: '#222',
                 width: CAMERA_SIZE,
@@ -457,8 +312,6 @@ function Camera({ active, animatedValue, setAlert }) {
           </Animated.View>
         </View>
 
-        <Animated.View style={[{ height: 5, backgroundColor: '#333' }, animatedWidthStyle]} />
-
         <View
           style={{
             justifyContent: 'center',
@@ -466,74 +319,7 @@ function Camera({ active, animatedValue, setAlert }) {
             marginTop: '30%',
           }}
         >
-          <View
-            style={{
-              top: -50,
-              position: 'absolute',
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexDirection: 'row',
-            }}
-          >
-            {isRecording && (
-              <>
-                <Animated.View
-                  style={[
-                    {
-                      width: 5,
-                      height: 5,
-                      borderRadius: 5,
-                      backgroundColor: '#FF0200',
-                    },
-                    animatedDotStyle,
-                  ]}
-                />
-                <Text style={{ color: 'white', fontWeight: '500', marginLeft: 5 }}>
-                  {formatTime(seconds)}
-                </Text>
-              </>
-            )}
-          </View>
-
-          <Animated.View
-            pointerEvents="none"
-            style={[
-              {
-                backgroundColor: '#222',
-                borderRadius: 8,
-                padding: 15,
-                position: 'absolute',
-                top: -70,
-                flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center',
-              },
-              opacityTooltipStyle,
-            ]}
-          >
-            <Text style={{ color: 'white', fontWeight: '500', fontSize: 16 }}>
-              Press and hold to record.
-            </Text>
-            <View
-              style={{
-                borderLeftWidth: 10,
-                borderRightWidth: 10,
-                borderLeftColor: 'transparent',
-                borderRightColor: 'transparent',
-                position: 'absolute',
-                width: 0,
-                height: 0,
-                borderStyle: 'solid',
-                backgroundColor: 'transparent',
-                borderTopWidth: 10,
-                borderTopColor: '#222',
-                bottom: -10,
-              }}
-            />
-          </Animated.View>
-
-          <TouchableOpacity onPress={handleTakePicture} activeOpacity={0.98} disabled={!!video}>
-            {/* <LongPressGestureHandler onHandlerStateChange={handleRecordVideo} minDurationMs={200}> */}
+          <TouchableOpacity onPress={handleTakePicture} activeOpacity={0.98}>
             <View
               style={{
                 justifyContent: 'center',
@@ -553,7 +339,6 @@ function Camera({ active, animatedValue, setAlert }) {
                 }}
               />
             </View>
-            {/* </LongPressGestureHandler> */}
           </TouchableOpacity>
         </View>
       </View>
