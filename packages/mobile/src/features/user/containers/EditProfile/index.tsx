@@ -8,7 +8,7 @@ import { request, PERMISSIONS } from 'react-native-permissions'
 import { Page, ScrollView, useNavigation, AppNavigation, SCREENS } from 'navigation'
 import { preSignUrl } from 'gql'
 import { TOAST_TYPES } from 'utils/enums'
-import { showToast } from 'navigation/Banner'
+import { showToast } from 'navigation/banner'
 import { ActivityIndicator, Text, Title, Touchable, Input, Icon, KeyboardAvoidingView } from 'ui'
 import { logError } from 'utils/sentry'
 import { close } from 'images'
@@ -232,6 +232,7 @@ function EditProfile({ onboarding }) {
           <ChangeAvatar>
             {/* NOTE: Use image Avatar can't handle file:// Android format */}
             <Image
+              fadeDuration={0}
               style={{ width: 120, height: 120, borderRadius: 120 }}
               source={{
                 uri: avatarUrl,

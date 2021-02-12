@@ -1,5 +1,12 @@
-import React, { useCallback, useRef, useState } from 'react'
-import { Alert, View, Animated } from 'react-native'
+import React, { useCallback, useState } from 'react'
+import { Alert, View } from 'react-native'
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  interpolate,
+  withSpring,
+  withSequence,
+} from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
 import {
   useDeletePostMutation,
@@ -19,7 +26,7 @@ import { useDynamicColor } from 'utils/hooks'
 import { keyboardHeight } from 'utils/platform'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo } from 'ui'
 import { TOAST_TYPES } from 'utils/enums'
-import { showToast } from 'navigation/Banner'
+import { showToast } from 'navigation/banner'
 import LikePost from 'components/LikePost'
 import Bookmark from 'components/Bookmark'
 import { share, sparkMega, arrowRightSmall } from 'images'
@@ -27,6 +34,7 @@ import { Base, Top, Left, Headline, Content, Spacer, Row, Collection, Bottom } f
 
 function Post({ post, withoutTitle, withoutComments, withoutCollections, paddingBottom }) {
   const { t } = useTranslation('post')
+  const animatedValue = useSharedValue(0)
   const { navigate, showEditPost, showHalfpanel, dismissHalfpanel } = useNavigation()
   const [original, setOriginal] = useState(true)
   const dynamicColor = useDynamicColor('inverse')
@@ -101,23 +109,17 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
     [post]
   )
 
-  const animatedValue = useRef(new Animated.Value(0))
-
   const handleToggleLike = useCallback(
     (evt) => {
       if (evt.nativeEvent.state === State.ACTIVE) {
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
 
-        if (!post.likes.isLiked) {
-          Animated.sequence([
-            Animated.spring(animatedValue.current, {
-              toValue: 1,
-              useNativeDriver: true,
-              tension: 250,
-            }),
-            Animated.spring(animatedValue.current, { toValue: 0, useNativeDriver: true }),
-          ]).start()
+        animatedValue.value = withSequence(
+          withSpring(1, { mass: 1, stiffness: 400, damping: 14 }),
+          withSpring(0, { mass: 1 })
+        )
 
+        if (!post.likes.isLiked) {
           toggleLike({
             variables: {
               id: post.id,
@@ -360,6 +362,17 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
     }
   }, [handleEdit, onDelete, showActionSheetWithOptions, dynamicColor, dynamicBackgroundColor])
 
+  const animatedScaleStyle = useAnimatedStyle(() => {
+    return {
+      opacity: animatedValue.value,
+      transform: [
+        {
+          scale: interpolate(animatedValue.value, [0, 1], [0.7, 1.5]),
+        },
+      ],
+    }
+  })
+
   return (
     <Base paddingBottom={paddingBottom}>
       <Top>
@@ -420,18 +433,7 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
                 <Animated.Image
                   pointerEvents="none"
                   source={sparkMega}
-                  style={{
-                    position: 'absolute',
-                    opacity: animatedValue.current,
-                    transform: [
-                      {
-                        scale: animatedValue.current.interpolate({
-                          inputRange: [0, 1],
-                          outputRange: [0.7, 1.5],
-                        }),
-                      },
-                    ],
-                  }}
+                  style={[animatedScaleStyle, { position: 'absolute' }]}
                 />
               </View>
             </View>

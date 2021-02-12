@@ -20,5 +20,3 @@ export const ALBUM_INNER_HEIGHT = height - HEADER_HEIGHT
 export const ALBUM_FULLY_UP = 0
 export const ALBUM_WIDTH = width
 export const CAMERA_SIZE = width
-
-export const MAX_DURATION = 60

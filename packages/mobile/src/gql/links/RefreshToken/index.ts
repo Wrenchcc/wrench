@@ -1,11 +1,10 @@
 import { Observable } from '@apollo/client'
 import { onError } from '@apollo/link-error'
 import { RefreshTokenDocument } from '@wrench/common'
-// import { store } from 'gql'
 import { getRefreshToken, setTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
-import { showToast } from 'navigation/Banner'
+import { showToast } from 'navigation/banner'
 import { ERROR_CODES, TOAST_TYPES } from 'utils/enums'
 import { client } from '../../client'
 

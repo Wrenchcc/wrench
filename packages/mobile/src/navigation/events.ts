@@ -1,6 +1,6 @@
 import { Navigation } from 'react-native-navigation'
 import { Appearance } from 'react-native'
-import { NAVIGATION_BANNER } from 'navigation/Banner'
+import { NAVIGATION_BANNER } from 'navigation/banner'
 import { getCurrentUserProjects } from 'gql'
 import { logError } from 'utils/sentry'
 import { trackScreen } from 'utils/analytics'

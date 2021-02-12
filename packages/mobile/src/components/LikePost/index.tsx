@@ -1,5 +1,6 @@
-import React, { useCallback, useRef } from 'react'
-import { Animated } from 'react-native'
+import React, { useCallback } from 'react'
+import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated'
+import { scaleAnimation } from 'utils/animations'
 import { useLikePostMutation } from '@wrench/common'
 import * as Haptics from 'expo-haptics'
 import { useTranslation } from 'react-i18next'
@@ -9,6 +10,7 @@ import { spark } from 'images'
 import { Base } from './styled'
 
 function LikePost({ post }) {
+  const animatedValue = useSharedValue(1)
   const { t } = useTranslation('like-post')
   const { navigate } = useNavigation()
   const [toggleLike] = useLikePostMutation()
@@ -17,21 +19,8 @@ function LikePost({ post }) {
     navigate(SCREENS.LIKES, { id: post.id })
   }, [])
 
-  const animatedValue = useRef(new Animated.Value(0))
-
-  const scale = animatedValue.current.interpolate({
-    inputRange: [0, 0.5, 1],
-    outputRange: [1, 1.25, 1],
-  })
-
   const handleToggleLike = useCallback(() => {
-    animatedValue.current.setValue(0)
-
-    Animated.spring(animatedValue.current, {
-      toValue: 1,
-      duration: 330,
-      useNativeDriver: true,
-    }).start()
+    animatedValue.value = scaleAnimation()
 
     if (!post.likes.isLiked) {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
@@ -56,9 +45,19 @@ function LikePost({ post }) {
     })
   }, [toggleLike, post])
 
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          scale: animatedValue.value,
+        },
+      ],
+    }
+  })
+
   return (
     <Base>
-      <Animated.View style={{ transform: [{ scale }] }}>
+      <Animated.View style={animatedStyle}>
         <Icon
           source={spark}
           color={post.likes.isLiked ? 'warning' : 'inverse'}

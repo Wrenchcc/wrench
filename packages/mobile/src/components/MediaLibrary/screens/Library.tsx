@@ -1,4 +1,4 @@
-import React, { useRef, useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { ActivityIndicator, View, TouchableOpacity, Text } from 'react-native'
 import Animated, {
   useSharedValue,
@@ -13,7 +13,7 @@ import { PanGestureHandler, FlatList } from 'react-native-gesture-handler'
 import { clamp, snapPoint } from 'react-native-redash'
 import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import * as MediaLibrary from 'expo-media-library'
-import { Video } from 'expo-av'
+import { useNavigation, SCREENS } from 'navigation'
 import AskForPermission from 'components/AskForPermission'
 import { isIphone, isAndroid } from 'utils/platform'
 import Item, { MARGIN, ITEM_SIZE } from '../Item'
@@ -42,8 +42,7 @@ const WRITE_EXTERNAL_STORAGE_PERMISSION = PERMISSIONS.ANDROID.WRITE_EXTERNAL_STO
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
-function Library({ active, animatedValue, dismissModal }) {
-  const videoRef = useRef(null)
+function Library({ active, animatedValue }) {
   const cropAreaY = useSharedValue(CROP_FULLY_DOWN)
   const translationY = useSharedValue(0)
   const albumTranslateY = useSharedValue(ALBUM_FULLY_DOWN)
@@ -61,6 +60,12 @@ function Library({ active, animatedValue, dismissModal }) {
   const [hasNextPage, setHasNextPage] = useState(true)
   const [endCursor, setEndCursor] = useState()
   const [lastEndCursor, setLastEndCursor] = useState()
+
+  const { dismissModal, navigate } = useNavigation()
+
+  const navigateToAddPost = useCallback(() => {
+    navigate(SCREENS.ADD_POST)
+  }, [])
 
   useEffect(() => {
     check(PERMISSION).then((res) => {
@@ -82,13 +87,7 @@ function Library({ active, animatedValue, dismissModal }) {
     fetchInitialAssets()
   }, [])
 
-  useEffect(() => {
-    // if (active && !isPaused) {
-    //   videoRef?.current?.playAsync()
-    // } else {
-    //   videoRef?.current?.pauseAsync()
-    // }
-  }, [active, videoRef, isPaused])
+  useEffect(() => {}, [active, isPaused])
 
   const permissionAuthorized = useCallback(() => {
     setPhotoPermission(RESULTS.GRANTED)
@@ -99,7 +98,6 @@ function Library({ active, animatedValue, dismissModal }) {
       const result = await MediaLibrary.getAssetsAsync({
         first: INITIAL_PAGE_SIZE,
         album: album?.id || null,
-        // mediaType: [MediaLibrary.MediaType.photo, MediaLibrary.MediaType.video],
         mediaType: [MediaLibrary.MediaType.photo],
         sortBy: MediaLibrary.SortBy.creationTime,
       })
@@ -167,16 +165,6 @@ function Library({ active, animatedValue, dismissModal }) {
     albumTranslateY.value = withTiming(toggleValue ? ALBUM_FULLY_UP : ALBUM_FULLY_DOWN, {
       duration: TIMING_DURATION,
     })
-  }
-
-  const handleToggleVideo = () => {
-    setPaused(!isPaused)
-
-    // if (isPaused) {
-    //   videoRef.current.playAsync()
-    // } else {
-    //   videoRef.current.pauseAsync()
-    // }
   }
 
   const onEndReached = useCallback(() => {
@@ -334,7 +322,7 @@ function Library({ active, animatedValue, dismissModal }) {
               </TouchableOpacity>
             }
             headerRight={
-              <TouchableOpacity onPress={() => alert('Go to post')} disabled={!selectedFile}>
+              <TouchableOpacity onPress={navigateToAddPost} disabled={!selectedFile}>
                 <Text
                   style={{
                     color: 'white',
@@ -351,45 +339,8 @@ function Library({ active, animatedValue, dismissModal }) {
             animatedValue={animatedValue}
           />
 
-          {selectedFile.mediaType === 'video' ? (
-            <TouchableOpacity
-              activeOpacity={1}
-              onPress={handleToggleVideo}
-              style={{
-                width: CROP_AREA,
-                height: CROP_AREA,
-                position: 'absolute',
-                top: HEADER_HEIGHT,
-              }}
-            >
-              <Video
-                ref={videoRef}
-                style={{
-                  flex: 1,
-                }}
-                source={selectedFile}
-                isMuted
-                resizeMode="cover"
-                shouldPlay
-                isLooping
-              />
+          <ImageEditor source={selectedFile} />
 
-              {/* {isPaused && (
-                <Image
-                  source={require('../../../assets/play.png')}
-                  style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    marginLeft: -12,
-                    marginTop: -12,
-                  }}
-                />
-              )} */}
-            </TouchableOpacity>
-          ) : (
-            <ImageEditor source={selectedFile} />
-          )}
           <Animated.View
             pointerEvents="none"
             style={[

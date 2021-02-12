@@ -1,29 +1,19 @@
-import React, { useCallback, useRef } from 'react'
-import { Animated } from 'react-native'
+import React, { useCallback } from 'react'
+import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated'
 import * as Haptics from 'expo-haptics'
+import { scaleAnimation } from 'utils/animations'
 import { useLikeCommentMutation } from '@wrench/common'
 import { Icon } from 'ui'
 import { sparkSmall } from 'images'
 import { Base } from './styles'
 
 function LikeComment({ comment }) {
+  const animatedValue = useSharedValue(1)
+
   const [toggleLike] = useLikeCommentMutation()
 
-  const animatedValue = useRef(new Animated.Value(0))
-
-  const scale = animatedValue.current.interpolate({
-    inputRange: [0, 0.5, 1],
-    outputRange: [1, 1.3, 1],
-  })
-
   const handleToggleLike = useCallback(() => {
-    animatedValue.current.setValue(0)
-
-    Animated.spring(animatedValue.current, {
-      toValue: 1,
-      duration: 330,
-      useNativeDriver: true,
-    }).start()
+    animatedValue.value = scaleAnimation()
 
     if (!comment.likes.isLiked) {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
@@ -50,9 +40,15 @@ function LikeComment({ comment }) {
     })
   }, [toggleLike, comment])
 
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ scale: animatedValue.value }],
+    }
+  })
+
   return (
     <Base>
-      <Animated.View style={{ transform: [{ scale }] }}>
+      <Animated.View style={animatedStyle}>
         <Icon
           source={sparkSmall}
           color={comment.likes.isLiked ? 'warning' : 'inverse'}

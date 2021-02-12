@@ -1,6 +1,6 @@
 import { pathOr } from 'rambda'
 import { EditUserDocument } from '@wrench/common'
-import { client, getCurrentUser } from 'gql'
+import { client } from 'gql'
 import { logError } from 'utils/sentry'
 import { getLocale, timezone } from './helpers'
 
@@ -17,12 +17,10 @@ export function updateUserLocale(locale) {
   }
 }
 
-export async function registerUserLocale() {
-  const user = await getCurrentUser()
-
+export async function registerUserLocale(user) {
   if (
-    !pathOr(false, ['data', 'user', 'settings', 'locale'], user) ||
-    !pathOr(false, ['data', 'user', 'settings', 'timezone'], user)
+    !pathOr(false, ['user', 'settings', 'locale'], user) ||
+    !pathOr(false, ['user', 'settings', 'timezone'], user)
   ) {
     const locale = await getLocale()
 

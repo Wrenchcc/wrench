@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated'
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  runOnJS,
+} from 'react-native-reanimated'
 
 function Alert({ onCancel, onDiscard }) {
   const opacity = useSharedValue(0)
@@ -14,19 +19,27 @@ function Alert({ onCancel, onDiscard }) {
   }, [])
 
   const handleCancel = () => {
-    opacity.value = withTiming(0, {
-      duration: 150,
-    })
-    // TODO: Run on callback
-    onCancel()
+    opacity.value = withTiming(
+      0,
+      {
+        duration: 150,
+      },
+      () => {
+        runOnJS(onCancel)()
+      }
+    )
   }
 
   const handleDiscard = () => {
-    opacity.value = withTiming(0, {
-      duration: 150,
-    })
-    // TODO: Run on callback
-    onDiscard()
+    opacity.value = withTiming(
+      0,
+      {
+        duration: 150,
+      },
+      () => {
+        runOnJS(onDiscard)()
+      }
+    )
   }
 
   const opacityStyle = useAnimatedStyle(() => ({
@@ -65,7 +78,7 @@ function Alert({ onCancel, onDiscard }) {
               marginBottom: 10,
             }}
           >
-            Discard video?
+            Discard photo?
           </Text>
 
           <Text
@@ -76,7 +89,7 @@ function Alert({ onCancel, onDiscard }) {
               textAlign: 'center',
             }}
           >
-            If you close the camera now, your video will be discarded.
+            If you close the camera now, your photo will be discarded.
           </Text>
         </View>
 

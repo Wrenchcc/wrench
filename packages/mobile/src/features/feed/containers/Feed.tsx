@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { KeyboardAvoidingView } from 'react-native'
 import ms from 'ms'
+import { useReactiveVar } from '@apollo/client'
+import { showPosting, NavigationBanner } from 'navigation/banner'
 import { usePaginatedQuery, FeedDocument } from '@wrench/common'
+import { store } from 'gql'
 import { Layout, FlatList, useScrollToTop, SCREENS } from 'navigation'
 import Post from 'components/Post'
-import { Posting, ShowLatest } from 'ui'
-import { registerUserLocale } from 'i18n'
+import { ShowLatest } from 'ui'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import { isIphone } from 'utils/platform'
 
@@ -18,6 +20,9 @@ function Feed() {
   const [hasNewPosts, setHasNewPosts] = useState(false)
   const [latestId, setLatestId] = useState('')
   const closeNewPosts = useCallback(() => setHasNewPosts(false), [])
+
+  const isPosting = useReactiveVar(store.post.isPostingVar)
+  const image = useReactiveVar(store.files.selectedFilesVar)[0]
 
   const {
     data: { edges },
@@ -39,10 +44,6 @@ function Feed() {
   useScrollToTop(scrollRef, SCREENS.FEED)
 
   useEffect(() => {
-    registerUserLocale()
-  }, [])
-
-  useEffect(() => {
     if (edges?.length) {
       const id = edges[0].node.id
 
@@ -54,11 +55,16 @@ function Feed() {
     }
   }, [edges])
 
-  const StickyComponent = hasNewPosts ? (
-    <ShowLatest onHide={closeNewPosts} onPress={scrollToTop} />
-  ) : (
-    <Posting scrollToTop={scrollToTop} />
-  )
+  useEffect(() => {
+    if (isPosting) {
+      showPosting({ image })
+      scrollToTop()
+    } else {
+      NavigationBanner.dismiss()
+    }
+  }, [isPosting])
+
+  const StickyComponent = hasNewPosts && <ShowLatest onHide={closeNewPosts} onPress={scrollToTop} />
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
