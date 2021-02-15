@@ -462,7 +462,7 @@ PODS:
     - React
   - react-native-netinfo (5.9.10):
     - React-Core
-  - react-native-pinchable (0.2.0):
+  - react-native-pinchable (0.2.1):
     - React-Core
   - react-native-splash-screen (3.2.0):
     - React
@@ -551,20 +551,20 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.8)
     - SDWebImageWebPCoder (~> 0.6.1)
-  - RNFBAnalytics (10.7.0):
+  - RNFBAnalytics (10.8.0):
     - Firebase/Analytics (~> 7.6.0)
     - React-Core
     - RNFBApp
-  - RNFBApp (10.7.0):
+  - RNFBApp (10.8.0):
     - Firebase/CoreOnly (~> 7.6.0)
     - React-Core
-  - RNFBMessaging (10.7.0):
+  - RNFBMessaging (10.8.0):
     - Firebase/Messaging (~> 7.6.0)
     - React-Core
     - RNFBApp
   - RNFS (2.16.6):
     - React
-  - RNGestureHandler (1.9.0):
+  - RNGestureHandler (1.10.1):
     - React-Core
   - RNGoogleSignin (5.0.0):
     - GoogleSignIn (~> 5.0.0)
@@ -1010,7 +1010,7 @@ SPEC CHECKSUMS:
   react-native-config: c98128a72bc2c3a1ca72caec0b021f0fa944aa29
   react-native-fbsdk: 8e92c7a334fd8d9c2b5d8b8fcd7ae2c314161099
   react-native-netinfo: 30fb89fa913c342be82a887b56e96be6d71201dd
-  react-native-pinchable: 75b444eb9d6edd46a1df5ef03a52b2308efccd37
+  react-native-pinchable: b4381b0807d15c12b14bfacd927128f52d96f0f1
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-webview: 6520e3e7b4933de76b95ef542c8d7115cf45b68e
   React-perflogger: d9815e398aa6e6016b8c0bef8b3033ab818f823d
@@ -1030,11 +1030,11 @@ SPEC CHECKSUMS:
   RNCClipboard: 41d8d918092ae8e676f18adada19104fa3e68495
   RNDeviceInfo: 921a809eaf9de79645a24de1c6ca90db6cb91786
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
-  RNFBAnalytics: 557c7e8257ab7900051d0511eaba1550767f8c1c
-  RNFBApp: d75aa9756bca20df2c902a3f7e11bc276f03c65b
-  RNFBMessaging: f44e16c7bef577cd9803d53fdce4656280b1ccc4
+  RNFBAnalytics: 90d32a12ca53f8cd6246030b7f1c12615c148f1f
+  RNFBApp: 97b618641633d6d23187a9d0537c3893482c483f
+  RNFBMessaging: 9eae1103b79d94c6baa5bc43dabc9aba49dfb9da
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
-  RNGestureHandler: 9b7e605a741412e20e13c512738a31bd1611759b
+  RNGestureHandler: 5e58135436aacc1c5d29b75547d3d2b9430d052c
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNPermissions: 99dd8d4a30ff13509b949ca63cd1f69edc461775
   RNReanimated: 31d4b60fe6509e161b4c461dee70d98a9c7af6b6

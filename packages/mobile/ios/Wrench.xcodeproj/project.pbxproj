@@ -126,7 +126,7 @@
 			name = Wrench;
 			sourceTree = "<group>";
 		};
-		1698E2E225D68AC80065877B /* translations */ = {
+		1698E2E225D68AC80065877B /* Translations */ = {
 			isa = PBXGroup;
 			children = (
 				1698E30425D68C350065877B /* tl.json */,
@@ -142,7 +142,7 @@
 				1698E2E625D68B960065877B /* de.json */,
 				1698E2E325D68B820065877B /* da.json */,
 			);
-			path = translations;
+			path = Translations;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -173,7 +173,7 @@
 			children = (
 				D2002BDA2395A01800BF4AD8 /* File.swift */,
 				D2F146272200A9B000E8A474 /* GoogleService-Info.plist */,
-				1698E2E225D68AC80065877B /* translations */,
+				1698E2E225D68AC80065877B /* Translations */,
 				13B07FAE1A68108700A75B9A /* Wrench */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
