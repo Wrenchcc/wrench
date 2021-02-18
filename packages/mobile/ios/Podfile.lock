@@ -532,12 +532,12 @@ PODS:
     - React-cxxreact (= 0.64.0-rc.3)
     - React-jsi (= 0.64.0-rc.3)
     - React-perflogger (= 0.64.0-rc.3)
-  - ReactNativeNavigation (7.9.0):
+  - ReactNativeNavigation (7.10.0):
     - React-Core
     - React-RCTImage
     - React-RCTText
-    - ReactNativeNavigation/Core (= 7.9.0)
-  - ReactNativeNavigation/Core (7.9.0):
+    - ReactNativeNavigation/Core (= 7.10.0)
+  - ReactNativeNavigation/Core (7.10.0):
     - React-Core
     - React-RCTImage
     - React-RCTText
@@ -1025,7 +1025,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: 7a89bda87032c5fc0899bb6940ec42ffcb156d7a
   React-runtimeexecutor: 973fcbe10f76f42e3a9a98b9358836971e9ac4aa
   ReactCommon: 33191ccc8250b4e206884a1e3b68b2011b6b7899
-  ReactNativeNavigation: 127c9a6fc375a79fcad473cd8b793d7ce3f58534
+  ReactNativeNavigation: fa1eed29e815dfca6a1cb325776ef97658c54ce3
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
   RNCClipboard: 41d8d918092ae8e676f18adada19104fa3e68495
   RNDeviceInfo: 921a809eaf9de79645a24de1c6ca90db6cb91786

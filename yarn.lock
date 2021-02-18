@@ -61,6 +61,25 @@
   dependencies:
     cross-fetch "3.0.6"
 
+"@apollo/client@3.3.11":
+  version "3.3.11"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.3.11.tgz#125051405e83dc899d471d43b79fd6045d92a802"
+  integrity sha512-54+D5FB6RJlQ+g37f432gaexnyvDsG5X6L9VO5kqN54HJlbF8hCf/8CXtAQEHCWodAwZhy6kOLp2RM96829q3A==
+  dependencies:
+    "@graphql-typed-document-node/core" "^3.0.0"
+    "@types/zen-observable" "^0.8.0"
+    "@wry/context" "^0.5.2"
+    "@wry/equality" "^0.3.0"
+    fast-json-stable-stringify "^2.0.0"
+    graphql-tag "^2.12.0"
+    hoist-non-react-statics "^3.3.2"
+    optimism "^0.14.0"
+    prop-types "^15.7.2"
+    symbol-observable "^2.0.0"
+    ts-invariant "^0.6.0"
+    tslib "^1.10.0"
+    zen-observable "^0.8.14"
+
 "@apollo/client@3.3.8":
   version "3.3.8"
   resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.3.8.tgz#79e18978dbf2383e2d17eedf33bf905b89b4fb43"
@@ -15110,10 +15129,17 @@ i18next-parser@^3.6.0:
     vinyl-fs "^3.0.2"
     vue-template-compiler "^2.6.11"
 
-i18next@*, i18next@^19.0.1, i18next@^19.6.3, i18next@^19.8.7:
+i18next@*, i18next@^19.0.1, i18next@^19.6.3:
   version "19.8.7"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.8.7.tgz#ef023e353974d1b1453e8b6331bd9fb7cba427df"
   integrity sha512-ezo1gb7QO4OQ5gQCdZMUxopwQSoqpRp6whdEjm1grxMSmkGj1NJ+kYS0UQd4NnpPIVqsgqTQ2L2eqSQYQ+U3Fw==
+  dependencies:
+    "@babel/runtime" "^7.12.0"
+
+i18next@^19.8.9:
+  version "19.8.9"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.8.9.tgz#ee3175cf1edcd142b45eca49d23079edaa1e6fcc"
+  integrity sha512-cyLeJv7tg3MP+bRNbNe9CleiBGfkCeEKr0DKY2MBPYE1vIQGu4mQ3qlTCmW1tcZi9fMqSI4G2mGBO+JwoIQSbQ==
   dependencies:
     "@babel/runtime" "^7.12.0"
 
@@ -21834,10 +21860,18 @@ react-hotkeys@2.0.0:
   dependencies:
     prop-types "^15.6.1"
 
-react-i18next@^11.7.3, react-i18next@^11.8.6:
+react-i18next@^11.7.3:
   version "11.8.6"
   resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.8.6.tgz#f9a09964fb38407247ae9542fe51741b6fb93d1a"
   integrity sha512-Nr4Fq7BvzDLJQmaDyJRkPPINgMW1Y1qeT4STBoY/ePGmYlCZGShTYqqyBm0ly6M8dV1X0twt7M5dfmDzfi9yGQ==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    html-parse-stringify2 "2.0.1"
+
+react-i18next@^11.8.7:
+  version "11.8.7"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.8.7.tgz#845f31e01e2aa92a3954c374ebcc4bd54df1cace"
+  integrity sha512-IDK/a73cJN4J2C6yTqmDS/r8iikwKaN283hltqps8UiRaFVTvlSxE85HkamEFD6lULG4hFZExecXJ/hA27DW3Q==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
@@ -21954,10 +21988,10 @@ react-native-get-random-values@^1.4.0:
   dependencies:
     fast-base64-decode "^1.0.0"
 
-react-native-navigation@7.9.0:
-  version "7.9.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.9.0.tgz#223f8e9a23379684599f13c41e0415ca1b706156"
-  integrity sha512-Nr6uS9gwwTkRIzfDFVzHX3PDEgvjhbQMR7bIeaeOEvWvWPUrXjFc2txfZiA3autbRVnM0cDCKPu8M5WKL41gaA==
+react-native-navigation@7.10.0:
+  version "7.10.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.10.0.tgz#c5bb8e3fa06fc21accc62f103c25c387263062e2"
+  integrity sha512-pQ9ZoqxVmSuBfJZO0K4flm+ppMRLgbofZZvU4y6F3x0wDx/M12hKPikZTjBPPM25DvvwM5jeZjUS8HW2oDKkog==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
