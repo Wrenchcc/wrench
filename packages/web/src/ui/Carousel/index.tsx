@@ -4,6 +4,7 @@ import { ArrowLeftAlternativeIcon, ArrowRightAlternativeIcon } from '@wrench/ui'
 import { Base, Slider, Slide, ButtonBack, ButtonNext, DotGroup, Image } from './styles'
 
 function Carousel({ files }) {
+  console.log(files)
   return (
     <Base>
       <CarouselProvider

@@ -2,6 +2,8 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -14,6 +16,7 @@ export type Scalars = {
   /** Returns all strings in lower case */
   LowercaseString: any;
 };
+
 
 export type Query = {
   __typename?: 'Query';
@@ -1547,7 +1550,7 @@ export type BookmarkPostMutation = (
 export type CollectPostsMutationVariables = Exact<{
   projectId: Scalars['ID'];
   collectionId: Scalars['ID'];
-  input?: Maybe<Array<Maybe<CollectionInput>>>;
+  input?: Maybe<Array<Maybe<CollectionInput>> | Maybe<CollectionInput>>;
 }>;
 
 
@@ -1783,7 +1786,7 @@ export type PreSignUrlMutation = (
 );
 
 export type PreSignUrlsMutationVariables = Exact<{
-  input: Array<Maybe<PreSignedUrlnput>>;
+  input: Array<Maybe<PreSignedUrlnput>> | Maybe<PreSignedUrlnput>;
 }>;
 
 
@@ -2883,7 +2886,7 @@ export const PostFragmentDoc = gql`
   permissions {
     isOwner
   }
-  files: filesConnection(type: IMAGE) {
+  files: filesConnection {
     edges {
       node {
         id
@@ -4256,7 +4259,14 @@ export type BookmarksLazyQueryHookResult = ReturnType<typeof useBookmarksLazyQue
 export type BookmarksQueryResult = Apollo.QueryResult<BookmarksQuery, BookmarksQueryVariables>;
 export const CollectionsDocument = gql`
     query collections($id: ID, $slug: LowercaseString, $projectId: ID, $projectSlug: LowercaseString, $after: String, $first: Int = 5) @connection(key: "collections") {
-  collections(id: $id, slug: $slug, projectId: $projectId, projectSlug: $projectSlug, after: $after, first: $first) {
+  collections(
+    id: $id
+    slug: $slug
+    projectId: $projectId
+    projectSlug: $projectSlug
+    after: $after
+    first: $first
+  ) {
     pageInfo {
       hasNextPage
     }
@@ -4324,7 +4334,7 @@ export const CommentDocument = gql`
  *   },
  * });
  */
-export function useCommentQuery(baseOptions?: Apollo.QueryHookOptions<CommentQuery, CommentQueryVariables>) {
+export function useCommentQuery(baseOptions: Apollo.QueryHookOptions<CommentQuery, CommentQueryVariables>) {
         return Apollo.useQuery<CommentQuery, CommentQueryVariables>(CommentDocument, baseOptions);
       }
 export function useCommentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CommentQuery, CommentQueryVariables>) {
@@ -4370,7 +4380,7 @@ ${CommentAndRepliesFragmentDoc}`;
  *   },
  * });
  */
-export function useCommentsQuery(baseOptions?: Apollo.QueryHookOptions<CommentsQuery, CommentsQueryVariables>) {
+export function useCommentsQuery(baseOptions: Apollo.QueryHookOptions<CommentsQuery, CommentsQueryVariables>) {
         return Apollo.useQuery<CommentsQuery, CommentsQueryVariables>(CommentsDocument, baseOptions);
       }
 export function useCommentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CommentsQuery, CommentsQueryVariables>) {
@@ -4726,7 +4736,7 @@ export const FollowersDocument = gql`
  *   },
  * });
  */
-export function useFollowersQuery(baseOptions?: Apollo.QueryHookOptions<FollowersQuery, FollowersQueryVariables>) {
+export function useFollowersQuery(baseOptions: Apollo.QueryHookOptions<FollowersQuery, FollowersQueryVariables>) {
         return Apollo.useQuery<FollowersQuery, FollowersQueryVariables>(FollowersDocument, baseOptions);
       }
 export function useFollowersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FollowersQuery, FollowersQueryVariables>) {
@@ -4760,7 +4770,7 @@ export const GrowthDocument = gql`
  *   },
  * });
  */
-export function useGrowthQuery(baseOptions?: Apollo.QueryHookOptions<GrowthQuery, GrowthQueryVariables>) {
+export function useGrowthQuery(baseOptions: Apollo.QueryHookOptions<GrowthQuery, GrowthQueryVariables>) {
         return Apollo.useQuery<GrowthQuery, GrowthQueryVariables>(GrowthDocument, baseOptions);
       }
 export function useGrowthLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GrowthQuery, GrowthQueryVariables>) {
@@ -4850,7 +4860,7 @@ export const LikesDocument = gql`
  *   },
  * });
  */
-export function useLikesQuery(baseOptions?: Apollo.QueryHookOptions<LikesQuery, LikesQueryVariables>) {
+export function useLikesQuery(baseOptions: Apollo.QueryHookOptions<LikesQuery, LikesQueryVariables>) {
         return Apollo.useQuery<LikesQuery, LikesQueryVariables>(LikesDocument, baseOptions);
       }
 export function useLikesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LikesQuery, LikesQueryVariables>) {
@@ -4967,7 +4977,7 @@ export const PostDocument = gql`
  *   },
  * });
  */
-export function usePostQuery(baseOptions?: Apollo.QueryHookOptions<PostQuery, PostQueryVariables>) {
+export function usePostQuery(baseOptions: Apollo.QueryHookOptions<PostQuery, PostQueryVariables>) {
         return Apollo.useQuery<PostQuery, PostQueryVariables>(PostDocument, baseOptions);
       }
 export function usePostLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PostQuery, PostQueryVariables>) {
@@ -5073,7 +5083,13 @@ export type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>;
 export type ProjectQueryResult = Apollo.QueryResult<ProjectQuery, ProjectQueryVariables>;
 export const ProjectCollectionsDocument = gql`
     query projectCollections($projectId: ID, $projectSlug: LowercaseString, $slug: LowercaseString, $after: String, $first: Int = 10) {
-  projectCollections(projectId: $projectId, projectSlug: $projectSlug, slug: $slug, first: $first, after: $after) @connection(key: "collections", filter: ["projectId"]) {
+  projectCollections(
+    projectId: $projectId
+    projectSlug: $projectSlug
+    slug: $slug
+    first: $first
+    after: $after
+  ) @connection(key: "collections", filter: ["projectId"]) {
     pageInfo {
       hasNextPage
     }
@@ -5238,7 +5254,7 @@ export const ProjectsDocument = gql`
  *   },
  * });
  */
-export function useProjectsQuery(baseOptions?: Apollo.QueryHookOptions<ProjectsQuery, ProjectsQueryVariables>) {
+export function useProjectsQuery(baseOptions: Apollo.QueryHookOptions<ProjectsQuery, ProjectsQueryVariables>) {
         return Apollo.useQuery<ProjectsQuery, ProjectsQueryVariables>(ProjectsDocument, baseOptions);
       }
 export function useProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectsQuery, ProjectsQueryVariables>) {
@@ -5325,7 +5341,7 @@ export const RepliesDocument = gql`
  *   },
  * });
  */
-export function useRepliesQuery(baseOptions?: Apollo.QueryHookOptions<RepliesQuery, RepliesQueryVariables>) {
+export function useRepliesQuery(baseOptions: Apollo.QueryHookOptions<RepliesQuery, RepliesQueryVariables>) {
         return Apollo.useQuery<RepliesQuery, RepliesQueryVariables>(RepliesDocument, baseOptions);
       }
 export function useRepliesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RepliesQuery, RepliesQueryVariables>) {
@@ -5373,7 +5389,7 @@ export const SearchHashtagsDocument = gql`
  *   },
  * });
  */
-export function useSearchHashtagsQuery(baseOptions?: Apollo.QueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>) {
+export function useSearchHashtagsQuery(baseOptions: Apollo.QueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>) {
         return Apollo.useQuery<SearchHashtagsQuery, SearchHashtagsQueryVariables>(SearchHashtagsDocument, baseOptions);
       }
 export function useSearchHashtagsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>) {
@@ -5423,7 +5439,7 @@ export const SearchModelsDocument = gql`
  *   },
  * });
  */
-export function useSearchModelsQuery(baseOptions?: Apollo.QueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>) {
+export function useSearchModelsQuery(baseOptions: Apollo.QueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>) {
         return Apollo.useQuery<SearchModelsQuery, SearchModelsQueryVariables>(SearchModelsDocument, baseOptions);
       }
 export function useSearchModelsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>) {
@@ -5472,7 +5488,7 @@ export const SearchProjectsDocument = gql`
  *   },
  * });
  */
-export function useSearchProjectsQuery(baseOptions?: Apollo.QueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>) {
+export function useSearchProjectsQuery(baseOptions: Apollo.QueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>) {
         return Apollo.useQuery<SearchProjectsQuery, SearchProjectsQueryVariables>(SearchProjectsDocument, baseOptions);
       }
 export function useSearchProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>) {
@@ -5518,7 +5534,7 @@ export const SearchUsersDocument = gql`
  *   },
  * });
  */
-export function useSearchUsersQuery(baseOptions?: Apollo.QueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>) {
+export function useSearchUsersQuery(baseOptions: Apollo.QueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>) {
         return Apollo.useQuery<SearchUsersQuery, SearchUsersQueryVariables>(SearchUsersDocument, baseOptions);
       }
 export function useSearchUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>) {
@@ -5560,7 +5576,7 @@ export const SimilarProjectsDocument = gql`
  *   },
  * });
  */
-export function useSimilarProjectsQuery(baseOptions?: Apollo.QueryHookOptions<SimilarProjectsQuery, SimilarProjectsQueryVariables>) {
+export function useSimilarProjectsQuery(baseOptions: Apollo.QueryHookOptions<SimilarProjectsQuery, SimilarProjectsQueryVariables>) {
         return Apollo.useQuery<SimilarProjectsQuery, SimilarProjectsQueryVariables>(SimilarProjectsDocument, baseOptions);
       }
 export function useSimilarProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SimilarProjectsQuery, SimilarProjectsQueryVariables>) {
@@ -5651,7 +5667,7 @@ ${PostFragmentDoc}`;
  *   },
  * });
  */
-export function useUserQuery(baseOptions?: Apollo.QueryHookOptions<UserQuery, UserQueryVariables>) {
+export function useUserQuery(baseOptions: Apollo.QueryHookOptions<UserQuery, UserQueryVariables>) {
         return Apollo.useQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
       }
 export function useUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserQuery, UserQueryVariables>) {
@@ -5701,7 +5717,7 @@ export const UserFollowingProjectsDocument = gql`
  *   },
  * });
  */
-export function useUserFollowingProjectsQuery(baseOptions?: Apollo.QueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>) {
+export function useUserFollowingProjectsQuery(baseOptions: Apollo.QueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>) {
         return Apollo.useQuery<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>(UserFollowingProjectsDocument, baseOptions);
       }
 export function useUserFollowingProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>) {

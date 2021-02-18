@@ -3,4 +3,8 @@
   "include": [
     "src"
   ],
+  "compilerOptions": {
+    "noFallthroughCasesInSwitch": true,
+    "jsx": "react-jsx"
+  }
 }

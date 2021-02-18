@@ -8,7 +8,7 @@
     "deploy": "serverless"
   },
   "dependencies": {
-    "@apollo/client": "3.3.8",
+    "@apollo/client": "^3.3.11",
     "@apollo/link-context": "^2.0.0-beta.3",
     "@apollo/link-error": "^2.0.0-beta.3",
     "@apollo/react-hooks": "^4.0.0",
@@ -21,7 +21,7 @@
     "@editorjs/image": "^2.6.0",
     "@editorjs/inline-code": "^1.3.1",
     "@editorjs/link": "^2.3.1",
-    "@editorjs/list": "^1.6.1",
+    "@editorjs/list": "^1.6.2",
     "@editorjs/marker": "^1.2.2",
     "@editorjs/paragraph": "^2.8.0",
     "@editorjs/quote": "^2.4.0",
@@ -32,22 +32,19 @@
     "@wrench/common": "1.0.0",
     "ms": "^2.1.3",
     "react": "^17.0.1",
-    "react-content-loader": "^5.1.4",
+    "react-content-loader": "^6.0.1",
     "react-dom": "^17.0.1",
-    "react-editor-js": "^1.7.0",
+    "react-editor-js": "^1.9.0",
     "react-facebook-login": "^4.1.1",
-    "react-google-login": "^5.2.1",
+    "react-google-login": "^5.2.2",
     "react-infinite-scroller": "^1.2.4",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "4.0.2",
     "react-sliding-side-panel": "^2.0.3",
-    "react-table": "^7.6.2",
-    "recharts": "^2.0.0-beta.1",
+    "react-table": "^7.6.3",
+    "recharts": "^2.0.7",
     "styled-components": "^5.2.1",
-    "typescript": "^4.1.3"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "typescript": "^4.1.5"
   },
   "browserslist": {
     "production": [
@@ -62,11 +59,11 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.1.6",
-    "@types/recharts": "^1.8.18",
-    "serverless": "^2.16.1",
-    "@types/node": "^14.14.16",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0"
+    "@types/react-router-dom": "^5.1.7",
+    "@types/recharts": "^1.8.19",
+    "serverless": "^2.25.2",
+    "@types/node": "^14.14.28",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1"
   }
 }

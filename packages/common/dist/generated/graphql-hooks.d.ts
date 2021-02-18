@@ -5,6 +5,12 @@ export declare type Exact<T extends {
 }> = {
     [K in keyof T]: T[K];
 };
+export declare type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+    [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export declare type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+    [SubKey in K]: Maybe<T[SubKey]>;
+};
 /** All built-in and custom scalars, mapped to their actual values */
 export declare type Scalars = {
     ID: string;
@@ -1283,7 +1289,7 @@ export declare type BookmarkPostMutation = ({
 export declare type CollectPostsMutationVariables = Exact<{
     projectId: Scalars['ID'];
     collectionId: Scalars['ID'];
-    input?: Maybe<Array<Maybe<CollectionInput>>>;
+    input?: Maybe<Array<Maybe<CollectionInput>> | Maybe<CollectionInput>>;
 }>;
 export declare type CollectPostsMutation = ({
     __typename?: 'Mutation';
@@ -1464,7 +1470,7 @@ export declare type PreSignUrlMutation = ({
     } & Pick<PreSignedUrl, 'url' | 'type' | 'filename'>)>;
 });
 export declare type PreSignUrlsMutationVariables = Exact<{
-    input: Array<Maybe<PreSignedUrlnput>>;
+    input: Array<Maybe<PreSignedUrlnput>> | Maybe<PreSignedUrlnput>;
 }>;
 export declare type PreSignUrlsMutation = ({
     __typename?: 'Mutation';
@@ -2645,7 +2651,7 @@ export declare type CollectPostsMutationFn = Apollo.MutationFunction<CollectPost
 export declare function useCollectPostsMutation(baseOptions?: Apollo.MutationHookOptions<CollectPostsMutation, CollectPostsMutationVariables>): Apollo.MutationTuple<CollectPostsMutation, Exact<{
     projectId: string;
     collectionId: string;
-    input?: Maybe<CollectionInput>[] | null | undefined;
+    input?: CollectionInput | Maybe<CollectionInput>[] | null | undefined;
 }>>;
 export declare type CollectPostsMutationHookResult = ReturnType<typeof useCollectPostsMutation>;
 export declare type CollectPostsMutationResult = Apollo.MutationResult<CollectPostsMutation>;
@@ -3103,7 +3109,7 @@ export declare type PreSignUrlsMutationFn = Apollo.MutationFunction<PreSignUrlsM
  * });
  */
 export declare function usePreSignUrlsMutation(baseOptions?: Apollo.MutationHookOptions<PreSignUrlsMutation, PreSignUrlsMutationVariables>): Apollo.MutationTuple<PreSignUrlsMutation, Exact<{
-    input: Maybe<PreSignedUrlnput>[];
+    input: PreSignedUrlnput | Maybe<PreSignedUrlnput>[] | null;
 }>>;
 export declare type PreSignUrlsMutationHookResult = ReturnType<typeof usePreSignUrlsMutation>;
 export declare type PreSignUrlsMutationResult = Apollo.MutationResult<PreSignUrlsMutation>;
@@ -3409,7 +3415,7 @@ export declare const CommentDocument: Apollo.DocumentNode;
  *   },
  * });
  */
-export declare function useCommentQuery(baseOptions?: Apollo.QueryHookOptions<CommentQuery, CommentQueryVariables>): Apollo.QueryResult<CommentQuery, Exact<{
+export declare function useCommentQuery(baseOptions: Apollo.QueryHookOptions<CommentQuery, CommentQueryVariables>): Apollo.QueryResult<CommentQuery, Exact<{
     id: string;
 }>>;
 export declare function useCommentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CommentQuery, CommentQueryVariables>): Apollo.QueryTuple<CommentQuery, Exact<{
@@ -3436,7 +3442,7 @@ export declare const CommentsDocument: Apollo.DocumentNode;
  *   },
  * });
  */
-export declare function useCommentsQuery(baseOptions?: Apollo.QueryHookOptions<CommentsQuery, CommentsQueryVariables>): Apollo.QueryResult<CommentsQuery, Exact<{
+export declare function useCommentsQuery(baseOptions: Apollo.QueryHookOptions<CommentsQuery, CommentsQueryVariables>): Apollo.QueryResult<CommentsQuery, Exact<{
     postId: string;
     after?: string | null | undefined;
 }>>;
@@ -3657,7 +3663,7 @@ export declare const FollowersDocument: Apollo.DocumentNode;
  *   },
  * });
  */
-export declare function useFollowersQuery(baseOptions?: Apollo.QueryHookOptions<FollowersQuery, FollowersQueryVariables>): Apollo.QueryResult<FollowersQuery, Exact<{
+export declare function useFollowersQuery(baseOptions: Apollo.QueryHookOptions<FollowersQuery, FollowersQueryVariables>): Apollo.QueryResult<FollowersQuery, Exact<{
     projectId: string;
     after?: string | null | undefined;
     first?: number | null | undefined;
@@ -3687,7 +3693,7 @@ export declare const GrowthDocument: Apollo.DocumentNode;
  *   },
  * });
  */
-export declare function useGrowthQuery(baseOptions?: Apollo.QueryHookOptions<GrowthQuery, GrowthQueryVariables>): Apollo.QueryResult<GrowthQuery, Exact<{
+export declare function useGrowthQuery(baseOptions: Apollo.QueryHookOptions<GrowthQuery, GrowthQueryVariables>): Apollo.QueryResult<GrowthQuery, Exact<{
     type: GrowthType;
 }>>;
 export declare function useGrowthLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GrowthQuery, GrowthQueryVariables>): Apollo.QueryTuple<GrowthQuery, Exact<{
@@ -3753,7 +3759,7 @@ export declare const LikesDocument: Apollo.DocumentNode;
  *   },
  * });
  */
-export declare function useLikesQuery(baseOptions?: Apollo.QueryHookOptions<LikesQuery, LikesQueryVariables>): Apollo.QueryResult<LikesQuery, Exact<{
+export declare function useLikesQuery(baseOptions: Apollo.QueryHookOptions<LikesQuery, LikesQueryVariables>): Apollo.QueryResult<LikesQuery, Exact<{
     postId: string;
     after?: string | null | undefined;
     first?: number | null | undefined;
@@ -3837,7 +3843,7 @@ export declare const PostDocument: Apollo.DocumentNode;
  *   },
  * });
  */
-export declare function usePostQuery(baseOptions?: Apollo.QueryHookOptions<PostQuery, PostQueryVariables>): Apollo.QueryResult<PostQuery, Exact<{
+export declare function usePostQuery(baseOptions: Apollo.QueryHookOptions<PostQuery, PostQueryVariables>): Apollo.QueryResult<PostQuery, Exact<{
     id: string;
 }>>;
 export declare function usePostLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PostQuery, PostQueryVariables>): Apollo.QueryTuple<PostQuery, Exact<{
@@ -4025,7 +4031,7 @@ export declare const ProjectsDocument: Apollo.DocumentNode;
  *   },
  * });
  */
-export declare function useProjectsQuery(baseOptions?: Apollo.QueryHookOptions<ProjectsQuery, ProjectsQueryVariables>): Apollo.QueryResult<ProjectsQuery, Exact<{
+export declare function useProjectsQuery(baseOptions: Apollo.QueryHookOptions<ProjectsQuery, ProjectsQueryVariables>): Apollo.QueryResult<ProjectsQuery, Exact<{
     typeId?: string | null | undefined;
     after?: string | null | undefined;
     first?: number | null | undefined;
@@ -4085,7 +4091,7 @@ export declare const RepliesDocument: Apollo.DocumentNode;
  *   },
  * });
  */
-export declare function useRepliesQuery(baseOptions?: Apollo.QueryHookOptions<RepliesQuery, RepliesQueryVariables>): Apollo.QueryResult<RepliesQuery, Exact<{
+export declare function useRepliesQuery(baseOptions: Apollo.QueryHookOptions<RepliesQuery, RepliesQueryVariables>): Apollo.QueryResult<RepliesQuery, Exact<{
     id: string;
     after?: string | null | undefined;
     first?: number | null | undefined;
@@ -4117,7 +4123,7 @@ export declare const SearchHashtagsDocument: Apollo.DocumentNode;
  *   },
  * });
  */
-export declare function useSearchHashtagsQuery(baseOptions?: Apollo.QueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>): Apollo.QueryResult<SearchHashtagsQuery, Exact<{
+export declare function useSearchHashtagsQuery(baseOptions: Apollo.QueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>): Apollo.QueryResult<SearchHashtagsQuery, Exact<{
     query: string;
     after?: string | null | undefined;
     first?: number | null | undefined;
@@ -4149,7 +4155,7 @@ export declare const SearchModelsDocument: Apollo.DocumentNode;
  *   },
  * });
  */
-export declare function useSearchModelsQuery(baseOptions?: Apollo.QueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>): Apollo.QueryResult<SearchModelsQuery, Exact<{
+export declare function useSearchModelsQuery(baseOptions: Apollo.QueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>): Apollo.QueryResult<SearchModelsQuery, Exact<{
     query: string;
     after?: string | null | undefined;
     first?: number | null | undefined;
@@ -4181,7 +4187,7 @@ export declare const SearchProjectsDocument: Apollo.DocumentNode;
  *   },
  * });
  */
-export declare function useSearchProjectsQuery(baseOptions?: Apollo.QueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>): Apollo.QueryResult<SearchProjectsQuery, Exact<{
+export declare function useSearchProjectsQuery(baseOptions: Apollo.QueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>): Apollo.QueryResult<SearchProjectsQuery, Exact<{
     query: string;
     after?: string | null | undefined;
     first?: number | null | undefined;
@@ -4213,7 +4219,7 @@ export declare const SearchUsersDocument: Apollo.DocumentNode;
  *   },
  * });
  */
-export declare function useSearchUsersQuery(baseOptions?: Apollo.QueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>): Apollo.QueryResult<SearchUsersQuery, Exact<{
+export declare function useSearchUsersQuery(baseOptions: Apollo.QueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>): Apollo.QueryResult<SearchUsersQuery, Exact<{
     query: string;
     after?: string | null | undefined;
     first?: number | null | undefined;
@@ -4244,7 +4250,7 @@ export declare const SimilarProjectsDocument: Apollo.DocumentNode;
  *   },
  * });
  */
-export declare function useSimilarProjectsQuery(baseOptions?: Apollo.QueryHookOptions<SimilarProjectsQuery, SimilarProjectsQueryVariables>): Apollo.QueryResult<SimilarProjectsQuery, Exact<{
+export declare function useSimilarProjectsQuery(baseOptions: Apollo.QueryHookOptions<SimilarProjectsQuery, SimilarProjectsQueryVariables>): Apollo.QueryResult<SimilarProjectsQuery, Exact<{
     id: string;
     first?: number | null | undefined;
 }>>;
@@ -4299,7 +4305,7 @@ export declare const UserDocument: Apollo.DocumentNode;
  *   },
  * });
  */
-export declare function useUserQuery(baseOptions?: Apollo.QueryHookOptions<UserQuery, UserQueryVariables>): Apollo.QueryResult<UserQuery, Exact<{
+export declare function useUserQuery(baseOptions: Apollo.QueryHookOptions<UserQuery, UserQueryVariables>): Apollo.QueryResult<UserQuery, Exact<{
     username: any;
     after?: string | null | undefined;
     first?: number | null | undefined;
@@ -4331,7 +4337,7 @@ export declare const UserFollowingProjectsDocument: Apollo.DocumentNode;
  *   },
  * });
  */
-export declare function useUserFollowingProjectsQuery(baseOptions?: Apollo.QueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>): Apollo.QueryResult<UserFollowingProjectsQuery, Exact<{
+export declare function useUserFollowingProjectsQuery(baseOptions: Apollo.QueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>): Apollo.QueryResult<UserFollowingProjectsQuery, Exact<{
     username: any;
     after?: string | null | undefined;
     first?: number | null | undefined;

@@ -12,4 +12,4 @@ generates:
       withHOC: false
       withComponent: false
       withHooks: true
-      reactApolloVersion: 3.3.8
+      reactApolloVersion: 3.3.11
