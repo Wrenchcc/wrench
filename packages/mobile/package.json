@@ -82,9 +82,9 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.16",
-    "@babel/core": "^7.12.16",
-    "@babel/runtime": "^7.12.13",
+    "@babel/cli": "^7.12.17",
+    "@babel/core": "^7.12.17",
+    "@babel/runtime": "^7.12.18",
     "@types/react-native-share": "^3.3.1",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-preset-react-native": "^5.0.2",
