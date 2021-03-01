@@ -38,10 +38,12 @@ jobs:
       - name: Update service
         run: |
           echo Register task definition...
+
           TASK_DEFINITION=$(aws ecs describe-task-definition --region eu-west-1 --task-definition service_api)
-          NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "$IMAGE" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities)')
+          NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "$IMAGE" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.status, .compatibilities, .taskDefinitionArn, .requiresAttributes, .revision, .registeredBy, .registeredAt)')
           NEW_TASK_INFO=$(aws ecs register-task-definition --region eu-west-1 --cli-input-json "$NEW_TASK_DEFINTIION")
           NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision')
+
           echo Updating service...
           aws ecs update-service --cluster wrench --service api --task-definition service_api:${NEW_REVISION} --region eu-west-1
         env:
