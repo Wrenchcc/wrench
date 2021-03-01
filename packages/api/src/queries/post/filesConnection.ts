@@ -12,7 +12,7 @@ export default async ({ id }, args, ctx) => {
   const files = await paginate(ctx.db.File, args, {
     where: {
       postId: id,
-      type: args.type,
+      ...(args.type && { type: args.type }),
     },
   })
 

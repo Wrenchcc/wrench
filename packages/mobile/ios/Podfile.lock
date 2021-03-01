@@ -102,17 +102,17 @@ PODS:
     - FirebaseCoreDiagnostics (~> 7.4)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
-  - FirebaseCoreDiagnostics (7.6.0):
+  - FirebaseCoreDiagnostics (7.7.0):
     - GoogleDataTransport (~> 8.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
     - nanopb (~> 2.30907.0)
-  - FirebaseInstallations (7.6.0):
+  - FirebaseInstallations (7.7.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
     - PromisesObjC (~> 1.2)
-  - FirebaseInstanceID (7.6.0):
+  - FirebaseInstanceID (7.7.0):
     - FirebaseCore (~> 7.0)
     - FirebaseInstallations (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
@@ -212,26 +212,26 @@ PODS:
     - GTMSessionFetcher/Core (= 1.5.0)
   - hermes-engine (0.7.2)
   - libevent (2.1.11)
-  - libwebp (1.1.0):
-    - libwebp/demux (= 1.1.0)
-    - libwebp/mux (= 1.1.0)
-    - libwebp/webp (= 1.1.0)
-  - libwebp/demux (1.1.0):
+  - libwebp (1.2.0):
+    - libwebp/demux (= 1.2.0)
+    - libwebp/mux (= 1.2.0)
+    - libwebp/webp (= 1.2.0)
+  - libwebp/demux (1.2.0):
     - libwebp/webp
-  - libwebp/mux (1.1.0):
+  - libwebp/mux (1.2.0):
     - libwebp/demux
-  - libwebp/webp (1.1.0)
+  - libwebp/webp (1.2.0)
   - nanopb (2.30907.0):
     - nanopb/decode (= 2.30907.0)
     - nanopb/encode (= 2.30907.0)
   - nanopb/decode (2.30907.0)
   - nanopb/encode (2.30907.0)
   - OpenSSL-Universal (1.1.180)
-  - Permission-Camera (3.0.0):
+  - Permission-Camera (3.0.1):
     - RNPermissions
-  - Permission-Microphone (3.0.0):
+  - Permission-Microphone (3.0.1):
     - RNPermissions
-  - Permission-PhotoLibrary (3.0.0):
+  - Permission-PhotoLibrary (3.0.1):
     - RNPermissions
   - PromisesObjC (1.2.12)
   - RCT-Folly (2020.01.13.00):
@@ -460,7 +460,7 @@ PODS:
   - react-native-fbsdk/Share (3.0.0):
     - FBSDKShareKit (~> 8.1)
     - React
-  - react-native-netinfo (5.9.10):
+  - react-native-netinfo (6.0.0):
     - React-Core
   - react-native-pinchable (0.2.1):
     - React-Core
@@ -532,12 +532,12 @@ PODS:
     - React-cxxreact (= 0.64.0-rc.3)
     - React-jsi (= 0.64.0-rc.3)
     - React-perflogger (= 0.64.0-rc.3)
-  - ReactNativeNavigation (7.10.0):
+  - ReactNativeNavigation (7.11.1):
     - React-Core
     - React-RCTImage
     - React-RCTText
-    - ReactNativeNavigation/Core (= 7.10.0)
-  - ReactNativeNavigation/Core (7.10.0):
+    - ReactNativeNavigation/Core (= 7.11.1)
+  - ReactNativeNavigation/Core (7.11.1):
     - React-Core
     - React-RCTImage
     - React-RCTText
@@ -545,31 +545,31 @@ PODS:
     - React-Core
   - RNCClipboard (1.5.1):
     - React-Core
-  - RNDeviceInfo (8.0.1):
+  - RNDeviceInfo (8.0.2):
     - React-Core
   - RNFastImage (8.3.4):
     - React-Core
     - SDWebImage (~> 5.8)
     - SDWebImageWebPCoder (~> 0.6.1)
-  - RNFBAnalytics (10.8.0):
+  - RNFBAnalytics (10.8.1):
     - Firebase/Analytics (~> 7.6.0)
     - React-Core
     - RNFBApp
-  - RNFBApp (10.8.0):
+  - RNFBApp (10.8.1):
     - Firebase/CoreOnly (~> 7.6.0)
     - React-Core
-  - RNFBMessaging (10.8.0):
+  - RNFBMessaging (10.8.1):
     - Firebase/Messaging (~> 7.6.0)
     - React-Core
     - RNFBApp
   - RNFS (2.16.6):
     - React
-  - RNGestureHandler (1.10.1):
+  - RNGestureHandler (1.10.3):
     - React-Core
   - RNGoogleSignin (5.0.0):
     - GoogleSignIn (~> 5.0.0)
     - React-Core
-  - RNPermissions (3.0.0):
+  - RNPermissions (3.0.1):
     - React-Core
   - RNReanimated (2.0.0-rc.3):
     - DoubleConversion
@@ -600,10 +600,10 @@ PODS:
     - React-RCTVibration
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNSentry (2.2.0):
+  - RNSentry (2.2.1):
     - React-Core
     - Sentry (= 6.1.4)
-  - RNShare (5.1.1):
+  - RNShare (5.1.4):
     - React-Core
   - SDWebImage (5.10.4):
     - SDWebImage/Core (= 5.10.4)
@@ -969,9 +969,9 @@ SPEC CHECKSUMS:
   Firebase: e1e089d9aac215a52442583f818ab61de3c4581b
   FirebaseAnalytics: 9f8f4feab1f3fddf4e4515f8f022fe6aa9e51043
   FirebaseCore: 0a43b7f1c5b36f3358cd703011ca4c7e0df55870
-  FirebaseCoreDiagnostics: ee1184d51da3293335b83355aad20f537acc24cf
-  FirebaseInstallations: 6e4e77396559bc2ae0504823837ed737b1c7e47f
-  FirebaseInstanceID: cf243611700eddc916b093353adbd4da822cfa63
+  FirebaseCoreDiagnostics: 179bf3831213451c8addd036aca7fcf5492ec154
+  FirebaseInstallations: 42c86e7b02ff75b7f27f85833bf5dcb5f38a9774
+  FirebaseInstanceID: cf940324a20ac14a27ad1e931d15ac9d335526db
   FirebaseMessaging: 4b9b2850fcfcaac2820097ee3703ba6cfff3df84
   Flipper: c1ad50344bffdce628b1906b48f6e7cd06724236
   Flipper-DoubleConversion: 38631e41ef4f9b12861c67d17cb5518d06badc41
@@ -989,12 +989,12 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   hermes-engine: 7d97ba46a1e29bacf3e3c61ecb2804a5ddd02d4f
   libevent: 867cc03e654415675bcacf9726871a37c4b56b8a
-  libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
+  libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   OpenSSL-Universal: 1aa4f6a6ee7256b83db99ec1ccdaa80d10f9af9b
-  Permission-Camera: 119b01de97a5b3edb637999e38476b68143b9d17
-  Permission-Microphone: e426a115ddf9591e8c30c55ea2b28572d4cbd07e
-  Permission-PhotoLibrary: cb9cdc1e3744e26ab404297a8e289d50c8ee27e8
+  Permission-Camera: b2e50546c095139bb1264be9c34c796332340d32
+  Permission-Microphone: bcdaaa22af6217b86fad0843413a238b9413f2d6
+  Permission-PhotoLibrary: 29a07bdd077ae760363f73ab52d22a7b88cbd781
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: cff6c2b6d032642cc892d3516bca5da0dfe86f38
@@ -1009,7 +1009,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 09567a7aa3dcb281caf25eeba87280b1ea3e09f4
   react-native-config: c98128a72bc2c3a1ca72caec0b021f0fa944aa29
   react-native-fbsdk: 8e92c7a334fd8d9c2b5d8b8fcd7ae2c314161099
-  react-native-netinfo: 30fb89fa913c342be82a887b56e96be6d71201dd
+  react-native-netinfo: e849fc21ca2f4128a5726c801a82fc6f4a6db50d
   react-native-pinchable: b4381b0807d15c12b14bfacd927128f52d96f0f1
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-webview: 6520e3e7b4933de76b95ef542c8d7115cf45b68e
@@ -1025,21 +1025,21 @@ SPEC CHECKSUMS:
   React-RCTVibration: 7a89bda87032c5fc0899bb6940ec42ffcb156d7a
   React-runtimeexecutor: 973fcbe10f76f42e3a9a98b9358836971e9ac4aa
   ReactCommon: 33191ccc8250b4e206884a1e3b68b2011b6b7899
-  ReactNativeNavigation: fa1eed29e815dfca6a1cb325776ef97658c54ce3
+  ReactNativeNavigation: 8c03497238c798322b60cf37d2ee0fa9335a0880
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
   RNCClipboard: 41d8d918092ae8e676f18adada19104fa3e68495
-  RNDeviceInfo: 921a809eaf9de79645a24de1c6ca90db6cb91786
+  RNDeviceInfo: a9601119924a67d2479d3facf04cec7b658f44ed
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
-  RNFBAnalytics: 90d32a12ca53f8cd6246030b7f1c12615c148f1f
-  RNFBApp: 97b618641633d6d23187a9d0537c3893482c483f
-  RNFBMessaging: 9eae1103b79d94c6baa5bc43dabc9aba49dfb9da
+  RNFBAnalytics: 454b17745d3824156cb906e2777d85f6848bf3e1
+  RNFBApp: 02bde3edecf2e9694b908a5d3504e03449980f20
+  RNFBMessaging: 1823217d31e942531cc3f51fb5367dcbc69c1e10
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
-  RNGestureHandler: 5e58135436aacc1c5d29b75547d3d2b9430d052c
+  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
-  RNPermissions: 99dd8d4a30ff13509b949ca63cd1f69edc461775
+  RNPermissions: 4c8a37b4dde50f1f152bf8cd08c4a43d2355829e
   RNReanimated: 31d4b60fe6509e161b4c461dee70d98a9c7af6b6
-  RNSentry: 6aeba1adc242fd22a6826acae92f430697b47a9c
-  RNShare: 6779fdd48e6246a8c79276a5b5e74a0f0d61a1ec
+  RNSentry: 7104cdfc1072ccb86015d9c8f210d81ae76806c1
+  RNShare: 8af5349f05fc042d230674dd650d19789187ff9c
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   Sentry: 9d055e2de30a77685e86b219acf02e59b82091fc
