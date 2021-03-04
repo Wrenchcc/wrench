@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
+import { AnimatePresence } from 'moti'
 import { useSimilarProjectsLazyQuery, useFollowProjectMutation } from '@wrench/common'
 import { ActivityIndicator, Title, Follow, Icon, UserStack } from 'ui'
 import { arrowDown, arrowUp } from 'images'
@@ -128,9 +129,11 @@ function ProjectHeader({ project, spacingHorizontal }) {
         )}
       </Actions>
 
-      {data && data.similarProjects && isShowingSimilarProjects && (
-        <SimilarProjects projects={data.similarProjects} />
-      )}
+      <AnimatePresence>
+        {data && data.similarProjects && isShowingSimilarProjects && (
+          <SimilarProjects projects={data.similarProjects} />
+        )}
+      </AnimatePresence>
 
       {!isOwner && <Spacing />}
 
