@@ -30,6 +30,7 @@ export const Input = styled.TextInput`
   padding-left: 41px;
   padding-bottom: 0px;
   padding-top: 0px;
+  padding-right: 40px;
 `
 
 export const SearchIcon = styled(UiIcon)`

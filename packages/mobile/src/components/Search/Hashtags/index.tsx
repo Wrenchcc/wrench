@@ -7,7 +7,7 @@ import { useNavigation, SCREENS } from 'navigation'
 import { RECENT_SEARCHES_HASHTAGS } from 'utils/storage/constants'
 import { logError } from 'utils/sentry'
 import { InfiniteList, NoResults, SearchingFor, Loader, Text, Hashtag } from 'ui'
-import PlaceholderCollection from 'ui/Hashtag/PlaceholderCollection'
+import HashtagSkeletonList from 'ui/Hashtag/SkeletonList'
 import { Header } from '../styles'
 
 const ITEM_HEIGHT = 68
@@ -111,7 +111,7 @@ function Hashtags({ query }) {
 
   const content =
     isFetching && !edges ? (
-      <PlaceholderCollection contentInset={0} marginTop={15} />
+      <HashtagSkeletonList contentInset={0} marginTop={15} />
     ) : (
       <InfiniteList
         borderSeparator

@@ -2,7 +2,7 @@ import React from 'react'
 import { usePaginatedQuery, ProjectCollectionsDocument } from '@wrench/common'
 import { InfiniteList } from 'ui'
 import AddCollection from 'components/AddCollection'
-import Placeholder from './Placeholder'
+import CollectionsSkelleton from './Skeleton'
 import { Collection, GUTTER } from './styles'
 
 function Collections({
@@ -29,7 +29,7 @@ function Collections({
   })
 
   let content = (
-    <Placeholder
+    <CollectionsSkelleton
       empty={!isFetching && isOwner && !edges?.length}
       isOwner={isOwner}
       projectId={projectId}

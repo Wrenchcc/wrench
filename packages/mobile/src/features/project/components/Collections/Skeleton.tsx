@@ -1,20 +1,16 @@
 import React from 'react'
 import { ScrollView, View } from 'react-native'
 import { Text } from 'ui'
-import { Placeholder, PlaceholderLine, PlaceholderAnimation } from 'ui/Placeholder'
 import { GUTTER } from './styles'
 import AddCollection from 'components/AddCollection'
+import Skeleton from 'ui/Skeleton'
+import * as Spacing from 'ui/Spacing'
 
 const COUNT = 7
 
 const styles = {
   container: {
     marginRight: 10,
-  },
-  image: {
-    width: 60,
-    height: 60,
-    borderRadius: 60,
   },
   first: {
     marginLeft: 20,
@@ -23,14 +19,13 @@ const styles = {
     marginRight: 20,
   },
   title: {
-    borderRadius: 0,
     marginTop: 12,
   },
 }
 
-export const PopularPlaceholder: React.FC = ({ empty, isOwner, projectId, disableModal }) => {
+export const CollectionsSkelleton: React.FC = ({ empty, isOwner, projectId, disableModal }) => {
   return (
-    <Placeholder Animation={empty ? null : PlaceholderAnimation}>
+    <>
       {empty && (
         <View style={{ marginBottom: 30 }}>
           <Text medium style={{ marginBottom: 5 }}>
@@ -54,7 +49,6 @@ export const PopularPlaceholder: React.FC = ({ empty, isOwner, projectId, disabl
             <AddCollection projectId={projectId} disableModal={disableModal} />
           </View>
         )}
-
         {new Array(COUNT).fill({}).map((_, index) => (
           <View
             key={index}
@@ -64,13 +58,14 @@ export const PopularPlaceholder: React.FC = ({ empty, isOwner, projectId, disabl
               index === 0 && !isOwner && styles.first,
             ]}
           >
-            <PlaceholderLine noMargin style={styles.image} />
-            {!empty && <PlaceholderLine style={styles.title} noMargin width={100} />}
+            <Skeleton width={60} height={60} radius="round" />
+            <Spacing.Horizontally px={12} />
+            {!empty && <Skeleton width={60} height={11} radius={0} />}
           </View>
         ))}
       </ScrollView>
-    </Placeholder>
+    </>
   )
 }
 
-export default PopularPlaceholder
+export default CollectionsSkelleton

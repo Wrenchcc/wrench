@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { useColorScheme } from 'react-native'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { ThemeProvider } from '@wrench/ui'
@@ -15,7 +15,9 @@ export default (client) => (Component) => {
         <ThemeProvider mode={colorScheme}>
           <NavigationContext.Provider value={componentId}>
             <ActionSheetProvider>
-              <Component {...{ componentId, ...props }} />
+              <Suspense fallback={null}>
+                <Component {...{ componentId, ...props }} />
+              </Suspense>
             </ActionSheetProvider>
           </NavigationContext.Provider>
         </ThemeProvider>

@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-  Placeholder,
-  PlaceholderLine,
-  PlaceholderMedia,
-  PlaceholderAnimation,
-} from 'ui/Placeholder'
+
 import { Base } from './styles'
 
 const styles = {
@@ -30,22 +25,23 @@ const styles = {
 }
 
 export const PostPlaceholder: React.FC = () => {
-  return (
-    <Base>
-      <Placeholder Animation={PlaceholderAnimation}>
-        <Placeholder
-          Left={(props) => (
-            <PlaceholderMedia isRound={true} style={[{ backgroundColor: 'green' }, props.style]} />
-          )}
-          Right={PlaceholderMedia}
-        >
-          <PlaceholderLine noMargin style={styles.image} />
-          <PlaceholderLine style={styles.projectName} noMargin width={90} />
-          <PlaceholderLine style={styles.projectName} noMargin width={60} />
-        </Placeholder>
-      </Placeholder>
-    </Base>
-  )
+  return null
+  // return (
+  //   <Base>
+  //     <Placeholder Animation={PlaceholderAnimation}>
+  //       <Placeholder
+  //         Left={(props) => (
+  //           <PlaceholderMedia isRound={true} style={[{ backgroundColor: 'green' }, props.style]} />
+  //         )}
+  //         Right={PlaceholderMedia}
+  //       >
+  //         <PlaceholderLine noMargin style={styles.image} />
+  //         <PlaceholderLine style={styles.projectName} noMargin width={90} />
+  //         <PlaceholderLine style={styles.projectName} noMargin width={60} />
+  //       </Placeholder>
+  //     </Placeholder>
+  //   </Base>
+  // )
 }
 
 export default PostPlaceholder

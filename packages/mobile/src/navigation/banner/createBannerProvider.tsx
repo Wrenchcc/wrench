@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { useColorScheme } from 'react-native'
 import { ThemeProvider } from '@wrench/ui'
 
@@ -8,7 +8,9 @@ export default function createBannerProvider(Component) {
 
     return (
       <ThemeProvider mode={colorScheme}>
-        <Component {...{ componentId, ...props }} />
+        <Suspense fallback={null}>
+          <Component {...{ componentId, ...props }} />
+        </Suspense>
       </ThemeProvider>
     )
   }

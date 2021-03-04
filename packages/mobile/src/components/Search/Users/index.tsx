@@ -6,7 +6,7 @@ import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
 import { User, InfiniteList, NoResults, Loader, Text } from 'ui'
 import { RECENT_SEARCHES_USERS } from 'utils/storage/constants'
 import { logError } from 'utils/sentry'
-import UserPlaceholderCollection from 'ui/User/PlaceholderCollection'
+import UserSkeletonList from 'ui/User/SkeletonList'
 import { Header } from '../styles'
 
 const ITEM_HEIGHT = 71
@@ -87,7 +87,7 @@ function Users({ query }) {
 
   const content =
     isFetching && !edges ? (
-      <UserPlaceholderCollection contentInset={0} marginTop={15} />
+      <UserSkeletonList contentInset={null} contentOffset={null} marginTop={15} />
     ) : (
       <InfiniteList
         borderSeparator

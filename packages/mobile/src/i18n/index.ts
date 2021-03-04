@@ -53,10 +53,6 @@ i18next
     nonExplicitSupportedLngs: true,
     lowerCaseLng: true,
     ns: 'common',
-    react: {
-      useSuspense: false,
-      wait: true,
-    },
     interpolation: {
       escapeValue: false,
       format(value, format) {

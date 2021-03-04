@@ -1,17 +1,15 @@
 import React, { useCallback, memo } from 'react'
-// import { sort } from 'rambda'
 import { useTranslation } from 'react-i18next'
 import { ScrollView } from 'react-native'
 import { useProjectTypesQuery } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
-import CategoriesPlaceholder from './Placeholder'
+import CategoriesSkeleton from './Skeleton'
 import { Base, Wrapper } from './styles'
 
 function ProjectTypes({ visible }) {
   const { t } = useTranslation('project-types')
   const { data: typesData, loading: loadingTypes } = useProjectTypesQuery()
-  // const { data: userData } = useCurrentUserQuery()
 
   const { navigate } = useNavigation()
 
@@ -37,15 +35,10 @@ function ProjectTypes({ visible }) {
   if (!typesData?.types && loadingTypes) {
     return (
       <Base>
-        <CategoriesPlaceholder />
+        <CategoriesSkeleton />
       </Base>
     )
   }
-
-  // const data = sort(
-  //   (a) => (userData?.user.interestedIn.some((item) => item.id === a.id) ? -1 : 1),
-  //   typesData?.types
-  // )
 
   return (
     visible && (
