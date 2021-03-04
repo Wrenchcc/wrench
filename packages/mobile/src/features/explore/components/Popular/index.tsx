@@ -16,9 +16,7 @@ function Popular() {
     data: { edges },
     isFetching,
     fetchMore,
-    isRefetching,
     hasNextPage,
-    refetch,
   } = usePaginatedQuery(['projects'])(ProjectsDocument, {
     variables: {
       type: 'POPULAR',
@@ -58,9 +56,7 @@ function Popular() {
         decelerationRate="fast"
         snapToInterval={SNAP_INTERVAL}
         snapToAlignment="start"
-        refetch={refetch}
         fetchMore={fetchMore}
-        isRefetching={isRefetching}
         isFetching={isFetching}
         loaderInset={35}
         hasNextPage={hasNextPage}
