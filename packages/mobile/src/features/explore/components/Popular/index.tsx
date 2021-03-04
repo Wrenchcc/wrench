@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { InfiniteList, Title } from 'ui'
 import { Header, Footer, Card, GUTTER, SNAP_INTERVAL } from './styles'
-import Placeholder from './Placeholder'
+import PopularSkeletonList from './SkeletonList'
 
 function Popular() {
-  let content = <Placeholder />
+  let content = <PopularSkeletonList />
 
   const { navigate } = useNavigation()
   const { t } = useTranslation('popular')

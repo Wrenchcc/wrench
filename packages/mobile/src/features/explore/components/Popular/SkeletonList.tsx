@@ -18,7 +18,7 @@ const styles = {
   },
 }
 
-export const PopularPlaceholder: React.FC = () => {
+export const SkeletonList: React.FC = () => {
   return (
     <ScrollView
       horizontal
@@ -48,4 +48,4 @@ export const PopularPlaceholder: React.FC = () => {
   )
 }
 
-export default PopularPlaceholder
+export default SkeletonList
