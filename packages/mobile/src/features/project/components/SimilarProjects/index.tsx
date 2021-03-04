@@ -73,7 +73,7 @@ function SimilarProjects({ projects }) {
   return (
     <AnimatedView
       from={{ height: 0, opacity: 0 }}
-      animate={{ height: 250, opacity: 1 }}
+      animate={{ height: 290, opacity: 1 }}
       transition={{
         type: 'timing',
         duration: 250,
