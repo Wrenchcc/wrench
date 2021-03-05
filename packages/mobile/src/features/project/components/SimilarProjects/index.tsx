@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { View as AnimatedView } from 'moti'
+import { View as MotiView } from 'moti'
 import { useFollowProjectMutation } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { Title, InfiniteList, CardSmall } from 'ui'
@@ -71,7 +71,7 @@ function SimilarProjects({ projects }) {
   }
 
   return (
-    <AnimatedView
+    <MotiView
       from={{ height: 0, opacity: 0 }}
       animate={{ height: 290, opacity: 1 }}
       transition={{
@@ -103,7 +103,7 @@ function SimilarProjects({ projects }) {
           }}
         />
       </Base>
-    </AnimatedView>
+    </MotiView>
   )
 }
 
