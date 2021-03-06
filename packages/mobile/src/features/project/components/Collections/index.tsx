@@ -61,7 +61,7 @@ function Collections({
     content = (
       <MotiView
         from={{ height: 0, opacity: 0 }}
-        animate={disableAnimation ? null : { height: 85, opacity: 1 }}
+        animate={disableAnimation || isOwner ? null : { height: 85, opacity: 1 }}
         delay={200}
         transition={{
           type: 'timing',

@@ -4,7 +4,7 @@ import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet'
 import { useNavigation } from 'navigation'
 import { Text } from 'ui'
 import Background from './Background'
-import { Base, Row } from './styles'
+import { Base, Bar, Row } from './styles'
 
 const HalfPanel = ({ renderContent = () => null, data, height }) => {
   const bottomSheetRef = useRef<BottomSheet>(null)
@@ -48,6 +48,7 @@ const HalfPanel = ({ renderContent = () => null, data, height }) => {
       snapPoints={snapPoints}
     >
       <View style={{ paddingHorizontal: 20 }}>
+        <Bar />
         {data ? <RenderDataContent /> : renderContent()}
       </View>
     </BottomSheet>

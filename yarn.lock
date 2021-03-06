@@ -4776,39 +4776,6 @@
     node-fetch "^2.6.0"
     shortid "^2.2.14"
 
-"@serverless/components@^3.7.0":
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/@serverless/components/-/components-3.7.0.tgz#037a9f89b3f3615c774bd6d8adc046b26a5b6d29"
-  integrity sha512-ndyDPykboC5PlkSFXXVAWwiWp4d8G1uLDqoyF3TWaNpmcjvHiLbBwmgRzV1E3u9Y9RE766EJqOxEBfdvsUXD4w==
-  dependencies:
-    "@serverless/platform-client" "^4.0.0"
-    "@serverless/platform-client-china" "^2.1.0"
-    "@serverless/platform-sdk" "^2.3.2"
-    "@serverless/utils" "^3.1.0"
-    adm-zip "^0.4.16"
-    ansi-escapes "^4.3.1"
-    chalk "^4.1.0"
-    child-process-ext "^2.1.1"
-    chokidar "^3.5.0"
-    dotenv "^8.2.0"
-    figures "^3.2.0"
-    fs-extra "^9.0.1"
-    got "^11.8.1"
-    graphlib "^2.1.8"
-    https-proxy-agent "^5.0.0"
-    inquirer-autocomplete-prompt "^1.3.0"
-    js-yaml "^3.14.1"
-    memoizee "^0.4.14"
-    minimist "^1.2.5"
-    moment "^2.29.1"
-    open "^7.3.1"
-    prettyoutput "^1.2.0"
-    ramda "^0.27.1"
-    semver "^7.3.4"
-    strip-ansi "^6.0.0"
-    traverse "^0.6.6"
-    uuid "^8.3.2"
-
 "@serverless/components@^3.7.1":
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/@serverless/components/-/components-3.7.1.tgz#78c6fc7effa51ae6c5d23145b29fcbb608e7ed14"
@@ -8130,7 +8097,7 @@ aws-sdk@2.853.0, aws-sdk@^2.852.0, aws-sdk@^2.853.0:
     uuid "3.3.2"
     xml2js "0.4.19"
 
-aws-sdk@^2.387.0, aws-sdk@^2.488.0, aws-sdk@^2.702.0, aws-sdk@^2.761.0, aws-sdk@^2.846.0:
+aws-sdk@^2.387.0, aws-sdk@^2.488.0, aws-sdk@^2.702.0, aws-sdk@^2.761.0:
   version "2.846.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.846.0.tgz#38a2f7f00a6bd28428a0d3b68f06e1c950eded93"
   integrity sha512-r/VUmo7Ri4yxVonFARzb9reZgcURbddfKur5HlAG55Xd4ku3u7akMe/rZYFuhQbUTef6p6J19oUg/W+fnEY2Tw==
@@ -22278,11 +22245,6 @@ readdirp@~3.5.0:
   dependencies:
     picomatch "^2.2.1"
 
-reanimated-bottom-sheet@^1.0.0-alpha.22:
-  version "1.0.0-alpha.22"
-  resolved "https://registry.yarnpkg.com/reanimated-bottom-sheet/-/reanimated-bottom-sheet-1.0.0-alpha.22.tgz#01a200946f1a461f01f1e773e5b4961c2df2e53b"
-  integrity sha512-NxecCn+2iA4YzkFuRK5/b86GHHS2OhZ9VRgiM4q18AC20YE/psRilqxzXCKBEvkOjP5AaAvY0yfE7EkEFBjTvw==
-
 recast@^0.20.3:
   version "0.20.4"
   resolved "https://registry.yarnpkg.com/recast/-/recast-0.20.4.tgz#db55983eac70c46b3fff96c8e467d65ffb4a7abc"
@@ -23233,61 +23195,6 @@ serverless-webpack@5.3.5:
     semver "^7.3.2"
   optionalDependencies:
     ts-node ">= 8.3.0"
-
-serverless@^2.25.2:
-  version "2.25.2"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-2.25.2.tgz#67833f876265725c8583d375fd3f7ab81d0804af"
-  integrity sha512-TjFQLW2Nfx3C323rIkHhuFcDyfGwe+z2TGpOYIyNWHGG8uZ1Q4AJs8jJGEhvuXzWSvXcANX8tSztloNuIaaY3Q==
-  dependencies:
-    "@serverless/cli" "^1.5.2"
-    "@serverless/components" "^3.7.0"
-    "@serverless/enterprise-plugin" "^4.4.3"
-    "@serverless/utils" "^3.1.0"
-    ajv "^6.12.6"
-    ajv-keywords "^3.5.2"
-    archiver "^5.2.0"
-    aws-sdk "^2.846.0"
-    bluebird "^3.7.2"
-    boxen "^5.0.0"
-    cachedir "^2.3.0"
-    chalk "^4.1.0"
-    child-process-ext "^2.1.1"
-    d "^1.0.1"
-    dayjs "^1.10.4"
-    decompress "^4.2.1"
-    dotenv "^8.2.0"
-    download "^8.0.0"
-    essentials "^1.1.1"
-    fastest-levenshtein "^1.0.12"
-    filesize "^6.1.0"
-    fs-extra "^9.1.0"
-    get-stdin "^8.0.0"
-    globby "^11.0.2"
-    got "^11.8.1"
-    graceful-fs "^4.2.6"
-    https-proxy-agent "^5.0.0"
-    is-docker "^2.1.1"
-    is-wsl "^2.2.0"
-    js-yaml "^4.0.0"
-    json-cycle "^1.3.0"
-    json-refs "^3.0.15"
-    lodash "^4.17.20"
-    memoizee "^0.4.15"
-    micromatch "^4.0.2"
-    ncjsm "^4.1.0"
-    node-fetch "^2.6.1"
-    object-hash "^2.1.1"
-    p-limit "^3.1.0"
-    promise-queue "^2.2.5"
-    replaceall "^0.1.6"
-    semver "^7.3.4"
-    tabtab "^3.0.2"
-    tar "^6.1.0"
-    timers-ext "^0.1.7"
-    type "^2.3.0"
-    untildify "^4.0.0"
-    uuid "^8.3.2"
-    yaml-ast-parser "0.0.43"
 
 serverless@^2.28.0:
   version "2.28.0"

@@ -10,3 +10,10 @@ export const Row = styled.View`
   border-bottom-color: ${(props) => props.theme.colors.divider};
   justify-content: center;
 `
+
+export const Bar = styled.View`
+  align-self: center;
+  height: 4px;
+  width: 60px;
+  background-color: ${(props) => props.theme.colors.divider};
+`
