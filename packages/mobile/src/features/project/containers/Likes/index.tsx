@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { usePaginatedQuery, LikesDocument } from '@wrench/common'
 import { FlatList, Page } from 'navigation'
 import { User, NoResults } from 'ui'
-import UserPlaceholderCollection from 'ui/User/PlaceholderCollection'
+import UserSkeletonList from 'ui/User/SkeletonList'
 
 const renderItem = ({ item }) => <User data={item.node} />
 
@@ -25,7 +25,7 @@ function Sparks({ id }) {
 
   const content =
     isFetching && !edges ? (
-      <UserPlaceholderCollection />
+      <UserSkeletonList />
     ) : (
       <FlatList
         ListEmptyComponent={<NoResults />}

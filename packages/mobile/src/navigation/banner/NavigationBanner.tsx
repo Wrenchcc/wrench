@@ -42,9 +42,6 @@ export default class NavigationBanner {
             layout: {
               componentBackgroundColor: 'transparent',
             },
-            overlay: {
-              interceptTouchOutside: false,
-            },
           },
         },
       })

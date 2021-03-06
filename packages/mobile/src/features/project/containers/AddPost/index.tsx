@@ -150,6 +150,7 @@ function AddPost() {
           <Title style={{ marginBottom: 20 }}>{t('collection')}</Title>
           <Collections
             disableModal
+            disableAnimation
             isOwner
             projectId={projectId}
             onPress={onChangeCollection}

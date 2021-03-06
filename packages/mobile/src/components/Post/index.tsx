@@ -23,7 +23,6 @@ import { useNavigation, SCREENS } from 'navigation'
 import openLink from 'utils/openLink'
 import Collections from 'features/project/components/Collections'
 import { useDynamicColor } from 'utils/hooks'
-import { keyboardHeight } from 'utils/platform'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo } from 'ui'
 import { TOAST_TYPES } from 'utils/enums'
 import { showToast } from 'navigation/banner'
@@ -296,7 +295,7 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
               removeFromCollection()
             } else {
               showHalfpanel({
-                height: keyboardHeight || 400,
+                height: 250,
                 renderContent: () => (
                   <>
                     <Spacer />
@@ -307,7 +306,7 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
                       projectId={post.project.id}
                       isOwner
                       onSave={addToCollection}
-                      loading
+                      disableAnimation
                     />
                   </>
                 ),

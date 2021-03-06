@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { usePaginatedQuery, FollowersDocument } from '@wrench/common'
 import { FlatList, Page } from 'navigation'
 import { User, NoResults } from 'ui'
-import UserPlaceholderCollection from 'ui/User/PlaceholderCollection'
+import UserSkeletonList from 'ui/User/SkeletonList'
 
 function Followers({ id }) {
   const { t } = useTranslation('followers')
@@ -25,7 +25,7 @@ function Followers({ id }) {
 
   const content =
     isFetching && !edges ? (
-      <UserPlaceholderCollection />
+      <UserSkeletonList />
     ) : (
       <FlatList
         ListEmptyComponent={<NoResults />}

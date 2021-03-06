@@ -2,11 +2,11 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import { CONTENT_INSET } from 'navigation/constants'
 import { isAndroid } from 'utils/platform'
-import HashtagPlaceholder from './Placeholder'
+import HashtagSkeleton from './Skeleton'
 
 const COUNT = 10
 
-export const Placeholder: React.FC = ({
+export const SkeletonList: React.FC = ({
   contentInset = isAndroid ? 0 : CONTENT_INSET,
   marginTop = 0,
 }) => {
@@ -16,10 +16,10 @@ export const Placeholder: React.FC = ({
       contentContainerStyle={{ paddingHorizontal: 20, marginTop }}
     >
       {new Array(COUNT).fill({}).map((_, index) => (
-        <HashtagPlaceholder key={index} />
+        <HashtagSkeleton key={index} />
       ))}
     </ScrollView>
   )
 }
 
-export default Placeholder
+export default SkeletonList

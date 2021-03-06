@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { InfiniteList, Title } from 'ui'
 import { Header, Footer, Card, GUTTER, SNAP_INTERVAL } from './styles'
-import Placeholder from './Placeholder'
+import PopularSkeletonList from './SkeletonList'
 
 function Popular() {
-  let content = <Placeholder />
+  let content = <PopularSkeletonList />
 
   const { navigate } = useNavigation()
   const { t } = useTranslation('popular')
@@ -16,9 +16,7 @@ function Popular() {
     data: { edges },
     isFetching,
     fetchMore,
-    isRefetching,
     hasNextPage,
-    refetch,
   } = usePaginatedQuery(['projects'])(ProjectsDocument, {
     variables: {
       type: 'POPULAR',
@@ -58,9 +56,7 @@ function Popular() {
         decelerationRate="fast"
         snapToInterval={SNAP_INTERVAL}
         snapToAlignment="start"
-        refetch={refetch}
         fetchMore={fetchMore}
-        isRefetching={isRefetching}
         isFetching={isFetching}
         loaderInset={35}
         hasNextPage={hasNextPage}

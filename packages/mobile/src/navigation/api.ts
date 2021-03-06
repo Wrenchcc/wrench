@@ -1,11 +1,10 @@
-import { Navigation, Options, OptionsModalPresentationStyle } from 'react-native-navigation'
+import { Navigation, Options } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
 import { isIphone } from 'utils/platform'
 import { SCREENS, BOTTOM_TABS_ID } from './constants'
 import { componentId } from './events'
 
 export let isMentionOpen = false
-export let isHalpanelOpen = false
 
 type PassProps = { [passProp: string]: any }
 
@@ -62,46 +61,31 @@ export function showModal(
   }
 }
 
-export function showHalfpanel(passProps: PassProps) {
+export async function showHalfpanel(passProps: PassProps) {
   try {
-    if (!isHalpanelOpen) {
-      Navigation.showModal({
-        component: {
-          id: SCREENS.HALFPANEL,
-          name: SCREENS.HALFPANEL,
-          options: {
-            modalPresentationStyle: OptionsModalPresentationStyle.overCurrentContext,
-            layout: {
-              backgroundColor: 'transparent',
-              componentBackgroundColor: 'transparent',
-            },
-            animations: {
-              showModal: {
-                enabled: false,
-                waitForRender: true,
-              },
-              dismissModal: {
-                enabled: false,
-              },
-            },
+    await Navigation.showOverlay({
+      component: {
+        name: SCREENS.HALFPANEL,
+        options: {
+          overlay: {
+            handleKeyboardEvents: true,
           },
-          passProps,
+          layout: {
+            componentBackgroundColor: 'transparent',
+          },
         },
-      })
-    }
-    isHalpanelOpen = true
+        passProps,
+      },
+    })
   } catch (err) {
-    isHalpanelOpen = true
     console.log(err)
   }
 }
 
-export function dismissHalfpanel() {
+export async function dismissHalfpanel() {
   try {
-    Navigation.dismissModal(SCREENS.HALFPANEL)
-    isHalpanelOpen = false
+    await Navigation.dismissAllOverlays()
   } catch (err) {
-    isHalpanelOpen = false
     console.log(err)
   }
 }

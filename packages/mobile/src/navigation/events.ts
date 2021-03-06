@@ -43,13 +43,11 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
                 options: {
                   layout: {
                     componentBackgroundColor: hasProject
-                      ? PlatformColor.blackColor
-                      : PlatformColor.defaultColor,
+                      ? PlatformColor.black
+                      : PlatformColor.default,
                   },
                   statusBar: {
-                    backgroundColor: hasProject
-                      ? PlatformColor.blackColor
-                      : PlatformColor.defaultColor,
+                    backgroundColor: hasProject ? PlatformColor.black : PlatformColor.default,
                     style: hasProject ? 'light' : dynamicStatusbar,
                   },
                 },

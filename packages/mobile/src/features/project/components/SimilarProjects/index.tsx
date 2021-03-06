@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { View as MotiView } from 'moti'
 import { useFollowProjectMutation } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { Title, InfiniteList, CardSmall } from 'ui'
@@ -70,26 +71,39 @@ function SimilarProjects({ projects }) {
   }
 
   return (
-    <Base>
-      <Title style={{ marginBottom: 20 }}>{t('title')}</Title>
+    <MotiView
+      from={{ height: 0, opacity: 0 }}
+      animate={{ height: 290, opacity: 1 }}
+      transition={{
+        type: 'timing',
+        duration: 250,
+      }}
+      exit={{
+        height: 0,
+        opacity: 0,
+      }}
+    >
+      <Base>
+        <Title style={{ marginBottom: 20 }}>{t('title')}</Title>
 
-      <InfiniteList
-        initialNumToRender={3}
-        data={projects.edges}
-        horizontal
-        directionalLockEnabled
-        showsHorizontalScrollIndicator={false}
-        decelerationRate="fast"
-        snapToInterval={SNAP_INTERVAL}
-        snapToAlignment="start"
-        renderItem={renderItem}
-        showsVerticalScrollIndicator={false}
-        style={{
-          marginLeft: -25,
-          marginRight: -25,
-        }}
-      />
-    </Base>
+        <InfiniteList
+          initialNumToRender={3}
+          data={projects.edges}
+          horizontal
+          directionalLockEnabled
+          showsHorizontalScrollIndicator={false}
+          decelerationRate="fast"
+          snapToInterval={SNAP_INTERVAL}
+          snapToAlignment="start"
+          renderItem={renderItem}
+          showsVerticalScrollIndicator={false}
+          style={{
+            marginLeft: -25,
+            marginRight: -25,
+          }}
+        />
+      </Base>
+    </MotiView>
   )
 }
 

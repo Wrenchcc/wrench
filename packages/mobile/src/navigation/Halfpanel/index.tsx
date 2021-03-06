@@ -1,58 +1,29 @@
-import React, { useEffect, useRef, useCallback } from 'react'
-import BottomSheet from 'reanimated-bottom-sheet'
-import { StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native'
-import Animated from 'react-native-reanimated'
+import React, { useCallback, useRef } from 'react'
+import { View } from 'react-native'
+import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet'
 import { useNavigation } from 'navigation'
 import { Text } from 'ui'
-import { Base, Bar, Row } from './styles'
+import Background from './Background'
+import { Base, Row } from './styles'
 
-const { Value, interpolateNode } = Animated
-
-function Halfpanel({ renderContent = () => null, renderHeader = () => null, height = 300, data }) {
-  const bottomSheet = useRef(null)
-  const fall = useRef(new Value(1))
-  const allowCloseEnd = useRef(false)
+const HalfPanel = ({ renderContent = () => null, data, height }) => {
+  const bottomSheetRef = useRef<BottomSheet>(null)
   const { dismissHalfpanel } = useNavigation()
 
-  useEffect(() => {
-    setTimeout(() => {
-      bottomSheet.current.snapTo(1)
-    }, 60)
-  }, [bottomSheet])
+  const snapPoints = [0, height]
 
-  const closeKeyboard = useCallback(() => Keyboard.dismiss(), [])
-
-  const backgroundOpacity = interpolateNode(fall.current, {
-    inputRange: [0, 1],
-    outputRange: [0.55, 0],
-    extrapolate: Animated.Extrapolate.CLAMP,
-  })
-
-  const handleClose = useCallback(() => {
-    bottomSheet.current.snapTo(0)
-    closeKeyboard()
-  }, [])
-
-  const handleOpenStart = useCallback(() => {
-    allowCloseEnd.current = true
-  }, [])
-
-  const handleCloseEnd = useCallback(() => {
-    if (!allowCloseEnd.current) {
-      return
+  const handleOnChange = useCallback((index) => {
+    if (index === 0) {
+      dismissHalfpanel()
     }
-
-    dismissHalfpanel()
   }, [])
 
-  const renderDataContent = () => (
-    <Base height={height}>
-      <Bar />
-
+  const RenderDataContent = () => (
+    <Base>
       {data.map(({ title, onPress }) => {
         const handleOnPress = () => {
-          handleClose()
-          setTimeout(onPress, 200)
+          bottomSheetRef?.current.close()
+          setTimeout(onPress, 100)
         }
 
         return (
@@ -66,39 +37,21 @@ function Halfpanel({ renderContent = () => null, renderHeader = () => null, heig
     </Base>
   )
 
-  const renderContentWithBar = () => (
-    <Base height={height}>
-      <Bar />
-
-      {renderContent()}
-    </Base>
-  )
-
   return (
-    <>
-      <TouchableWithoutFeedback onPress={handleClose}>
-        <Animated.View
-          style={[
-            StyleSheet.absoluteFillObject,
-            {
-              backgroundColor: 'black',
-              opacity: backgroundOpacity,
-            },
-          ]}
-        />
-      </TouchableWithoutFeedback>
-      <BottomSheet
-        ref={bottomSheet}
-        callbackNode={fall.current}
-        snapPoints={[0, height]}
-        renderHeader={renderHeader}
-        renderContent={data ? renderDataContent : renderContentWithBar}
-        onOpenStart={handleOpenStart}
-        onCloseEnd={handleCloseEnd}
-        onCloseStart={closeKeyboard}
-      />
-    </>
+    <BottomSheet
+      onChange={handleOnChange}
+      animateOnMount
+      backgroundComponent={Background}
+      backdropComponent={BottomSheetBackdrop}
+      ref={bottomSheetRef}
+      index={1}
+      snapPoints={snapPoints}
+    >
+      <View style={{ paddingHorizontal: 20 }}>
+        {data ? <RenderDataContent /> : renderContent()}
+      </View>
+    </BottomSheet>
   )
 }
 
-export default Halfpanel
+export default HalfPanel

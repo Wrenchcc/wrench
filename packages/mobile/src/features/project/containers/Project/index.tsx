@@ -8,7 +8,6 @@ import { EmptyState, Title, Share, Edit } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import ProjectHeader from 'features/project/components/ProjectHeader'
 import { isIphone } from 'utils/platform'
-// import PostPlaceholder from 'components/Post/Placeholder'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
@@ -73,7 +72,6 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
               {post ? (
                 <>
                   <Post post={post} withoutTitle />
-                  {/* <PostPlaceholder /> */}
                   {hasPosts && edges && edges.length > 1 && (
                     <View style={{ marginTop: -20, paddingBottom: 50 }}>
                       <Title medium>{t('recent')}</Title>
