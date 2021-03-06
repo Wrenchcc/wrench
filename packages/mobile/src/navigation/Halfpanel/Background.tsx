@@ -1,30 +1,10 @@
-import React, { useMemo } from 'react'
+import React from 'react'
+import { View } from 'react-native'
 import { BottomSheetBackgroundProps } from '@gorhom/bottom-sheet'
-import Animated, { interpolateColors } from 'react-native-reanimated'
+import PlatformColor from 'ui/PlatformColor'
 
-const Background = ({ animatedIndex, style }: BottomSheetBackgroundProps) => {
-  // animated variables
-  // const animatedBackground = useMemo(
-  //   () =>
-  //     interpolateColors(animatedIndex, {
-  //       inputRange: [0, 1],
-  //       outputColorRange: ['#fff', '#a8b5eb'],
-  //     }),
-  //   [animatedIndex]
-  // )
-
-  // styles
-  // const containerStyle = useMemo(
-  //   () => [
-  //     style,
-  //     {
-  //       backgroundColor: animatedBackground,
-  //     },
-  //   ],
-  //   [style, animatedBackground]
-  // )
-
-  return <Animated.View />
+const CustomBackground = ({ style }: BottomSheetBackgroundProps) => {
+  return <View style={[{ backgroundColor: PlatformColor.default }, style]} />
 }
 
-export default Background
+export default CustomBackground

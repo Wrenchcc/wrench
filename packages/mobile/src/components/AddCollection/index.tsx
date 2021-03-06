@@ -1,103 +1,26 @@
-import React, { useState, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useAddCollectionMutation, CollectionFragmentDoc } from '@wrench/common'
-import { store } from 'gql'
-import { useNavigation, SCREENS } from 'navigation'
-import { keyboardHeight, isIphone } from 'utils/platform'
-import { Icon, Title } from 'ui'
-import { Base, Center, Input, Text, Content, Inner } from './styles'
+import { useNavigation } from 'navigation'
+import { Icon } from 'ui'
 import { add } from 'images'
+import { keyboardHeight, isIphone } from 'utils/platform'
+import Form from './Form'
+import { Base, Center, Text } from './styles'
 
-const HALFPANEL_HEIGHT = 164
-
-function Form({ projectId, disableModal }) {
-  const { t } = useTranslation('add-collection')
-  const [name, setName] = useState('')
-  const { dismissHalfpanel, showModal } = useNavigation()
-  const [addCollection] = useAddCollectionMutation()
-
-  const handleOnSubmit = async () => {
-    dismissHalfpanel()
-
-    const { data } = await addCollection({
-      variables: {
-        name,
-        projectId,
-      },
-      update(cache, { data: { addCollection } }) {
-        cache.modify({
-          fields: {
-            projectCollections(existingCollectionsRefs = {}) {
-              const newCollectionRef = cache.writeFragment({
-                data: addCollection,
-                fragment: CollectionFragmentDoc,
-              })
-
-              return {
-                ...existingCollectionsRefs,
-                edges: [
-                  {
-                    node: newCollectionRef,
-                  },
-                  ...existingCollectionsRefs.edges,
-                ],
-              }
-            },
-          },
-        })
-      },
-    })
-
-    if (!disableModal) {
-      const collectionId = data.addCollection.id
-
-      store.collection.toggleCollection(collectionId)
-
-      showModal(SCREENS.ADD_POST_TO_COLLECTION, {
-        collectionId,
-        projectId,
-      })
-    }
-  }
-
-  return (
-    <Content>
-      <Title>{t('title')}</Title>
-
-      <Inner>
-        <Input
-          placeholder={t('placeholder')}
-          enablesReturnKeyAutomatically
-          autoFocus
-          returnKeyType="done"
-          onChangeText={setName}
-          onSubmitEditing={handleOnSubmit}
-        />
-
-        {name.length > 0 && (
-          <Text fontSize={15} medium onPress={handleOnSubmit}>
-            {t('done')}
-          </Text>
-        )}
-      </Inner>
-    </Content>
-  )
-}
+const HALFPANEL_HEIGHT = 130
 
 function AddCollection({ projectId, style = {}, disableModal }) {
   const { t } = useTranslation('add-collection')
-  const { showHalfpanel, dismissHalfpanel, isHalpanelOpen } = useNavigation()
+  const { showHalfpanel, dismissHalfpanel } = useNavigation()
 
-  const handleHalfPanel = useCallback(() => {
-    if (isHalpanelOpen) {
-      dismissHalfpanel()
-    }
+  const handleHalfPanel = useCallback(async () => {
+    await dismissHalfpanel()
 
     showHalfpanel({
       height: HALFPANEL_HEIGHT + (isIphone ? keyboardHeight || 400 : 0), // default just to be sure
       renderContent: () => <Form projectId={projectId} disableModal={disableModal} />,
     })
-  }, [showHalfpanel, isHalpanelOpen])
+  }, [showHalfpanel])
 
   return (
     <Base style={style}>

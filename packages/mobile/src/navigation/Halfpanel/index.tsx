@@ -1,41 +1,29 @@
-import React, { useCallback, useEffect, useMemo, useRef } from 'react'
-import { BottomSheetModal, BottomSheetModalProvider, BottomSheetView } from '@gorhom/bottom-sheet'
+import React, { useCallback, useRef } from 'react'
+import { View } from 'react-native'
+import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet'
 import { useNavigation } from 'navigation'
 import { Text } from 'ui'
 import Background from './Background'
 import { Base, Row } from './styles'
 
-const HalfPanel = ({ renderContent = () => null, data }) => {
-  // ref
-  const bottomSheetModalRef = useRef<BottomSheetModal>(null)
+const HalfPanel = ({ renderContent = () => null, data, height }) => {
+  const bottomSheetRef = useRef<BottomSheet>(null)
   const { dismissHalfpanel } = useNavigation()
 
-  useEffect(() => {
-    bottomSheetModalRef.current?.present()
-  }, [bottomSheetModalRef])
+  const snapPoints = [0, height]
 
-  // variables
-  const snapPoints = useMemo(() => ['25%', '50%', '90%'], [])
-
-  // callbacks
-  const handlePresent = useCallback(() => {
-    bottomSheetModalRef.current?.present()
+  const handleOnChange = useCallback((index) => {
+    if (index === 0) {
+      dismissHalfpanel()
+    }
   }, [])
 
-  const handleDismiss = useCallback(() => {
-    bottomSheetModalRef.current?.dismiss()
-  }, [])
-
-  const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index)
-  }, [])
-
-  const renderDataContent = () => (
+  const RenderDataContent = () => (
     <Base>
       {data.map(({ title, onPress }) => {
         const handleOnPress = () => {
-          onPress()
-          handleDismiss()
+          bottomSheetRef?.current.close()
+          setTimeout(onPress, 100)
         }
 
         return (
@@ -49,20 +37,20 @@ const HalfPanel = ({ renderContent = () => null, data }) => {
     </Base>
   )
 
-  // renders
   return (
-    <BottomSheetModalProvider>
-      <BottomSheetModal
-        // backgroundComponent={Background}
-        onDismiss={dismissHalfpanel}
-        ref={bottomSheetModalRef}
-        index={1}
-        snapPoints={snapPoints}
-        onChange={handleSheetChanges}
-      >
-        {data ? renderDataContent : renderContent()}
-      </BottomSheetModal>
-    </BottomSheetModalProvider>
+    <BottomSheet
+      onChange={handleOnChange}
+      animateOnMount
+      backgroundComponent={Background}
+      backdropComponent={BottomSheetBackdrop}
+      ref={bottomSheetRef}
+      index={1}
+      snapPoints={snapPoints}
+    >
+      <View style={{ paddingHorizontal: 20 }}>
+        {data ? <RenderDataContent /> : renderContent()}
+      </View>
+    </BottomSheet>
   )
 }
 

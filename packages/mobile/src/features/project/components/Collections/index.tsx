@@ -14,14 +14,13 @@ function Collections({
   onSave,
   selectedId,
   disableModal = false,
+  disableAnimation,
 }) {
   const {
     data: { edges },
     isFetching,
     fetchMore,
-    isRefetching,
     hasNextPage,
-    refetch,
   } = usePaginatedQuery(['projectCollections'])(ProjectCollectionsDocument, {
     variables: {
       projectId,
@@ -62,7 +61,7 @@ function Collections({
     content = (
       <MotiView
         from={{ height: 0, opacity: 0 }}
-        animate={{ height: 85, opacity: 1 }}
+        animate={disableAnimation ? null : { height: 85, opacity: 1 }}
         delay={200}
         transition={{
           type: 'timing',
@@ -84,9 +83,7 @@ function Collections({
               />
             )
           }
-          refetch={refetch}
           fetchMore={fetchMore}
-          isRefetching={isRefetching}
           isFetching={isFetching}
           loaderInset={10}
           hasNextPage={hasNextPage}

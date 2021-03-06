@@ -2,8 +2,6 @@ import styled from 'styled-components'
 
 export const Base = styled.View`
   background-color: ${(props) => props.theme.colors.default};
-  padding-horizontal: 20px;
-  padding-top: 15px;
 `
 
 export const Row = styled.View`

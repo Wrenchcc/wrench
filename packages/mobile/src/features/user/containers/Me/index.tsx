@@ -64,7 +64,7 @@ function Me() {
             source={add}
             onPress={() =>
               showHalfpanel({
-                height: 270,
+                height: 240,
                 data: addOptions,
               })
             }
@@ -75,7 +75,7 @@ function Me() {
             source={menu}
             onPress={() =>
               showHalfpanel({
-                height: 330,
+                height: 280,
                 data: [
                   {
                     title: t('edit'),
