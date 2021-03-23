@@ -1,9 +1,11 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedQuery, FollowersDocument } from '@wrench/common'
-import { FlatList, Page } from 'navigation'
+import { FlatList } from 'navigation'
 import { User, NoResults } from 'ui'
 import UserSkeletonList from 'ui/User/SkeletonList'
+
+const renderItem = ({ item }) => <User data={item.node} />
 
 function Followers({ id }) {
   const { t } = useTranslation('followers')
@@ -21,29 +23,22 @@ function Followers({ id }) {
     },
   })
 
-  const renderItem = ({ item }) => <User data={item.node} />
-
-  const content =
-    isFetching && !edges ? (
-      <UserSkeletonList />
-    ) : (
-      <FlatList
-        ListEmptyComponent={<NoResults />}
-        borderSeparator
-        data={edges}
-        refetch={refetch}
-        fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={isFetching}
-        hasNextPage={hasNextPage}
-        renderItem={renderItem}
-      />
-    )
+  if (isFetching && !edges) {
+    return <UserSkeletonList />
+  }
 
   return (
-    <Page headerTitle={t('title')} headerAnimation={false}>
-      {content}
-    </Page>
+    <FlatList
+      ListEmptyComponent={<NoResults />}
+      borderSeparator
+      data={edges}
+      refetch={refetch}
+      fetchMore={fetchMore}
+      isRefetching={isRefetching}
+      isFetching={isFetching}
+      hasNextPage={hasNextPage}
+      renderItem={renderItem}
+    />
   )
 }
 

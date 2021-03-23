@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedQuery, LikesDocument } from '@wrench/common'
-import { FlatList, Page } from 'navigation'
+import { FlatList } from 'navigation'
 import { User, NoResults } from 'ui'
 import UserSkeletonList from 'ui/User/SkeletonList'
 
@@ -23,27 +23,22 @@ function Sparks({ id }) {
     },
   })
 
-  const content =
-    isFetching && !edges ? (
-      <UserSkeletonList />
-    ) : (
-      <FlatList
-        ListEmptyComponent={<NoResults />}
-        borderSeparator
-        data={edges}
-        refetch={refetch}
-        fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={isFetching}
-        hasNextPage={hasNextPage}
-        renderItem={renderItem}
-      />
-    )
+  if (isFetching && !edges) {
+    return <UserSkeletonList />
+  }
 
   return (
-    <Page headerTitle={t('title')} headerAnimation={false}>
-      {content}
-    </Page>
+    <FlatList
+      ListEmptyComponent={<NoResults />}
+      borderSeparator
+      data={edges}
+      refetch={refetch}
+      fetchMore={fetchMore}
+      isRefetching={isRefetching}
+      isFetching={isFetching}
+      hasNextPage={hasNextPage}
+      renderItem={renderItem}
+    />
   )
 }
 

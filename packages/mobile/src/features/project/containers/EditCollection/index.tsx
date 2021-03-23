@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react'
 import { useDeleteCollectionMutation, useEditCollectionMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import NativeShare from 'react-native-share'
-import { ScrollView, Page, useNavigation, SCREENS } from 'navigation'
+import { ScrollView, useNavigation, SCREENS } from 'navigation'
 import { ActivityIndicator, Text, Title, Icon, Input, SelectionItem } from 'ui'
 import { close } from 'images'
 import { Inner } from './styles'
@@ -79,40 +79,39 @@ function EditCollection({ id, name, projectId, projectSlug, slug, onDelete }) {
   }
 
   return (
-    <Page
-      headerTitle={name}
-      headerAnimation={false}
-      headerLeft={<Icon onPress={handleDismiss} source={close} />}
-      headerRight={
-        isSaving ? (
-          <ActivityIndicator />
-        ) : (
-          <Text medium onPress={handleDone}>
-            {t('done')}
-          </Text>
-        )
-      }
-    >
-      <ScrollView>
-        <>
-          <Inner>
-            <Title>{t('title')}</Title>
-            <Input
-              placeholder={t('placeholder')}
-              value={title}
-              onChangeText={onChangeText}
-              color="dark"
-              onSubmitEditing={() => {}}
-              returnKeyType="done"
-            />
+    // <Page
+    //   headerTitle={name}
+    //   headerAnimation={false}
+    //   headerLeft={<Icon onPress={handleDismiss} source={close} />}
+    //   headerRight={
+    //     isSaving ? (
+    //       <ActivityIndicator />
+    //     ) : (
+    //       <Text medium onPress={handleDone}>
+    //         {t('done')}
+    //       </Text>
+    //     )
+    //   }
+    // >
+    <ScrollView>
+      <>
+        <Inner>
+          <Title>{t('title')}</Title>
+          <Input
+            placeholder={t('placeholder')}
+            value={title}
+            onChangeText={onChangeText}
+            color="dark"
+            onSubmitEditing={() => {}}
+            returnKeyType="done"
+          />
 
-            <SelectionItem title={t('share:share')} onPress={handleShare} />
-            <SelectionItem title={t('add')} onPress={navigateToAddPosts} />
-            <SelectionItem important title={t('delete')} onPress={handleDelete} />
-          </Inner>
-        </>
-      </ScrollView>
-    </Page>
+          <SelectionItem title={t('share:share')} onPress={handleShare} />
+          <SelectionItem title={t('add')} onPress={navigateToAddPosts} />
+          <SelectionItem important title={t('delete')} onPress={handleDelete} />
+        </Inner>
+      </>
+    </ScrollView>
   )
 }
 

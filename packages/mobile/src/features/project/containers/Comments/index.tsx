@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react'
 import { KeyboardAvoidingView, FlatList, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { CommentsDocument, RepliesDocument, usePaginatedQuery } from '@wrench/common'
-import { Page, keyExtractor } from 'navigation'
+import { keyExtractor } from 'navigation'
 import { NAVIGATION } from 'navigation/constants'
 import CommentField from 'components/CommentField'
 import { ActivityIndicator, CommentItem, Text } from 'ui'
@@ -117,38 +117,37 @@ function Comments({ postId }) {
 
   const initialFetch = isFetching && !edges
 
+  // t('title')
   return (
-    <Page headerTitle={t('title')} headerAnimation={false} view>
-      <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
-        <FlatList
-          inverted
-          initialNumToRender={8}
-          contentInsetAdjustmentBehavior="never"
-          automaticallyAdjustContentInsets={false}
-          keyboardDismissMode="on-drag"
-          keyboardShouldPersistTaps="always"
-          keyExtractor={keyExtractor}
-          ListFooterComponent={renderTopComponent}
-          ListEmptyComponent={
-            initialFetch && (
-              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <ActivityIndicator />
-              </View>
-            )
-          }
-          data={edges}
-          renderItem={renderItem}
-          contentContainerStyle={{
-            paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
-            flexGrow: 1,
-            justifyContent: 'flex-end',
-          }}
-        />
-        <View style={{ paddingHorizontal: 20 }}>
-          <CommentField postId={postId} username={username} commentId={commentId} emoji />
-        </View>
-      </KeyboardAvoidingView>
-    </Page>
+    <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
+      <FlatList
+        inverted
+        initialNumToRender={8}
+        contentInsetAdjustmentBehavior="never"
+        automaticallyAdjustContentInsets={false}
+        keyboardDismissMode="on-drag"
+        keyboardShouldPersistTaps="always"
+        keyExtractor={keyExtractor}
+        ListFooterComponent={renderTopComponent}
+        ListEmptyComponent={
+          initialFetch && (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+              <ActivityIndicator />
+            </View>
+          )
+        }
+        data={edges}
+        renderItem={renderItem}
+        contentContainerStyle={{
+          paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
+          flexGrow: 1,
+          justifyContent: 'flex-end',
+        }}
+      />
+      <View style={{ paddingHorizontal: 20 }}>
+        <CommentField postId={postId} username={username} commentId={commentId} emoji />
+      </View>
+    </KeyboardAvoidingView>
   )
 }
 

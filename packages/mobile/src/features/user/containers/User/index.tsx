@@ -2,7 +2,7 @@ import React from 'react'
 import { KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedQuery, UserDocument } from '@wrench/common'
-import { Page, FlatList } from 'navigation'
+import { FlatList } from 'navigation'
 import Post from 'components/Post'
 import { Banner, Share } from 'ui'
 import FollowingProjects from 'features/user/components/FollowingProjects'
@@ -57,28 +57,27 @@ function User({ user: initialUserData }) {
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
-      <Page
+      {/* <Page
         headerTitle={user.fullName}
         headerRight={
           user.dynamicLink && <Share title={user.fullName} url={user.dynamicLink} text />
         }
-      >
-        <FlatList
-          initialNumToRender={1}
-          spacingSeparator
-          paddingHorizontal={hasPosts ? 20 : 0}
-          contentContainerStyle={{ flexGrow: 1 }}
-          ListHeaderComponent={ListHeaderComponent}
-          ListEmptyComponent={user && !error && <FollowingProjects user={user} />}
-          data={edges}
-          refetch={refetch}
-          fetchMore={fetchMore}
-          isRefetching={isRefetching}
-          isFetching={isFetching}
-          hasNextPage={hasNextPage}
-          renderItem={renderItem}
-        />
-      </Page>
+      > */}
+      <FlatList
+        initialNumToRender={1}
+        spacingSeparator
+        paddingHorizontal={hasPosts ? 20 : 0}
+        contentContainerStyle={{ flexGrow: 1 }}
+        ListHeaderComponent={ListHeaderComponent}
+        ListEmptyComponent={user && !error && <FollowingProjects user={user} />}
+        data={edges}
+        refetch={refetch}
+        fetchMore={fetchMore}
+        isRefetching={isRefetching}
+        isFetching={isFetching}
+        hasNextPage={hasNextPage}
+        renderItem={renderItem}
+      />
     </KeyboardAvoidingView>
   )
 }

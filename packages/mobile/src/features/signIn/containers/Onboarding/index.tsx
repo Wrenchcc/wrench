@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native'
 import { useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { useCurrentUserQuery, useProjectTypesQuery } from '@wrench/common'
-import { Page, FlatList, useNavigation, SCREENS, keyExtractor } from 'navigation'
+import { FlatList, useNavigation, SCREENS, keyExtractor } from 'navigation'
 import { omit } from 'rambda'
 import { track, events } from 'utils/analytics'
 import { ActivityIndicator, Touchable, Text, Loader } from 'ui'
@@ -114,27 +114,28 @@ function Onboarding({ settingsPage }) {
   )
 
   return (
-    <Page
-      view
-      headerAnimation={false}
-      {...(!settingsPage && { headerLeft: true })}
-      headerTitle={settingsPage && t('headerTitle')}
-      headerRight={
-        isSaving ? (
-          <ActivityIndicator />
-        ) : (
-          <Text
-            color="inverse"
-            medium
-            opacity={isComplete() ? 1 : 0.5}
-            disabled={!isComplete()}
-            onPress={handleSubmit}
-          >
-            {settingsPage ? t('save') : t('next')}
-          </Text>
-        )
-      }
-    >
+    // <Page
+    //   view
+    //   headerAnimation={false}
+    //   {...(!settingsPage && { headerLeft: true })}
+    //   headerTitle={settingsPage && t('headerTitle')}
+    //   headerRight={
+    //     isSaving ? (
+    //       <ActivityIndicator />
+    //     ) : (
+    //       <Text
+    //         color="inverse"
+    //         medium
+    //         opacity={isComplete() ? 1 : 0.5}
+    //         disabled={!isComplete()}
+    //         onPress={handleSubmit}
+    //       >
+    //         {settingsPage ? t('save') : t('next')}
+    //       </Text>
+    //     )
+    //   }
+    // >
+    <>
       <FlatList
         paddingBottom={70}
         paddingHorizontal={10}
@@ -147,7 +148,8 @@ function Onboarding({ settingsPage }) {
         renderItem={renderItem}
       />
       {!settingsPage && <Footer progress={progress()} />}
-    </Page>
+    </>
+    // </Page>
   )
 }
 

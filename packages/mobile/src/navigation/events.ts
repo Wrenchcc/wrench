@@ -41,6 +41,9 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
                 id: screen,
                 name: screen,
                 options: {
+                  topBar: {
+                    visible: false,
+                  },
                   layout: {
                     componentBackgroundColor: hasProject
                       ? PlatformColor.black

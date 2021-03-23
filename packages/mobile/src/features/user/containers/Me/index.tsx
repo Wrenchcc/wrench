@@ -1,15 +1,15 @@
 import React, { useRef, useCallback } from 'react'
 import { KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { Layout, FlatList, SCREENS, useScrollToTop, useNavigation } from 'navigation'
+import { FlatList, SCREENS, useScrollToTop, useNavigation } from 'navigation'
 import { usePaginatedQuery, CurrentUserProfileDocument } from '@wrench/common'
 import Post from 'components/Post'
-import { EmptyState, Icon } from 'ui'
+import { EmptyState } from 'ui'
 import Header from 'features/user/components/Header'
 import { TYPES } from 'ui/EmptyState/constants'
 import UserProjects from 'features/user/components/UserProjects'
 import { isIphone } from 'utils/platform'
-import { menu, add } from 'images'
+// import { menu, add } from 'images'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
@@ -58,7 +58,7 @@ function Me() {
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
-      <Layout
+      {/* <Layout
         headerLeft={
           <Icon
             source={add}
@@ -94,40 +94,40 @@ function Me() {
             }
           />
         }
-      >
-        <FlatList
-          ref={scrollRef}
-          initialNumToRender={1}
-          spacingSeparator
-          paddingHorizontal={hasPosts ? 20 : 0}
-          contentContainerStyle={{ flexGrow: 1 }}
-          ListHeaderComponent={
-            user && (
-              <>
-                <Header
-                  firstName={user.firstName}
-                  lastName={user.lastName}
-                  avatarUrl={user.avatarUrl}
-                  spacingHorizontal={!hasPosts}
-                  bio={user.bio}
-                  website={user.website}
-                  location={user.location}
-                />
+      > */}
+      <FlatList
+        ref={scrollRef}
+        initialNumToRender={1}
+        spacingSeparator
+        paddingHorizontal={hasPosts ? 20 : 0}
+        contentContainerStyle={{ flexGrow: 1 }}
+        ListHeaderComponent={
+          user && (
+            <>
+              <Header
+                firstName={user.firstName}
+                lastName={user.lastName}
+                avatarUrl={user.avatarUrl}
+                spacingHorizontal={!hasPosts}
+                bio={user.bio}
+                website={user.website}
+                location={user.location}
+              />
 
-                <UserProjects projects={user.projects} spacingHorizontal={!hasPosts} />
-              </>
-            )
-          }
-          ListEmptyComponent={<EmptyState type={emptyState} />}
-          data={edges}
-          refetch={refetch}
-          fetchMore={fetchMore}
-          isRefetching={isRefetching}
-          isFetching={isFetching}
-          hasNextPage={hasNextPage}
-          renderItem={renderItem}
-        />
-      </Layout>
+              <UserProjects projects={user.projects} spacingHorizontal={!hasPosts} />
+            </>
+          )
+        }
+        ListEmptyComponent={<EmptyState type={emptyState} />}
+        data={edges}
+        refetch={refetch}
+        fetchMore={fetchMore}
+        isRefetching={isRefetching}
+        isFetching={isFetching}
+        hasNextPage={hasNextPage}
+        renderItem={renderItem}
+      />
+      {/* </Layout> */}
     </KeyboardAvoidingView>
   )
 }

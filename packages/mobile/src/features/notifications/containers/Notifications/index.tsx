@@ -7,7 +7,7 @@ import {
 } from '@wrench/common'
 import { Navigation } from 'react-native-navigation'
 import ms from 'ms'
-import { Layout, FlatList, SCREENS, useNavigation, useScrollToTop } from 'navigation'
+import { FlatList, SCREENS, useNavigation, useScrollToTop } from 'navigation'
 import { Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 
@@ -94,22 +94,20 @@ function Notifications({ componentId }) {
   )
 
   return (
-    <Layout headerTitleKey="notifications">
-      <FlatList
-        ref={scrollRef}
-        paddingHorizontal={0}
-        contentContainerStyle={{ flexGrow: 1 }}
-        ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} />}
-        borderSeparator
-        data={edges}
-        refetch={refetch}
-        fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={isFetching}
-        hasNextPage={hasNextPage}
-        renderItem={renderItem}
-      />
-    </Layout>
+    <FlatList
+      ref={scrollRef}
+      paddingHorizontal={0}
+      contentContainerStyle={{ flexGrow: 1 }}
+      ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} />}
+      borderSeparator
+      data={edges}
+      refetch={refetch}
+      fetchMore={fetchMore}
+      isRefetching={isRefetching}
+      isFetching={isFetching}
+      hasNextPage={hasNextPage}
+      renderItem={renderItem}
+    />
   )
 }
 

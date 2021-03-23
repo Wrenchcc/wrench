@@ -126,11 +126,27 @@ const sections = ({ t, ...props }) => {
           },
           {
             title: t('settings:terms'),
-            onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'https://wrench.cc/terms' }),
+            onPress: () =>
+              props.showModal(SCREENS.WEBVIEW, {
+                options: {
+                  topBar: {
+                    visible: false,
+                  },
+                },
+                url: 'https://wrench.cc/terms',
+              }),
           },
           {
             title: t('settings:website'),
-            onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'https://wrench.cc' }),
+            onPress: () =>
+              props.showModal(SCREENS.WEBVIEW, {
+                options: {
+                  topBar: {
+                    visible: false,
+                  },
+                },
+                url: 'https://wrench.cc',
+              }),
           },
           {
             title: t('settings:credits'),
@@ -216,7 +232,15 @@ const sections = ({ t, ...props }) => {
         data: [
           {
             title: t('settings:faq'),
-            onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'https://wrench.cc/faq' }),
+            onPress: () =>
+              props.showModal(SCREENS.WEBVIEW, {
+                options: {
+                  topBar: {
+                    visible: false,
+                  },
+                },
+                url: 'https://wrench.cc/faq',
+              }),
           },
           {
             title: t('settings:report'),
@@ -235,24 +259,63 @@ const sections = ({ t, ...props }) => {
         data: [
           {
             title: 'Knallpott',
-            onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'https://knallpott.de' }),
+            onPress: () =>
+              props.showModal(SCREENS.WEBVIEW, {
+                options: {
+                  topBar: {
+                    visible: false,
+                  },
+                },
+                url: 'https://knallpott.de',
+              }),
           },
           {
             title: 'Paal Motorcycles',
-            onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'http://paalmotorcycles.com' }),
+            onPress: () =>
+              props.showModal(SCREENS.WEBVIEW, {
+                options: {
+                  topBar: {
+                    visible: false,
+                  },
+                },
+                url: 'http://paalmotorcycles.com',
+              }),
           },
           {
             title: 'Kismo motors',
-            onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'http://kismomotors.com' }),
+            onPress: () =>
+              props.showModal(SCREENS.WEBVIEW, {
+                options: {
+                  topBar: {
+                    visible: false,
+                  },
+                },
+                url: 'http://kismomotors.com',
+              }),
           },
           {
             title: 'Motorfabriken',
             onPress: () =>
-              props.showModal(SCREENS.WEBVIEW, { url: 'https://www.instagram.com/motorfabriken' }),
+              props.showModal(SCREENS.WEBVIEW, {
+                options: {
+                  topBar: {
+                    visible: false,
+                  },
+                },
+                url: 'https://www.instagram.com/motorfabriken',
+              }),
           },
           {
             title: 'Hojstyling.se',
-            onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'https://www.hojstyling.se' }),
+            onPress: () =>
+              props.showModal(SCREENS.WEBVIEW, {
+                options: {
+                  topBar: {
+                    visible: false,
+                  },
+                },
+                url: 'https://www.hojstyling.se',
+              }),
           },
         ],
       },

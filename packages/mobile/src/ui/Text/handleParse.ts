@@ -10,6 +10,11 @@ function addhttp(url) {
 
 const handleUrlPress = (url) => {
   showModal(SCREENS.WEBVIEW, {
+    options: {
+      topBar: {
+        visible: false,
+      },
+    },
     url: addhttp(url),
   })
 }

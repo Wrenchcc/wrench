@@ -10,7 +10,7 @@ import {
   RepliesDocument,
 } from '@wrench/common'
 import { update } from 'rambda'
-import { Page, useNavigation, keyExtractor } from 'navigation'
+import { useNavigation, keyExtractor } from 'navigation'
 import { NAVIGATION } from 'navigation/constants'
 import Post from 'components/Post'
 import CommentField from 'components/CommentField'
@@ -142,43 +142,42 @@ function PostContainer({ postId, commentId }) {
 
   const initialFetch = isFetching && !edges
 
+  // t('title')
   return (
-    <Page view headerTitle={t('title')} headerAnimation={false}>
-      <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
-        <FlatList
-          inverted
-          initialNumToRender={8}
-          contentInsetAdjustmentBehavior="never"
-          automaticallyAdjustContentInsets={false}
-          keyboardDismissMode="on-drag"
-          keyboardShouldPersistTaps="always"
-          keyExtractor={keyExtractor}
-          ListFooterComponent={renderTopComponent}
-          ListEmptyComponent={
-            initialFetch && (
-              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <ActivityIndicator />
-              </View>
-            )
-          }
-          data={edges}
-          renderItem={renderItem}
-          contentContainerStyle={{
-            paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
-            flexGrow: 1,
-            justifyContent: 'flex-end',
-          }}
+    <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
+      <FlatList
+        inverted
+        initialNumToRender={8}
+        contentInsetAdjustmentBehavior="never"
+        automaticallyAdjustContentInsets={false}
+        keyboardDismissMode="on-drag"
+        keyboardShouldPersistTaps="always"
+        keyExtractor={keyExtractor}
+        ListFooterComponent={renderTopComponent}
+        ListEmptyComponent={
+          initialFetch && (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+              <ActivityIndicator />
+            </View>
+          )
+        }
+        data={edges}
+        renderItem={renderItem}
+        contentContainerStyle={{
+          paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
+          flexGrow: 1,
+          justifyContent: 'flex-end',
+        }}
+      />
+      <View style={{ paddingHorizontal: 20 }}>
+        <CommentField
+          postId={postId}
+          username={mention.username}
+          commentId={mention.commentId}
+          emoji
         />
-        <View style={{ paddingHorizontal: 20 }}>
-          <CommentField
-            postId={postId}
-            username={mention.username}
-            commentId={mention.commentId}
-            emoji
-          />
-        </View>
-      </KeyboardAvoidingView>
-    </Page>
+      </View>
+    </KeyboardAvoidingView>
   )
 }
 

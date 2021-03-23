@@ -17,6 +17,9 @@ function Legal({ color = 'white' }) {
     () =>
       showModal(SCREENS.WEBVIEW, {
         options: {
+          topBar: {
+            visible: false,
+          },
           statusBar: {
             drawBehind: true,
             style: colorScheme === 'dark' ? STATUS_BAR.LIGHT : STATUS_BAR.DARK,

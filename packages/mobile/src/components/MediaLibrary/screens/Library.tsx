@@ -64,7 +64,13 @@ function Library({ active, animatedValue }) {
   const { dismissModal, navigate } = useNavigation()
 
   const navigateToAddPost = useCallback(() => {
-    navigate(SCREENS.ADD_POST)
+    navigate(SCREENS.ADD_POST, {
+      options: {
+        topBar: {
+          visible: false,
+        },
+      },
+    })
   }, [])
 
   useEffect(() => {

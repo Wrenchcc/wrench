@@ -5,7 +5,7 @@ import {
   useToggleNotificationSettingsMutation,
   useDeleteCurrentUserMutation,
 } from '@wrench/common'
-import { Page, SectionList, useNavigation } from 'navigation'
+import { SectionList, useNavigation } from 'navigation'
 import { Title, SelectionItem } from 'ui'
 import Footer from '../../components/Footer'
 import sections from '../../sections'
@@ -101,33 +101,33 @@ function Settings({ section }) {
   const settings = data?.user.settings
 
   return (
-    <Page
-      headerTitle={section ? t(`settings:${section}`) : t('settings')}
-      headerAnimation={false}
-      view
-    >
-      <SectionList
-        contentContainerStyle={style.container}
-        stickySectionHeadersEnabled={false}
-        renderSectionHeader={renderSectionHeader}
-        renderItem={renderItem}
-        initialNumToRender={15}
-        sections={
-          sections({
-            handleToggleNotificationSettings,
-            settings,
-            navigate,
-            showModal,
-            deleteUser,
-            t,
-            user: data?.user,
-          })[section || 'settings']
-        }
-        keyExtractor={keyExtractor}
-        ListFooterComponent={!section && <Footer />}
-        borderSeparator
-      />
-    </Page>
+    // <Page
+    //   headerTitle={section ? t(`settings:${section}`) : t('settings')}
+    //   headerAnimation={false}
+    //   view
+    // >
+    <SectionList
+      contentContainerStyle={style.container}
+      stickySectionHeadersEnabled={false}
+      renderSectionHeader={renderSectionHeader}
+      renderItem={renderItem}
+      initialNumToRender={15}
+      sections={
+        sections({
+          handleToggleNotificationSettings,
+          settings,
+          navigate,
+          showModal,
+          deleteUser,
+          t,
+          user: data?.user,
+        })[section || 'settings']
+      }
+      keyExtractor={keyExtractor}
+      ListFooterComponent={!section && <Footer />}
+      borderSeparator
+    />
+    // </Page>
   )
 }
 

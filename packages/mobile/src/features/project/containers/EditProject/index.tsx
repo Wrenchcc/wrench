@@ -8,8 +8,7 @@ import {
 import { useTranslation } from 'react-i18next'
 import NativeShare from 'react-native-share'
 import { SCREENS, useNavigation, ScrollView } from 'navigation'
-import Header from 'navigation/Page/Header'
-import { ActivityIndicator, Text, Title, Icon, Input, SelectionItem } from 'ui'
+import { Header, ActivityIndicator, Text, Title, Icon, Input, SelectionItem } from 'ui'
 import { close } from 'images'
 import { Inner, Spacing } from './styles'
 
@@ -155,7 +154,7 @@ function EditProject({ project, onDeleteCallback }) {
       <Header
         headerLeft={renderHeaderLeft()}
         headerRight={renderHeaderRight()}
-        headerCenter={renderHeaderCenter()}
+        headerTitle={renderHeaderCenter()}
       />
       <ScrollView>
         <Inner>

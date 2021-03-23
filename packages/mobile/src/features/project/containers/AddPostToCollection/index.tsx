@@ -4,7 +4,7 @@ import { useCollectPostsMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { omit, isEmpty } from 'rambda'
 import { usePaginatedQuery, ProjectDocument } from '@wrench/common'
-import { FlatList, Page, useNavigation } from 'navigation'
+import { FlatList, useNavigation } from 'navigation'
 import { Icon, Touchable, Text, ActivityIndicator } from 'ui'
 import { close } from 'images'
 import { Cell, Picture, Image } from './styles'
@@ -114,39 +114,39 @@ function AddPostToCollection({ collectionId, projectId }) {
     )
   }
   return (
-    <Page
-      headerTitle={t('title')}
-      headerAnimation={false}
-      headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
-      headerRight={
-        isSaving ? (
-          <ActivityIndicator />
-        ) : (
-          <Text
-            color="inverse"
-            medium
-            opacity={isComplete() ? 1 : 0.5}
-            disabled={!isComplete()}
-            onPress={handleSubmit}
-          >
-            {t('done')}
-          </Text>
-        )
-      }
-    >
-      <FlatList
-        data={edges}
-        renderItem={renderItem}
-        numColumns={2}
-        initialNumToRender={10}
-        paddingHorizontal={10}
-        refetch={refetch}
-        fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={isFetching}
-        hasNextPage={hasNextPage}
-      />
-    </Page>
+    // <Page
+    //   headerTitle={t('title')}
+    //   headerAnimation={false}
+    //   headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
+    //   headerRight={
+    //     isSaving ? (
+    //       <ActivityIndicator />
+    //     ) : (
+    //       <Text
+    //         color="inverse"
+    //         medium
+    //         opacity={isComplete() ? 1 : 0.5}
+    //         disabled={!isComplete()}
+    //         onPress={handleSubmit}
+    //       >
+    //         {t('done')}
+    //       </Text>
+    //     )
+    //   }
+    // >
+    <FlatList
+      data={edges}
+      renderItem={renderItem}
+      numColumns={2}
+      initialNumToRender={10}
+      paddingHorizontal={10}
+      refetch={refetch}
+      fetchMore={fetchMore}
+      isRefetching={isRefetching}
+      isFetching={isFetching}
+      hasNextPage={hasNextPage}
+    />
+    // </Page>
   )
 }
 

@@ -3,8 +3,7 @@ import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useCurrentUserQuery } from '@wrench/common'
 import { AppNavigation, useNavigation, SCREENS } from 'navigation'
-import Header from 'navigation/Page/Header'
-import { Text, Button } from 'ui'
+import { Header, Text, Button } from 'ui'
 import { requestNotificationToken } from 'utils/pushNotifications/register'
 import { Headline, Description } from './styles'
 
@@ -27,7 +26,7 @@ function PushNotifications() {
 
   return (
     <>
-      <Header inline />
+      <Header />
       <View style={{ flexGrow: 1, paddingHorizontal: 20 }}>
         <Headline medium numberOfLines={0}>
           {t('title')}

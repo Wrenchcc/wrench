@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import * as ImagePicker from 'expo-image-picker'
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import { request, PERMISSIONS } from 'react-native-permissions'
-import { Page, ScrollView, useNavigation, AppNavigation, SCREENS } from 'navigation'
+import { ScrollView, useNavigation, AppNavigation, SCREENS } from 'navigation'
 import { preSignUrl } from 'gql'
 import { TOAST_TYPES } from 'utils/enums'
 import { showToast } from 'navigation/banner'
@@ -207,126 +207,126 @@ function EditProfile({ onboarding }) {
   }, [])
 
   return (
-    <Page
-      headerTitle={t('headerTitle')}
-      headerRight={
-        isSaving ? (
-          <ActivityIndicator />
-        ) : (
-          <Touchable onPress={handleSave} disabled={hasErrors}>
-            <Text medium opacity={hasErrors ? 0.5 : 1}>
-              {t('save')}
+    // <Page
+    //   headerTitle={t('headerTitle')}
+    //   headerRight={
+    //     isSaving ? (
+    //       <ActivityIndicator />
+    //     ) : (
+    //       <Touchable onPress={handleSave} disabled={hasErrors}>
+    //         <Text medium opacity={hasErrors ? 0.5 : 1}>
+    //           {t('save')}
+    //         </Text>
+    //       </Touchable>
+    //     )
+    //   }
+    //   headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
+    //   view
+    //   headerAnimation={false}
+    // >
+    <KeyboardAvoidingView paddingHorizontal={0}>
+      <ScrollView
+        contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 60 }}
+        keyboardDismissMode="on-drag"
+      >
+        <ChangeAvatar>
+          {/* NOTE: Use image Avatar can't handle file:// Android format */}
+          <Image
+            fadeDuration={0}
+            style={{ width: 120, height: 120, borderRadius: 120 }}
+            source={{
+              uri: avatarUrl,
+            }}
+          />
+          <Overlay onPress={handleChangeAvatar} activeOpacity={1}>
+            <Text color="white" medium fontSize={15}>
+              {t('change')}
             </Text>
-          </Touchable>
-        )
-      }
-      headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
-      view
-      headerAnimation={false}
-    >
-      <KeyboardAvoidingView paddingHorizontal={0}>
-        <ScrollView
-          contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 60 }}
-          keyboardDismissMode="on-drag"
-        >
-          <ChangeAvatar>
-            {/* NOTE: Use image Avatar can't handle file:// Android format */}
-            <Image
-              fadeDuration={0}
-              style={{ width: 120, height: 120, borderRadius: 120 }}
-              source={{
-                uri: avatarUrl,
-              }}
+          </Overlay>
+        </ChangeAvatar>
+
+        <Information>
+          <Title>{t('information')}</Title>
+
+          <Row first>
+            <Input
+              color="dark"
+              placeholder={t('firstName')}
+              onChangeText={(value) => setFirstName(value)}
+              defaultValue={firstName}
+              error={firstName.length === 0}
             />
-            <Overlay onPress={handleChangeAvatar} activeOpacity={1}>
-              <Text color="white" medium fontSize={15}>
-                {t('change')}
+          </Row>
+
+          <Row>
+            <Input
+              color="dark"
+              placeholder={t('lastName')}
+              onChangeText={(value) => setLastName(value)}
+              defaultValue={lastName}
+              error={lastName.length === 0}
+            />
+          </Row>
+
+          <Row>
+            <Input
+              color="dark"
+              placeholder={t('username')}
+              onChangeText={(value) => setUsername(value)}
+              defaultValue={username}
+              error={username.length === 0}
+            />
+          </Row>
+
+          <Row>
+            <Location>
+              <Text
+                fontSize={17}
+                color={location ? 'dark' : 'light_grey'}
+                onPress={navigateToAddLocation}
+                numberOfLines={1}
+              >
+                {location ? location : t('place')}
               </Text>
-            </Overlay>
-          </ChangeAvatar>
+            </Location>
 
-          <Information>
-            <Title>{t('information')}</Title>
+            <CloseIcon
+              source={close}
+              color="accent"
+              width={12}
+              height={12}
+              onPress={() => setLocation('')}
+            />
+          </Row>
 
-            <Row first>
-              <Input
-                color="dark"
-                placeholder={t('firstName')}
-                onChangeText={(value) => setFirstName(value)}
-                defaultValue={firstName}
-                error={firstName.length === 0}
-              />
-            </Row>
+          <Row>
+            <Input
+              color="dark"
+              placeholder={t('bio')}
+              defaultValue={bio}
+              onChangeText={handleBio}
+              style={{ paddingRight: 55 }}
+            />
+            <Counter color="accent" fontSize={15}>
+              {`${bio ? bio.length : 0}/${MAX_CHARACTERS}`}
+            </Counter>
+          </Row>
 
-            <Row>
-              <Input
-                color="dark"
-                placeholder={t('lastName')}
-                onChangeText={(value) => setLastName(value)}
-                defaultValue={lastName}
-                error={lastName.length === 0}
-              />
-            </Row>
-
-            <Row>
-              <Input
-                color="dark"
-                placeholder={t('username')}
-                onChangeText={(value) => setUsername(value)}
-                defaultValue={username}
-                error={username.length === 0}
-              />
-            </Row>
-
-            <Row>
-              <Location>
-                <Text
-                  fontSize={17}
-                  color={location ? 'dark' : 'light_grey'}
-                  onPress={navigateToAddLocation}
-                  numberOfLines={1}
-                >
-                  {location ? location : t('place')}
-                </Text>
-              </Location>
-
-              <CloseIcon
-                source={close}
-                color="accent"
-                width={12}
-                height={12}
-                onPress={() => setLocation('')}
-              />
-            </Row>
-
-            <Row>
-              <Input
-                color="dark"
-                placeholder={t('bio')}
-                defaultValue={bio}
-                onChangeText={handleBio}
-                style={{ paddingRight: 55 }}
-              />
-              <Counter color="accent" fontSize={15}>
-                {`${bio ? bio.length : 0}/${MAX_CHARACTERS}`}
-              </Counter>
-            </Row>
-
-            <Row>
-              <Input
-                color="dark"
-                placeholder={t('website')}
-                keyboardType="url"
-                textContentType="URL"
-                onChangeText={(value) => setWebsite(value)}
-                defaultValue={website}
-                autoCorrect={false}
-              />
-            </Row>
-          </Information>
-        </ScrollView>
-      </KeyboardAvoidingView>
-    </Page>
+          <Row>
+            <Input
+              color="dark"
+              placeholder={t('website')}
+              keyboardType="url"
+              textContentType="URL"
+              onChangeText={(value) => setWebsite(value)}
+              defaultValue={website}
+              autoCorrect={false}
+            />
+          </Row>
+        </Information>
+      </ScrollView>
+    </KeyboardAvoidingView>
+    // </Page>
   )
 }
 

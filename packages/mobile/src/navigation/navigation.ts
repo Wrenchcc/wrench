@@ -107,6 +107,9 @@ export async function AppNavigation(onboarding: boolean) {
                       id: SCREENS.EXPLORE,
                       name: SCREENS.EXPLORE,
                       options: {
+                        topBar: {
+                          visible: false,
+                        },
                         bottomTab: {
                           icon: explore,
                           iconColor: COLORS.TAB_ICON,
@@ -169,6 +172,20 @@ export async function AppNavigation(onboarding: boolean) {
                           icon: profile,
                           iconColor: COLORS.TAB_ICON,
                           selectedIconColor: COLORS.WHITE,
+                        },
+                        topBar: {
+                          leftButtons: [
+                            {
+                              id: 'add',
+                              icon: require('images/add.png'),
+                            },
+                          ],
+                          rightButtons: [
+                            {
+                              id: 'menu',
+                              icon: require('images/menu.png'),
+                            },
+                          ],
                         },
                       },
                     },

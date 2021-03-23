@@ -1,6 +1,6 @@
 import React from 'react'
 import { usePaginatedQuery, ProjectsDocument } from '@wrench/common'
-import { Page, FlatList, useNavigation, SCREENS } from 'navigation'
+import { FlatList, useNavigation, SCREENS } from 'navigation'
 import { ProjectCard } from 'ui'
 
 const ITEM_HEIGHT = 200
@@ -43,20 +43,18 @@ function Categories({ id, title }) {
   }
 
   return (
-    <Page headerTitle={title} headerAnimation={false}>
-      <FlatList
-        initialNumToRender={4}
-        paddingBottom={40}
-        getItemLayout={getItemLayout}
-        data={edges}
-        refetch={refetch}
-        fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={isFetching}
-        hasNextPage={hasNextPage}
-        renderItem={renderItem}
-      />
-    </Page>
+    <FlatList
+      initialNumToRender={4}
+      paddingBottom={40}
+      getItemLayout={getItemLayout}
+      data={edges}
+      refetch={refetch}
+      fetchMore={fetchMore}
+      isRefetching={isRefetching}
+      isFetching={isFetching}
+      hasNextPage={hasNextPage}
+      renderItem={renderItem}
+    />
   )
 }
 

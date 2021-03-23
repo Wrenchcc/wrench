@@ -2,7 +2,7 @@ import React from 'react'
 import { View, KeyboardAvoidingView } from 'react-native'
 import { usePaginatedQuery, ProjectDocument } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
-import { Page, FlatList, useNavigation } from 'navigation'
+import { FlatList, useNavigation } from 'navigation'
 import Post from 'components/Post'
 import { EmptyState, Title, Share, Edit } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
@@ -48,7 +48,7 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
-      <Page
+      {/* <Page
         headerTitle={project?.title}
         headerRight={
           isOwner ? (
@@ -57,39 +57,39 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
             <Share title={project?.title} url={project?.dynamicLink} text />
           )
         }
-      >
-        <FlatList
-          initialNumToRender={2}
-          spacingSeparator
-          paddingHorizontal={hasPosts ? 20 : 0}
-          contentContainerStyle={{ flexGrow: 1 }}
-          ListEmptyComponent={
-            !hasPosts && <EmptyState type={emptyState} params={{ id: project?.id }} />
-          }
-          ListHeaderComponent={
-            <>
-              {project?.title && <ProjectHeader project={project} spacingHorizontal={!hasPosts} />}
-              {post ? (
-                <>
-                  <Post post={post} withoutTitle />
-                  {hasPosts && edges && edges.length > 1 && (
-                    <View style={{ marginTop: -20, paddingBottom: 50 }}>
-                      <Title medium>{t('recent')}</Title>
-                    </View>
-                  )}
-                </>
-              ) : null}
-            </>
-          }
-          data={edges}
-          refetch={refetch}
-          fetchMore={fetchMore}
-          isRefetching={isRefetching}
-          isFetching={isFetching}
-          hasNextPage={hasNextPage}
-          renderItem={renderItem}
-        />
-      </Page>
+      > */}
+      <FlatList
+        initialNumToRender={2}
+        spacingSeparator
+        paddingHorizontal={hasPosts ? 20 : 0}
+        contentContainerStyle={{ flexGrow: 1 }}
+        ListEmptyComponent={
+          !hasPosts && <EmptyState type={emptyState} params={{ id: project?.id }} />
+        }
+        ListHeaderComponent={
+          <>
+            {project?.title && <ProjectHeader project={project} spacingHorizontal={!hasPosts} />}
+            {post ? (
+              <>
+                <Post post={post} withoutTitle />
+                {hasPosts && edges && edges.length > 1 && (
+                  <View style={{ marginTop: -20, paddingBottom: 50 }}>
+                    <Title medium>{t('recent')}</Title>
+                  </View>
+                )}
+              </>
+            ) : null}
+          </>
+        }
+        data={edges}
+        refetch={refetch}
+        fetchMore={fetchMore}
+        isRefetching={isRefetching}
+        isFetching={isFetching}
+        hasNextPage={hasNextPage}
+        renderItem={renderItem}
+      />
+      {/* </Page> */}
     </KeyboardAvoidingView>
   )
 }

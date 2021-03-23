@@ -3,25 +3,25 @@ import { BackHandler } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { usePaginatedQuery, PostsDocument } from '@wrench/common'
 import { isAndroid as _isAndroid } from 'utils/platform'
-import { Layout, FlatList, SCREENS, currentComponentName, useScrollToTop } from 'navigation'
-import Header from 'navigation/Layout/Header'
+import { FlatList, SCREENS, currentComponentName, useScrollToTop } from 'navigation'
+import Header from 'ui/Header'
 import SearchBar from 'components/SearchBar'
 import Search from 'components/Search'
 import Post from 'components/Post'
 import ProjectTypes from 'components/ProjectTypes'
 import Popular from 'features/explore/components/Popular'
 
-const renderItem = ({ item }) => <Post post={item.node} />
-
 const DEFAULT_QUERY = ''
 const STICKY_HEIGHT = 50
+
+const renderItem = ({ item }) => <Post post={item.node} />
 
 function Explore() {
   const scrollRef = useRef(null)
   const [query, setQuery] = useState(DEFAULT_QUERY)
   const [searchActive, setSearchActive] = useState(false)
 
-  useScrollToTop(scrollRef, SCREENS.EXPLORE, !searchActive)
+  // useScrollToTop(scrollRef, SCREENS.EXPLORE, !searchActive)
 
   const {
     data: { edges },
@@ -82,24 +82,22 @@ function Explore() {
   }, [searchActive])
 
   return (
-    <Layout
-      extraContentInset={STICKY_HEIGHT}
-      headerComponent={
-        <Header
-          headerLeft={
-            <SearchBar
-              onChangeQuery={handleQueryChange}
-              query={query}
-              onSearchFocus={handleSearchFocus}
-              onSearchCancel={handleSearchCancel}
-              onSearchClear={handleSearchClear}
-              searchActive={searchActive}
-            />
-          }
-          stickyComponent={<ProjectTypes visible={!searchActive} />}
-        />
-      }
-    >
+    <>
+      <Header
+        headerCenter={
+          <SearchBar
+            onChangeQuery={handleQueryChange}
+            query={query}
+            onSearchFocus={handleSearchFocus}
+            onSearchCancel={handleSearchCancel}
+            onSearchClear={handleSearchClear}
+            searchActive={searchActive}
+          />
+        }
+      />
+
+      <ProjectTypes visible={!searchActive} />
+
       {searchActive && <Search query={query} />}
 
       <FlatList
@@ -116,7 +114,7 @@ function Explore() {
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />
-    </Layout>
+    </>
   )
 }
 

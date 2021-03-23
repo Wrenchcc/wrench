@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useProjectSuggestionsQuery } from '@wrench/common'
-import { Page, ScrollView, useNavigation, SCREENS } from 'navigation'
+import { ScrollView, useNavigation, SCREENS } from 'navigation'
 import { ProjectSuggestion, Loader, Text } from 'ui'
 import { Headline, Description } from './styles'
 
@@ -16,41 +16,41 @@ function Suggestions() {
   }
 
   return (
-    <Page
-      headerRight={
-        <Text
-          color="inverse"
-          medium
-          opacity={isComplete ? 1 : 0.5}
-          disabled={!isComplete}
-          onPress={handleSubmit}
-        >
-          {t('next')}
-        </Text>
-      }
-    >
-      <ScrollView>
-        <Headline medium numberOfLines={0}>
-          {t('headline')}
-        </Headline>
+    // <Page
+    //   headerRight={
+    //     <Text
+    //       color="inverse"
+    //       medium
+    //       opacity={isComplete ? 1 : 0.5}
+    //       disabled={!isComplete}
+    //       onPress={handleSubmit}
+    //     >
+    //       {t('next')}
+    //     </Text>
+    //   }
+    // >
+    <ScrollView>
+      <Headline medium numberOfLines={0}>
+        {t('headline')}
+      </Headline>
 
-        <Description color="neutral" fontSize={19}>
-          {t('description')}
-        </Description>
+      <Description color="neutral" fontSize={19}>
+        {t('description')}
+      </Description>
 
-        {loading && <Loader />}
+      {loading && <Loader />}
 
-        {data?.projects.map(({ type, edges }) => (
-          <ProjectSuggestion
-            disabled
-            key={type.id}
-            title={type.title}
-            data={edges}
-            onFollow={() => setIsComplete(true)}
-          />
-        ))}
-      </ScrollView>
-    </Page>
+      {data?.projects.map(({ type, edges }) => (
+        <ProjectSuggestion
+          disabled
+          key={type.id}
+          title={type.title}
+          data={edges}
+          onFollow={() => setIsComplete(true)}
+        />
+      ))}
+    </ScrollView>
+    // </Page>
   )
 }
 

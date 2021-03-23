@@ -3,8 +3,7 @@ import { View, BackHandler } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import qs from 'url'
 import { useNavigation } from 'navigation'
-import Header from 'navigation/Page/Header'
-import { ProgressBar, Icon, Touchable, Share } from 'ui'
+import { Header, ProgressBar, Icon, Touchable, Share } from 'ui'
 import { arrowLeftSmall, arrowRightSmall, refresh, close } from 'images'
 import { Base, BaseWebView, Footer, Inner } from './styles'
 
@@ -86,12 +85,10 @@ function WebView({ url: initialUrl }) {
   return (
     <Base>
       <Header
-        headerAnimation={false}
         headerTitle={title}
         headerSubTitle={qs.parse(url).host}
         headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
         headerRight={<Icon onPress={handleRefresh} source={refresh} />}
-        inline
       />
 
       <ProgressBar

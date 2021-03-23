@@ -5,7 +5,7 @@ import { useReactiveVar } from '@apollo/client'
 import { showPosting, NavigationBanner } from 'navigation/banner'
 import { usePaginatedQuery, FeedDocument } from '@wrench/common'
 import { store } from 'gql'
-import { Layout, FlatList, useScrollToTop, SCREENS } from 'navigation'
+import { FlatList, useScrollToTop, SCREENS } from 'navigation'
 import Post from 'components/Post'
 import { ShowLatest } from 'ui'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
@@ -68,24 +68,24 @@ function Feed() {
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
-      <Layout headerTitleKey="home" stickyComponent={StickyComponent}>
-        <FlatList
-          ref={scrollRef}
-          initialNumToRender={2}
-          maintainVisibleContentPosition={{
-            minIndexForVisible: 0,
-          }}
-          spacingSeparator
-          data={edges}
-          ListEmptyComponent={<ProjectSuggestions />}
-          refetch={refetch}
-          fetchMore={fetchMore}
-          isRefetching={isRefetching}
-          isFetching={isFetching}
-          hasNextPage={hasNextPage}
-          renderItem={renderItem}
-        />
-      </Layout>
+      {StickyComponent}
+
+      <FlatList
+        ref={scrollRef}
+        initialNumToRender={2}
+        maintainVisibleContentPosition={{
+          minIndexForVisible: 0,
+        }}
+        spacingSeparator
+        data={edges}
+        ListEmptyComponent={<ProjectSuggestions />}
+        refetch={refetch}
+        fetchMore={fetchMore}
+        isRefetching={isRefetching}
+        isFetching={isFetching}
+        hasNextPage={hasNextPage}
+        renderItem={renderItem}
+      />
     </KeyboardAvoidingView>
   )
 }

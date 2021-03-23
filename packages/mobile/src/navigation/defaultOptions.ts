@@ -29,8 +29,14 @@ export default {
     interceptTouchOutside: false,
   },
   topBar: {
-    drawBehind: true,
-    visible: false,
+    noBorder: true,
+    elevation: 0,
+    backButton: {
+      icon: require('images/arrowLeft.png'),
+      color: PlatformColor.inverse,
+    },
+    leftButtonColor: PlatformColor.inverse,
+    rightButtonColor: PlatformColor.inverse,
   },
   navigationBar: {
     backgroundColor: PlatformColor.black,
