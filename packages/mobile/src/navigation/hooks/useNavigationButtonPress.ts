@@ -7,7 +7,7 @@ export default function useNavigationButtonPress(
   buttonId?: string
 ) {
   useLayoutEffect(() => {
-    const subscription = Navigation.events().registerNavigationButtonPressedListener(event => {
+    const subscription = Navigation.events().registerNavigationButtonPressedListener((event) => {
       const equalComponentId = event.componentId === componentId
       const equalButtonId = event.buttonId === buttonId
 

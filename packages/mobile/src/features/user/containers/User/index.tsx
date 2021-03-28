@@ -1,14 +1,16 @@
 import React from 'react'
 import { KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import Share from 'react-native-share'
 import { usePaginatedQuery, UserDocument } from '@wrench/common'
-import { FlatList } from 'navigation'
+import { FlatList, useNavigationButtonPress } from 'navigation'
 import Post from 'components/Post'
-import { Banner, Share } from 'ui'
+import { Banner } from 'ui'
 import FollowingProjects from 'features/user/components/FollowingProjects'
 import Header from 'features/user/components/Header'
 import UserProjects from 'features/user/components/UserProjects'
 import { isIphone } from 'utils/platform'
+import { share } from 'images'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
@@ -31,6 +33,19 @@ function User({ user: initialUserData }) {
     variables: {
       username: initialUserData.username,
     },
+  })
+
+  useNavigationButtonPress(({ buttonId }) => {
+    if (buttonId === 'share') {
+      // track(events.PROJECT_SHARE_OPEN)
+
+      Share.open({
+        title: user.fullName,
+        url: user.dynamicLink,
+      }).catch(() => {
+        // track(events.PROJECT_SHARE_CLOSED)
+      })
+    }
   })
 
   const hasPosts = edges && edges.length > 0
@@ -57,12 +72,6 @@ function User({ user: initialUserData }) {
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
-      {/* <Page
-        headerTitle={user.fullName}
-        headerRight={
-          user.dynamicLink && <Share title={user.fullName} url={user.dynamicLink} text />
-        }
-      > */}
       <FlatList
         initialNumToRender={1}
         spacingSeparator
@@ -80,6 +89,20 @@ function User({ user: initialUserData }) {
       />
     </KeyboardAvoidingView>
   )
+}
+
+User.options = {
+  topBar: {
+    // title: {
+    //   text: 'Pontus Abrahamsson',
+    // },
+    rightButtons: [
+      {
+        id: 'share',
+        icon: share,
+      },
+    ],
+  },
 }
 
 export default User

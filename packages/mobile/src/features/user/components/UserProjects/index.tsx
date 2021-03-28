@@ -41,7 +41,7 @@ function UserProjects({ projects, spacingHorizontal }) {
   return (
     <MotiView
       from={{ height: 0, opacity: 0 }}
-      animate={{ height: 250, opacity: 1 }}
+      animate={{ height: 265, opacity: 1 }}
       delay={300}
       transition={{
         type: 'timing',

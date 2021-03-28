@@ -7,198 +7,383 @@ export default function registerScreens(client) {
 
   Navigation.setLazyComponentRegistrator((componentName) => {
     switch (componentName) {
-      case SCREENS.ME:
-        Navigation.registerComponent(SCREENS.ME, () =>
-          HOC(require('features/user/containers/Me').default)
-        )
+      case SCREENS.ME: {
+        const Screen = require('features/user/containers/Me').default
 
-      case SCREENS.PROJECT:
-        Navigation.registerComponent(SCREENS.PROJECT, () =>
-          HOC(require('features/project/containers/Project').default)
+        Navigation.registerComponent(
+          SCREENS.ME,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.EXPLORE:
-        Navigation.registerComponent(SCREENS.EXPLORE, () =>
-          HOC(require('features/explore/containers/Explore').default)
-        )
+      case SCREENS.PROJECT: {
+        const Screen = require('features/project/containers/Project').default
 
-      case SCREENS.EXPLORE:
-        Navigation.registerComponent(SCREENS.FEED, () =>
-          HOC(require('features/feed/containers/Feed').default)
+        Navigation.registerComponent(
+          SCREENS.PROJECT,
+          () => HOC(Screen),
+          () => Screen
         )
-      case SCREENS.USER:
-        Navigation.registerComponent(SCREENS.USER, () =>
-          HOC(require('features/user/containers/User').default)
-        )
+      }
 
-      case SCREENS.FOLLOWERS:
-        Navigation.registerComponent(SCREENS.FOLLOWERS, () =>
-          HOC(require('features/project/containers/Followers').default)
-        )
+      case SCREENS.EXPLORE: {
+        const Screen = require('features/explore/containers/Explore').default
 
-      case SCREENS.POST:
-        Navigation.registerComponent(SCREENS.POST, () =>
-          HOC(require('features/post/containers/Post').default)
+        Navigation.registerComponent(
+          SCREENS.EXPLORE,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.COMMENTS:
-        Navigation.registerComponent(SCREENS.COMMENTS, () =>
-          HOC(require('features/project/containers/Comments').default)
+      case SCREENS.FEED: {
+        const Screen = require('features/feed/containers/Feed').default
+
+        Navigation.registerComponent(
+          SCREENS.FEED,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.SIGN_IN:
-        Navigation.registerComponent(SCREENS.SIGN_IN, () =>
-          HOC(require('features/signIn/containers/SignIn').default)
+      case SCREENS.USER: {
+        const Screen = require('features/user/containers/User').default
+
+        Navigation.registerComponent(
+          SCREENS.USER,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.SETTINGS:
-        Navigation.registerComponent(SCREENS.SETTINGS, () =>
-          HOC(require('features/user/containers/Settings').default)
+      case SCREENS.FOLLOWERS: {
+        const Screen = require('features/project/containers/Followers').default
+
+        Navigation.registerComponent(
+          SCREENS.FOLLOWERS,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.EDIT_PROFILE:
-        Navigation.registerComponent(SCREENS.EDIT_PROFILE, () =>
-          HOC(require('features/user/containers/EditProfile').default)
+      case SCREENS.POST: {
+        const Screen = require('features/post/containers/Post').default
+
+        Navigation.registerComponent(
+          SCREENS.POST,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.ADD_LOCATION:
-        Navigation.registerComponent(SCREENS.ADD_LOCATION, () =>
-          HOC(require('features/user/containers/AddLocation').default)
+      case SCREENS.COMMENTS: {
+        const Screen = require('features/project/containers/Comments').default
+
+        Navigation.registerComponent(
+          SCREENS.COMMENTS,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.OTHER_SIGN_IN_OPTIONS:
-        Navigation.registerComponent(SCREENS.OTHER_SIGN_IN_OPTIONS, () =>
-          HOC(require('features/signIn/containers/Other').default)
+      case SCREENS.SIGN_IN: {
+        const Screen = require('features/signIn/containers/SignIn').default
+
+        Navigation.registerComponent(
+          SCREENS.SIGN_IN,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.PROJECT_SUGGESTIONS:
-        Navigation.registerComponent(SCREENS.PROJECT_SUGGESTIONS, () =>
-          HOC(require('features/signIn/containers/ProjectSuggestions').default)
+      case SCREENS.SETTINGS: {
+        const Screen = require('features/user/containers/Settings').default
+
+        Navigation.registerComponent(
+          SCREENS.SETTINGS,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.PUSH_NOTIFICATIONS:
-        Navigation.registerComponent(SCREENS.PUSH_NOTIFICATIONS, () =>
-          HOC(require('features/signIn/containers/PushNotifications').default)
+      case SCREENS.EDIT_PROFILE: {
+        const Screen = require('features/user/containers/EditProfile').default
+
+        Navigation.registerComponent(
+          SCREENS.EDIT_PROFILE,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.HASHTAG:
-        Navigation.registerComponent(SCREENS.HASHTAG, () =>
-          HOC(require('features/explore/containers/Hashtag').default)
+      case SCREENS.ADD_LOCATION: {
+        const Screen = require('features/user/containers/AddLocation').default
+
+        Navigation.registerComponent(
+          SCREENS.ADD_LOCATION,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.LIKES:
-        Navigation.registerComponent(SCREENS.LIKES, () =>
-          HOC(require('features/project/containers/Likes').default)
+      case SCREENS.OTHER_SIGN_IN_OPTIONS: {
+        const Screen = require('features/signIn/containers/Other').default
+
+        Navigation.registerComponent(
+          SCREENS.OTHER_SIGN_IN_OPTIONS,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.HALFPANEL:
+      case SCREENS.PROJECT_SUGGESTIONS: {
+        const Screen = require('features/signIn/containers/ProjectSuggestions').default
+
+        Navigation.registerComponent(
+          SCREENS.PROJECT_SUGGESTIONS,
+          () => HOC(Screen),
+          () => Screen
+        )
+      }
+
+      case SCREENS.PUSH_NOTIFICATIONS: {
+        const Screen = require('features/signIn/containers/PushNotifications').default
+
+        Navigation.registerComponent(
+          SCREENS.PUSH_NOTIFICATIONS,
+          () => HOC(Screen),
+          () => Screen
+        )
+      }
+
+      case SCREENS.HASHTAG: {
+        const Screen = require('features/explore/containers/Hashtag').default
+
+        Navigation.registerComponent(
+          SCREENS.HASHTAG,
+          () => HOC(Screen),
+          () => Screen
+        )
+      }
+
+      case SCREENS.LIKES: {
+        const Screen = require('features/explore/containers/Hashtag').default
+
+        Navigation.registerComponent(
+          SCREENS.LIKES,
+          () => HOC(Screen),
+          () => Screen
+        )
+      }
+
+      case SCREENS.HALFPANEL: {
         Navigation.registerComponent(SCREENS.HALFPANEL, () =>
           HOC(require('navigation/Halfpanel').default)
         )
+      }
 
-      case SCREENS.BOOKMARKS:
-        Navigation.registerComponent(SCREENS.BOOKMARKS, () =>
-          HOC(require('features/user/containers/Bookmarks').default)
+      case SCREENS.BOOKMARKS: {
+        const Screen = require('features/user/containers/Bookmarks').default
+
+        Navigation.registerComponent(
+          SCREENS.BOOKMARKS,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.INITIALIZING:
+      case SCREENS.INITIALIZING: {
         Navigation.registerComponent(
           SCREENS.INITIALIZING,
           () => require('navigation/Initializing').default
         )
+      }
 
-      case SCREENS.INSPIRATION:
-        Navigation.registerComponent(SCREENS.INSPIRATION, () =>
-          HOC(require('features/explore/containers/Inspiration').default)
+      case SCREENS.INSPIRATION: {
+        const Screen = require('features/explore/containers/Inspiration').default
+
+        Navigation.registerComponent(
+          SCREENS.INSPIRATION,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.EMPTY:
+      case SCREENS.EMPTY: {
         Navigation.registerComponent(SCREENS.EMPTY, () => () => null)
+      }
 
-      case SCREENS.MENTION:
-        Navigation.registerComponent(SCREENS.MENTION, () =>
-          HOC(require('components/Mention').default)
-        )
+      case SCREENS.MENTION: {
+        const Screen = require('components/Mention').default
 
-      case SCREENS.WEBVIEW:
-        Navigation.registerComponent(SCREENS.WEBVIEW, () =>
-          HOC(require('components/WebView').default)
+        Navigation.registerComponent(
+          SCREENS.MENTION,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.EDIT_POST:
-        Navigation.registerComponent(SCREENS.EDIT_POST, () =>
-          HOC(require('components/EditPost').default)
-        )
+      case SCREENS.WEBVIEW: {
+        const Screen = require('components/WebView').default
 
-      case SCREENS.CATEGORIES:
-        Navigation.registerComponent(SCREENS.CATEGORIES, () =>
-          HOC(require('features/explore/containers/Categories').default)
+        Navigation.registerComponent(
+          SCREENS.WEBVIEW,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.ONBOARDING:
-        Navigation.registerComponent(SCREENS.ONBOARDING, () =>
-          HOC(require('features/signIn/containers/Onboarding').default)
-        )
+      case SCREENS.EDIT_POST: {
+        const Screen = require('components/EditPost').default
 
-      case SCREENS.SIGN_IN:
-        Navigation.registerComponent(SCREENS.SIGN_IN, () =>
-          HOC(require('features/signIn/containers/SignIn').default)
+        Navigation.registerComponent(
+          SCREENS.EDIT_POST,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.NOTIFICATIONS:
-        Navigation.registerComponent(SCREENS.NOTIFICATIONS, () =>
-          HOC(require('features/notifications/containers/Notifications').default)
-        )
+      case SCREENS.CATEGORIES: {
+        const Screen = require('features/explore/containers/Categories').default
 
-      case SCREENS.ADD_MEDIA:
-        Navigation.registerComponent(SCREENS.ADD_MEDIA, () =>
-          HOC(require('features/project/containers/AddMedia').default)
+        Navigation.registerComponent(
+          SCREENS.CATEGORIES,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.ADD_PROJECT:
-        Navigation.registerComponent(SCREENS.ADD_PROJECT, () =>
-          HOC(require('features/project/containers/AddProject').default)
-        )
+      case SCREENS.ONBOARDING: {
+        const Screen = require('features/signIn/containers/Onboarding').default
 
-      case SCREENS.ADD_POST:
-        Navigation.registerComponent(SCREENS.ADD_POST, () =>
-          HOC(require('features/project/containers/AddPost').default)
+        Navigation.registerComponent(
+          SCREENS.ONBOARDING,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.ADD_POST_TO_COLLECTION:
-        Navigation.registerComponent(SCREENS.ADD_POST_TO_COLLECTION, () =>
-          HOC(require('features/project/containers/AddPostToCollection').default)
-        )
+      case SCREENS.SIGN_IN: {
+        const Screen = require('features/signIn/containers/SignIn').default
 
-      case SCREENS.COLLECTIONS:
-        Navigation.registerComponent(SCREENS.COLLECTIONS, () =>
-          HOC(require('features/project/containers/Collections').default)
+        Navigation.registerComponent(
+          SCREENS.SIGN_IN,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.EDIT_COLLECTION:
-        Navigation.registerComponent(SCREENS.EDIT_COLLECTION, () =>
-          HOC(require('features/project/containers/EditCollection').default)
-        )
+      case SCREENS.NOTIFICATIONS: {
+        const Screen = require('features/notifications/containers/Notifications').default
 
-      case SCREENS.EDIT_PROJECT:
-        Navigation.registerComponent(SCREENS.EDIT_PROJECT, () =>
-          HOC(require('features/project/containers/EditProject').default)
+        Navigation.registerComponent(
+          SCREENS.NOTIFICATIONS,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.EDIT_MODEL:
-        Navigation.registerComponent(SCREENS.EDIT_MODEL, () =>
-          HOC(require('features/project/containers/EditModel').default)
-        )
+      case SCREENS.ADD_MEDIA: {
+        const Screen = require('features/project/containers/AddMedia').default
 
-      case SCREENS.ADD_PROJECT_MODEL:
-        Navigation.registerComponent(SCREENS.ADD_PROJECT_MODEL, () =>
-          HOC(require('features/project/containers/AddProjectModel').default)
+        Navigation.registerComponent(
+          SCREENS.ADD_MEDIA,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
 
-      case SCREENS.ADD_PROJECT_TYPE:
-        Navigation.registerComponent(SCREENS.ADD_PROJECT_TYPE, () =>
-          HOC(require('features/project/containers/AddProjectType').default)
+      case SCREENS.ADD_PROJECT: {
+        const Screen = require('features/project/containers/AddProject').default
+
+        Navigation.registerComponent(
+          SCREENS.ADD_PROJECT,
+          () => HOC(Screen),
+          () => Screen
         )
+      }
+
+      case SCREENS.ADD_POST: {
+        const Screen = require('features/project/containers/AddPost').default
+
+        Navigation.registerComponent(
+          SCREENS.ADD_POST,
+          () => HOC(Screen),
+          () => Screen
+        )
+      }
+
+      case SCREENS.ADD_POST_TO_COLLECTION: {
+        const Screen = require('features/project/containers/AddPostToCollection').default
+
+        Navigation.registerComponent(
+          SCREENS.ADD_POST_TO_COLLECTION,
+          () => HOC(Screen),
+          () => Screen
+        )
+      }
+
+      case SCREENS.COLLECTIONS: {
+        const Screen = require('features/project/containers/Collections').default
+
+        Navigation.registerComponent(
+          SCREENS.COLLECTIONS,
+          () => HOC(Screen),
+          () => Screen
+        )
+      }
+
+      case SCREENS.EDIT_COLLECTION: {
+        const Screen = require('features/project/containers/EditCollection').default
+
+        Navigation.registerComponent(
+          SCREENS.EDIT_COLLECTION,
+          () => HOC(Screen),
+          () => Screen
+        )
+      }
+
+      case SCREENS.EDIT_PROJECT: {
+        const Screen = require('features/project/containers/EditProject').default
+
+        Navigation.registerComponent(
+          SCREENS.EDIT_PROJECT,
+          () => HOC(Screen),
+          () => Screen
+        )
+      }
+
+      case SCREENS.EDIT_MODEL: {
+        const Screen = require('features/project/containers/EditModel').default
+
+        Navigation.registerComponent(
+          SCREENS.EDIT_MODEL,
+          () => HOC(Screen),
+          () => Screen
+        )
+      }
+
+      case SCREENS.ADD_PROJECT_MODEL: {
+        const Screen = require('features/project/containers/AddProjectModel').default
+
+        Navigation.registerComponent(
+          SCREENS.ADD_PROJECT_MODEL,
+          () => HOC(Screen),
+          () => Screen
+        )
+      }
+
+      case SCREENS.ADD_PROJECT_TYPE: {
+        const Screen = require('features/project/containers/AddProjectType').default
+
+        Navigation.registerComponent(
+          SCREENS.ADD_PROJECT_TYPE,
+          () => HOC(Screen),
+          () => Screen
+        )
+      }
+
       default:
         return
     }

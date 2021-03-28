@@ -10,6 +10,7 @@ import ms from 'ms'
 import { FlatList, SCREENS, useNavigation, useScrollToTop } from 'navigation'
 import { Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
+import { FONTS } from 'ui/constants'
 
 function Notifications({ componentId }) {
   const scrollRef = useRef(null)
@@ -109,6 +110,19 @@ function Notifications({ componentId }) {
       renderItem={renderItem}
     />
   )
+}
+
+Notifications.options = {
+  topBar: {
+    leftButtons: [
+      {
+        id: 'notifications',
+        text: 'Notifications',
+        fontSize: 28,
+        fontFamily: FONTS.MEDIUM,
+      },
+    ],
+  },
 }
 
 export default Notifications

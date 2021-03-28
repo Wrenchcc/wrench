@@ -1,7 +1,13 @@
 import React, { useRef, useCallback } from 'react'
 import { KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { FlatList, SCREENS, useScrollToTop, useNavigation } from 'navigation'
+import {
+  FlatList,
+  SCREENS,
+  useScrollToTop,
+  useNavigation,
+  useNavigationButtonPress,
+} from 'navigation'
 import { usePaginatedQuery, CurrentUserProfileDocument } from '@wrench/common'
 import Post from 'components/Post'
 import { EmptyState } from 'ui'
@@ -9,7 +15,6 @@ import Header from 'features/user/components/Header'
 import { TYPES } from 'ui/EmptyState/constants'
 import UserProjects from 'features/user/components/UserProjects'
 import { isIphone } from 'utils/platform'
-// import { menu, add } from 'images'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
@@ -56,45 +61,37 @@ function Me() {
     })
   }
 
+  useNavigationButtonPress(({ buttonId }) => {
+    if (buttonId === 'menu') {
+      showHalfpanel({
+        height: 280,
+        data: [
+          {
+            title: t('edit'),
+            onPress: navigateEditProfile,
+          },
+          {
+            title: t('settings'),
+            onPress: navigateSettings,
+          },
+          {
+            title: t('bookmarks'),
+            onPress: navigateBookmarks,
+          },
+        ],
+      })
+    }
+
+    if (buttonId === 'add') {
+      showHalfpanel({
+        height: 240,
+        data: addOptions,
+      })
+    }
+  })
+
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
-      {/* <Layout
-        headerLeft={
-          <Icon
-            source={add}
-            onPress={() =>
-              showHalfpanel({
-                height: 240,
-                data: addOptions,
-              })
-            }
-          />
-        }
-        headerRight={
-          <Icon
-            source={menu}
-            onPress={() =>
-              showHalfpanel({
-                height: 280,
-                data: [
-                  {
-                    title: t('edit'),
-                    onPress: navigateEditProfile,
-                  },
-                  {
-                    title: t('settings'),
-                    onPress: navigateSettings,
-                  },
-                  {
-                    title: t('bookmarks'),
-                    onPress: navigateBookmarks,
-                  },
-                ],
-              })
-            }
-          />
-        }
-      > */}
       <FlatList
         ref={scrollRef}
         initialNumToRender={1}
@@ -127,7 +124,6 @@ function Me() {
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />
-      {/* </Layout> */}
     </KeyboardAvoidingView>
   )
 }

@@ -10,6 +10,7 @@ import Post from 'components/Post'
 import { ShowLatest } from 'ui'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import { isIphone } from 'utils/platform'
+import { FONTS } from 'ui/constants'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
@@ -88,6 +89,19 @@ function Feed() {
       />
     </KeyboardAvoidingView>
   )
+}
+
+Feed.options = {
+  topBar: {
+    leftButtons: [
+      {
+        id: 'home',
+        text: 'Home',
+        fontSize: 28,
+        fontFamily: FONTS.MEDIUM,
+      },
+    ],
+  },
 }
 
 export default Feed
