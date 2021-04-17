@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useCallback, forwardRef } from 'react'
 import { Keyboard, TextInput, UIManager, findNodeHandle } from 'react-native'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
-import { CONTENT_INSET } from '../constants'
 import { keyExtractor } from '../utils'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
@@ -97,7 +96,7 @@ export default function createNavigationAwareScrollable(Component) {
         refreshing={isRefetching}
         initialNumToRender={initialNumToRender}
         ListFooterComponent={hasNextPage && renderLoader(loaderInset)}
-        ListEmptyComponent={initialFetch ? renderLoader(CONTENT_INSET) : ListEmptyComponent}
+        ListEmptyComponent={initialFetch ? renderLoader(0) : ListEmptyComponent}
         contentInsetAdjustmentBehavior="never"
         automaticallyAdjustContentInsets={false}
         keyboardShouldPersistTaps="always"
