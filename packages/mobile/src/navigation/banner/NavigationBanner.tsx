@@ -7,6 +7,7 @@ type BannerProps = {
   component: any
   options: BannerOptions
 }
+
 type BannerOptions = {
   children?: any
   dismissAfter?: number
