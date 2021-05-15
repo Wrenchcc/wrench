@@ -4,27 +4,22 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
     return cooked;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DeleteCurrentUserDocument = exports.useDeleteCommentMutation = exports.DeleteCommentDocument = exports.useDeleteCollectionMutation = exports.DeleteCollectionDocument = exports.useDeleteBlogPostMutation = exports.DeleteBlogPostDocument = exports.useCollectPostsMutation = exports.CollectPostsDocument = exports.useBookmarkPostMutation = exports.BookmarkPostDocument = exports.useBanUserMutation = exports.BanUserDocument = exports.useAuthenticateGoogleMutation = exports.AuthenticateGoogleDocument = exports.useAuthenticateFacebookMutation = exports.AuthenticateFacebookDocument = exports.useAuthenticateAppleMutation = exports.AuthenticateAppleDocument = exports.useAddProjectMutation = exports.AddProjectDocument = exports.useAddPostMutation = exports.AddPostDocument = exports.useAddCommentMutation = exports.AddCommentDocument = exports.useAddCollectionMutation = exports.AddCollectionDocument = exports.useAddBlogPostMutation = exports.AddBlogPostDocument = exports.UserSettingsFragmentDoc = exports.UserProjectsFragmentDoc = exports.PostFragmentDoc = exports.NotificationFragmentDoc = exports.ProjectFragmentDoc = exports.CommentAndRepliesFragmentDoc = exports.CommentFragmentDoc = exports.CollectionFragmentDoc = exports.BlogPostFragmentDoc = exports.UserFragmentDoc = exports.CacheControlScope = exports.PlatformType = exports.UploadType = exports.ReportType = exports.SearchType = exports.ProjectSortType = exports.NotificationTypes = exports.GrowthType = exports.SortType = exports.FileType = exports.UserRole = void 0;
+exports.DeleteCurrentUserDocument = exports.useDeleteCommentMutation = exports.DeleteCommentDocument = exports.useDeleteCollectionMutation = exports.DeleteCollectionDocument = exports.useDeleteBlogPostMutation = exports.DeleteBlogPostDocument = exports.useCollectPostsMutation = exports.CollectPostsDocument = exports.useBookmarkPostMutation = exports.BookmarkPostDocument = exports.useBanUserMutation = exports.BanUserDocument = exports.useAuthenticateGoogleMutation = exports.AuthenticateGoogleDocument = exports.useAuthenticateFacebookMutation = exports.AuthenticateFacebookDocument = exports.useAuthenticateAppleMutation = exports.AuthenticateAppleDocument = exports.useAddProjectMutation = exports.AddProjectDocument = exports.useAddPostMutation = exports.AddPostDocument = exports.useAddCommentMutation = exports.AddCommentDocument = exports.useAddCollectionMutation = exports.AddCollectionDocument = exports.useAddBlogPostMutation = exports.AddBlogPostDocument = exports.UserSettingsFragmentDoc = exports.UserProjectsFragmentDoc = exports.PostFragmentDoc = exports.NotificationFragmentDoc = exports.ProjectFragmentDoc = exports.CommentAndRepliesFragmentDoc = exports.CommentFragmentDoc = exports.CollectionFragmentDoc = exports.BlogPostFragmentDoc = exports.UserFragmentDoc = exports.UserRole = exports.UploadType = exports.SortType = exports.SearchType = exports.ReportType = exports.ProjectSortType = exports.PlatformType = exports.NotificationTypes = exports.GrowthType = exports.FileType = exports.CacheControlScope = void 0;
 exports.useBookmarksLazyQuery = exports.useBookmarksQuery = exports.BookmarksDocument = exports.useBlogPostsLazyQuery = exports.useBlogPostsQuery = exports.BlogPostsDocument = exports.useBlogPostLazyQuery = exports.useBlogPostQuery = exports.BlogPostDocument = exports.useTranslatePostMutation = exports.TranslatePostDocument = exports.useTranslateCommentMutation = exports.TranslateCommentDocument = exports.useToggleNotificationSettingsMutation = exports.ToggleNotificationSettingsDocument = exports.useSendPromoMutation = exports.SendPromoDocument = exports.useRegisterDeviceTokenMutation = exports.RegisterDeviceTokenDocument = exports.useRefreshTokenMutation = exports.RefreshTokenDocument = exports.usePreSignUrlsMutation = exports.PreSignUrlsDocument = exports.usePreSignUrlMutation = exports.PreSignUrlDocument = exports.useMarkNotificationSeenMutation = exports.MarkNotificationSeenDocument = exports.useMarkAllNotificationsSeenMutation = exports.MarkAllNotificationsSeenDocument = exports.useLikePostMutation = exports.LikePostDocument = exports.useLikeCommentMutation = exports.LikeCommentDocument = exports.useFollowProjectMutation = exports.FollowProjectDocument = exports.useEditUserMutation = exports.EditUserDocument = exports.useEditProjectMutation = exports.EditProjectDocument = exports.useEditPostMutation = exports.EditPostDocument = exports.useEditCollectionMutation = exports.EditCollectionDocument = exports.useDeleteProjectMutation = exports.DeleteProjectDocument = exports.useDeletePostMutation = exports.DeletePostDocument = exports.useDeleteNotificationMutation = exports.DeleteNotificationDocument = exports.useDeleteCurrentUserMutation = void 0;
 exports.usePostQuery = exports.PostDocument = exports.useNotificationsLazyQuery = exports.useNotificationsQuery = exports.NotificationsDocument = exports.useMetaLazyQuery = exports.useMetaQuery = exports.MetaDocument = exports.useLikesLazyQuery = exports.useLikesQuery = exports.LikesDocument = exports.useHashtagLazyQuery = exports.useHashtagQuery = exports.HashtagDocument = exports.useGrowthLazyQuery = exports.useGrowthQuery = exports.GrowthDocument = exports.useFollowersLazyQuery = exports.useFollowersQuery = exports.FollowersDocument = exports.useFilesLazyQuery = exports.useFilesQuery = exports.FilesDocument = exports.useFeedLazyQuery = exports.useFeedQuery = exports.FeedDocument = exports.useCurrentUserSettingsLazyQuery = exports.useCurrentUserSettingsQuery = exports.CurrentUserSettingsDocument = exports.useCurrentUserProjectsLazyQuery = exports.useCurrentUserProjectsQuery = exports.CurrentUserProjectsDocument = exports.useCurrentUserProfileLazyQuery = exports.useCurrentUserProfileQuery = exports.CurrentUserProfileDocument = exports.useCurrentUserFollowingProjectsLazyQuery = exports.useCurrentUserFollowingProjectsQuery = exports.CurrentUserFollowingProjectsDocument = exports.useCurrentUserLazyQuery = exports.useCurrentUserQuery = exports.CurrentUserDocument = exports.useCommentsLazyQuery = exports.useCommentsQuery = exports.CommentsDocument = exports.useCommentLazyQuery = exports.useCommentQuery = exports.CommentDocument = exports.useCollectionsLazyQuery = exports.useCollectionsQuery = exports.CollectionsDocument = void 0;
 exports.useUserFollowingProjectsLazyQuery = exports.useUserFollowingProjectsQuery = exports.UserFollowingProjectsDocument = exports.useUserLazyQuery = exports.useUserQuery = exports.UserDocument = exports.useUnreadNotificationsLazyQuery = exports.useUnreadNotificationsQuery = exports.UnreadNotificationsDocument = exports.useSimilarProjectsLazyQuery = exports.useSimilarProjectsQuery = exports.SimilarProjectsDocument = exports.useSearchUsersLazyQuery = exports.useSearchUsersQuery = exports.SearchUsersDocument = exports.useSearchProjectsLazyQuery = exports.useSearchProjectsQuery = exports.SearchProjectsDocument = exports.useSearchModelsLazyQuery = exports.useSearchModelsQuery = exports.SearchModelsDocument = exports.useSearchHashtagsLazyQuery = exports.useSearchHashtagsQuery = exports.SearchHashtagsDocument = exports.useRepliesLazyQuery = exports.useRepliesQuery = exports.RepliesDocument = exports.useRecentCommentsLazyQuery = exports.useRecentCommentsQuery = exports.RecentCommentsDocument = exports.useProjectsLazyQuery = exports.useProjectsQuery = exports.ProjectsDocument = exports.useProjectTypesLazyQuery = exports.useProjectTypesQuery = exports.ProjectTypesDocument = exports.useProjectSuggestionsLazyQuery = exports.useProjectSuggestionsQuery = exports.ProjectSuggestionsDocument = exports.useProjectCollectionsLazyQuery = exports.useProjectCollectionsQuery = exports.ProjectCollectionsDocument = exports.useProjectLazyQuery = exports.useProjectQuery = exports.ProjectDocument = exports.usePostsLazyQuery = exports.usePostsQuery = exports.PostsDocument = exports.usePostLazyQuery = void 0;
 var client_1 = require("@apollo/client");
 var Apollo = require("@apollo/client");
-var UserRole;
-(function (UserRole) {
-    UserRole["User"] = "USER";
-    UserRole["Admin"] = "ADMIN";
-})(UserRole = exports.UserRole || (exports.UserRole = {}));
+var CacheControlScope;
+(function (CacheControlScope) {
+    CacheControlScope["Public"] = "PUBLIC";
+    CacheControlScope["Private"] = "PRIVATE";
+})(CacheControlScope = exports.CacheControlScope || (exports.CacheControlScope = {}));
 var FileType;
 (function (FileType) {
     FileType["Image"] = "IMAGE";
     FileType["Video"] = "VIDEO";
 })(FileType = exports.FileType || (exports.FileType = {}));
-var SortType;
-(function (SortType) {
-    SortType["Recent"] = "RECENT";
-    SortType["Random"] = "RANDOM";
-})(SortType = exports.SortType || (exports.SortType = {}));
 var GrowthType;
 (function (GrowthType) {
     GrowthType["Projects"] = "PROJECTS";
@@ -39,18 +34,16 @@ var NotificationTypes;
     NotificationTypes["NewMention"] = "NEW_MENTION";
     NotificationTypes["NewReply"] = "NEW_REPLY";
 })(NotificationTypes = exports.NotificationTypes || (exports.NotificationTypes = {}));
+var PlatformType;
+(function (PlatformType) {
+    PlatformType["Mobile"] = "MOBILE";
+    PlatformType["Web"] = "WEB";
+})(PlatformType = exports.PlatformType || (exports.PlatformType = {}));
 var ProjectSortType;
 (function (ProjectSortType) {
     ProjectSortType["Popular"] = "POPULAR";
     ProjectSortType["Recent"] = "RECENT";
 })(ProjectSortType = exports.ProjectSortType || (exports.ProjectSortType = {}));
-var SearchType;
-(function (SearchType) {
-    SearchType["Projects"] = "PROJECTS";
-    SearchType["Users"] = "USERS";
-    SearchType["Models"] = "MODELS";
-    SearchType["Hashtags"] = "HASHTAGS";
-})(SearchType = exports.SearchType || (exports.SearchType = {}));
 var ReportType;
 (function (ReportType) {
     ReportType["Project"] = "PROJECT";
@@ -58,21 +51,28 @@ var ReportType;
     ReportType["Comment"] = "COMMENT";
     ReportType["Post"] = "POST";
 })(ReportType = exports.ReportType || (exports.ReportType = {}));
+var SearchType;
+(function (SearchType) {
+    SearchType["Projects"] = "PROJECTS";
+    SearchType["Users"] = "USERS";
+    SearchType["Models"] = "MODELS";
+    SearchType["Hashtags"] = "HASHTAGS";
+})(SearchType = exports.SearchType || (exports.SearchType = {}));
+var SortType;
+(function (SortType) {
+    SortType["Recent"] = "RECENT";
+    SortType["Random"] = "RANDOM";
+})(SortType = exports.SortType || (exports.SortType = {}));
 var UploadType;
 (function (UploadType) {
     UploadType["Image"] = "IMAGE";
     UploadType["Video"] = "VIDEO";
 })(UploadType = exports.UploadType || (exports.UploadType = {}));
-var PlatformType;
-(function (PlatformType) {
-    PlatformType["Mobile"] = "MOBILE";
-    PlatformType["Web"] = "WEB";
-})(PlatformType = exports.PlatformType || (exports.PlatformType = {}));
-var CacheControlScope;
-(function (CacheControlScope) {
-    CacheControlScope["Public"] = "PUBLIC";
-    CacheControlScope["Private"] = "PRIVATE";
-})(CacheControlScope = exports.CacheControlScope || (exports.CacheControlScope = {}));
+var UserRole;
+(function (UserRole) {
+    UserRole["User"] = "USER";
+    UserRole["Admin"] = "ADMIN";
+})(UserRole = exports.UserRole || (exports.UserRole = {}));
 exports.UserFragmentDoc = client_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    fragment User on User {\n  id\n  fullName\n  firstName\n  lastName\n  username\n  avatarUrl\n  isSilhouette\n  isOnline\n  website\n  location\n  bio\n  projectCount\n  dynamicLink\n}\n    "], ["\n    fragment User on User {\n  id\n  fullName\n  firstName\n  lastName\n  username\n  avatarUrl\n  isSilhouette\n  isOnline\n  website\n  location\n  bio\n  projectCount\n  dynamicLink\n}\n    "])));
 exports.BlogPostFragmentDoc = client_1.gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    fragment BlogPost on BlogPost {\n  id\n  title\n  slug\n  content\n  createdAt\n  user {\n    ...User\n  }\n}\n    ", ""], ["\n    fragment BlogPost on BlogPost {\n  id\n  title\n  slug\n  content\n  createdAt\n  user {\n    ...User\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
 exports.CollectionFragmentDoc = client_1.gql(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    fragment Collection on Collection {\n  id\n  name\n  slug\n  cover {\n    uri\n  }\n}\n    "], ["\n    fragment Collection on Collection {\n  id\n  name\n  slug\n  cover {\n    uri\n  }\n}\n    "])));

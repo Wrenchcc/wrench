@@ -23,6 +23,653 @@ export declare type Scalars = {
     /** Returns all strings in lower case */
     LowercaseString: any;
 };
+export declare type AccessToken = {
+    __typename?: 'AccessToken';
+    access_token?: Maybe<Scalars['String']>;
+};
+export declare type ApplePayload = {
+    firstName?: Maybe<Scalars['String']>;
+    lastName?: Maybe<Scalars['String']>;
+};
+export declare type BlogPost = {
+    __typename?: 'BlogPost';
+    id?: Maybe<Scalars['ID']>;
+    createdAt?: Maybe<Scalars['Date']>;
+    updatedAt?: Maybe<Scalars['Date']>;
+    title?: Maybe<Scalars['String']>;
+    content?: Maybe<Scalars['String']>;
+    user?: Maybe<User>;
+    slug?: Maybe<Scalars['String']>;
+};
+export declare type BlogPostConnection = {
+    __typename?: 'BlogPostConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<BlogPostEdge>>;
+};
+export declare type BlogPostEdge = {
+    __typename?: 'BlogPostEdge';
+    cursor: Scalars['String'];
+    node: BlogPost;
+};
+export declare type BlogPostInput = {
+    title: Scalars['String'];
+    content: Scalars['String'];
+};
+export declare type BookmarkConnection = {
+    __typename?: 'BookmarkConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<BookmarkEdge>>;
+};
+export declare type BookmarkEdge = {
+    __typename?: 'BookmarkEdge';
+    cursor: Scalars['String'];
+    node: Post;
+};
+export declare type Bookmarks = {
+    __typename?: 'Bookmarks';
+    totalCount?: Maybe<Scalars['Int']>;
+    isBookmarked?: Maybe<Scalars['Boolean']>;
+};
+export declare type Brand = {
+    __typename?: 'Brand';
+    id: Scalars['ID'];
+    name?: Maybe<Scalars['String']>;
+};
+export declare enum CacheControlScope {
+    Public = "PUBLIC",
+    Private = "PRIVATE"
+}
+export declare type Collection = {
+    __typename?: 'Collection';
+    id?: Maybe<Scalars['ID']>;
+    name?: Maybe<Scalars['String']>;
+    slug?: Maybe<Scalars['String']>;
+    cover?: Maybe<CoverType>;
+    createdAt?: Maybe<Scalars['Date']>;
+    updatedAt?: Maybe<Scalars['Date']>;
+};
+export declare type CollectionConnection = {
+    __typename?: 'CollectionConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<CollectionEdge>>;
+};
+export declare type CollectionEdge = {
+    __typename?: 'CollectionEdge';
+    cursor: Scalars['String'];
+    node: Collection;
+};
+export declare type CollectionInput = {
+    postId: Scalars['ID'];
+};
+export declare type Comment = {
+    __typename?: 'Comment';
+    id?: Maybe<Scalars['ID']>;
+    commentId?: Maybe<Scalars['ID']>;
+    createdAt?: Maybe<Scalars['Date']>;
+    updatedAt?: Maybe<Scalars['Date']>;
+    text: Scalars['String'];
+    user?: Maybe<User>;
+    postId?: Maybe<Scalars['ID']>;
+    permissions?: Maybe<CommentPermissions>;
+    translatable?: Maybe<Scalars['Boolean']>;
+    language?: Maybe<Scalars['String']>;
+    repliesConnection?: Maybe<CommentConnection>;
+    likes?: Maybe<Likes>;
+};
+export declare type CommentRepliesConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type CommentConnection = {
+    __typename?: 'CommentConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<CommentEdge>>;
+};
+export declare type CommentEdge = {
+    __typename?: 'CommentEdge';
+    cursor: Scalars['String'];
+    node: Comment;
+};
+export declare type CommentInput = {
+    text: Scalars['String'];
+};
+export declare type CommentPermissions = {
+    __typename?: 'CommentPermissions';
+    isOwner?: Maybe<Scalars['Boolean']>;
+};
+export declare type CoverType = {
+    __typename?: 'CoverType';
+    uri?: Maybe<Scalars['String']>;
+    default?: Maybe<Scalars['Boolean']>;
+};
+export declare type EditCollectionInput = {
+    name?: Maybe<Scalars['String']>;
+};
+export declare type EditPostInput = {
+    caption?: Maybe<Scalars['String']>;
+    collectionId?: Maybe<Scalars['ID']>;
+};
+export declare type EditUserInput = {
+    firstName?: Maybe<Scalars['String']>;
+    lastName?: Maybe<Scalars['String']>;
+    interestedIn?: Maybe<Array<Maybe<ProjectTypeInput>>>;
+    timezone?: Maybe<Scalars['String']>;
+    locale?: Maybe<Scalars['String']>;
+    location?: Maybe<Scalars['String']>;
+    bio?: Maybe<Scalars['String']>;
+    website?: Maybe<Scalars['String']>;
+    avatarUrl?: Maybe<Scalars['String']>;
+    username?: Maybe<Scalars['String']>;
+};
+export declare type Feed = {
+    __typename?: 'Feed';
+    postsConnection?: Maybe<PostConnection>;
+};
+export declare type FeedPostsConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type File = {
+    __typename?: 'File';
+    id?: Maybe<Scalars['ID']>;
+    postId?: Maybe<Scalars['ID']>;
+    type?: Maybe<FileType>;
+    uri: Scalars['String'];
+    createdAt?: Maybe<Scalars['Date']>;
+    updatedAt?: Maybe<Scalars['Date']>;
+};
+export declare type FileConnection = {
+    __typename?: 'FileConnection';
+    edges?: Maybe<Array<Maybe<FileEdge>>>;
+    pageInfo: PageInfo;
+};
+export declare type FileEdge = {
+    __typename?: 'FileEdge';
+    cursor: Scalars['String'];
+    node: File;
+};
+export declare type FileInput = {
+    filename: Scalars['String'];
+};
+export declare enum FileType {
+    Image = "IMAGE",
+    Video = "VIDEO"
+}
+export declare type FollowersConnection = {
+    __typename?: 'FollowersConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<FollowersEdge>>;
+};
+export declare type FollowersEdge = {
+    __typename?: 'FollowersEdge';
+    cursor: Scalars['String'];
+    node: User;
+};
+export declare type GrowthData = {
+    __typename?: 'GrowthData';
+    date?: Maybe<Scalars['Date']>;
+    count?: Maybe<Scalars['Int']>;
+};
+export declare enum GrowthType {
+    Projects = "PROJECTS",
+    Users = "USERS"
+}
+export declare type Hashtag = {
+    __typename?: 'Hashtag';
+    id?: Maybe<Scalars['ID']>;
+    name?: Maybe<Scalars['String']>;
+    slug?: Maybe<Scalars['LowercaseString']>;
+    totalCount?: Maybe<Scalars['Int']>;
+    createdAt?: Maybe<Scalars['Date']>;
+    updatedAt?: Maybe<Scalars['Date']>;
+    postsConnection?: Maybe<PostConnection>;
+};
+export declare type HashtagPostsConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type HashtagConnection = {
+    __typename?: 'HashtagConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<HashtagEdge>>;
+};
+export declare type HashtagEdge = {
+    __typename?: 'HashtagEdge';
+    cursor: Scalars['String'];
+    node: Hashtag;
+};
+export declare type LikeConnection = {
+    __typename?: 'LikeConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<LikeEdge>>;
+};
+export declare type LikeEdge = {
+    __typename?: 'LikeEdge';
+    cursor: Scalars['String'];
+    node: User;
+};
+export declare type Likes = {
+    __typename?: 'Likes';
+    totalCount?: Maybe<Scalars['Int']>;
+    isLiked?: Maybe<Scalars['Boolean']>;
+};
+export declare type Meta = {
+    __typename?: 'Meta';
+    isAdmin?: Maybe<Scalars['Boolean']>;
+    totalUsers?: Maybe<Scalars['Int']>;
+    totalProjects?: Maybe<Scalars['Int']>;
+    totalPosts?: Maybe<Scalars['Int']>;
+    totalComments?: Maybe<Scalars['Int']>;
+    totalFiles?: Maybe<Scalars['Int']>;
+    totalUsersToday?: Maybe<Scalars['Int']>;
+    totalProjectsToday?: Maybe<Scalars['Int']>;
+    totalPostsToday?: Maybe<Scalars['Int']>;
+    totalCommentsToday?: Maybe<Scalars['Int']>;
+    totalFilesToday?: Maybe<Scalars['Int']>;
+};
+export declare type Model = {
+    __typename?: 'Model';
+    id: Scalars['ID'];
+    brand?: Maybe<Brand>;
+    model?: Maybe<Scalars['String']>;
+    year?: Maybe<Scalars['Int']>;
+};
+export declare type Mutation = {
+    __typename?: 'Mutation';
+    dummy?: Maybe<Scalars['String']>;
+    authenticateApple?: Maybe<Tokens>;
+    authenticateFacebook?: Maybe<Tokens>;
+    authenticateGoogle?: Maybe<Tokens>;
+    refreshToken?: Maybe<AccessToken>;
+    bookmarkPost?: Maybe<Post>;
+    deleteBlogPost?: Maybe<BlogPost>;
+    addBlogPost?: Maybe<BlogPost>;
+    addComment?: Maybe<Comment>;
+    editComment?: Maybe<Comment>;
+    deleteComment?: Maybe<Scalars['Boolean']>;
+    translateComment?: Maybe<Comment>;
+    addCollection?: Maybe<Collection>;
+    deleteCollection?: Maybe<Collection>;
+    editCollection?: Maybe<Collection>;
+    collectPosts?: Maybe<Collection>;
+    sendPromo?: Maybe<Scalars['Boolean']>;
+    likePost?: Maybe<Post>;
+    likeComment?: Maybe<Comment>;
+    markAllNotificationsSeen?: Maybe<Scalars['Boolean']>;
+    markNotificationSeen?: Maybe<Notification>;
+    deleteNotification?: Maybe<Scalars['Boolean']>;
+    deletePost?: Maybe<Post>;
+    addPost?: Maybe<Post>;
+    editPost?: Maybe<Post>;
+    translatePost?: Maybe<Post>;
+    followProject?: Maybe<Project>;
+    addProject?: Maybe<Project>;
+    editProject?: Maybe<Project>;
+    deleteProject?: Maybe<Scalars['Boolean']>;
+    report?: Maybe<Scalars['Boolean']>;
+    preSignUrls?: Maybe<Array<Maybe<PreSignedUrl>>>;
+    preSignUrl?: Maybe<PreSignedUrl>;
+    editUser?: Maybe<User>;
+    toggleNotificationSettings?: Maybe<User>;
+    registerDeviceToken?: Maybe<Scalars['Boolean']>;
+    banUser?: Maybe<User>;
+    deleteCurrentUser?: Maybe<Scalars['Boolean']>;
+};
+export declare type MutationAuthenticateAppleArgs = {
+    identityToken: Scalars['String'];
+    user: ApplePayload;
+};
+export declare type MutationAuthenticateFacebookArgs = {
+    token: Scalars['String'];
+};
+export declare type MutationAuthenticateGoogleArgs = {
+    idToken: Scalars['String'];
+};
+export declare type MutationRefreshTokenArgs = {
+    refreshToken: Scalars['String'];
+};
+export declare type MutationBookmarkPostArgs = {
+    id: Scalars['ID'];
+};
+export declare type MutationDeleteBlogPostArgs = {
+    id: Scalars['ID'];
+};
+export declare type MutationAddBlogPostArgs = {
+    id?: Maybe<Scalars['ID']>;
+    input: BlogPostInput;
+};
+export declare type MutationAddCommentArgs = {
+    postId: Scalars['ID'];
+    commentId?: Maybe<Scalars['ID']>;
+    input: CommentInput;
+};
+export declare type MutationEditCommentArgs = {
+    id: Scalars['ID'];
+    input: CommentInput;
+};
+export declare type MutationDeleteCommentArgs = {
+    id: Scalars['ID'];
+};
+export declare type MutationTranslateCommentArgs = {
+    id: Scalars['ID'];
+    original?: Maybe<Scalars['Boolean']>;
+};
+export declare type MutationAddCollectionArgs = {
+    projectId: Scalars['ID'];
+    name: Scalars['String'];
+};
+export declare type MutationDeleteCollectionArgs = {
+    projectId: Scalars['ID'];
+    id: Scalars['ID'];
+};
+export declare type MutationEditCollectionArgs = {
+    id: Scalars['ID'];
+    input: EditCollectionInput;
+};
+export declare type MutationCollectPostsArgs = {
+    projectId: Scalars['ID'];
+    collectionId: Scalars['ID'];
+    input?: Maybe<Array<Maybe<CollectionInput>>>;
+};
+export declare type MutationSendPromoArgs = {
+    number: Scalars['String'];
+};
+export declare type MutationLikePostArgs = {
+    id: Scalars['ID'];
+};
+export declare type MutationLikeCommentArgs = {
+    id: Scalars['ID'];
+};
+export declare type MutationMarkNotificationSeenArgs = {
+    id: Scalars['ID'];
+};
+export declare type MutationDeleteNotificationArgs = {
+    id: Scalars['ID'];
+};
+export declare type MutationDeletePostArgs = {
+    id: Scalars['ID'];
+};
+export declare type MutationAddPostArgs = {
+    input: PostInput;
+};
+export declare type MutationEditPostArgs = {
+    id: Scalars['ID'];
+    input: EditPostInput;
+};
+export declare type MutationTranslatePostArgs = {
+    id: Scalars['ID'];
+    original?: Maybe<Scalars['Boolean']>;
+};
+export declare type MutationFollowProjectArgs = {
+    id: Scalars['ID'];
+};
+export declare type MutationAddProjectArgs = {
+    input: ProjectInput;
+};
+export declare type MutationEditProjectArgs = {
+    id: Scalars['ID'];
+    input: ProjectInput;
+};
+export declare type MutationDeleteProjectArgs = {
+    id: Scalars['ID'];
+};
+export declare type MutationReportArgs = {
+    id: Scalars['ID'];
+    type: ReportType;
+};
+export declare type MutationPreSignUrlsArgs = {
+    input?: Maybe<Array<Maybe<PreSignedUrlnput>>>;
+};
+export declare type MutationPreSignUrlArgs = {
+    input: PreSignedUrlInput;
+};
+export declare type MutationEditUserArgs = {
+    input: EditUserInput;
+    id?: Maybe<Scalars['ID']>;
+};
+export declare type MutationToggleNotificationSettingsArgs = {
+    input?: Maybe<ToggleNotificationSettingsInput>;
+};
+export declare type MutationRegisterDeviceTokenArgs = {
+    token: Scalars['String'];
+    platform: PlatformType;
+};
+export declare type MutationBanUserArgs = {
+    id: Scalars['ID'];
+};
+export declare type Notification = {
+    __typename?: 'Notification';
+    id: Scalars['ID'];
+    user: User;
+    type?: Maybe<NotificationTypes>;
+    project?: Maybe<Project>;
+    post?: Maybe<Post>;
+    comment?: Maybe<Comment>;
+    isSeen: Scalars['Boolean'];
+    createdAt: Scalars['Date'];
+    updatedAt: Scalars['Date'];
+    filesConnection?: Maybe<FileConnection>;
+};
+export declare type NotificationFilesConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    reverse?: Maybe<Scalars['Boolean']>;
+    type?: Maybe<FileType>;
+};
+export declare type NotificationEdge = {
+    __typename?: 'NotificationEdge';
+    cursor?: Maybe<Scalars['String']>;
+    node?: Maybe<Notification>;
+};
+export declare type NotificationKindSettings = {
+    __typename?: 'NotificationKindSettings';
+    email?: Maybe<Scalars['Boolean']>;
+    push?: Maybe<Scalars['Boolean']>;
+};
+export declare type NotificationSettingsType = {
+    __typename?: 'NotificationSettingsType';
+    NEW_FOLLOWER?: Maybe<NotificationKindSettings>;
+    NEW_COMMENT?: Maybe<NotificationKindSettings>;
+    NEW_MENTION?: Maybe<NotificationKindSettings>;
+    NEW_ARTICLE?: Maybe<NotificationKindSettings>;
+    SIMILAR_PROJECTS?: Maybe<NotificationKindSettings>;
+    PRODUCT_ANNOUNCEMENTS?: Maybe<NotificationKindSettings>;
+};
+export declare enum NotificationTypes {
+    NewComment = "NEW_COMMENT",
+    NewFollower = "NEW_FOLLOWER",
+    NewPostLike = "NEW_POST_LIKE",
+    NewCommentLike = "NEW_COMMENT_LIKE",
+    NewMention = "NEW_MENTION",
+    NewReply = "NEW_REPLY"
+}
+export declare type NotificationsConnection = {
+    __typename?: 'NotificationsConnection';
+    unreadCount?: Maybe<Scalars['Int']>;
+    pageInfo?: Maybe<PageInfo>;
+    edges?: Maybe<Array<Maybe<NotificationEdge>>>;
+};
+export declare type PageInfo = {
+    __typename?: 'PageInfo';
+    hasNextPage?: Maybe<Scalars['Boolean']>;
+    hasPreviousPage?: Maybe<Scalars['Boolean']>;
+};
+export declare enum PlatformType {
+    Mobile = "MOBILE",
+    Web = "WEB"
+}
+export declare type Post = {
+    __typename?: 'Post';
+    id?: Maybe<Scalars['ID']>;
+    createdAt?: Maybe<Scalars['Date']>;
+    updatedAt?: Maybe<Scalars['Date']>;
+    caption?: Maybe<Scalars['String']>;
+    user?: Maybe<User>;
+    project?: Maybe<Project>;
+    postPermissions?: Maybe<PostPermissions>;
+    permissions?: Maybe<PostPermissions>;
+    likes?: Maybe<Likes>;
+    bookmarks?: Maybe<Bookmarks>;
+    collection?: Maybe<Collection>;
+    translatable?: Maybe<Scalars['Boolean']>;
+    language?: Maybe<Scalars['String']>;
+    filesConnection?: Maybe<FileConnection>;
+    commentsConnection?: Maybe<CommentConnection>;
+    likesConnection?: Maybe<LikeConnection>;
+};
+export declare type PostFilesConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    reverse?: Maybe<Scalars['Boolean']>;
+    type?: Maybe<FileType>;
+};
+export declare type PostCommentsConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type PostLikesConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type PostConnection = {
+    __typename?: 'PostConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<PostEdge>>;
+};
+export declare type PostEdge = {
+    __typename?: 'PostEdge';
+    cursor: Scalars['String'];
+    node: Post;
+};
+export declare type PostInput = {
+    projectId: Scalars['ID'];
+    caption?: Maybe<Scalars['String']>;
+    files: Array<Maybe<FileInput>>;
+    collectionId?: Maybe<Scalars['ID']>;
+};
+export declare type PostPermissions = {
+    __typename?: 'PostPermissions';
+    isOwner?: Maybe<Scalars['Boolean']>;
+};
+export declare type PreSignedUrl = {
+    __typename?: 'PreSignedUrl';
+    url?: Maybe<Scalars['String']>;
+    type?: Maybe<Scalars['String']>;
+    id?: Maybe<Scalars['ID']>;
+    filename?: Maybe<Scalars['String']>;
+};
+export declare type PreSignedUrlInput = {
+    type: UploadType;
+    path: Scalars['String'];
+};
+export declare type PreSignedUrlnput = {
+    type: UploadType;
+};
+export declare type Project = {
+    __typename?: 'Project';
+    id?: Maybe<Scalars['ID']>;
+    slug?: Maybe<Scalars['String']>;
+    title?: Maybe<Scalars['String']>;
+    createdAt?: Maybe<Scalars['Date']>;
+    updatedAt?: Maybe<Scalars['Date']>;
+    dynamicLink?: Maybe<Scalars['String']>;
+    user?: Maybe<User>;
+    projectPermissions?: Maybe<ProjectPermissions>;
+    permissions?: Maybe<ProjectPermissions>;
+    commentsDisabled?: Maybe<Scalars['Boolean']>;
+    type?: Maybe<ProjectType>;
+    cover?: Maybe<CoverType>;
+    model?: Maybe<Model>;
+    filesConnection?: Maybe<FileConnection>;
+    followersConnection?: Maybe<FollowersConnection>;
+    postsConnection?: Maybe<PostConnection>;
+    collectionsConnection?: Maybe<CollectionConnection>;
+};
+export declare type ProjectFilesConnectionArgs = {
+    after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+    reverse?: Maybe<Scalars['Boolean']>;
+    type?: Maybe<FileType>;
+};
+export declare type ProjectFollowersConnectionArgs = {
+    after?: Maybe<Scalars['String']>;
+    before?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+    last?: Maybe<Scalars['Int']>;
+};
+export declare type ProjectPostsConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type ProjectCollectionsConnectionArgs = {
+    after?: Maybe<Scalars['String']>;
+    before?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+    last?: Maybe<Scalars['Int']>;
+};
+export declare type ProjectEdge = {
+    __typename?: 'ProjectEdge';
+    cursor: Scalars['String'];
+    node: Project;
+};
+export declare type ProjectInput = {
+    title?: Maybe<Scalars['String']>;
+    commentsDisabled?: Maybe<Scalars['Boolean']>;
+    projectTypeId?: Maybe<Scalars['ID']>;
+    modelId?: Maybe<Scalars['ID']>;
+};
+export declare type ProjectPermissions = {
+    __typename?: 'ProjectPermissions';
+    isFollower?: Maybe<Scalars['Boolean']>;
+    isOwner?: Maybe<Scalars['Boolean']>;
+};
+export declare enum ProjectSortType {
+    Popular = "POPULAR",
+    Recent = "RECENT"
+}
+export declare type ProjectSuggestionsConnection = {
+    __typename?: 'ProjectSuggestionsConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    type?: Maybe<ProjectType>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<ProjectEdge>>;
+};
+export declare type ProjectType = {
+    __typename?: 'ProjectType';
+    id?: Maybe<Scalars['ID']>;
+    title?: Maybe<Scalars['String']>;
+    slug?: Maybe<Scalars['String']>;
+    imageUrl: Scalars['String'];
+};
+export declare type ProjectTypeInput = {
+    id?: Maybe<Scalars['ID']>;
+};
+export declare type ProjectsConnection = {
+    __typename?: 'ProjectsConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<ProjectEdge>>;
+};
 export declare type Query = {
     __typename?: 'Query';
     dummy?: Maybe<Scalars['String']>;
@@ -201,59 +848,47 @@ export declare type QueryCurrentUserArgs = {
     last?: Maybe<Scalars['Int']>;
     before?: Maybe<Scalars['String']>;
 };
-export declare type BookmarkConnection = {
-    __typename?: 'BookmarkConnection';
+export declare enum ReportType {
+    Project = "PROJECT",
+    User = "USER",
+    Comment = "COMMENT",
+    Post = "POST"
+}
+export declare type SearchResultEdge = {
+    __typename?: 'SearchResultEdge';
+    cursor?: Maybe<Scalars['String']>;
+    node?: Maybe<SearchResultNode>;
+};
+export declare type SearchResultNode = Project | User | Model | Hashtag;
+export declare type SearchResults = {
+    __typename?: 'SearchResults';
     totalCount?: Maybe<Scalars['Int']>;
-    pageInfo: PageInfo;
-    edges?: Maybe<Array<BookmarkEdge>>;
+    edges?: Maybe<Array<Maybe<SearchResultEdge>>>;
+    pageInfo?: Maybe<PageInfo>;
 };
-export declare type PageInfo = {
-    __typename?: 'PageInfo';
-    hasNextPage?: Maybe<Scalars['Boolean']>;
-    hasPreviousPage?: Maybe<Scalars['Boolean']>;
+export declare enum SearchType {
+    Projects = "PROJECTS",
+    Users = "USERS",
+    Models = "MODELS",
+    Hashtags = "HASHTAGS"
+}
+export declare enum SortType {
+    Recent = "RECENT",
+    Random = "RANDOM"
+}
+export declare type ToggleNotificationSettingsInput = {
+    deliveryMethod: Scalars['String'];
+    notificationType: Scalars['String'];
 };
-export declare type BookmarkEdge = {
-    __typename?: 'BookmarkEdge';
-    cursor: Scalars['String'];
-    node: Post;
+export declare type Tokens = {
+    __typename?: 'Tokens';
+    access_token?: Maybe<Scalars['String']>;
+    refresh_token?: Maybe<Scalars['String']>;
 };
-export declare type Post = {
-    __typename?: 'Post';
-    id?: Maybe<Scalars['ID']>;
-    createdAt?: Maybe<Scalars['Date']>;
-    updatedAt?: Maybe<Scalars['Date']>;
-    caption?: Maybe<Scalars['String']>;
-    user?: Maybe<User>;
-    project?: Maybe<Project>;
-    postPermissions?: Maybe<PostPermissions>;
-    permissions?: Maybe<PostPermissions>;
-    likes?: Maybe<Likes>;
-    bookmarks?: Maybe<Bookmarks>;
-    collection?: Maybe<Collection>;
-    translatable?: Maybe<Scalars['Boolean']>;
-    language?: Maybe<Scalars['String']>;
-    filesConnection?: Maybe<FileConnection>;
-    commentsConnection?: Maybe<CommentConnection>;
-    likesConnection?: Maybe<LikeConnection>;
-};
-export declare type PostFilesConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    reverse?: Maybe<Scalars['Boolean']>;
-    type?: Maybe<FileType>;
-};
-export declare type PostCommentsConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
-export declare type PostLikesConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
+export declare enum UploadType {
+    Image = "IMAGE",
+    Video = "VIDEO"
+}
 export declare type User = {
     __typename?: 'User';
     id: Scalars['ID'];
@@ -297,385 +932,6 @@ export declare type UserPostsConnectionArgs = {
     last?: Maybe<Scalars['Int']>;
     before?: Maybe<Scalars['String']>;
 };
-export declare type ProjectType = {
-    __typename?: 'ProjectType';
-    id?: Maybe<Scalars['ID']>;
-    title?: Maybe<Scalars['String']>;
-    slug?: Maybe<Scalars['String']>;
-    imageUrl: Scalars['String'];
-};
-export declare type UserSettings = {
-    __typename?: 'UserSettings';
-    locale?: Maybe<Scalars['String']>;
-    timezone?: Maybe<Scalars['String']>;
-    notifications?: Maybe<UserNotificationsSettings>;
-};
-export declare type UserNotificationsSettings = {
-    __typename?: 'UserNotificationsSettings';
-    types?: Maybe<NotificationSettingsType>;
-};
-export declare type NotificationSettingsType = {
-    __typename?: 'NotificationSettingsType';
-    NEW_FOLLOWER?: Maybe<NotificationKindSettings>;
-    NEW_COMMENT?: Maybe<NotificationKindSettings>;
-    NEW_MENTION?: Maybe<NotificationKindSettings>;
-    NEW_ARTICLE?: Maybe<NotificationKindSettings>;
-    SIMILAR_PROJECTS?: Maybe<NotificationKindSettings>;
-    PRODUCT_ANNOUNCEMENTS?: Maybe<NotificationKindSettings>;
-};
-export declare type NotificationKindSettings = {
-    __typename?: 'NotificationKindSettings';
-    email?: Maybe<Scalars['Boolean']>;
-    push?: Maybe<Scalars['Boolean']>;
-};
-export declare enum UserRole {
-    User = "USER",
-    Admin = "ADMIN"
-}
-export declare type ProjectsConnection = {
-    __typename?: 'ProjectsConnection';
-    totalCount?: Maybe<Scalars['Int']>;
-    pageInfo: PageInfo;
-    edges?: Maybe<Array<ProjectEdge>>;
-};
-export declare type ProjectEdge = {
-    __typename?: 'ProjectEdge';
-    cursor: Scalars['String'];
-    node: Project;
-};
-export declare type Project = {
-    __typename?: 'Project';
-    id?: Maybe<Scalars['ID']>;
-    slug?: Maybe<Scalars['String']>;
-    title?: Maybe<Scalars['String']>;
-    createdAt?: Maybe<Scalars['Date']>;
-    updatedAt?: Maybe<Scalars['Date']>;
-    dynamicLink?: Maybe<Scalars['String']>;
-    user?: Maybe<User>;
-    projectPermissions?: Maybe<ProjectPermissions>;
-    permissions?: Maybe<ProjectPermissions>;
-    commentsDisabled?: Maybe<Scalars['Boolean']>;
-    type?: Maybe<ProjectType>;
-    cover?: Maybe<CoverType>;
-    model?: Maybe<Model>;
-    filesConnection?: Maybe<FileConnection>;
-    followersConnection?: Maybe<FollowersConnection>;
-    postsConnection?: Maybe<PostConnection>;
-    collectionsConnection?: Maybe<CollectionConnection>;
-};
-export declare type ProjectFilesConnectionArgs = {
-    after?: Maybe<Scalars['String']>;
-    first?: Maybe<Scalars['Int']>;
-    reverse?: Maybe<Scalars['Boolean']>;
-    type?: Maybe<FileType>;
-};
-export declare type ProjectFollowersConnectionArgs = {
-    after?: Maybe<Scalars['String']>;
-    before?: Maybe<Scalars['String']>;
-    first?: Maybe<Scalars['Int']>;
-    last?: Maybe<Scalars['Int']>;
-};
-export declare type ProjectPostsConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
-export declare type ProjectCollectionsConnectionArgs = {
-    after?: Maybe<Scalars['String']>;
-    before?: Maybe<Scalars['String']>;
-    first?: Maybe<Scalars['Int']>;
-    last?: Maybe<Scalars['Int']>;
-};
-export declare type ProjectPermissions = {
-    __typename?: 'ProjectPermissions';
-    isFollower?: Maybe<Scalars['Boolean']>;
-    isOwner?: Maybe<Scalars['Boolean']>;
-};
-export declare type CoverType = {
-    __typename?: 'CoverType';
-    uri?: Maybe<Scalars['String']>;
-    default?: Maybe<Scalars['Boolean']>;
-};
-export declare type Model = {
-    __typename?: 'Model';
-    id: Scalars['ID'];
-    brand?: Maybe<Brand>;
-    model?: Maybe<Scalars['String']>;
-    year?: Maybe<Scalars['Int']>;
-};
-export declare type Brand = {
-    __typename?: 'Brand';
-    id: Scalars['ID'];
-    name?: Maybe<Scalars['String']>;
-};
-export declare enum FileType {
-    Image = "IMAGE",
-    Video = "VIDEO"
-}
-export declare type FileConnection = {
-    __typename?: 'FileConnection';
-    edges?: Maybe<Array<Maybe<FileEdge>>>;
-    pageInfo: PageInfo;
-};
-export declare type FileEdge = {
-    __typename?: 'FileEdge';
-    cursor: Scalars['String'];
-    node: File;
-};
-export declare type File = {
-    __typename?: 'File';
-    id?: Maybe<Scalars['ID']>;
-    postId?: Maybe<Scalars['ID']>;
-    type?: Maybe<FileType>;
-    uri: Scalars['String'];
-    createdAt?: Maybe<Scalars['Date']>;
-    updatedAt?: Maybe<Scalars['Date']>;
-};
-export declare type FollowersConnection = {
-    __typename?: 'FollowersConnection';
-    totalCount?: Maybe<Scalars['Int']>;
-    pageInfo: PageInfo;
-    edges?: Maybe<Array<FollowersEdge>>;
-};
-export declare type FollowersEdge = {
-    __typename?: 'FollowersEdge';
-    cursor: Scalars['String'];
-    node: User;
-};
-export declare type PostConnection = {
-    __typename?: 'PostConnection';
-    totalCount?: Maybe<Scalars['Int']>;
-    pageInfo: PageInfo;
-    edges?: Maybe<Array<PostEdge>>;
-};
-export declare type PostEdge = {
-    __typename?: 'PostEdge';
-    cursor: Scalars['String'];
-    node: Post;
-};
-export declare type CollectionConnection = {
-    __typename?: 'CollectionConnection';
-    totalCount?: Maybe<Scalars['Int']>;
-    pageInfo: PageInfo;
-    edges?: Maybe<Array<CollectionEdge>>;
-};
-export declare type CollectionEdge = {
-    __typename?: 'CollectionEdge';
-    cursor: Scalars['String'];
-    node: Collection;
-};
-export declare type Collection = {
-    __typename?: 'Collection';
-    id?: Maybe<Scalars['ID']>;
-    name?: Maybe<Scalars['String']>;
-    slug?: Maybe<Scalars['String']>;
-    cover?: Maybe<CoverType>;
-    createdAt?: Maybe<Scalars['Date']>;
-    updatedAt?: Maybe<Scalars['Date']>;
-};
-export declare type PostPermissions = {
-    __typename?: 'PostPermissions';
-    isOwner?: Maybe<Scalars['Boolean']>;
-};
-export declare type Likes = {
-    __typename?: 'Likes';
-    totalCount?: Maybe<Scalars['Int']>;
-    isLiked?: Maybe<Scalars['Boolean']>;
-};
-export declare type Bookmarks = {
-    __typename?: 'Bookmarks';
-    totalCount?: Maybe<Scalars['Int']>;
-    isBookmarked?: Maybe<Scalars['Boolean']>;
-};
-export declare type CommentConnection = {
-    __typename?: 'CommentConnection';
-    totalCount?: Maybe<Scalars['Int']>;
-    pageInfo: PageInfo;
-    edges?: Maybe<Array<CommentEdge>>;
-};
-export declare type CommentEdge = {
-    __typename?: 'CommentEdge';
-    cursor: Scalars['String'];
-    node: Comment;
-};
-export declare type Comment = {
-    __typename?: 'Comment';
-    id?: Maybe<Scalars['ID']>;
-    commentId?: Maybe<Scalars['ID']>;
-    createdAt?: Maybe<Scalars['Date']>;
-    updatedAt?: Maybe<Scalars['Date']>;
-    text: Scalars['String'];
-    user?: Maybe<User>;
-    postId?: Maybe<Scalars['ID']>;
-    permissions?: Maybe<CommentPermissions>;
-    translatable?: Maybe<Scalars['Boolean']>;
-    language?: Maybe<Scalars['String']>;
-    repliesConnection?: Maybe<CommentConnection>;
-    likes?: Maybe<Likes>;
-};
-export declare type CommentRepliesConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
-export declare type CommentPermissions = {
-    __typename?: 'CommentPermissions';
-    isOwner?: Maybe<Scalars['Boolean']>;
-};
-export declare type LikeConnection = {
-    __typename?: 'LikeConnection';
-    totalCount?: Maybe<Scalars['Int']>;
-    pageInfo: PageInfo;
-    edges?: Maybe<Array<LikeEdge>>;
-};
-export declare type LikeEdge = {
-    __typename?: 'LikeEdge';
-    cursor: Scalars['String'];
-    node: User;
-};
-export declare type BlogPost = {
-    __typename?: 'BlogPost';
-    id?: Maybe<Scalars['ID']>;
-    createdAt?: Maybe<Scalars['Date']>;
-    updatedAt?: Maybe<Scalars['Date']>;
-    title?: Maybe<Scalars['String']>;
-    content?: Maybe<Scalars['String']>;
-    user?: Maybe<User>;
-    slug?: Maybe<Scalars['String']>;
-};
-export declare type BlogPostConnection = {
-    __typename?: 'BlogPostConnection';
-    totalCount?: Maybe<Scalars['Int']>;
-    pageInfo: PageInfo;
-    edges?: Maybe<Array<BlogPostEdge>>;
-};
-export declare type BlogPostEdge = {
-    __typename?: 'BlogPostEdge';
-    cursor: Scalars['String'];
-    node: BlogPost;
-};
-export declare type Feed = {
-    __typename?: 'Feed';
-    postsConnection?: Maybe<PostConnection>;
-};
-export declare type FeedPostsConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
-export declare enum SortType {
-    Recent = "RECENT",
-    Random = "RANDOM"
-}
-export declare type Hashtag = {
-    __typename?: 'Hashtag';
-    id?: Maybe<Scalars['ID']>;
-    name?: Maybe<Scalars['String']>;
-    slug?: Maybe<Scalars['LowercaseString']>;
-    totalCount?: Maybe<Scalars['Int']>;
-    createdAt?: Maybe<Scalars['Date']>;
-    updatedAt?: Maybe<Scalars['Date']>;
-    postsConnection?: Maybe<PostConnection>;
-};
-export declare type HashtagPostsConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
-export declare type Meta = {
-    __typename?: 'Meta';
-    isAdmin?: Maybe<Scalars['Boolean']>;
-    totalUsers?: Maybe<Scalars['Int']>;
-    totalProjects?: Maybe<Scalars['Int']>;
-    totalPosts?: Maybe<Scalars['Int']>;
-    totalComments?: Maybe<Scalars['Int']>;
-    totalFiles?: Maybe<Scalars['Int']>;
-    totalUsersToday?: Maybe<Scalars['Int']>;
-    totalProjectsToday?: Maybe<Scalars['Int']>;
-    totalPostsToday?: Maybe<Scalars['Int']>;
-    totalCommentsToday?: Maybe<Scalars['Int']>;
-    totalFilesToday?: Maybe<Scalars['Int']>;
-};
-export declare enum GrowthType {
-    Projects = "PROJECTS",
-    Users = "USERS"
-}
-export declare type GrowthData = {
-    __typename?: 'GrowthData';
-    date?: Maybe<Scalars['Date']>;
-    count?: Maybe<Scalars['Int']>;
-};
-export declare type NotificationsConnection = {
-    __typename?: 'NotificationsConnection';
-    unreadCount?: Maybe<Scalars['Int']>;
-    pageInfo?: Maybe<PageInfo>;
-    edges?: Maybe<Array<Maybe<NotificationEdge>>>;
-};
-export declare type NotificationEdge = {
-    __typename?: 'NotificationEdge';
-    cursor?: Maybe<Scalars['String']>;
-    node?: Maybe<Notification>;
-};
-export declare type Notification = {
-    __typename?: 'Notification';
-    id: Scalars['ID'];
-    user: User;
-    type?: Maybe<NotificationTypes>;
-    project?: Maybe<Project>;
-    post?: Maybe<Post>;
-    comment?: Maybe<Comment>;
-    isSeen: Scalars['Boolean'];
-    createdAt: Scalars['Date'];
-    updatedAt: Scalars['Date'];
-    filesConnection?: Maybe<FileConnection>;
-};
-export declare type NotificationFilesConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    reverse?: Maybe<Scalars['Boolean']>;
-    type?: Maybe<FileType>;
-};
-export declare enum NotificationTypes {
-    NewComment = "NEW_COMMENT",
-    NewFollower = "NEW_FOLLOWER",
-    NewPostLike = "NEW_POST_LIKE",
-    NewCommentLike = "NEW_COMMENT_LIKE",
-    NewMention = "NEW_MENTION",
-    NewReply = "NEW_REPLY"
-}
-export declare enum ProjectSortType {
-    Popular = "POPULAR",
-    Recent = "RECENT"
-}
-export declare type ProjectSuggestionsConnection = {
-    __typename?: 'ProjectSuggestionsConnection';
-    totalCount?: Maybe<Scalars['Int']>;
-    type?: Maybe<ProjectType>;
-    pageInfo: PageInfo;
-    edges?: Maybe<Array<ProjectEdge>>;
-};
-export declare enum SearchType {
-    Projects = "PROJECTS",
-    Users = "USERS",
-    Models = "MODELS",
-    Hashtags = "HASHTAGS"
-}
-export declare type SearchResults = {
-    __typename?: 'SearchResults';
-    totalCount?: Maybe<Scalars['Int']>;
-    edges?: Maybe<Array<Maybe<SearchResultEdge>>>;
-    pageInfo?: Maybe<PageInfo>;
-};
-export declare type SearchResultEdge = {
-    __typename?: 'SearchResultEdge';
-    cursor?: Maybe<Scalars['String']>;
-    node?: Maybe<SearchResultNode>;
-};
-export declare type SearchResultNode = Project | User | Model | Hashtag;
 export declare type UserConnection = {
     __typename?: 'UserConnection';
     pageInfo?: Maybe<PageInfo>;
@@ -686,276 +942,20 @@ export declare type UserEdge = {
     cursor?: Maybe<Scalars['String']>;
     node?: Maybe<User>;
 };
-export declare type Mutation = {
-    __typename?: 'Mutation';
-    dummy?: Maybe<Scalars['String']>;
-    authenticateApple?: Maybe<Tokens>;
-    authenticateFacebook?: Maybe<Tokens>;
-    authenticateGoogle?: Maybe<Tokens>;
-    refreshToken?: Maybe<AccessToken>;
-    bookmarkPost?: Maybe<Post>;
-    deleteBlogPost?: Maybe<BlogPost>;
-    addBlogPost?: Maybe<BlogPost>;
-    addComment?: Maybe<Comment>;
-    editComment?: Maybe<Comment>;
-    deleteComment?: Maybe<Scalars['Boolean']>;
-    translateComment?: Maybe<Comment>;
-    addCollection?: Maybe<Collection>;
-    deleteCollection?: Maybe<Collection>;
-    editCollection?: Maybe<Collection>;
-    collectPosts?: Maybe<Collection>;
-    sendPromo?: Maybe<Scalars['Boolean']>;
-    likePost?: Maybe<Post>;
-    likeComment?: Maybe<Comment>;
-    markAllNotificationsSeen?: Maybe<Scalars['Boolean']>;
-    markNotificationSeen?: Maybe<Notification>;
-    deleteNotification?: Maybe<Scalars['Boolean']>;
-    deletePost?: Maybe<Post>;
-    addPost?: Maybe<Post>;
-    editPost?: Maybe<Post>;
-    translatePost?: Maybe<Post>;
-    followProject?: Maybe<Project>;
-    addProject?: Maybe<Project>;
-    editProject?: Maybe<Project>;
-    deleteProject?: Maybe<Scalars['Boolean']>;
-    report?: Maybe<Scalars['Boolean']>;
-    preSignUrls?: Maybe<Array<Maybe<PreSignedUrl>>>;
-    preSignUrl?: Maybe<PreSignedUrl>;
-    editUser?: Maybe<User>;
-    toggleNotificationSettings?: Maybe<User>;
-    registerDeviceToken?: Maybe<Scalars['Boolean']>;
-    banUser?: Maybe<User>;
-    deleteCurrentUser?: Maybe<Scalars['Boolean']>;
+export declare type UserNotificationsSettings = {
+    __typename?: 'UserNotificationsSettings';
+    types?: Maybe<NotificationSettingsType>;
 };
-export declare type MutationAuthenticateAppleArgs = {
-    identityToken: Scalars['String'];
-    user: ApplePayload;
-};
-export declare type MutationAuthenticateFacebookArgs = {
-    token: Scalars['String'];
-};
-export declare type MutationAuthenticateGoogleArgs = {
-    idToken: Scalars['String'];
-};
-export declare type MutationRefreshTokenArgs = {
-    refreshToken: Scalars['String'];
-};
-export declare type MutationBookmarkPostArgs = {
-    id: Scalars['ID'];
-};
-export declare type MutationDeleteBlogPostArgs = {
-    id: Scalars['ID'];
-};
-export declare type MutationAddBlogPostArgs = {
-    id?: Maybe<Scalars['ID']>;
-    input: BlogPostInput;
-};
-export declare type MutationAddCommentArgs = {
-    postId: Scalars['ID'];
-    commentId?: Maybe<Scalars['ID']>;
-    input: CommentInput;
-};
-export declare type MutationEditCommentArgs = {
-    id: Scalars['ID'];
-    input: CommentInput;
-};
-export declare type MutationDeleteCommentArgs = {
-    id: Scalars['ID'];
-};
-export declare type MutationTranslateCommentArgs = {
-    id: Scalars['ID'];
-    original?: Maybe<Scalars['Boolean']>;
-};
-export declare type MutationAddCollectionArgs = {
-    projectId: Scalars['ID'];
-    name: Scalars['String'];
-};
-export declare type MutationDeleteCollectionArgs = {
-    projectId: Scalars['ID'];
-    id: Scalars['ID'];
-};
-export declare type MutationEditCollectionArgs = {
-    id: Scalars['ID'];
-    input: EditCollectionInput;
-};
-export declare type MutationCollectPostsArgs = {
-    projectId: Scalars['ID'];
-    collectionId: Scalars['ID'];
-    input?: Maybe<Array<Maybe<CollectionInput>>>;
-};
-export declare type MutationSendPromoArgs = {
-    number: Scalars['String'];
-};
-export declare type MutationLikePostArgs = {
-    id: Scalars['ID'];
-};
-export declare type MutationLikeCommentArgs = {
-    id: Scalars['ID'];
-};
-export declare type MutationMarkNotificationSeenArgs = {
-    id: Scalars['ID'];
-};
-export declare type MutationDeleteNotificationArgs = {
-    id: Scalars['ID'];
-};
-export declare type MutationDeletePostArgs = {
-    id: Scalars['ID'];
-};
-export declare type MutationAddPostArgs = {
-    input: PostInput;
-};
-export declare type MutationEditPostArgs = {
-    id: Scalars['ID'];
-    input: EditPostInput;
-};
-export declare type MutationTranslatePostArgs = {
-    id: Scalars['ID'];
-    original?: Maybe<Scalars['Boolean']>;
-};
-export declare type MutationFollowProjectArgs = {
-    id: Scalars['ID'];
-};
-export declare type MutationAddProjectArgs = {
-    input: ProjectInput;
-};
-export declare type MutationEditProjectArgs = {
-    id: Scalars['ID'];
-    input: ProjectInput;
-};
-export declare type MutationDeleteProjectArgs = {
-    id: Scalars['ID'];
-};
-export declare type MutationReportArgs = {
-    id: Scalars['ID'];
-    type: ReportType;
-};
-export declare type MutationPreSignUrlsArgs = {
-    input?: Maybe<Array<Maybe<PreSignedUrlnput>>>;
-};
-export declare type MutationPreSignUrlArgs = {
-    input: PreSignedUrlInput;
-};
-export declare type MutationEditUserArgs = {
-    input: EditUserInput;
-    id?: Maybe<Scalars['ID']>;
-};
-export declare type MutationToggleNotificationSettingsArgs = {
-    input?: Maybe<ToggleNotificationSettingsInput>;
-};
-export declare type MutationRegisterDeviceTokenArgs = {
-    token: Scalars['String'];
-    platform: PlatformType;
-};
-export declare type MutationBanUserArgs = {
-    id: Scalars['ID'];
-};
-export declare type ApplePayload = {
-    firstName?: Maybe<Scalars['String']>;
-    lastName?: Maybe<Scalars['String']>;
-};
-export declare type Tokens = {
-    __typename?: 'Tokens';
-    access_token?: Maybe<Scalars['String']>;
-    refresh_token?: Maybe<Scalars['String']>;
-};
-export declare type AccessToken = {
-    __typename?: 'AccessToken';
-    access_token?: Maybe<Scalars['String']>;
-};
-export declare type BlogPostInput = {
-    title: Scalars['String'];
-    content: Scalars['String'];
-};
-export declare type CommentInput = {
-    text: Scalars['String'];
-};
-export declare type EditCollectionInput = {
-    name?: Maybe<Scalars['String']>;
-};
-export declare type CollectionInput = {
-    postId: Scalars['ID'];
-};
-export declare type PostInput = {
-    projectId: Scalars['ID'];
-    caption?: Maybe<Scalars['String']>;
-    files: Array<Maybe<FileInput>>;
-    collectionId?: Maybe<Scalars['ID']>;
-};
-export declare type FileInput = {
-    filename: Scalars['String'];
-};
-export declare type EditPostInput = {
-    caption?: Maybe<Scalars['String']>;
-    collectionId?: Maybe<Scalars['ID']>;
-};
-export declare type ProjectInput = {
-    title?: Maybe<Scalars['String']>;
-    commentsDisabled?: Maybe<Scalars['Boolean']>;
-    projectTypeId?: Maybe<Scalars['ID']>;
-    modelId?: Maybe<Scalars['ID']>;
-};
-export declare enum ReportType {
-    Project = "PROJECT",
+export declare enum UserRole {
     User = "USER",
-    Comment = "COMMENT",
-    Post = "POST"
+    Admin = "ADMIN"
 }
-export declare type PreSignedUrlnput = {
-    type: UploadType;
-};
-export declare enum UploadType {
-    Image = "IMAGE",
-    Video = "VIDEO"
-}
-export declare type PreSignedUrl = {
-    __typename?: 'PreSignedUrl';
-    url?: Maybe<Scalars['String']>;
-    type?: Maybe<Scalars['String']>;
-    id?: Maybe<Scalars['ID']>;
-    filename?: Maybe<Scalars['String']>;
-};
-export declare type PreSignedUrlInput = {
-    type: UploadType;
-    path: Scalars['String'];
-};
-export declare type EditUserInput = {
-    firstName?: Maybe<Scalars['String']>;
-    lastName?: Maybe<Scalars['String']>;
-    interestedIn?: Maybe<Array<Maybe<ProjectTypeInput>>>;
-    timezone?: Maybe<Scalars['String']>;
+export declare type UserSettings = {
+    __typename?: 'UserSettings';
     locale?: Maybe<Scalars['String']>;
-    location?: Maybe<Scalars['String']>;
-    bio?: Maybe<Scalars['String']>;
-    website?: Maybe<Scalars['String']>;
-    avatarUrl?: Maybe<Scalars['String']>;
-    username?: Maybe<Scalars['String']>;
+    timezone?: Maybe<Scalars['String']>;
+    notifications?: Maybe<UserNotificationsSettings>;
 };
-export declare type ProjectTypeInput = {
-    id?: Maybe<Scalars['ID']>;
-};
-export declare type ToggleNotificationSettingsInput = {
-    deliveryMethod: Scalars['String'];
-    notificationType: Scalars['String'];
-};
-export declare enum PlatformType {
-    Mobile = "MOBILE",
-    Web = "WEB"
-}
-export declare type HashtagConnection = {
-    __typename?: 'HashtagConnection';
-    totalCount?: Maybe<Scalars['Int']>;
-    pageInfo: PageInfo;
-    edges?: Maybe<Array<HashtagEdge>>;
-};
-export declare type HashtagEdge = {
-    __typename?: 'HashtagEdge';
-    cursor: Scalars['String'];
-    node: Hashtag;
-};
-export declare enum CacheControlScope {
-    Public = "PUBLIC",
-    Private = "PRIVATE"
-}
 export declare type BlogPostFragment = ({
     __typename?: 'BlogPost';
 } & Pick<BlogPost, 'id' | 'title' | 'slug' | 'content' | 'createdAt'> & {
@@ -2388,7 +2388,7 @@ export declare type AddBlogPostMutationFn = Apollo.MutationFunction<AddBlogPostM
  * });
  */
 export declare function useAddBlogPostMutation(baseOptions?: Apollo.MutationHookOptions<AddBlogPostMutation, AddBlogPostMutationVariables>): Apollo.MutationTuple<AddBlogPostMutation, Exact<{
-    id?: string | null | undefined;
+    id?: Maybe<string> | undefined;
     input: BlogPostInput;
 }>>;
 export declare type AddBlogPostMutationHookResult = ReturnType<typeof useAddBlogPostMutation>;
@@ -2444,7 +2444,7 @@ export declare type AddCommentMutationFn = Apollo.MutationFunction<AddCommentMut
  */
 export declare function useAddCommentMutation(baseOptions?: Apollo.MutationHookOptions<AddCommentMutation, AddCommentMutationVariables>): Apollo.MutationTuple<AddCommentMutation, Exact<{
     postId: string;
-    commentId?: string | null | undefined;
+    commentId?: Maybe<string> | undefined;
     input: CommentInput;
 }>>;
 export declare type AddCommentMutationHookResult = ReturnType<typeof useAddCommentMutation>;
@@ -2651,7 +2651,7 @@ export declare type CollectPostsMutationFn = Apollo.MutationFunction<CollectPost
 export declare function useCollectPostsMutation(baseOptions?: Apollo.MutationHookOptions<CollectPostsMutation, CollectPostsMutationVariables>): Apollo.MutationTuple<CollectPostsMutation, Exact<{
     projectId: string;
     collectionId: string;
-    input?: CollectionInput | Maybe<CollectionInput>[] | null | undefined;
+    input?: Maybe<Maybe<CollectionInput> | Maybe<CollectionInput>[]> | undefined;
 }>>;
 export declare type CollectPostsMutationHookResult = ReturnType<typeof useCollectPostsMutation>;
 export declare type CollectPostsMutationResult = Apollo.MutationResult<CollectPostsMutation>;
@@ -2935,7 +2935,7 @@ export declare type EditUserMutationFn = Apollo.MutationFunction<EditUserMutatio
  */
 export declare function useEditUserMutation(baseOptions?: Apollo.MutationHookOptions<EditUserMutation, EditUserMutationVariables>): Apollo.MutationTuple<EditUserMutation, Exact<{
     input: EditUserInput;
-    id?: string | null | undefined;
+    id?: Maybe<string> | undefined;
 }>>;
 export declare type EditUserMutationHookResult = ReturnType<typeof useEditUserMutation>;
 export declare type EditUserMutationResult = Apollo.MutationResult<EditUserMutation>;
@@ -3109,7 +3109,7 @@ export declare type PreSignUrlsMutationFn = Apollo.MutationFunction<PreSignUrlsM
  * });
  */
 export declare function usePreSignUrlsMutation(baseOptions?: Apollo.MutationHookOptions<PreSignUrlsMutation, PreSignUrlsMutationVariables>): Apollo.MutationTuple<PreSignUrlsMutation, Exact<{
-    input: PreSignedUrlnput | Maybe<PreSignedUrlnput>[] | null;
+    input: Maybe<PreSignedUrlnput> | Maybe<PreSignedUrlnput>[];
 }>>;
 export declare type PreSignUrlsMutationHookResult = ReturnType<typeof usePreSignUrlsMutation>;
 export declare type PreSignUrlsMutationResult = Apollo.MutationResult<PreSignUrlsMutation>;
@@ -3211,7 +3211,7 @@ export declare type ToggleNotificationSettingsMutationFn = Apollo.MutationFuncti
  * });
  */
 export declare function useToggleNotificationSettingsMutation(baseOptions?: Apollo.MutationHookOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>): Apollo.MutationTuple<ToggleNotificationSettingsMutation, Exact<{
-    input?: ToggleNotificationSettingsInput | null | undefined;
+    input?: Maybe<ToggleNotificationSettingsInput> | undefined;
 }>>;
 export declare type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
 export declare type ToggleNotificationSettingsMutationResult = Apollo.MutationResult<ToggleNotificationSettingsMutation>;
@@ -3238,7 +3238,7 @@ export declare type TranslateCommentMutationFn = Apollo.MutationFunction<Transla
  */
 export declare function useTranslateCommentMutation(baseOptions?: Apollo.MutationHookOptions<TranslateCommentMutation, TranslateCommentMutationVariables>): Apollo.MutationTuple<TranslateCommentMutation, Exact<{
     id: string;
-    original?: boolean | null | undefined;
+    original?: Maybe<boolean> | undefined;
 }>>;
 export declare type TranslateCommentMutationHookResult = ReturnType<typeof useTranslateCommentMutation>;
 export declare type TranslateCommentMutationResult = Apollo.MutationResult<TranslateCommentMutation>;
@@ -3265,7 +3265,7 @@ export declare type TranslatePostMutationFn = Apollo.MutationFunction<TranslateP
  */
 export declare function useTranslatePostMutation(baseOptions?: Apollo.MutationHookOptions<TranslatePostMutation, TranslatePostMutationVariables>): Apollo.MutationTuple<TranslatePostMutation, Exact<{
     id: string;
-    original?: boolean | null | undefined;
+    original?: Maybe<boolean> | undefined;
 }>>;
 export declare type TranslatePostMutationHookResult = ReturnType<typeof useTranslatePostMutation>;
 export declare type TranslatePostMutationResult = Apollo.MutationResult<TranslatePostMutation>;
@@ -3290,11 +3290,11 @@ export declare const BlogPostDocument: Apollo.DocumentNode;
  */
 export declare function useBlogPostQuery(baseOptions?: Apollo.QueryHookOptions<BlogPostQuery, BlogPostQueryVariables>): Apollo.QueryResult<BlogPostQuery, Exact<{
     slug?: any;
-    id?: string | null | undefined;
+    id?: Maybe<string> | undefined;
 }>>;
 export declare function useBlogPostLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogPostQuery, BlogPostQueryVariables>): Apollo.QueryTuple<BlogPostQuery, Exact<{
     slug?: any;
-    id?: string | null | undefined;
+    id?: Maybe<string> | undefined;
 }>>;
 export declare type BlogPostQueryHookResult = ReturnType<typeof useBlogPostQuery>;
 export declare type BlogPostLazyQueryHookResult = ReturnType<typeof useBlogPostLazyQuery>;
@@ -3318,12 +3318,12 @@ export declare const BlogPostsDocument: Apollo.DocumentNode;
  * });
  */
 export declare function useBlogPostsQuery(baseOptions?: Apollo.QueryHookOptions<BlogPostsQuery, BlogPostsQueryVariables>): Apollo.QueryResult<BlogPostsQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useBlogPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogPostsQuery, BlogPostsQueryVariables>): Apollo.QueryTuple<BlogPostsQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type BlogPostsQueryHookResult = ReturnType<typeof useBlogPostsQuery>;
 export declare type BlogPostsLazyQueryHookResult = ReturnType<typeof useBlogPostsLazyQuery>;
@@ -3347,12 +3347,12 @@ export declare const BookmarksDocument: Apollo.DocumentNode;
  * });
  */
 export declare function useBookmarksQuery(baseOptions?: Apollo.QueryHookOptions<BookmarksQuery, BookmarksQueryVariables>): Apollo.QueryResult<BookmarksQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useBookmarksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BookmarksQuery, BookmarksQueryVariables>): Apollo.QueryTuple<BookmarksQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type BookmarksQueryHookResult = ReturnType<typeof useBookmarksQuery>;
 export declare type BookmarksLazyQueryHookResult = ReturnType<typeof useBookmarksLazyQuery>;
@@ -3380,20 +3380,20 @@ export declare const CollectionsDocument: Apollo.DocumentNode;
  * });
  */
 export declare function useCollectionsQuery(baseOptions?: Apollo.QueryHookOptions<CollectionsQuery, CollectionsQueryVariables>): Apollo.QueryResult<CollectionsQuery, Exact<{
-    id?: string | null | undefined;
+    id?: Maybe<string> | undefined;
     slug?: any;
-    projectId?: string | null | undefined;
+    projectId?: Maybe<string> | undefined;
     projectSlug?: any;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useCollectionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CollectionsQuery, CollectionsQueryVariables>): Apollo.QueryTuple<CollectionsQuery, Exact<{
-    id?: string | null | undefined;
+    id?: Maybe<string> | undefined;
     slug?: any;
-    projectId?: string | null | undefined;
+    projectId?: Maybe<string> | undefined;
     projectSlug?: any;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type CollectionsQueryHookResult = ReturnType<typeof useCollectionsQuery>;
 export declare type CollectionsLazyQueryHookResult = ReturnType<typeof useCollectionsLazyQuery>;
@@ -3444,11 +3444,11 @@ export declare const CommentsDocument: Apollo.DocumentNode;
  */
 export declare function useCommentsQuery(baseOptions: Apollo.QueryHookOptions<CommentsQuery, CommentsQueryVariables>): Apollo.QueryResult<CommentsQuery, Exact<{
     postId: string;
-    after?: string | null | undefined;
+    after?: Maybe<string> | undefined;
 }>>;
 export declare function useCommentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CommentsQuery, CommentsQueryVariables>): Apollo.QueryTuple<CommentsQuery, Exact<{
     postId: string;
-    after?: string | null | undefined;
+    after?: Maybe<string> | undefined;
 }>>;
 export declare type CommentsQueryHookResult = ReturnType<typeof useCommentsQuery>;
 export declare type CommentsLazyQueryHookResult = ReturnType<typeof useCommentsLazyQuery>;
@@ -3497,12 +3497,12 @@ export declare const CurrentUserFollowingProjectsDocument: Apollo.DocumentNode;
  * });
  */
 export declare function useCurrentUserFollowingProjectsQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>): Apollo.QueryResult<CurrentUserFollowingProjectsQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useCurrentUserFollowingProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>): Apollo.QueryTuple<CurrentUserFollowingProjectsQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type CurrentUserFollowingProjectsQueryHookResult = ReturnType<typeof useCurrentUserFollowingProjectsQuery>;
 export declare type CurrentUserFollowingProjectsLazyQueryHookResult = ReturnType<typeof useCurrentUserFollowingProjectsLazyQuery>;
@@ -3526,12 +3526,12 @@ export declare const CurrentUserProfileDocument: Apollo.DocumentNode;
  * });
  */
 export declare function useCurrentUserProfileQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>): Apollo.QueryResult<CurrentUserProfileQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useCurrentUserProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>): Apollo.QueryTuple<CurrentUserProfileQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type CurrentUserProfileQueryHookResult = ReturnType<typeof useCurrentUserProfileQuery>;
 export declare type CurrentUserProfileLazyQueryHookResult = ReturnType<typeof useCurrentUserProfileLazyQuery>;
@@ -3605,12 +3605,12 @@ export declare const FeedDocument: Apollo.DocumentNode;
  * });
  */
 export declare function useFeedQuery(baseOptions?: Apollo.QueryHookOptions<FeedQuery, FeedQueryVariables>): Apollo.QueryResult<FeedQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useFeedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FeedQuery, FeedQueryVariables>): Apollo.QueryTuple<FeedQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type FeedQueryHookResult = ReturnType<typeof useFeedQuery>;
 export declare type FeedLazyQueryHookResult = ReturnType<typeof useFeedLazyQuery>;
@@ -3634,12 +3634,12 @@ export declare const FilesDocument: Apollo.DocumentNode;
  * });
  */
 export declare function useFilesQuery(baseOptions?: Apollo.QueryHookOptions<FilesQuery, FilesQueryVariables>): Apollo.QueryResult<FilesQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useFilesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FilesQuery, FilesQueryVariables>): Apollo.QueryTuple<FilesQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type FilesQueryHookResult = ReturnType<typeof useFilesQuery>;
 export declare type FilesLazyQueryHookResult = ReturnType<typeof useFilesLazyQuery>;
@@ -3665,13 +3665,13 @@ export declare const FollowersDocument: Apollo.DocumentNode;
  */
 export declare function useFollowersQuery(baseOptions: Apollo.QueryHookOptions<FollowersQuery, FollowersQueryVariables>): Apollo.QueryResult<FollowersQuery, Exact<{
     projectId: string;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useFollowersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FollowersQuery, FollowersQueryVariables>): Apollo.QueryTuple<FollowersQuery, Exact<{
     projectId: string;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type FollowersQueryHookResult = ReturnType<typeof useFollowersQuery>;
 export declare type FollowersLazyQueryHookResult = ReturnType<typeof useFollowersLazyQuery>;
@@ -3724,18 +3724,18 @@ export declare const HashtagDocument: Apollo.DocumentNode;
  * });
  */
 export declare function useHashtagQuery(baseOptions?: Apollo.QueryHookOptions<HashtagQuery, HashtagQueryVariables>): Apollo.QueryResult<HashtagQuery, Exact<{
-    id?: string | null | undefined;
+    id?: Maybe<string> | undefined;
     slug?: any;
-    name?: string | null | undefined;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    name?: Maybe<string> | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useHashtagLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<HashtagQuery, HashtagQueryVariables>): Apollo.QueryTuple<HashtagQuery, Exact<{
-    id?: string | null | undefined;
+    id?: Maybe<string> | undefined;
     slug?: any;
-    name?: string | null | undefined;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    name?: Maybe<string> | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type HashtagQueryHookResult = ReturnType<typeof useHashtagQuery>;
 export declare type HashtagLazyQueryHookResult = ReturnType<typeof useHashtagLazyQuery>;
@@ -3761,13 +3761,13 @@ export declare const LikesDocument: Apollo.DocumentNode;
  */
 export declare function useLikesQuery(baseOptions: Apollo.QueryHookOptions<LikesQuery, LikesQueryVariables>): Apollo.QueryResult<LikesQuery, Exact<{
     postId: string;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useLikesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LikesQuery, LikesQueryVariables>): Apollo.QueryTuple<LikesQuery, Exact<{
     postId: string;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type LikesQueryHookResult = ReturnType<typeof useLikesQuery>;
 export declare type LikesLazyQueryHookResult = ReturnType<typeof useLikesLazyQuery>;
@@ -3816,12 +3816,12 @@ export declare const NotificationsDocument: Apollo.DocumentNode;
  * });
  */
 export declare function useNotificationsQuery(baseOptions?: Apollo.QueryHookOptions<NotificationsQuery, NotificationsQueryVariables>): Apollo.QueryResult<NotificationsQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useNotificationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<NotificationsQuery, NotificationsQueryVariables>): Apollo.QueryTuple<NotificationsQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type NotificationsQueryHookResult = ReturnType<typeof useNotificationsQuery>;
 export declare type NotificationsLazyQueryHookResult = ReturnType<typeof useNotificationsLazyQuery>;
@@ -3871,12 +3871,12 @@ export declare const PostsDocument: Apollo.DocumentNode;
  * });
  */
 export declare function usePostsQuery(baseOptions?: Apollo.QueryHookOptions<PostsQuery, PostsQueryVariables>): Apollo.QueryResult<PostsQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function usePostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PostsQuery, PostsQueryVariables>): Apollo.QueryTuple<PostsQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type PostsQueryHookResult = ReturnType<typeof usePostsQuery>;
 export declare type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
@@ -3903,18 +3903,18 @@ export declare const ProjectDocument: Apollo.DocumentNode;
  * });
  */
 export declare function useProjectQuery(baseOptions?: Apollo.QueryHookOptions<ProjectQuery, ProjectQueryVariables>): Apollo.QueryResult<ProjectQuery, Exact<{
-    id?: string | null | undefined;
+    id?: Maybe<string> | undefined;
     slug?: any;
-    after?: string | null | undefined;
-    postId?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    postId?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useProjectLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectQuery, ProjectQueryVariables>): Apollo.QueryTuple<ProjectQuery, Exact<{
-    id?: string | null | undefined;
+    id?: Maybe<string> | undefined;
     slug?: any;
-    after?: string | null | undefined;
-    postId?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    postId?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type ProjectQueryHookResult = ReturnType<typeof useProjectQuery>;
 export declare type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>;
@@ -3941,18 +3941,18 @@ export declare const ProjectCollectionsDocument: Apollo.DocumentNode;
  * });
  */
 export declare function useProjectCollectionsQuery(baseOptions?: Apollo.QueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>): Apollo.QueryResult<ProjectCollectionsQuery, Exact<{
-    projectId?: string | null | undefined;
+    projectId?: Maybe<string> | undefined;
     projectSlug?: any;
     slug?: any;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useProjectCollectionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>): Apollo.QueryTuple<ProjectCollectionsQuery, Exact<{
-    projectId?: string | null | undefined;
+    projectId?: Maybe<string> | undefined;
     projectSlug?: any;
     slug?: any;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type ProjectCollectionsQueryHookResult = ReturnType<typeof useProjectCollectionsQuery>;
 export declare type ProjectCollectionsLazyQueryHookResult = ReturnType<typeof useProjectCollectionsLazyQuery>;
@@ -3976,12 +3976,12 @@ export declare const ProjectSuggestionsDocument: Apollo.DocumentNode;
  * });
  */
 export declare function useProjectSuggestionsQuery(baseOptions?: Apollo.QueryHookOptions<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>): Apollo.QueryResult<ProjectSuggestionsQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useProjectSuggestionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>): Apollo.QueryTuple<ProjectSuggestionsQuery, Exact<{
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type ProjectSuggestionsQueryHookResult = ReturnType<typeof useProjectSuggestionsQuery>;
 export declare type ProjectSuggestionsLazyQueryHookResult = ReturnType<typeof useProjectSuggestionsLazyQuery>;
@@ -4032,15 +4032,15 @@ export declare const ProjectsDocument: Apollo.DocumentNode;
  * });
  */
 export declare function useProjectsQuery(baseOptions: Apollo.QueryHookOptions<ProjectsQuery, ProjectsQueryVariables>): Apollo.QueryResult<ProjectsQuery, Exact<{
-    typeId?: string | null | undefined;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    typeId?: Maybe<string> | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
     type: ProjectSortType;
 }>>;
 export declare function useProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectsQuery, ProjectsQueryVariables>): Apollo.QueryTuple<ProjectsQuery, Exact<{
-    typeId?: string | null | undefined;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    typeId?: Maybe<string> | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
     type: ProjectSortType;
 }>>;
 export declare type ProjectsQueryHookResult = ReturnType<typeof useProjectsQuery>;
@@ -4064,10 +4064,10 @@ export declare const RecentCommentsDocument: Apollo.DocumentNode;
  * });
  */
 export declare function useRecentCommentsQuery(baseOptions?: Apollo.QueryHookOptions<RecentCommentsQuery, RecentCommentsQueryVariables>): Apollo.QueryResult<RecentCommentsQuery, Exact<{
-    after?: string | null | undefined;
+    after?: Maybe<string> | undefined;
 }>>;
 export declare function useRecentCommentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RecentCommentsQuery, RecentCommentsQueryVariables>): Apollo.QueryTuple<RecentCommentsQuery, Exact<{
-    after?: string | null | undefined;
+    after?: Maybe<string> | undefined;
 }>>;
 export declare type RecentCommentsQueryHookResult = ReturnType<typeof useRecentCommentsQuery>;
 export declare type RecentCommentsLazyQueryHookResult = ReturnType<typeof useRecentCommentsLazyQuery>;
@@ -4093,13 +4093,13 @@ export declare const RepliesDocument: Apollo.DocumentNode;
  */
 export declare function useRepliesQuery(baseOptions: Apollo.QueryHookOptions<RepliesQuery, RepliesQueryVariables>): Apollo.QueryResult<RepliesQuery, Exact<{
     id: string;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useRepliesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RepliesQuery, RepliesQueryVariables>): Apollo.QueryTuple<RepliesQuery, Exact<{
     id: string;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type RepliesQueryHookResult = ReturnType<typeof useRepliesQuery>;
 export declare type RepliesLazyQueryHookResult = ReturnType<typeof useRepliesLazyQuery>;
@@ -4125,13 +4125,13 @@ export declare const SearchHashtagsDocument: Apollo.DocumentNode;
  */
 export declare function useSearchHashtagsQuery(baseOptions: Apollo.QueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>): Apollo.QueryResult<SearchHashtagsQuery, Exact<{
     query: string;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useSearchHashtagsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>): Apollo.QueryTuple<SearchHashtagsQuery, Exact<{
     query: string;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type SearchHashtagsQueryHookResult = ReturnType<typeof useSearchHashtagsQuery>;
 export declare type SearchHashtagsLazyQueryHookResult = ReturnType<typeof useSearchHashtagsLazyQuery>;
@@ -4157,13 +4157,13 @@ export declare const SearchModelsDocument: Apollo.DocumentNode;
  */
 export declare function useSearchModelsQuery(baseOptions: Apollo.QueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>): Apollo.QueryResult<SearchModelsQuery, Exact<{
     query: string;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useSearchModelsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>): Apollo.QueryTuple<SearchModelsQuery, Exact<{
     query: string;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type SearchModelsQueryHookResult = ReturnType<typeof useSearchModelsQuery>;
 export declare type SearchModelsLazyQueryHookResult = ReturnType<typeof useSearchModelsLazyQuery>;
@@ -4189,13 +4189,13 @@ export declare const SearchProjectsDocument: Apollo.DocumentNode;
  */
 export declare function useSearchProjectsQuery(baseOptions: Apollo.QueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>): Apollo.QueryResult<SearchProjectsQuery, Exact<{
     query: string;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useSearchProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>): Apollo.QueryTuple<SearchProjectsQuery, Exact<{
     query: string;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type SearchProjectsQueryHookResult = ReturnType<typeof useSearchProjectsQuery>;
 export declare type SearchProjectsLazyQueryHookResult = ReturnType<typeof useSearchProjectsLazyQuery>;
@@ -4221,13 +4221,13 @@ export declare const SearchUsersDocument: Apollo.DocumentNode;
  */
 export declare function useSearchUsersQuery(baseOptions: Apollo.QueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>): Apollo.QueryResult<SearchUsersQuery, Exact<{
     query: string;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useSearchUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>): Apollo.QueryTuple<SearchUsersQuery, Exact<{
     query: string;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type SearchUsersQueryHookResult = ReturnType<typeof useSearchUsersQuery>;
 export declare type SearchUsersLazyQueryHookResult = ReturnType<typeof useSearchUsersLazyQuery>;
@@ -4252,11 +4252,11 @@ export declare const SimilarProjectsDocument: Apollo.DocumentNode;
  */
 export declare function useSimilarProjectsQuery(baseOptions: Apollo.QueryHookOptions<SimilarProjectsQuery, SimilarProjectsQueryVariables>): Apollo.QueryResult<SimilarProjectsQuery, Exact<{
     id: string;
-    first?: number | null | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useSimilarProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SimilarProjectsQuery, SimilarProjectsQueryVariables>): Apollo.QueryTuple<SimilarProjectsQuery, Exact<{
     id: string;
-    first?: number | null | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type SimilarProjectsQueryHookResult = ReturnType<typeof useSimilarProjectsQuery>;
 export declare type SimilarProjectsLazyQueryHookResult = ReturnType<typeof useSimilarProjectsLazyQuery>;
@@ -4307,13 +4307,13 @@ export declare const UserDocument: Apollo.DocumentNode;
  */
 export declare function useUserQuery(baseOptions: Apollo.QueryHookOptions<UserQuery, UserQueryVariables>): Apollo.QueryResult<UserQuery, Exact<{
     username: any;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserQuery, UserQueryVariables>): Apollo.QueryTuple<UserQuery, Exact<{
     username: any;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type UserQueryHookResult = ReturnType<typeof useUserQuery>;
 export declare type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
@@ -4339,13 +4339,13 @@ export declare const UserFollowingProjectsDocument: Apollo.DocumentNode;
  */
 export declare function useUserFollowingProjectsQuery(baseOptions: Apollo.QueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>): Apollo.QueryResult<UserFollowingProjectsQuery, Exact<{
     username: any;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare function useUserFollowingProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>): Apollo.QueryTuple<UserFollowingProjectsQuery, Exact<{
     username: any;
-    after?: string | null | undefined;
-    first?: number | null | undefined;
+    after?: Maybe<string> | undefined;
+    first?: Maybe<number> | undefined;
 }>>;
 export declare type UserFollowingProjectsQueryHookResult = ReturnType<typeof useUserFollowingProjectsQuery>;
 export declare type UserFollowingProjectsLazyQueryHookResult = ReturnType<typeof useUserFollowingProjectsLazyQuery>;

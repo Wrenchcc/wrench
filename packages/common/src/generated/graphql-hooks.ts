@@ -18,627 +18,14 @@ export type Scalars = {
 };
 
 
-export type Query = {
-  __typename?: 'Query';
-  dummy?: Maybe<Scalars['String']>;
-  bookmarks?: Maybe<BookmarkConnection>;
-  blogPost?: Maybe<BlogPost>;
-  blogPosts?: Maybe<BlogPostConnection>;
-  comments?: Maybe<CommentConnection>;
-  recentComments?: Maybe<CommentConnection>;
-  comment?: Maybe<Comment>;
-  collections?: Maybe<PostConnection>;
-  projectCollections?: Maybe<CollectionConnection>;
-  feed?: Maybe<Feed>;
-  files?: Maybe<FileConnection>;
-  followers?: Maybe<FollowersConnection>;
-  hashtag?: Maybe<Hashtag>;
-  likes?: Maybe<LikeConnection>;
-  meta?: Maybe<Meta>;
-  growth?: Maybe<Array<Maybe<GrowthData>>>;
-  notifications?: Maybe<NotificationsConnection>;
-  post?: Maybe<Post>;
-  posts?: Maybe<PostConnection>;
-  project?: Maybe<Project>;
-  projects?: Maybe<ProjectsConnection>;
-  projectSuggestions?: Maybe<Array<Maybe<ProjectSuggestionsConnection>>>;
-  similarProjects?: Maybe<ProjectsConnection>;
-  projectTypes?: Maybe<Array<Maybe<ProjectType>>>;
-  search?: Maybe<SearchResults>;
-  user?: Maybe<User>;
-  users?: Maybe<UserConnection>;
-  currentUser?: Maybe<User>;
+export type AccessToken = {
+  __typename?: 'AccessToken';
+  access_token?: Maybe<Scalars['String']>;
 };
 
-
-export type QueryBookmarksArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryBlogPostArgs = {
-  slug?: Maybe<Scalars['LowercaseString']>;
-  id?: Maybe<Scalars['ID']>;
-};
-
-
-export type QueryBlogPostsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryCommentsArgs = {
-  postId: Scalars['ID'];
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryRecentCommentsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryCommentArgs = {
-  id: Scalars['ID'];
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryCollectionsArgs = {
-  id?: Maybe<Scalars['ID']>;
-  slug?: Maybe<Scalars['LowercaseString']>;
-  projectId?: Maybe<Scalars['ID']>;
-  projectSlug?: Maybe<Scalars['LowercaseString']>;
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryProjectCollectionsArgs = {
-  slug?: Maybe<Scalars['LowercaseString']>;
-  projectId?: Maybe<Scalars['ID']>;
-  projectSlug?: Maybe<Scalars['LowercaseString']>;
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryFilesArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  type?: Maybe<FileType>;
-  sort?: Maybe<SortType>;
-};
-
-
-export type QueryFollowersArgs = {
-  projectId: Scalars['ID'];
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryHashtagArgs = {
-  id?: Maybe<Scalars['ID']>;
-  slug?: Maybe<Scalars['LowercaseString']>;
-  name?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryLikesArgs = {
-  postId: Scalars['ID'];
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryGrowthArgs = {
-  type: GrowthType;
-  startDate?: Maybe<Scalars['Date']>;
-  endDate?: Maybe<Scalars['Date']>;
-};
-
-
-export type QueryNotificationsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryPostArgs = {
-  id?: Maybe<Scalars['ID']>;
-};
-
-
-export type QueryPostsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryProjectArgs = {
-  id?: Maybe<Scalars['ID']>;
-  slug?: Maybe<Scalars['LowercaseString']>;
-};
-
-
-export type QueryProjectsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  type: ProjectSortType;
-  typeId?: Maybe<Scalars['ID']>;
-};
-
-
-export type QueryProjectSuggestionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
-
-export type QuerySimilarProjectsArgs = {
-  id: Scalars['ID'];
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
-
-export type QuerySearchArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-  query: Scalars['String'];
-  type: SearchType;
-};
-
-
-export type QueryUserArgs = {
-  id?: Maybe<Scalars['ID']>;
-  username?: Maybe<Scalars['LowercaseString']>;
-};
-
-
-export type QueryUsersArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryCurrentUserArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-export type BookmarkConnection = {
-  __typename?: 'BookmarkConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<BookmarkEdge>>;
-};
-
-export type PageInfo = {
-  __typename?: 'PageInfo';
-  hasNextPage?: Maybe<Scalars['Boolean']>;
-  hasPreviousPage?: Maybe<Scalars['Boolean']>;
-};
-
-export type BookmarkEdge = {
-  __typename?: 'BookmarkEdge';
-  cursor: Scalars['String'];
-  node: Post;
-};
-
-export type Post = {
-  __typename?: 'Post';
-  id?: Maybe<Scalars['ID']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  caption?: Maybe<Scalars['String']>;
-  user?: Maybe<User>;
-  project?: Maybe<Project>;
-  postPermissions?: Maybe<PostPermissions>;
-  permissions?: Maybe<PostPermissions>;
-  likes?: Maybe<Likes>;
-  bookmarks?: Maybe<Bookmarks>;
-  collection?: Maybe<Collection>;
-  translatable?: Maybe<Scalars['Boolean']>;
-  language?: Maybe<Scalars['String']>;
-  filesConnection?: Maybe<FileConnection>;
-  commentsConnection?: Maybe<CommentConnection>;
-  likesConnection?: Maybe<LikeConnection>;
-};
-
-
-export type PostFilesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  reverse?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<FileType>;
-};
-
-
-export type PostCommentsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type PostLikesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type User = {
-  __typename?: 'User';
-  id: Scalars['ID'];
-  username?: Maybe<Scalars['LowercaseString']>;
-  createdAt: Scalars['Date'];
-  updatedAt: Scalars['Date'];
-  fullName?: Maybe<Scalars['String']>;
+export type ApplePayload = {
   firstName?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
-  avatarUrl?: Maybe<Scalars['String']>;
-  projectCount?: Maybe<Scalars['Int']>;
-  interestedIn?: Maybe<Array<Maybe<ProjectType>>>;
-  settings?: Maybe<UserSettings>;
-  dynamicLink?: Maybe<Scalars['String']>;
-  isOnline?: Maybe<Scalars['Boolean']>;
-  lastSeen?: Maybe<Scalars['Date']>;
-  website?: Maybe<Scalars['String']>;
-  bio?: Maybe<Scalars['String']>;
-  location?: Maybe<Scalars['String']>;
-  isSilhouette?: Maybe<Scalars['Boolean']>;
-  role?: Maybe<UserRole>;
-  projectsConnection?: Maybe<ProjectsConnection>;
-  followingProjects?: Maybe<ProjectsConnection>;
-  postsConnection?: Maybe<PostConnection>;
-};
-
-
-export type UserProjectsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type UserFollowingProjectsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type UserPostsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type ProjectType = {
-  __typename?: 'ProjectType';
-  id?: Maybe<Scalars['ID']>;
-  title?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-  imageUrl: Scalars['String'];
-};
-
-export type UserSettings = {
-  __typename?: 'UserSettings';
-  locale?: Maybe<Scalars['String']>;
-  timezone?: Maybe<Scalars['String']>;
-  notifications?: Maybe<UserNotificationsSettings>;
-};
-
-export type UserNotificationsSettings = {
-  __typename?: 'UserNotificationsSettings';
-  types?: Maybe<NotificationSettingsType>;
-};
-
-export type NotificationSettingsType = {
-  __typename?: 'NotificationSettingsType';
-  NEW_FOLLOWER?: Maybe<NotificationKindSettings>;
-  NEW_COMMENT?: Maybe<NotificationKindSettings>;
-  NEW_MENTION?: Maybe<NotificationKindSettings>;
-  NEW_ARTICLE?: Maybe<NotificationKindSettings>;
-  SIMILAR_PROJECTS?: Maybe<NotificationKindSettings>;
-  PRODUCT_ANNOUNCEMENTS?: Maybe<NotificationKindSettings>;
-};
-
-export type NotificationKindSettings = {
-  __typename?: 'NotificationKindSettings';
-  email?: Maybe<Scalars['Boolean']>;
-  push?: Maybe<Scalars['Boolean']>;
-};
-
-export enum UserRole {
-  User = 'USER',
-  Admin = 'ADMIN'
-}
-
-export type ProjectsConnection = {
-  __typename?: 'ProjectsConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<ProjectEdge>>;
-};
-
-export type ProjectEdge = {
-  __typename?: 'ProjectEdge';
-  cursor: Scalars['String'];
-  node: Project;
-};
-
-export type Project = {
-  __typename?: 'Project';
-  id?: Maybe<Scalars['ID']>;
-  slug?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  dynamicLink?: Maybe<Scalars['String']>;
-  user?: Maybe<User>;
-  projectPermissions?: Maybe<ProjectPermissions>;
-  permissions?: Maybe<ProjectPermissions>;
-  commentsDisabled?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<ProjectType>;
-  cover?: Maybe<CoverType>;
-  model?: Maybe<Model>;
-  filesConnection?: Maybe<FileConnection>;
-  followersConnection?: Maybe<FollowersConnection>;
-  postsConnection?: Maybe<PostConnection>;
-  collectionsConnection?: Maybe<CollectionConnection>;
-};
-
-
-export type ProjectFilesConnectionArgs = {
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  reverse?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<FileType>;
-};
-
-
-export type ProjectFollowersConnectionArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
-
-export type ProjectPostsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type ProjectCollectionsConnectionArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
-export type ProjectPermissions = {
-  __typename?: 'ProjectPermissions';
-  isFollower?: Maybe<Scalars['Boolean']>;
-  isOwner?: Maybe<Scalars['Boolean']>;
-};
-
-export type CoverType = {
-  __typename?: 'CoverType';
-  uri?: Maybe<Scalars['String']>;
-  default?: Maybe<Scalars['Boolean']>;
-};
-
-export type Model = {
-  __typename?: 'Model';
-  id: Scalars['ID'];
-  brand?: Maybe<Brand>;
-  model?: Maybe<Scalars['String']>;
-  year?: Maybe<Scalars['Int']>;
-};
-
-export type Brand = {
-  __typename?: 'Brand';
-  id: Scalars['ID'];
-  name?: Maybe<Scalars['String']>;
-};
-
-export enum FileType {
-  Image = 'IMAGE',
-  Video = 'VIDEO'
-}
-
-export type FileConnection = {
-  __typename?: 'FileConnection';
-  edges?: Maybe<Array<Maybe<FileEdge>>>;
-  pageInfo: PageInfo;
-};
-
-export type FileEdge = {
-  __typename?: 'FileEdge';
-  cursor: Scalars['String'];
-  node: File;
-};
-
-export type File = {
-  __typename?: 'File';
-  id?: Maybe<Scalars['ID']>;
-  postId?: Maybe<Scalars['ID']>;
-  type?: Maybe<FileType>;
-  uri: Scalars['String'];
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-};
-
-export type FollowersConnection = {
-  __typename?: 'FollowersConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<FollowersEdge>>;
-};
-
-export type FollowersEdge = {
-  __typename?: 'FollowersEdge';
-  cursor: Scalars['String'];
-  node: User;
-};
-
-export type PostConnection = {
-  __typename?: 'PostConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<PostEdge>>;
-};
-
-export type PostEdge = {
-  __typename?: 'PostEdge';
-  cursor: Scalars['String'];
-  node: Post;
-};
-
-export type CollectionConnection = {
-  __typename?: 'CollectionConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<CollectionEdge>>;
-};
-
-export type CollectionEdge = {
-  __typename?: 'CollectionEdge';
-  cursor: Scalars['String'];
-  node: Collection;
-};
-
-export type Collection = {
-  __typename?: 'Collection';
-  id?: Maybe<Scalars['ID']>;
-  name?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-  cover?: Maybe<CoverType>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-};
-
-export type PostPermissions = {
-  __typename?: 'PostPermissions';
-  isOwner?: Maybe<Scalars['Boolean']>;
-};
-
-export type Likes = {
-  __typename?: 'Likes';
-  totalCount?: Maybe<Scalars['Int']>;
-  isLiked?: Maybe<Scalars['Boolean']>;
-};
-
-export type Bookmarks = {
-  __typename?: 'Bookmarks';
-  totalCount?: Maybe<Scalars['Int']>;
-  isBookmarked?: Maybe<Scalars['Boolean']>;
-};
-
-export type CommentConnection = {
-  __typename?: 'CommentConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<CommentEdge>>;
-};
-
-export type CommentEdge = {
-  __typename?: 'CommentEdge';
-  cursor: Scalars['String'];
-  node: Comment;
-};
-
-export type Comment = {
-  __typename?: 'Comment';
-  id?: Maybe<Scalars['ID']>;
-  commentId?: Maybe<Scalars['ID']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  text: Scalars['String'];
-  user?: Maybe<User>;
-  postId?: Maybe<Scalars['ID']>;
-  permissions?: Maybe<CommentPermissions>;
-  translatable?: Maybe<Scalars['Boolean']>;
-  language?: Maybe<Scalars['String']>;
-  repliesConnection?: Maybe<CommentConnection>;
-  likes?: Maybe<Likes>;
-};
-
-
-export type CommentRepliesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-export type CommentPermissions = {
-  __typename?: 'CommentPermissions';
-  isOwner?: Maybe<Scalars['Boolean']>;
-};
-
-export type LikeConnection = {
-  __typename?: 'LikeConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<LikeEdge>>;
-};
-
-export type LikeEdge = {
-  __typename?: 'LikeEdge';
-  cursor: Scalars['String'];
-  node: User;
 };
 
 export type BlogPost = {
@@ -665,6 +52,143 @@ export type BlogPostEdge = {
   node: BlogPost;
 };
 
+export type BlogPostInput = {
+  title: Scalars['String'];
+  content: Scalars['String'];
+};
+
+export type BookmarkConnection = {
+  __typename?: 'BookmarkConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<BookmarkEdge>>;
+};
+
+export type BookmarkEdge = {
+  __typename?: 'BookmarkEdge';
+  cursor: Scalars['String'];
+  node: Post;
+};
+
+export type Bookmarks = {
+  __typename?: 'Bookmarks';
+  totalCount?: Maybe<Scalars['Int']>;
+  isBookmarked?: Maybe<Scalars['Boolean']>;
+};
+
+export type Brand = {
+  __typename?: 'Brand';
+  id: Scalars['ID'];
+  name?: Maybe<Scalars['String']>;
+};
+
+export enum CacheControlScope {
+  Public = 'PUBLIC',
+  Private = 'PRIVATE'
+}
+
+export type Collection = {
+  __typename?: 'Collection';
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+  cover?: Maybe<CoverType>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+};
+
+export type CollectionConnection = {
+  __typename?: 'CollectionConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<CollectionEdge>>;
+};
+
+export type CollectionEdge = {
+  __typename?: 'CollectionEdge';
+  cursor: Scalars['String'];
+  node: Collection;
+};
+
+export type CollectionInput = {
+  postId: Scalars['ID'];
+};
+
+export type Comment = {
+  __typename?: 'Comment';
+  id?: Maybe<Scalars['ID']>;
+  commentId?: Maybe<Scalars['ID']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  text: Scalars['String'];
+  user?: Maybe<User>;
+  postId?: Maybe<Scalars['ID']>;
+  permissions?: Maybe<CommentPermissions>;
+  translatable?: Maybe<Scalars['Boolean']>;
+  language?: Maybe<Scalars['String']>;
+  repliesConnection?: Maybe<CommentConnection>;
+  likes?: Maybe<Likes>;
+};
+
+
+export type CommentRepliesConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+export type CommentConnection = {
+  __typename?: 'CommentConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<CommentEdge>>;
+};
+
+export type CommentEdge = {
+  __typename?: 'CommentEdge';
+  cursor: Scalars['String'];
+  node: Comment;
+};
+
+export type CommentInput = {
+  text: Scalars['String'];
+};
+
+export type CommentPermissions = {
+  __typename?: 'CommentPermissions';
+  isOwner?: Maybe<Scalars['Boolean']>;
+};
+
+export type CoverType = {
+  __typename?: 'CoverType';
+  uri?: Maybe<Scalars['String']>;
+  default?: Maybe<Scalars['Boolean']>;
+};
+
+
+export type EditCollectionInput = {
+  name?: Maybe<Scalars['String']>;
+};
+
+export type EditPostInput = {
+  caption?: Maybe<Scalars['String']>;
+  collectionId?: Maybe<Scalars['ID']>;
+};
+
+export type EditUserInput = {
+  firstName?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
+  interestedIn?: Maybe<Array<Maybe<ProjectTypeInput>>>;
+  timezone?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
+  bio?: Maybe<Scalars['String']>;
+  website?: Maybe<Scalars['String']>;
+  avatarUrl?: Maybe<Scalars['String']>;
+  username?: Maybe<Scalars['String']>;
+};
+
 export type Feed = {
   __typename?: 'Feed';
   postsConnection?: Maybe<PostConnection>;
@@ -678,9 +202,59 @@ export type FeedPostsConnectionArgs = {
   before?: Maybe<Scalars['String']>;
 };
 
-export enum SortType {
-  Recent = 'RECENT',
-  Random = 'RANDOM'
+export type File = {
+  __typename?: 'File';
+  id?: Maybe<Scalars['ID']>;
+  postId?: Maybe<Scalars['ID']>;
+  type?: Maybe<FileType>;
+  uri: Scalars['String'];
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+};
+
+export type FileConnection = {
+  __typename?: 'FileConnection';
+  edges?: Maybe<Array<Maybe<FileEdge>>>;
+  pageInfo: PageInfo;
+};
+
+export type FileEdge = {
+  __typename?: 'FileEdge';
+  cursor: Scalars['String'];
+  node: File;
+};
+
+export type FileInput = {
+  filename: Scalars['String'];
+};
+
+export enum FileType {
+  Image = 'IMAGE',
+  Video = 'VIDEO'
+}
+
+export type FollowersConnection = {
+  __typename?: 'FollowersConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<FollowersEdge>>;
+};
+
+export type FollowersEdge = {
+  __typename?: 'FollowersEdge';
+  cursor: Scalars['String'];
+  node: User;
+};
+
+export type GrowthData = {
+  __typename?: 'GrowthData';
+  date?: Maybe<Scalars['Date']>;
+  count?: Maybe<Scalars['Int']>;
+};
+
+export enum GrowthType {
+  Projects = 'PROJECTS',
+  Users = 'USERS'
 }
 
 export type Hashtag = {
@@ -702,6 +276,39 @@ export type HashtagPostsConnectionArgs = {
   before?: Maybe<Scalars['String']>;
 };
 
+export type HashtagConnection = {
+  __typename?: 'HashtagConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<HashtagEdge>>;
+};
+
+export type HashtagEdge = {
+  __typename?: 'HashtagEdge';
+  cursor: Scalars['String'];
+  node: Hashtag;
+};
+
+export type LikeConnection = {
+  __typename?: 'LikeConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<LikeEdge>>;
+};
+
+export type LikeEdge = {
+  __typename?: 'LikeEdge';
+  cursor: Scalars['String'];
+  node: User;
+};
+
+export type Likes = {
+  __typename?: 'Likes';
+  totalCount?: Maybe<Scalars['Int']>;
+  isLiked?: Maybe<Scalars['Boolean']>;
+};
+
+
 export type Meta = {
   __typename?: 'Meta';
   isAdmin?: Maybe<Scalars['Boolean']>;
@@ -717,106 +324,12 @@ export type Meta = {
   totalFilesToday?: Maybe<Scalars['Int']>;
 };
 
-export enum GrowthType {
-  Projects = 'PROJECTS',
-  Users = 'USERS'
-}
-
-export type GrowthData = {
-  __typename?: 'GrowthData';
-  date?: Maybe<Scalars['Date']>;
-  count?: Maybe<Scalars['Int']>;
-};
-
-export type NotificationsConnection = {
-  __typename?: 'NotificationsConnection';
-  unreadCount?: Maybe<Scalars['Int']>;
-  pageInfo?: Maybe<PageInfo>;
-  edges?: Maybe<Array<Maybe<NotificationEdge>>>;
-};
-
-export type NotificationEdge = {
-  __typename?: 'NotificationEdge';
-  cursor?: Maybe<Scalars['String']>;
-  node?: Maybe<Notification>;
-};
-
-export type Notification = {
-  __typename?: 'Notification';
+export type Model = {
+  __typename?: 'Model';
   id: Scalars['ID'];
-  user: User;
-  type?: Maybe<NotificationTypes>;
-  project?: Maybe<Project>;
-  post?: Maybe<Post>;
-  comment?: Maybe<Comment>;
-  isSeen: Scalars['Boolean'];
-  createdAt: Scalars['Date'];
-  updatedAt: Scalars['Date'];
-  filesConnection?: Maybe<FileConnection>;
-};
-
-
-export type NotificationFilesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  reverse?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<FileType>;
-};
-
-export enum NotificationTypes {
-  NewComment = 'NEW_COMMENT',
-  NewFollower = 'NEW_FOLLOWER',
-  NewPostLike = 'NEW_POST_LIKE',
-  NewCommentLike = 'NEW_COMMENT_LIKE',
-  NewMention = 'NEW_MENTION',
-  NewReply = 'NEW_REPLY'
-}
-
-export enum ProjectSortType {
-  Popular = 'POPULAR',
-  Recent = 'RECENT'
-}
-
-export type ProjectSuggestionsConnection = {
-  __typename?: 'ProjectSuggestionsConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  type?: Maybe<ProjectType>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<ProjectEdge>>;
-};
-
-export enum SearchType {
-  Projects = 'PROJECTS',
-  Users = 'USERS',
-  Models = 'MODELS',
-  Hashtags = 'HASHTAGS'
-}
-
-export type SearchResults = {
-  __typename?: 'SearchResults';
-  totalCount?: Maybe<Scalars['Int']>;
-  edges?: Maybe<Array<Maybe<SearchResultEdge>>>;
-  pageInfo?: Maybe<PageInfo>;
-};
-
-export type SearchResultEdge = {
-  __typename?: 'SearchResultEdge';
-  cursor?: Maybe<Scalars['String']>;
-  node?: Maybe<SearchResultNode>;
-};
-
-export type SearchResultNode = Project | User | Model | Hashtag;
-
-export type UserConnection = {
-  __typename?: 'UserConnection';
-  pageInfo?: Maybe<PageInfo>;
-  edges?: Maybe<Array<Maybe<UserEdge>>>;
-};
-
-export type UserEdge = {
-  __typename?: 'UserEdge';
-  cursor?: Maybe<Scalars['String']>;
-  node?: Maybe<User>;
+  brand?: Maybe<Brand>;
+  model?: Maybe<Scalars['String']>;
+  year?: Maybe<Scalars['Int']>;
 };
 
 export type Mutation = {
@@ -1053,37 +566,132 @@ export type MutationBanUserArgs = {
   id: Scalars['ID'];
 };
 
-export type ApplePayload = {
-  firstName?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
+export type Notification = {
+  __typename?: 'Notification';
+  id: Scalars['ID'];
+  user: User;
+  type?: Maybe<NotificationTypes>;
+  project?: Maybe<Project>;
+  post?: Maybe<Post>;
+  comment?: Maybe<Comment>;
+  isSeen: Scalars['Boolean'];
+  createdAt: Scalars['Date'];
+  updatedAt: Scalars['Date'];
+  filesConnection?: Maybe<FileConnection>;
 };
 
-export type Tokens = {
-  __typename?: 'Tokens';
-  access_token?: Maybe<Scalars['String']>;
-  refresh_token?: Maybe<Scalars['String']>;
+
+export type NotificationFilesConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  reverse?: Maybe<Scalars['Boolean']>;
+  type?: Maybe<FileType>;
 };
 
-export type AccessToken = {
-  __typename?: 'AccessToken';
-  access_token?: Maybe<Scalars['String']>;
+export type NotificationEdge = {
+  __typename?: 'NotificationEdge';
+  cursor?: Maybe<Scalars['String']>;
+  node?: Maybe<Notification>;
 };
 
-export type BlogPostInput = {
-  title: Scalars['String'];
-  content: Scalars['String'];
+export type NotificationKindSettings = {
+  __typename?: 'NotificationKindSettings';
+  email?: Maybe<Scalars['Boolean']>;
+  push?: Maybe<Scalars['Boolean']>;
 };
 
-export type CommentInput = {
-  text: Scalars['String'];
+export type NotificationSettingsType = {
+  __typename?: 'NotificationSettingsType';
+  NEW_FOLLOWER?: Maybe<NotificationKindSettings>;
+  NEW_COMMENT?: Maybe<NotificationKindSettings>;
+  NEW_MENTION?: Maybe<NotificationKindSettings>;
+  NEW_ARTICLE?: Maybe<NotificationKindSettings>;
+  SIMILAR_PROJECTS?: Maybe<NotificationKindSettings>;
+  PRODUCT_ANNOUNCEMENTS?: Maybe<NotificationKindSettings>;
 };
 
-export type EditCollectionInput = {
-  name?: Maybe<Scalars['String']>;
+export enum NotificationTypes {
+  NewComment = 'NEW_COMMENT',
+  NewFollower = 'NEW_FOLLOWER',
+  NewPostLike = 'NEW_POST_LIKE',
+  NewCommentLike = 'NEW_COMMENT_LIKE',
+  NewMention = 'NEW_MENTION',
+  NewReply = 'NEW_REPLY'
+}
+
+export type NotificationsConnection = {
+  __typename?: 'NotificationsConnection';
+  unreadCount?: Maybe<Scalars['Int']>;
+  pageInfo?: Maybe<PageInfo>;
+  edges?: Maybe<Array<Maybe<NotificationEdge>>>;
 };
 
-export type CollectionInput = {
-  postId: Scalars['ID'];
+export type PageInfo = {
+  __typename?: 'PageInfo';
+  hasNextPage?: Maybe<Scalars['Boolean']>;
+  hasPreviousPage?: Maybe<Scalars['Boolean']>;
+};
+
+export enum PlatformType {
+  Mobile = 'MOBILE',
+  Web = 'WEB'
+}
+
+export type Post = {
+  __typename?: 'Post';
+  id?: Maybe<Scalars['ID']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  caption?: Maybe<Scalars['String']>;
+  user?: Maybe<User>;
+  project?: Maybe<Project>;
+  postPermissions?: Maybe<PostPermissions>;
+  permissions?: Maybe<PostPermissions>;
+  likes?: Maybe<Likes>;
+  bookmarks?: Maybe<Bookmarks>;
+  collection?: Maybe<Collection>;
+  translatable?: Maybe<Scalars['Boolean']>;
+  language?: Maybe<Scalars['String']>;
+  filesConnection?: Maybe<FileConnection>;
+  commentsConnection?: Maybe<CommentConnection>;
+  likesConnection?: Maybe<LikeConnection>;
+};
+
+
+export type PostFilesConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  reverse?: Maybe<Scalars['Boolean']>;
+  type?: Maybe<FileType>;
+};
+
+
+export type PostCommentsConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type PostLikesConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+export type PostConnection = {
+  __typename?: 'PostConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<PostEdge>>;
+};
+
+export type PostEdge = {
+  __typename?: 'PostEdge';
+  cursor: Scalars['String'];
+  node: Post;
 };
 
 export type PostInput = {
@@ -1093,37 +701,10 @@ export type PostInput = {
   collectionId?: Maybe<Scalars['ID']>;
 };
 
-export type FileInput = {
-  filename: Scalars['String'];
+export type PostPermissions = {
+  __typename?: 'PostPermissions';
+  isOwner?: Maybe<Scalars['Boolean']>;
 };
-
-export type EditPostInput = {
-  caption?: Maybe<Scalars['String']>;
-  collectionId?: Maybe<Scalars['ID']>;
-};
-
-export type ProjectInput = {
-  title?: Maybe<Scalars['String']>;
-  commentsDisabled?: Maybe<Scalars['Boolean']>;
-  projectTypeId?: Maybe<Scalars['ID']>;
-  modelId?: Maybe<Scalars['ID']>;
-};
-
-export enum ReportType {
-  Project = 'PROJECT',
-  User = 'USER',
-  Comment = 'COMMENT',
-  Post = 'POST'
-}
-
-export type PreSignedUrlnput = {
-  type: UploadType;
-};
-
-export enum UploadType {
-  Image = 'IMAGE',
-  Video = 'VIDEO'
-}
 
 export type PreSignedUrl = {
   __typename?: 'PreSignedUrl';
@@ -1138,50 +719,469 @@ export type PreSignedUrlInput = {
   path: Scalars['String'];
 };
 
-export type EditUserInput = {
-  firstName?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
-  interestedIn?: Maybe<Array<Maybe<ProjectTypeInput>>>;
-  timezone?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  location?: Maybe<Scalars['String']>;
-  bio?: Maybe<Scalars['String']>;
-  website?: Maybe<Scalars['String']>;
-  avatarUrl?: Maybe<Scalars['String']>;
-  username?: Maybe<Scalars['String']>;
+export type PreSignedUrlnput = {
+  type: UploadType;
+};
+
+export type Project = {
+  __typename?: 'Project';
+  id?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  dynamicLink?: Maybe<Scalars['String']>;
+  user?: Maybe<User>;
+  projectPermissions?: Maybe<ProjectPermissions>;
+  permissions?: Maybe<ProjectPermissions>;
+  commentsDisabled?: Maybe<Scalars['Boolean']>;
+  type?: Maybe<ProjectType>;
+  cover?: Maybe<CoverType>;
+  model?: Maybe<Model>;
+  filesConnection?: Maybe<FileConnection>;
+  followersConnection?: Maybe<FollowersConnection>;
+  postsConnection?: Maybe<PostConnection>;
+  collectionsConnection?: Maybe<CollectionConnection>;
+};
+
+
+export type ProjectFilesConnectionArgs = {
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  reverse?: Maybe<Scalars['Boolean']>;
+  type?: Maybe<FileType>;
+};
+
+
+export type ProjectFollowersConnectionArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+};
+
+
+export type ProjectPostsConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type ProjectCollectionsConnectionArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+};
+
+export type ProjectEdge = {
+  __typename?: 'ProjectEdge';
+  cursor: Scalars['String'];
+  node: Project;
+};
+
+export type ProjectInput = {
+  title?: Maybe<Scalars['String']>;
+  commentsDisabled?: Maybe<Scalars['Boolean']>;
+  projectTypeId?: Maybe<Scalars['ID']>;
+  modelId?: Maybe<Scalars['ID']>;
+};
+
+export type ProjectPermissions = {
+  __typename?: 'ProjectPermissions';
+  isFollower?: Maybe<Scalars['Boolean']>;
+  isOwner?: Maybe<Scalars['Boolean']>;
+};
+
+export enum ProjectSortType {
+  Popular = 'POPULAR',
+  Recent = 'RECENT'
+}
+
+export type ProjectSuggestionsConnection = {
+  __typename?: 'ProjectSuggestionsConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  type?: Maybe<ProjectType>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<ProjectEdge>>;
+};
+
+export type ProjectType = {
+  __typename?: 'ProjectType';
+  id?: Maybe<Scalars['ID']>;
+  title?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+  imageUrl: Scalars['String'];
 };
 
 export type ProjectTypeInput = {
   id?: Maybe<Scalars['ID']>;
 };
 
+export type ProjectsConnection = {
+  __typename?: 'ProjectsConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<ProjectEdge>>;
+};
+
+export type Query = {
+  __typename?: 'Query';
+  dummy?: Maybe<Scalars['String']>;
+  bookmarks?: Maybe<BookmarkConnection>;
+  blogPost?: Maybe<BlogPost>;
+  blogPosts?: Maybe<BlogPostConnection>;
+  comments?: Maybe<CommentConnection>;
+  recentComments?: Maybe<CommentConnection>;
+  comment?: Maybe<Comment>;
+  collections?: Maybe<PostConnection>;
+  projectCollections?: Maybe<CollectionConnection>;
+  feed?: Maybe<Feed>;
+  files?: Maybe<FileConnection>;
+  followers?: Maybe<FollowersConnection>;
+  hashtag?: Maybe<Hashtag>;
+  likes?: Maybe<LikeConnection>;
+  meta?: Maybe<Meta>;
+  growth?: Maybe<Array<Maybe<GrowthData>>>;
+  notifications?: Maybe<NotificationsConnection>;
+  post?: Maybe<Post>;
+  posts?: Maybe<PostConnection>;
+  project?: Maybe<Project>;
+  projects?: Maybe<ProjectsConnection>;
+  projectSuggestions?: Maybe<Array<Maybe<ProjectSuggestionsConnection>>>;
+  similarProjects?: Maybe<ProjectsConnection>;
+  projectTypes?: Maybe<Array<Maybe<ProjectType>>>;
+  search?: Maybe<SearchResults>;
+  user?: Maybe<User>;
+  users?: Maybe<UserConnection>;
+  currentUser?: Maybe<User>;
+};
+
+
+export type QueryBookmarksArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryBlogPostArgs = {
+  slug?: Maybe<Scalars['LowercaseString']>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+
+export type QueryBlogPostsArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryCommentsArgs = {
+  postId: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryRecentCommentsArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryCommentArgs = {
+  id: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryCollectionsArgs = {
+  id?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['LowercaseString']>;
+  projectId?: Maybe<Scalars['ID']>;
+  projectSlug?: Maybe<Scalars['LowercaseString']>;
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryProjectCollectionsArgs = {
+  slug?: Maybe<Scalars['LowercaseString']>;
+  projectId?: Maybe<Scalars['ID']>;
+  projectSlug?: Maybe<Scalars['LowercaseString']>;
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryFilesArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  type?: Maybe<FileType>;
+  sort?: Maybe<SortType>;
+};
+
+
+export type QueryFollowersArgs = {
+  projectId: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryHashtagArgs = {
+  id?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['LowercaseString']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryLikesArgs = {
+  postId: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryGrowthArgs = {
+  type: GrowthType;
+  startDate?: Maybe<Scalars['Date']>;
+  endDate?: Maybe<Scalars['Date']>;
+};
+
+
+export type QueryNotificationsArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryPostArgs = {
+  id?: Maybe<Scalars['ID']>;
+};
+
+
+export type QueryPostsArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryProjectArgs = {
+  id?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['LowercaseString']>;
+};
+
+
+export type QueryProjectsArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  type: ProjectSortType;
+  typeId?: Maybe<Scalars['ID']>;
+};
+
+
+export type QueryProjectSuggestionsArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+};
+
+
+export type QuerySimilarProjectsArgs = {
+  id: Scalars['ID'];
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+};
+
+
+export type QuerySearchArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+  query: Scalars['String'];
+  type: SearchType;
+};
+
+
+export type QueryUserArgs = {
+  id?: Maybe<Scalars['ID']>;
+  username?: Maybe<Scalars['LowercaseString']>;
+};
+
+
+export type QueryUsersArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryCurrentUserArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+export enum ReportType {
+  Project = 'PROJECT',
+  User = 'USER',
+  Comment = 'COMMENT',
+  Post = 'POST'
+}
+
+export type SearchResultEdge = {
+  __typename?: 'SearchResultEdge';
+  cursor?: Maybe<Scalars['String']>;
+  node?: Maybe<SearchResultNode>;
+};
+
+export type SearchResultNode = Project | User | Model | Hashtag;
+
+export type SearchResults = {
+  __typename?: 'SearchResults';
+  totalCount?: Maybe<Scalars['Int']>;
+  edges?: Maybe<Array<Maybe<SearchResultEdge>>>;
+  pageInfo?: Maybe<PageInfo>;
+};
+
+export enum SearchType {
+  Projects = 'PROJECTS',
+  Users = 'USERS',
+  Models = 'MODELS',
+  Hashtags = 'HASHTAGS'
+}
+
+export enum SortType {
+  Recent = 'RECENT',
+  Random = 'RANDOM'
+}
+
 export type ToggleNotificationSettingsInput = {
   deliveryMethod: Scalars['String'];
   notificationType: Scalars['String'];
 };
 
-export enum PlatformType {
-  Mobile = 'MOBILE',
-  Web = 'WEB'
-}
-
-export type HashtagConnection = {
-  __typename?: 'HashtagConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<HashtagEdge>>;
+export type Tokens = {
+  __typename?: 'Tokens';
+  access_token?: Maybe<Scalars['String']>;
+  refresh_token?: Maybe<Scalars['String']>;
 };
 
-export type HashtagEdge = {
-  __typename?: 'HashtagEdge';
-  cursor: Scalars['String'];
-  node: Hashtag;
+export enum UploadType {
+  Image = 'IMAGE',
+  Video = 'VIDEO'
+}
+
+export type User = {
+  __typename?: 'User';
+  id: Scalars['ID'];
+  username?: Maybe<Scalars['LowercaseString']>;
+  createdAt: Scalars['Date'];
+  updatedAt: Scalars['Date'];
+  fullName?: Maybe<Scalars['String']>;
+  firstName?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
+  avatarUrl?: Maybe<Scalars['String']>;
+  projectCount?: Maybe<Scalars['Int']>;
+  interestedIn?: Maybe<Array<Maybe<ProjectType>>>;
+  settings?: Maybe<UserSettings>;
+  dynamicLink?: Maybe<Scalars['String']>;
+  isOnline?: Maybe<Scalars['Boolean']>;
+  lastSeen?: Maybe<Scalars['Date']>;
+  website?: Maybe<Scalars['String']>;
+  bio?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
+  isSilhouette?: Maybe<Scalars['Boolean']>;
+  role?: Maybe<UserRole>;
+  projectsConnection?: Maybe<ProjectsConnection>;
+  followingProjects?: Maybe<ProjectsConnection>;
+  postsConnection?: Maybe<PostConnection>;
 };
 
-export enum CacheControlScope {
-  Public = 'PUBLIC',
-  Private = 'PRIVATE'
+
+export type UserProjectsConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type UserFollowingProjectsArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type UserPostsConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+export type UserConnection = {
+  __typename?: 'UserConnection';
+  pageInfo?: Maybe<PageInfo>;
+  edges?: Maybe<Array<Maybe<UserEdge>>>;
+};
+
+export type UserEdge = {
+  __typename?: 'UserEdge';
+  cursor?: Maybe<Scalars['String']>;
+  node?: Maybe<User>;
+};
+
+export type UserNotificationsSettings = {
+  __typename?: 'UserNotificationsSettings';
+  types?: Maybe<NotificationSettingsType>;
+};
+
+export enum UserRole {
+  User = 'USER',
+  Admin = 'ADMIN'
 }
+
+export type UserSettings = {
+  __typename?: 'UserSettings';
+  locale?: Maybe<Scalars['String']>;
+  timezone?: Maybe<Scalars['String']>;
+  notifications?: Maybe<UserNotificationsSettings>;
+};
 
 export type BlogPostFragment = (
   { __typename?: 'BlogPost' }
