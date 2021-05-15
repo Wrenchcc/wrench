@@ -29,7 +29,9 @@ jobs:
       - name: Push to AWS ECR
         run: |
           echo Logging in to Amazon ECR...
-          $(aws ecr get-login-password --region eu-west-1)
+
+          $(aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 719104767000.dkr.ecr.eu-west-1.amazonaws.com)
+
           echo Pushing the Docker images...
           docker push 719104767000.dkr.ecr.eu-west-1.amazonaws.com/api:latest
         env:
