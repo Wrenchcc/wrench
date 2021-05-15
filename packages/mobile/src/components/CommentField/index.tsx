@@ -36,9 +36,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
     }
   }, [inputRef, username, commentId])
 
-  const { data } = useCurrentUserQuery({
-    fetchPolicy: 'cache-only',
-  })
+  const { data } = useCurrentUserQuery()
 
   const handleSubmit = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
