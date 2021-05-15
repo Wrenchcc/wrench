@@ -28,7 +28,7 @@ lane :ios do
   cocoapods(
     podfile: "packages/mobile/ios/Podfile"
   )
-  match(app_identifier: 'cc.wrench.app', type: 'appstore', readonly: true )
+  match(app_identifier: 'cc.wrench.app', type: 'appstore', readonly: true, git_basic_authorization: ENV["MATCH_GIT_BASIC_AUTHORIZATION"])
   increment_build_number({ build_number: build_number, xcodeproj: xcodeproj })
   # TODO: Change to version if possible to reset in Apple
   increment_version_number({ version_number: build_number, xcodeproj: xcodeproj })
