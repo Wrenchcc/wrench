@@ -47,9 +47,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Ruby Setup for Fastlane
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7.2'
+          bundler-cache: true
 
       - name: Uses Node.js 14
         uses: actions/setup-node@v1
@@ -112,9 +113,10 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Ruby Setup for Fastlane
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7.2'
+          bundler-cache: true
 
       - name: Install Xcode
         uses: maxim-lobanov/setup-xcode@v1
