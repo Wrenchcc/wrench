@@ -45,6 +45,10 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
+      - name: Download task definition
+        run: |
+          aws ecs describe-task-definition --region eu-west-1 --task-definition service_api --query taskDefinition > ${{ env.ECS_TASK_DEFINITION }}
+
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         env:
@@ -57,10 +61,6 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG packages/api
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-
-      - name: Download task definition
-        run: |
-          aws ecs describe-task-definition --region eu-west-1 --task-definition service_api task-def-family --query taskDefinition > ${{ env.ECS_TASK_DEFINITION }}
 
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
