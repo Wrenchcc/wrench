@@ -1,6 +1,6 @@
 {
   "name": "wrench",
-  "version": "1.0.241",
+  "version": "1.0.242",
   "private": true,
   "workspaces": {
     "nohoist": [
