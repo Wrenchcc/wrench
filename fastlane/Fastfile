@@ -16,8 +16,7 @@ build_number = ENV["BUILD_NUMBER"] || "1"
 app_store_connect_api_key(
   key_id: "PLF7386UJG",
   issuer_id: "69a6de92-9171-47e3-e053-5b8c7c11a4d1",
-  in_house: false,
-  key_content: "-----BEGIN EC PRIVATE KEY-----\nMIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg1xAt1tOkxQq6INKICr5xG0m/49v4AweNR/hfH48dQL6gCgYIKoZIzj0DAQehRANCAASjoViJMEcejOIZar6eJe6RjUKC7ClWyGBeBXpgRo1yW3yrvhrno6zyYDmxETF367cMYrhVOaCy8JkeVv0LGq/e\n-----END EC PRIVATE KEY-----"
+  key_filepath: 'AuthKey_PLF7386UJG.p8'
 )
 
 # Slack error message
