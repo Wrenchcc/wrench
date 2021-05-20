@@ -956,639 +956,639 @@ export declare type UserSettings = {
     timezone?: Maybe<Scalars['String']>;
     notifications?: Maybe<UserNotificationsSettings>;
 };
-export declare type BlogPostFragment = ({
+export declare type BlogPostFragment = {
     __typename?: 'BlogPost';
 } & Pick<BlogPost, 'id' | 'title' | 'slug' | 'content' | 'createdAt'> & {
-    user?: Maybe<({
+    user?: Maybe<{
         __typename?: 'User';
-    } & UserFragment)>;
-});
-export declare type CollectionFragment = ({
+    } & UserFragment>;
+};
+export declare type CollectionFragment = {
     __typename?: 'Collection';
 } & Pick<Collection, 'id' | 'name' | 'slug'> & {
-    cover?: Maybe<({
+    cover?: Maybe<{
         __typename?: 'CoverType';
-    } & Pick<CoverType, 'uri'>)>;
-});
-export declare type CommentAndRepliesFragment = ({
+    } & Pick<CoverType, 'uri'>>;
+};
+export declare type CommentAndRepliesFragment = {
     __typename?: 'Comment';
 } & {
-    replies?: Maybe<({
+    replies?: Maybe<{
         __typename?: 'CommentConnection';
     } & Pick<CommentConnection, 'totalCount'> & {
-        pageInfo: ({
+        pageInfo: {
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>);
-        edges?: Maybe<Array<({
+        } & Pick<PageInfo, 'hasNextPage'>;
+        edges?: Maybe<Array<{
             __typename?: 'CommentEdge';
         } & Pick<CommentEdge, 'cursor'> & {
-            node: ({
+            node: {
                 __typename?: 'Comment';
-            } & CommentFragment);
-        })>>;
-    })>;
-} & CommentFragment);
-export declare type CommentFragment = ({
+            } & CommentFragment;
+        }>>;
+    }>;
+} & CommentFragment;
+export declare type CommentFragment = {
     __typename?: 'Comment';
 } & Pick<Comment, 'id' | 'text' | 'createdAt' | 'translatable'> & {
-    permissions?: Maybe<({
+    permissions?: Maybe<{
         __typename?: 'CommentPermissions';
-    } & Pick<CommentPermissions, 'isOwner'>)>;
-    likes?: Maybe<({
+    } & Pick<CommentPermissions, 'isOwner'>>;
+    likes?: Maybe<{
         __typename?: 'Likes';
-    } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
-    user?: Maybe<({
+    } & Pick<Likes, 'isLiked' | 'totalCount'>>;
+    user?: Maybe<{
         __typename?: 'User';
-    } & UserFragment)>;
-});
-export declare type NotificationFragment = ({
+    } & UserFragment>;
+};
+export declare type NotificationFragment = {
     __typename?: 'Notification';
 } & Pick<Notification, 'id' | 'type' | 'createdAt'> & {
-    user: ({
+    user: {
         __typename?: 'User';
-    } & UserFragment);
-    project?: Maybe<({
+    } & UserFragment;
+    project?: Maybe<{
         __typename?: 'Project';
-    } & ProjectFragment)>;
-    post?: Maybe<({
+    } & ProjectFragment>;
+    post?: Maybe<{
         __typename?: 'Post';
-    } & Pick<Post, 'id'>)>;
-    comment?: Maybe<({
+    } & Pick<Post, 'id'>>;
+    comment?: Maybe<{
         __typename?: 'Comment';
-    } & Pick<Comment, 'id' | 'text' | 'postId'>)>;
-    files?: Maybe<({
+    } & Pick<Comment, 'id' | 'text' | 'postId'>>;
+    files?: Maybe<{
         __typename?: 'FileConnection';
     } & {
-        edges?: Maybe<Array<Maybe<({
+        edges?: Maybe<Array<Maybe<{
             __typename?: 'FileEdge';
         } & {
-            node: ({
+            node: {
                 __typename?: 'File';
-            } & Pick<File, 'id' | 'uri'>);
-        })>>>;
-    })>;
-});
-export declare type PostFragment = ({
+            } & Pick<File, 'id' | 'uri'>;
+        }>>>;
+    }>;
+};
+export declare type PostFragment = {
     __typename?: 'Post';
 } & Pick<Post, 'id' | 'caption' | 'createdAt' | 'translatable'> & {
-    user?: Maybe<({
+    user?: Maybe<{
         __typename?: 'User';
-    } & UserFragment)>;
-    permissions?: Maybe<({
+    } & UserFragment>;
+    permissions?: Maybe<{
         __typename?: 'PostPermissions';
-    } & Pick<PostPermissions, 'isOwner'>)>;
-    files?: Maybe<({
+    } & Pick<PostPermissions, 'isOwner'>>;
+    files?: Maybe<{
         __typename?: 'FileConnection';
     } & {
-        edges?: Maybe<Array<Maybe<({
+        edges?: Maybe<Array<Maybe<{
             __typename?: 'FileEdge';
         } & {
-            node: ({
+            node: {
                 __typename?: 'File';
-            } & Pick<File, 'id' | 'type' | 'uri'>);
-        })>>>;
-    })>;
-    project?: Maybe<({
+            } & Pick<File, 'id' | 'type' | 'uri'>;
+        }>>>;
+    }>;
+    project?: Maybe<{
         __typename?: 'Project';
-    } & ProjectFragment)>;
-    likes?: Maybe<({
+    } & ProjectFragment>;
+    likes?: Maybe<{
         __typename?: 'Likes';
-    } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
-    bookmarks?: Maybe<({
+    } & Pick<Likes, 'isLiked' | 'totalCount'>>;
+    bookmarks?: Maybe<{
         __typename?: 'Bookmarks';
-    } & Pick<Bookmarks, 'isBookmarked'>)>;
-    comments?: Maybe<({
+    } & Pick<Bookmarks, 'isBookmarked'>>;
+    comments?: Maybe<{
         __typename?: 'CommentConnection';
     } & Pick<CommentConnection, 'totalCount'> & {
-        edges?: Maybe<Array<({
+        edges?: Maybe<Array<{
             __typename?: 'CommentEdge';
         } & {
-            node: ({
+            node: {
                 __typename?: 'Comment';
-            } & CommentFragment);
-        })>>;
-    })>;
-    likesConnection?: Maybe<({
+            } & CommentFragment;
+        }>>;
+    }>;
+    likesConnection?: Maybe<{
         __typename?: 'LikeConnection';
     } & {
-        edges?: Maybe<Array<({
+        edges?: Maybe<Array<{
             __typename?: 'LikeEdge';
         } & {
-            node: ({
+            node: {
                 __typename?: 'User';
-            } & Pick<User, 'id' | 'avatarUrl'>);
-        })>>;
-    })>;
-    collection?: Maybe<({
+            } & Pick<User, 'id' | 'avatarUrl'>;
+        }>>;
+    }>;
+    collection?: Maybe<{
         __typename?: 'Collection';
-    } & Pick<Collection, 'id' | 'name' | 'slug'>)>;
-});
-export declare type ProjectFragment = ({
+    } & Pick<Collection, 'id' | 'name' | 'slug'>>;
+};
+export declare type ProjectFragment = {
     __typename?: 'Project';
 } & Pick<Project, 'id' | 'title' | 'slug' | 'dynamicLink'> & {
-    user?: Maybe<({
+    user?: Maybe<{
         __typename?: 'User';
-    } & UserFragment)>;
-    permissions?: Maybe<({
+    } & UserFragment>;
+    permissions?: Maybe<{
         __typename?: 'ProjectPermissions';
-    } & Pick<ProjectPermissions, 'isOwner' | 'isFollower'>)>;
-    type?: Maybe<({
+    } & Pick<ProjectPermissions, 'isOwner' | 'isFollower'>>;
+    type?: Maybe<{
         __typename?: 'ProjectType';
-    } & Pick<ProjectType, 'title'>)>;
-    cover?: Maybe<({
+    } & Pick<ProjectType, 'title'>>;
+    cover?: Maybe<{
         __typename?: 'CoverType';
-    } & Pick<CoverType, 'uri'>)>;
-    followers?: Maybe<({
+    } & Pick<CoverType, 'uri'>>;
+    followers?: Maybe<{
         __typename?: 'FollowersConnection';
     } & Pick<FollowersConnection, 'totalCount'> & {
-        edges?: Maybe<Array<({
+        edges?: Maybe<Array<{
             __typename?: 'FollowersEdge';
         } & {
-            node: ({
+            node: {
                 __typename?: 'User';
-            } & Pick<User, 'id' | 'username' | 'avatarUrl'>);
-        })>>;
-    })>;
-});
-export declare type UserFragment = ({
+            } & Pick<User, 'id' | 'username' | 'avatarUrl'>;
+        }>>;
+    }>;
+};
+export declare type UserFragment = {
     __typename?: 'User';
-} & Pick<User, 'id' | 'fullName' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'isSilhouette' | 'isOnline' | 'website' | 'location' | 'bio' | 'projectCount' | 'dynamicLink'>);
-export declare type UserProjectsFragment = ({
+} & Pick<User, 'id' | 'fullName' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'isSilhouette' | 'isOnline' | 'website' | 'location' | 'bio' | 'projectCount' | 'dynamicLink'>;
+export declare type UserProjectsFragment = {
     __typename?: 'User';
 } & {
-    projects?: Maybe<({
+    projects?: Maybe<{
         __typename?: 'ProjectsConnection';
     } & {
-        edges?: Maybe<Array<({
+        edges?: Maybe<Array<{
             __typename?: 'ProjectEdge';
         } & {
-            node: ({
+            node: {
                 __typename?: 'Project';
             } & Pick<Project, 'id' | 'title'> & {
-                followers?: Maybe<({
+                followers?: Maybe<{
                     __typename?: 'FollowersConnection';
-                } & Pick<FollowersConnection, 'totalCount'>)>;
-                files?: Maybe<({
+                } & Pick<FollowersConnection, 'totalCount'>>;
+                files?: Maybe<{
                     __typename?: 'FileConnection';
                 } & {
-                    edges?: Maybe<Array<Maybe<({
+                    edges?: Maybe<Array<Maybe<{
                         __typename?: 'FileEdge';
                     } & {
-                        node: ({
+                        node: {
                             __typename?: 'File';
-                        } & Pick<File, 'id' | 'uri'>);
-                    })>>>;
-                })>;
-            });
-        })>>;
-    })>;
-});
-export declare type UserSettingsFragment = ({
+                        } & Pick<File, 'id' | 'uri'>;
+                    }>>>;
+                }>;
+            };
+        }>>;
+    }>;
+};
+export declare type UserSettingsFragment = {
     __typename?: 'User';
 } & Pick<User, 'id' | 'role'> & {
-    settings?: Maybe<({
+    settings?: Maybe<{
         __typename?: 'UserSettings';
     } & {
-        notifications?: Maybe<({
+        notifications?: Maybe<{
             __typename?: 'UserNotificationsSettings';
         } & {
-            types?: Maybe<({
+            types?: Maybe<{
                 __typename?: 'NotificationSettingsType';
             } & {
-                NEW_FOLLOWER?: Maybe<({
+                NEW_FOLLOWER?: Maybe<{
                     __typename?: 'NotificationKindSettings';
-                } & Pick<NotificationKindSettings, 'email' | 'push'>)>;
-                NEW_COMMENT?: Maybe<({
+                } & Pick<NotificationKindSettings, 'email' | 'push'>>;
+                NEW_COMMENT?: Maybe<{
                     __typename?: 'NotificationKindSettings';
-                } & Pick<NotificationKindSettings, 'email' | 'push'>)>;
-                NEW_MENTION?: Maybe<({
+                } & Pick<NotificationKindSettings, 'email' | 'push'>>;
+                NEW_MENTION?: Maybe<{
                     __typename?: 'NotificationKindSettings';
-                } & Pick<NotificationKindSettings, 'email' | 'push'>)>;
-                NEW_ARTICLE?: Maybe<({
+                } & Pick<NotificationKindSettings, 'email' | 'push'>>;
+                NEW_ARTICLE?: Maybe<{
                     __typename?: 'NotificationKindSettings';
-                } & Pick<NotificationKindSettings, 'email' | 'push'>)>;
-                SIMILAR_PROJECTS?: Maybe<({
+                } & Pick<NotificationKindSettings, 'email' | 'push'>>;
+                SIMILAR_PROJECTS?: Maybe<{
                     __typename?: 'NotificationKindSettings';
-                } & Pick<NotificationKindSettings, 'email' | 'push'>)>;
-                PRODUCT_ANNOUNCEMENTS?: Maybe<({
+                } & Pick<NotificationKindSettings, 'email' | 'push'>>;
+                PRODUCT_ANNOUNCEMENTS?: Maybe<{
                     __typename?: 'NotificationKindSettings';
-                } & Pick<NotificationKindSettings, 'email' | 'push'>)>;
-            })>;
-        })>;
-    })>;
-});
+                } & Pick<NotificationKindSettings, 'email' | 'push'>>;
+            }>;
+        }>;
+    }>;
+};
 export declare type AddBlogPostMutationVariables = Exact<{
     id?: Maybe<Scalars['ID']>;
     input: BlogPostInput;
 }>;
-export declare type AddBlogPostMutation = ({
+export declare type AddBlogPostMutation = {
     __typename?: 'Mutation';
 } & {
-    addBlogPost?: Maybe<({
+    addBlogPost?: Maybe<{
         __typename?: 'BlogPost';
-    } & BlogPostFragment)>;
-});
+    } & BlogPostFragment>;
+};
 export declare type AddCollectionMutationVariables = Exact<{
     projectId: Scalars['ID'];
     name: Scalars['String'];
 }>;
-export declare type AddCollectionMutation = ({
+export declare type AddCollectionMutation = {
     __typename?: 'Mutation';
 } & {
-    addCollection?: Maybe<({
+    addCollection?: Maybe<{
         __typename?: 'Collection';
-    } & CollectionFragment)>;
-});
+    } & CollectionFragment>;
+};
 export declare type AddCommentMutationVariables = Exact<{
     postId: Scalars['ID'];
     commentId?: Maybe<Scalars['ID']>;
     input: CommentInput;
 }>;
-export declare type AddCommentMutation = ({
+export declare type AddCommentMutation = {
     __typename?: 'Mutation';
 } & {
-    addComment?: Maybe<({
+    addComment?: Maybe<{
         __typename?: 'Comment';
-    } & CommentAndRepliesFragment)>;
-});
+    } & CommentAndRepliesFragment>;
+};
 export declare type AddPostMutationVariables = Exact<{
     input: PostInput;
 }>;
-export declare type AddPostMutation = ({
+export declare type AddPostMutation = {
     __typename?: 'Mutation';
 } & {
-    addPost?: Maybe<({
+    addPost?: Maybe<{
         __typename?: 'Post';
-    } & PostFragment)>;
-});
+    } & PostFragment>;
+};
 export declare type AddProjectMutationVariables = Exact<{
     input: ProjectInput;
 }>;
-export declare type AddProjectMutation = ({
+export declare type AddProjectMutation = {
     __typename?: 'Mutation';
 } & {
-    addProject?: Maybe<({
+    addProject?: Maybe<{
         __typename?: 'Project';
-    } & ProjectFragment)>;
-});
+    } & ProjectFragment>;
+};
 export declare type AuthenticateAppleMutationVariables = Exact<{
     identityToken: Scalars['String'];
     user: ApplePayload;
 }>;
-export declare type AuthenticateAppleMutation = ({
+export declare type AuthenticateAppleMutation = {
     __typename?: 'Mutation';
 } & {
-    authenticateApple?: Maybe<({
+    authenticateApple?: Maybe<{
         __typename?: 'Tokens';
-    } & Pick<Tokens, 'access_token' | 'refresh_token'>)>;
-});
+    } & Pick<Tokens, 'access_token' | 'refresh_token'>>;
+};
 export declare type AuthenticateFacebookMutationVariables = Exact<{
     token: Scalars['String'];
 }>;
-export declare type AuthenticateFacebookMutation = ({
+export declare type AuthenticateFacebookMutation = {
     __typename?: 'Mutation';
 } & {
-    authenticateFacebook?: Maybe<({
+    authenticateFacebook?: Maybe<{
         __typename?: 'Tokens';
-    } & Pick<Tokens, 'access_token' | 'refresh_token'>)>;
-});
+    } & Pick<Tokens, 'access_token' | 'refresh_token'>>;
+};
 export declare type AuthenticateGoogleMutationVariables = Exact<{
     idToken: Scalars['String'];
 }>;
-export declare type AuthenticateGoogleMutation = ({
+export declare type AuthenticateGoogleMutation = {
     __typename?: 'Mutation';
 } & {
-    authenticateGoogle?: Maybe<({
+    authenticateGoogle?: Maybe<{
         __typename?: 'Tokens';
-    } & Pick<Tokens, 'access_token' | 'refresh_token'>)>;
-});
+    } & Pick<Tokens, 'access_token' | 'refresh_token'>>;
+};
 export declare type BanUserMutationVariables = Exact<{
     id: Scalars['ID'];
 }>;
-export declare type BanUserMutation = ({
+export declare type BanUserMutation = {
     __typename?: 'Mutation';
 } & {
-    banUser?: Maybe<({
+    banUser?: Maybe<{
         __typename?: 'User';
-    } & UserFragment)>;
-});
+    } & UserFragment>;
+};
 export declare type BookmarkPostMutationVariables = Exact<{
     id: Scalars['ID'];
 }>;
-export declare type BookmarkPostMutation = ({
+export declare type BookmarkPostMutation = {
     __typename?: 'Mutation';
 } & {
-    bookmarkPost?: Maybe<({
+    bookmarkPost?: Maybe<{
         __typename?: 'Post';
     } & Pick<Post, 'id'> & {
-        bookmarks?: Maybe<({
+        bookmarks?: Maybe<{
             __typename?: 'Bookmarks';
-        } & Pick<Bookmarks, 'isBookmarked'>)>;
-    })>;
-});
+        } & Pick<Bookmarks, 'isBookmarked'>>;
+    }>;
+};
 export declare type CollectPostsMutationVariables = Exact<{
     projectId: Scalars['ID'];
     collectionId: Scalars['ID'];
     input?: Maybe<Array<Maybe<CollectionInput>> | Maybe<CollectionInput>>;
 }>;
-export declare type CollectPostsMutation = ({
+export declare type CollectPostsMutation = {
     __typename?: 'Mutation';
 } & {
-    collectPosts?: Maybe<({
+    collectPosts?: Maybe<{
         __typename?: 'Collection';
     } & Pick<Collection, 'id' | 'name'> & {
-        cover?: Maybe<({
+        cover?: Maybe<{
             __typename?: 'CoverType';
-        } & Pick<CoverType, 'uri'>)>;
-    })>;
-});
+        } & Pick<CoverType, 'uri'>>;
+    }>;
+};
 export declare type DeleteBlogPostMutationVariables = Exact<{
     id: Scalars['ID'];
 }>;
-export declare type DeleteBlogPostMutation = ({
+export declare type DeleteBlogPostMutation = {
     __typename?: 'Mutation';
 } & {
-    deleteBlogPost?: Maybe<({
+    deleteBlogPost?: Maybe<{
         __typename?: 'BlogPost';
-    } & Pick<BlogPost, 'id'>)>;
-});
+    } & Pick<BlogPost, 'id'>>;
+};
 export declare type DeleteCollectionMutationVariables = Exact<{
     projectId: Scalars['ID'];
     id: Scalars['ID'];
 }>;
-export declare type DeleteCollectionMutation = ({
+export declare type DeleteCollectionMutation = {
     __typename?: 'Mutation';
 } & {
-    deleteCollection?: Maybe<({
+    deleteCollection?: Maybe<{
         __typename?: 'Collection';
-    } & Pick<Collection, 'id'>)>;
-});
+    } & Pick<Collection, 'id'>>;
+};
 export declare type DeleteCommentMutationVariables = Exact<{
     id: Scalars['ID'];
 }>;
-export declare type DeleteCommentMutation = ({
+export declare type DeleteCommentMutation = {
     __typename?: 'Mutation';
-} & Pick<Mutation, 'deleteComment'>);
+} & Pick<Mutation, 'deleteComment'>;
 export declare type DeleteCurrentUserMutationVariables = Exact<{
     [key: string]: never;
 }>;
-export declare type DeleteCurrentUserMutation = ({
+export declare type DeleteCurrentUserMutation = {
     __typename?: 'Mutation';
-} & Pick<Mutation, 'deleteCurrentUser'>);
+} & Pick<Mutation, 'deleteCurrentUser'>;
 export declare type DeleteNotificationMutationVariables = Exact<{
     id: Scalars['ID'];
 }>;
-export declare type DeleteNotificationMutation = ({
+export declare type DeleteNotificationMutation = {
     __typename?: 'Mutation';
-} & Pick<Mutation, 'deleteNotification'>);
+} & Pick<Mutation, 'deleteNotification'>;
 export declare type DeletePostMutationVariables = Exact<{
     id: Scalars['ID'];
 }>;
-export declare type DeletePostMutation = ({
+export declare type DeletePostMutation = {
     __typename?: 'Mutation';
 } & {
-    deletePost?: Maybe<({
+    deletePost?: Maybe<{
         __typename?: 'Post';
-    } & Pick<Post, 'id'>)>;
-});
+    } & Pick<Post, 'id'>>;
+};
 export declare type DeleteProjectMutationVariables = Exact<{
     id: Scalars['ID'];
 }>;
-export declare type DeleteProjectMutation = ({
+export declare type DeleteProjectMutation = {
     __typename?: 'Mutation';
-} & Pick<Mutation, 'deleteProject'>);
+} & Pick<Mutation, 'deleteProject'>;
 export declare type EditCollectionMutationVariables = Exact<{
     input: EditCollectionInput;
     id: Scalars['ID'];
 }>;
-export declare type EditCollectionMutation = ({
+export declare type EditCollectionMutation = {
     __typename?: 'Mutation';
 } & {
-    editCollection?: Maybe<({
+    editCollection?: Maybe<{
         __typename?: 'Collection';
-    } & CollectionFragment)>;
-});
+    } & CollectionFragment>;
+};
 export declare type EditPostMutationVariables = Exact<{
     id: Scalars['ID'];
     input: EditPostInput;
 }>;
-export declare type EditPostMutation = ({
+export declare type EditPostMutation = {
     __typename?: 'Mutation';
 } & {
-    editPost?: Maybe<({
+    editPost?: Maybe<{
         __typename?: 'Post';
-    } & PostFragment)>;
-});
+    } & PostFragment>;
+};
 export declare type EditProjectMutationVariables = Exact<{
     id: Scalars['ID'];
     input: ProjectInput;
 }>;
-export declare type EditProjectMutation = ({
+export declare type EditProjectMutation = {
     __typename?: 'Mutation';
 } & {
-    editProject?: Maybe<({
+    editProject?: Maybe<{
         __typename?: 'Project';
-    } & Pick<Project, 'id' | 'title'>)>;
-});
+    } & Pick<Project, 'id' | 'title'>>;
+};
 export declare type EditUserMutationVariables = Exact<{
     input: EditUserInput;
     id?: Maybe<Scalars['ID']>;
 }>;
-export declare type EditUserMutation = ({
+export declare type EditUserMutation = {
     __typename?: 'Mutation';
 } & {
-    editUser?: Maybe<({
+    editUser?: Maybe<{
         __typename?: 'User';
-    } & UserFragment)>;
-});
+    } & UserFragment>;
+};
 export declare type FollowProjectMutationVariables = Exact<{
     id: Scalars['ID'];
 }>;
-export declare type FollowProjectMutation = ({
+export declare type FollowProjectMutation = {
     __typename?: 'Mutation';
 } & {
-    followProject?: Maybe<({
+    followProject?: Maybe<{
         __typename?: 'Project';
     } & {
-        cover?: Maybe<({
+        cover?: Maybe<{
             __typename?: 'CoverType';
-        } & Pick<CoverType, 'uri' | 'default'>)>;
-    } & ProjectFragment)>;
-});
+        } & Pick<CoverType, 'uri' | 'default'>>;
+    } & ProjectFragment>;
+};
 export declare type LikeCommentMutationVariables = Exact<{
     id: Scalars['ID'];
 }>;
-export declare type LikeCommentMutation = ({
+export declare type LikeCommentMutation = {
     __typename?: 'Mutation';
 } & {
-    likeComment?: Maybe<({
+    likeComment?: Maybe<{
         __typename?: 'Comment';
     } & Pick<Comment, 'id'> & {
-        likes?: Maybe<({
+        likes?: Maybe<{
             __typename?: 'Likes';
-        } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
-    })>;
-});
+        } & Pick<Likes, 'isLiked' | 'totalCount'>>;
+    }>;
+};
 export declare type LikePostMutationVariables = Exact<{
     id: Scalars['ID'];
 }>;
-export declare type LikePostMutation = ({
+export declare type LikePostMutation = {
     __typename?: 'Mutation';
 } & {
-    likePost?: Maybe<({
+    likePost?: Maybe<{
         __typename?: 'Post';
     } & Pick<Post, 'id'> & {
-        likes?: Maybe<({
+        likes?: Maybe<{
             __typename?: 'Likes';
-        } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
-    })>;
-});
+        } & Pick<Likes, 'isLiked' | 'totalCount'>>;
+    }>;
+};
 export declare type MarkAllNotificationsSeenMutationVariables = Exact<{
     [key: string]: never;
 }>;
-export declare type MarkAllNotificationsSeenMutation = ({
+export declare type MarkAllNotificationsSeenMutation = {
     __typename?: 'Mutation';
-} & Pick<Mutation, 'markAllNotificationsSeen'>);
+} & Pick<Mutation, 'markAllNotificationsSeen'>;
 export declare type MarkNotificationSeenMutationVariables = Exact<{
     id: Scalars['ID'];
 }>;
-export declare type MarkNotificationSeenMutation = ({
+export declare type MarkNotificationSeenMutation = {
     __typename?: 'Mutation';
 } & {
-    markNotificationSeen?: Maybe<({
+    markNotificationSeen?: Maybe<{
         __typename?: 'Notification';
-    } & NotificationFragment)>;
-});
+    } & NotificationFragment>;
+};
 export declare type PreSignUrlMutationVariables = Exact<{
     input: PreSignedUrlInput;
 }>;
-export declare type PreSignUrlMutation = ({
+export declare type PreSignUrlMutation = {
     __typename?: 'Mutation';
 } & {
-    preSignUrl?: Maybe<({
+    preSignUrl?: Maybe<{
         __typename?: 'PreSignedUrl';
-    } & Pick<PreSignedUrl, 'url' | 'type' | 'filename'>)>;
-});
+    } & Pick<PreSignedUrl, 'url' | 'type' | 'filename'>>;
+};
 export declare type PreSignUrlsMutationVariables = Exact<{
     input: Array<Maybe<PreSignedUrlnput>> | Maybe<PreSignedUrlnput>;
 }>;
-export declare type PreSignUrlsMutation = ({
+export declare type PreSignUrlsMutation = {
     __typename?: 'Mutation';
 } & {
-    preSignUrls?: Maybe<Array<Maybe<({
+    preSignUrls?: Maybe<Array<Maybe<{
         __typename?: 'PreSignedUrl';
-    } & Pick<PreSignedUrl, 'url' | 'type' | 'filename'>)>>>;
-});
+    } & Pick<PreSignedUrl, 'url' | 'type' | 'filename'>>>>;
+};
 export declare type RefreshTokenMutationVariables = Exact<{
     refreshToken: Scalars['String'];
 }>;
-export declare type RefreshTokenMutation = ({
+export declare type RefreshTokenMutation = {
     __typename?: 'Mutation';
 } & {
-    token?: Maybe<({
+    token?: Maybe<{
         __typename?: 'AccessToken';
-    } & Pick<AccessToken, 'access_token'>)>;
-});
+    } & Pick<AccessToken, 'access_token'>>;
+};
 export declare type RegisterDeviceTokenMutationVariables = Exact<{
     token: Scalars['String'];
     platform: PlatformType;
 }>;
-export declare type RegisterDeviceTokenMutation = ({
+export declare type RegisterDeviceTokenMutation = {
     __typename?: 'Mutation';
-} & Pick<Mutation, 'registerDeviceToken'>);
+} & Pick<Mutation, 'registerDeviceToken'>;
 export declare type SendPromoMutationVariables = Exact<{
     number: Scalars['String'];
 }>;
-export declare type SendPromoMutation = ({
+export declare type SendPromoMutation = {
     __typename?: 'Mutation';
-} & Pick<Mutation, 'sendPromo'>);
+} & Pick<Mutation, 'sendPromo'>;
 export declare type ToggleNotificationSettingsMutationVariables = Exact<{
     input?: Maybe<ToggleNotificationSettingsInput>;
 }>;
-export declare type ToggleNotificationSettingsMutation = ({
+export declare type ToggleNotificationSettingsMutation = {
     __typename?: 'Mutation';
 } & {
-    toggleNotificationSettings?: Maybe<({
+    toggleNotificationSettings?: Maybe<{
         __typename?: 'User';
-    } & UserSettingsFragment)>;
-});
+    } & UserSettingsFragment>;
+};
 export declare type TranslateCommentMutationVariables = Exact<{
     id: Scalars['ID'];
     original?: Maybe<Scalars['Boolean']>;
 }>;
-export declare type TranslateCommentMutation = ({
+export declare type TranslateCommentMutation = {
     __typename?: 'Mutation';
 } & {
-    translateComment?: Maybe<({
+    translateComment?: Maybe<{
         __typename?: 'Comment';
-    } & Pick<Comment, 'id' | 'translatable' | 'text'>)>;
-});
+    } & Pick<Comment, 'id' | 'translatable' | 'text'>>;
+};
 export declare type TranslatePostMutationVariables = Exact<{
     id: Scalars['ID'];
     original?: Maybe<Scalars['Boolean']>;
 }>;
-export declare type TranslatePostMutation = ({
+export declare type TranslatePostMutation = {
     __typename?: 'Mutation';
 } & {
-    translatePost?: Maybe<({
+    translatePost?: Maybe<{
         __typename?: 'Post';
-    } & Pick<Post, 'id' | 'translatable' | 'caption'>)>;
-});
+    } & Pick<Post, 'id' | 'translatable' | 'caption'>>;
+};
 export declare type BlogPostQueryVariables = Exact<{
     slug?: Maybe<Scalars['LowercaseString']>;
     id?: Maybe<Scalars['ID']>;
 }>;
-export declare type BlogPostQuery = ({
+export declare type BlogPostQuery = {
     __typename?: 'Query';
 } & {
-    blogPost?: Maybe<({
+    blogPost?: Maybe<{
         __typename?: 'BlogPost';
-    } & BlogPostFragment)>;
-});
+    } & BlogPostFragment>;
+};
 export declare type BlogPostsQueryVariables = Exact<{
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type BlogPostsQuery = ({
+export declare type BlogPostsQuery = {
     __typename?: 'Query';
 } & {
-    blogPosts?: Maybe<({
+    blogPosts?: Maybe<{
         __typename?: 'BlogPostConnection';
     } & {
-        pageInfo: ({
+        pageInfo: {
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>);
-        edges?: Maybe<Array<({
+        } & Pick<PageInfo, 'hasNextPage'>;
+        edges?: Maybe<Array<{
             __typename?: 'BlogPostEdge';
         } & Pick<BlogPostEdge, 'cursor'> & {
-            node: ({
+            node: {
                 __typename?: 'BlogPost';
-            } & BlogPostFragment);
-        })>>;
-    })>;
-});
+            } & BlogPostFragment;
+        }>>;
+    }>;
+};
 export declare type BookmarksQueryVariables = Exact<{
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type BookmarksQuery = ({
+export declare type BookmarksQuery = {
     __typename?: 'Query';
 } & {
-    bookmarks?: Maybe<({
+    bookmarks?: Maybe<{
         __typename?: 'BookmarkConnection';
     } & {
-        pageInfo: ({
+        pageInfo: {
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>);
-        edges?: Maybe<Array<({
+        } & Pick<PageInfo, 'hasNextPage'>;
+        edges?: Maybe<Array<{
             __typename?: 'BookmarkEdge';
         } & Pick<BookmarkEdge, 'cursor'> & {
-            node: ({
+            node: {
                 __typename?: 'Post';
-            } & PostFragment);
-        })>>;
-    })>;
-});
+            } & PostFragment;
+        }>>;
+    }>;
+};
 export declare type CollectionsQueryVariables = Exact<{
     id?: Maybe<Scalars['ID']>;
     slug?: Maybe<Scalars['LowercaseString']>;
@@ -1597,248 +1597,248 @@ export declare type CollectionsQueryVariables = Exact<{
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type CollectionsQuery = ({
+export declare type CollectionsQuery = {
     __typename?: 'Query';
 } & {
-    collections?: Maybe<({
+    collections?: Maybe<{
         __typename?: 'PostConnection';
     } & {
-        pageInfo: ({
+        pageInfo: {
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>);
-        edges?: Maybe<Array<({
+        } & Pick<PageInfo, 'hasNextPage'>;
+        edges?: Maybe<Array<{
             __typename?: 'PostEdge';
         } & Pick<PostEdge, 'cursor'> & {
-            node: ({
+            node: {
                 __typename?: 'Post';
-            } & PostFragment);
-        })>>;
-    })>;
-});
+            } & PostFragment;
+        }>>;
+    }>;
+};
 export declare type CommentQueryVariables = Exact<{
     id: Scalars['ID'];
 }>;
-export declare type CommentQuery = ({
+export declare type CommentQuery = {
     __typename?: 'Query';
 } & {
-    comment?: Maybe<({
+    comment?: Maybe<{
         __typename?: 'Comment';
-    } & CommentFragment)>;
-});
+    } & CommentFragment>;
+};
 export declare type CommentsQueryVariables = Exact<{
     postId: Scalars['ID'];
     after?: Maybe<Scalars['String']>;
 }>;
-export declare type CommentsQuery = ({
+export declare type CommentsQuery = {
     __typename?: 'Query';
 } & {
-    post?: Maybe<({
+    post?: Maybe<{
         __typename?: 'Post';
-    } & PostFragment)>;
-    comments?: Maybe<({
+    } & PostFragment>;
+    comments?: Maybe<{
         __typename?: 'CommentConnection';
     } & {
-        pageInfo: ({
+        pageInfo: {
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>);
-        edges?: Maybe<Array<({
+        } & Pick<PageInfo, 'hasNextPage'>;
+        edges?: Maybe<Array<{
             __typename?: 'CommentEdge';
         } & Pick<CommentEdge, 'cursor'> & {
-            node: ({
+            node: {
                 __typename?: 'Comment';
-            } & CommentAndRepliesFragment);
-        })>>;
-    })>;
-});
+            } & CommentAndRepliesFragment;
+        }>>;
+    }>;
+};
 export declare type CurrentUserQueryVariables = Exact<{
     [key: string]: never;
 }>;
-export declare type CurrentUserQuery = ({
+export declare type CurrentUserQuery = {
     __typename?: 'Query';
 } & {
-    user?: Maybe<({
+    user?: Maybe<{
         __typename?: 'User';
     } & Pick<User, 'avatarUrl' | 'bio' | 'dynamicLink' | 'firstName' | 'fullName' | 'id' | 'isOnline' | 'isSilhouette' | 'lastName' | 'location' | 'projectCount' | 'username' | 'website' | 'role'> & {
-        settings?: Maybe<({
+        settings?: Maybe<{
             __typename?: 'UserSettings';
-        } & Pick<UserSettings, 'timezone' | 'locale'>)>;
-        interestedIn?: Maybe<Array<Maybe<({
+        } & Pick<UserSettings, 'timezone' | 'locale'>>;
+        interestedIn?: Maybe<Array<Maybe<{
             __typename?: 'ProjectType';
-        } & Pick<ProjectType, 'id' | 'title'>)>>>;
-    } & UserProjectsFragment)>;
-});
+        } & Pick<ProjectType, 'id' | 'title'>>>>;
+    } & UserProjectsFragment>;
+};
 export declare type CurrentUserFollowingProjectsQueryVariables = Exact<{
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type CurrentUserFollowingProjectsQuery = ({
+export declare type CurrentUserFollowingProjectsQuery = {
     __typename?: 'Query';
 } & {
-    user?: Maybe<({
+    user?: Maybe<{
         __typename?: 'User';
     } & Pick<User, 'id'> & {
-        projects?: Maybe<({
+        projects?: Maybe<{
             __typename?: 'ProjectsConnection';
         } & {
-            pageInfo: ({
+            pageInfo: {
                 __typename?: 'PageInfo';
-            } & Pick<PageInfo, 'hasNextPage'>);
-            edges?: Maybe<Array<({
+            } & Pick<PageInfo, 'hasNextPage'>;
+            edges?: Maybe<Array<{
                 __typename?: 'ProjectEdge';
             } & Pick<ProjectEdge, 'cursor'> & {
-                node: ({
+                node: {
                     __typename?: 'Project';
                 } & {
-                    cover?: Maybe<({
+                    cover?: Maybe<{
                         __typename?: 'CoverType';
-                    } & Pick<CoverType, 'uri' | 'default'>)>;
-                } & ProjectFragment);
-            })>>;
-        })>;
-    })>;
-});
+                    } & Pick<CoverType, 'uri' | 'default'>>;
+                } & ProjectFragment;
+            }>>;
+        }>;
+    }>;
+};
 export declare type CurrentUserProfileQueryVariables = Exact<{
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type CurrentUserProfileQuery = ({
+export declare type CurrentUserProfileQuery = {
     __typename?: 'Query';
 } & {
-    user?: Maybe<({
+    user?: Maybe<{
         __typename?: 'User';
     } & {
-        projects?: Maybe<({
+        projects?: Maybe<{
             __typename?: 'ProjectsConnection';
         } & {
-            edges?: Maybe<Array<({
+            edges?: Maybe<Array<{
                 __typename?: 'ProjectEdge';
             } & {
-                node: ({
+                node: {
                     __typename?: 'Project';
                 } & {
-                    cover?: Maybe<({
+                    cover?: Maybe<{
                         __typename?: 'CoverType';
-                    } & Pick<CoverType, 'uri' | 'default'>)>;
-                } & ProjectFragment);
-            })>>;
-        })>;
-        posts?: Maybe<({
+                    } & Pick<CoverType, 'uri' | 'default'>>;
+                } & ProjectFragment;
+            }>>;
+        }>;
+        posts?: Maybe<{
             __typename?: 'PostConnection';
         } & {
-            edges?: Maybe<Array<({
+            edges?: Maybe<Array<{
                 __typename?: 'PostEdge';
             } & Pick<PostEdge, 'cursor'> & {
-                node: ({
+                node: {
                     __typename?: 'Post';
-                } & PostFragment);
-            })>>;
-            pageInfo: ({
+                } & PostFragment;
+            }>>;
+            pageInfo: {
                 __typename?: 'PageInfo';
-            } & Pick<PageInfo, 'hasNextPage'>);
-        })>;
-    } & UserFragment)>;
-});
+            } & Pick<PageInfo, 'hasNextPage'>;
+        }>;
+    } & UserFragment>;
+};
 export declare type CurrentUserProjectsQueryVariables = Exact<{
     [key: string]: never;
 }>;
-export declare type CurrentUserProjectsQuery = ({
+export declare type CurrentUserProjectsQuery = {
     __typename?: 'Query';
 } & {
-    user?: Maybe<({
+    user?: Maybe<{
         __typename?: 'User';
-    } & UserProjectsFragment)>;
-});
+    } & UserProjectsFragment>;
+};
 export declare type CurrentUserSettingsQueryVariables = Exact<{
     [key: string]: never;
 }>;
-export declare type CurrentUserSettingsQuery = ({
+export declare type CurrentUserSettingsQuery = {
     __typename?: 'Query';
 } & {
-    user?: Maybe<({
+    user?: Maybe<{
         __typename?: 'User';
-    } & UserSettingsFragment)>;
-});
+    } & UserSettingsFragment>;
+};
 export declare type FeedQueryVariables = Exact<{
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type FeedQuery = ({
+export declare type FeedQuery = {
     __typename?: 'Query';
 } & {
-    feed?: Maybe<({
+    feed?: Maybe<{
         __typename?: 'Feed';
     } & {
-        posts?: Maybe<({
+        posts?: Maybe<{
             __typename?: 'PostConnection';
         } & {
-            pageInfo: ({
+            pageInfo: {
                 __typename?: 'PageInfo';
-            } & Pick<PageInfo, 'hasNextPage'>);
-            edges?: Maybe<Array<({
+            } & Pick<PageInfo, 'hasNextPage'>;
+            edges?: Maybe<Array<{
                 __typename?: 'PostEdge';
             } & Pick<PostEdge, 'cursor'> & {
-                node: ({
+                node: {
                     __typename?: 'Post';
-                } & PostFragment);
-            })>>;
-        })>;
-    })>;
-});
+                } & PostFragment;
+            }>>;
+        }>;
+    }>;
+};
 export declare type FilesQueryVariables = Exact<{
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type FilesQuery = ({
+export declare type FilesQuery = {
     __typename?: 'Query';
 } & {
-    files?: Maybe<({
+    files?: Maybe<{
         __typename?: 'FileConnection';
     } & {
-        pageInfo: ({
+        pageInfo: {
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>);
-        edges?: Maybe<Array<Maybe<({
+        } & Pick<PageInfo, 'hasNextPage'>;
+        edges?: Maybe<Array<Maybe<{
             __typename?: 'FileEdge';
         } & Pick<FileEdge, 'cursor'> & {
-            node: ({
+            node: {
                 __typename?: 'File';
-            } & Pick<File, 'id' | 'uri' | 'postId'>);
-        })>>>;
-    })>;
-});
+            } & Pick<File, 'id' | 'uri' | 'postId'>;
+        }>>>;
+    }>;
+};
 export declare type FollowersQueryVariables = Exact<{
     projectId: Scalars['ID'];
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type FollowersQuery = ({
+export declare type FollowersQuery = {
     __typename?: 'Query';
 } & {
-    followers?: Maybe<({
+    followers?: Maybe<{
         __typename?: 'FollowersConnection';
     } & {
-        pageInfo: ({
+        pageInfo: {
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>);
-        edges?: Maybe<Array<({
+        } & Pick<PageInfo, 'hasNextPage'>;
+        edges?: Maybe<Array<{
             __typename?: 'FollowersEdge';
         } & Pick<FollowersEdge, 'cursor'> & {
-            node: ({
+            node: {
                 __typename?: 'User';
-            } & UserFragment);
-        })>>;
-    })>;
-});
+            } & UserFragment;
+        }>>;
+    }>;
+};
 export declare type GrowthQueryVariables = Exact<{
     type: GrowthType;
 }>;
-export declare type GrowthQuery = ({
+export declare type GrowthQuery = {
     __typename?: 'Query';
 } & {
-    growth?: Maybe<Array<Maybe<({
+    growth?: Maybe<Array<Maybe<{
         __typename?: 'GrowthData';
-    } & Pick<GrowthData, 'date' | 'count'>)>>>;
-});
+    } & Pick<GrowthData, 'date' | 'count'>>>>;
+};
 export declare type HashtagQueryVariables = Exact<{
     id?: Maybe<Scalars['ID']>;
     slug?: Maybe<Scalars['LowercaseString']>;
@@ -1846,115 +1846,115 @@ export declare type HashtagQueryVariables = Exact<{
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type HashtagQuery = ({
+export declare type HashtagQuery = {
     __typename?: 'Query';
 } & {
-    hashtag?: Maybe<({
+    hashtag?: Maybe<{
         __typename?: 'Hashtag';
     } & {
-        posts?: Maybe<({
+        posts?: Maybe<{
             __typename?: 'PostConnection';
         } & {
-            pageInfo: ({
+            pageInfo: {
                 __typename?: 'PageInfo';
-            } & Pick<PageInfo, 'hasNextPage'>);
-            edges?: Maybe<Array<({
+            } & Pick<PageInfo, 'hasNextPage'>;
+            edges?: Maybe<Array<{
                 __typename?: 'PostEdge';
             } & Pick<PostEdge, 'cursor'> & {
-                node: ({
+                node: {
                     __typename?: 'Post';
-                } & PostFragment);
-            })>>;
-        })>;
-    })>;
-});
+                } & PostFragment;
+            }>>;
+        }>;
+    }>;
+};
 export declare type LikesQueryVariables = Exact<{
     postId: Scalars['ID'];
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type LikesQuery = ({
+export declare type LikesQuery = {
     __typename?: 'Query';
 } & {
-    likes?: Maybe<({
+    likes?: Maybe<{
         __typename?: 'LikeConnection';
     } & {
-        pageInfo: ({
+        pageInfo: {
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>);
-        edges?: Maybe<Array<({
+        } & Pick<PageInfo, 'hasNextPage'>;
+        edges?: Maybe<Array<{
             __typename?: 'LikeEdge';
         } & Pick<LikeEdge, 'cursor'> & {
-            node: ({
+            node: {
                 __typename?: 'User';
-            } & UserFragment);
-        })>>;
-    })>;
-});
+            } & UserFragment;
+        }>>;
+    }>;
+};
 export declare type MetaQueryVariables = Exact<{
     [key: string]: never;
 }>;
-export declare type MetaQuery = ({
+export declare type MetaQuery = {
     __typename?: 'Query';
 } & {
-    meta?: Maybe<({
+    meta?: Maybe<{
         __typename?: 'Meta';
-    } & Pick<Meta, 'totalUsers' | 'totalUsersToday' | 'totalPostsToday' | 'totalProjectsToday' | 'totalCommentsToday' | 'totalFilesToday' | 'totalComments' | 'totalProjects' | 'totalPosts' | 'totalFiles'>)>;
-});
+    } & Pick<Meta, 'totalUsers' | 'totalUsersToday' | 'totalPostsToday' | 'totalProjectsToday' | 'totalCommentsToday' | 'totalFilesToday' | 'totalComments' | 'totalProjects' | 'totalPosts' | 'totalFiles'>>;
+};
 export declare type NotificationsQueryVariables = Exact<{
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type NotificationsQuery = ({
+export declare type NotificationsQuery = {
     __typename?: 'Query';
 } & {
-    notifications?: Maybe<({
+    notifications?: Maybe<{
         __typename?: 'NotificationsConnection';
     } & Pick<NotificationsConnection, 'unreadCount'> & {
-        pageInfo?: Maybe<({
+        pageInfo?: Maybe<{
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>)>;
-        edges?: Maybe<Array<Maybe<({
+        } & Pick<PageInfo, 'hasNextPage'>>;
+        edges?: Maybe<Array<Maybe<{
             __typename?: 'NotificationEdge';
         } & Pick<NotificationEdge, 'cursor'> & {
-            node?: Maybe<({
+            node?: Maybe<{
                 __typename?: 'Notification';
-            } & NotificationFragment)>;
-        })>>>;
-    })>;
-});
+            } & NotificationFragment>;
+        }>>>;
+    }>;
+};
 export declare type PostQueryVariables = Exact<{
     id: Scalars['ID'];
 }>;
-export declare type PostQuery = ({
+export declare type PostQuery = {
     __typename?: 'Query';
 } & {
-    post?: Maybe<({
+    post?: Maybe<{
         __typename?: 'Post';
-    } & PostFragment)>;
-});
+    } & PostFragment>;
+};
 export declare type PostsQueryVariables = Exact<{
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type PostsQuery = ({
+export declare type PostsQuery = {
     __typename?: 'Query';
 } & {
-    posts?: Maybe<({
+    posts?: Maybe<{
         __typename?: 'PostConnection';
     } & {
-        pageInfo: ({
+        pageInfo: {
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>);
-        edges?: Maybe<Array<({
+        } & Pick<PageInfo, 'hasNextPage'>;
+        edges?: Maybe<Array<{
             __typename?: 'PostEdge';
         } & Pick<PostEdge, 'cursor'> & {
-            node: ({
+            node: {
                 __typename?: 'Post';
-            } & PostFragment);
-        })>>;
-    })>;
-});
+            } & PostFragment;
+        }>>;
+    }>;
+};
 export declare type ProjectQueryVariables = Exact<{
     id?: Maybe<Scalars['ID']>;
     slug?: Maybe<Scalars['LowercaseString']>;
@@ -1962,31 +1962,31 @@ export declare type ProjectQueryVariables = Exact<{
     postId?: Maybe<Scalars['ID']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type ProjectQuery = ({
+export declare type ProjectQuery = {
     __typename?: 'Query';
 } & {
-    post?: Maybe<({
+    post?: Maybe<{
         __typename?: 'Post';
-    } & PostFragment)>;
-    project?: Maybe<({
+    } & PostFragment>;
+    project?: Maybe<{
         __typename?: 'Project';
     } & {
-        posts?: Maybe<({
+        posts?: Maybe<{
             __typename?: 'PostConnection';
         } & Pick<PostConnection, 'totalCount'> & {
-            pageInfo: ({
+            pageInfo: {
                 __typename?: 'PageInfo';
-            } & Pick<PageInfo, 'hasNextPage'>);
-            edges?: Maybe<Array<({
+            } & Pick<PageInfo, 'hasNextPage'>;
+            edges?: Maybe<Array<{
                 __typename?: 'PostEdge';
             } & Pick<PostEdge, 'cursor'> & {
-                node: ({
+                node: {
                     __typename?: 'Post';
-                } & PostFragment);
-            })>>;
-        })>;
-    } & ProjectFragment)>;
-});
+                } & PostFragment;
+            }>>;
+        }>;
+    } & ProjectFragment>;
+};
 export declare type ProjectCollectionsQueryVariables = Exact<{
     projectId?: Maybe<Scalars['ID']>;
     projectSlug?: Maybe<Scalars['LowercaseString']>;
@@ -1994,154 +1994,154 @@ export declare type ProjectCollectionsQueryVariables = Exact<{
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type ProjectCollectionsQuery = ({
+export declare type ProjectCollectionsQuery = {
     __typename?: 'Query';
 } & {
-    projectCollections?: Maybe<({
+    projectCollections?: Maybe<{
         __typename?: 'CollectionConnection';
     } & {
-        pageInfo: ({
+        pageInfo: {
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>);
-        edges?: Maybe<Array<({
+        } & Pick<PageInfo, 'hasNextPage'>;
+        edges?: Maybe<Array<{
             __typename?: 'CollectionEdge';
         } & Pick<CollectionEdge, 'cursor'> & {
-            node: ({
+            node: {
                 __typename?: 'Collection';
-            } & CollectionFragment);
-        })>>;
-    })>;
-});
+            } & CollectionFragment;
+        }>>;
+    }>;
+};
 export declare type ProjectSuggestionsQueryVariables = Exact<{
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type ProjectSuggestionsQuery = ({
+export declare type ProjectSuggestionsQuery = {
     __typename?: 'Query';
 } & {
-    projects?: Maybe<Array<Maybe<({
+    projects?: Maybe<Array<Maybe<{
         __typename?: 'ProjectSuggestionsConnection';
     } & {
-        type?: Maybe<({
+        type?: Maybe<{
             __typename?: 'ProjectType';
-        } & Pick<ProjectType, 'id' | 'title'>)>;
-        pageInfo: ({
+        } & Pick<ProjectType, 'id' | 'title'>>;
+        pageInfo: {
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>);
-        edges?: Maybe<Array<({
+        } & Pick<PageInfo, 'hasNextPage'>;
+        edges?: Maybe<Array<{
             __typename?: 'ProjectEdge';
         } & {
-            node: ({
+            node: {
                 __typename?: 'Project';
             } & {
-                cover?: Maybe<({
+                cover?: Maybe<{
                     __typename?: 'CoverType';
-                } & Pick<CoverType, 'uri' | 'default'>)>;
-            } & ProjectFragment);
-        })>>;
-    })>>>;
-});
+                } & Pick<CoverType, 'uri' | 'default'>>;
+            } & ProjectFragment;
+        }>>;
+    }>>>;
+};
 export declare type ProjectTypesQueryVariables = Exact<{
     [key: string]: never;
 }>;
-export declare type ProjectTypesQuery = ({
+export declare type ProjectTypesQuery = {
     __typename?: 'Query';
 } & {
-    types?: Maybe<Array<Maybe<({
+    types?: Maybe<Array<Maybe<{
         __typename?: 'ProjectType';
-    } & Pick<ProjectType, 'id' | 'title' | 'imageUrl'>)>>>;
-});
+    } & Pick<ProjectType, 'id' | 'title' | 'imageUrl'>>>>;
+};
 export declare type ProjectsQueryVariables = Exact<{
     typeId?: Maybe<Scalars['ID']>;
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     type: ProjectSortType;
 }>;
-export declare type ProjectsQuery = ({
+export declare type ProjectsQuery = {
     __typename?: 'Query';
 } & {
-    projects?: Maybe<({
+    projects?: Maybe<{
         __typename?: 'ProjectsConnection';
     } & {
-        pageInfo: ({
+        pageInfo: {
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>);
-        edges?: Maybe<Array<({
+        } & Pick<PageInfo, 'hasNextPage'>;
+        edges?: Maybe<Array<{
             __typename?: 'ProjectEdge';
         } & Pick<ProjectEdge, 'cursor'> & {
-            node: ({
+            node: {
                 __typename?: 'Project';
             } & {
-                cover?: Maybe<({
+                cover?: Maybe<{
                     __typename?: 'CoverType';
-                } & Pick<CoverType, 'uri' | 'default'>)>;
-            } & ProjectFragment);
-        })>>;
-    })>;
-});
+                } & Pick<CoverType, 'uri' | 'default'>>;
+            } & ProjectFragment;
+        }>>;
+    }>;
+};
 export declare type RecentCommentsQueryVariables = Exact<{
     after?: Maybe<Scalars['String']>;
 }>;
-export declare type RecentCommentsQuery = ({
+export declare type RecentCommentsQuery = {
     __typename?: 'Query';
 } & {
-    comments?: Maybe<({
+    comments?: Maybe<{
         __typename?: 'CommentConnection';
     } & {
-        pageInfo: ({
+        pageInfo: {
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>);
-        edges?: Maybe<Array<({
+        } & Pick<PageInfo, 'hasNextPage'>;
+        edges?: Maybe<Array<{
             __typename?: 'CommentEdge';
         } & Pick<CommentEdge, 'cursor'> & {
-            node: ({
+            node: {
                 __typename?: 'Comment';
-            } & CommentAndRepliesFragment);
-        })>>;
-    })>;
-});
+            } & CommentAndRepliesFragment;
+        }>>;
+    }>;
+};
 export declare type RepliesQueryVariables = Exact<{
     id: Scalars['ID'];
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type RepliesQuery = ({
+export declare type RepliesQuery = {
     __typename?: 'Query';
 } & {
-    comment?: Maybe<({
+    comment?: Maybe<{
         __typename?: 'Comment';
     } & {
-        replies?: Maybe<({
+        replies?: Maybe<{
             __typename?: 'CommentConnection';
         } & Pick<CommentConnection, 'totalCount'> & {
-            pageInfo: ({
+            pageInfo: {
                 __typename?: 'PageInfo';
-            } & Pick<PageInfo, 'hasNextPage'>);
-            edges?: Maybe<Array<({
+            } & Pick<PageInfo, 'hasNextPage'>;
+            edges?: Maybe<Array<{
                 __typename?: 'CommentEdge';
             } & Pick<CommentEdge, 'cursor'> & {
-                node: ({
+                node: {
                     __typename?: 'Comment';
-                } & CommentFragment);
-            })>>;
-        })>;
-    })>;
-});
+                } & CommentFragment;
+            }>>;
+        }>;
+    }>;
+};
 export declare type SearchHashtagsQueryVariables = Exact<{
     query: Scalars['String'];
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type SearchHashtagsQuery = ({
+export declare type SearchHashtagsQuery = {
     __typename?: 'Query';
 } & {
-    hashtags?: Maybe<({
+    hashtags?: Maybe<{
         __typename?: 'SearchResults';
     } & {
-        pageInfo?: Maybe<({
+        pageInfo?: Maybe<{
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>)>;
-        edges?: Maybe<Array<Maybe<({
+        } & Pick<PageInfo, 'hasNextPage'>>;
+        edges?: Maybe<Array<Maybe<{
             __typename?: 'SearchResultEdge';
         } & Pick<SearchResultEdge, 'cursor'> & {
             node?: Maybe<{
@@ -2153,24 +2153,24 @@ export declare type SearchHashtagsQuery = ({
             } | ({
                 __typename?: 'Hashtag';
             } & Pick<Hashtag, 'id' | 'name' | 'slug' | 'totalCount'>)>;
-        })>>>;
-    })>;
-});
+        }>>>;
+    }>;
+};
 export declare type SearchModelsQueryVariables = Exact<{
     query: Scalars['String'];
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type SearchModelsQuery = ({
+export declare type SearchModelsQuery = {
     __typename?: 'Query';
 } & {
-    models?: Maybe<({
+    models?: Maybe<{
         __typename?: 'SearchResults';
     } & {
-        pageInfo?: Maybe<({
+        pageInfo?: Maybe<{
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>)>;
-        edges?: Maybe<Array<Maybe<({
+        } & Pick<PageInfo, 'hasNextPage'>>;
+        edges?: Maybe<Array<Maybe<{
             __typename?: 'SearchResultEdge';
         } & Pick<SearchResultEdge, 'cursor'> & {
             node?: Maybe<{
@@ -2180,38 +2180,38 @@ export declare type SearchModelsQuery = ({
             } | ({
                 __typename?: 'Model';
             } & Pick<Model, 'id' | 'model' | 'year'> & {
-                brand?: Maybe<({
+                brand?: Maybe<{
                     __typename?: 'Brand';
-                } & Pick<Brand, 'name'>)>;
+                } & Pick<Brand, 'name'>>;
             }) | {
                 __typename?: 'Hashtag';
             }>;
-        })>>>;
-    })>;
-});
+        }>>>;
+    }>;
+};
 export declare type SearchProjectsQueryVariables = Exact<{
     query: Scalars['String'];
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type SearchProjectsQuery = ({
+export declare type SearchProjectsQuery = {
     __typename?: 'Query';
 } & {
-    projects?: Maybe<({
+    projects?: Maybe<{
         __typename?: 'SearchResults';
     } & {
-        pageInfo?: Maybe<({
+        pageInfo?: Maybe<{
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>)>;
-        edges?: Maybe<Array<Maybe<({
+        } & Pick<PageInfo, 'hasNextPage'>>;
+        edges?: Maybe<Array<Maybe<{
             __typename?: 'SearchResultEdge';
         } & Pick<SearchResultEdge, 'cursor'> & {
             node?: Maybe<({
                 __typename?: 'Project';
             } & {
-                cover?: Maybe<({
+                cover?: Maybe<{
                     __typename?: 'CoverType';
-                } & Pick<CoverType, 'uri' | 'default'>)>;
+                } & Pick<CoverType, 'uri' | 'default'>>;
             } & ProjectFragment) | {
                 __typename?: 'User';
             } | {
@@ -2219,24 +2219,24 @@ export declare type SearchProjectsQuery = ({
             } | {
                 __typename?: 'Hashtag';
             }>;
-        })>>>;
-    })>;
-});
+        }>>>;
+    }>;
+};
 export declare type SearchUsersQueryVariables = Exact<{
     query: Scalars['String'];
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type SearchUsersQuery = ({
+export declare type SearchUsersQuery = {
     __typename?: 'Query';
 } & {
-    users?: Maybe<({
+    users?: Maybe<{
         __typename?: 'SearchResults';
     } & {
-        pageInfo?: Maybe<({
+        pageInfo?: Maybe<{
             __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>)>;
-        edges?: Maybe<Array<Maybe<({
+        } & Pick<PageInfo, 'hasNextPage'>>;
+        edges?: Maybe<Array<Maybe<{
             __typename?: 'SearchResultEdge';
         } & Pick<SearchResultEdge, 'cursor'> & {
             node?: Maybe<{
@@ -2248,115 +2248,115 @@ export declare type SearchUsersQuery = ({
             } | {
                 __typename?: 'Hashtag';
             }>;
-        })>>>;
-    })>;
-});
+        }>>>;
+    }>;
+};
 export declare type SimilarProjectsQueryVariables = Exact<{
     id: Scalars['ID'];
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type SimilarProjectsQuery = ({
+export declare type SimilarProjectsQuery = {
     __typename?: 'Query';
 } & {
-    similarProjects?: Maybe<({
+    similarProjects?: Maybe<{
         __typename?: 'ProjectsConnection';
     } & {
-        edges?: Maybe<Array<({
+        edges?: Maybe<Array<{
             __typename?: 'ProjectEdge';
         } & Pick<ProjectEdge, 'cursor'> & {
-            node: ({
+            node: {
                 __typename?: 'Project';
             } & {
-                cover?: Maybe<({
+                cover?: Maybe<{
                     __typename?: 'CoverType';
-                } & Pick<CoverType, 'uri'>)>;
-            } & ProjectFragment);
-        })>>;
-    })>;
-});
+                } & Pick<CoverType, 'uri'>>;
+            } & ProjectFragment;
+        }>>;
+    }>;
+};
 export declare type UnreadNotificationsQueryVariables = Exact<{
     [key: string]: never;
 }>;
-export declare type UnreadNotificationsQuery = ({
+export declare type UnreadNotificationsQuery = {
     __typename?: 'Query';
 } & {
-    notifications?: Maybe<({
+    notifications?: Maybe<{
         __typename?: 'NotificationsConnection';
-    } & Pick<NotificationsConnection, 'unreadCount'>)>;
-});
+    } & Pick<NotificationsConnection, 'unreadCount'>>;
+};
 export declare type UserQueryVariables = Exact<{
     username: Scalars['LowercaseString'];
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type UserQuery = ({
+export declare type UserQuery = {
     __typename?: 'Query';
 } & {
-    user?: Maybe<({
+    user?: Maybe<{
         __typename?: 'User';
     } & {
-        projects?: Maybe<({
+        projects?: Maybe<{
             __typename?: 'ProjectsConnection';
         } & {
-            edges?: Maybe<Array<({
+            edges?: Maybe<Array<{
                 __typename?: 'ProjectEdge';
             } & {
-                node: ({
+                node: {
                     __typename?: 'Project';
                 } & {
-                    cover?: Maybe<({
+                    cover?: Maybe<{
                         __typename?: 'CoverType';
-                    } & Pick<CoverType, 'uri' | 'default'>)>;
-                } & ProjectFragment);
-            })>>;
-        })>;
-        posts?: Maybe<({
+                    } & Pick<CoverType, 'uri' | 'default'>>;
+                } & ProjectFragment;
+            }>>;
+        }>;
+        posts?: Maybe<{
             __typename?: 'PostConnection';
         } & {
-            edges?: Maybe<Array<({
+            edges?: Maybe<Array<{
                 __typename?: 'PostEdge';
             } & Pick<PostEdge, 'cursor'> & {
-                node: ({
+                node: {
                     __typename?: 'Post';
-                } & PostFragment);
-            })>>;
-            pageInfo: ({
+                } & PostFragment;
+            }>>;
+            pageInfo: {
                 __typename?: 'PageInfo';
-            } & Pick<PageInfo, 'hasNextPage'>);
-        })>;
-    } & UserFragment)>;
-});
+            } & Pick<PageInfo, 'hasNextPage'>;
+        }>;
+    } & UserFragment>;
+};
 export declare type UserFollowingProjectsQueryVariables = Exact<{
     username: Scalars['LowercaseString'];
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
-export declare type UserFollowingProjectsQuery = ({
+export declare type UserFollowingProjectsQuery = {
     __typename?: 'Query';
 } & {
-    user?: Maybe<({
+    user?: Maybe<{
         __typename?: 'User';
     } & Pick<User, 'id'> & {
-        projects?: Maybe<({
+        projects?: Maybe<{
             __typename?: 'ProjectsConnection';
         } & {
-            pageInfo: ({
+            pageInfo: {
                 __typename?: 'PageInfo';
-            } & Pick<PageInfo, 'hasNextPage'>);
-            edges?: Maybe<Array<({
+            } & Pick<PageInfo, 'hasNextPage'>;
+            edges?: Maybe<Array<{
                 __typename?: 'ProjectEdge';
             } & Pick<ProjectEdge, 'cursor'> & {
-                node: ({
+                node: {
                     __typename?: 'Project';
                 } & {
-                    cover?: Maybe<({
+                    cover?: Maybe<{
                         __typename?: 'CoverType';
-                    } & Pick<CoverType, 'uri' | 'default'>)>;
-                } & ProjectFragment);
-            })>>;
-        })>;
-    })>;
-});
+                    } & Pick<CoverType, 'uri' | 'default'>>;
+                } & ProjectFragment;
+            }>>;
+        }>;
+    }>;
+};
 export declare const UserFragmentDoc: Apollo.DocumentNode;
 export declare const BlogPostFragmentDoc: Apollo.DocumentNode;
 export declare const CollectionFragmentDoc: Apollo.DocumentNode;

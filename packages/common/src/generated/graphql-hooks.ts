@@ -1,614 +1,573 @@
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
-export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+import { gql } from '@apollo/client'
+import * as Apollo from '@apollo/client'
+export type Maybe<T> = T | null
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] }
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> }
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> }
+const defaultOptions = {}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
+  ID: string
+  String: string
+  Boolean: boolean
+  Int: number
+  Float: number
   /** Date custom scalar type */
-  Date: any;
+  Date: any
   /** Returns all strings in lower case */
-  LowercaseString: any;
-};
-
+  LowercaseString: any
+}
 
 export type AccessToken = {
-  __typename?: 'AccessToken';
-  access_token?: Maybe<Scalars['String']>;
-};
+  __typename?: 'AccessToken'
+  access_token?: Maybe<Scalars['String']>
+}
 
 export type ApplePayload = {
-  firstName?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
-};
+  firstName?: Maybe<Scalars['String']>
+  lastName?: Maybe<Scalars['String']>
+}
 
 export type BlogPost = {
-  __typename?: 'BlogPost';
-  id?: Maybe<Scalars['ID']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  title?: Maybe<Scalars['String']>;
-  content?: Maybe<Scalars['String']>;
-  user?: Maybe<User>;
-  slug?: Maybe<Scalars['String']>;
-};
+  __typename?: 'BlogPost'
+  id?: Maybe<Scalars['ID']>
+  createdAt?: Maybe<Scalars['Date']>
+  updatedAt?: Maybe<Scalars['Date']>
+  title?: Maybe<Scalars['String']>
+  content?: Maybe<Scalars['String']>
+  user?: Maybe<User>
+  slug?: Maybe<Scalars['String']>
+}
 
 export type BlogPostConnection = {
-  __typename?: 'BlogPostConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<BlogPostEdge>>;
-};
+  __typename?: 'BlogPostConnection'
+  totalCount?: Maybe<Scalars['Int']>
+  pageInfo: PageInfo
+  edges?: Maybe<Array<BlogPostEdge>>
+}
 
 export type BlogPostEdge = {
-  __typename?: 'BlogPostEdge';
-  cursor: Scalars['String'];
-  node: BlogPost;
-};
+  __typename?: 'BlogPostEdge'
+  cursor: Scalars['String']
+  node: BlogPost
+}
 
 export type BlogPostInput = {
-  title: Scalars['String'];
-  content: Scalars['String'];
-};
+  title: Scalars['String']
+  content: Scalars['String']
+}
 
 export type BookmarkConnection = {
-  __typename?: 'BookmarkConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<BookmarkEdge>>;
-};
+  __typename?: 'BookmarkConnection'
+  totalCount?: Maybe<Scalars['Int']>
+  pageInfo: PageInfo
+  edges?: Maybe<Array<BookmarkEdge>>
+}
 
 export type BookmarkEdge = {
-  __typename?: 'BookmarkEdge';
-  cursor: Scalars['String'];
-  node: Post;
-};
+  __typename?: 'BookmarkEdge'
+  cursor: Scalars['String']
+  node: Post
+}
 
 export type Bookmarks = {
-  __typename?: 'Bookmarks';
-  totalCount?: Maybe<Scalars['Int']>;
-  isBookmarked?: Maybe<Scalars['Boolean']>;
-};
+  __typename?: 'Bookmarks'
+  totalCount?: Maybe<Scalars['Int']>
+  isBookmarked?: Maybe<Scalars['Boolean']>
+}
 
 export type Brand = {
-  __typename?: 'Brand';
-  id: Scalars['ID'];
-  name?: Maybe<Scalars['String']>;
-};
+  __typename?: 'Brand'
+  id: Scalars['ID']
+  name?: Maybe<Scalars['String']>
+}
 
 export enum CacheControlScope {
   Public = 'PUBLIC',
-  Private = 'PRIVATE'
+  Private = 'PRIVATE',
 }
 
 export type Collection = {
-  __typename?: 'Collection';
-  id?: Maybe<Scalars['ID']>;
-  name?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-  cover?: Maybe<CoverType>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-};
+  __typename?: 'Collection'
+  id?: Maybe<Scalars['ID']>
+  name?: Maybe<Scalars['String']>
+  slug?: Maybe<Scalars['String']>
+  cover?: Maybe<CoverType>
+  createdAt?: Maybe<Scalars['Date']>
+  updatedAt?: Maybe<Scalars['Date']>
+}
 
 export type CollectionConnection = {
-  __typename?: 'CollectionConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<CollectionEdge>>;
-};
+  __typename?: 'CollectionConnection'
+  totalCount?: Maybe<Scalars['Int']>
+  pageInfo: PageInfo
+  edges?: Maybe<Array<CollectionEdge>>
+}
 
 export type CollectionEdge = {
-  __typename?: 'CollectionEdge';
-  cursor: Scalars['String'];
-  node: Collection;
-};
+  __typename?: 'CollectionEdge'
+  cursor: Scalars['String']
+  node: Collection
+}
 
 export type CollectionInput = {
-  postId: Scalars['ID'];
-};
+  postId: Scalars['ID']
+}
 
 export type Comment = {
-  __typename?: 'Comment';
-  id?: Maybe<Scalars['ID']>;
-  commentId?: Maybe<Scalars['ID']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  text: Scalars['String'];
-  user?: Maybe<User>;
-  postId?: Maybe<Scalars['ID']>;
-  permissions?: Maybe<CommentPermissions>;
-  translatable?: Maybe<Scalars['Boolean']>;
-  language?: Maybe<Scalars['String']>;
-  repliesConnection?: Maybe<CommentConnection>;
-  likes?: Maybe<Likes>;
-};
-
+  __typename?: 'Comment'
+  id?: Maybe<Scalars['ID']>
+  commentId?: Maybe<Scalars['ID']>
+  createdAt?: Maybe<Scalars['Date']>
+  updatedAt?: Maybe<Scalars['Date']>
+  text: Scalars['String']
+  user?: Maybe<User>
+  postId?: Maybe<Scalars['ID']>
+  permissions?: Maybe<CommentPermissions>
+  translatable?: Maybe<Scalars['Boolean']>
+  language?: Maybe<Scalars['String']>
+  repliesConnection?: Maybe<CommentConnection>
+  likes?: Maybe<Likes>
+}
 
 export type CommentRepliesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type CommentConnection = {
-  __typename?: 'CommentConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<CommentEdge>>;
-};
+  __typename?: 'CommentConnection'
+  totalCount?: Maybe<Scalars['Int']>
+  pageInfo: PageInfo
+  edges?: Maybe<Array<CommentEdge>>
+}
 
 export type CommentEdge = {
-  __typename?: 'CommentEdge';
-  cursor: Scalars['String'];
-  node: Comment;
-};
+  __typename?: 'CommentEdge'
+  cursor: Scalars['String']
+  node: Comment
+}
 
 export type CommentInput = {
-  text: Scalars['String'];
-};
+  text: Scalars['String']
+}
 
 export type CommentPermissions = {
-  __typename?: 'CommentPermissions';
-  isOwner?: Maybe<Scalars['Boolean']>;
-};
+  __typename?: 'CommentPermissions'
+  isOwner?: Maybe<Scalars['Boolean']>
+}
 
 export type CoverType = {
-  __typename?: 'CoverType';
-  uri?: Maybe<Scalars['String']>;
-  default?: Maybe<Scalars['Boolean']>;
-};
-
+  __typename?: 'CoverType'
+  uri?: Maybe<Scalars['String']>
+  default?: Maybe<Scalars['Boolean']>
+}
 
 export type EditCollectionInput = {
-  name?: Maybe<Scalars['String']>;
-};
+  name?: Maybe<Scalars['String']>
+}
 
 export type EditPostInput = {
-  caption?: Maybe<Scalars['String']>;
-  collectionId?: Maybe<Scalars['ID']>;
-};
+  caption?: Maybe<Scalars['String']>
+  collectionId?: Maybe<Scalars['ID']>
+}
 
 export type EditUserInput = {
-  firstName?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
-  interestedIn?: Maybe<Array<Maybe<ProjectTypeInput>>>;
-  timezone?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  location?: Maybe<Scalars['String']>;
-  bio?: Maybe<Scalars['String']>;
-  website?: Maybe<Scalars['String']>;
-  avatarUrl?: Maybe<Scalars['String']>;
-  username?: Maybe<Scalars['String']>;
-};
+  firstName?: Maybe<Scalars['String']>
+  lastName?: Maybe<Scalars['String']>
+  interestedIn?: Maybe<Array<Maybe<ProjectTypeInput>>>
+  timezone?: Maybe<Scalars['String']>
+  locale?: Maybe<Scalars['String']>
+  location?: Maybe<Scalars['String']>
+  bio?: Maybe<Scalars['String']>
+  website?: Maybe<Scalars['String']>
+  avatarUrl?: Maybe<Scalars['String']>
+  username?: Maybe<Scalars['String']>
+}
 
 export type Feed = {
-  __typename?: 'Feed';
-  postsConnection?: Maybe<PostConnection>;
-};
-
+  __typename?: 'Feed'
+  postsConnection?: Maybe<PostConnection>
+}
 
 export type FeedPostsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type File = {
-  __typename?: 'File';
-  id?: Maybe<Scalars['ID']>;
-  postId?: Maybe<Scalars['ID']>;
-  type?: Maybe<FileType>;
-  uri: Scalars['String'];
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-};
+  __typename?: 'File'
+  id?: Maybe<Scalars['ID']>
+  postId?: Maybe<Scalars['ID']>
+  type?: Maybe<FileType>
+  uri: Scalars['String']
+  createdAt?: Maybe<Scalars['Date']>
+  updatedAt?: Maybe<Scalars['Date']>
+}
 
 export type FileConnection = {
-  __typename?: 'FileConnection';
-  edges?: Maybe<Array<Maybe<FileEdge>>>;
-  pageInfo: PageInfo;
-};
+  __typename?: 'FileConnection'
+  edges?: Maybe<Array<Maybe<FileEdge>>>
+  pageInfo: PageInfo
+}
 
 export type FileEdge = {
-  __typename?: 'FileEdge';
-  cursor: Scalars['String'];
-  node: File;
-};
+  __typename?: 'FileEdge'
+  cursor: Scalars['String']
+  node: File
+}
 
 export type FileInput = {
-  filename: Scalars['String'];
-};
+  filename: Scalars['String']
+}
 
 export enum FileType {
   Image = 'IMAGE',
-  Video = 'VIDEO'
+  Video = 'VIDEO',
 }
 
 export type FollowersConnection = {
-  __typename?: 'FollowersConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<FollowersEdge>>;
-};
+  __typename?: 'FollowersConnection'
+  totalCount?: Maybe<Scalars['Int']>
+  pageInfo: PageInfo
+  edges?: Maybe<Array<FollowersEdge>>
+}
 
 export type FollowersEdge = {
-  __typename?: 'FollowersEdge';
-  cursor: Scalars['String'];
-  node: User;
-};
+  __typename?: 'FollowersEdge'
+  cursor: Scalars['String']
+  node: User
+}
 
 export type GrowthData = {
-  __typename?: 'GrowthData';
-  date?: Maybe<Scalars['Date']>;
-  count?: Maybe<Scalars['Int']>;
-};
+  __typename?: 'GrowthData'
+  date?: Maybe<Scalars['Date']>
+  count?: Maybe<Scalars['Int']>
+}
 
 export enum GrowthType {
   Projects = 'PROJECTS',
-  Users = 'USERS'
+  Users = 'USERS',
 }
 
 export type Hashtag = {
-  __typename?: 'Hashtag';
-  id?: Maybe<Scalars['ID']>;
-  name?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['LowercaseString']>;
-  totalCount?: Maybe<Scalars['Int']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  postsConnection?: Maybe<PostConnection>;
-};
-
+  __typename?: 'Hashtag'
+  id?: Maybe<Scalars['ID']>
+  name?: Maybe<Scalars['String']>
+  slug?: Maybe<Scalars['LowercaseString']>
+  totalCount?: Maybe<Scalars['Int']>
+  createdAt?: Maybe<Scalars['Date']>
+  updatedAt?: Maybe<Scalars['Date']>
+  postsConnection?: Maybe<PostConnection>
+}
 
 export type HashtagPostsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type HashtagConnection = {
-  __typename?: 'HashtagConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<HashtagEdge>>;
-};
+  __typename?: 'HashtagConnection'
+  totalCount?: Maybe<Scalars['Int']>
+  pageInfo: PageInfo
+  edges?: Maybe<Array<HashtagEdge>>
+}
 
 export type HashtagEdge = {
-  __typename?: 'HashtagEdge';
-  cursor: Scalars['String'];
-  node: Hashtag;
-};
+  __typename?: 'HashtagEdge'
+  cursor: Scalars['String']
+  node: Hashtag
+}
 
 export type LikeConnection = {
-  __typename?: 'LikeConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<LikeEdge>>;
-};
+  __typename?: 'LikeConnection'
+  totalCount?: Maybe<Scalars['Int']>
+  pageInfo: PageInfo
+  edges?: Maybe<Array<LikeEdge>>
+}
 
 export type LikeEdge = {
-  __typename?: 'LikeEdge';
-  cursor: Scalars['String'];
-  node: User;
-};
+  __typename?: 'LikeEdge'
+  cursor: Scalars['String']
+  node: User
+}
 
 export type Likes = {
-  __typename?: 'Likes';
-  totalCount?: Maybe<Scalars['Int']>;
-  isLiked?: Maybe<Scalars['Boolean']>;
-};
-
+  __typename?: 'Likes'
+  totalCount?: Maybe<Scalars['Int']>
+  isLiked?: Maybe<Scalars['Boolean']>
+}
 
 export type Meta = {
-  __typename?: 'Meta';
-  isAdmin?: Maybe<Scalars['Boolean']>;
-  totalUsers?: Maybe<Scalars['Int']>;
-  totalProjects?: Maybe<Scalars['Int']>;
-  totalPosts?: Maybe<Scalars['Int']>;
-  totalComments?: Maybe<Scalars['Int']>;
-  totalFiles?: Maybe<Scalars['Int']>;
-  totalUsersToday?: Maybe<Scalars['Int']>;
-  totalProjectsToday?: Maybe<Scalars['Int']>;
-  totalPostsToday?: Maybe<Scalars['Int']>;
-  totalCommentsToday?: Maybe<Scalars['Int']>;
-  totalFilesToday?: Maybe<Scalars['Int']>;
-};
+  __typename?: 'Meta'
+  isAdmin?: Maybe<Scalars['Boolean']>
+  totalUsers?: Maybe<Scalars['Int']>
+  totalProjects?: Maybe<Scalars['Int']>
+  totalPosts?: Maybe<Scalars['Int']>
+  totalComments?: Maybe<Scalars['Int']>
+  totalFiles?: Maybe<Scalars['Int']>
+  totalUsersToday?: Maybe<Scalars['Int']>
+  totalProjectsToday?: Maybe<Scalars['Int']>
+  totalPostsToday?: Maybe<Scalars['Int']>
+  totalCommentsToday?: Maybe<Scalars['Int']>
+  totalFilesToday?: Maybe<Scalars['Int']>
+}
 
 export type Model = {
-  __typename?: 'Model';
-  id: Scalars['ID'];
-  brand?: Maybe<Brand>;
-  model?: Maybe<Scalars['String']>;
-  year?: Maybe<Scalars['Int']>;
-};
+  __typename?: 'Model'
+  id: Scalars['ID']
+  brand?: Maybe<Brand>
+  model?: Maybe<Scalars['String']>
+  year?: Maybe<Scalars['Int']>
+}
 
 export type Mutation = {
-  __typename?: 'Mutation';
-  dummy?: Maybe<Scalars['String']>;
-  authenticateApple?: Maybe<Tokens>;
-  authenticateFacebook?: Maybe<Tokens>;
-  authenticateGoogle?: Maybe<Tokens>;
-  refreshToken?: Maybe<AccessToken>;
-  bookmarkPost?: Maybe<Post>;
-  deleteBlogPost?: Maybe<BlogPost>;
-  addBlogPost?: Maybe<BlogPost>;
-  addComment?: Maybe<Comment>;
-  editComment?: Maybe<Comment>;
-  deleteComment?: Maybe<Scalars['Boolean']>;
-  translateComment?: Maybe<Comment>;
-  addCollection?: Maybe<Collection>;
-  deleteCollection?: Maybe<Collection>;
-  editCollection?: Maybe<Collection>;
-  collectPosts?: Maybe<Collection>;
-  sendPromo?: Maybe<Scalars['Boolean']>;
-  likePost?: Maybe<Post>;
-  likeComment?: Maybe<Comment>;
-  markAllNotificationsSeen?: Maybe<Scalars['Boolean']>;
-  markNotificationSeen?: Maybe<Notification>;
-  deleteNotification?: Maybe<Scalars['Boolean']>;
-  deletePost?: Maybe<Post>;
-  addPost?: Maybe<Post>;
-  editPost?: Maybe<Post>;
-  translatePost?: Maybe<Post>;
-  followProject?: Maybe<Project>;
-  addProject?: Maybe<Project>;
-  editProject?: Maybe<Project>;
-  deleteProject?: Maybe<Scalars['Boolean']>;
-  report?: Maybe<Scalars['Boolean']>;
-  preSignUrls?: Maybe<Array<Maybe<PreSignedUrl>>>;
-  preSignUrl?: Maybe<PreSignedUrl>;
-  editUser?: Maybe<User>;
-  toggleNotificationSettings?: Maybe<User>;
-  registerDeviceToken?: Maybe<Scalars['Boolean']>;
-  banUser?: Maybe<User>;
-  deleteCurrentUser?: Maybe<Scalars['Boolean']>;
-};
-
+  __typename?: 'Mutation'
+  dummy?: Maybe<Scalars['String']>
+  authenticateApple?: Maybe<Tokens>
+  authenticateFacebook?: Maybe<Tokens>
+  authenticateGoogle?: Maybe<Tokens>
+  refreshToken?: Maybe<AccessToken>
+  bookmarkPost?: Maybe<Post>
+  deleteBlogPost?: Maybe<BlogPost>
+  addBlogPost?: Maybe<BlogPost>
+  addComment?: Maybe<Comment>
+  editComment?: Maybe<Comment>
+  deleteComment?: Maybe<Scalars['Boolean']>
+  translateComment?: Maybe<Comment>
+  addCollection?: Maybe<Collection>
+  deleteCollection?: Maybe<Collection>
+  editCollection?: Maybe<Collection>
+  collectPosts?: Maybe<Collection>
+  sendPromo?: Maybe<Scalars['Boolean']>
+  likePost?: Maybe<Post>
+  likeComment?: Maybe<Comment>
+  markAllNotificationsSeen?: Maybe<Scalars['Boolean']>
+  markNotificationSeen?: Maybe<Notification>
+  deleteNotification?: Maybe<Scalars['Boolean']>
+  deletePost?: Maybe<Post>
+  addPost?: Maybe<Post>
+  editPost?: Maybe<Post>
+  translatePost?: Maybe<Post>
+  followProject?: Maybe<Project>
+  addProject?: Maybe<Project>
+  editProject?: Maybe<Project>
+  deleteProject?: Maybe<Scalars['Boolean']>
+  report?: Maybe<Scalars['Boolean']>
+  preSignUrls?: Maybe<Array<Maybe<PreSignedUrl>>>
+  preSignUrl?: Maybe<PreSignedUrl>
+  editUser?: Maybe<User>
+  toggleNotificationSettings?: Maybe<User>
+  registerDeviceToken?: Maybe<Scalars['Boolean']>
+  banUser?: Maybe<User>
+  deleteCurrentUser?: Maybe<Scalars['Boolean']>
+}
 
 export type MutationAuthenticateAppleArgs = {
-  identityToken: Scalars['String'];
-  user: ApplePayload;
-};
-
+  identityToken: Scalars['String']
+  user: ApplePayload
+}
 
 export type MutationAuthenticateFacebookArgs = {
-  token: Scalars['String'];
-};
-
+  token: Scalars['String']
+}
 
 export type MutationAuthenticateGoogleArgs = {
-  idToken: Scalars['String'];
-};
-
+  idToken: Scalars['String']
+}
 
 export type MutationRefreshTokenArgs = {
-  refreshToken: Scalars['String'];
-};
-
+  refreshToken: Scalars['String']
+}
 
 export type MutationBookmarkPostArgs = {
-  id: Scalars['ID'];
-};
-
+  id: Scalars['ID']
+}
 
 export type MutationDeleteBlogPostArgs = {
-  id: Scalars['ID'];
-};
-
+  id: Scalars['ID']
+}
 
 export type MutationAddBlogPostArgs = {
-  id?: Maybe<Scalars['ID']>;
-  input: BlogPostInput;
-};
-
+  id?: Maybe<Scalars['ID']>
+  input: BlogPostInput
+}
 
 export type MutationAddCommentArgs = {
-  postId: Scalars['ID'];
-  commentId?: Maybe<Scalars['ID']>;
-  input: CommentInput;
-};
-
+  postId: Scalars['ID']
+  commentId?: Maybe<Scalars['ID']>
+  input: CommentInput
+}
 
 export type MutationEditCommentArgs = {
-  id: Scalars['ID'];
-  input: CommentInput;
-};
-
+  id: Scalars['ID']
+  input: CommentInput
+}
 
 export type MutationDeleteCommentArgs = {
-  id: Scalars['ID'];
-};
-
+  id: Scalars['ID']
+}
 
 export type MutationTranslateCommentArgs = {
-  id: Scalars['ID'];
-  original?: Maybe<Scalars['Boolean']>;
-};
-
+  id: Scalars['ID']
+  original?: Maybe<Scalars['Boolean']>
+}
 
 export type MutationAddCollectionArgs = {
-  projectId: Scalars['ID'];
-  name: Scalars['String'];
-};
-
+  projectId: Scalars['ID']
+  name: Scalars['String']
+}
 
 export type MutationDeleteCollectionArgs = {
-  projectId: Scalars['ID'];
-  id: Scalars['ID'];
-};
-
+  projectId: Scalars['ID']
+  id: Scalars['ID']
+}
 
 export type MutationEditCollectionArgs = {
-  id: Scalars['ID'];
-  input: EditCollectionInput;
-};
-
+  id: Scalars['ID']
+  input: EditCollectionInput
+}
 
 export type MutationCollectPostsArgs = {
-  projectId: Scalars['ID'];
-  collectionId: Scalars['ID'];
-  input?: Maybe<Array<Maybe<CollectionInput>>>;
-};
-
+  projectId: Scalars['ID']
+  collectionId: Scalars['ID']
+  input?: Maybe<Array<Maybe<CollectionInput>>>
+}
 
 export type MutationSendPromoArgs = {
-  number: Scalars['String'];
-};
-
+  number: Scalars['String']
+}
 
 export type MutationLikePostArgs = {
-  id: Scalars['ID'];
-};
-
+  id: Scalars['ID']
+}
 
 export type MutationLikeCommentArgs = {
-  id: Scalars['ID'];
-};
-
+  id: Scalars['ID']
+}
 
 export type MutationMarkNotificationSeenArgs = {
-  id: Scalars['ID'];
-};
-
+  id: Scalars['ID']
+}
 
 export type MutationDeleteNotificationArgs = {
-  id: Scalars['ID'];
-};
-
+  id: Scalars['ID']
+}
 
 export type MutationDeletePostArgs = {
-  id: Scalars['ID'];
-};
-
+  id: Scalars['ID']
+}
 
 export type MutationAddPostArgs = {
-  input: PostInput;
-};
-
+  input: PostInput
+}
 
 export type MutationEditPostArgs = {
-  id: Scalars['ID'];
-  input: EditPostInput;
-};
-
+  id: Scalars['ID']
+  input: EditPostInput
+}
 
 export type MutationTranslatePostArgs = {
-  id: Scalars['ID'];
-  original?: Maybe<Scalars['Boolean']>;
-};
-
+  id: Scalars['ID']
+  original?: Maybe<Scalars['Boolean']>
+}
 
 export type MutationFollowProjectArgs = {
-  id: Scalars['ID'];
-};
-
+  id: Scalars['ID']
+}
 
 export type MutationAddProjectArgs = {
-  input: ProjectInput;
-};
-
+  input: ProjectInput
+}
 
 export type MutationEditProjectArgs = {
-  id: Scalars['ID'];
-  input: ProjectInput;
-};
-
+  id: Scalars['ID']
+  input: ProjectInput
+}
 
 export type MutationDeleteProjectArgs = {
-  id: Scalars['ID'];
-};
-
+  id: Scalars['ID']
+}
 
 export type MutationReportArgs = {
-  id: Scalars['ID'];
-  type: ReportType;
-};
-
+  id: Scalars['ID']
+  type: ReportType
+}
 
 export type MutationPreSignUrlsArgs = {
-  input?: Maybe<Array<Maybe<PreSignedUrlnput>>>;
-};
-
+  input?: Maybe<Array<Maybe<PreSignedUrlnput>>>
+}
 
 export type MutationPreSignUrlArgs = {
-  input: PreSignedUrlInput;
-};
-
+  input: PreSignedUrlInput
+}
 
 export type MutationEditUserArgs = {
-  input: EditUserInput;
-  id?: Maybe<Scalars['ID']>;
-};
-
+  input: EditUserInput
+  id?: Maybe<Scalars['ID']>
+}
 
 export type MutationToggleNotificationSettingsArgs = {
-  input?: Maybe<ToggleNotificationSettingsInput>;
-};
-
+  input?: Maybe<ToggleNotificationSettingsInput>
+}
 
 export type MutationRegisterDeviceTokenArgs = {
-  token: Scalars['String'];
-  platform: PlatformType;
-};
-
+  token: Scalars['String']
+  platform: PlatformType
+}
 
 export type MutationBanUserArgs = {
-  id: Scalars['ID'];
-};
+  id: Scalars['ID']
+}
 
 export type Notification = {
-  __typename?: 'Notification';
-  id: Scalars['ID'];
-  user: User;
-  type?: Maybe<NotificationTypes>;
-  project?: Maybe<Project>;
-  post?: Maybe<Post>;
-  comment?: Maybe<Comment>;
-  isSeen: Scalars['Boolean'];
-  createdAt: Scalars['Date'];
-  updatedAt: Scalars['Date'];
-  filesConnection?: Maybe<FileConnection>;
-};
-
+  __typename?: 'Notification'
+  id: Scalars['ID']
+  user: User
+  type?: Maybe<NotificationTypes>
+  project?: Maybe<Project>
+  post?: Maybe<Post>
+  comment?: Maybe<Comment>
+  isSeen: Scalars['Boolean']
+  createdAt: Scalars['Date']
+  updatedAt: Scalars['Date']
+  filesConnection?: Maybe<FileConnection>
+}
 
 export type NotificationFilesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  reverse?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<FileType>;
-};
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  reverse?: Maybe<Scalars['Boolean']>
+  type?: Maybe<FileType>
+}
 
 export type NotificationEdge = {
-  __typename?: 'NotificationEdge';
-  cursor?: Maybe<Scalars['String']>;
-  node?: Maybe<Notification>;
-};
+  __typename?: 'NotificationEdge'
+  cursor?: Maybe<Scalars['String']>
+  node?: Maybe<Notification>
+}
 
 export type NotificationKindSettings = {
-  __typename?: 'NotificationKindSettings';
-  email?: Maybe<Scalars['Boolean']>;
-  push?: Maybe<Scalars['Boolean']>;
-};
+  __typename?: 'NotificationKindSettings'
+  email?: Maybe<Scalars['Boolean']>
+  push?: Maybe<Scalars['Boolean']>
+}
 
 export type NotificationSettingsType = {
-  __typename?: 'NotificationSettingsType';
-  NEW_FOLLOWER?: Maybe<NotificationKindSettings>;
-  NEW_COMMENT?: Maybe<NotificationKindSettings>;
-  NEW_MENTION?: Maybe<NotificationKindSettings>;
-  NEW_ARTICLE?: Maybe<NotificationKindSettings>;
-  SIMILAR_PROJECTS?: Maybe<NotificationKindSettings>;
-  PRODUCT_ANNOUNCEMENTS?: Maybe<NotificationKindSettings>;
-};
+  __typename?: 'NotificationSettingsType'
+  NEW_FOLLOWER?: Maybe<NotificationKindSettings>
+  NEW_COMMENT?: Maybe<NotificationKindSettings>
+  NEW_MENTION?: Maybe<NotificationKindSettings>
+  NEW_ARTICLE?: Maybe<NotificationKindSettings>
+  SIMILAR_PROJECTS?: Maybe<NotificationKindSettings>
+  PRODUCT_ANNOUNCEMENTS?: Maybe<NotificationKindSettings>
+}
 
 export enum NotificationTypes {
   NewComment = 'NEW_COMMENT',
@@ -616,2387 +575,2128 @@ export enum NotificationTypes {
   NewPostLike = 'NEW_POST_LIKE',
   NewCommentLike = 'NEW_COMMENT_LIKE',
   NewMention = 'NEW_MENTION',
-  NewReply = 'NEW_REPLY'
+  NewReply = 'NEW_REPLY',
 }
 
 export type NotificationsConnection = {
-  __typename?: 'NotificationsConnection';
-  unreadCount?: Maybe<Scalars['Int']>;
-  pageInfo?: Maybe<PageInfo>;
-  edges?: Maybe<Array<Maybe<NotificationEdge>>>;
-};
+  __typename?: 'NotificationsConnection'
+  unreadCount?: Maybe<Scalars['Int']>
+  pageInfo?: Maybe<PageInfo>
+  edges?: Maybe<Array<Maybe<NotificationEdge>>>
+}
 
 export type PageInfo = {
-  __typename?: 'PageInfo';
-  hasNextPage?: Maybe<Scalars['Boolean']>;
-  hasPreviousPage?: Maybe<Scalars['Boolean']>;
-};
+  __typename?: 'PageInfo'
+  hasNextPage?: Maybe<Scalars['Boolean']>
+  hasPreviousPage?: Maybe<Scalars['Boolean']>
+}
 
 export enum PlatformType {
   Mobile = 'MOBILE',
-  Web = 'WEB'
+  Web = 'WEB',
 }
 
 export type Post = {
-  __typename?: 'Post';
-  id?: Maybe<Scalars['ID']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  caption?: Maybe<Scalars['String']>;
-  user?: Maybe<User>;
-  project?: Maybe<Project>;
-  postPermissions?: Maybe<PostPermissions>;
-  permissions?: Maybe<PostPermissions>;
-  likes?: Maybe<Likes>;
-  bookmarks?: Maybe<Bookmarks>;
-  collection?: Maybe<Collection>;
-  translatable?: Maybe<Scalars['Boolean']>;
-  language?: Maybe<Scalars['String']>;
-  filesConnection?: Maybe<FileConnection>;
-  commentsConnection?: Maybe<CommentConnection>;
-  likesConnection?: Maybe<LikeConnection>;
-};
-
+  __typename?: 'Post'
+  id?: Maybe<Scalars['ID']>
+  createdAt?: Maybe<Scalars['Date']>
+  updatedAt?: Maybe<Scalars['Date']>
+  caption?: Maybe<Scalars['String']>
+  user?: Maybe<User>
+  project?: Maybe<Project>
+  postPermissions?: Maybe<PostPermissions>
+  permissions?: Maybe<PostPermissions>
+  likes?: Maybe<Likes>
+  bookmarks?: Maybe<Bookmarks>
+  collection?: Maybe<Collection>
+  translatable?: Maybe<Scalars['Boolean']>
+  language?: Maybe<Scalars['String']>
+  filesConnection?: Maybe<FileConnection>
+  commentsConnection?: Maybe<CommentConnection>
+  likesConnection?: Maybe<LikeConnection>
+}
 
 export type PostFilesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  reverse?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<FileType>;
-};
-
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  reverse?: Maybe<Scalars['Boolean']>
+  type?: Maybe<FileType>
+}
 
 export type PostCommentsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type PostLikesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type PostConnection = {
-  __typename?: 'PostConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<PostEdge>>;
-};
+  __typename?: 'PostConnection'
+  totalCount?: Maybe<Scalars['Int']>
+  pageInfo: PageInfo
+  edges?: Maybe<Array<PostEdge>>
+}
 
 export type PostEdge = {
-  __typename?: 'PostEdge';
-  cursor: Scalars['String'];
-  node: Post;
-};
+  __typename?: 'PostEdge'
+  cursor: Scalars['String']
+  node: Post
+}
 
 export type PostInput = {
-  projectId: Scalars['ID'];
-  caption?: Maybe<Scalars['String']>;
-  files: Array<Maybe<FileInput>>;
-  collectionId?: Maybe<Scalars['ID']>;
-};
+  projectId: Scalars['ID']
+  caption?: Maybe<Scalars['String']>
+  files: Array<Maybe<FileInput>>
+  collectionId?: Maybe<Scalars['ID']>
+}
 
 export type PostPermissions = {
-  __typename?: 'PostPermissions';
-  isOwner?: Maybe<Scalars['Boolean']>;
-};
+  __typename?: 'PostPermissions'
+  isOwner?: Maybe<Scalars['Boolean']>
+}
 
 export type PreSignedUrl = {
-  __typename?: 'PreSignedUrl';
-  url?: Maybe<Scalars['String']>;
-  type?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['ID']>;
-  filename?: Maybe<Scalars['String']>;
-};
+  __typename?: 'PreSignedUrl'
+  url?: Maybe<Scalars['String']>
+  type?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['ID']>
+  filename?: Maybe<Scalars['String']>
+}
 
 export type PreSignedUrlInput = {
-  type: UploadType;
-  path: Scalars['String'];
-};
+  type: UploadType
+  path: Scalars['String']
+}
 
 export type PreSignedUrlnput = {
-  type: UploadType;
-};
+  type: UploadType
+}
 
 export type Project = {
-  __typename?: 'Project';
-  id?: Maybe<Scalars['ID']>;
-  slug?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  dynamicLink?: Maybe<Scalars['String']>;
-  user?: Maybe<User>;
-  projectPermissions?: Maybe<ProjectPermissions>;
-  permissions?: Maybe<ProjectPermissions>;
-  commentsDisabled?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<ProjectType>;
-  cover?: Maybe<CoverType>;
-  model?: Maybe<Model>;
-  filesConnection?: Maybe<FileConnection>;
-  followersConnection?: Maybe<FollowersConnection>;
-  postsConnection?: Maybe<PostConnection>;
-  collectionsConnection?: Maybe<CollectionConnection>;
-};
-
+  __typename?: 'Project'
+  id?: Maybe<Scalars['ID']>
+  slug?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  createdAt?: Maybe<Scalars['Date']>
+  updatedAt?: Maybe<Scalars['Date']>
+  dynamicLink?: Maybe<Scalars['String']>
+  user?: Maybe<User>
+  projectPermissions?: Maybe<ProjectPermissions>
+  permissions?: Maybe<ProjectPermissions>
+  commentsDisabled?: Maybe<Scalars['Boolean']>
+  type?: Maybe<ProjectType>
+  cover?: Maybe<CoverType>
+  model?: Maybe<Model>
+  filesConnection?: Maybe<FileConnection>
+  followersConnection?: Maybe<FollowersConnection>
+  postsConnection?: Maybe<PostConnection>
+  collectionsConnection?: Maybe<CollectionConnection>
+}
 
 export type ProjectFilesConnectionArgs = {
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  reverse?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<FileType>;
-};
-
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  reverse?: Maybe<Scalars['Boolean']>
+  type?: Maybe<FileType>
+}
 
 export type ProjectFollowersConnectionArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
+  after?: Maybe<Scalars['String']>
+  before?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+}
 
 export type ProjectPostsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type ProjectCollectionsConnectionArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
+  after?: Maybe<Scalars['String']>
+  before?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+}
 
 export type ProjectEdge = {
-  __typename?: 'ProjectEdge';
-  cursor: Scalars['String'];
-  node: Project;
-};
+  __typename?: 'ProjectEdge'
+  cursor: Scalars['String']
+  node: Project
+}
 
 export type ProjectInput = {
-  title?: Maybe<Scalars['String']>;
-  commentsDisabled?: Maybe<Scalars['Boolean']>;
-  projectTypeId?: Maybe<Scalars['ID']>;
-  modelId?: Maybe<Scalars['ID']>;
-};
+  title?: Maybe<Scalars['String']>
+  commentsDisabled?: Maybe<Scalars['Boolean']>
+  projectTypeId?: Maybe<Scalars['ID']>
+  modelId?: Maybe<Scalars['ID']>
+}
 
 export type ProjectPermissions = {
-  __typename?: 'ProjectPermissions';
-  isFollower?: Maybe<Scalars['Boolean']>;
-  isOwner?: Maybe<Scalars['Boolean']>;
-};
+  __typename?: 'ProjectPermissions'
+  isFollower?: Maybe<Scalars['Boolean']>
+  isOwner?: Maybe<Scalars['Boolean']>
+}
 
 export enum ProjectSortType {
   Popular = 'POPULAR',
-  Recent = 'RECENT'
+  Recent = 'RECENT',
 }
 
 export type ProjectSuggestionsConnection = {
-  __typename?: 'ProjectSuggestionsConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  type?: Maybe<ProjectType>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<ProjectEdge>>;
-};
+  __typename?: 'ProjectSuggestionsConnection'
+  totalCount?: Maybe<Scalars['Int']>
+  type?: Maybe<ProjectType>
+  pageInfo: PageInfo
+  edges?: Maybe<Array<ProjectEdge>>
+}
 
 export type ProjectType = {
-  __typename?: 'ProjectType';
-  id?: Maybe<Scalars['ID']>;
-  title?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-  imageUrl: Scalars['String'];
-};
+  __typename?: 'ProjectType'
+  id?: Maybe<Scalars['ID']>
+  title?: Maybe<Scalars['String']>
+  slug?: Maybe<Scalars['String']>
+  imageUrl: Scalars['String']
+}
 
 export type ProjectTypeInput = {
-  id?: Maybe<Scalars['ID']>;
-};
+  id?: Maybe<Scalars['ID']>
+}
 
 export type ProjectsConnection = {
-  __typename?: 'ProjectsConnection';
-  totalCount?: Maybe<Scalars['Int']>;
-  pageInfo: PageInfo;
-  edges?: Maybe<Array<ProjectEdge>>;
-};
+  __typename?: 'ProjectsConnection'
+  totalCount?: Maybe<Scalars['Int']>
+  pageInfo: PageInfo
+  edges?: Maybe<Array<ProjectEdge>>
+}
 
 export type Query = {
-  __typename?: 'Query';
-  dummy?: Maybe<Scalars['String']>;
-  bookmarks?: Maybe<BookmarkConnection>;
-  blogPost?: Maybe<BlogPost>;
-  blogPosts?: Maybe<BlogPostConnection>;
-  comments?: Maybe<CommentConnection>;
-  recentComments?: Maybe<CommentConnection>;
-  comment?: Maybe<Comment>;
-  collections?: Maybe<PostConnection>;
-  projectCollections?: Maybe<CollectionConnection>;
-  feed?: Maybe<Feed>;
-  files?: Maybe<FileConnection>;
-  followers?: Maybe<FollowersConnection>;
-  hashtag?: Maybe<Hashtag>;
-  likes?: Maybe<LikeConnection>;
-  meta?: Maybe<Meta>;
-  growth?: Maybe<Array<Maybe<GrowthData>>>;
-  notifications?: Maybe<NotificationsConnection>;
-  post?: Maybe<Post>;
-  posts?: Maybe<PostConnection>;
-  project?: Maybe<Project>;
-  projects?: Maybe<ProjectsConnection>;
-  projectSuggestions?: Maybe<Array<Maybe<ProjectSuggestionsConnection>>>;
-  similarProjects?: Maybe<ProjectsConnection>;
-  projectTypes?: Maybe<Array<Maybe<ProjectType>>>;
-  search?: Maybe<SearchResults>;
-  user?: Maybe<User>;
-  users?: Maybe<UserConnection>;
-  currentUser?: Maybe<User>;
-};
-
+  __typename?: 'Query'
+  dummy?: Maybe<Scalars['String']>
+  bookmarks?: Maybe<BookmarkConnection>
+  blogPost?: Maybe<BlogPost>
+  blogPosts?: Maybe<BlogPostConnection>
+  comments?: Maybe<CommentConnection>
+  recentComments?: Maybe<CommentConnection>
+  comment?: Maybe<Comment>
+  collections?: Maybe<PostConnection>
+  projectCollections?: Maybe<CollectionConnection>
+  feed?: Maybe<Feed>
+  files?: Maybe<FileConnection>
+  followers?: Maybe<FollowersConnection>
+  hashtag?: Maybe<Hashtag>
+  likes?: Maybe<LikeConnection>
+  meta?: Maybe<Meta>
+  growth?: Maybe<Array<Maybe<GrowthData>>>
+  notifications?: Maybe<NotificationsConnection>
+  post?: Maybe<Post>
+  posts?: Maybe<PostConnection>
+  project?: Maybe<Project>
+  projects?: Maybe<ProjectsConnection>
+  projectSuggestions?: Maybe<Array<Maybe<ProjectSuggestionsConnection>>>
+  similarProjects?: Maybe<ProjectsConnection>
+  projectTypes?: Maybe<Array<Maybe<ProjectType>>>
+  search?: Maybe<SearchResults>
+  user?: Maybe<User>
+  users?: Maybe<UserConnection>
+  currentUser?: Maybe<User>
+}
 
 export type QueryBookmarksArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type QueryBlogPostArgs = {
-  slug?: Maybe<Scalars['LowercaseString']>;
-  id?: Maybe<Scalars['ID']>;
-};
-
+  slug?: Maybe<Scalars['LowercaseString']>
+  id?: Maybe<Scalars['ID']>
+}
 
 export type QueryBlogPostsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type QueryCommentsArgs = {
-  postId: Scalars['ID'];
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
+  postId: Scalars['ID']
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type QueryRecentCommentsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type QueryCommentArgs = {
-  id: Scalars['ID'];
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
+  id: Scalars['ID']
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type QueryCollectionsArgs = {
-  id?: Maybe<Scalars['ID']>;
-  slug?: Maybe<Scalars['LowercaseString']>;
-  projectId?: Maybe<Scalars['ID']>;
-  projectSlug?: Maybe<Scalars['LowercaseString']>;
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
+  id?: Maybe<Scalars['ID']>
+  slug?: Maybe<Scalars['LowercaseString']>
+  projectId?: Maybe<Scalars['ID']>
+  projectSlug?: Maybe<Scalars['LowercaseString']>
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type QueryProjectCollectionsArgs = {
-  slug?: Maybe<Scalars['LowercaseString']>;
-  projectId?: Maybe<Scalars['ID']>;
-  projectSlug?: Maybe<Scalars['LowercaseString']>;
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
+  slug?: Maybe<Scalars['LowercaseString']>
+  projectId?: Maybe<Scalars['ID']>
+  projectSlug?: Maybe<Scalars['LowercaseString']>
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type QueryFilesArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  type?: Maybe<FileType>;
-  sort?: Maybe<SortType>;
-};
-
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  type?: Maybe<FileType>
+  sort?: Maybe<SortType>
+}
 
 export type QueryFollowersArgs = {
-  projectId: Scalars['ID'];
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
+  projectId: Scalars['ID']
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type QueryHashtagArgs = {
-  id?: Maybe<Scalars['ID']>;
-  slug?: Maybe<Scalars['LowercaseString']>;
-  name?: Maybe<Scalars['String']>;
-};
-
+  id?: Maybe<Scalars['ID']>
+  slug?: Maybe<Scalars['LowercaseString']>
+  name?: Maybe<Scalars['String']>
+}
 
 export type QueryLikesArgs = {
-  postId: Scalars['ID'];
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
+  postId: Scalars['ID']
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type QueryGrowthArgs = {
-  type: GrowthType;
-  startDate?: Maybe<Scalars['Date']>;
-  endDate?: Maybe<Scalars['Date']>;
-};
-
+  type: GrowthType
+  startDate?: Maybe<Scalars['Date']>
+  endDate?: Maybe<Scalars['Date']>
+}
 
 export type QueryNotificationsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-};
-
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+}
 
 export type QueryPostArgs = {
-  id?: Maybe<Scalars['ID']>;
-};
-
+  id?: Maybe<Scalars['ID']>
+}
 
 export type QueryPostsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type QueryProjectArgs = {
-  id?: Maybe<Scalars['ID']>;
-  slug?: Maybe<Scalars['LowercaseString']>;
-};
-
+  id?: Maybe<Scalars['ID']>
+  slug?: Maybe<Scalars['LowercaseString']>
+}
 
 export type QueryProjectsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  type: ProjectSortType;
-  typeId?: Maybe<Scalars['ID']>;
-};
-
+  after?: Maybe<Scalars['String']>
+  before?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  type: ProjectSortType
+  typeId?: Maybe<Scalars['ID']>
+}
 
 export type QueryProjectSuggestionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
+  after?: Maybe<Scalars['String']>
+  before?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+}
 
 export type QuerySimilarProjectsArgs = {
-  id: Scalars['ID'];
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
+  id: Scalars['ID']
+  after?: Maybe<Scalars['String']>
+  before?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+}
 
 export type QuerySearchArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-  query: Scalars['String'];
-  type: SearchType;
-};
-
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+  query: Scalars['String']
+  type: SearchType
+}
 
 export type QueryUserArgs = {
-  id?: Maybe<Scalars['ID']>;
-  username?: Maybe<Scalars['LowercaseString']>;
-};
-
+  id?: Maybe<Scalars['ID']>
+  username?: Maybe<Scalars['LowercaseString']>
+}
 
 export type QueryUsersArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type QueryCurrentUserArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export enum ReportType {
   Project = 'PROJECT',
   User = 'USER',
   Comment = 'COMMENT',
-  Post = 'POST'
+  Post = 'POST',
 }
 
 export type SearchResultEdge = {
-  __typename?: 'SearchResultEdge';
-  cursor?: Maybe<Scalars['String']>;
-  node?: Maybe<SearchResultNode>;
-};
+  __typename?: 'SearchResultEdge'
+  cursor?: Maybe<Scalars['String']>
+  node?: Maybe<SearchResultNode>
+}
 
-export type SearchResultNode = Project | User | Model | Hashtag;
+export type SearchResultNode = Project | User | Model | Hashtag
 
 export type SearchResults = {
-  __typename?: 'SearchResults';
-  totalCount?: Maybe<Scalars['Int']>;
-  edges?: Maybe<Array<Maybe<SearchResultEdge>>>;
-  pageInfo?: Maybe<PageInfo>;
-};
+  __typename?: 'SearchResults'
+  totalCount?: Maybe<Scalars['Int']>
+  edges?: Maybe<Array<Maybe<SearchResultEdge>>>
+  pageInfo?: Maybe<PageInfo>
+}
 
 export enum SearchType {
   Projects = 'PROJECTS',
   Users = 'USERS',
   Models = 'MODELS',
-  Hashtags = 'HASHTAGS'
+  Hashtags = 'HASHTAGS',
 }
 
 export enum SortType {
   Recent = 'RECENT',
-  Random = 'RANDOM'
+  Random = 'RANDOM',
 }
 
 export type ToggleNotificationSettingsInput = {
-  deliveryMethod: Scalars['String'];
-  notificationType: Scalars['String'];
-};
+  deliveryMethod: Scalars['String']
+  notificationType: Scalars['String']
+}
 
 export type Tokens = {
-  __typename?: 'Tokens';
-  access_token?: Maybe<Scalars['String']>;
-  refresh_token?: Maybe<Scalars['String']>;
-};
+  __typename?: 'Tokens'
+  access_token?: Maybe<Scalars['String']>
+  refresh_token?: Maybe<Scalars['String']>
+}
 
 export enum UploadType {
   Image = 'IMAGE',
-  Video = 'VIDEO'
+  Video = 'VIDEO',
 }
 
 export type User = {
-  __typename?: 'User';
-  id: Scalars['ID'];
-  username?: Maybe<Scalars['LowercaseString']>;
-  createdAt: Scalars['Date'];
-  updatedAt: Scalars['Date'];
-  fullName?: Maybe<Scalars['String']>;
-  firstName?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
-  avatarUrl?: Maybe<Scalars['String']>;
-  projectCount?: Maybe<Scalars['Int']>;
-  interestedIn?: Maybe<Array<Maybe<ProjectType>>>;
-  settings?: Maybe<UserSettings>;
-  dynamicLink?: Maybe<Scalars['String']>;
-  isOnline?: Maybe<Scalars['Boolean']>;
-  lastSeen?: Maybe<Scalars['Date']>;
-  website?: Maybe<Scalars['String']>;
-  bio?: Maybe<Scalars['String']>;
-  location?: Maybe<Scalars['String']>;
-  isSilhouette?: Maybe<Scalars['Boolean']>;
-  role?: Maybe<UserRole>;
-  projectsConnection?: Maybe<ProjectsConnection>;
-  followingProjects?: Maybe<ProjectsConnection>;
-  postsConnection?: Maybe<PostConnection>;
-};
-
+  __typename?: 'User'
+  id: Scalars['ID']
+  username?: Maybe<Scalars['LowercaseString']>
+  createdAt: Scalars['Date']
+  updatedAt: Scalars['Date']
+  fullName?: Maybe<Scalars['String']>
+  firstName?: Maybe<Scalars['String']>
+  lastName?: Maybe<Scalars['String']>
+  avatarUrl?: Maybe<Scalars['String']>
+  projectCount?: Maybe<Scalars['Int']>
+  interestedIn?: Maybe<Array<Maybe<ProjectType>>>
+  settings?: Maybe<UserSettings>
+  dynamicLink?: Maybe<Scalars['String']>
+  isOnline?: Maybe<Scalars['Boolean']>
+  lastSeen?: Maybe<Scalars['Date']>
+  website?: Maybe<Scalars['String']>
+  bio?: Maybe<Scalars['String']>
+  location?: Maybe<Scalars['String']>
+  isSilhouette?: Maybe<Scalars['Boolean']>
+  role?: Maybe<UserRole>
+  projectsConnection?: Maybe<ProjectsConnection>
+  followingProjects?: Maybe<ProjectsConnection>
+  postsConnection?: Maybe<PostConnection>
+}
 
 export type UserProjectsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type UserFollowingProjectsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type UserPostsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
+  first?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['String']>
+}
 
 export type UserConnection = {
-  __typename?: 'UserConnection';
-  pageInfo?: Maybe<PageInfo>;
-  edges?: Maybe<Array<Maybe<UserEdge>>>;
-};
+  __typename?: 'UserConnection'
+  pageInfo?: Maybe<PageInfo>
+  edges?: Maybe<Array<Maybe<UserEdge>>>
+}
 
 export type UserEdge = {
-  __typename?: 'UserEdge';
-  cursor?: Maybe<Scalars['String']>;
-  node?: Maybe<User>;
-};
+  __typename?: 'UserEdge'
+  cursor?: Maybe<Scalars['String']>
+  node?: Maybe<User>
+}
 
 export type UserNotificationsSettings = {
-  __typename?: 'UserNotificationsSettings';
-  types?: Maybe<NotificationSettingsType>;
-};
+  __typename?: 'UserNotificationsSettings'
+  types?: Maybe<NotificationSettingsType>
+}
 
 export enum UserRole {
   User = 'USER',
-  Admin = 'ADMIN'
+  Admin = 'ADMIN',
 }
 
 export type UserSettings = {
-  __typename?: 'UserSettings';
-  locale?: Maybe<Scalars['String']>;
-  timezone?: Maybe<Scalars['String']>;
-  notifications?: Maybe<UserNotificationsSettings>;
-};
+  __typename?: 'UserSettings'
+  locale?: Maybe<Scalars['String']>
+  timezone?: Maybe<Scalars['String']>
+  notifications?: Maybe<UserNotificationsSettings>
+}
 
-export type BlogPostFragment = (
-  { __typename?: 'BlogPost' }
-  & Pick<BlogPost, 'id' | 'title' | 'slug' | 'content' | 'createdAt'>
-  & { user?: Maybe<(
-    { __typename?: 'User' }
-    & UserFragment
-  )> }
-);
+export type BlogPostFragment = { __typename?: 'BlogPost' } & Pick<
+  BlogPost,
+  'id' | 'title' | 'slug' | 'content' | 'createdAt'
+> & { user?: Maybe<{ __typename?: 'User' } & UserFragment> }
 
-export type CollectionFragment = (
-  { __typename?: 'Collection' }
-  & Pick<Collection, 'id' | 'name' | 'slug'>
-  & { cover?: Maybe<(
-    { __typename?: 'CoverType' }
-    & Pick<CoverType, 'uri'>
-  )> }
-);
+export type CollectionFragment = { __typename?: 'Collection' } & Pick<
+  Collection,
+  'id' | 'name' | 'slug'
+> & { cover?: Maybe<{ __typename?: 'CoverType' } & Pick<CoverType, 'uri'>> }
 
-export type CommentAndRepliesFragment = (
-  { __typename?: 'Comment' }
-  & { replies?: Maybe<(
-    { __typename?: 'CommentConnection' }
-    & Pick<CommentConnection, 'totalCount'>
-    & { pageInfo: (
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    ), edges?: Maybe<Array<(
-      { __typename?: 'CommentEdge' }
-      & Pick<CommentEdge, 'cursor'>
-      & { node: (
-        { __typename?: 'Comment' }
-        & CommentFragment
-      ) }
-    )>> }
-  )> }
-  & CommentFragment
-);
+export type CommentAndRepliesFragment = { __typename?: 'Comment' } & {
+  replies?: Maybe<
+    { __typename?: 'CommentConnection' } & Pick<CommentConnection, 'totalCount'> & {
+        pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+        edges?: Maybe<
+          Array<
+            { __typename?: 'CommentEdge' } & Pick<CommentEdge, 'cursor'> & {
+                node: { __typename?: 'Comment' } & CommentFragment
+              }
+          >
+        >
+      }
+  >
+} & CommentFragment
 
-export type CommentFragment = (
-  { __typename?: 'Comment' }
-  & Pick<Comment, 'id' | 'text' | 'createdAt' | 'translatable'>
-  & { permissions?: Maybe<(
-    { __typename?: 'CommentPermissions' }
-    & Pick<CommentPermissions, 'isOwner'>
-  )>, likes?: Maybe<(
-    { __typename?: 'Likes' }
-    & Pick<Likes, 'isLiked' | 'totalCount'>
-  )>, user?: Maybe<(
-    { __typename?: 'User' }
-    & UserFragment
-  )> }
-);
+export type CommentFragment = { __typename?: 'Comment' } & Pick<
+  Comment,
+  'id' | 'text' | 'createdAt' | 'translatable'
+> & {
+    permissions?: Maybe<{ __typename?: 'CommentPermissions' } & Pick<CommentPermissions, 'isOwner'>>
+    likes?: Maybe<{ __typename?: 'Likes' } & Pick<Likes, 'isLiked' | 'totalCount'>>
+    user?: Maybe<{ __typename?: 'User' } & UserFragment>
+  }
 
-export type NotificationFragment = (
-  { __typename?: 'Notification' }
-  & Pick<Notification, 'id' | 'type' | 'createdAt'>
-  & { user: (
-    { __typename?: 'User' }
-    & UserFragment
-  ), project?: Maybe<(
-    { __typename?: 'Project' }
-    & ProjectFragment
-  )>, post?: Maybe<(
-    { __typename?: 'Post' }
-    & Pick<Post, 'id'>
-  )>, comment?: Maybe<(
-    { __typename?: 'Comment' }
-    & Pick<Comment, 'id' | 'text' | 'postId'>
-  )>, files?: Maybe<(
-    { __typename?: 'FileConnection' }
-    & { edges?: Maybe<Array<Maybe<(
-      { __typename?: 'FileEdge' }
-      & { node: (
-        { __typename?: 'File' }
-        & Pick<File, 'id' | 'uri'>
-      ) }
-    )>>> }
-  )> }
-);
+export type NotificationFragment = { __typename?: 'Notification' } & Pick<
+  Notification,
+  'id' | 'type' | 'createdAt'
+> & {
+    user: { __typename?: 'User' } & UserFragment
+    project?: Maybe<{ __typename?: 'Project' } & ProjectFragment>
+    post?: Maybe<{ __typename?: 'Post' } & Pick<Post, 'id'>>
+    comment?: Maybe<{ __typename?: 'Comment' } & Pick<Comment, 'id' | 'text' | 'postId'>>
+    files?: Maybe<
+      { __typename?: 'FileConnection' } & {
+        edges?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'FileEdge' } & {
+                node: { __typename?: 'File' } & Pick<File, 'id' | 'uri'>
+              }
+            >
+          >
+        >
+      }
+    >
+  }
 
-export type PostFragment = (
-  { __typename?: 'Post' }
-  & Pick<Post, 'id' | 'caption' | 'createdAt' | 'translatable'>
-  & { user?: Maybe<(
-    { __typename?: 'User' }
-    & UserFragment
-  )>, permissions?: Maybe<(
-    { __typename?: 'PostPermissions' }
-    & Pick<PostPermissions, 'isOwner'>
-  )>, files?: Maybe<(
-    { __typename?: 'FileConnection' }
-    & { edges?: Maybe<Array<Maybe<(
-      { __typename?: 'FileEdge' }
-      & { node: (
-        { __typename?: 'File' }
-        & Pick<File, 'id' | 'type' | 'uri'>
-      ) }
-    )>>> }
-  )>, project?: Maybe<(
-    { __typename?: 'Project' }
-    & ProjectFragment
-  )>, likes?: Maybe<(
-    { __typename?: 'Likes' }
-    & Pick<Likes, 'isLiked' | 'totalCount'>
-  )>, bookmarks?: Maybe<(
-    { __typename?: 'Bookmarks' }
-    & Pick<Bookmarks, 'isBookmarked'>
-  )>, comments?: Maybe<(
-    { __typename?: 'CommentConnection' }
-    & Pick<CommentConnection, 'totalCount'>
-    & { edges?: Maybe<Array<(
-      { __typename?: 'CommentEdge' }
-      & { node: (
-        { __typename?: 'Comment' }
-        & CommentFragment
-      ) }
-    )>> }
-  )>, likesConnection?: Maybe<(
-    { __typename?: 'LikeConnection' }
-    & { edges?: Maybe<Array<(
-      { __typename?: 'LikeEdge' }
-      & { node: (
-        { __typename?: 'User' }
-        & Pick<User, 'id' | 'avatarUrl'>
-      ) }
-    )>> }
-  )>, collection?: Maybe<(
-    { __typename?: 'Collection' }
-    & Pick<Collection, 'id' | 'name' | 'slug'>
-  )> }
-);
+export type PostFragment = { __typename?: 'Post' } & Pick<
+  Post,
+  'id' | 'caption' | 'createdAt' | 'translatable'
+> & {
+    user?: Maybe<{ __typename?: 'User' } & UserFragment>
+    permissions?: Maybe<{ __typename?: 'PostPermissions' } & Pick<PostPermissions, 'isOwner'>>
+    files?: Maybe<
+      { __typename?: 'FileConnection' } & {
+        edges?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'FileEdge' } & {
+                node: { __typename?: 'File' } & Pick<File, 'id' | 'type' | 'uri'>
+              }
+            >
+          >
+        >
+      }
+    >
+    project?: Maybe<{ __typename?: 'Project' } & ProjectFragment>
+    likes?: Maybe<{ __typename?: 'Likes' } & Pick<Likes, 'isLiked' | 'totalCount'>>
+    bookmarks?: Maybe<{ __typename?: 'Bookmarks' } & Pick<Bookmarks, 'isBookmarked'>>
+    comments?: Maybe<
+      { __typename?: 'CommentConnection' } & Pick<CommentConnection, 'totalCount'> & {
+          edges?: Maybe<
+            Array<
+              { __typename?: 'CommentEdge' } & {
+                node: { __typename?: 'Comment' } & CommentFragment
+              }
+            >
+          >
+        }
+    >
+    likesConnection?: Maybe<
+      { __typename?: 'LikeConnection' } & {
+        edges?: Maybe<
+          Array<
+            { __typename?: 'LikeEdge' } & {
+              node: { __typename?: 'User' } & Pick<User, 'id' | 'avatarUrl'>
+            }
+          >
+        >
+      }
+    >
+    collection?: Maybe<{ __typename?: 'Collection' } & Pick<Collection, 'id' | 'name' | 'slug'>>
+  }
 
-export type ProjectFragment = (
-  { __typename?: 'Project' }
-  & Pick<Project, 'id' | 'title' | 'slug' | 'dynamicLink'>
-  & { user?: Maybe<(
-    { __typename?: 'User' }
-    & UserFragment
-  )>, permissions?: Maybe<(
-    { __typename?: 'ProjectPermissions' }
-    & Pick<ProjectPermissions, 'isOwner' | 'isFollower'>
-  )>, type?: Maybe<(
-    { __typename?: 'ProjectType' }
-    & Pick<ProjectType, 'title'>
-  )>, cover?: Maybe<(
-    { __typename?: 'CoverType' }
-    & Pick<CoverType, 'uri'>
-  )>, followers?: Maybe<(
-    { __typename?: 'FollowersConnection' }
-    & Pick<FollowersConnection, 'totalCount'>
-    & { edges?: Maybe<Array<(
-      { __typename?: 'FollowersEdge' }
-      & { node: (
-        { __typename?: 'User' }
-        & Pick<User, 'id' | 'username' | 'avatarUrl'>
-      ) }
-    )>> }
-  )> }
-);
+export type ProjectFragment = { __typename?: 'Project' } & Pick<
+  Project,
+  'id' | 'title' | 'slug' | 'dynamicLink'
+> & {
+    user?: Maybe<{ __typename?: 'User' } & UserFragment>
+    permissions?: Maybe<
+      { __typename?: 'ProjectPermissions' } & Pick<ProjectPermissions, 'isOwner' | 'isFollower'>
+    >
+    type?: Maybe<{ __typename?: 'ProjectType' } & Pick<ProjectType, 'title'>>
+    cover?: Maybe<{ __typename?: 'CoverType' } & Pick<CoverType, 'uri'>>
+    followers?: Maybe<
+      { __typename?: 'FollowersConnection' } & Pick<FollowersConnection, 'totalCount'> & {
+          edges?: Maybe<
+            Array<
+              { __typename?: 'FollowersEdge' } & {
+                node: { __typename?: 'User' } & Pick<User, 'id' | 'username' | 'avatarUrl'>
+              }
+            >
+          >
+        }
+    >
+  }
 
-export type UserFragment = (
-  { __typename?: 'User' }
-  & Pick<User, 'id' | 'fullName' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'isSilhouette' | 'isOnline' | 'website' | 'location' | 'bio' | 'projectCount' | 'dynamicLink'>
-);
+export type UserFragment = { __typename?: 'User' } & Pick<
+  User,
+  | 'id'
+  | 'fullName'
+  | 'firstName'
+  | 'lastName'
+  | 'username'
+  | 'avatarUrl'
+  | 'isSilhouette'
+  | 'isOnline'
+  | 'website'
+  | 'location'
+  | 'bio'
+  | 'projectCount'
+  | 'dynamicLink'
+>
 
-export type UserProjectsFragment = (
-  { __typename?: 'User' }
-  & { projects?: Maybe<(
-    { __typename?: 'ProjectsConnection' }
-    & { edges?: Maybe<Array<(
-      { __typename?: 'ProjectEdge' }
-      & { node: (
-        { __typename?: 'Project' }
-        & Pick<Project, 'id' | 'title'>
-        & { followers?: Maybe<(
-          { __typename?: 'FollowersConnection' }
-          & Pick<FollowersConnection, 'totalCount'>
-        )>, files?: Maybe<(
-          { __typename?: 'FileConnection' }
-          & { edges?: Maybe<Array<Maybe<(
-            { __typename?: 'FileEdge' }
-            & { node: (
-              { __typename?: 'File' }
-              & Pick<File, 'id' | 'uri'>
-            ) }
-          )>>> }
-        )> }
-      ) }
-    )>> }
-  )> }
-);
+export type UserProjectsFragment = { __typename?: 'User' } & {
+  projects?: Maybe<
+    { __typename?: 'ProjectsConnection' } & {
+      edges?: Maybe<
+        Array<
+          { __typename?: 'ProjectEdge' } & {
+            node: { __typename?: 'Project' } & Pick<Project, 'id' | 'title'> & {
+                followers?: Maybe<
+                  { __typename?: 'FollowersConnection' } & Pick<FollowersConnection, 'totalCount'>
+                >
+                files?: Maybe<
+                  { __typename?: 'FileConnection' } & {
+                    edges?: Maybe<
+                      Array<
+                        Maybe<
+                          { __typename?: 'FileEdge' } & {
+                            node: { __typename?: 'File' } & Pick<File, 'id' | 'uri'>
+                          }
+                        >
+                      >
+                    >
+                  }
+                >
+              }
+          }
+        >
+      >
+    }
+  >
+}
 
-export type UserSettingsFragment = (
-  { __typename?: 'User' }
-  & Pick<User, 'id' | 'role'>
-  & { settings?: Maybe<(
-    { __typename?: 'UserSettings' }
-    & { notifications?: Maybe<(
-      { __typename?: 'UserNotificationsSettings' }
-      & { types?: Maybe<(
-        { __typename?: 'NotificationSettingsType' }
-        & { NEW_FOLLOWER?: Maybe<(
-          { __typename?: 'NotificationKindSettings' }
-          & Pick<NotificationKindSettings, 'email' | 'push'>
-        )>, NEW_COMMENT?: Maybe<(
-          { __typename?: 'NotificationKindSettings' }
-          & Pick<NotificationKindSettings, 'email' | 'push'>
-        )>, NEW_MENTION?: Maybe<(
-          { __typename?: 'NotificationKindSettings' }
-          & Pick<NotificationKindSettings, 'email' | 'push'>
-        )>, NEW_ARTICLE?: Maybe<(
-          { __typename?: 'NotificationKindSettings' }
-          & Pick<NotificationKindSettings, 'email' | 'push'>
-        )>, SIMILAR_PROJECTS?: Maybe<(
-          { __typename?: 'NotificationKindSettings' }
-          & Pick<NotificationKindSettings, 'email' | 'push'>
-        )>, PRODUCT_ANNOUNCEMENTS?: Maybe<(
-          { __typename?: 'NotificationKindSettings' }
-          & Pick<NotificationKindSettings, 'email' | 'push'>
-        )> }
-      )> }
-    )> }
-  )> }
-);
+export type UserSettingsFragment = { __typename?: 'User' } & Pick<User, 'id' | 'role'> & {
+    settings?: Maybe<
+      { __typename?: 'UserSettings' } & {
+        notifications?: Maybe<
+          { __typename?: 'UserNotificationsSettings' } & {
+            types?: Maybe<
+              { __typename?: 'NotificationSettingsType' } & {
+                NEW_FOLLOWER?: Maybe<
+                  { __typename?: 'NotificationKindSettings' } & Pick<
+                    NotificationKindSettings,
+                    'email' | 'push'
+                  >
+                >
+                NEW_COMMENT?: Maybe<
+                  { __typename?: 'NotificationKindSettings' } & Pick<
+                    NotificationKindSettings,
+                    'email' | 'push'
+                  >
+                >
+                NEW_MENTION?: Maybe<
+                  { __typename?: 'NotificationKindSettings' } & Pick<
+                    NotificationKindSettings,
+                    'email' | 'push'
+                  >
+                >
+                NEW_ARTICLE?: Maybe<
+                  { __typename?: 'NotificationKindSettings' } & Pick<
+                    NotificationKindSettings,
+                    'email' | 'push'
+                  >
+                >
+                SIMILAR_PROJECTS?: Maybe<
+                  { __typename?: 'NotificationKindSettings' } & Pick<
+                    NotificationKindSettings,
+                    'email' | 'push'
+                  >
+                >
+                PRODUCT_ANNOUNCEMENTS?: Maybe<
+                  { __typename?: 'NotificationKindSettings' } & Pick<
+                    NotificationKindSettings,
+                    'email' | 'push'
+                  >
+                >
+              }
+            >
+          }
+        >
+      }
+    >
+  }
 
 export type AddBlogPostMutationVariables = Exact<{
-  id?: Maybe<Scalars['ID']>;
-  input: BlogPostInput;
-}>;
+  id?: Maybe<Scalars['ID']>
+  input: BlogPostInput
+}>
 
-
-export type AddBlogPostMutation = (
-  { __typename?: 'Mutation' }
-  & { addBlogPost?: Maybe<(
-    { __typename?: 'BlogPost' }
-    & BlogPostFragment
-  )> }
-);
+export type AddBlogPostMutation = { __typename?: 'Mutation' } & {
+  addBlogPost?: Maybe<{ __typename?: 'BlogPost' } & BlogPostFragment>
+}
 
 export type AddCollectionMutationVariables = Exact<{
-  projectId: Scalars['ID'];
-  name: Scalars['String'];
-}>;
+  projectId: Scalars['ID']
+  name: Scalars['String']
+}>
 
-
-export type AddCollectionMutation = (
-  { __typename?: 'Mutation' }
-  & { addCollection?: Maybe<(
-    { __typename?: 'Collection' }
-    & CollectionFragment
-  )> }
-);
+export type AddCollectionMutation = { __typename?: 'Mutation' } & {
+  addCollection?: Maybe<{ __typename?: 'Collection' } & CollectionFragment>
+}
 
 export type AddCommentMutationVariables = Exact<{
-  postId: Scalars['ID'];
-  commentId?: Maybe<Scalars['ID']>;
-  input: CommentInput;
-}>;
+  postId: Scalars['ID']
+  commentId?: Maybe<Scalars['ID']>
+  input: CommentInput
+}>
 
-
-export type AddCommentMutation = (
-  { __typename?: 'Mutation' }
-  & { addComment?: Maybe<(
-    { __typename?: 'Comment' }
-    & CommentAndRepliesFragment
-  )> }
-);
+export type AddCommentMutation = { __typename?: 'Mutation' } & {
+  addComment?: Maybe<{ __typename?: 'Comment' } & CommentAndRepliesFragment>
+}
 
 export type AddPostMutationVariables = Exact<{
-  input: PostInput;
-}>;
+  input: PostInput
+}>
 
-
-export type AddPostMutation = (
-  { __typename?: 'Mutation' }
-  & { addPost?: Maybe<(
-    { __typename?: 'Post' }
-    & PostFragment
-  )> }
-);
+export type AddPostMutation = { __typename?: 'Mutation' } & {
+  addPost?: Maybe<{ __typename?: 'Post' } & PostFragment>
+}
 
 export type AddProjectMutationVariables = Exact<{
-  input: ProjectInput;
-}>;
+  input: ProjectInput
+}>
 
-
-export type AddProjectMutation = (
-  { __typename?: 'Mutation' }
-  & { addProject?: Maybe<(
-    { __typename?: 'Project' }
-    & ProjectFragment
-  )> }
-);
+export type AddProjectMutation = { __typename?: 'Mutation' } & {
+  addProject?: Maybe<{ __typename?: 'Project' } & ProjectFragment>
+}
 
 export type AuthenticateAppleMutationVariables = Exact<{
-  identityToken: Scalars['String'];
-  user: ApplePayload;
-}>;
+  identityToken: Scalars['String']
+  user: ApplePayload
+}>
 
-
-export type AuthenticateAppleMutation = (
-  { __typename?: 'Mutation' }
-  & { authenticateApple?: Maybe<(
-    { __typename?: 'Tokens' }
-    & Pick<Tokens, 'access_token' | 'refresh_token'>
-  )> }
-);
+export type AuthenticateAppleMutation = { __typename?: 'Mutation' } & {
+  authenticateApple?: Maybe<
+    { __typename?: 'Tokens' } & Pick<Tokens, 'access_token' | 'refresh_token'>
+  >
+}
 
 export type AuthenticateFacebookMutationVariables = Exact<{
-  token: Scalars['String'];
-}>;
+  token: Scalars['String']
+}>
 
-
-export type AuthenticateFacebookMutation = (
-  { __typename?: 'Mutation' }
-  & { authenticateFacebook?: Maybe<(
-    { __typename?: 'Tokens' }
-    & Pick<Tokens, 'access_token' | 'refresh_token'>
-  )> }
-);
+export type AuthenticateFacebookMutation = { __typename?: 'Mutation' } & {
+  authenticateFacebook?: Maybe<
+    { __typename?: 'Tokens' } & Pick<Tokens, 'access_token' | 'refresh_token'>
+  >
+}
 
 export type AuthenticateGoogleMutationVariables = Exact<{
-  idToken: Scalars['String'];
-}>;
+  idToken: Scalars['String']
+}>
 
-
-export type AuthenticateGoogleMutation = (
-  { __typename?: 'Mutation' }
-  & { authenticateGoogle?: Maybe<(
-    { __typename?: 'Tokens' }
-    & Pick<Tokens, 'access_token' | 'refresh_token'>
-  )> }
-);
+export type AuthenticateGoogleMutation = { __typename?: 'Mutation' } & {
+  authenticateGoogle?: Maybe<
+    { __typename?: 'Tokens' } & Pick<Tokens, 'access_token' | 'refresh_token'>
+  >
+}
 
 export type BanUserMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+}>
 
-
-export type BanUserMutation = (
-  { __typename?: 'Mutation' }
-  & { banUser?: Maybe<(
-    { __typename?: 'User' }
-    & UserFragment
-  )> }
-);
+export type BanUserMutation = { __typename?: 'Mutation' } & {
+  banUser?: Maybe<{ __typename?: 'User' } & UserFragment>
+}
 
 export type BookmarkPostMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+}>
 
-
-export type BookmarkPostMutation = (
-  { __typename?: 'Mutation' }
-  & { bookmarkPost?: Maybe<(
-    { __typename?: 'Post' }
-    & Pick<Post, 'id'>
-    & { bookmarks?: Maybe<(
-      { __typename?: 'Bookmarks' }
-      & Pick<Bookmarks, 'isBookmarked'>
-    )> }
-  )> }
-);
+export type BookmarkPostMutation = { __typename?: 'Mutation' } & {
+  bookmarkPost?: Maybe<
+    { __typename?: 'Post' } & Pick<Post, 'id'> & {
+        bookmarks?: Maybe<{ __typename?: 'Bookmarks' } & Pick<Bookmarks, 'isBookmarked'>>
+      }
+  >
+}
 
 export type CollectPostsMutationVariables = Exact<{
-  projectId: Scalars['ID'];
-  collectionId: Scalars['ID'];
-  input?: Maybe<Array<Maybe<CollectionInput>> | Maybe<CollectionInput>>;
-}>;
+  projectId: Scalars['ID']
+  collectionId: Scalars['ID']
+  input?: Maybe<Array<Maybe<CollectionInput>> | Maybe<CollectionInput>>
+}>
 
-
-export type CollectPostsMutation = (
-  { __typename?: 'Mutation' }
-  & { collectPosts?: Maybe<(
-    { __typename?: 'Collection' }
-    & Pick<Collection, 'id' | 'name'>
-    & { cover?: Maybe<(
-      { __typename?: 'CoverType' }
-      & Pick<CoverType, 'uri'>
-    )> }
-  )> }
-);
+export type CollectPostsMutation = { __typename?: 'Mutation' } & {
+  collectPosts?: Maybe<
+    { __typename?: 'Collection' } & Pick<Collection, 'id' | 'name'> & {
+        cover?: Maybe<{ __typename?: 'CoverType' } & Pick<CoverType, 'uri'>>
+      }
+  >
+}
 
 export type DeleteBlogPostMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+}>
 
-
-export type DeleteBlogPostMutation = (
-  { __typename?: 'Mutation' }
-  & { deleteBlogPost?: Maybe<(
-    { __typename?: 'BlogPost' }
-    & Pick<BlogPost, 'id'>
-  )> }
-);
+export type DeleteBlogPostMutation = { __typename?: 'Mutation' } & {
+  deleteBlogPost?: Maybe<{ __typename?: 'BlogPost' } & Pick<BlogPost, 'id'>>
+}
 
 export type DeleteCollectionMutationVariables = Exact<{
-  projectId: Scalars['ID'];
-  id: Scalars['ID'];
-}>;
+  projectId: Scalars['ID']
+  id: Scalars['ID']
+}>
 
-
-export type DeleteCollectionMutation = (
-  { __typename?: 'Mutation' }
-  & { deleteCollection?: Maybe<(
-    { __typename?: 'Collection' }
-    & Pick<Collection, 'id'>
-  )> }
-);
+export type DeleteCollectionMutation = { __typename?: 'Mutation' } & {
+  deleteCollection?: Maybe<{ __typename?: 'Collection' } & Pick<Collection, 'id'>>
+}
 
 export type DeleteCommentMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+}>
 
+export type DeleteCommentMutation = { __typename?: 'Mutation' } & Pick<Mutation, 'deleteComment'>
 
-export type DeleteCommentMutation = (
-  { __typename?: 'Mutation' }
-  & Pick<Mutation, 'deleteComment'>
-);
+export type DeleteCurrentUserMutationVariables = Exact<{ [key: string]: never }>
 
-export type DeleteCurrentUserMutationVariables = Exact<{ [key: string]: never; }>;
-
-
-export type DeleteCurrentUserMutation = (
-  { __typename?: 'Mutation' }
-  & Pick<Mutation, 'deleteCurrentUser'>
-);
+export type DeleteCurrentUserMutation = { __typename?: 'Mutation' } & Pick<
+  Mutation,
+  'deleteCurrentUser'
+>
 
 export type DeleteNotificationMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+}>
 
-
-export type DeleteNotificationMutation = (
-  { __typename?: 'Mutation' }
-  & Pick<Mutation, 'deleteNotification'>
-);
+export type DeleteNotificationMutation = { __typename?: 'Mutation' } & Pick<
+  Mutation,
+  'deleteNotification'
+>
 
 export type DeletePostMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+}>
 
-
-export type DeletePostMutation = (
-  { __typename?: 'Mutation' }
-  & { deletePost?: Maybe<(
-    { __typename?: 'Post' }
-    & Pick<Post, 'id'>
-  )> }
-);
+export type DeletePostMutation = { __typename?: 'Mutation' } & {
+  deletePost?: Maybe<{ __typename?: 'Post' } & Pick<Post, 'id'>>
+}
 
 export type DeleteProjectMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+}>
 
-
-export type DeleteProjectMutation = (
-  { __typename?: 'Mutation' }
-  & Pick<Mutation, 'deleteProject'>
-);
+export type DeleteProjectMutation = { __typename?: 'Mutation' } & Pick<Mutation, 'deleteProject'>
 
 export type EditCollectionMutationVariables = Exact<{
-  input: EditCollectionInput;
-  id: Scalars['ID'];
-}>;
+  input: EditCollectionInput
+  id: Scalars['ID']
+}>
 
-
-export type EditCollectionMutation = (
-  { __typename?: 'Mutation' }
-  & { editCollection?: Maybe<(
-    { __typename?: 'Collection' }
-    & CollectionFragment
-  )> }
-);
+export type EditCollectionMutation = { __typename?: 'Mutation' } & {
+  editCollection?: Maybe<{ __typename?: 'Collection' } & CollectionFragment>
+}
 
 export type EditPostMutationVariables = Exact<{
-  id: Scalars['ID'];
-  input: EditPostInput;
-}>;
+  id: Scalars['ID']
+  input: EditPostInput
+}>
 
-
-export type EditPostMutation = (
-  { __typename?: 'Mutation' }
-  & { editPost?: Maybe<(
-    { __typename?: 'Post' }
-    & PostFragment
-  )> }
-);
+export type EditPostMutation = { __typename?: 'Mutation' } & {
+  editPost?: Maybe<{ __typename?: 'Post' } & PostFragment>
+}
 
 export type EditProjectMutationVariables = Exact<{
-  id: Scalars['ID'];
-  input: ProjectInput;
-}>;
+  id: Scalars['ID']
+  input: ProjectInput
+}>
 
-
-export type EditProjectMutation = (
-  { __typename?: 'Mutation' }
-  & { editProject?: Maybe<(
-    { __typename?: 'Project' }
-    & Pick<Project, 'id' | 'title'>
-  )> }
-);
+export type EditProjectMutation = { __typename?: 'Mutation' } & {
+  editProject?: Maybe<{ __typename?: 'Project' } & Pick<Project, 'id' | 'title'>>
+}
 
 export type EditUserMutationVariables = Exact<{
-  input: EditUserInput;
-  id?: Maybe<Scalars['ID']>;
-}>;
+  input: EditUserInput
+  id?: Maybe<Scalars['ID']>
+}>
 
-
-export type EditUserMutation = (
-  { __typename?: 'Mutation' }
-  & { editUser?: Maybe<(
-    { __typename?: 'User' }
-    & UserFragment
-  )> }
-);
+export type EditUserMutation = { __typename?: 'Mutation' } & {
+  editUser?: Maybe<{ __typename?: 'User' } & UserFragment>
+}
 
 export type FollowProjectMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+}>
 
-
-export type FollowProjectMutation = (
-  { __typename?: 'Mutation' }
-  & { followProject?: Maybe<(
-    { __typename?: 'Project' }
-    & { cover?: Maybe<(
-      { __typename?: 'CoverType' }
-      & Pick<CoverType, 'uri' | 'default'>
-    )> }
-    & ProjectFragment
-  )> }
-);
+export type FollowProjectMutation = { __typename?: 'Mutation' } & {
+  followProject?: Maybe<
+    { __typename?: 'Project' } & {
+      cover?: Maybe<{ __typename?: 'CoverType' } & Pick<CoverType, 'uri' | 'default'>>
+    } & ProjectFragment
+  >
+}
 
 export type LikeCommentMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+}>
 
-
-export type LikeCommentMutation = (
-  { __typename?: 'Mutation' }
-  & { likeComment?: Maybe<(
-    { __typename?: 'Comment' }
-    & Pick<Comment, 'id'>
-    & { likes?: Maybe<(
-      { __typename?: 'Likes' }
-      & Pick<Likes, 'isLiked' | 'totalCount'>
-    )> }
-  )> }
-);
+export type LikeCommentMutation = { __typename?: 'Mutation' } & {
+  likeComment?: Maybe<
+    { __typename?: 'Comment' } & Pick<Comment, 'id'> & {
+        likes?: Maybe<{ __typename?: 'Likes' } & Pick<Likes, 'isLiked' | 'totalCount'>>
+      }
+  >
+}
 
 export type LikePostMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+}>
 
+export type LikePostMutation = { __typename?: 'Mutation' } & {
+  likePost?: Maybe<
+    { __typename?: 'Post' } & Pick<Post, 'id'> & {
+        likes?: Maybe<{ __typename?: 'Likes' } & Pick<Likes, 'isLiked' | 'totalCount'>>
+      }
+  >
+}
 
-export type LikePostMutation = (
-  { __typename?: 'Mutation' }
-  & { likePost?: Maybe<(
-    { __typename?: 'Post' }
-    & Pick<Post, 'id'>
-    & { likes?: Maybe<(
-      { __typename?: 'Likes' }
-      & Pick<Likes, 'isLiked' | 'totalCount'>
-    )> }
-  )> }
-);
+export type MarkAllNotificationsSeenMutationVariables = Exact<{ [key: string]: never }>
 
-export type MarkAllNotificationsSeenMutationVariables = Exact<{ [key: string]: never; }>;
-
-
-export type MarkAllNotificationsSeenMutation = (
-  { __typename?: 'Mutation' }
-  & Pick<Mutation, 'markAllNotificationsSeen'>
-);
+export type MarkAllNotificationsSeenMutation = { __typename?: 'Mutation' } & Pick<
+  Mutation,
+  'markAllNotificationsSeen'
+>
 
 export type MarkNotificationSeenMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+}>
 
-
-export type MarkNotificationSeenMutation = (
-  { __typename?: 'Mutation' }
-  & { markNotificationSeen?: Maybe<(
-    { __typename?: 'Notification' }
-    & NotificationFragment
-  )> }
-);
+export type MarkNotificationSeenMutation = { __typename?: 'Mutation' } & {
+  markNotificationSeen?: Maybe<{ __typename?: 'Notification' } & NotificationFragment>
+}
 
 export type PreSignUrlMutationVariables = Exact<{
-  input: PreSignedUrlInput;
-}>;
+  input: PreSignedUrlInput
+}>
 
-
-export type PreSignUrlMutation = (
-  { __typename?: 'Mutation' }
-  & { preSignUrl?: Maybe<(
-    { __typename?: 'PreSignedUrl' }
-    & Pick<PreSignedUrl, 'url' | 'type' | 'filename'>
-  )> }
-);
+export type PreSignUrlMutation = { __typename?: 'Mutation' } & {
+  preSignUrl?: Maybe<
+    { __typename?: 'PreSignedUrl' } & Pick<PreSignedUrl, 'url' | 'type' | 'filename'>
+  >
+}
 
 export type PreSignUrlsMutationVariables = Exact<{
-  input: Array<Maybe<PreSignedUrlnput>> | Maybe<PreSignedUrlnput>;
-}>;
+  input: Array<Maybe<PreSignedUrlnput>> | Maybe<PreSignedUrlnput>
+}>
 
-
-export type PreSignUrlsMutation = (
-  { __typename?: 'Mutation' }
-  & { preSignUrls?: Maybe<Array<Maybe<(
-    { __typename?: 'PreSignedUrl' }
-    & Pick<PreSignedUrl, 'url' | 'type' | 'filename'>
-  )>>> }
-);
+export type PreSignUrlsMutation = { __typename?: 'Mutation' } & {
+  preSignUrls?: Maybe<
+    Array<Maybe<{ __typename?: 'PreSignedUrl' } & Pick<PreSignedUrl, 'url' | 'type' | 'filename'>>>
+  >
+}
 
 export type RefreshTokenMutationVariables = Exact<{
-  refreshToken: Scalars['String'];
-}>;
+  refreshToken: Scalars['String']
+}>
 
-
-export type RefreshTokenMutation = (
-  { __typename?: 'Mutation' }
-  & { token?: Maybe<(
-    { __typename?: 'AccessToken' }
-    & Pick<AccessToken, 'access_token'>
-  )> }
-);
+export type RefreshTokenMutation = { __typename?: 'Mutation' } & {
+  token?: Maybe<{ __typename?: 'AccessToken' } & Pick<AccessToken, 'access_token'>>
+}
 
 export type RegisterDeviceTokenMutationVariables = Exact<{
-  token: Scalars['String'];
-  platform: PlatformType;
-}>;
+  token: Scalars['String']
+  platform: PlatformType
+}>
 
-
-export type RegisterDeviceTokenMutation = (
-  { __typename?: 'Mutation' }
-  & Pick<Mutation, 'registerDeviceToken'>
-);
+export type RegisterDeviceTokenMutation = { __typename?: 'Mutation' } & Pick<
+  Mutation,
+  'registerDeviceToken'
+>
 
 export type SendPromoMutationVariables = Exact<{
-  number: Scalars['String'];
-}>;
+  number: Scalars['String']
+}>
 
-
-export type SendPromoMutation = (
-  { __typename?: 'Mutation' }
-  & Pick<Mutation, 'sendPromo'>
-);
+export type SendPromoMutation = { __typename?: 'Mutation' } & Pick<Mutation, 'sendPromo'>
 
 export type ToggleNotificationSettingsMutationVariables = Exact<{
-  input?: Maybe<ToggleNotificationSettingsInput>;
-}>;
+  input?: Maybe<ToggleNotificationSettingsInput>
+}>
 
-
-export type ToggleNotificationSettingsMutation = (
-  { __typename?: 'Mutation' }
-  & { toggleNotificationSettings?: Maybe<(
-    { __typename?: 'User' }
-    & UserSettingsFragment
-  )> }
-);
+export type ToggleNotificationSettingsMutation = { __typename?: 'Mutation' } & {
+  toggleNotificationSettings?: Maybe<{ __typename?: 'User' } & UserSettingsFragment>
+}
 
 export type TranslateCommentMutationVariables = Exact<{
-  id: Scalars['ID'];
-  original?: Maybe<Scalars['Boolean']>;
-}>;
+  id: Scalars['ID']
+  original?: Maybe<Scalars['Boolean']>
+}>
 
-
-export type TranslateCommentMutation = (
-  { __typename?: 'Mutation' }
-  & { translateComment?: Maybe<(
-    { __typename?: 'Comment' }
-    & Pick<Comment, 'id' | 'translatable' | 'text'>
-  )> }
-);
+export type TranslateCommentMutation = { __typename?: 'Mutation' } & {
+  translateComment?: Maybe<
+    { __typename?: 'Comment' } & Pick<Comment, 'id' | 'translatable' | 'text'>
+  >
+}
 
 export type TranslatePostMutationVariables = Exact<{
-  id: Scalars['ID'];
-  original?: Maybe<Scalars['Boolean']>;
-}>;
+  id: Scalars['ID']
+  original?: Maybe<Scalars['Boolean']>
+}>
 
-
-export type TranslatePostMutation = (
-  { __typename?: 'Mutation' }
-  & { translatePost?: Maybe<(
-    { __typename?: 'Post' }
-    & Pick<Post, 'id' | 'translatable' | 'caption'>
-  )> }
-);
+export type TranslatePostMutation = { __typename?: 'Mutation' } & {
+  translatePost?: Maybe<{ __typename?: 'Post' } & Pick<Post, 'id' | 'translatable' | 'caption'>>
+}
 
 export type BlogPostQueryVariables = Exact<{
-  slug?: Maybe<Scalars['LowercaseString']>;
-  id?: Maybe<Scalars['ID']>;
-}>;
+  slug?: Maybe<Scalars['LowercaseString']>
+  id?: Maybe<Scalars['ID']>
+}>
 
-
-export type BlogPostQuery = (
-  { __typename?: 'Query' }
-  & { blogPost?: Maybe<(
-    { __typename?: 'BlogPost' }
-    & BlogPostFragment
-  )> }
-);
+export type BlogPostQuery = { __typename?: 'Query' } & {
+  blogPost?: Maybe<{ __typename?: 'BlogPost' } & BlogPostFragment>
+}
 
 export type BlogPostsQueryVariables = Exact<{
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type BlogPostsQuery = (
-  { __typename?: 'Query' }
-  & { blogPosts?: Maybe<(
-    { __typename?: 'BlogPostConnection' }
-    & { pageInfo: (
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    ), edges?: Maybe<Array<(
-      { __typename?: 'BlogPostEdge' }
-      & Pick<BlogPostEdge, 'cursor'>
-      & { node: (
-        { __typename?: 'BlogPost' }
-        & BlogPostFragment
-      ) }
-    )>> }
-  )> }
-);
+export type BlogPostsQuery = { __typename?: 'Query' } & {
+  blogPosts?: Maybe<
+    { __typename?: 'BlogPostConnection' } & {
+      pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+      edges?: Maybe<
+        Array<
+          { __typename?: 'BlogPostEdge' } & Pick<BlogPostEdge, 'cursor'> & {
+              node: { __typename?: 'BlogPost' } & BlogPostFragment
+            }
+        >
+      >
+    }
+  >
+}
 
 export type BookmarksQueryVariables = Exact<{
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type BookmarksQuery = (
-  { __typename?: 'Query' }
-  & { bookmarks?: Maybe<(
-    { __typename?: 'BookmarkConnection' }
-    & { pageInfo: (
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    ), edges?: Maybe<Array<(
-      { __typename?: 'BookmarkEdge' }
-      & Pick<BookmarkEdge, 'cursor'>
-      & { node: (
-        { __typename?: 'Post' }
-        & PostFragment
-      ) }
-    )>> }
-  )> }
-);
+export type BookmarksQuery = { __typename?: 'Query' } & {
+  bookmarks?: Maybe<
+    { __typename?: 'BookmarkConnection' } & {
+      pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+      edges?: Maybe<
+        Array<
+          { __typename?: 'BookmarkEdge' } & Pick<BookmarkEdge, 'cursor'> & {
+              node: { __typename?: 'Post' } & PostFragment
+            }
+        >
+      >
+    }
+  >
+}
 
 export type CollectionsQueryVariables = Exact<{
-  id?: Maybe<Scalars['ID']>;
-  slug?: Maybe<Scalars['LowercaseString']>;
-  projectId?: Maybe<Scalars['ID']>;
-  projectSlug?: Maybe<Scalars['LowercaseString']>;
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  id?: Maybe<Scalars['ID']>
+  slug?: Maybe<Scalars['LowercaseString']>
+  projectId?: Maybe<Scalars['ID']>
+  projectSlug?: Maybe<Scalars['LowercaseString']>
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type CollectionsQuery = (
-  { __typename?: 'Query' }
-  & { collections?: Maybe<(
-    { __typename?: 'PostConnection' }
-    & { pageInfo: (
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    ), edges?: Maybe<Array<(
-      { __typename?: 'PostEdge' }
-      & Pick<PostEdge, 'cursor'>
-      & { node: (
-        { __typename?: 'Post' }
-        & PostFragment
-      ) }
-    )>> }
-  )> }
-);
+export type CollectionsQuery = { __typename?: 'Query' } & {
+  collections?: Maybe<
+    { __typename?: 'PostConnection' } & {
+      pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+      edges?: Maybe<
+        Array<
+          { __typename?: 'PostEdge' } & Pick<PostEdge, 'cursor'> & {
+              node: { __typename?: 'Post' } & PostFragment
+            }
+        >
+      >
+    }
+  >
+}
 
 export type CommentQueryVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+}>
 
-
-export type CommentQuery = (
-  { __typename?: 'Query' }
-  & { comment?: Maybe<(
-    { __typename?: 'Comment' }
-    & CommentFragment
-  )> }
-);
+export type CommentQuery = { __typename?: 'Query' } & {
+  comment?: Maybe<{ __typename?: 'Comment' } & CommentFragment>
+}
 
 export type CommentsQueryVariables = Exact<{
-  postId: Scalars['ID'];
-  after?: Maybe<Scalars['String']>;
-}>;
+  postId: Scalars['ID']
+  after?: Maybe<Scalars['String']>
+}>
 
+export type CommentsQuery = { __typename?: 'Query' } & {
+  post?: Maybe<{ __typename?: 'Post' } & PostFragment>
+  comments?: Maybe<
+    { __typename?: 'CommentConnection' } & {
+      pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+      edges?: Maybe<
+        Array<
+          { __typename?: 'CommentEdge' } & Pick<CommentEdge, 'cursor'> & {
+              node: { __typename?: 'Comment' } & CommentAndRepliesFragment
+            }
+        >
+      >
+    }
+  >
+}
 
-export type CommentsQuery = (
-  { __typename?: 'Query' }
-  & { post?: Maybe<(
-    { __typename?: 'Post' }
-    & PostFragment
-  )>, comments?: Maybe<(
-    { __typename?: 'CommentConnection' }
-    & { pageInfo: (
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    ), edges?: Maybe<Array<(
-      { __typename?: 'CommentEdge' }
-      & Pick<CommentEdge, 'cursor'>
-      & { node: (
-        { __typename?: 'Comment' }
-        & CommentAndRepliesFragment
-      ) }
-    )>> }
-  )> }
-);
+export type CurrentUserQueryVariables = Exact<{ [key: string]: never }>
 
-export type CurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type CurrentUserQuery = (
-  { __typename?: 'Query' }
-  & { user?: Maybe<(
-    { __typename?: 'User' }
-    & Pick<User, 'avatarUrl' | 'bio' | 'dynamicLink' | 'firstName' | 'fullName' | 'id' | 'isOnline' | 'isSilhouette' | 'lastName' | 'location' | 'projectCount' | 'username' | 'website' | 'role'>
-    & { settings?: Maybe<(
-      { __typename?: 'UserSettings' }
-      & Pick<UserSettings, 'timezone' | 'locale'>
-    )>, interestedIn?: Maybe<Array<Maybe<(
-      { __typename?: 'ProjectType' }
-      & Pick<ProjectType, 'id' | 'title'>
-    )>>> }
-    & UserProjectsFragment
-  )> }
-);
+export type CurrentUserQuery = { __typename?: 'Query' } & {
+  user?: Maybe<
+    { __typename?: 'User' } & Pick<
+      User,
+      | 'avatarUrl'
+      | 'bio'
+      | 'dynamicLink'
+      | 'firstName'
+      | 'fullName'
+      | 'id'
+      | 'isOnline'
+      | 'isSilhouette'
+      | 'lastName'
+      | 'location'
+      | 'projectCount'
+      | 'username'
+      | 'website'
+      | 'role'
+    > & {
+        settings?: Maybe<
+          { __typename?: 'UserSettings' } & Pick<UserSettings, 'timezone' | 'locale'>
+        >
+        interestedIn?: Maybe<
+          Array<Maybe<{ __typename?: 'ProjectType' } & Pick<ProjectType, 'id' | 'title'>>>
+        >
+      } & UserProjectsFragment
+  >
+}
 
 export type CurrentUserFollowingProjectsQueryVariables = Exact<{
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type CurrentUserFollowingProjectsQuery = (
-  { __typename?: 'Query' }
-  & { user?: Maybe<(
-    { __typename?: 'User' }
-    & Pick<User, 'id'>
-    & { projects?: Maybe<(
-      { __typename?: 'ProjectsConnection' }
-      & { pageInfo: (
-        { __typename?: 'PageInfo' }
-        & Pick<PageInfo, 'hasNextPage'>
-      ), edges?: Maybe<Array<(
-        { __typename?: 'ProjectEdge' }
-        & Pick<ProjectEdge, 'cursor'>
-        & { node: (
-          { __typename?: 'Project' }
-          & { cover?: Maybe<(
-            { __typename?: 'CoverType' }
-            & Pick<CoverType, 'uri' | 'default'>
-          )> }
-          & ProjectFragment
-        ) }
-      )>> }
-    )> }
-  )> }
-);
+export type CurrentUserFollowingProjectsQuery = { __typename?: 'Query' } & {
+  user?: Maybe<
+    { __typename?: 'User' } & Pick<User, 'id'> & {
+        projects?: Maybe<
+          { __typename?: 'ProjectsConnection' } & {
+            pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+            edges?: Maybe<
+              Array<
+                { __typename?: 'ProjectEdge' } & Pick<ProjectEdge, 'cursor'> & {
+                    node: { __typename?: 'Project' } & {
+                      cover?: Maybe<
+                        { __typename?: 'CoverType' } & Pick<CoverType, 'uri' | 'default'>
+                      >
+                    } & ProjectFragment
+                  }
+              >
+            >
+          }
+        >
+      }
+  >
+}
 
 export type CurrentUserProfileQueryVariables = Exact<{
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
+export type CurrentUserProfileQuery = { __typename?: 'Query' } & {
+  user?: Maybe<
+    { __typename?: 'User' } & {
+      projects?: Maybe<
+        { __typename?: 'ProjectsConnection' } & {
+          edges?: Maybe<
+            Array<
+              { __typename?: 'ProjectEdge' } & {
+                node: { __typename?: 'Project' } & {
+                  cover?: Maybe<{ __typename?: 'CoverType' } & Pick<CoverType, 'uri' | 'default'>>
+                } & ProjectFragment
+              }
+            >
+          >
+        }
+      >
+      posts?: Maybe<
+        { __typename?: 'PostConnection' } & {
+          edges?: Maybe<
+            Array<
+              { __typename?: 'PostEdge' } & Pick<PostEdge, 'cursor'> & {
+                  node: { __typename?: 'Post' } & PostFragment
+                }
+            >
+          >
+          pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+        }
+      >
+    } & UserFragment
+  >
+}
 
-export type CurrentUserProfileQuery = (
-  { __typename?: 'Query' }
-  & { user?: Maybe<(
-    { __typename?: 'User' }
-    & { projects?: Maybe<(
-      { __typename?: 'ProjectsConnection' }
-      & { edges?: Maybe<Array<(
-        { __typename?: 'ProjectEdge' }
-        & { node: (
-          { __typename?: 'Project' }
-          & { cover?: Maybe<(
-            { __typename?: 'CoverType' }
-            & Pick<CoverType, 'uri' | 'default'>
-          )> }
-          & ProjectFragment
-        ) }
-      )>> }
-    )>, posts?: Maybe<(
-      { __typename?: 'PostConnection' }
-      & { edges?: Maybe<Array<(
-        { __typename?: 'PostEdge' }
-        & Pick<PostEdge, 'cursor'>
-        & { node: (
-          { __typename?: 'Post' }
-          & PostFragment
-        ) }
-      )>>, pageInfo: (
-        { __typename?: 'PageInfo' }
-        & Pick<PageInfo, 'hasNextPage'>
-      ) }
-    )> }
-    & UserFragment
-  )> }
-);
+export type CurrentUserProjectsQueryVariables = Exact<{ [key: string]: never }>
 
-export type CurrentUserProjectsQueryVariables = Exact<{ [key: string]: never; }>;
+export type CurrentUserProjectsQuery = { __typename?: 'Query' } & {
+  user?: Maybe<{ __typename?: 'User' } & UserProjectsFragment>
+}
 
+export type CurrentUserSettingsQueryVariables = Exact<{ [key: string]: never }>
 
-export type CurrentUserProjectsQuery = (
-  { __typename?: 'Query' }
-  & { user?: Maybe<(
-    { __typename?: 'User' }
-    & UserProjectsFragment
-  )> }
-);
-
-export type CurrentUserSettingsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type CurrentUserSettingsQuery = (
-  { __typename?: 'Query' }
-  & { user?: Maybe<(
-    { __typename?: 'User' }
-    & UserSettingsFragment
-  )> }
-);
+export type CurrentUserSettingsQuery = { __typename?: 'Query' } & {
+  user?: Maybe<{ __typename?: 'User' } & UserSettingsFragment>
+}
 
 export type FeedQueryVariables = Exact<{
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type FeedQuery = (
-  { __typename?: 'Query' }
-  & { feed?: Maybe<(
-    { __typename?: 'Feed' }
-    & { posts?: Maybe<(
-      { __typename?: 'PostConnection' }
-      & { pageInfo: (
-        { __typename?: 'PageInfo' }
-        & Pick<PageInfo, 'hasNextPage'>
-      ), edges?: Maybe<Array<(
-        { __typename?: 'PostEdge' }
-        & Pick<PostEdge, 'cursor'>
-        & { node: (
-          { __typename?: 'Post' }
-          & PostFragment
-        ) }
-      )>> }
-    )> }
-  )> }
-);
+export type FeedQuery = { __typename?: 'Query' } & {
+  feed?: Maybe<
+    { __typename?: 'Feed' } & {
+      posts?: Maybe<
+        { __typename?: 'PostConnection' } & {
+          pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+          edges?: Maybe<
+            Array<
+              { __typename?: 'PostEdge' } & Pick<PostEdge, 'cursor'> & {
+                  node: { __typename?: 'Post' } & PostFragment
+                }
+            >
+          >
+        }
+      >
+    }
+  >
+}
 
 export type FilesQueryVariables = Exact<{
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type FilesQuery = (
-  { __typename?: 'Query' }
-  & { files?: Maybe<(
-    { __typename?: 'FileConnection' }
-    & { pageInfo: (
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    ), edges?: Maybe<Array<Maybe<(
-      { __typename?: 'FileEdge' }
-      & Pick<FileEdge, 'cursor'>
-      & { node: (
-        { __typename?: 'File' }
-        & Pick<File, 'id' | 'uri' | 'postId'>
-      ) }
-    )>>> }
-  )> }
-);
+export type FilesQuery = { __typename?: 'Query' } & {
+  files?: Maybe<
+    { __typename?: 'FileConnection' } & {
+      pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+      edges?: Maybe<
+        Array<
+          Maybe<
+            { __typename?: 'FileEdge' } & Pick<FileEdge, 'cursor'> & {
+                node: { __typename?: 'File' } & Pick<File, 'id' | 'uri' | 'postId'>
+              }
+          >
+        >
+      >
+    }
+  >
+}
 
 export type FollowersQueryVariables = Exact<{
-  projectId: Scalars['ID'];
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  projectId: Scalars['ID']
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type FollowersQuery = (
-  { __typename?: 'Query' }
-  & { followers?: Maybe<(
-    { __typename?: 'FollowersConnection' }
-    & { pageInfo: (
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    ), edges?: Maybe<Array<(
-      { __typename?: 'FollowersEdge' }
-      & Pick<FollowersEdge, 'cursor'>
-      & { node: (
-        { __typename?: 'User' }
-        & UserFragment
-      ) }
-    )>> }
-  )> }
-);
+export type FollowersQuery = { __typename?: 'Query' } & {
+  followers?: Maybe<
+    { __typename?: 'FollowersConnection' } & {
+      pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+      edges?: Maybe<
+        Array<
+          { __typename?: 'FollowersEdge' } & Pick<FollowersEdge, 'cursor'> & {
+              node: { __typename?: 'User' } & UserFragment
+            }
+        >
+      >
+    }
+  >
+}
 
 export type GrowthQueryVariables = Exact<{
-  type: GrowthType;
-}>;
+  type: GrowthType
+}>
 
-
-export type GrowthQuery = (
-  { __typename?: 'Query' }
-  & { growth?: Maybe<Array<Maybe<(
-    { __typename?: 'GrowthData' }
-    & Pick<GrowthData, 'date' | 'count'>
-  )>>> }
-);
+export type GrowthQuery = { __typename?: 'Query' } & {
+  growth?: Maybe<Array<Maybe<{ __typename?: 'GrowthData' } & Pick<GrowthData, 'date' | 'count'>>>>
+}
 
 export type HashtagQueryVariables = Exact<{
-  id?: Maybe<Scalars['ID']>;
-  slug?: Maybe<Scalars['LowercaseString']>;
-  name?: Maybe<Scalars['String']>;
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  id?: Maybe<Scalars['ID']>
+  slug?: Maybe<Scalars['LowercaseString']>
+  name?: Maybe<Scalars['String']>
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type HashtagQuery = (
-  { __typename?: 'Query' }
-  & { hashtag?: Maybe<(
-    { __typename?: 'Hashtag' }
-    & { posts?: Maybe<(
-      { __typename?: 'PostConnection' }
-      & { pageInfo: (
-        { __typename?: 'PageInfo' }
-        & Pick<PageInfo, 'hasNextPage'>
-      ), edges?: Maybe<Array<(
-        { __typename?: 'PostEdge' }
-        & Pick<PostEdge, 'cursor'>
-        & { node: (
-          { __typename?: 'Post' }
-          & PostFragment
-        ) }
-      )>> }
-    )> }
-  )> }
-);
+export type HashtagQuery = { __typename?: 'Query' } & {
+  hashtag?: Maybe<
+    { __typename?: 'Hashtag' } & {
+      posts?: Maybe<
+        { __typename?: 'PostConnection' } & {
+          pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+          edges?: Maybe<
+            Array<
+              { __typename?: 'PostEdge' } & Pick<PostEdge, 'cursor'> & {
+                  node: { __typename?: 'Post' } & PostFragment
+                }
+            >
+          >
+        }
+      >
+    }
+  >
+}
 
 export type LikesQueryVariables = Exact<{
-  postId: Scalars['ID'];
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  postId: Scalars['ID']
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
+export type LikesQuery = { __typename?: 'Query' } & {
+  likes?: Maybe<
+    { __typename?: 'LikeConnection' } & {
+      pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+      edges?: Maybe<
+        Array<
+          { __typename?: 'LikeEdge' } & Pick<LikeEdge, 'cursor'> & {
+              node: { __typename?: 'User' } & UserFragment
+            }
+        >
+      >
+    }
+  >
+}
 
-export type LikesQuery = (
-  { __typename?: 'Query' }
-  & { likes?: Maybe<(
-    { __typename?: 'LikeConnection' }
-    & { pageInfo: (
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    ), edges?: Maybe<Array<(
-      { __typename?: 'LikeEdge' }
-      & Pick<LikeEdge, 'cursor'>
-      & { node: (
-        { __typename?: 'User' }
-        & UserFragment
-      ) }
-    )>> }
-  )> }
-);
+export type MetaQueryVariables = Exact<{ [key: string]: never }>
 
-export type MetaQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type MetaQuery = (
-  { __typename?: 'Query' }
-  & { meta?: Maybe<(
-    { __typename?: 'Meta' }
-    & Pick<Meta, 'totalUsers' | 'totalUsersToday' | 'totalPostsToday' | 'totalProjectsToday' | 'totalCommentsToday' | 'totalFilesToday' | 'totalComments' | 'totalProjects' | 'totalPosts' | 'totalFiles'>
-  )> }
-);
+export type MetaQuery = { __typename?: 'Query' } & {
+  meta?: Maybe<
+    { __typename?: 'Meta' } & Pick<
+      Meta,
+      | 'totalUsers'
+      | 'totalUsersToday'
+      | 'totalPostsToday'
+      | 'totalProjectsToday'
+      | 'totalCommentsToday'
+      | 'totalFilesToday'
+      | 'totalComments'
+      | 'totalProjects'
+      | 'totalPosts'
+      | 'totalFiles'
+    >
+  >
+}
 
 export type NotificationsQueryVariables = Exact<{
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type NotificationsQuery = (
-  { __typename?: 'Query' }
-  & { notifications?: Maybe<(
-    { __typename?: 'NotificationsConnection' }
-    & Pick<NotificationsConnection, 'unreadCount'>
-    & { pageInfo?: Maybe<(
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    )>, edges?: Maybe<Array<Maybe<(
-      { __typename?: 'NotificationEdge' }
-      & Pick<NotificationEdge, 'cursor'>
-      & { node?: Maybe<(
-        { __typename?: 'Notification' }
-        & NotificationFragment
-      )> }
-    )>>> }
-  )> }
-);
+export type NotificationsQuery = { __typename?: 'Query' } & {
+  notifications?: Maybe<
+    { __typename?: 'NotificationsConnection' } & Pick<NotificationsConnection, 'unreadCount'> & {
+        pageInfo?: Maybe<{ __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>>
+        edges?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'NotificationEdge' } & Pick<NotificationEdge, 'cursor'> & {
+                  node?: Maybe<{ __typename?: 'Notification' } & NotificationFragment>
+                }
+            >
+          >
+        >
+      }
+  >
+}
 
 export type PostQueryVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+}>
 
-
-export type PostQuery = (
-  { __typename?: 'Query' }
-  & { post?: Maybe<(
-    { __typename?: 'Post' }
-    & PostFragment
-  )> }
-);
+export type PostQuery = { __typename?: 'Query' } & {
+  post?: Maybe<{ __typename?: 'Post' } & PostFragment>
+}
 
 export type PostsQueryVariables = Exact<{
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type PostsQuery = (
-  { __typename?: 'Query' }
-  & { posts?: Maybe<(
-    { __typename?: 'PostConnection' }
-    & { pageInfo: (
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    ), edges?: Maybe<Array<(
-      { __typename?: 'PostEdge' }
-      & Pick<PostEdge, 'cursor'>
-      & { node: (
-        { __typename?: 'Post' }
-        & PostFragment
-      ) }
-    )>> }
-  )> }
-);
+export type PostsQuery = { __typename?: 'Query' } & {
+  posts?: Maybe<
+    { __typename?: 'PostConnection' } & {
+      pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+      edges?: Maybe<
+        Array<
+          { __typename?: 'PostEdge' } & Pick<PostEdge, 'cursor'> & {
+              node: { __typename?: 'Post' } & PostFragment
+            }
+        >
+      >
+    }
+  >
+}
 
 export type ProjectQueryVariables = Exact<{
-  id?: Maybe<Scalars['ID']>;
-  slug?: Maybe<Scalars['LowercaseString']>;
-  after?: Maybe<Scalars['String']>;
-  postId?: Maybe<Scalars['ID']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  id?: Maybe<Scalars['ID']>
+  slug?: Maybe<Scalars['LowercaseString']>
+  after?: Maybe<Scalars['String']>
+  postId?: Maybe<Scalars['ID']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type ProjectQuery = (
-  { __typename?: 'Query' }
-  & { post?: Maybe<(
-    { __typename?: 'Post' }
-    & PostFragment
-  )>, project?: Maybe<(
-    { __typename?: 'Project' }
-    & { posts?: Maybe<(
-      { __typename?: 'PostConnection' }
-      & Pick<PostConnection, 'totalCount'>
-      & { pageInfo: (
-        { __typename?: 'PageInfo' }
-        & Pick<PageInfo, 'hasNextPage'>
-      ), edges?: Maybe<Array<(
-        { __typename?: 'PostEdge' }
-        & Pick<PostEdge, 'cursor'>
-        & { node: (
-          { __typename?: 'Post' }
-          & PostFragment
-        ) }
-      )>> }
-    )> }
-    & ProjectFragment
-  )> }
-);
+export type ProjectQuery = { __typename?: 'Query' } & {
+  post?: Maybe<{ __typename?: 'Post' } & PostFragment>
+  project?: Maybe<
+    { __typename?: 'Project' } & {
+      posts?: Maybe<
+        { __typename?: 'PostConnection' } & Pick<PostConnection, 'totalCount'> & {
+            pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+            edges?: Maybe<
+              Array<
+                { __typename?: 'PostEdge' } & Pick<PostEdge, 'cursor'> & {
+                    node: { __typename?: 'Post' } & PostFragment
+                  }
+              >
+            >
+          }
+      >
+    } & ProjectFragment
+  >
+}
 
 export type ProjectCollectionsQueryVariables = Exact<{
-  projectId?: Maybe<Scalars['ID']>;
-  projectSlug?: Maybe<Scalars['LowercaseString']>;
-  slug?: Maybe<Scalars['LowercaseString']>;
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  projectId?: Maybe<Scalars['ID']>
+  projectSlug?: Maybe<Scalars['LowercaseString']>
+  slug?: Maybe<Scalars['LowercaseString']>
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type ProjectCollectionsQuery = (
-  { __typename?: 'Query' }
-  & { projectCollections?: Maybe<(
-    { __typename?: 'CollectionConnection' }
-    & { pageInfo: (
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    ), edges?: Maybe<Array<(
-      { __typename?: 'CollectionEdge' }
-      & Pick<CollectionEdge, 'cursor'>
-      & { node: (
-        { __typename?: 'Collection' }
-        & CollectionFragment
-      ) }
-    )>> }
-  )> }
-);
+export type ProjectCollectionsQuery = { __typename?: 'Query' } & {
+  projectCollections?: Maybe<
+    { __typename?: 'CollectionConnection' } & {
+      pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+      edges?: Maybe<
+        Array<
+          { __typename?: 'CollectionEdge' } & Pick<CollectionEdge, 'cursor'> & {
+              node: { __typename?: 'Collection' } & CollectionFragment
+            }
+        >
+      >
+    }
+  >
+}
 
 export type ProjectSuggestionsQueryVariables = Exact<{
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
+export type ProjectSuggestionsQuery = { __typename?: 'Query' } & {
+  projects?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'ProjectSuggestionsConnection' } & {
+          type?: Maybe<{ __typename?: 'ProjectType' } & Pick<ProjectType, 'id' | 'title'>>
+          pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+          edges?: Maybe<
+            Array<
+              { __typename?: 'ProjectEdge' } & {
+                node: { __typename?: 'Project' } & {
+                  cover?: Maybe<{ __typename?: 'CoverType' } & Pick<CoverType, 'uri' | 'default'>>
+                } & ProjectFragment
+              }
+            >
+          >
+        }
+      >
+    >
+  >
+}
 
-export type ProjectSuggestionsQuery = (
-  { __typename?: 'Query' }
-  & { projects?: Maybe<Array<Maybe<(
-    { __typename?: 'ProjectSuggestionsConnection' }
-    & { type?: Maybe<(
-      { __typename?: 'ProjectType' }
-      & Pick<ProjectType, 'id' | 'title'>
-    )>, pageInfo: (
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    ), edges?: Maybe<Array<(
-      { __typename?: 'ProjectEdge' }
-      & { node: (
-        { __typename?: 'Project' }
-        & { cover?: Maybe<(
-          { __typename?: 'CoverType' }
-          & Pick<CoverType, 'uri' | 'default'>
-        )> }
-        & ProjectFragment
-      ) }
-    )>> }
-  )>>> }
-);
+export type ProjectTypesQueryVariables = Exact<{ [key: string]: never }>
 
-export type ProjectTypesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type ProjectTypesQuery = (
-  { __typename?: 'Query' }
-  & { types?: Maybe<Array<Maybe<(
-    { __typename?: 'ProjectType' }
-    & Pick<ProjectType, 'id' | 'title' | 'imageUrl'>
-  )>>> }
-);
+export type ProjectTypesQuery = { __typename?: 'Query' } & {
+  types?: Maybe<
+    Array<Maybe<{ __typename?: 'ProjectType' } & Pick<ProjectType, 'id' | 'title' | 'imageUrl'>>>
+  >
+}
 
 export type ProjectsQueryVariables = Exact<{
-  typeId?: Maybe<Scalars['ID']>;
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  type: ProjectSortType;
-}>;
+  typeId?: Maybe<Scalars['ID']>
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  type: ProjectSortType
+}>
 
-
-export type ProjectsQuery = (
-  { __typename?: 'Query' }
-  & { projects?: Maybe<(
-    { __typename?: 'ProjectsConnection' }
-    & { pageInfo: (
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    ), edges?: Maybe<Array<(
-      { __typename?: 'ProjectEdge' }
-      & Pick<ProjectEdge, 'cursor'>
-      & { node: (
-        { __typename?: 'Project' }
-        & { cover?: Maybe<(
-          { __typename?: 'CoverType' }
-          & Pick<CoverType, 'uri' | 'default'>
-        )> }
-        & ProjectFragment
-      ) }
-    )>> }
-  )> }
-);
+export type ProjectsQuery = { __typename?: 'Query' } & {
+  projects?: Maybe<
+    { __typename?: 'ProjectsConnection' } & {
+      pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+      edges?: Maybe<
+        Array<
+          { __typename?: 'ProjectEdge' } & Pick<ProjectEdge, 'cursor'> & {
+              node: { __typename?: 'Project' } & {
+                cover?: Maybe<{ __typename?: 'CoverType' } & Pick<CoverType, 'uri' | 'default'>>
+              } & ProjectFragment
+            }
+        >
+      >
+    }
+  >
+}
 
 export type RecentCommentsQueryVariables = Exact<{
-  after?: Maybe<Scalars['String']>;
-}>;
+  after?: Maybe<Scalars['String']>
+}>
 
-
-export type RecentCommentsQuery = (
-  { __typename?: 'Query' }
-  & { comments?: Maybe<(
-    { __typename?: 'CommentConnection' }
-    & { pageInfo: (
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    ), edges?: Maybe<Array<(
-      { __typename?: 'CommentEdge' }
-      & Pick<CommentEdge, 'cursor'>
-      & { node: (
-        { __typename?: 'Comment' }
-        & CommentAndRepliesFragment
-      ) }
-    )>> }
-  )> }
-);
+export type RecentCommentsQuery = { __typename?: 'Query' } & {
+  comments?: Maybe<
+    { __typename?: 'CommentConnection' } & {
+      pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+      edges?: Maybe<
+        Array<
+          { __typename?: 'CommentEdge' } & Pick<CommentEdge, 'cursor'> & {
+              node: { __typename?: 'Comment' } & CommentAndRepliesFragment
+            }
+        >
+      >
+    }
+  >
+}
 
 export type RepliesQueryVariables = Exact<{
-  id: Scalars['ID'];
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  id: Scalars['ID']
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type RepliesQuery = (
-  { __typename?: 'Query' }
-  & { comment?: Maybe<(
-    { __typename?: 'Comment' }
-    & { replies?: Maybe<(
-      { __typename?: 'CommentConnection' }
-      & Pick<CommentConnection, 'totalCount'>
-      & { pageInfo: (
-        { __typename?: 'PageInfo' }
-        & Pick<PageInfo, 'hasNextPage'>
-      ), edges?: Maybe<Array<(
-        { __typename?: 'CommentEdge' }
-        & Pick<CommentEdge, 'cursor'>
-        & { node: (
-          { __typename?: 'Comment' }
-          & CommentFragment
-        ) }
-      )>> }
-    )> }
-  )> }
-);
+export type RepliesQuery = { __typename?: 'Query' } & {
+  comment?: Maybe<
+    { __typename?: 'Comment' } & {
+      replies?: Maybe<
+        { __typename?: 'CommentConnection' } & Pick<CommentConnection, 'totalCount'> & {
+            pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+            edges?: Maybe<
+              Array<
+                { __typename?: 'CommentEdge' } & Pick<CommentEdge, 'cursor'> & {
+                    node: { __typename?: 'Comment' } & CommentFragment
+                  }
+              >
+            >
+          }
+      >
+    }
+  >
+}
 
 export type SearchHashtagsQueryVariables = Exact<{
-  query: Scalars['String'];
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  query: Scalars['String']
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type SearchHashtagsQuery = (
-  { __typename?: 'Query' }
-  & { hashtags?: Maybe<(
-    { __typename?: 'SearchResults' }
-    & { pageInfo?: Maybe<(
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    )>, edges?: Maybe<Array<Maybe<(
-      { __typename?: 'SearchResultEdge' }
-      & Pick<SearchResultEdge, 'cursor'>
-      & { node?: Maybe<{ __typename?: 'Project' } | { __typename?: 'User' } | { __typename?: 'Model' } | (
-        { __typename?: 'Hashtag' }
-        & Pick<Hashtag, 'id' | 'name' | 'slug' | 'totalCount'>
-      )> }
-    )>>> }
-  )> }
-);
+export type SearchHashtagsQuery = { __typename?: 'Query' } & {
+  hashtags?: Maybe<
+    { __typename?: 'SearchResults' } & {
+      pageInfo?: Maybe<{ __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>>
+      edges?: Maybe<
+        Array<
+          Maybe<
+            { __typename?: 'SearchResultEdge' } & Pick<SearchResultEdge, 'cursor'> & {
+                node?: Maybe<
+                  | { __typename?: 'Project' }
+                  | { __typename?: 'User' }
+                  | { __typename?: 'Model' }
+                  | ({ __typename?: 'Hashtag' } & Pick<
+                      Hashtag,
+                      'id' | 'name' | 'slug' | 'totalCount'
+                    >)
+                >
+              }
+          >
+        >
+      >
+    }
+  >
+}
 
 export type SearchModelsQueryVariables = Exact<{
-  query: Scalars['String'];
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  query: Scalars['String']
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type SearchModelsQuery = (
-  { __typename?: 'Query' }
-  & { models?: Maybe<(
-    { __typename?: 'SearchResults' }
-    & { pageInfo?: Maybe<(
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    )>, edges?: Maybe<Array<Maybe<(
-      { __typename?: 'SearchResultEdge' }
-      & Pick<SearchResultEdge, 'cursor'>
-      & { node?: Maybe<{ __typename?: 'Project' } | { __typename?: 'User' } | (
-        { __typename?: 'Model' }
-        & Pick<Model, 'id' | 'model' | 'year'>
-        & { brand?: Maybe<(
-          { __typename?: 'Brand' }
-          & Pick<Brand, 'name'>
-        )> }
-      ) | { __typename?: 'Hashtag' }> }
-    )>>> }
-  )> }
-);
+export type SearchModelsQuery = { __typename?: 'Query' } & {
+  models?: Maybe<
+    { __typename?: 'SearchResults' } & {
+      pageInfo?: Maybe<{ __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>>
+      edges?: Maybe<
+        Array<
+          Maybe<
+            { __typename?: 'SearchResultEdge' } & Pick<SearchResultEdge, 'cursor'> & {
+                node?: Maybe<
+                  | { __typename?: 'Project' }
+                  | { __typename?: 'User' }
+                  | ({ __typename?: 'Model' } & Pick<Model, 'id' | 'model' | 'year'> & {
+                        brand?: Maybe<{ __typename?: 'Brand' } & Pick<Brand, 'name'>>
+                      })
+                  | { __typename?: 'Hashtag' }
+                >
+              }
+          >
+        >
+      >
+    }
+  >
+}
 
 export type SearchProjectsQueryVariables = Exact<{
-  query: Scalars['String'];
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  query: Scalars['String']
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type SearchProjectsQuery = (
-  { __typename?: 'Query' }
-  & { projects?: Maybe<(
-    { __typename?: 'SearchResults' }
-    & { pageInfo?: Maybe<(
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    )>, edges?: Maybe<Array<Maybe<(
-      { __typename?: 'SearchResultEdge' }
-      & Pick<SearchResultEdge, 'cursor'>
-      & { node?: Maybe<(
-        { __typename?: 'Project' }
-        & { cover?: Maybe<(
-          { __typename?: 'CoverType' }
-          & Pick<CoverType, 'uri' | 'default'>
-        )> }
-        & ProjectFragment
-      ) | { __typename?: 'User' } | { __typename?: 'Model' } | { __typename?: 'Hashtag' }> }
-    )>>> }
-  )> }
-);
+export type SearchProjectsQuery = { __typename?: 'Query' } & {
+  projects?: Maybe<
+    { __typename?: 'SearchResults' } & {
+      pageInfo?: Maybe<{ __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>>
+      edges?: Maybe<
+        Array<
+          Maybe<
+            { __typename?: 'SearchResultEdge' } & Pick<SearchResultEdge, 'cursor'> & {
+                node?: Maybe<
+                  | ({ __typename?: 'Project' } & {
+                      cover?: Maybe<
+                        { __typename?: 'CoverType' } & Pick<CoverType, 'uri' | 'default'>
+                      >
+                    } & ProjectFragment)
+                  | { __typename?: 'User' }
+                  | { __typename?: 'Model' }
+                  | { __typename?: 'Hashtag' }
+                >
+              }
+          >
+        >
+      >
+    }
+  >
+}
 
 export type SearchUsersQueryVariables = Exact<{
-  query: Scalars['String'];
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  query: Scalars['String']
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type SearchUsersQuery = (
-  { __typename?: 'Query' }
-  & { users?: Maybe<(
-    { __typename?: 'SearchResults' }
-    & { pageInfo?: Maybe<(
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    )>, edges?: Maybe<Array<Maybe<(
-      { __typename?: 'SearchResultEdge' }
-      & Pick<SearchResultEdge, 'cursor'>
-      & { node?: Maybe<{ __typename?: 'Project' } | (
-        { __typename?: 'User' }
-        & Pick<User, 'projectCount'>
-        & UserFragment
-      ) | { __typename?: 'Model' } | { __typename?: 'Hashtag' }> }
-    )>>> }
-  )> }
-);
+export type SearchUsersQuery = { __typename?: 'Query' } & {
+  users?: Maybe<
+    { __typename?: 'SearchResults' } & {
+      pageInfo?: Maybe<{ __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>>
+      edges?: Maybe<
+        Array<
+          Maybe<
+            { __typename?: 'SearchResultEdge' } & Pick<SearchResultEdge, 'cursor'> & {
+                node?: Maybe<
+                  | { __typename?: 'Project' }
+                  | ({ __typename?: 'User' } & Pick<User, 'projectCount'> & UserFragment)
+                  | { __typename?: 'Model' }
+                  | { __typename?: 'Hashtag' }
+                >
+              }
+          >
+        >
+      >
+    }
+  >
+}
 
 export type SimilarProjectsQueryVariables = Exact<{
-  id: Scalars['ID'];
-  first?: Maybe<Scalars['Int']>;
-}>;
+  id: Scalars['ID']
+  first?: Maybe<Scalars['Int']>
+}>
 
+export type SimilarProjectsQuery = { __typename?: 'Query' } & {
+  similarProjects?: Maybe<
+    { __typename?: 'ProjectsConnection' } & {
+      edges?: Maybe<
+        Array<
+          { __typename?: 'ProjectEdge' } & Pick<ProjectEdge, 'cursor'> & {
+              node: { __typename?: 'Project' } & {
+                cover?: Maybe<{ __typename?: 'CoverType' } & Pick<CoverType, 'uri'>>
+              } & ProjectFragment
+            }
+        >
+      >
+    }
+  >
+}
 
-export type SimilarProjectsQuery = (
-  { __typename?: 'Query' }
-  & { similarProjects?: Maybe<(
-    { __typename?: 'ProjectsConnection' }
-    & { edges?: Maybe<Array<(
-      { __typename?: 'ProjectEdge' }
-      & Pick<ProjectEdge, 'cursor'>
-      & { node: (
-        { __typename?: 'Project' }
-        & { cover?: Maybe<(
-          { __typename?: 'CoverType' }
-          & Pick<CoverType, 'uri'>
-        )> }
-        & ProjectFragment
-      ) }
-    )>> }
-  )> }
-);
+export type UnreadNotificationsQueryVariables = Exact<{ [key: string]: never }>
 
-export type UnreadNotificationsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type UnreadNotificationsQuery = (
-  { __typename?: 'Query' }
-  & { notifications?: Maybe<(
-    { __typename?: 'NotificationsConnection' }
-    & Pick<NotificationsConnection, 'unreadCount'>
-  )> }
-);
+export type UnreadNotificationsQuery = { __typename?: 'Query' } & {
+  notifications?: Maybe<
+    { __typename?: 'NotificationsConnection' } & Pick<NotificationsConnection, 'unreadCount'>
+  >
+}
 
 export type UserQueryVariables = Exact<{
-  username: Scalars['LowercaseString'];
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  username: Scalars['LowercaseString']
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type UserQuery = (
-  { __typename?: 'Query' }
-  & { user?: Maybe<(
-    { __typename?: 'User' }
-    & { projects?: Maybe<(
-      { __typename?: 'ProjectsConnection' }
-      & { edges?: Maybe<Array<(
-        { __typename?: 'ProjectEdge' }
-        & { node: (
-          { __typename?: 'Project' }
-          & { cover?: Maybe<(
-            { __typename?: 'CoverType' }
-            & Pick<CoverType, 'uri' | 'default'>
-          )> }
-          & ProjectFragment
-        ) }
-      )>> }
-    )>, posts?: Maybe<(
-      { __typename?: 'PostConnection' }
-      & { edges?: Maybe<Array<(
-        { __typename?: 'PostEdge' }
-        & Pick<PostEdge, 'cursor'>
-        & { node: (
-          { __typename?: 'Post' }
-          & PostFragment
-        ) }
-      )>>, pageInfo: (
-        { __typename?: 'PageInfo' }
-        & Pick<PageInfo, 'hasNextPage'>
-      ) }
-    )> }
-    & UserFragment
-  )> }
-);
+export type UserQuery = { __typename?: 'Query' } & {
+  user?: Maybe<
+    { __typename?: 'User' } & {
+      projects?: Maybe<
+        { __typename?: 'ProjectsConnection' } & {
+          edges?: Maybe<
+            Array<
+              { __typename?: 'ProjectEdge' } & {
+                node: { __typename?: 'Project' } & {
+                  cover?: Maybe<{ __typename?: 'CoverType' } & Pick<CoverType, 'uri' | 'default'>>
+                } & ProjectFragment
+              }
+            >
+          >
+        }
+      >
+      posts?: Maybe<
+        { __typename?: 'PostConnection' } & {
+          edges?: Maybe<
+            Array<
+              { __typename?: 'PostEdge' } & Pick<PostEdge, 'cursor'> & {
+                  node: { __typename?: 'Post' } & PostFragment
+                }
+            >
+          >
+          pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+        }
+      >
+    } & UserFragment
+  >
+}
 
 export type UserFollowingProjectsQueryVariables = Exact<{
-  username: Scalars['LowercaseString'];
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-}>;
+  username: Scalars['LowercaseString']
+  after?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+}>
 
-
-export type UserFollowingProjectsQuery = (
-  { __typename?: 'Query' }
-  & { user?: Maybe<(
-    { __typename?: 'User' }
-    & Pick<User, 'id'>
-    & { projects?: Maybe<(
-      { __typename?: 'ProjectsConnection' }
-      & { pageInfo: (
-        { __typename?: 'PageInfo' }
-        & Pick<PageInfo, 'hasNextPage'>
-      ), edges?: Maybe<Array<(
-        { __typename?: 'ProjectEdge' }
-        & Pick<ProjectEdge, 'cursor'>
-        & { node: (
-          { __typename?: 'Project' }
-          & { cover?: Maybe<(
-            { __typename?: 'CoverType' }
-            & Pick<CoverType, 'uri' | 'default'>
-          )> }
-          & ProjectFragment
-        ) }
-      )>> }
-    )> }
-  )> }
-);
+export type UserFollowingProjectsQuery = { __typename?: 'Query' } & {
+  user?: Maybe<
+    { __typename?: 'User' } & Pick<User, 'id'> & {
+        projects?: Maybe<
+          { __typename?: 'ProjectsConnection' } & {
+            pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>
+            edges?: Maybe<
+              Array<
+                { __typename?: 'ProjectEdge' } & Pick<ProjectEdge, 'cursor'> & {
+                    node: { __typename?: 'Project' } & {
+                      cover?: Maybe<
+                        { __typename?: 'CoverType' } & Pick<CoverType, 'uri' | 'default'>
+                      >
+                    } & ProjectFragment
+                  }
+              >
+            >
+          }
+        >
+      }
+  >
+}
 
 export const UserFragmentDoc = gql`
-    fragment User on User {
-  id
-  fullName
-  firstName
-  lastName
-  username
-  avatarUrl
-  isSilhouette
-  isOnline
-  website
-  location
-  bio
-  projectCount
-  dynamicLink
-}
-    `;
+  fragment User on User {
+    id
+    fullName
+    firstName
+    lastName
+    username
+    avatarUrl
+    isSilhouette
+    isOnline
+    website
+    location
+    bio
+    projectCount
+    dynamicLink
+  }
+`
 export const BlogPostFragmentDoc = gql`
-    fragment BlogPost on BlogPost {
-  id
-  title
-  slug
-  content
-  createdAt
-  user {
-    ...User
-  }
-}
-    ${UserFragmentDoc}`;
-export const CollectionFragmentDoc = gql`
-    fragment Collection on Collection {
-  id
-  name
-  slug
-  cover {
-    uri
-  }
-}
-    `;
-export const CommentFragmentDoc = gql`
-    fragment Comment on Comment {
-  id
-  text
-  createdAt
-  permissions {
-    isOwner
-  }
-  likes {
-    isLiked
-    totalCount
-  }
-  translatable
-  user {
-    ...User
-  }
-}
-    ${UserFragmentDoc}`;
-export const CommentAndRepliesFragmentDoc = gql`
-    fragment CommentAndReplies on Comment {
-  ...Comment
-  replies: repliesConnection(first: 1) {
-    pageInfo {
-      hasNextPage
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ...Comment
-      }
-    }
-  }
-}
-    ${CommentFragmentDoc}`;
-export const ProjectFragmentDoc = gql`
-    fragment Project on Project {
-  id
-  title
-  slug
-  dynamicLink
-  user {
-    ...User
-  }
-  permissions {
-    isOwner
-    isFollower
-  }
-  type {
+  fragment BlogPost on BlogPost {
+    id
     title
-  }
-  cover {
-    uri
-  }
-  followers: followersConnection(first: 3) {
-    totalCount
-    edges {
-      node {
-        id
-        username
-        avatarUrl
-      }
+    slug
+    content
+    createdAt
+    user {
+      ...User
     }
   }
-}
-    ${UserFragmentDoc}`;
-export const NotificationFragmentDoc = gql`
-    fragment Notification on Notification {
-  id
-  type
-  createdAt
-  user {
-    ...User
-  }
-  project {
-    ...Project
-  }
-  post {
-    id
-  }
-  comment {
-    id
-    text
-    postId
-  }
-  files: filesConnection(type: IMAGE, first: 1) {
-    edges {
-      node {
-        id
-        uri
-      }
-    }
-  }
-}
-    ${UserFragmentDoc}
-${ProjectFragmentDoc}`;
-export const PostFragmentDoc = gql`
-    fragment Post on Post {
-  id
-  caption
-  createdAt
-  translatable
-  user {
-    ...User
-  }
-  permissions {
-    isOwner
-  }
-  files: filesConnection {
-    edges {
-      node {
-        id
-        type
-        uri
-      }
-    }
-  }
-  project {
-    ...Project
-  }
-  likes {
-    isLiked
-    totalCount
-  }
-  bookmarks {
-    isBookmarked
-  }
-  comments: commentsConnection(first: 2) @connection(key: "comments") {
-    totalCount
-    edges {
-      node {
-        ...Comment
-      }
-    }
-  }
-  likesConnection(first: 3) @connection(key: "likes") {
-    edges {
-      node {
-        id
-        avatarUrl
-      }
-    }
-  }
-  collection {
+  ${UserFragmentDoc}
+`
+export const CollectionFragmentDoc = gql`
+  fragment Collection on Collection {
     id
     name
     slug
+    cover {
+      uri
+    }
   }
-}
-    ${UserFragmentDoc}
-${ProjectFragmentDoc}
-${CommentFragmentDoc}`;
-export const UserProjectsFragmentDoc = gql`
-    fragment UserProjects on User {
-  projects: projectsConnection {
-    edges {
-      node {
-        id
-        title
-        followers: followersConnection {
-          totalCount
+`
+export const CommentFragmentDoc = gql`
+  fragment Comment on Comment {
+    id
+    text
+    createdAt
+    permissions {
+      isOwner
+    }
+    likes {
+      isLiked
+      totalCount
+    }
+    translatable
+    user {
+      ...User
+    }
+  }
+  ${UserFragmentDoc}
+`
+export const CommentAndRepliesFragmentDoc = gql`
+  fragment CommentAndReplies on Comment {
+    ...Comment
+    replies: repliesConnection(first: 1) {
+      pageInfo {
+        hasNextPage
+      }
+      totalCount
+      edges {
+        cursor
+        node {
+          ...Comment
         }
-        files: filesConnection(first: 1, type: IMAGE) {
-          edges {
-            node {
-              id
-              uri
+      }
+    }
+  }
+  ${CommentFragmentDoc}
+`
+export const ProjectFragmentDoc = gql`
+  fragment Project on Project {
+    id
+    title
+    slug
+    dynamicLink
+    user {
+      ...User
+    }
+    permissions {
+      isOwner
+      isFollower
+    }
+    type {
+      title
+    }
+    cover {
+      uri
+    }
+    followers: followersConnection(first: 3) {
+      totalCount
+      edges {
+        node {
+          id
+          username
+          avatarUrl
+        }
+      }
+    }
+  }
+  ${UserFragmentDoc}
+`
+export const NotificationFragmentDoc = gql`
+  fragment Notification on Notification {
+    id
+    type
+    createdAt
+    user {
+      ...User
+    }
+    project {
+      ...Project
+    }
+    post {
+      id
+    }
+    comment {
+      id
+      text
+      postId
+    }
+    files: filesConnection(type: IMAGE, first: 1) {
+      edges {
+        node {
+          id
+          uri
+        }
+      }
+    }
+  }
+  ${UserFragmentDoc}
+  ${ProjectFragmentDoc}
+`
+export const PostFragmentDoc = gql`
+  fragment Post on Post {
+    id
+    caption
+    createdAt
+    translatable
+    user {
+      ...User
+    }
+    permissions {
+      isOwner
+    }
+    files: filesConnection {
+      edges {
+        node {
+          id
+          type
+          uri
+        }
+      }
+    }
+    project {
+      ...Project
+    }
+    likes {
+      isLiked
+      totalCount
+    }
+    bookmarks {
+      isBookmarked
+    }
+    comments: commentsConnection(first: 2) @connection(key: "comments") {
+      totalCount
+      edges {
+        node {
+          ...Comment
+        }
+      }
+    }
+    likesConnection(first: 3) @connection(key: "likes") {
+      edges {
+        node {
+          id
+          avatarUrl
+        }
+      }
+    }
+    collection {
+      id
+      name
+      slug
+    }
+  }
+  ${UserFragmentDoc}
+  ${ProjectFragmentDoc}
+  ${CommentFragmentDoc}
+`
+export const UserProjectsFragmentDoc = gql`
+  fragment UserProjects on User {
+    projects: projectsConnection {
+      edges {
+        node {
+          id
+          title
+          followers: followersConnection {
+            totalCount
+          }
+          files: filesConnection(first: 1, type: IMAGE) {
+            edges {
+              node {
+                id
+                uri
+              }
             }
           }
         }
       }
     }
   }
-}
-    `;
+`
 export const UserSettingsFragmentDoc = gql`
-    fragment UserSettings on User {
-  id
-  role
-  settings {
-    notifications {
-      types {
-        NEW_FOLLOWER {
-          email
-          push
-        }
-        NEW_COMMENT {
-          email
-          push
-        }
-        NEW_MENTION {
-          email
-          push
-        }
-        NEW_ARTICLE {
-          email
-          push
-        }
-        SIMILAR_PROJECTS {
-          email
-          push
-        }
-        PRODUCT_ANNOUNCEMENTS {
-          email
-          push
+  fragment UserSettings on User {
+    id
+    role
+    settings {
+      notifications {
+        types {
+          NEW_FOLLOWER {
+            email
+            push
+          }
+          NEW_COMMENT {
+            email
+            push
+          }
+          NEW_MENTION {
+            email
+            push
+          }
+          NEW_ARTICLE {
+            email
+            push
+          }
+          SIMILAR_PROJECTS {
+            email
+            push
+          }
+          PRODUCT_ANNOUNCEMENTS {
+            email
+            push
+          }
         }
       }
     }
   }
-}
-    `;
+`
 export const AddBlogPostDocument = gql`
-    mutation addBlogPost($id: ID, $input: BlogPostInput!) {
-  addBlogPost(id: $id, input: $input) {
-    ...BlogPost
+  mutation addBlogPost($id: ID, $input: BlogPostInput!) {
+    addBlogPost(id: $id, input: $input) {
+      ...BlogPost
+    }
   }
-}
-    ${BlogPostFragmentDoc}`;
-export type AddBlogPostMutationFn = Apollo.MutationFunction<AddBlogPostMutation, AddBlogPostMutationVariables>;
+  ${BlogPostFragmentDoc}
+`
+export type AddBlogPostMutationFn = Apollo.MutationFunction<
+  AddBlogPostMutation,
+  AddBlogPostMutationVariables
+>
 
 /**
  * __useAddBlogPostMutation__
@@ -3016,20 +2716,33 @@ export type AddBlogPostMutationFn = Apollo.MutationFunction<AddBlogPostMutation,
  *   },
  * });
  */
-export function useAddBlogPostMutation(baseOptions?: Apollo.MutationHookOptions<AddBlogPostMutation, AddBlogPostMutationVariables>) {
-        return Apollo.useMutation<AddBlogPostMutation, AddBlogPostMutationVariables>(AddBlogPostDocument, baseOptions);
-      }
-export type AddBlogPostMutationHookResult = ReturnType<typeof useAddBlogPostMutation>;
-export type AddBlogPostMutationResult = Apollo.MutationResult<AddBlogPostMutation>;
-export type AddBlogPostMutationOptions = Apollo.BaseMutationOptions<AddBlogPostMutation, AddBlogPostMutationVariables>;
-export const AddCollectionDocument = gql`
-    mutation addCollection($projectId: ID!, $name: String!) {
-  addCollection(projectId: $projectId, name: $name) {
-    ...Collection
-  }
+export function useAddBlogPostMutation(
+  baseOptions?: Apollo.MutationHookOptions<AddBlogPostMutation, AddBlogPostMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<AddBlogPostMutation, AddBlogPostMutationVariables>(
+    AddBlogPostDocument,
+    options
+  )
 }
-    ${CollectionFragmentDoc}`;
-export type AddCollectionMutationFn = Apollo.MutationFunction<AddCollectionMutation, AddCollectionMutationVariables>;
+export type AddBlogPostMutationHookResult = ReturnType<typeof useAddBlogPostMutation>
+export type AddBlogPostMutationResult = Apollo.MutationResult<AddBlogPostMutation>
+export type AddBlogPostMutationOptions = Apollo.BaseMutationOptions<
+  AddBlogPostMutation,
+  AddBlogPostMutationVariables
+>
+export const AddCollectionDocument = gql`
+  mutation addCollection($projectId: ID!, $name: String!) {
+    addCollection(projectId: $projectId, name: $name) {
+      ...Collection
+    }
+  }
+  ${CollectionFragmentDoc}
+`
+export type AddCollectionMutationFn = Apollo.MutationFunction<
+  AddCollectionMutation,
+  AddCollectionMutationVariables
+>
 
 /**
  * __useAddCollectionMutation__
@@ -3049,20 +2762,33 @@ export type AddCollectionMutationFn = Apollo.MutationFunction<AddCollectionMutat
  *   },
  * });
  */
-export function useAddCollectionMutation(baseOptions?: Apollo.MutationHookOptions<AddCollectionMutation, AddCollectionMutationVariables>) {
-        return Apollo.useMutation<AddCollectionMutation, AddCollectionMutationVariables>(AddCollectionDocument, baseOptions);
-      }
-export type AddCollectionMutationHookResult = ReturnType<typeof useAddCollectionMutation>;
-export type AddCollectionMutationResult = Apollo.MutationResult<AddCollectionMutation>;
-export type AddCollectionMutationOptions = Apollo.BaseMutationOptions<AddCollectionMutation, AddCollectionMutationVariables>;
-export const AddCommentDocument = gql`
-    mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
-  addComment(postId: $postId, commentId: $commentId, input: $input) {
-    ...CommentAndReplies
-  }
+export function useAddCollectionMutation(
+  baseOptions?: Apollo.MutationHookOptions<AddCollectionMutation, AddCollectionMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<AddCollectionMutation, AddCollectionMutationVariables>(
+    AddCollectionDocument,
+    options
+  )
 }
-    ${CommentAndRepliesFragmentDoc}`;
-export type AddCommentMutationFn = Apollo.MutationFunction<AddCommentMutation, AddCommentMutationVariables>;
+export type AddCollectionMutationHookResult = ReturnType<typeof useAddCollectionMutation>
+export type AddCollectionMutationResult = Apollo.MutationResult<AddCollectionMutation>
+export type AddCollectionMutationOptions = Apollo.BaseMutationOptions<
+  AddCollectionMutation,
+  AddCollectionMutationVariables
+>
+export const AddCommentDocument = gql`
+  mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
+    addComment(postId: $postId, commentId: $commentId, input: $input) {
+      ...CommentAndReplies
+    }
+  }
+  ${CommentAndRepliesFragmentDoc}
+`
+export type AddCommentMutationFn = Apollo.MutationFunction<
+  AddCommentMutation,
+  AddCommentMutationVariables
+>
 
 /**
  * __useAddCommentMutation__
@@ -3083,20 +2809,30 @@ export type AddCommentMutationFn = Apollo.MutationFunction<AddCommentMutation, A
  *   },
  * });
  */
-export function useAddCommentMutation(baseOptions?: Apollo.MutationHookOptions<AddCommentMutation, AddCommentMutationVariables>) {
-        return Apollo.useMutation<AddCommentMutation, AddCommentMutationVariables>(AddCommentDocument, baseOptions);
-      }
-export type AddCommentMutationHookResult = ReturnType<typeof useAddCommentMutation>;
-export type AddCommentMutationResult = Apollo.MutationResult<AddCommentMutation>;
-export type AddCommentMutationOptions = Apollo.BaseMutationOptions<AddCommentMutation, AddCommentMutationVariables>;
-export const AddPostDocument = gql`
-    mutation addPost($input: PostInput!) {
-  addPost(input: $input) {
-    ...Post
-  }
+export function useAddCommentMutation(
+  baseOptions?: Apollo.MutationHookOptions<AddCommentMutation, AddCommentMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<AddCommentMutation, AddCommentMutationVariables>(
+    AddCommentDocument,
+    options
+  )
 }
-    ${PostFragmentDoc}`;
-export type AddPostMutationFn = Apollo.MutationFunction<AddPostMutation, AddPostMutationVariables>;
+export type AddCommentMutationHookResult = ReturnType<typeof useAddCommentMutation>
+export type AddCommentMutationResult = Apollo.MutationResult<AddCommentMutation>
+export type AddCommentMutationOptions = Apollo.BaseMutationOptions<
+  AddCommentMutation,
+  AddCommentMutationVariables
+>
+export const AddPostDocument = gql`
+  mutation addPost($input: PostInput!) {
+    addPost(input: $input) {
+      ...Post
+    }
+  }
+  ${PostFragmentDoc}
+`
+export type AddPostMutationFn = Apollo.MutationFunction<AddPostMutation, AddPostMutationVariables>
 
 /**
  * __useAddPostMutation__
@@ -3115,20 +2851,30 @@ export type AddPostMutationFn = Apollo.MutationFunction<AddPostMutation, AddPost
  *   },
  * });
  */
-export function useAddPostMutation(baseOptions?: Apollo.MutationHookOptions<AddPostMutation, AddPostMutationVariables>) {
-        return Apollo.useMutation<AddPostMutation, AddPostMutationVariables>(AddPostDocument, baseOptions);
-      }
-export type AddPostMutationHookResult = ReturnType<typeof useAddPostMutation>;
-export type AddPostMutationResult = Apollo.MutationResult<AddPostMutation>;
-export type AddPostMutationOptions = Apollo.BaseMutationOptions<AddPostMutation, AddPostMutationVariables>;
-export const AddProjectDocument = gql`
-    mutation addProject($input: ProjectInput!) {
-  addProject(input: $input) {
-    ...Project
-  }
+export function useAddPostMutation(
+  baseOptions?: Apollo.MutationHookOptions<AddPostMutation, AddPostMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<AddPostMutation, AddPostMutationVariables>(AddPostDocument, options)
 }
-    ${ProjectFragmentDoc}`;
-export type AddProjectMutationFn = Apollo.MutationFunction<AddProjectMutation, AddProjectMutationVariables>;
+export type AddPostMutationHookResult = ReturnType<typeof useAddPostMutation>
+export type AddPostMutationResult = Apollo.MutationResult<AddPostMutation>
+export type AddPostMutationOptions = Apollo.BaseMutationOptions<
+  AddPostMutation,
+  AddPostMutationVariables
+>
+export const AddProjectDocument = gql`
+  mutation addProject($input: ProjectInput!) {
+    addProject(input: $input) {
+      ...Project
+    }
+  }
+  ${ProjectFragmentDoc}
+`
+export type AddProjectMutationFn = Apollo.MutationFunction<
+  AddProjectMutation,
+  AddProjectMutationVariables
+>
 
 /**
  * __useAddProjectMutation__
@@ -3147,21 +2893,33 @@ export type AddProjectMutationFn = Apollo.MutationFunction<AddProjectMutation, A
  *   },
  * });
  */
-export function useAddProjectMutation(baseOptions?: Apollo.MutationHookOptions<AddProjectMutation, AddProjectMutationVariables>) {
-        return Apollo.useMutation<AddProjectMutation, AddProjectMutationVariables>(AddProjectDocument, baseOptions);
-      }
-export type AddProjectMutationHookResult = ReturnType<typeof useAddProjectMutation>;
-export type AddProjectMutationResult = Apollo.MutationResult<AddProjectMutation>;
-export type AddProjectMutationOptions = Apollo.BaseMutationOptions<AddProjectMutation, AddProjectMutationVariables>;
-export const AuthenticateAppleDocument = gql`
-    mutation authenticateApple($identityToken: String!, $user: ApplePayload!) {
-  authenticateApple(identityToken: $identityToken, user: $user) {
-    access_token
-    refresh_token
-  }
+export function useAddProjectMutation(
+  baseOptions?: Apollo.MutationHookOptions<AddProjectMutation, AddProjectMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<AddProjectMutation, AddProjectMutationVariables>(
+    AddProjectDocument,
+    options
+  )
 }
-    `;
-export type AuthenticateAppleMutationFn = Apollo.MutationFunction<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>;
+export type AddProjectMutationHookResult = ReturnType<typeof useAddProjectMutation>
+export type AddProjectMutationResult = Apollo.MutationResult<AddProjectMutation>
+export type AddProjectMutationOptions = Apollo.BaseMutationOptions<
+  AddProjectMutation,
+  AddProjectMutationVariables
+>
+export const AuthenticateAppleDocument = gql`
+  mutation authenticateApple($identityToken: String!, $user: ApplePayload!) {
+    authenticateApple(identityToken: $identityToken, user: $user) {
+      access_token
+      refresh_token
+    }
+  }
+`
+export type AuthenticateAppleMutationFn = Apollo.MutationFunction<
+  AuthenticateAppleMutation,
+  AuthenticateAppleMutationVariables
+>
 
 /**
  * __useAuthenticateAppleMutation__
@@ -3181,21 +2939,36 @@ export type AuthenticateAppleMutationFn = Apollo.MutationFunction<AuthenticateAp
  *   },
  * });
  */
-export function useAuthenticateAppleMutation(baseOptions?: Apollo.MutationHookOptions<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>) {
-        return Apollo.useMutation<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>(AuthenticateAppleDocument, baseOptions);
-      }
-export type AuthenticateAppleMutationHookResult = ReturnType<typeof useAuthenticateAppleMutation>;
-export type AuthenticateAppleMutationResult = Apollo.MutationResult<AuthenticateAppleMutation>;
-export type AuthenticateAppleMutationOptions = Apollo.BaseMutationOptions<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>;
-export const AuthenticateFacebookDocument = gql`
-    mutation authenticateFacebook($token: String!) {
-  authenticateFacebook(token: $token) {
-    access_token
-    refresh_token
-  }
+export function useAuthenticateAppleMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    AuthenticateAppleMutation,
+    AuthenticateAppleMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>(
+    AuthenticateAppleDocument,
+    options
+  )
 }
-    `;
-export type AuthenticateFacebookMutationFn = Apollo.MutationFunction<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>;
+export type AuthenticateAppleMutationHookResult = ReturnType<typeof useAuthenticateAppleMutation>
+export type AuthenticateAppleMutationResult = Apollo.MutationResult<AuthenticateAppleMutation>
+export type AuthenticateAppleMutationOptions = Apollo.BaseMutationOptions<
+  AuthenticateAppleMutation,
+  AuthenticateAppleMutationVariables
+>
+export const AuthenticateFacebookDocument = gql`
+  mutation authenticateFacebook($token: String!) {
+    authenticateFacebook(token: $token) {
+      access_token
+      refresh_token
+    }
+  }
+`
+export type AuthenticateFacebookMutationFn = Apollo.MutationFunction<
+  AuthenticateFacebookMutation,
+  AuthenticateFacebookMutationVariables
+>
 
 /**
  * __useAuthenticateFacebookMutation__
@@ -3214,21 +2987,38 @@ export type AuthenticateFacebookMutationFn = Apollo.MutationFunction<Authenticat
  *   },
  * });
  */
-export function useAuthenticateFacebookMutation(baseOptions?: Apollo.MutationHookOptions<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>) {
-        return Apollo.useMutation<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>(AuthenticateFacebookDocument, baseOptions);
-      }
-export type AuthenticateFacebookMutationHookResult = ReturnType<typeof useAuthenticateFacebookMutation>;
-export type AuthenticateFacebookMutationResult = Apollo.MutationResult<AuthenticateFacebookMutation>;
-export type AuthenticateFacebookMutationOptions = Apollo.BaseMutationOptions<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>;
-export const AuthenticateGoogleDocument = gql`
-    mutation authenticateGoogle($idToken: String!) {
-  authenticateGoogle(idToken: $idToken) {
-    access_token
-    refresh_token
-  }
+export function useAuthenticateFacebookMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    AuthenticateFacebookMutation,
+    AuthenticateFacebookMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>(
+    AuthenticateFacebookDocument,
+    options
+  )
 }
-    `;
-export type AuthenticateGoogleMutationFn = Apollo.MutationFunction<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
+export type AuthenticateFacebookMutationHookResult = ReturnType<
+  typeof useAuthenticateFacebookMutation
+>
+export type AuthenticateFacebookMutationResult = Apollo.MutationResult<AuthenticateFacebookMutation>
+export type AuthenticateFacebookMutationOptions = Apollo.BaseMutationOptions<
+  AuthenticateFacebookMutation,
+  AuthenticateFacebookMutationVariables
+>
+export const AuthenticateGoogleDocument = gql`
+  mutation authenticateGoogle($idToken: String!) {
+    authenticateGoogle(idToken: $idToken) {
+      access_token
+      refresh_token
+    }
+  }
+`
+export type AuthenticateGoogleMutationFn = Apollo.MutationFunction<
+  AuthenticateGoogleMutation,
+  AuthenticateGoogleMutationVariables
+>
 
 /**
  * __useAuthenticateGoogleMutation__
@@ -3247,20 +3037,33 @@ export type AuthenticateGoogleMutationFn = Apollo.MutationFunction<AuthenticateG
  *   },
  * });
  */
-export function useAuthenticateGoogleMutation(baseOptions?: Apollo.MutationHookOptions<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>) {
-        return Apollo.useMutation<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>(AuthenticateGoogleDocument, baseOptions);
-      }
-export type AuthenticateGoogleMutationHookResult = ReturnType<typeof useAuthenticateGoogleMutation>;
-export type AuthenticateGoogleMutationResult = Apollo.MutationResult<AuthenticateGoogleMutation>;
-export type AuthenticateGoogleMutationOptions = Apollo.BaseMutationOptions<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
-export const BanUserDocument = gql`
-    mutation banUser($id: ID!) {
-  banUser(id: $id) {
-    ...User
-  }
+export function useAuthenticateGoogleMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    AuthenticateGoogleMutation,
+    AuthenticateGoogleMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>(
+    AuthenticateGoogleDocument,
+    options
+  )
 }
-    ${UserFragmentDoc}`;
-export type BanUserMutationFn = Apollo.MutationFunction<BanUserMutation, BanUserMutationVariables>;
+export type AuthenticateGoogleMutationHookResult = ReturnType<typeof useAuthenticateGoogleMutation>
+export type AuthenticateGoogleMutationResult = Apollo.MutationResult<AuthenticateGoogleMutation>
+export type AuthenticateGoogleMutationOptions = Apollo.BaseMutationOptions<
+  AuthenticateGoogleMutation,
+  AuthenticateGoogleMutationVariables
+>
+export const BanUserDocument = gql`
+  mutation banUser($id: ID!) {
+    banUser(id: $id) {
+      ...User
+    }
+  }
+  ${UserFragmentDoc}
+`
+export type BanUserMutationFn = Apollo.MutationFunction<BanUserMutation, BanUserMutationVariables>
 
 /**
  * __useBanUserMutation__
@@ -3279,23 +3082,32 @@ export type BanUserMutationFn = Apollo.MutationFunction<BanUserMutation, BanUser
  *   },
  * });
  */
-export function useBanUserMutation(baseOptions?: Apollo.MutationHookOptions<BanUserMutation, BanUserMutationVariables>) {
-        return Apollo.useMutation<BanUserMutation, BanUserMutationVariables>(BanUserDocument, baseOptions);
-      }
-export type BanUserMutationHookResult = ReturnType<typeof useBanUserMutation>;
-export type BanUserMutationResult = Apollo.MutationResult<BanUserMutation>;
-export type BanUserMutationOptions = Apollo.BaseMutationOptions<BanUserMutation, BanUserMutationVariables>;
+export function useBanUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<BanUserMutation, BanUserMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<BanUserMutation, BanUserMutationVariables>(BanUserDocument, options)
+}
+export type BanUserMutationHookResult = ReturnType<typeof useBanUserMutation>
+export type BanUserMutationResult = Apollo.MutationResult<BanUserMutation>
+export type BanUserMutationOptions = Apollo.BaseMutationOptions<
+  BanUserMutation,
+  BanUserMutationVariables
+>
 export const BookmarkPostDocument = gql`
-    mutation bookmarkPost($id: ID!) {
-  bookmarkPost(id: $id) {
-    id
-    bookmarks {
-      isBookmarked
+  mutation bookmarkPost($id: ID!) {
+    bookmarkPost(id: $id) {
+      id
+      bookmarks {
+        isBookmarked
+      }
     }
   }
-}
-    `;
-export type BookmarkPostMutationFn = Apollo.MutationFunction<BookmarkPostMutation, BookmarkPostMutationVariables>;
+`
+export type BookmarkPostMutationFn = Apollo.MutationFunction<
+  BookmarkPostMutation,
+  BookmarkPostMutationVariables
+>
 
 /**
  * __useBookmarkPostMutation__
@@ -3314,24 +3126,36 @@ export type BookmarkPostMutationFn = Apollo.MutationFunction<BookmarkPostMutatio
  *   },
  * });
  */
-export function useBookmarkPostMutation(baseOptions?: Apollo.MutationHookOptions<BookmarkPostMutation, BookmarkPostMutationVariables>) {
-        return Apollo.useMutation<BookmarkPostMutation, BookmarkPostMutationVariables>(BookmarkPostDocument, baseOptions);
-      }
-export type BookmarkPostMutationHookResult = ReturnType<typeof useBookmarkPostMutation>;
-export type BookmarkPostMutationResult = Apollo.MutationResult<BookmarkPostMutation>;
-export type BookmarkPostMutationOptions = Apollo.BaseMutationOptions<BookmarkPostMutation, BookmarkPostMutationVariables>;
+export function useBookmarkPostMutation(
+  baseOptions?: Apollo.MutationHookOptions<BookmarkPostMutation, BookmarkPostMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<BookmarkPostMutation, BookmarkPostMutationVariables>(
+    BookmarkPostDocument,
+    options
+  )
+}
+export type BookmarkPostMutationHookResult = ReturnType<typeof useBookmarkPostMutation>
+export type BookmarkPostMutationResult = Apollo.MutationResult<BookmarkPostMutation>
+export type BookmarkPostMutationOptions = Apollo.BaseMutationOptions<
+  BookmarkPostMutation,
+  BookmarkPostMutationVariables
+>
 export const CollectPostsDocument = gql`
-    mutation collectPosts($projectId: ID!, $collectionId: ID!, $input: [CollectionInput]) {
-  collectPosts(projectId: $projectId, collectionId: $collectionId, input: $input) {
-    id
-    name
-    cover {
-      uri
+  mutation collectPosts($projectId: ID!, $collectionId: ID!, $input: [CollectionInput]) {
+    collectPosts(projectId: $projectId, collectionId: $collectionId, input: $input) {
+      id
+      name
+      cover {
+        uri
+      }
     }
   }
-}
-    `;
-export type CollectPostsMutationFn = Apollo.MutationFunction<CollectPostsMutation, CollectPostsMutationVariables>;
+`
+export type CollectPostsMutationFn = Apollo.MutationFunction<
+  CollectPostsMutation,
+  CollectPostsMutationVariables
+>
 
 /**
  * __useCollectPostsMutation__
@@ -3352,20 +3176,32 @@ export type CollectPostsMutationFn = Apollo.MutationFunction<CollectPostsMutatio
  *   },
  * });
  */
-export function useCollectPostsMutation(baseOptions?: Apollo.MutationHookOptions<CollectPostsMutation, CollectPostsMutationVariables>) {
-        return Apollo.useMutation<CollectPostsMutation, CollectPostsMutationVariables>(CollectPostsDocument, baseOptions);
-      }
-export type CollectPostsMutationHookResult = ReturnType<typeof useCollectPostsMutation>;
-export type CollectPostsMutationResult = Apollo.MutationResult<CollectPostsMutation>;
-export type CollectPostsMutationOptions = Apollo.BaseMutationOptions<CollectPostsMutation, CollectPostsMutationVariables>;
-export const DeleteBlogPostDocument = gql`
-    mutation deleteBlogPost($id: ID!) {
-  deleteBlogPost(id: $id) {
-    id
-  }
+export function useCollectPostsMutation(
+  baseOptions?: Apollo.MutationHookOptions<CollectPostsMutation, CollectPostsMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<CollectPostsMutation, CollectPostsMutationVariables>(
+    CollectPostsDocument,
+    options
+  )
 }
-    `;
-export type DeleteBlogPostMutationFn = Apollo.MutationFunction<DeleteBlogPostMutation, DeleteBlogPostMutationVariables>;
+export type CollectPostsMutationHookResult = ReturnType<typeof useCollectPostsMutation>
+export type CollectPostsMutationResult = Apollo.MutationResult<CollectPostsMutation>
+export type CollectPostsMutationOptions = Apollo.BaseMutationOptions<
+  CollectPostsMutation,
+  CollectPostsMutationVariables
+>
+export const DeleteBlogPostDocument = gql`
+  mutation deleteBlogPost($id: ID!) {
+    deleteBlogPost(id: $id) {
+      id
+    }
+  }
+`
+export type DeleteBlogPostMutationFn = Apollo.MutationFunction<
+  DeleteBlogPostMutation,
+  DeleteBlogPostMutationVariables
+>
 
 /**
  * __useDeleteBlogPostMutation__
@@ -3384,20 +3220,32 @@ export type DeleteBlogPostMutationFn = Apollo.MutationFunction<DeleteBlogPostMut
  *   },
  * });
  */
-export function useDeleteBlogPostMutation(baseOptions?: Apollo.MutationHookOptions<DeleteBlogPostMutation, DeleteBlogPostMutationVariables>) {
-        return Apollo.useMutation<DeleteBlogPostMutation, DeleteBlogPostMutationVariables>(DeleteBlogPostDocument, baseOptions);
-      }
-export type DeleteBlogPostMutationHookResult = ReturnType<typeof useDeleteBlogPostMutation>;
-export type DeleteBlogPostMutationResult = Apollo.MutationResult<DeleteBlogPostMutation>;
-export type DeleteBlogPostMutationOptions = Apollo.BaseMutationOptions<DeleteBlogPostMutation, DeleteBlogPostMutationVariables>;
-export const DeleteCollectionDocument = gql`
-    mutation deleteCollection($projectId: ID!, $id: ID!) {
-  deleteCollection(id: $id, projectId: $projectId) {
-    id
-  }
+export function useDeleteBlogPostMutation(
+  baseOptions?: Apollo.MutationHookOptions<DeleteBlogPostMutation, DeleteBlogPostMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<DeleteBlogPostMutation, DeleteBlogPostMutationVariables>(
+    DeleteBlogPostDocument,
+    options
+  )
 }
-    `;
-export type DeleteCollectionMutationFn = Apollo.MutationFunction<DeleteCollectionMutation, DeleteCollectionMutationVariables>;
+export type DeleteBlogPostMutationHookResult = ReturnType<typeof useDeleteBlogPostMutation>
+export type DeleteBlogPostMutationResult = Apollo.MutationResult<DeleteBlogPostMutation>
+export type DeleteBlogPostMutationOptions = Apollo.BaseMutationOptions<
+  DeleteBlogPostMutation,
+  DeleteBlogPostMutationVariables
+>
+export const DeleteCollectionDocument = gql`
+  mutation deleteCollection($projectId: ID!, $id: ID!) {
+    deleteCollection(id: $id, projectId: $projectId) {
+      id
+    }
+  }
+`
+export type DeleteCollectionMutationFn = Apollo.MutationFunction<
+  DeleteCollectionMutation,
+  DeleteCollectionMutationVariables
+>
 
 /**
  * __useDeleteCollectionMutation__
@@ -3417,18 +3265,33 @@ export type DeleteCollectionMutationFn = Apollo.MutationFunction<DeleteCollectio
  *   },
  * });
  */
-export function useDeleteCollectionMutation(baseOptions?: Apollo.MutationHookOptions<DeleteCollectionMutation, DeleteCollectionMutationVariables>) {
-        return Apollo.useMutation<DeleteCollectionMutation, DeleteCollectionMutationVariables>(DeleteCollectionDocument, baseOptions);
-      }
-export type DeleteCollectionMutationHookResult = ReturnType<typeof useDeleteCollectionMutation>;
-export type DeleteCollectionMutationResult = Apollo.MutationResult<DeleteCollectionMutation>;
-export type DeleteCollectionMutationOptions = Apollo.BaseMutationOptions<DeleteCollectionMutation, DeleteCollectionMutationVariables>;
-export const DeleteCommentDocument = gql`
-    mutation deleteComment($id: ID!) {
-  deleteComment(id: $id)
+export function useDeleteCollectionMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteCollectionMutation,
+    DeleteCollectionMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<DeleteCollectionMutation, DeleteCollectionMutationVariables>(
+    DeleteCollectionDocument,
+    options
+  )
 }
-    `;
-export type DeleteCommentMutationFn = Apollo.MutationFunction<DeleteCommentMutation, DeleteCommentMutationVariables>;
+export type DeleteCollectionMutationHookResult = ReturnType<typeof useDeleteCollectionMutation>
+export type DeleteCollectionMutationResult = Apollo.MutationResult<DeleteCollectionMutation>
+export type DeleteCollectionMutationOptions = Apollo.BaseMutationOptions<
+  DeleteCollectionMutation,
+  DeleteCollectionMutationVariables
+>
+export const DeleteCommentDocument = gql`
+  mutation deleteComment($id: ID!) {
+    deleteComment(id: $id)
+  }
+`
+export type DeleteCommentMutationFn = Apollo.MutationFunction<
+  DeleteCommentMutation,
+  DeleteCommentMutationVariables
+>
 
 /**
  * __useDeleteCommentMutation__
@@ -3447,18 +3310,30 @@ export type DeleteCommentMutationFn = Apollo.MutationFunction<DeleteCommentMutat
  *   },
  * });
  */
-export function useDeleteCommentMutation(baseOptions?: Apollo.MutationHookOptions<DeleteCommentMutation, DeleteCommentMutationVariables>) {
-        return Apollo.useMutation<DeleteCommentMutation, DeleteCommentMutationVariables>(DeleteCommentDocument, baseOptions);
-      }
-export type DeleteCommentMutationHookResult = ReturnType<typeof useDeleteCommentMutation>;
-export type DeleteCommentMutationResult = Apollo.MutationResult<DeleteCommentMutation>;
-export type DeleteCommentMutationOptions = Apollo.BaseMutationOptions<DeleteCommentMutation, DeleteCommentMutationVariables>;
-export const DeleteCurrentUserDocument = gql`
-    mutation deleteCurrentUser {
-  deleteCurrentUser
+export function useDeleteCommentMutation(
+  baseOptions?: Apollo.MutationHookOptions<DeleteCommentMutation, DeleteCommentMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<DeleteCommentMutation, DeleteCommentMutationVariables>(
+    DeleteCommentDocument,
+    options
+  )
 }
-    `;
-export type DeleteCurrentUserMutationFn = Apollo.MutationFunction<DeleteCurrentUserMutation, DeleteCurrentUserMutationVariables>;
+export type DeleteCommentMutationHookResult = ReturnType<typeof useDeleteCommentMutation>
+export type DeleteCommentMutationResult = Apollo.MutationResult<DeleteCommentMutation>
+export type DeleteCommentMutationOptions = Apollo.BaseMutationOptions<
+  DeleteCommentMutation,
+  DeleteCommentMutationVariables
+>
+export const DeleteCurrentUserDocument = gql`
+  mutation deleteCurrentUser {
+    deleteCurrentUser
+  }
+`
+export type DeleteCurrentUserMutationFn = Apollo.MutationFunction<
+  DeleteCurrentUserMutation,
+  DeleteCurrentUserMutationVariables
+>
 
 /**
  * __useDeleteCurrentUserMutation__
@@ -3476,18 +3351,33 @@ export type DeleteCurrentUserMutationFn = Apollo.MutationFunction<DeleteCurrentU
  *   },
  * });
  */
-export function useDeleteCurrentUserMutation(baseOptions?: Apollo.MutationHookOptions<DeleteCurrentUserMutation, DeleteCurrentUserMutationVariables>) {
-        return Apollo.useMutation<DeleteCurrentUserMutation, DeleteCurrentUserMutationVariables>(DeleteCurrentUserDocument, baseOptions);
-      }
-export type DeleteCurrentUserMutationHookResult = ReturnType<typeof useDeleteCurrentUserMutation>;
-export type DeleteCurrentUserMutationResult = Apollo.MutationResult<DeleteCurrentUserMutation>;
-export type DeleteCurrentUserMutationOptions = Apollo.BaseMutationOptions<DeleteCurrentUserMutation, DeleteCurrentUserMutationVariables>;
-export const DeleteNotificationDocument = gql`
-    mutation deleteNotification($id: ID!) {
-  deleteNotification(id: $id)
+export function useDeleteCurrentUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteCurrentUserMutation,
+    DeleteCurrentUserMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<DeleteCurrentUserMutation, DeleteCurrentUserMutationVariables>(
+    DeleteCurrentUserDocument,
+    options
+  )
 }
-    `;
-export type DeleteNotificationMutationFn = Apollo.MutationFunction<DeleteNotificationMutation, DeleteNotificationMutationVariables>;
+export type DeleteCurrentUserMutationHookResult = ReturnType<typeof useDeleteCurrentUserMutation>
+export type DeleteCurrentUserMutationResult = Apollo.MutationResult<DeleteCurrentUserMutation>
+export type DeleteCurrentUserMutationOptions = Apollo.BaseMutationOptions<
+  DeleteCurrentUserMutation,
+  DeleteCurrentUserMutationVariables
+>
+export const DeleteNotificationDocument = gql`
+  mutation deleteNotification($id: ID!) {
+    deleteNotification(id: $id)
+  }
+`
+export type DeleteNotificationMutationFn = Apollo.MutationFunction<
+  DeleteNotificationMutation,
+  DeleteNotificationMutationVariables
+>
 
 /**
  * __useDeleteNotificationMutation__
@@ -3506,20 +3396,35 @@ export type DeleteNotificationMutationFn = Apollo.MutationFunction<DeleteNotific
  *   },
  * });
  */
-export function useDeleteNotificationMutation(baseOptions?: Apollo.MutationHookOptions<DeleteNotificationMutation, DeleteNotificationMutationVariables>) {
-        return Apollo.useMutation<DeleteNotificationMutation, DeleteNotificationMutationVariables>(DeleteNotificationDocument, baseOptions);
-      }
-export type DeleteNotificationMutationHookResult = ReturnType<typeof useDeleteNotificationMutation>;
-export type DeleteNotificationMutationResult = Apollo.MutationResult<DeleteNotificationMutation>;
-export type DeleteNotificationMutationOptions = Apollo.BaseMutationOptions<DeleteNotificationMutation, DeleteNotificationMutationVariables>;
-export const DeletePostDocument = gql`
-    mutation deletePost($id: ID!) {
-  deletePost(id: $id) {
-    id
-  }
+export function useDeleteNotificationMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteNotificationMutation,
+    DeleteNotificationMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<DeleteNotificationMutation, DeleteNotificationMutationVariables>(
+    DeleteNotificationDocument,
+    options
+  )
 }
-    `;
-export type DeletePostMutationFn = Apollo.MutationFunction<DeletePostMutation, DeletePostMutationVariables>;
+export type DeleteNotificationMutationHookResult = ReturnType<typeof useDeleteNotificationMutation>
+export type DeleteNotificationMutationResult = Apollo.MutationResult<DeleteNotificationMutation>
+export type DeleteNotificationMutationOptions = Apollo.BaseMutationOptions<
+  DeleteNotificationMutation,
+  DeleteNotificationMutationVariables
+>
+export const DeletePostDocument = gql`
+  mutation deletePost($id: ID!) {
+    deletePost(id: $id) {
+      id
+    }
+  }
+`
+export type DeletePostMutationFn = Apollo.MutationFunction<
+  DeletePostMutation,
+  DeletePostMutationVariables
+>
 
 /**
  * __useDeletePostMutation__
@@ -3538,18 +3443,30 @@ export type DeletePostMutationFn = Apollo.MutationFunction<DeletePostMutation, D
  *   },
  * });
  */
-export function useDeletePostMutation(baseOptions?: Apollo.MutationHookOptions<DeletePostMutation, DeletePostMutationVariables>) {
-        return Apollo.useMutation<DeletePostMutation, DeletePostMutationVariables>(DeletePostDocument, baseOptions);
-      }
-export type DeletePostMutationHookResult = ReturnType<typeof useDeletePostMutation>;
-export type DeletePostMutationResult = Apollo.MutationResult<DeletePostMutation>;
-export type DeletePostMutationOptions = Apollo.BaseMutationOptions<DeletePostMutation, DeletePostMutationVariables>;
-export const DeleteProjectDocument = gql`
-    mutation deleteProject($id: ID!) {
-  deleteProject(id: $id)
+export function useDeletePostMutation(
+  baseOptions?: Apollo.MutationHookOptions<DeletePostMutation, DeletePostMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<DeletePostMutation, DeletePostMutationVariables>(
+    DeletePostDocument,
+    options
+  )
 }
-    `;
-export type DeleteProjectMutationFn = Apollo.MutationFunction<DeleteProjectMutation, DeleteProjectMutationVariables>;
+export type DeletePostMutationHookResult = ReturnType<typeof useDeletePostMutation>
+export type DeletePostMutationResult = Apollo.MutationResult<DeletePostMutation>
+export type DeletePostMutationOptions = Apollo.BaseMutationOptions<
+  DeletePostMutation,
+  DeletePostMutationVariables
+>
+export const DeleteProjectDocument = gql`
+  mutation deleteProject($id: ID!) {
+    deleteProject(id: $id)
+  }
+`
+export type DeleteProjectMutationFn = Apollo.MutationFunction<
+  DeleteProjectMutation,
+  DeleteProjectMutationVariables
+>
 
 /**
  * __useDeleteProjectMutation__
@@ -3568,20 +3485,33 @@ export type DeleteProjectMutationFn = Apollo.MutationFunction<DeleteProjectMutat
  *   },
  * });
  */
-export function useDeleteProjectMutation(baseOptions?: Apollo.MutationHookOptions<DeleteProjectMutation, DeleteProjectMutationVariables>) {
-        return Apollo.useMutation<DeleteProjectMutation, DeleteProjectMutationVariables>(DeleteProjectDocument, baseOptions);
-      }
-export type DeleteProjectMutationHookResult = ReturnType<typeof useDeleteProjectMutation>;
-export type DeleteProjectMutationResult = Apollo.MutationResult<DeleteProjectMutation>;
-export type DeleteProjectMutationOptions = Apollo.BaseMutationOptions<DeleteProjectMutation, DeleteProjectMutationVariables>;
-export const EditCollectionDocument = gql`
-    mutation editCollection($input: EditCollectionInput!, $id: ID!) {
-  editCollection(input: $input, id: $id) {
-    ...Collection
-  }
+export function useDeleteProjectMutation(
+  baseOptions?: Apollo.MutationHookOptions<DeleteProjectMutation, DeleteProjectMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<DeleteProjectMutation, DeleteProjectMutationVariables>(
+    DeleteProjectDocument,
+    options
+  )
 }
-    ${CollectionFragmentDoc}`;
-export type EditCollectionMutationFn = Apollo.MutationFunction<EditCollectionMutation, EditCollectionMutationVariables>;
+export type DeleteProjectMutationHookResult = ReturnType<typeof useDeleteProjectMutation>
+export type DeleteProjectMutationResult = Apollo.MutationResult<DeleteProjectMutation>
+export type DeleteProjectMutationOptions = Apollo.BaseMutationOptions<
+  DeleteProjectMutation,
+  DeleteProjectMutationVariables
+>
+export const EditCollectionDocument = gql`
+  mutation editCollection($input: EditCollectionInput!, $id: ID!) {
+    editCollection(input: $input, id: $id) {
+      ...Collection
+    }
+  }
+  ${CollectionFragmentDoc}
+`
+export type EditCollectionMutationFn = Apollo.MutationFunction<
+  EditCollectionMutation,
+  EditCollectionMutationVariables
+>
 
 /**
  * __useEditCollectionMutation__
@@ -3601,20 +3531,33 @@ export type EditCollectionMutationFn = Apollo.MutationFunction<EditCollectionMut
  *   },
  * });
  */
-export function useEditCollectionMutation(baseOptions?: Apollo.MutationHookOptions<EditCollectionMutation, EditCollectionMutationVariables>) {
-        return Apollo.useMutation<EditCollectionMutation, EditCollectionMutationVariables>(EditCollectionDocument, baseOptions);
-      }
-export type EditCollectionMutationHookResult = ReturnType<typeof useEditCollectionMutation>;
-export type EditCollectionMutationResult = Apollo.MutationResult<EditCollectionMutation>;
-export type EditCollectionMutationOptions = Apollo.BaseMutationOptions<EditCollectionMutation, EditCollectionMutationVariables>;
-export const EditPostDocument = gql`
-    mutation editPost($id: ID!, $input: EditPostInput!) {
-  editPost(id: $id, input: $input) {
-    ...Post
-  }
+export function useEditCollectionMutation(
+  baseOptions?: Apollo.MutationHookOptions<EditCollectionMutation, EditCollectionMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<EditCollectionMutation, EditCollectionMutationVariables>(
+    EditCollectionDocument,
+    options
+  )
 }
-    ${PostFragmentDoc}`;
-export type EditPostMutationFn = Apollo.MutationFunction<EditPostMutation, EditPostMutationVariables>;
+export type EditCollectionMutationHookResult = ReturnType<typeof useEditCollectionMutation>
+export type EditCollectionMutationResult = Apollo.MutationResult<EditCollectionMutation>
+export type EditCollectionMutationOptions = Apollo.BaseMutationOptions<
+  EditCollectionMutation,
+  EditCollectionMutationVariables
+>
+export const EditPostDocument = gql`
+  mutation editPost($id: ID!, $input: EditPostInput!) {
+    editPost(id: $id, input: $input) {
+      ...Post
+    }
+  }
+  ${PostFragmentDoc}
+`
+export type EditPostMutationFn = Apollo.MutationFunction<
+  EditPostMutation,
+  EditPostMutationVariables
+>
 
 /**
  * __useEditPostMutation__
@@ -3634,21 +3577,30 @@ export type EditPostMutationFn = Apollo.MutationFunction<EditPostMutation, EditP
  *   },
  * });
  */
-export function useEditPostMutation(baseOptions?: Apollo.MutationHookOptions<EditPostMutation, EditPostMutationVariables>) {
-        return Apollo.useMutation<EditPostMutation, EditPostMutationVariables>(EditPostDocument, baseOptions);
-      }
-export type EditPostMutationHookResult = ReturnType<typeof useEditPostMutation>;
-export type EditPostMutationResult = Apollo.MutationResult<EditPostMutation>;
-export type EditPostMutationOptions = Apollo.BaseMutationOptions<EditPostMutation, EditPostMutationVariables>;
-export const EditProjectDocument = gql`
-    mutation editProject($id: ID!, $input: ProjectInput!) {
-  editProject(id: $id, input: $input) {
-    id
-    title
-  }
+export function useEditPostMutation(
+  baseOptions?: Apollo.MutationHookOptions<EditPostMutation, EditPostMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<EditPostMutation, EditPostMutationVariables>(EditPostDocument, options)
 }
-    `;
-export type EditProjectMutationFn = Apollo.MutationFunction<EditProjectMutation, EditProjectMutationVariables>;
+export type EditPostMutationHookResult = ReturnType<typeof useEditPostMutation>
+export type EditPostMutationResult = Apollo.MutationResult<EditPostMutation>
+export type EditPostMutationOptions = Apollo.BaseMutationOptions<
+  EditPostMutation,
+  EditPostMutationVariables
+>
+export const EditProjectDocument = gql`
+  mutation editProject($id: ID!, $input: ProjectInput!) {
+    editProject(id: $id, input: $input) {
+      id
+      title
+    }
+  }
+`
+export type EditProjectMutationFn = Apollo.MutationFunction<
+  EditProjectMutation,
+  EditProjectMutationVariables
+>
 
 /**
  * __useEditProjectMutation__
@@ -3668,20 +3620,33 @@ export type EditProjectMutationFn = Apollo.MutationFunction<EditProjectMutation,
  *   },
  * });
  */
-export function useEditProjectMutation(baseOptions?: Apollo.MutationHookOptions<EditProjectMutation, EditProjectMutationVariables>) {
-        return Apollo.useMutation<EditProjectMutation, EditProjectMutationVariables>(EditProjectDocument, baseOptions);
-      }
-export type EditProjectMutationHookResult = ReturnType<typeof useEditProjectMutation>;
-export type EditProjectMutationResult = Apollo.MutationResult<EditProjectMutation>;
-export type EditProjectMutationOptions = Apollo.BaseMutationOptions<EditProjectMutation, EditProjectMutationVariables>;
-export const EditUserDocument = gql`
-    mutation editUser($input: EditUserInput!, $id: ID) {
-  editUser(input: $input, id: $id) {
-    ...User
-  }
+export function useEditProjectMutation(
+  baseOptions?: Apollo.MutationHookOptions<EditProjectMutation, EditProjectMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<EditProjectMutation, EditProjectMutationVariables>(
+    EditProjectDocument,
+    options
+  )
 }
-    ${UserFragmentDoc}`;
-export type EditUserMutationFn = Apollo.MutationFunction<EditUserMutation, EditUserMutationVariables>;
+export type EditProjectMutationHookResult = ReturnType<typeof useEditProjectMutation>
+export type EditProjectMutationResult = Apollo.MutationResult<EditProjectMutation>
+export type EditProjectMutationOptions = Apollo.BaseMutationOptions<
+  EditProjectMutation,
+  EditProjectMutationVariables
+>
+export const EditUserDocument = gql`
+  mutation editUser($input: EditUserInput!, $id: ID) {
+    editUser(input: $input, id: $id) {
+      ...User
+    }
+  }
+  ${UserFragmentDoc}
+`
+export type EditUserMutationFn = Apollo.MutationFunction<
+  EditUserMutation,
+  EditUserMutationVariables
+>
 
 /**
  * __useEditUserMutation__
@@ -3701,24 +3666,34 @@ export type EditUserMutationFn = Apollo.MutationFunction<EditUserMutation, EditU
  *   },
  * });
  */
-export function useEditUserMutation(baseOptions?: Apollo.MutationHookOptions<EditUserMutation, EditUserMutationVariables>) {
-        return Apollo.useMutation<EditUserMutation, EditUserMutationVariables>(EditUserDocument, baseOptions);
-      }
-export type EditUserMutationHookResult = ReturnType<typeof useEditUserMutation>;
-export type EditUserMutationResult = Apollo.MutationResult<EditUserMutation>;
-export type EditUserMutationOptions = Apollo.BaseMutationOptions<EditUserMutation, EditUserMutationVariables>;
-export const FollowProjectDocument = gql`
-    mutation followProject($id: ID!) {
-  followProject(id: $id) {
-    cover {
-      uri
-      default
-    }
-    ...Project
-  }
+export function useEditUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<EditUserMutation, EditUserMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<EditUserMutation, EditUserMutationVariables>(EditUserDocument, options)
 }
-    ${ProjectFragmentDoc}`;
-export type FollowProjectMutationFn = Apollo.MutationFunction<FollowProjectMutation, FollowProjectMutationVariables>;
+export type EditUserMutationHookResult = ReturnType<typeof useEditUserMutation>
+export type EditUserMutationResult = Apollo.MutationResult<EditUserMutation>
+export type EditUserMutationOptions = Apollo.BaseMutationOptions<
+  EditUserMutation,
+  EditUserMutationVariables
+>
+export const FollowProjectDocument = gql`
+  mutation followProject($id: ID!) {
+    followProject(id: $id) {
+      cover {
+        uri
+        default
+      }
+      ...Project
+    }
+  }
+  ${ProjectFragmentDoc}
+`
+export type FollowProjectMutationFn = Apollo.MutationFunction<
+  FollowProjectMutation,
+  FollowProjectMutationVariables
+>
 
 /**
  * __useFollowProjectMutation__
@@ -3737,24 +3712,36 @@ export type FollowProjectMutationFn = Apollo.MutationFunction<FollowProjectMutat
  *   },
  * });
  */
-export function useFollowProjectMutation(baseOptions?: Apollo.MutationHookOptions<FollowProjectMutation, FollowProjectMutationVariables>) {
-        return Apollo.useMutation<FollowProjectMutation, FollowProjectMutationVariables>(FollowProjectDocument, baseOptions);
-      }
-export type FollowProjectMutationHookResult = ReturnType<typeof useFollowProjectMutation>;
-export type FollowProjectMutationResult = Apollo.MutationResult<FollowProjectMutation>;
-export type FollowProjectMutationOptions = Apollo.BaseMutationOptions<FollowProjectMutation, FollowProjectMutationVariables>;
+export function useFollowProjectMutation(
+  baseOptions?: Apollo.MutationHookOptions<FollowProjectMutation, FollowProjectMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<FollowProjectMutation, FollowProjectMutationVariables>(
+    FollowProjectDocument,
+    options
+  )
+}
+export type FollowProjectMutationHookResult = ReturnType<typeof useFollowProjectMutation>
+export type FollowProjectMutationResult = Apollo.MutationResult<FollowProjectMutation>
+export type FollowProjectMutationOptions = Apollo.BaseMutationOptions<
+  FollowProjectMutation,
+  FollowProjectMutationVariables
+>
 export const LikeCommentDocument = gql`
-    mutation likeComment($id: ID!) {
-  likeComment(id: $id) {
-    id
-    likes {
-      isLiked
-      totalCount
+  mutation likeComment($id: ID!) {
+    likeComment(id: $id) {
+      id
+      likes {
+        isLiked
+        totalCount
+      }
     }
   }
-}
-    `;
-export type LikeCommentMutationFn = Apollo.MutationFunction<LikeCommentMutation, LikeCommentMutationVariables>;
+`
+export type LikeCommentMutationFn = Apollo.MutationFunction<
+  LikeCommentMutation,
+  LikeCommentMutationVariables
+>
 
 /**
  * __useLikeCommentMutation__
@@ -3773,24 +3760,36 @@ export type LikeCommentMutationFn = Apollo.MutationFunction<LikeCommentMutation,
  *   },
  * });
  */
-export function useLikeCommentMutation(baseOptions?: Apollo.MutationHookOptions<LikeCommentMutation, LikeCommentMutationVariables>) {
-        return Apollo.useMutation<LikeCommentMutation, LikeCommentMutationVariables>(LikeCommentDocument, baseOptions);
-      }
-export type LikeCommentMutationHookResult = ReturnType<typeof useLikeCommentMutation>;
-export type LikeCommentMutationResult = Apollo.MutationResult<LikeCommentMutation>;
-export type LikeCommentMutationOptions = Apollo.BaseMutationOptions<LikeCommentMutation, LikeCommentMutationVariables>;
+export function useLikeCommentMutation(
+  baseOptions?: Apollo.MutationHookOptions<LikeCommentMutation, LikeCommentMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<LikeCommentMutation, LikeCommentMutationVariables>(
+    LikeCommentDocument,
+    options
+  )
+}
+export type LikeCommentMutationHookResult = ReturnType<typeof useLikeCommentMutation>
+export type LikeCommentMutationResult = Apollo.MutationResult<LikeCommentMutation>
+export type LikeCommentMutationOptions = Apollo.BaseMutationOptions<
+  LikeCommentMutation,
+  LikeCommentMutationVariables
+>
 export const LikePostDocument = gql`
-    mutation likePost($id: ID!) {
-  likePost(id: $id) {
-    id
-    likes {
-      isLiked
-      totalCount
+  mutation likePost($id: ID!) {
+    likePost(id: $id) {
+      id
+      likes {
+        isLiked
+        totalCount
+      }
     }
   }
-}
-    `;
-export type LikePostMutationFn = Apollo.MutationFunction<LikePostMutation, LikePostMutationVariables>;
+`
+export type LikePostMutationFn = Apollo.MutationFunction<
+  LikePostMutation,
+  LikePostMutationVariables
+>
 
 /**
  * __useLikePostMutation__
@@ -3809,18 +3808,27 @@ export type LikePostMutationFn = Apollo.MutationFunction<LikePostMutation, LikeP
  *   },
  * });
  */
-export function useLikePostMutation(baseOptions?: Apollo.MutationHookOptions<LikePostMutation, LikePostMutationVariables>) {
-        return Apollo.useMutation<LikePostMutation, LikePostMutationVariables>(LikePostDocument, baseOptions);
-      }
-export type LikePostMutationHookResult = ReturnType<typeof useLikePostMutation>;
-export type LikePostMutationResult = Apollo.MutationResult<LikePostMutation>;
-export type LikePostMutationOptions = Apollo.BaseMutationOptions<LikePostMutation, LikePostMutationVariables>;
-export const MarkAllNotificationsSeenDocument = gql`
-    mutation markAllNotificationsSeen {
-  markAllNotificationsSeen
+export function useLikePostMutation(
+  baseOptions?: Apollo.MutationHookOptions<LikePostMutation, LikePostMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<LikePostMutation, LikePostMutationVariables>(LikePostDocument, options)
 }
-    `;
-export type MarkAllNotificationsSeenMutationFn = Apollo.MutationFunction<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>;
+export type LikePostMutationHookResult = ReturnType<typeof useLikePostMutation>
+export type LikePostMutationResult = Apollo.MutationResult<LikePostMutation>
+export type LikePostMutationOptions = Apollo.BaseMutationOptions<
+  LikePostMutation,
+  LikePostMutationVariables
+>
+export const MarkAllNotificationsSeenDocument = gql`
+  mutation markAllNotificationsSeen {
+    markAllNotificationsSeen
+  }
+`
+export type MarkAllNotificationsSeenMutationFn = Apollo.MutationFunction<
+  MarkAllNotificationsSeenMutation,
+  MarkAllNotificationsSeenMutationVariables
+>
 
 /**
  * __useMarkAllNotificationsSeenMutation__
@@ -3838,20 +3846,39 @@ export type MarkAllNotificationsSeenMutationFn = Apollo.MutationFunction<MarkAll
  *   },
  * });
  */
-export function useMarkAllNotificationsSeenMutation(baseOptions?: Apollo.MutationHookOptions<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>) {
-        return Apollo.useMutation<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>(MarkAllNotificationsSeenDocument, baseOptions);
-      }
-export type MarkAllNotificationsSeenMutationHookResult = ReturnType<typeof useMarkAllNotificationsSeenMutation>;
-export type MarkAllNotificationsSeenMutationResult = Apollo.MutationResult<MarkAllNotificationsSeenMutation>;
-export type MarkAllNotificationsSeenMutationOptions = Apollo.BaseMutationOptions<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>;
-export const MarkNotificationSeenDocument = gql`
-    mutation markNotificationSeen($id: ID!) {
-  markNotificationSeen(id: $id) {
-    ...Notification
-  }
+export function useMarkAllNotificationsSeenMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    MarkAllNotificationsSeenMutation,
+    MarkAllNotificationsSeenMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<
+    MarkAllNotificationsSeenMutation,
+    MarkAllNotificationsSeenMutationVariables
+  >(MarkAllNotificationsSeenDocument, options)
 }
-    ${NotificationFragmentDoc}`;
-export type MarkNotificationSeenMutationFn = Apollo.MutationFunction<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>;
+export type MarkAllNotificationsSeenMutationHookResult = ReturnType<
+  typeof useMarkAllNotificationsSeenMutation
+>
+export type MarkAllNotificationsSeenMutationResult =
+  Apollo.MutationResult<MarkAllNotificationsSeenMutation>
+export type MarkAllNotificationsSeenMutationOptions = Apollo.BaseMutationOptions<
+  MarkAllNotificationsSeenMutation,
+  MarkAllNotificationsSeenMutationVariables
+>
+export const MarkNotificationSeenDocument = gql`
+  mutation markNotificationSeen($id: ID!) {
+    markNotificationSeen(id: $id) {
+      ...Notification
+    }
+  }
+  ${NotificationFragmentDoc}
+`
+export type MarkNotificationSeenMutationFn = Apollo.MutationFunction<
+  MarkNotificationSeenMutation,
+  MarkNotificationSeenMutationVariables
+>
 
 /**
  * __useMarkNotificationSeenMutation__
@@ -3870,22 +3897,39 @@ export type MarkNotificationSeenMutationFn = Apollo.MutationFunction<MarkNotific
  *   },
  * });
  */
-export function useMarkNotificationSeenMutation(baseOptions?: Apollo.MutationHookOptions<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>) {
-        return Apollo.useMutation<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>(MarkNotificationSeenDocument, baseOptions);
-      }
-export type MarkNotificationSeenMutationHookResult = ReturnType<typeof useMarkNotificationSeenMutation>;
-export type MarkNotificationSeenMutationResult = Apollo.MutationResult<MarkNotificationSeenMutation>;
-export type MarkNotificationSeenMutationOptions = Apollo.BaseMutationOptions<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>;
-export const PreSignUrlDocument = gql`
-    mutation preSignUrl($input: PreSignedUrlInput!) {
-  preSignUrl(input: $input) {
-    url
-    type
-    filename
-  }
+export function useMarkNotificationSeenMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    MarkNotificationSeenMutation,
+    MarkNotificationSeenMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>(
+    MarkNotificationSeenDocument,
+    options
+  )
 }
-    `;
-export type PreSignUrlMutationFn = Apollo.MutationFunction<PreSignUrlMutation, PreSignUrlMutationVariables>;
+export type MarkNotificationSeenMutationHookResult = ReturnType<
+  typeof useMarkNotificationSeenMutation
+>
+export type MarkNotificationSeenMutationResult = Apollo.MutationResult<MarkNotificationSeenMutation>
+export type MarkNotificationSeenMutationOptions = Apollo.BaseMutationOptions<
+  MarkNotificationSeenMutation,
+  MarkNotificationSeenMutationVariables
+>
+export const PreSignUrlDocument = gql`
+  mutation preSignUrl($input: PreSignedUrlInput!) {
+    preSignUrl(input: $input) {
+      url
+      type
+      filename
+    }
+  }
+`
+export type PreSignUrlMutationFn = Apollo.MutationFunction<
+  PreSignUrlMutation,
+  PreSignUrlMutationVariables
+>
 
 /**
  * __usePreSignUrlMutation__
@@ -3904,22 +3948,34 @@ export type PreSignUrlMutationFn = Apollo.MutationFunction<PreSignUrlMutation, P
  *   },
  * });
  */
-export function usePreSignUrlMutation(baseOptions?: Apollo.MutationHookOptions<PreSignUrlMutation, PreSignUrlMutationVariables>) {
-        return Apollo.useMutation<PreSignUrlMutation, PreSignUrlMutationVariables>(PreSignUrlDocument, baseOptions);
-      }
-export type PreSignUrlMutationHookResult = ReturnType<typeof usePreSignUrlMutation>;
-export type PreSignUrlMutationResult = Apollo.MutationResult<PreSignUrlMutation>;
-export type PreSignUrlMutationOptions = Apollo.BaseMutationOptions<PreSignUrlMutation, PreSignUrlMutationVariables>;
-export const PreSignUrlsDocument = gql`
-    mutation preSignUrls($input: [PreSignedUrlnput]!) {
-  preSignUrls(input: $input) {
-    url
-    type
-    filename
-  }
+export function usePreSignUrlMutation(
+  baseOptions?: Apollo.MutationHookOptions<PreSignUrlMutation, PreSignUrlMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<PreSignUrlMutation, PreSignUrlMutationVariables>(
+    PreSignUrlDocument,
+    options
+  )
 }
-    `;
-export type PreSignUrlsMutationFn = Apollo.MutationFunction<PreSignUrlsMutation, PreSignUrlsMutationVariables>;
+export type PreSignUrlMutationHookResult = ReturnType<typeof usePreSignUrlMutation>
+export type PreSignUrlMutationResult = Apollo.MutationResult<PreSignUrlMutation>
+export type PreSignUrlMutationOptions = Apollo.BaseMutationOptions<
+  PreSignUrlMutation,
+  PreSignUrlMutationVariables
+>
+export const PreSignUrlsDocument = gql`
+  mutation preSignUrls($input: [PreSignedUrlnput]!) {
+    preSignUrls(input: $input) {
+      url
+      type
+      filename
+    }
+  }
+`
+export type PreSignUrlsMutationFn = Apollo.MutationFunction<
+  PreSignUrlsMutation,
+  PreSignUrlsMutationVariables
+>
 
 /**
  * __usePreSignUrlsMutation__
@@ -3938,20 +3994,32 @@ export type PreSignUrlsMutationFn = Apollo.MutationFunction<PreSignUrlsMutation,
  *   },
  * });
  */
-export function usePreSignUrlsMutation(baseOptions?: Apollo.MutationHookOptions<PreSignUrlsMutation, PreSignUrlsMutationVariables>) {
-        return Apollo.useMutation<PreSignUrlsMutation, PreSignUrlsMutationVariables>(PreSignUrlsDocument, baseOptions);
-      }
-export type PreSignUrlsMutationHookResult = ReturnType<typeof usePreSignUrlsMutation>;
-export type PreSignUrlsMutationResult = Apollo.MutationResult<PreSignUrlsMutation>;
-export type PreSignUrlsMutationOptions = Apollo.BaseMutationOptions<PreSignUrlsMutation, PreSignUrlsMutationVariables>;
-export const RefreshTokenDocument = gql`
-    mutation refreshToken($refreshToken: String!) {
-  token: refreshToken(refreshToken: $refreshToken) {
-    access_token
-  }
+export function usePreSignUrlsMutation(
+  baseOptions?: Apollo.MutationHookOptions<PreSignUrlsMutation, PreSignUrlsMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<PreSignUrlsMutation, PreSignUrlsMutationVariables>(
+    PreSignUrlsDocument,
+    options
+  )
 }
-    `;
-export type RefreshTokenMutationFn = Apollo.MutationFunction<RefreshTokenMutation, RefreshTokenMutationVariables>;
+export type PreSignUrlsMutationHookResult = ReturnType<typeof usePreSignUrlsMutation>
+export type PreSignUrlsMutationResult = Apollo.MutationResult<PreSignUrlsMutation>
+export type PreSignUrlsMutationOptions = Apollo.BaseMutationOptions<
+  PreSignUrlsMutation,
+  PreSignUrlsMutationVariables
+>
+export const RefreshTokenDocument = gql`
+  mutation refreshToken($refreshToken: String!) {
+    token: refreshToken(refreshToken: $refreshToken) {
+      access_token
+    }
+  }
+`
+export type RefreshTokenMutationFn = Apollo.MutationFunction<
+  RefreshTokenMutation,
+  RefreshTokenMutationVariables
+>
 
 /**
  * __useRefreshTokenMutation__
@@ -3970,18 +4038,30 @@ export type RefreshTokenMutationFn = Apollo.MutationFunction<RefreshTokenMutatio
  *   },
  * });
  */
-export function useRefreshTokenMutation(baseOptions?: Apollo.MutationHookOptions<RefreshTokenMutation, RefreshTokenMutationVariables>) {
-        return Apollo.useMutation<RefreshTokenMutation, RefreshTokenMutationVariables>(RefreshTokenDocument, baseOptions);
-      }
-export type RefreshTokenMutationHookResult = ReturnType<typeof useRefreshTokenMutation>;
-export type RefreshTokenMutationResult = Apollo.MutationResult<RefreshTokenMutation>;
-export type RefreshTokenMutationOptions = Apollo.BaseMutationOptions<RefreshTokenMutation, RefreshTokenMutationVariables>;
-export const RegisterDeviceTokenDocument = gql`
-    mutation registerDeviceToken($token: String!, $platform: PlatformType!) {
-  registerDeviceToken(token: $token, platform: $platform)
+export function useRefreshTokenMutation(
+  baseOptions?: Apollo.MutationHookOptions<RefreshTokenMutation, RefreshTokenMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<RefreshTokenMutation, RefreshTokenMutationVariables>(
+    RefreshTokenDocument,
+    options
+  )
 }
-    `;
-export type RegisterDeviceTokenMutationFn = Apollo.MutationFunction<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>;
+export type RefreshTokenMutationHookResult = ReturnType<typeof useRefreshTokenMutation>
+export type RefreshTokenMutationResult = Apollo.MutationResult<RefreshTokenMutation>
+export type RefreshTokenMutationOptions = Apollo.BaseMutationOptions<
+  RefreshTokenMutation,
+  RefreshTokenMutationVariables
+>
+export const RegisterDeviceTokenDocument = gql`
+  mutation registerDeviceToken($token: String!, $platform: PlatformType!) {
+    registerDeviceToken(token: $token, platform: $platform)
+  }
+`
+export type RegisterDeviceTokenMutationFn = Apollo.MutationFunction<
+  RegisterDeviceTokenMutation,
+  RegisterDeviceTokenMutationVariables
+>
 
 /**
  * __useRegisterDeviceTokenMutation__
@@ -4001,18 +4081,35 @@ export type RegisterDeviceTokenMutationFn = Apollo.MutationFunction<RegisterDevi
  *   },
  * });
  */
-export function useRegisterDeviceTokenMutation(baseOptions?: Apollo.MutationHookOptions<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>) {
-        return Apollo.useMutation<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>(RegisterDeviceTokenDocument, baseOptions);
-      }
-export type RegisterDeviceTokenMutationHookResult = ReturnType<typeof useRegisterDeviceTokenMutation>;
-export type RegisterDeviceTokenMutationResult = Apollo.MutationResult<RegisterDeviceTokenMutation>;
-export type RegisterDeviceTokenMutationOptions = Apollo.BaseMutationOptions<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>;
-export const SendPromoDocument = gql`
-    mutation sendPromo($number: String!) {
-  sendPromo(number: $number)
+export function useRegisterDeviceTokenMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    RegisterDeviceTokenMutation,
+    RegisterDeviceTokenMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>(
+    RegisterDeviceTokenDocument,
+    options
+  )
 }
-    `;
-export type SendPromoMutationFn = Apollo.MutationFunction<SendPromoMutation, SendPromoMutationVariables>;
+export type RegisterDeviceTokenMutationHookResult = ReturnType<
+  typeof useRegisterDeviceTokenMutation
+>
+export type RegisterDeviceTokenMutationResult = Apollo.MutationResult<RegisterDeviceTokenMutation>
+export type RegisterDeviceTokenMutationOptions = Apollo.BaseMutationOptions<
+  RegisterDeviceTokenMutation,
+  RegisterDeviceTokenMutationVariables
+>
+export const SendPromoDocument = gql`
+  mutation sendPromo($number: String!) {
+    sendPromo(number: $number)
+  }
+`
+export type SendPromoMutationFn = Apollo.MutationFunction<
+  SendPromoMutation,
+  SendPromoMutationVariables
+>
 
 /**
  * __useSendPromoMutation__
@@ -4031,20 +4128,33 @@ export type SendPromoMutationFn = Apollo.MutationFunction<SendPromoMutation, Sen
  *   },
  * });
  */
-export function useSendPromoMutation(baseOptions?: Apollo.MutationHookOptions<SendPromoMutation, SendPromoMutationVariables>) {
-        return Apollo.useMutation<SendPromoMutation, SendPromoMutationVariables>(SendPromoDocument, baseOptions);
-      }
-export type SendPromoMutationHookResult = ReturnType<typeof useSendPromoMutation>;
-export type SendPromoMutationResult = Apollo.MutationResult<SendPromoMutation>;
-export type SendPromoMutationOptions = Apollo.BaseMutationOptions<SendPromoMutation, SendPromoMutationVariables>;
-export const ToggleNotificationSettingsDocument = gql`
-    mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {
-  toggleNotificationSettings(input: $input) {
-    ...UserSettings
-  }
+export function useSendPromoMutation(
+  baseOptions?: Apollo.MutationHookOptions<SendPromoMutation, SendPromoMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<SendPromoMutation, SendPromoMutationVariables>(
+    SendPromoDocument,
+    options
+  )
 }
-    ${UserSettingsFragmentDoc}`;
-export type ToggleNotificationSettingsMutationFn = Apollo.MutationFunction<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+export type SendPromoMutationHookResult = ReturnType<typeof useSendPromoMutation>
+export type SendPromoMutationResult = Apollo.MutationResult<SendPromoMutation>
+export type SendPromoMutationOptions = Apollo.BaseMutationOptions<
+  SendPromoMutation,
+  SendPromoMutationVariables
+>
+export const ToggleNotificationSettingsDocument = gql`
+  mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {
+    toggleNotificationSettings(input: $input) {
+      ...UserSettings
+    }
+  }
+  ${UserSettingsFragmentDoc}
+`
+export type ToggleNotificationSettingsMutationFn = Apollo.MutationFunction<
+  ToggleNotificationSettingsMutation,
+  ToggleNotificationSettingsMutationVariables
+>
 
 /**
  * __useToggleNotificationSettingsMutation__
@@ -4063,22 +4173,40 @@ export type ToggleNotificationSettingsMutationFn = Apollo.MutationFunction<Toggl
  *   },
  * });
  */
-export function useToggleNotificationSettingsMutation(baseOptions?: Apollo.MutationHookOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>) {
-        return Apollo.useMutation<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>(ToggleNotificationSettingsDocument, baseOptions);
-      }
-export type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
-export type ToggleNotificationSettingsMutationResult = Apollo.MutationResult<ToggleNotificationSettingsMutation>;
-export type ToggleNotificationSettingsMutationOptions = Apollo.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
-export const TranslateCommentDocument = gql`
-    mutation translateComment($id: ID!, $original: Boolean) {
-  translateComment(id: $id, original: $original) {
-    id
-    translatable
-    text
-  }
+export function useToggleNotificationSettingsMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    ToggleNotificationSettingsMutation,
+    ToggleNotificationSettingsMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<
+    ToggleNotificationSettingsMutation,
+    ToggleNotificationSettingsMutationVariables
+  >(ToggleNotificationSettingsDocument, options)
 }
-    `;
-export type TranslateCommentMutationFn = Apollo.MutationFunction<TranslateCommentMutation, TranslateCommentMutationVariables>;
+export type ToggleNotificationSettingsMutationHookResult = ReturnType<
+  typeof useToggleNotificationSettingsMutation
+>
+export type ToggleNotificationSettingsMutationResult =
+  Apollo.MutationResult<ToggleNotificationSettingsMutation>
+export type ToggleNotificationSettingsMutationOptions = Apollo.BaseMutationOptions<
+  ToggleNotificationSettingsMutation,
+  ToggleNotificationSettingsMutationVariables
+>
+export const TranslateCommentDocument = gql`
+  mutation translateComment($id: ID!, $original: Boolean) {
+    translateComment(id: $id, original: $original) {
+      id
+      translatable
+      text
+    }
+  }
+`
+export type TranslateCommentMutationFn = Apollo.MutationFunction<
+  TranslateCommentMutation,
+  TranslateCommentMutationVariables
+>
 
 /**
  * __useTranslateCommentMutation__
@@ -4098,22 +4226,37 @@ export type TranslateCommentMutationFn = Apollo.MutationFunction<TranslateCommen
  *   },
  * });
  */
-export function useTranslateCommentMutation(baseOptions?: Apollo.MutationHookOptions<TranslateCommentMutation, TranslateCommentMutationVariables>) {
-        return Apollo.useMutation<TranslateCommentMutation, TranslateCommentMutationVariables>(TranslateCommentDocument, baseOptions);
-      }
-export type TranslateCommentMutationHookResult = ReturnType<typeof useTranslateCommentMutation>;
-export type TranslateCommentMutationResult = Apollo.MutationResult<TranslateCommentMutation>;
-export type TranslateCommentMutationOptions = Apollo.BaseMutationOptions<TranslateCommentMutation, TranslateCommentMutationVariables>;
-export const TranslatePostDocument = gql`
-    mutation translatePost($id: ID!, $original: Boolean) {
-  translatePost(id: $id, original: $original) {
-    id
-    translatable
-    caption
-  }
+export function useTranslateCommentMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    TranslateCommentMutation,
+    TranslateCommentMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<TranslateCommentMutation, TranslateCommentMutationVariables>(
+    TranslateCommentDocument,
+    options
+  )
 }
-    `;
-export type TranslatePostMutationFn = Apollo.MutationFunction<TranslatePostMutation, TranslatePostMutationVariables>;
+export type TranslateCommentMutationHookResult = ReturnType<typeof useTranslateCommentMutation>
+export type TranslateCommentMutationResult = Apollo.MutationResult<TranslateCommentMutation>
+export type TranslateCommentMutationOptions = Apollo.BaseMutationOptions<
+  TranslateCommentMutation,
+  TranslateCommentMutationVariables
+>
+export const TranslatePostDocument = gql`
+  mutation translatePost($id: ID!, $original: Boolean) {
+    translatePost(id: $id, original: $original) {
+      id
+      translatable
+      caption
+    }
+  }
+`
+export type TranslatePostMutationFn = Apollo.MutationFunction<
+  TranslatePostMutation,
+  TranslatePostMutationVariables
+>
 
 /**
  * __useTranslatePostMutation__
@@ -4133,19 +4276,29 @@ export type TranslatePostMutationFn = Apollo.MutationFunction<TranslatePostMutat
  *   },
  * });
  */
-export function useTranslatePostMutation(baseOptions?: Apollo.MutationHookOptions<TranslatePostMutation, TranslatePostMutationVariables>) {
-        return Apollo.useMutation<TranslatePostMutation, TranslatePostMutationVariables>(TranslatePostDocument, baseOptions);
-      }
-export type TranslatePostMutationHookResult = ReturnType<typeof useTranslatePostMutation>;
-export type TranslatePostMutationResult = Apollo.MutationResult<TranslatePostMutation>;
-export type TranslatePostMutationOptions = Apollo.BaseMutationOptions<TranslatePostMutation, TranslatePostMutationVariables>;
-export const BlogPostDocument = gql`
-    query blogPost($slug: LowercaseString, $id: ID) {
-  blogPost(slug: $slug, id: $id) {
-    ...BlogPost
-  }
+export function useTranslatePostMutation(
+  baseOptions?: Apollo.MutationHookOptions<TranslatePostMutation, TranslatePostMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<TranslatePostMutation, TranslatePostMutationVariables>(
+    TranslatePostDocument,
+    options
+  )
 }
-    ${BlogPostFragmentDoc}`;
+export type TranslatePostMutationHookResult = ReturnType<typeof useTranslatePostMutation>
+export type TranslatePostMutationResult = Apollo.MutationResult<TranslatePostMutation>
+export type TranslatePostMutationOptions = Apollo.BaseMutationOptions<
+  TranslatePostMutation,
+  TranslatePostMutationVariables
+>
+export const BlogPostDocument = gql`
+  query blogPost($slug: LowercaseString, $id: ID) {
+    blogPost(slug: $slug, id: $id) {
+      ...BlogPost
+    }
+  }
+  ${BlogPostFragmentDoc}
+`
 
 /**
  * __useBlogPostQuery__
@@ -4164,30 +4317,37 @@ export const BlogPostDocument = gql`
  *   },
  * });
  */
-export function useBlogPostQuery(baseOptions?: Apollo.QueryHookOptions<BlogPostQuery, BlogPostQueryVariables>) {
-        return Apollo.useQuery<BlogPostQuery, BlogPostQueryVariables>(BlogPostDocument, baseOptions);
-      }
-export function useBlogPostLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogPostQuery, BlogPostQueryVariables>) {
-          return Apollo.useLazyQuery<BlogPostQuery, BlogPostQueryVariables>(BlogPostDocument, baseOptions);
-        }
-export type BlogPostQueryHookResult = ReturnType<typeof useBlogPostQuery>;
-export type BlogPostLazyQueryHookResult = ReturnType<typeof useBlogPostLazyQuery>;
-export type BlogPostQueryResult = Apollo.QueryResult<BlogPostQuery, BlogPostQueryVariables>;
+export function useBlogPostQuery(
+  baseOptions?: Apollo.QueryHookOptions<BlogPostQuery, BlogPostQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<BlogPostQuery, BlogPostQueryVariables>(BlogPostDocument, options)
+}
+export function useBlogPostLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<BlogPostQuery, BlogPostQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<BlogPostQuery, BlogPostQueryVariables>(BlogPostDocument, options)
+}
+export type BlogPostQueryHookResult = ReturnType<typeof useBlogPostQuery>
+export type BlogPostLazyQueryHookResult = ReturnType<typeof useBlogPostLazyQuery>
+export type BlogPostQueryResult = Apollo.QueryResult<BlogPostQuery, BlogPostQueryVariables>
 export const BlogPostsDocument = gql`
-    query blogPosts($after: String, $first: Int = 5) @connection(key: "blogPosts") {
-  blogPosts(after: $after, first: $first) {
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        ...BlogPost
+  query blogPosts($after: String, $first: Int = 5) @connection(key: "blogPosts") {
+    blogPosts(after: $after, first: $first) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...BlogPost
+        }
       }
     }
   }
-}
-    ${BlogPostFragmentDoc}`;
+  ${BlogPostFragmentDoc}
+`
 
 /**
  * __useBlogPostsQuery__
@@ -4206,30 +4366,37 @@ export const BlogPostsDocument = gql`
  *   },
  * });
  */
-export function useBlogPostsQuery(baseOptions?: Apollo.QueryHookOptions<BlogPostsQuery, BlogPostsQueryVariables>) {
-        return Apollo.useQuery<BlogPostsQuery, BlogPostsQueryVariables>(BlogPostsDocument, baseOptions);
-      }
-export function useBlogPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogPostsQuery, BlogPostsQueryVariables>) {
-          return Apollo.useLazyQuery<BlogPostsQuery, BlogPostsQueryVariables>(BlogPostsDocument, baseOptions);
-        }
-export type BlogPostsQueryHookResult = ReturnType<typeof useBlogPostsQuery>;
-export type BlogPostsLazyQueryHookResult = ReturnType<typeof useBlogPostsLazyQuery>;
-export type BlogPostsQueryResult = Apollo.QueryResult<BlogPostsQuery, BlogPostsQueryVariables>;
+export function useBlogPostsQuery(
+  baseOptions?: Apollo.QueryHookOptions<BlogPostsQuery, BlogPostsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<BlogPostsQuery, BlogPostsQueryVariables>(BlogPostsDocument, options)
+}
+export function useBlogPostsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<BlogPostsQuery, BlogPostsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<BlogPostsQuery, BlogPostsQueryVariables>(BlogPostsDocument, options)
+}
+export type BlogPostsQueryHookResult = ReturnType<typeof useBlogPostsQuery>
+export type BlogPostsLazyQueryHookResult = ReturnType<typeof useBlogPostsLazyQuery>
+export type BlogPostsQueryResult = Apollo.QueryResult<BlogPostsQuery, BlogPostsQueryVariables>
 export const BookmarksDocument = gql`
-    query bookmarks($after: String, $first: Int = 5) @connection(key: "bookmarks") {
-  bookmarks(after: $after, first: $first) {
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        ...Post
+  query bookmarks($after: String, $first: Int = 5) @connection(key: "bookmarks") {
+    bookmarks(after: $after, first: $first) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...Post
+        }
       }
     }
   }
-}
-    ${PostFragmentDoc}`;
+  ${PostFragmentDoc}
+`
 
 /**
  * __useBookmarksQuery__
@@ -4248,37 +4415,51 @@ export const BookmarksDocument = gql`
  *   },
  * });
  */
-export function useBookmarksQuery(baseOptions?: Apollo.QueryHookOptions<BookmarksQuery, BookmarksQueryVariables>) {
-        return Apollo.useQuery<BookmarksQuery, BookmarksQueryVariables>(BookmarksDocument, baseOptions);
-      }
-export function useBookmarksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BookmarksQuery, BookmarksQueryVariables>) {
-          return Apollo.useLazyQuery<BookmarksQuery, BookmarksQueryVariables>(BookmarksDocument, baseOptions);
-        }
-export type BookmarksQueryHookResult = ReturnType<typeof useBookmarksQuery>;
-export type BookmarksLazyQueryHookResult = ReturnType<typeof useBookmarksLazyQuery>;
-export type BookmarksQueryResult = Apollo.QueryResult<BookmarksQuery, BookmarksQueryVariables>;
+export function useBookmarksQuery(
+  baseOptions?: Apollo.QueryHookOptions<BookmarksQuery, BookmarksQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<BookmarksQuery, BookmarksQueryVariables>(BookmarksDocument, options)
+}
+export function useBookmarksLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<BookmarksQuery, BookmarksQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<BookmarksQuery, BookmarksQueryVariables>(BookmarksDocument, options)
+}
+export type BookmarksQueryHookResult = ReturnType<typeof useBookmarksQuery>
+export type BookmarksLazyQueryHookResult = ReturnType<typeof useBookmarksLazyQuery>
+export type BookmarksQueryResult = Apollo.QueryResult<BookmarksQuery, BookmarksQueryVariables>
 export const CollectionsDocument = gql`
-    query collections($id: ID, $slug: LowercaseString, $projectId: ID, $projectSlug: LowercaseString, $after: String, $first: Int = 5) @connection(key: "collections") {
-  collections(
-    id: $id
-    slug: $slug
-    projectId: $projectId
-    projectSlug: $projectSlug
-    after: $after
-    first: $first
-  ) {
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        ...Post
+  query collections(
+    $id: ID
+    $slug: LowercaseString
+    $projectId: ID
+    $projectSlug: LowercaseString
+    $after: String
+    $first: Int = 5
+  ) @connection(key: "collections") {
+    collections(
+      id: $id
+      slug: $slug
+      projectId: $projectId
+      projectSlug: $projectSlug
+      after: $after
+      first: $first
+    ) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...Post
+        }
       }
     }
   }
-}
-    ${PostFragmentDoc}`;
+  ${PostFragmentDoc}
+`
 
 /**
  * __useCollectionsQuery__
@@ -4301,22 +4482,32 @@ export const CollectionsDocument = gql`
  *   },
  * });
  */
-export function useCollectionsQuery(baseOptions?: Apollo.QueryHookOptions<CollectionsQuery, CollectionsQueryVariables>) {
-        return Apollo.useQuery<CollectionsQuery, CollectionsQueryVariables>(CollectionsDocument, baseOptions);
-      }
-export function useCollectionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CollectionsQuery, CollectionsQueryVariables>) {
-          return Apollo.useLazyQuery<CollectionsQuery, CollectionsQueryVariables>(CollectionsDocument, baseOptions);
-        }
-export type CollectionsQueryHookResult = ReturnType<typeof useCollectionsQuery>;
-export type CollectionsLazyQueryHookResult = ReturnType<typeof useCollectionsLazyQuery>;
-export type CollectionsQueryResult = Apollo.QueryResult<CollectionsQuery, CollectionsQueryVariables>;
-export const CommentDocument = gql`
-    query comment($id: ID!) {
-  comment(id: $id) {
-    ...Comment
-  }
+export function useCollectionsQuery(
+  baseOptions?: Apollo.QueryHookOptions<CollectionsQuery, CollectionsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<CollectionsQuery, CollectionsQueryVariables>(CollectionsDocument, options)
 }
-    ${CommentFragmentDoc}`;
+export function useCollectionsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<CollectionsQuery, CollectionsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<CollectionsQuery, CollectionsQueryVariables>(
+    CollectionsDocument,
+    options
+  )
+}
+export type CollectionsQueryHookResult = ReturnType<typeof useCollectionsQuery>
+export type CollectionsLazyQueryHookResult = ReturnType<typeof useCollectionsLazyQuery>
+export type CollectionsQueryResult = Apollo.QueryResult<CollectionsQuery, CollectionsQueryVariables>
+export const CommentDocument = gql`
+  query comment($id: ID!) {
+    comment(id: $id) {
+      ...Comment
+    }
+  }
+  ${CommentFragmentDoc}
+`
 
 /**
  * __useCommentQuery__
@@ -4334,34 +4525,41 @@ export const CommentDocument = gql`
  *   },
  * });
  */
-export function useCommentQuery(baseOptions: Apollo.QueryHookOptions<CommentQuery, CommentQueryVariables>) {
-        return Apollo.useQuery<CommentQuery, CommentQueryVariables>(CommentDocument, baseOptions);
-      }
-export function useCommentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CommentQuery, CommentQueryVariables>) {
-          return Apollo.useLazyQuery<CommentQuery, CommentQueryVariables>(CommentDocument, baseOptions);
-        }
-export type CommentQueryHookResult = ReturnType<typeof useCommentQuery>;
-export type CommentLazyQueryHookResult = ReturnType<typeof useCommentLazyQuery>;
-export type CommentQueryResult = Apollo.QueryResult<CommentQuery, CommentQueryVariables>;
-export const CommentsDocument = gql`
-    query comments($postId: ID!, $after: String) {
-  post(id: $postId) {
-    ...Post
-  }
-  comments(postId: $postId, after: $after) @connection(key: "comments", filter: ["postId"]) {
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        ...CommentAndReplies
-      }
-    }
-  }
+export function useCommentQuery(
+  baseOptions: Apollo.QueryHookOptions<CommentQuery, CommentQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<CommentQuery, CommentQueryVariables>(CommentDocument, options)
 }
-    ${PostFragmentDoc}
-${CommentAndRepliesFragmentDoc}`;
+export function useCommentLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<CommentQuery, CommentQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<CommentQuery, CommentQueryVariables>(CommentDocument, options)
+}
+export type CommentQueryHookResult = ReturnType<typeof useCommentQuery>
+export type CommentLazyQueryHookResult = ReturnType<typeof useCommentLazyQuery>
+export type CommentQueryResult = Apollo.QueryResult<CommentQuery, CommentQueryVariables>
+export const CommentsDocument = gql`
+  query comments($postId: ID!, $after: String) {
+    post(id: $postId) {
+      ...Post
+    }
+    comments(postId: $postId, after: $after) @connection(key: "comments", filter: ["postId"]) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...CommentAndReplies
+        }
+      }
+    }
+  }
+  ${PostFragmentDoc}
+  ${CommentAndRepliesFragmentDoc}
+`
 
 /**
  * __useCommentsQuery__
@@ -4380,44 +4578,51 @@ ${CommentAndRepliesFragmentDoc}`;
  *   },
  * });
  */
-export function useCommentsQuery(baseOptions: Apollo.QueryHookOptions<CommentsQuery, CommentsQueryVariables>) {
-        return Apollo.useQuery<CommentsQuery, CommentsQueryVariables>(CommentsDocument, baseOptions);
-      }
-export function useCommentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CommentsQuery, CommentsQueryVariables>) {
-          return Apollo.useLazyQuery<CommentsQuery, CommentsQueryVariables>(CommentsDocument, baseOptions);
-        }
-export type CommentsQueryHookResult = ReturnType<typeof useCommentsQuery>;
-export type CommentsLazyQueryHookResult = ReturnType<typeof useCommentsLazyQuery>;
-export type CommentsQueryResult = Apollo.QueryResult<CommentsQuery, CommentsQueryVariables>;
-export const CurrentUserDocument = gql`
-    query currentUser {
-  user: currentUser {
-    avatarUrl
-    bio
-    dynamicLink
-    firstName
-    fullName
-    id
-    isOnline
-    isSilhouette
-    lastName
-    location
-    projectCount
-    username
-    website
-    role
-    settings {
-      timezone
-      locale
-    }
-    interestedIn {
-      id
-      title
-    }
-    ...UserProjects
-  }
+export function useCommentsQuery(
+  baseOptions: Apollo.QueryHookOptions<CommentsQuery, CommentsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<CommentsQuery, CommentsQueryVariables>(CommentsDocument, options)
 }
-    ${UserProjectsFragmentDoc}`;
+export function useCommentsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<CommentsQuery, CommentsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<CommentsQuery, CommentsQueryVariables>(CommentsDocument, options)
+}
+export type CommentsQueryHookResult = ReturnType<typeof useCommentsQuery>
+export type CommentsLazyQueryHookResult = ReturnType<typeof useCommentsLazyQuery>
+export type CommentsQueryResult = Apollo.QueryResult<CommentsQuery, CommentsQueryVariables>
+export const CurrentUserDocument = gql`
+  query currentUser {
+    user: currentUser {
+      avatarUrl
+      bio
+      dynamicLink
+      firstName
+      fullName
+      id
+      isOnline
+      isSilhouette
+      lastName
+      location
+      projectCount
+      username
+      website
+      role
+      settings {
+        timezone
+        locale
+      }
+      interestedIn {
+        id
+        title
+      }
+      ...UserProjects
+    }
+  }
+  ${UserProjectsFragmentDoc}
+`
 
 /**
  * __useCurrentUserQuery__
@@ -4434,37 +4639,47 @@ export const CurrentUserDocument = gql`
  *   },
  * });
  */
-export function useCurrentUserQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserQuery, CurrentUserQueryVariables>) {
-        return Apollo.useQuery<CurrentUserQuery, CurrentUserQueryVariables>(CurrentUserDocument, baseOptions);
-      }
-export function useCurrentUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserQuery, CurrentUserQueryVariables>) {
-          return Apollo.useLazyQuery<CurrentUserQuery, CurrentUserQueryVariables>(CurrentUserDocument, baseOptions);
-        }
-export type CurrentUserQueryHookResult = ReturnType<typeof useCurrentUserQuery>;
-export type CurrentUserLazyQueryHookResult = ReturnType<typeof useCurrentUserLazyQuery>;
-export type CurrentUserQueryResult = Apollo.QueryResult<CurrentUserQuery, CurrentUserQueryVariables>;
+export function useCurrentUserQuery(
+  baseOptions?: Apollo.QueryHookOptions<CurrentUserQuery, CurrentUserQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<CurrentUserQuery, CurrentUserQueryVariables>(CurrentUserDocument, options)
+}
+export function useCurrentUserLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserQuery, CurrentUserQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<CurrentUserQuery, CurrentUserQueryVariables>(
+    CurrentUserDocument,
+    options
+  )
+}
+export type CurrentUserQueryHookResult = ReturnType<typeof useCurrentUserQuery>
+export type CurrentUserLazyQueryHookResult = ReturnType<typeof useCurrentUserLazyQuery>
+export type CurrentUserQueryResult = Apollo.QueryResult<CurrentUserQuery, CurrentUserQueryVariables>
 export const CurrentUserFollowingProjectsDocument = gql`
-    query currentUserFollowingProjects($after: String, $first: Int = 5) {
-  user: currentUser {
-    id
-    projects: followingProjects(after: $after, first: $first) {
-      pageInfo {
-        hasNextPage
-      }
-      edges {
-        cursor
-        node {
-          ...Project
-          cover {
-            uri
-            default
+  query currentUserFollowingProjects($after: String, $first: Int = 5) {
+    user: currentUser {
+      id
+      projects: followingProjects(after: $after, first: $first) {
+        pageInfo {
+          hasNextPage
+        }
+        edges {
+          cursor
+          node {
+            ...Project
+            cover {
+              uri
+              default
+            }
           }
         }
       }
     }
   }
-}
-    ${ProjectFragmentDoc}`;
+  ${ProjectFragmentDoc}
+`
 
 /**
  * __useCurrentUserFollowingProjectsQuery__
@@ -4483,46 +4698,72 @@ export const CurrentUserFollowingProjectsDocument = gql`
  *   },
  * });
  */
-export function useCurrentUserFollowingProjectsQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>) {
-        return Apollo.useQuery<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>(CurrentUserFollowingProjectsDocument, baseOptions);
-      }
-export function useCurrentUserFollowingProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>) {
-          return Apollo.useLazyQuery<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>(CurrentUserFollowingProjectsDocument, baseOptions);
-        }
-export type CurrentUserFollowingProjectsQueryHookResult = ReturnType<typeof useCurrentUserFollowingProjectsQuery>;
-export type CurrentUserFollowingProjectsLazyQueryHookResult = ReturnType<typeof useCurrentUserFollowingProjectsLazyQuery>;
-export type CurrentUserFollowingProjectsQueryResult = Apollo.QueryResult<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>;
+export function useCurrentUserFollowingProjectsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    CurrentUserFollowingProjectsQuery,
+    CurrentUserFollowingProjectsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<
+    CurrentUserFollowingProjectsQuery,
+    CurrentUserFollowingProjectsQueryVariables
+  >(CurrentUserFollowingProjectsDocument, options)
+}
+export function useCurrentUserFollowingProjectsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    CurrentUserFollowingProjectsQuery,
+    CurrentUserFollowingProjectsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<
+    CurrentUserFollowingProjectsQuery,
+    CurrentUserFollowingProjectsQueryVariables
+  >(CurrentUserFollowingProjectsDocument, options)
+}
+export type CurrentUserFollowingProjectsQueryHookResult = ReturnType<
+  typeof useCurrentUserFollowingProjectsQuery
+>
+export type CurrentUserFollowingProjectsLazyQueryHookResult = ReturnType<
+  typeof useCurrentUserFollowingProjectsLazyQuery
+>
+export type CurrentUserFollowingProjectsQueryResult = Apollo.QueryResult<
+  CurrentUserFollowingProjectsQuery,
+  CurrentUserFollowingProjectsQueryVariables
+>
 export const CurrentUserProfileDocument = gql`
-    query currentUserProfile($after: String, $first: Int = 5) {
-  user: currentUser {
-    ...User
-    projects: projectsConnection {
-      edges {
-        node {
-          ...Project
-          cover {
-            uri
-            default
+  query currentUserProfile($after: String, $first: Int = 5) {
+    user: currentUser {
+      ...User
+      projects: projectsConnection {
+        edges {
+          node {
+            ...Project
+            cover {
+              uri
+              default
+            }
           }
         }
       }
-    }
-    posts: postsConnection(after: $after, first: $first) @connection(key: "posts") {
-      edges {
-        cursor
-        node {
-          ...Post
+      posts: postsConnection(after: $after, first: $first) @connection(key: "posts") {
+        edges {
+          cursor
+          node {
+            ...Post
+          }
         }
-      }
-      pageInfo {
-        hasNextPage
+        pageInfo {
+          hasNextPage
+        }
       }
     }
   }
-}
-    ${UserFragmentDoc}
-${ProjectFragmentDoc}
-${PostFragmentDoc}`;
+  ${UserFragmentDoc}
+  ${ProjectFragmentDoc}
+  ${PostFragmentDoc}
+`
 
 /**
  * __useCurrentUserProfileQuery__
@@ -4541,22 +4782,43 @@ ${PostFragmentDoc}`;
  *   },
  * });
  */
-export function useCurrentUserProfileQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>) {
-        return Apollo.useQuery<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>(CurrentUserProfileDocument, baseOptions);
-      }
-export function useCurrentUserProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>) {
-          return Apollo.useLazyQuery<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>(CurrentUserProfileDocument, baseOptions);
-        }
-export type CurrentUserProfileQueryHookResult = ReturnType<typeof useCurrentUserProfileQuery>;
-export type CurrentUserProfileLazyQueryHookResult = ReturnType<typeof useCurrentUserProfileLazyQuery>;
-export type CurrentUserProfileQueryResult = Apollo.QueryResult<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>;
-export const CurrentUserProjectsDocument = gql`
-    query currentUserProjects {
-  user: currentUser {
-    ...UserProjects
-  }
+export function useCurrentUserProfileQuery(
+  baseOptions?: Apollo.QueryHookOptions<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>(
+    CurrentUserProfileDocument,
+    options
+  )
 }
-    ${UserProjectsFragmentDoc}`;
+export function useCurrentUserProfileLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    CurrentUserProfileQuery,
+    CurrentUserProfileQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>(
+    CurrentUserProfileDocument,
+    options
+  )
+}
+export type CurrentUserProfileQueryHookResult = ReturnType<typeof useCurrentUserProfileQuery>
+export type CurrentUserProfileLazyQueryHookResult = ReturnType<
+  typeof useCurrentUserProfileLazyQuery
+>
+export type CurrentUserProfileQueryResult = Apollo.QueryResult<
+  CurrentUserProfileQuery,
+  CurrentUserProfileQueryVariables
+>
+export const CurrentUserProjectsDocument = gql`
+  query currentUserProjects {
+    user: currentUser {
+      ...UserProjects
+    }
+  }
+  ${UserProjectsFragmentDoc}
+`
 
 /**
  * __useCurrentUserProjectsQuery__
@@ -4573,22 +4835,43 @@ export const CurrentUserProjectsDocument = gql`
  *   },
  * });
  */
-export function useCurrentUserProjectsQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>) {
-        return Apollo.useQuery<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>(CurrentUserProjectsDocument, baseOptions);
-      }
-export function useCurrentUserProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>) {
-          return Apollo.useLazyQuery<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>(CurrentUserProjectsDocument, baseOptions);
-        }
-export type CurrentUserProjectsQueryHookResult = ReturnType<typeof useCurrentUserProjectsQuery>;
-export type CurrentUserProjectsLazyQueryHookResult = ReturnType<typeof useCurrentUserProjectsLazyQuery>;
-export type CurrentUserProjectsQueryResult = Apollo.QueryResult<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>;
-export const CurrentUserSettingsDocument = gql`
-    query currentUserSettings {
-  user: currentUser {
-    ...UserSettings
-  }
+export function useCurrentUserProjectsQuery(
+  baseOptions?: Apollo.QueryHookOptions<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>(
+    CurrentUserProjectsDocument,
+    options
+  )
 }
-    ${UserSettingsFragmentDoc}`;
+export function useCurrentUserProjectsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    CurrentUserProjectsQuery,
+    CurrentUserProjectsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>(
+    CurrentUserProjectsDocument,
+    options
+  )
+}
+export type CurrentUserProjectsQueryHookResult = ReturnType<typeof useCurrentUserProjectsQuery>
+export type CurrentUserProjectsLazyQueryHookResult = ReturnType<
+  typeof useCurrentUserProjectsLazyQuery
+>
+export type CurrentUserProjectsQueryResult = Apollo.QueryResult<
+  CurrentUserProjectsQuery,
+  CurrentUserProjectsQueryVariables
+>
+export const CurrentUserSettingsDocument = gql`
+  query currentUserSettings {
+    user: currentUser {
+      ...UserSettings
+    }
+  }
+  ${UserSettingsFragmentDoc}
+`
 
 /**
  * __useCurrentUserSettingsQuery__
@@ -4605,32 +4888,53 @@ export const CurrentUserSettingsDocument = gql`
  *   },
  * });
  */
-export function useCurrentUserSettingsQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>) {
-        return Apollo.useQuery<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>(CurrentUserSettingsDocument, baseOptions);
-      }
-export function useCurrentUserSettingsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>) {
-          return Apollo.useLazyQuery<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>(CurrentUserSettingsDocument, baseOptions);
-        }
-export type CurrentUserSettingsQueryHookResult = ReturnType<typeof useCurrentUserSettingsQuery>;
-export type CurrentUserSettingsLazyQueryHookResult = ReturnType<typeof useCurrentUserSettingsLazyQuery>;
-export type CurrentUserSettingsQueryResult = Apollo.QueryResult<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>;
+export function useCurrentUserSettingsQuery(
+  baseOptions?: Apollo.QueryHookOptions<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>(
+    CurrentUserSettingsDocument,
+    options
+  )
+}
+export function useCurrentUserSettingsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    CurrentUserSettingsQuery,
+    CurrentUserSettingsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>(
+    CurrentUserSettingsDocument,
+    options
+  )
+}
+export type CurrentUserSettingsQueryHookResult = ReturnType<typeof useCurrentUserSettingsQuery>
+export type CurrentUserSettingsLazyQueryHookResult = ReturnType<
+  typeof useCurrentUserSettingsLazyQuery
+>
+export type CurrentUserSettingsQueryResult = Apollo.QueryResult<
+  CurrentUserSettingsQuery,
+  CurrentUserSettingsQueryVariables
+>
 export const FeedDocument = gql`
-    query feed($after: String, $first: Int = 5) {
-  feed {
-    posts: postsConnection(after: $after, first: $first) @connection(key: "posts") {
-      pageInfo {
-        hasNextPage
-      }
-      edges {
-        cursor
-        node {
-          ...Post
+  query feed($after: String, $first: Int = 5) {
+    feed {
+      posts: postsConnection(after: $after, first: $first) @connection(key: "posts") {
+        pageInfo {
+          hasNextPage
+        }
+        edges {
+          cursor
+          node {
+            ...Post
+          }
         }
       }
     }
   }
-}
-    ${PostFragmentDoc}`;
+  ${PostFragmentDoc}
+`
 
 /**
  * __useFeedQuery__
@@ -4650,31 +4954,35 @@ export const FeedDocument = gql`
  * });
  */
 export function useFeedQuery(baseOptions?: Apollo.QueryHookOptions<FeedQuery, FeedQueryVariables>) {
-        return Apollo.useQuery<FeedQuery, FeedQueryVariables>(FeedDocument, baseOptions);
-      }
-export function useFeedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FeedQuery, FeedQueryVariables>) {
-          return Apollo.useLazyQuery<FeedQuery, FeedQueryVariables>(FeedDocument, baseOptions);
-        }
-export type FeedQueryHookResult = ReturnType<typeof useFeedQuery>;
-export type FeedLazyQueryHookResult = ReturnType<typeof useFeedLazyQuery>;
-export type FeedQueryResult = Apollo.QueryResult<FeedQuery, FeedQueryVariables>;
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<FeedQuery, FeedQueryVariables>(FeedDocument, options)
+}
+export function useFeedLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<FeedQuery, FeedQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<FeedQuery, FeedQueryVariables>(FeedDocument, options)
+}
+export type FeedQueryHookResult = ReturnType<typeof useFeedQuery>
+export type FeedLazyQueryHookResult = ReturnType<typeof useFeedLazyQuery>
+export type FeedQueryResult = Apollo.QueryResult<FeedQuery, FeedQueryVariables>
 export const FilesDocument = gql`
-    query files($after: String, $first: Int = 10) @connection(key: "files") {
-  files(after: $after, first: $first) {
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        id
-        uri
-        postId
+  query files($after: String, $first: Int = 10) @connection(key: "files") {
+    files(after: $after, first: $first) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          id
+          uri
+          postId
+        }
       }
     }
   }
-}
-    `;
+`
 
 /**
  * __useFilesQuery__
@@ -4693,30 +5001,38 @@ export const FilesDocument = gql`
  *   },
  * });
  */
-export function useFilesQuery(baseOptions?: Apollo.QueryHookOptions<FilesQuery, FilesQueryVariables>) {
-        return Apollo.useQuery<FilesQuery, FilesQueryVariables>(FilesDocument, baseOptions);
-      }
-export function useFilesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FilesQuery, FilesQueryVariables>) {
-          return Apollo.useLazyQuery<FilesQuery, FilesQueryVariables>(FilesDocument, baseOptions);
-        }
-export type FilesQueryHookResult = ReturnType<typeof useFilesQuery>;
-export type FilesLazyQueryHookResult = ReturnType<typeof useFilesLazyQuery>;
-export type FilesQueryResult = Apollo.QueryResult<FilesQuery, FilesQueryVariables>;
+export function useFilesQuery(
+  baseOptions?: Apollo.QueryHookOptions<FilesQuery, FilesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<FilesQuery, FilesQueryVariables>(FilesDocument, options)
+}
+export function useFilesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<FilesQuery, FilesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<FilesQuery, FilesQueryVariables>(FilesDocument, options)
+}
+export type FilesQueryHookResult = ReturnType<typeof useFilesQuery>
+export type FilesLazyQueryHookResult = ReturnType<typeof useFilesLazyQuery>
+export type FilesQueryResult = Apollo.QueryResult<FilesQuery, FilesQueryVariables>
 export const FollowersDocument = gql`
-    query followers($projectId: ID!, $after: String, $first: Int = 10) {
-  followers(projectId: $projectId, after: $after, first: $first) @connection(key: "followers", filter: ["projectId"]) {
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        ...User
+  query followers($projectId: ID!, $after: String, $first: Int = 10) {
+    followers(projectId: $projectId, after: $after, first: $first)
+      @connection(key: "followers", filter: ["projectId"]) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...User
+        }
       }
     }
   }
-}
-    ${UserFragmentDoc}`;
+  ${UserFragmentDoc}
+`
 
 /**
  * __useFollowersQuery__
@@ -4736,23 +5052,29 @@ export const FollowersDocument = gql`
  *   },
  * });
  */
-export function useFollowersQuery(baseOptions: Apollo.QueryHookOptions<FollowersQuery, FollowersQueryVariables>) {
-        return Apollo.useQuery<FollowersQuery, FollowersQueryVariables>(FollowersDocument, baseOptions);
-      }
-export function useFollowersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FollowersQuery, FollowersQueryVariables>) {
-          return Apollo.useLazyQuery<FollowersQuery, FollowersQueryVariables>(FollowersDocument, baseOptions);
-        }
-export type FollowersQueryHookResult = ReturnType<typeof useFollowersQuery>;
-export type FollowersLazyQueryHookResult = ReturnType<typeof useFollowersLazyQuery>;
-export type FollowersQueryResult = Apollo.QueryResult<FollowersQuery, FollowersQueryVariables>;
-export const GrowthDocument = gql`
-    query growth($type: GrowthType!) {
-  growth(type: $type) {
-    date
-    count
-  }
+export function useFollowersQuery(
+  baseOptions: Apollo.QueryHookOptions<FollowersQuery, FollowersQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<FollowersQuery, FollowersQueryVariables>(FollowersDocument, options)
 }
-    `;
+export function useFollowersLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<FollowersQuery, FollowersQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<FollowersQuery, FollowersQueryVariables>(FollowersDocument, options)
+}
+export type FollowersQueryHookResult = ReturnType<typeof useFollowersQuery>
+export type FollowersLazyQueryHookResult = ReturnType<typeof useFollowersLazyQuery>
+export type FollowersQueryResult = Apollo.QueryResult<FollowersQuery, FollowersQueryVariables>
+export const GrowthDocument = gql`
+  query growth($type: GrowthType!) {
+    growth(type: $type) {
+      date
+      count
+    }
+  }
+`
 
 /**
  * __useGrowthQuery__
@@ -4770,32 +5092,39 @@ export const GrowthDocument = gql`
  *   },
  * });
  */
-export function useGrowthQuery(baseOptions: Apollo.QueryHookOptions<GrowthQuery, GrowthQueryVariables>) {
-        return Apollo.useQuery<GrowthQuery, GrowthQueryVariables>(GrowthDocument, baseOptions);
-      }
-export function useGrowthLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GrowthQuery, GrowthQueryVariables>) {
-          return Apollo.useLazyQuery<GrowthQuery, GrowthQueryVariables>(GrowthDocument, baseOptions);
-        }
-export type GrowthQueryHookResult = ReturnType<typeof useGrowthQuery>;
-export type GrowthLazyQueryHookResult = ReturnType<typeof useGrowthLazyQuery>;
-export type GrowthQueryResult = Apollo.QueryResult<GrowthQuery, GrowthQueryVariables>;
+export function useGrowthQuery(
+  baseOptions: Apollo.QueryHookOptions<GrowthQuery, GrowthQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GrowthQuery, GrowthQueryVariables>(GrowthDocument, options)
+}
+export function useGrowthLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GrowthQuery, GrowthQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GrowthQuery, GrowthQueryVariables>(GrowthDocument, options)
+}
+export type GrowthQueryHookResult = ReturnType<typeof useGrowthQuery>
+export type GrowthLazyQueryHookResult = ReturnType<typeof useGrowthLazyQuery>
+export type GrowthQueryResult = Apollo.QueryResult<GrowthQuery, GrowthQueryVariables>
 export const HashtagDocument = gql`
-    query hashtag($id: ID, $slug: LowercaseString, $name: String, $after: String, $first: Int = 5) {
-  hashtag(id: $id, slug: $slug, name: $name) {
-    posts: postsConnection(first: $first, after: $after) @connection(key: "posts") {
-      pageInfo {
-        hasNextPage
-      }
-      edges {
-        cursor
-        node {
-          ...Post
+  query hashtag($id: ID, $slug: LowercaseString, $name: String, $after: String, $first: Int = 5) {
+    hashtag(id: $id, slug: $slug, name: $name) {
+      posts: postsConnection(first: $first, after: $after) @connection(key: "posts") {
+        pageInfo {
+          hasNextPage
+        }
+        edges {
+          cursor
+          node {
+            ...Post
+          }
         }
       }
     }
   }
-}
-    ${PostFragmentDoc}`;
+  ${PostFragmentDoc}
+`
 
 /**
  * __useHashtagQuery__
@@ -4817,30 +5146,38 @@ export const HashtagDocument = gql`
  *   },
  * });
  */
-export function useHashtagQuery(baseOptions?: Apollo.QueryHookOptions<HashtagQuery, HashtagQueryVariables>) {
-        return Apollo.useQuery<HashtagQuery, HashtagQueryVariables>(HashtagDocument, baseOptions);
-      }
-export function useHashtagLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<HashtagQuery, HashtagQueryVariables>) {
-          return Apollo.useLazyQuery<HashtagQuery, HashtagQueryVariables>(HashtagDocument, baseOptions);
-        }
-export type HashtagQueryHookResult = ReturnType<typeof useHashtagQuery>;
-export type HashtagLazyQueryHookResult = ReturnType<typeof useHashtagLazyQuery>;
-export type HashtagQueryResult = Apollo.QueryResult<HashtagQuery, HashtagQueryVariables>;
+export function useHashtagQuery(
+  baseOptions?: Apollo.QueryHookOptions<HashtagQuery, HashtagQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<HashtagQuery, HashtagQueryVariables>(HashtagDocument, options)
+}
+export function useHashtagLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<HashtagQuery, HashtagQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<HashtagQuery, HashtagQueryVariables>(HashtagDocument, options)
+}
+export type HashtagQueryHookResult = ReturnType<typeof useHashtagQuery>
+export type HashtagLazyQueryHookResult = ReturnType<typeof useHashtagLazyQuery>
+export type HashtagQueryResult = Apollo.QueryResult<HashtagQuery, HashtagQueryVariables>
 export const LikesDocument = gql`
-    query likes($postId: ID!, $after: String, $first: Int = 10) {
-  likes(postId: $postId, first: $first, after: $after) @connection(key: "comments", filter: ["postId"]) {
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        ...User
+  query likes($postId: ID!, $after: String, $first: Int = 10) {
+    likes(postId: $postId, first: $first, after: $after)
+      @connection(key: "comments", filter: ["postId"]) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...User
+        }
       }
     }
   }
-}
-    ${UserFragmentDoc}`;
+  ${UserFragmentDoc}
+`
 
 /**
  * __useLikesQuery__
@@ -4860,31 +5197,37 @@ export const LikesDocument = gql`
  *   },
  * });
  */
-export function useLikesQuery(baseOptions: Apollo.QueryHookOptions<LikesQuery, LikesQueryVariables>) {
-        return Apollo.useQuery<LikesQuery, LikesQueryVariables>(LikesDocument, baseOptions);
-      }
-export function useLikesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LikesQuery, LikesQueryVariables>) {
-          return Apollo.useLazyQuery<LikesQuery, LikesQueryVariables>(LikesDocument, baseOptions);
-        }
-export type LikesQueryHookResult = ReturnType<typeof useLikesQuery>;
-export type LikesLazyQueryHookResult = ReturnType<typeof useLikesLazyQuery>;
-export type LikesQueryResult = Apollo.QueryResult<LikesQuery, LikesQueryVariables>;
-export const MetaDocument = gql`
-    query meta {
-  meta {
-    totalUsers
-    totalUsersToday
-    totalPostsToday
-    totalProjectsToday
-    totalCommentsToday
-    totalFilesToday
-    totalComments
-    totalProjects
-    totalPosts
-    totalFiles
-  }
+export function useLikesQuery(
+  baseOptions: Apollo.QueryHookOptions<LikesQuery, LikesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<LikesQuery, LikesQueryVariables>(LikesDocument, options)
 }
-    `;
+export function useLikesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<LikesQuery, LikesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<LikesQuery, LikesQueryVariables>(LikesDocument, options)
+}
+export type LikesQueryHookResult = ReturnType<typeof useLikesQuery>
+export type LikesLazyQueryHookResult = ReturnType<typeof useLikesLazyQuery>
+export type LikesQueryResult = Apollo.QueryResult<LikesQuery, LikesQueryVariables>
+export const MetaDocument = gql`
+  query meta {
+    meta {
+      totalUsers
+      totalUsersToday
+      totalPostsToday
+      totalProjectsToday
+      totalCommentsToday
+      totalFilesToday
+      totalComments
+      totalProjects
+      totalPosts
+      totalFiles
+    }
+  }
+`
 
 /**
  * __useMetaQuery__
@@ -4902,30 +5245,35 @@ export const MetaDocument = gql`
  * });
  */
 export function useMetaQuery(baseOptions?: Apollo.QueryHookOptions<MetaQuery, MetaQueryVariables>) {
-        return Apollo.useQuery<MetaQuery, MetaQueryVariables>(MetaDocument, baseOptions);
-      }
-export function useMetaLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MetaQuery, MetaQueryVariables>) {
-          return Apollo.useLazyQuery<MetaQuery, MetaQueryVariables>(MetaDocument, baseOptions);
-        }
-export type MetaQueryHookResult = ReturnType<typeof useMetaQuery>;
-export type MetaLazyQueryHookResult = ReturnType<typeof useMetaLazyQuery>;
-export type MetaQueryResult = Apollo.QueryResult<MetaQuery, MetaQueryVariables>;
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<MetaQuery, MetaQueryVariables>(MetaDocument, options)
+}
+export function useMetaLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<MetaQuery, MetaQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<MetaQuery, MetaQueryVariables>(MetaDocument, options)
+}
+export type MetaQueryHookResult = ReturnType<typeof useMetaQuery>
+export type MetaLazyQueryHookResult = ReturnType<typeof useMetaLazyQuery>
+export type MetaQueryResult = Apollo.QueryResult<MetaQuery, MetaQueryVariables>
 export const NotificationsDocument = gql`
-    query notifications($after: String, $first: Int = 10) {
-  notifications(after: $after, first: $first) @connection(key: "notifications") {
-    unreadCount
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        ...Notification
+  query notifications($after: String, $first: Int = 10) {
+    notifications(after: $after, first: $first) @connection(key: "notifications") {
+      unreadCount
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...Notification
+        }
       }
     }
   }
-}
-    ${NotificationFragmentDoc}`;
+  ${NotificationFragmentDoc}
+`
 
 /**
  * __useNotificationsQuery__
@@ -4944,22 +5292,38 @@ export const NotificationsDocument = gql`
  *   },
  * });
  */
-export function useNotificationsQuery(baseOptions?: Apollo.QueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
-        return Apollo.useQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, baseOptions);
-      }
-export function useNotificationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
-          return Apollo.useLazyQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, baseOptions);
-        }
-export type NotificationsQueryHookResult = ReturnType<typeof useNotificationsQuery>;
-export type NotificationsLazyQueryHookResult = ReturnType<typeof useNotificationsLazyQuery>;
-export type NotificationsQueryResult = Apollo.QueryResult<NotificationsQuery, NotificationsQueryVariables>;
-export const PostDocument = gql`
-    query post($id: ID!) {
-  post(id: $id) {
-    ...Post
-  }
+export function useNotificationsQuery(
+  baseOptions?: Apollo.QueryHookOptions<NotificationsQuery, NotificationsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<NotificationsQuery, NotificationsQueryVariables>(
+    NotificationsDocument,
+    options
+  )
 }
-    ${PostFragmentDoc}`;
+export function useNotificationsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<NotificationsQuery, NotificationsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<NotificationsQuery, NotificationsQueryVariables>(
+    NotificationsDocument,
+    options
+  )
+}
+export type NotificationsQueryHookResult = ReturnType<typeof useNotificationsQuery>
+export type NotificationsLazyQueryHookResult = ReturnType<typeof useNotificationsLazyQuery>
+export type NotificationsQueryResult = Apollo.QueryResult<
+  NotificationsQuery,
+  NotificationsQueryVariables
+>
+export const PostDocument = gql`
+  query post($id: ID!) {
+    post(id: $id) {
+      ...Post
+    }
+  }
+  ${PostFragmentDoc}
+`
 
 /**
  * __usePostQuery__
@@ -4978,29 +5342,34 @@ export const PostDocument = gql`
  * });
  */
 export function usePostQuery(baseOptions: Apollo.QueryHookOptions<PostQuery, PostQueryVariables>) {
-        return Apollo.useQuery<PostQuery, PostQueryVariables>(PostDocument, baseOptions);
-      }
-export function usePostLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PostQuery, PostQueryVariables>) {
-          return Apollo.useLazyQuery<PostQuery, PostQueryVariables>(PostDocument, baseOptions);
-        }
-export type PostQueryHookResult = ReturnType<typeof usePostQuery>;
-export type PostLazyQueryHookResult = ReturnType<typeof usePostLazyQuery>;
-export type PostQueryResult = Apollo.QueryResult<PostQuery, PostQueryVariables>;
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<PostQuery, PostQueryVariables>(PostDocument, options)
+}
+export function usePostLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<PostQuery, PostQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<PostQuery, PostQueryVariables>(PostDocument, options)
+}
+export type PostQueryHookResult = ReturnType<typeof usePostQuery>
+export type PostLazyQueryHookResult = ReturnType<typeof usePostLazyQuery>
+export type PostQueryResult = Apollo.QueryResult<PostQuery, PostQueryVariables>
 export const PostsDocument = gql`
-    query posts($after: String, $first: Int = 5) @connection(key: "posts") {
-  posts(after: $after, first: $first) {
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        ...Post
+  query posts($after: String, $first: Int = 5) @connection(key: "posts") {
+    posts(after: $after, first: $first) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...Post
+        }
       }
     }
   }
-}
-    ${PostFragmentDoc}`;
+  ${PostFragmentDoc}
+`
 
 /**
  * __usePostsQuery__
@@ -5019,38 +5388,45 @@ export const PostsDocument = gql`
  *   },
  * });
  */
-export function usePostsQuery(baseOptions?: Apollo.QueryHookOptions<PostsQuery, PostsQueryVariables>) {
-        return Apollo.useQuery<PostsQuery, PostsQueryVariables>(PostsDocument, baseOptions);
-      }
-export function usePostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PostsQuery, PostsQueryVariables>) {
-          return Apollo.useLazyQuery<PostsQuery, PostsQueryVariables>(PostsDocument, baseOptions);
-        }
-export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>;
-export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
-export type PostsQueryResult = Apollo.QueryResult<PostsQuery, PostsQueryVariables>;
+export function usePostsQuery(
+  baseOptions?: Apollo.QueryHookOptions<PostsQuery, PostsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<PostsQuery, PostsQueryVariables>(PostsDocument, options)
+}
+export function usePostsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<PostsQuery, PostsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<PostsQuery, PostsQueryVariables>(PostsDocument, options)
+}
+export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>
+export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>
+export type PostsQueryResult = Apollo.QueryResult<PostsQuery, PostsQueryVariables>
 export const ProjectDocument = gql`
-    query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID, $first: Int = 5) {
-  post(id: $postId) {
-    ...Post
-  }
-  project(id: $id, slug: $slug) {
-    ...Project
-    posts: postsConnection(first: $first, after: $after) @connection(key: "posts") {
-      totalCount
-      pageInfo {
-        hasNextPage
-      }
-      edges {
-        cursor
-        node {
-          ...Post
+  query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID, $first: Int = 5) {
+    post(id: $postId) {
+      ...Post
+    }
+    project(id: $id, slug: $slug) {
+      ...Project
+      posts: postsConnection(first: $first, after: $after) @connection(key: "posts") {
+        totalCount
+        pageInfo {
+          hasNextPage
+        }
+        edges {
+          cursor
+          node {
+            ...Post
+          }
         }
       }
     }
   }
-}
-    ${PostFragmentDoc}
-${ProjectFragmentDoc}`;
+  ${PostFragmentDoc}
+  ${ProjectFragmentDoc}
+`
 
 /**
  * __useProjectQuery__
@@ -5072,36 +5448,49 @@ ${ProjectFragmentDoc}`;
  *   },
  * });
  */
-export function useProjectQuery(baseOptions?: Apollo.QueryHookOptions<ProjectQuery, ProjectQueryVariables>) {
-        return Apollo.useQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, baseOptions);
-      }
-export function useProjectLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectQuery, ProjectQueryVariables>) {
-          return Apollo.useLazyQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, baseOptions);
-        }
-export type ProjectQueryHookResult = ReturnType<typeof useProjectQuery>;
-export type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>;
-export type ProjectQueryResult = Apollo.QueryResult<ProjectQuery, ProjectQueryVariables>;
+export function useProjectQuery(
+  baseOptions?: Apollo.QueryHookOptions<ProjectQuery, ProjectQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, options)
+}
+export function useProjectLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<ProjectQuery, ProjectQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, options)
+}
+export type ProjectQueryHookResult = ReturnType<typeof useProjectQuery>
+export type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>
+export type ProjectQueryResult = Apollo.QueryResult<ProjectQuery, ProjectQueryVariables>
 export const ProjectCollectionsDocument = gql`
-    query projectCollections($projectId: ID, $projectSlug: LowercaseString, $slug: LowercaseString, $after: String, $first: Int = 10) {
-  projectCollections(
-    projectId: $projectId
-    projectSlug: $projectSlug
-    slug: $slug
-    first: $first
-    after: $after
-  ) @connection(key: "collections", filter: ["projectId"]) {
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        ...Collection
+  query projectCollections(
+    $projectId: ID
+    $projectSlug: LowercaseString
+    $slug: LowercaseString
+    $after: String
+    $first: Int = 10
+  ) {
+    projectCollections(
+      projectId: $projectId
+      projectSlug: $projectSlug
+      slug: $slug
+      first: $first
+      after: $after
+    ) @connection(key: "collections", filter: ["projectId"]) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...Collection
+        }
       }
     }
   }
-}
-    ${CollectionFragmentDoc}`;
+  ${CollectionFragmentDoc}
+`
 
 /**
  * __useProjectCollectionsQuery__
@@ -5123,37 +5512,58 @@ export const ProjectCollectionsDocument = gql`
  *   },
  * });
  */
-export function useProjectCollectionsQuery(baseOptions?: Apollo.QueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>) {
-        return Apollo.useQuery<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>(ProjectCollectionsDocument, baseOptions);
-      }
-export function useProjectCollectionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>) {
-          return Apollo.useLazyQuery<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>(ProjectCollectionsDocument, baseOptions);
-        }
-export type ProjectCollectionsQueryHookResult = ReturnType<typeof useProjectCollectionsQuery>;
-export type ProjectCollectionsLazyQueryHookResult = ReturnType<typeof useProjectCollectionsLazyQuery>;
-export type ProjectCollectionsQueryResult = Apollo.QueryResult<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>;
+export function useProjectCollectionsQuery(
+  baseOptions?: Apollo.QueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>(
+    ProjectCollectionsDocument,
+    options
+  )
+}
+export function useProjectCollectionsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ProjectCollectionsQuery,
+    ProjectCollectionsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>(
+    ProjectCollectionsDocument,
+    options
+  )
+}
+export type ProjectCollectionsQueryHookResult = ReturnType<typeof useProjectCollectionsQuery>
+export type ProjectCollectionsLazyQueryHookResult = ReturnType<
+  typeof useProjectCollectionsLazyQuery
+>
+export type ProjectCollectionsQueryResult = Apollo.QueryResult<
+  ProjectCollectionsQuery,
+  ProjectCollectionsQueryVariables
+>
 export const ProjectSuggestionsDocument = gql`
-    query projectSuggestions($after: String, $first: Int = 5) {
-  projects: projectSuggestions(after: $after, first: $first) @connection(key: "projects") {
-    type {
-      id
-      title
-    }
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      node {
-        ...Project
-        cover {
-          uri
-          default
+  query projectSuggestions($after: String, $first: Int = 5) {
+    projects: projectSuggestions(after: $after, first: $first) @connection(key: "projects") {
+      type {
+        id
+        title
+      }
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        node {
+          ...Project
+          cover {
+            uri
+            default
+          }
         }
       }
     }
   }
-}
-    ${ProjectFragmentDoc}`;
+  ${ProjectFragmentDoc}
+`
 
 /**
  * __useProjectSuggestionsQuery__
@@ -5172,24 +5582,44 @@ export const ProjectSuggestionsDocument = gql`
  *   },
  * });
  */
-export function useProjectSuggestionsQuery(baseOptions?: Apollo.QueryHookOptions<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>) {
-        return Apollo.useQuery<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>(ProjectSuggestionsDocument, baseOptions);
-      }
-export function useProjectSuggestionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>) {
-          return Apollo.useLazyQuery<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>(ProjectSuggestionsDocument, baseOptions);
-        }
-export type ProjectSuggestionsQueryHookResult = ReturnType<typeof useProjectSuggestionsQuery>;
-export type ProjectSuggestionsLazyQueryHookResult = ReturnType<typeof useProjectSuggestionsLazyQuery>;
-export type ProjectSuggestionsQueryResult = Apollo.QueryResult<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>;
-export const ProjectTypesDocument = gql`
-    query projectTypes {
-  types: projectTypes {
-    id
-    title
-    imageUrl
-  }
+export function useProjectSuggestionsQuery(
+  baseOptions?: Apollo.QueryHookOptions<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>(
+    ProjectSuggestionsDocument,
+    options
+  )
 }
-    `;
+export function useProjectSuggestionsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ProjectSuggestionsQuery,
+    ProjectSuggestionsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>(
+    ProjectSuggestionsDocument,
+    options
+  )
+}
+export type ProjectSuggestionsQueryHookResult = ReturnType<typeof useProjectSuggestionsQuery>
+export type ProjectSuggestionsLazyQueryHookResult = ReturnType<
+  typeof useProjectSuggestionsLazyQuery
+>
+export type ProjectSuggestionsQueryResult = Apollo.QueryResult<
+  ProjectSuggestionsQuery,
+  ProjectSuggestionsQueryVariables
+>
+export const ProjectTypesDocument = gql`
+  query projectTypes {
+    types: projectTypes {
+      id
+      title
+      imageUrl
+    }
+  }
+`
 
 /**
  * __useProjectTypesQuery__
@@ -5206,34 +5636,51 @@ export const ProjectTypesDocument = gql`
  *   },
  * });
  */
-export function useProjectTypesQuery(baseOptions?: Apollo.QueryHookOptions<ProjectTypesQuery, ProjectTypesQueryVariables>) {
-        return Apollo.useQuery<ProjectTypesQuery, ProjectTypesQueryVariables>(ProjectTypesDocument, baseOptions);
-      }
-export function useProjectTypesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectTypesQuery, ProjectTypesQueryVariables>) {
-          return Apollo.useLazyQuery<ProjectTypesQuery, ProjectTypesQueryVariables>(ProjectTypesDocument, baseOptions);
-        }
-export type ProjectTypesQueryHookResult = ReturnType<typeof useProjectTypesQuery>;
-export type ProjectTypesLazyQueryHookResult = ReturnType<typeof useProjectTypesLazyQuery>;
-export type ProjectTypesQueryResult = Apollo.QueryResult<ProjectTypesQuery, ProjectTypesQueryVariables>;
+export function useProjectTypesQuery(
+  baseOptions?: Apollo.QueryHookOptions<ProjectTypesQuery, ProjectTypesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<ProjectTypesQuery, ProjectTypesQueryVariables>(
+    ProjectTypesDocument,
+    options
+  )
+}
+export function useProjectTypesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<ProjectTypesQuery, ProjectTypesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<ProjectTypesQuery, ProjectTypesQueryVariables>(
+    ProjectTypesDocument,
+    options
+  )
+}
+export type ProjectTypesQueryHookResult = ReturnType<typeof useProjectTypesQuery>
+export type ProjectTypesLazyQueryHookResult = ReturnType<typeof useProjectTypesLazyQuery>
+export type ProjectTypesQueryResult = Apollo.QueryResult<
+  ProjectTypesQuery,
+  ProjectTypesQueryVariables
+>
 export const ProjectsDocument = gql`
-    query projects($typeId: ID, $after: String, $first: Int = 5, $type: ProjectSortType!) {
-  projects(typeId: $typeId, after: $after, first: $first, type: $type) @connection(key: "projects", filter: ["type", "typeId"]) {
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        cover {
-          uri
-          default
+  query projects($typeId: ID, $after: String, $first: Int = 5, $type: ProjectSortType!) {
+    projects(typeId: $typeId, after: $after, first: $first, type: $type)
+      @connection(key: "projects", filter: ["type", "typeId"]) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          cover {
+            uri
+            default
+          }
+          ...Project
         }
-        ...Project
       }
     }
   }
-}
-    ${ProjectFragmentDoc}`;
+  ${ProjectFragmentDoc}
+`
 
 /**
  * __useProjectsQuery__
@@ -5254,30 +5701,37 @@ export const ProjectsDocument = gql`
  *   },
  * });
  */
-export function useProjectsQuery(baseOptions: Apollo.QueryHookOptions<ProjectsQuery, ProjectsQueryVariables>) {
-        return Apollo.useQuery<ProjectsQuery, ProjectsQueryVariables>(ProjectsDocument, baseOptions);
-      }
-export function useProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectsQuery, ProjectsQueryVariables>) {
-          return Apollo.useLazyQuery<ProjectsQuery, ProjectsQueryVariables>(ProjectsDocument, baseOptions);
-        }
-export type ProjectsQueryHookResult = ReturnType<typeof useProjectsQuery>;
-export type ProjectsLazyQueryHookResult = ReturnType<typeof useProjectsLazyQuery>;
-export type ProjectsQueryResult = Apollo.QueryResult<ProjectsQuery, ProjectsQueryVariables>;
+export function useProjectsQuery(
+  baseOptions: Apollo.QueryHookOptions<ProjectsQuery, ProjectsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<ProjectsQuery, ProjectsQueryVariables>(ProjectsDocument, options)
+}
+export function useProjectsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<ProjectsQuery, ProjectsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<ProjectsQuery, ProjectsQueryVariables>(ProjectsDocument, options)
+}
+export type ProjectsQueryHookResult = ReturnType<typeof useProjectsQuery>
+export type ProjectsLazyQueryHookResult = ReturnType<typeof useProjectsLazyQuery>
+export type ProjectsQueryResult = Apollo.QueryResult<ProjectsQuery, ProjectsQueryVariables>
 export const RecentCommentsDocument = gql`
-    query recentComments($after: String) {
-  comments: recentComments(after: $after) @connection(key: "comments", filter: ["postId"]) {
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        ...CommentAndReplies
+  query recentComments($after: String) {
+    comments: recentComments(after: $after) @connection(key: "comments", filter: ["postId"]) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...CommentAndReplies
+        }
       }
     }
   }
-}
-    ${CommentAndRepliesFragmentDoc}`;
+  ${CommentAndRepliesFragmentDoc}
+`
 
 /**
  * __useRecentCommentsQuery__
@@ -5295,33 +5749,49 @@ export const RecentCommentsDocument = gql`
  *   },
  * });
  */
-export function useRecentCommentsQuery(baseOptions?: Apollo.QueryHookOptions<RecentCommentsQuery, RecentCommentsQueryVariables>) {
-        return Apollo.useQuery<RecentCommentsQuery, RecentCommentsQueryVariables>(RecentCommentsDocument, baseOptions);
-      }
-export function useRecentCommentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RecentCommentsQuery, RecentCommentsQueryVariables>) {
-          return Apollo.useLazyQuery<RecentCommentsQuery, RecentCommentsQueryVariables>(RecentCommentsDocument, baseOptions);
-        }
-export type RecentCommentsQueryHookResult = ReturnType<typeof useRecentCommentsQuery>;
-export type RecentCommentsLazyQueryHookResult = ReturnType<typeof useRecentCommentsLazyQuery>;
-export type RecentCommentsQueryResult = Apollo.QueryResult<RecentCommentsQuery, RecentCommentsQueryVariables>;
+export function useRecentCommentsQuery(
+  baseOptions?: Apollo.QueryHookOptions<RecentCommentsQuery, RecentCommentsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<RecentCommentsQuery, RecentCommentsQueryVariables>(
+    RecentCommentsDocument,
+    options
+  )
+}
+export function useRecentCommentsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<RecentCommentsQuery, RecentCommentsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<RecentCommentsQuery, RecentCommentsQueryVariables>(
+    RecentCommentsDocument,
+    options
+  )
+}
+export type RecentCommentsQueryHookResult = ReturnType<typeof useRecentCommentsQuery>
+export type RecentCommentsLazyQueryHookResult = ReturnType<typeof useRecentCommentsLazyQuery>
+export type RecentCommentsQueryResult = Apollo.QueryResult<
+  RecentCommentsQuery,
+  RecentCommentsQueryVariables
+>
 export const RepliesDocument = gql`
-    query replies($id: ID!, $after: String, $first: Int = 5) {
-  comment(id: $id) {
-    replies: repliesConnection(after: $after, first: $first) {
-      pageInfo {
-        hasNextPage
-      }
-      totalCount
-      edges {
-        cursor
-        node {
-          ...Comment
+  query replies($id: ID!, $after: String, $first: Int = 5) {
+    comment(id: $id) {
+      replies: repliesConnection(after: $after, first: $first) {
+        pageInfo {
+          hasNextPage
+        }
+        totalCount
+        edges {
+          cursor
+          node {
+            ...Comment
+          }
         }
       }
     }
   }
-}
-    ${CommentFragmentDoc}`;
+  ${CommentFragmentDoc}
+`
 
 /**
  * __useRepliesQuery__
@@ -5341,35 +5811,42 @@ export const RepliesDocument = gql`
  *   },
  * });
  */
-export function useRepliesQuery(baseOptions: Apollo.QueryHookOptions<RepliesQuery, RepliesQueryVariables>) {
-        return Apollo.useQuery<RepliesQuery, RepliesQueryVariables>(RepliesDocument, baseOptions);
-      }
-export function useRepliesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RepliesQuery, RepliesQueryVariables>) {
-          return Apollo.useLazyQuery<RepliesQuery, RepliesQueryVariables>(RepliesDocument, baseOptions);
-        }
-export type RepliesQueryHookResult = ReturnType<typeof useRepliesQuery>;
-export type RepliesLazyQueryHookResult = ReturnType<typeof useRepliesLazyQuery>;
-export type RepliesQueryResult = Apollo.QueryResult<RepliesQuery, RepliesQueryVariables>;
+export function useRepliesQuery(
+  baseOptions: Apollo.QueryHookOptions<RepliesQuery, RepliesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<RepliesQuery, RepliesQueryVariables>(RepliesDocument, options)
+}
+export function useRepliesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<RepliesQuery, RepliesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<RepliesQuery, RepliesQueryVariables>(RepliesDocument, options)
+}
+export type RepliesQueryHookResult = ReturnType<typeof useRepliesQuery>
+export type RepliesLazyQueryHookResult = ReturnType<typeof useRepliesLazyQuery>
+export type RepliesQueryResult = Apollo.QueryResult<RepliesQuery, RepliesQueryVariables>
 export const SearchHashtagsDocument = gql`
-    query searchHashtags($query: String!, $after: String, $first: Int = 10) {
-  hashtags: search(query: $query, after: $after, type: HASHTAGS, first: $first) @connection(key: "hashtags", filter: ["query", "type"]) {
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        ... on Hashtag {
-          id
-          name
-          slug
-          totalCount
+  query searchHashtags($query: String!, $after: String, $first: Int = 10) {
+    hashtags: search(query: $query, after: $after, type: HASHTAGS, first: $first)
+      @connection(key: "hashtags", filter: ["query", "type"]) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ... on Hashtag {
+            id
+            name
+            slug
+            totalCount
+          }
         }
       }
     }
   }
-}
-    `;
+`
 
 /**
  * __useSearchHashtagsQuery__
@@ -5389,37 +5866,53 @@ export const SearchHashtagsDocument = gql`
  *   },
  * });
  */
-export function useSearchHashtagsQuery(baseOptions: Apollo.QueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>) {
-        return Apollo.useQuery<SearchHashtagsQuery, SearchHashtagsQueryVariables>(SearchHashtagsDocument, baseOptions);
-      }
-export function useSearchHashtagsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>) {
-          return Apollo.useLazyQuery<SearchHashtagsQuery, SearchHashtagsQueryVariables>(SearchHashtagsDocument, baseOptions);
-        }
-export type SearchHashtagsQueryHookResult = ReturnType<typeof useSearchHashtagsQuery>;
-export type SearchHashtagsLazyQueryHookResult = ReturnType<typeof useSearchHashtagsLazyQuery>;
-export type SearchHashtagsQueryResult = Apollo.QueryResult<SearchHashtagsQuery, SearchHashtagsQueryVariables>;
+export function useSearchHashtagsQuery(
+  baseOptions: Apollo.QueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<SearchHashtagsQuery, SearchHashtagsQueryVariables>(
+    SearchHashtagsDocument,
+    options
+  )
+}
+export function useSearchHashtagsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<SearchHashtagsQuery, SearchHashtagsQueryVariables>(
+    SearchHashtagsDocument,
+    options
+  )
+}
+export type SearchHashtagsQueryHookResult = ReturnType<typeof useSearchHashtagsQuery>
+export type SearchHashtagsLazyQueryHookResult = ReturnType<typeof useSearchHashtagsLazyQuery>
+export type SearchHashtagsQueryResult = Apollo.QueryResult<
+  SearchHashtagsQuery,
+  SearchHashtagsQueryVariables
+>
 export const SearchModelsDocument = gql`
-    query searchModels($query: String!, $after: String, $first: Int = 20) {
-  models: search(query: $query, after: $after, type: MODELS, first: $first) @connection(key: "models", filter: ["query", "type"]) {
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        ... on Model {
-          id
-          brand {
-            name
+  query searchModels($query: String!, $after: String, $first: Int = 20) {
+    models: search(query: $query, after: $after, type: MODELS, first: $first)
+      @connection(key: "models", filter: ["query", "type"]) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ... on Model {
+            id
+            brand {
+              name
+            }
+            model
+            year
           }
-          model
-          year
         }
       }
     }
   }
-}
-    `;
+`
 
 /**
  * __useSearchModelsQuery__
@@ -5439,36 +5932,53 @@ export const SearchModelsDocument = gql`
  *   },
  * });
  */
-export function useSearchModelsQuery(baseOptions: Apollo.QueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>) {
-        return Apollo.useQuery<SearchModelsQuery, SearchModelsQueryVariables>(SearchModelsDocument, baseOptions);
-      }
-export function useSearchModelsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>) {
-          return Apollo.useLazyQuery<SearchModelsQuery, SearchModelsQueryVariables>(SearchModelsDocument, baseOptions);
-        }
-export type SearchModelsQueryHookResult = ReturnType<typeof useSearchModelsQuery>;
-export type SearchModelsLazyQueryHookResult = ReturnType<typeof useSearchModelsLazyQuery>;
-export type SearchModelsQueryResult = Apollo.QueryResult<SearchModelsQuery, SearchModelsQueryVariables>;
+export function useSearchModelsQuery(
+  baseOptions: Apollo.QueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<SearchModelsQuery, SearchModelsQueryVariables>(
+    SearchModelsDocument,
+    options
+  )
+}
+export function useSearchModelsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<SearchModelsQuery, SearchModelsQueryVariables>(
+    SearchModelsDocument,
+    options
+  )
+}
+export type SearchModelsQueryHookResult = ReturnType<typeof useSearchModelsQuery>
+export type SearchModelsLazyQueryHookResult = ReturnType<typeof useSearchModelsLazyQuery>
+export type SearchModelsQueryResult = Apollo.QueryResult<
+  SearchModelsQuery,
+  SearchModelsQueryVariables
+>
 export const SearchProjectsDocument = gql`
-    query searchProjects($query: String!, $after: String, $first: Int = 10) {
-  projects: search(query: $query, after: $after, type: PROJECTS, first: $first) @connection(key: "projects", filter: ["query", "type"]) {
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        ... on Project {
-          ...Project
-          cover {
-            uri
-            default
+  query searchProjects($query: String!, $after: String, $first: Int = 10) {
+    projects: search(query: $query, after: $after, type: PROJECTS, first: $first)
+      @connection(key: "projects", filter: ["query", "type"]) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ... on Project {
+            ...Project
+            cover {
+              uri
+              default
+            }
           }
         }
       }
     }
   }
-}
-    ${ProjectFragmentDoc}`;
+  ${ProjectFragmentDoc}
+`
 
 /**
  * __useSearchProjectsQuery__
@@ -5488,33 +5998,50 @@ export const SearchProjectsDocument = gql`
  *   },
  * });
  */
-export function useSearchProjectsQuery(baseOptions: Apollo.QueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>) {
-        return Apollo.useQuery<SearchProjectsQuery, SearchProjectsQueryVariables>(SearchProjectsDocument, baseOptions);
-      }
-export function useSearchProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>) {
-          return Apollo.useLazyQuery<SearchProjectsQuery, SearchProjectsQueryVariables>(SearchProjectsDocument, baseOptions);
-        }
-export type SearchProjectsQueryHookResult = ReturnType<typeof useSearchProjectsQuery>;
-export type SearchProjectsLazyQueryHookResult = ReturnType<typeof useSearchProjectsLazyQuery>;
-export type SearchProjectsQueryResult = Apollo.QueryResult<SearchProjectsQuery, SearchProjectsQueryVariables>;
+export function useSearchProjectsQuery(
+  baseOptions: Apollo.QueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<SearchProjectsQuery, SearchProjectsQueryVariables>(
+    SearchProjectsDocument,
+    options
+  )
+}
+export function useSearchProjectsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<SearchProjectsQuery, SearchProjectsQueryVariables>(
+    SearchProjectsDocument,
+    options
+  )
+}
+export type SearchProjectsQueryHookResult = ReturnType<typeof useSearchProjectsQuery>
+export type SearchProjectsLazyQueryHookResult = ReturnType<typeof useSearchProjectsLazyQuery>
+export type SearchProjectsQueryResult = Apollo.QueryResult<
+  SearchProjectsQuery,
+  SearchProjectsQueryVariables
+>
 export const SearchUsersDocument = gql`
-    query searchUsers($query: String!, $after: String, $first: Int = 10) {
-  users: search(query: $query, after: $after, type: USERS, first: $first) @connection(key: "users", filter: ["query", "type"]) {
-    pageInfo {
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        ... on User {
-          ...User
-          projectCount
+  query searchUsers($query: String!, $after: String, $first: Int = 10) {
+    users: search(query: $query, after: $after, type: USERS, first: $first)
+      @connection(key: "users", filter: ["query", "type"]) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ... on User {
+            ...User
+            projectCount
+          }
         }
       }
     }
   }
-}
-    ${UserFragmentDoc}`;
+  ${UserFragmentDoc}
+`
 
 /**
  * __useSearchUsersQuery__
@@ -5534,30 +6061,40 @@ export const SearchUsersDocument = gql`
  *   },
  * });
  */
-export function useSearchUsersQuery(baseOptions: Apollo.QueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>) {
-        return Apollo.useQuery<SearchUsersQuery, SearchUsersQueryVariables>(SearchUsersDocument, baseOptions);
-      }
-export function useSearchUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>) {
-          return Apollo.useLazyQuery<SearchUsersQuery, SearchUsersQueryVariables>(SearchUsersDocument, baseOptions);
-        }
-export type SearchUsersQueryHookResult = ReturnType<typeof useSearchUsersQuery>;
-export type SearchUsersLazyQueryHookResult = ReturnType<typeof useSearchUsersLazyQuery>;
-export type SearchUsersQueryResult = Apollo.QueryResult<SearchUsersQuery, SearchUsersQueryVariables>;
+export function useSearchUsersQuery(
+  baseOptions: Apollo.QueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<SearchUsersQuery, SearchUsersQueryVariables>(SearchUsersDocument, options)
+}
+export function useSearchUsersLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<SearchUsersQuery, SearchUsersQueryVariables>(
+    SearchUsersDocument,
+    options
+  )
+}
+export type SearchUsersQueryHookResult = ReturnType<typeof useSearchUsersQuery>
+export type SearchUsersLazyQueryHookResult = ReturnType<typeof useSearchUsersLazyQuery>
+export type SearchUsersQueryResult = Apollo.QueryResult<SearchUsersQuery, SearchUsersQueryVariables>
 export const SimilarProjectsDocument = gql`
-    query similarProjects($id: ID!, $first: Int = 5) {
-  similarProjects(id: $id, first: $first) {
-    edges {
-      cursor
-      node {
-        cover {
-          uri
+  query similarProjects($id: ID!, $first: Int = 5) {
+    similarProjects(id: $id, first: $first) {
+      edges {
+        cursor
+        node {
+          cover {
+            uri
+          }
+          ...Project
         }
-        ...Project
       }
     }
   }
-}
-    ${ProjectFragmentDoc}`;
+  ${ProjectFragmentDoc}
+`
 
 /**
  * __useSimilarProjectsQuery__
@@ -5576,22 +6113,37 @@ export const SimilarProjectsDocument = gql`
  *   },
  * });
  */
-export function useSimilarProjectsQuery(baseOptions: Apollo.QueryHookOptions<SimilarProjectsQuery, SimilarProjectsQueryVariables>) {
-        return Apollo.useQuery<SimilarProjectsQuery, SimilarProjectsQueryVariables>(SimilarProjectsDocument, baseOptions);
-      }
-export function useSimilarProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SimilarProjectsQuery, SimilarProjectsQueryVariables>) {
-          return Apollo.useLazyQuery<SimilarProjectsQuery, SimilarProjectsQueryVariables>(SimilarProjectsDocument, baseOptions);
-        }
-export type SimilarProjectsQueryHookResult = ReturnType<typeof useSimilarProjectsQuery>;
-export type SimilarProjectsLazyQueryHookResult = ReturnType<typeof useSimilarProjectsLazyQuery>;
-export type SimilarProjectsQueryResult = Apollo.QueryResult<SimilarProjectsQuery, SimilarProjectsQueryVariables>;
-export const UnreadNotificationsDocument = gql`
-    query unreadNotifications {
-  notifications {
-    unreadCount
-  }
+export function useSimilarProjectsQuery(
+  baseOptions: Apollo.QueryHookOptions<SimilarProjectsQuery, SimilarProjectsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<SimilarProjectsQuery, SimilarProjectsQueryVariables>(
+    SimilarProjectsDocument,
+    options
+  )
 }
-    `;
+export function useSimilarProjectsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<SimilarProjectsQuery, SimilarProjectsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<SimilarProjectsQuery, SimilarProjectsQueryVariables>(
+    SimilarProjectsDocument,
+    options
+  )
+}
+export type SimilarProjectsQueryHookResult = ReturnType<typeof useSimilarProjectsQuery>
+export type SimilarProjectsLazyQueryHookResult = ReturnType<typeof useSimilarProjectsLazyQuery>
+export type SimilarProjectsQueryResult = Apollo.QueryResult<
+  SimilarProjectsQuery,
+  SimilarProjectsQueryVariables
+>
+export const UnreadNotificationsDocument = gql`
+  query unreadNotifications {
+    notifications {
+      unreadCount
+    }
+  }
+`
 
 /**
  * __useUnreadNotificationsQuery__
@@ -5608,46 +6160,67 @@ export const UnreadNotificationsDocument = gql`
  *   },
  * });
  */
-export function useUnreadNotificationsQuery(baseOptions?: Apollo.QueryHookOptions<UnreadNotificationsQuery, UnreadNotificationsQueryVariables>) {
-        return Apollo.useQuery<UnreadNotificationsQuery, UnreadNotificationsQueryVariables>(UnreadNotificationsDocument, baseOptions);
-      }
-export function useUnreadNotificationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UnreadNotificationsQuery, UnreadNotificationsQueryVariables>) {
-          return Apollo.useLazyQuery<UnreadNotificationsQuery, UnreadNotificationsQueryVariables>(UnreadNotificationsDocument, baseOptions);
-        }
-export type UnreadNotificationsQueryHookResult = ReturnType<typeof useUnreadNotificationsQuery>;
-export type UnreadNotificationsLazyQueryHookResult = ReturnType<typeof useUnreadNotificationsLazyQuery>;
-export type UnreadNotificationsQueryResult = Apollo.QueryResult<UnreadNotificationsQuery, UnreadNotificationsQueryVariables>;
+export function useUnreadNotificationsQuery(
+  baseOptions?: Apollo.QueryHookOptions<UnreadNotificationsQuery, UnreadNotificationsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<UnreadNotificationsQuery, UnreadNotificationsQueryVariables>(
+    UnreadNotificationsDocument,
+    options
+  )
+}
+export function useUnreadNotificationsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    UnreadNotificationsQuery,
+    UnreadNotificationsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<UnreadNotificationsQuery, UnreadNotificationsQueryVariables>(
+    UnreadNotificationsDocument,
+    options
+  )
+}
+export type UnreadNotificationsQueryHookResult = ReturnType<typeof useUnreadNotificationsQuery>
+export type UnreadNotificationsLazyQueryHookResult = ReturnType<
+  typeof useUnreadNotificationsLazyQuery
+>
+export type UnreadNotificationsQueryResult = Apollo.QueryResult<
+  UnreadNotificationsQuery,
+  UnreadNotificationsQueryVariables
+>
 export const UserDocument = gql`
-    query user($username: LowercaseString!, $after: String, $first: Int = 5) {
-  user(username: $username) {
-    ...User
-    projects: projectsConnection {
-      edges {
-        node {
-          ...Project
-          cover {
-            uri
-            default
+  query user($username: LowercaseString!, $after: String, $first: Int = 5) {
+    user(username: $username) {
+      ...User
+      projects: projectsConnection {
+        edges {
+          node {
+            ...Project
+            cover {
+              uri
+              default
+            }
           }
         }
       }
-    }
-    posts: postsConnection(after: $after, first: $first) @connection(key: "posts") {
-      edges {
-        cursor
-        node {
-          ...Post
+      posts: postsConnection(after: $after, first: $first) @connection(key: "posts") {
+        edges {
+          cursor
+          node {
+            ...Post
+          }
         }
-      }
-      pageInfo {
-        hasNextPage
+        pageInfo {
+          hasNextPage
+        }
       }
     }
   }
-}
-    ${UserFragmentDoc}
-${ProjectFragmentDoc}
-${PostFragmentDoc}`;
+  ${UserFragmentDoc}
+  ${ProjectFragmentDoc}
+  ${PostFragmentDoc}
+`
 
 /**
  * __useUserQuery__
@@ -5668,36 +6241,41 @@ ${PostFragmentDoc}`;
  * });
  */
 export function useUserQuery(baseOptions: Apollo.QueryHookOptions<UserQuery, UserQueryVariables>) {
-        return Apollo.useQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
-      }
-export function useUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserQuery, UserQueryVariables>) {
-          return Apollo.useLazyQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
-        }
-export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
-export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
-export type UserQueryResult = Apollo.QueryResult<UserQuery, UserQueryVariables>;
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<UserQuery, UserQueryVariables>(UserDocument, options)
+}
+export function useUserLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<UserQuery, UserQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<UserQuery, UserQueryVariables>(UserDocument, options)
+}
+export type UserQueryHookResult = ReturnType<typeof useUserQuery>
+export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>
+export type UserQueryResult = Apollo.QueryResult<UserQuery, UserQueryVariables>
 export const UserFollowingProjectsDocument = gql`
-    query userFollowingProjects($username: LowercaseString!, $after: String, $first: Int = 5) {
-  user(username: $username) {
-    id
-    projects: followingProjects(after: $after, first: $first) {
-      pageInfo {
-        hasNextPage
-      }
-      edges {
-        cursor
-        node {
-          ...Project
-          cover {
-            uri
-            default
+  query userFollowingProjects($username: LowercaseString!, $after: String, $first: Int = 5) {
+    user(username: $username) {
+      id
+      projects: followingProjects(after: $after, first: $first) {
+        pageInfo {
+          hasNextPage
+        }
+        edges {
+          cursor
+          node {
+            ...Project
+            cover {
+              uri
+              default
+            }
           }
         }
       }
     }
   }
-}
-    ${ProjectFragmentDoc}`;
+  ${ProjectFragmentDoc}
+`
 
 /**
  * __useUserFollowingProjectsQuery__
@@ -5717,12 +6295,35 @@ export const UserFollowingProjectsDocument = gql`
  *   },
  * });
  */
-export function useUserFollowingProjectsQuery(baseOptions: Apollo.QueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>) {
-        return Apollo.useQuery<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>(UserFollowingProjectsDocument, baseOptions);
-      }
-export function useUserFollowingProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>) {
-          return Apollo.useLazyQuery<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>(UserFollowingProjectsDocument, baseOptions);
-        }
-export type UserFollowingProjectsQueryHookResult = ReturnType<typeof useUserFollowingProjectsQuery>;
-export type UserFollowingProjectsLazyQueryHookResult = ReturnType<typeof useUserFollowingProjectsLazyQuery>;
-export type UserFollowingProjectsQueryResult = Apollo.QueryResult<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>;
+export function useUserFollowingProjectsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    UserFollowingProjectsQuery,
+    UserFollowingProjectsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>(
+    UserFollowingProjectsDocument,
+    options
+  )
+}
+export function useUserFollowingProjectsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    UserFollowingProjectsQuery,
+    UserFollowingProjectsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>(
+    UserFollowingProjectsDocument,
+    options
+  )
+}
+export type UserFollowingProjectsQueryHookResult = ReturnType<typeof useUserFollowingProjectsQuery>
+export type UserFollowingProjectsLazyQueryHookResult = ReturnType<
+  typeof useUserFollowingProjectsLazyQuery
+>
+export type UserFollowingProjectsQueryResult = Apollo.QueryResult<
+  UserFollowingProjectsQuery,
+  UserFollowingProjectsQueryVariables
+>

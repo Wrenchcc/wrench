@@ -3,6 +3,17 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
 };
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeleteCurrentUserDocument = exports.useDeleteCommentMutation = exports.DeleteCommentDocument = exports.useDeleteCollectionMutation = exports.DeleteCollectionDocument = exports.useDeleteBlogPostMutation = exports.DeleteBlogPostDocument = exports.useCollectPostsMutation = exports.CollectPostsDocument = exports.useBookmarkPostMutation = exports.BookmarkPostDocument = exports.useBanUserMutation = exports.BanUserDocument = exports.useAuthenticateGoogleMutation = exports.AuthenticateGoogleDocument = exports.useAuthenticateFacebookMutation = exports.AuthenticateFacebookDocument = exports.useAuthenticateAppleMutation = exports.AuthenticateAppleDocument = exports.useAddProjectMutation = exports.AddProjectDocument = exports.useAddPostMutation = exports.AddPostDocument = exports.useAddCommentMutation = exports.AddCommentDocument = exports.useAddCollectionMutation = exports.AddCollectionDocument = exports.useAddBlogPostMutation = exports.AddBlogPostDocument = exports.UserSettingsFragmentDoc = exports.UserProjectsFragmentDoc = exports.PostFragmentDoc = exports.NotificationFragmentDoc = exports.ProjectFragmentDoc = exports.CommentAndRepliesFragmentDoc = exports.CommentFragmentDoc = exports.CollectionFragmentDoc = exports.BlogPostFragmentDoc = exports.UserFragmentDoc = exports.UserRole = exports.UploadType = exports.SortType = exports.SearchType = exports.ReportType = exports.ProjectSortType = exports.PlatformType = exports.NotificationTypes = exports.GrowthType = exports.FileType = exports.CacheControlScope = void 0;
 exports.useBookmarksLazyQuery = exports.useBookmarksQuery = exports.BookmarksDocument = exports.useBlogPostsLazyQuery = exports.useBlogPostsQuery = exports.BlogPostsDocument = exports.useBlogPostLazyQuery = exports.useBlogPostQuery = exports.BlogPostDocument = exports.useTranslatePostMutation = exports.TranslatePostDocument = exports.useTranslateCommentMutation = exports.TranslateCommentDocument = exports.useToggleNotificationSettingsMutation = exports.ToggleNotificationSettingsDocument = exports.useSendPromoMutation = exports.SendPromoDocument = exports.useRegisterDeviceTokenMutation = exports.RegisterDeviceTokenDocument = exports.useRefreshTokenMutation = exports.RefreshTokenDocument = exports.usePreSignUrlsMutation = exports.PreSignUrlsDocument = exports.usePreSignUrlMutation = exports.PreSignUrlDocument = exports.useMarkNotificationSeenMutation = exports.MarkNotificationSeenDocument = exports.useMarkAllNotificationsSeenMutation = exports.MarkAllNotificationsSeenDocument = exports.useLikePostMutation = exports.LikePostDocument = exports.useLikeCommentMutation = exports.LikeCommentDocument = exports.useFollowProjectMutation = exports.FollowProjectDocument = exports.useEditUserMutation = exports.EditUserDocument = exports.useEditProjectMutation = exports.EditProjectDocument = exports.useEditPostMutation = exports.EditPostDocument = exports.useEditCollectionMutation = exports.EditCollectionDocument = exports.useDeleteProjectMutation = exports.DeleteProjectDocument = exports.useDeletePostMutation = exports.DeletePostDocument = exports.useDeleteNotificationMutation = exports.DeleteNotificationDocument = exports.useDeleteCurrentUserMutation = void 0;
@@ -10,6 +21,7 @@ exports.usePostQuery = exports.PostDocument = exports.useNotificationsLazyQuery 
 exports.useUserFollowingProjectsLazyQuery = exports.useUserFollowingProjectsQuery = exports.UserFollowingProjectsDocument = exports.useUserLazyQuery = exports.useUserQuery = exports.UserDocument = exports.useUnreadNotificationsLazyQuery = exports.useUnreadNotificationsQuery = exports.UnreadNotificationsDocument = exports.useSimilarProjectsLazyQuery = exports.useSimilarProjectsQuery = exports.SimilarProjectsDocument = exports.useSearchUsersLazyQuery = exports.useSearchUsersQuery = exports.SearchUsersDocument = exports.useSearchProjectsLazyQuery = exports.useSearchProjectsQuery = exports.SearchProjectsDocument = exports.useSearchModelsLazyQuery = exports.useSearchModelsQuery = exports.SearchModelsDocument = exports.useSearchHashtagsLazyQuery = exports.useSearchHashtagsQuery = exports.SearchHashtagsDocument = exports.useRepliesLazyQuery = exports.useRepliesQuery = exports.RepliesDocument = exports.useRecentCommentsLazyQuery = exports.useRecentCommentsQuery = exports.RecentCommentsDocument = exports.useProjectsLazyQuery = exports.useProjectsQuery = exports.ProjectsDocument = exports.useProjectTypesLazyQuery = exports.useProjectTypesQuery = exports.ProjectTypesDocument = exports.useProjectSuggestionsLazyQuery = exports.useProjectSuggestionsQuery = exports.ProjectSuggestionsDocument = exports.useProjectCollectionsLazyQuery = exports.useProjectCollectionsQuery = exports.ProjectCollectionsDocument = exports.useProjectLazyQuery = exports.useProjectQuery = exports.ProjectDocument = exports.usePostsLazyQuery = exports.usePostsQuery = exports.PostsDocument = exports.usePostLazyQuery = void 0;
 var client_1 = require("@apollo/client");
 var Apollo = require("@apollo/client");
+var defaultOptions = {};
 var CacheControlScope;
 (function (CacheControlScope) {
     CacheControlScope["Public"] = "PUBLIC";
@@ -73,17 +85,17 @@ var UserRole;
     UserRole["User"] = "USER";
     UserRole["Admin"] = "ADMIN";
 })(UserRole = exports.UserRole || (exports.UserRole = {}));
-exports.UserFragmentDoc = client_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    fragment User on User {\n  id\n  fullName\n  firstName\n  lastName\n  username\n  avatarUrl\n  isSilhouette\n  isOnline\n  website\n  location\n  bio\n  projectCount\n  dynamicLink\n}\n    "], ["\n    fragment User on User {\n  id\n  fullName\n  firstName\n  lastName\n  username\n  avatarUrl\n  isSilhouette\n  isOnline\n  website\n  location\n  bio\n  projectCount\n  dynamicLink\n}\n    "])));
-exports.BlogPostFragmentDoc = client_1.gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    fragment BlogPost on BlogPost {\n  id\n  title\n  slug\n  content\n  createdAt\n  user {\n    ...User\n  }\n}\n    ", ""], ["\n    fragment BlogPost on BlogPost {\n  id\n  title\n  slug\n  content\n  createdAt\n  user {\n    ...User\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
-exports.CollectionFragmentDoc = client_1.gql(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    fragment Collection on Collection {\n  id\n  name\n  slug\n  cover {\n    uri\n  }\n}\n    "], ["\n    fragment Collection on Collection {\n  id\n  name\n  slug\n  cover {\n    uri\n  }\n}\n    "])));
-exports.CommentFragmentDoc = client_1.gql(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    fragment Comment on Comment {\n  id\n  text\n  createdAt\n  permissions {\n    isOwner\n  }\n  likes {\n    isLiked\n    totalCount\n  }\n  translatable\n  user {\n    ...User\n  }\n}\n    ", ""], ["\n    fragment Comment on Comment {\n  id\n  text\n  createdAt\n  permissions {\n    isOwner\n  }\n  likes {\n    isLiked\n    totalCount\n  }\n  translatable\n  user {\n    ...User\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
-exports.CommentAndRepliesFragmentDoc = client_1.gql(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    fragment CommentAndReplies on Comment {\n  ...Comment\n  replies: repliesConnection(first: 1) {\n    pageInfo {\n      hasNextPage\n    }\n    totalCount\n    edges {\n      cursor\n      node {\n        ...Comment\n      }\n    }\n  }\n}\n    ", ""], ["\n    fragment CommentAndReplies on Comment {\n  ...Comment\n  replies: repliesConnection(first: 1) {\n    pageInfo {\n      hasNextPage\n    }\n    totalCount\n    edges {\n      cursor\n      node {\n        ...Comment\n      }\n    }\n  }\n}\n    ", ""])), exports.CommentFragmentDoc);
-exports.ProjectFragmentDoc = client_1.gql(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    fragment Project on Project {\n  id\n  title\n  slug\n  dynamicLink\n  user {\n    ...User\n  }\n  permissions {\n    isOwner\n    isFollower\n  }\n  type {\n    title\n  }\n  cover {\n    uri\n  }\n  followers: followersConnection(first: 3) {\n    totalCount\n    edges {\n      node {\n        id\n        username\n        avatarUrl\n      }\n    }\n  }\n}\n    ", ""], ["\n    fragment Project on Project {\n  id\n  title\n  slug\n  dynamicLink\n  user {\n    ...User\n  }\n  permissions {\n    isOwner\n    isFollower\n  }\n  type {\n    title\n  }\n  cover {\n    uri\n  }\n  followers: followersConnection(first: 3) {\n    totalCount\n    edges {\n      node {\n        id\n        username\n        avatarUrl\n      }\n    }\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
-exports.NotificationFragmentDoc = client_1.gql(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n    fragment Notification on Notification {\n  id\n  type\n  createdAt\n  user {\n    ...User\n  }\n  project {\n    ...Project\n  }\n  post {\n    id\n  }\n  comment {\n    id\n    text\n    postId\n  }\n  files: filesConnection(type: IMAGE, first: 1) {\n    edges {\n      node {\n        id\n        uri\n      }\n    }\n  }\n}\n    ", "\n", ""], ["\n    fragment Notification on Notification {\n  id\n  type\n  createdAt\n  user {\n    ...User\n  }\n  project {\n    ...Project\n  }\n  post {\n    id\n  }\n  comment {\n    id\n    text\n    postId\n  }\n  files: filesConnection(type: IMAGE, first: 1) {\n    edges {\n      node {\n        id\n        uri\n      }\n    }\n  }\n}\n    ", "\n", ""])), exports.UserFragmentDoc, exports.ProjectFragmentDoc);
-exports.PostFragmentDoc = client_1.gql(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n    fragment Post on Post {\n  id\n  caption\n  createdAt\n  translatable\n  user {\n    ...User\n  }\n  permissions {\n    isOwner\n  }\n  files: filesConnection {\n    edges {\n      node {\n        id\n        type\n        uri\n      }\n    }\n  }\n  project {\n    ...Project\n  }\n  likes {\n    isLiked\n    totalCount\n  }\n  bookmarks {\n    isBookmarked\n  }\n  comments: commentsConnection(first: 2) @connection(key: \"comments\") {\n    totalCount\n    edges {\n      node {\n        ...Comment\n      }\n    }\n  }\n  likesConnection(first: 3) @connection(key: \"likes\") {\n    edges {\n      node {\n        id\n        avatarUrl\n      }\n    }\n  }\n  collection {\n    id\n    name\n    slug\n  }\n}\n    ", "\n", "\n", ""], ["\n    fragment Post on Post {\n  id\n  caption\n  createdAt\n  translatable\n  user {\n    ...User\n  }\n  permissions {\n    isOwner\n  }\n  files: filesConnection {\n    edges {\n      node {\n        id\n        type\n        uri\n      }\n    }\n  }\n  project {\n    ...Project\n  }\n  likes {\n    isLiked\n    totalCount\n  }\n  bookmarks {\n    isBookmarked\n  }\n  comments: commentsConnection(first: 2) @connection(key: \"comments\") {\n    totalCount\n    edges {\n      node {\n        ...Comment\n      }\n    }\n  }\n  likesConnection(first: 3) @connection(key: \"likes\") {\n    edges {\n      node {\n        id\n        avatarUrl\n      }\n    }\n  }\n  collection {\n    id\n    name\n    slug\n  }\n}\n    ", "\n", "\n", ""])), exports.UserFragmentDoc, exports.ProjectFragmentDoc, exports.CommentFragmentDoc);
-exports.UserProjectsFragmentDoc = client_1.gql(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n    fragment UserProjects on User {\n  projects: projectsConnection {\n    edges {\n      node {\n        id\n        title\n        followers: followersConnection {\n          totalCount\n        }\n        files: filesConnection(first: 1, type: IMAGE) {\n          edges {\n            node {\n              id\n              uri\n            }\n          }\n        }\n      }\n    }\n  }\n}\n    "], ["\n    fragment UserProjects on User {\n  projects: projectsConnection {\n    edges {\n      node {\n        id\n        title\n        followers: followersConnection {\n          totalCount\n        }\n        files: filesConnection(first: 1, type: IMAGE) {\n          edges {\n            node {\n              id\n              uri\n            }\n          }\n        }\n      }\n    }\n  }\n}\n    "])));
-exports.UserSettingsFragmentDoc = client_1.gql(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n    fragment UserSettings on User {\n  id\n  role\n  settings {\n    notifications {\n      types {\n        NEW_FOLLOWER {\n          email\n          push\n        }\n        NEW_COMMENT {\n          email\n          push\n        }\n        NEW_MENTION {\n          email\n          push\n        }\n        NEW_ARTICLE {\n          email\n          push\n        }\n        SIMILAR_PROJECTS {\n          email\n          push\n        }\n        PRODUCT_ANNOUNCEMENTS {\n          email\n          push\n        }\n      }\n    }\n  }\n}\n    "], ["\n    fragment UserSettings on User {\n  id\n  role\n  settings {\n    notifications {\n      types {\n        NEW_FOLLOWER {\n          email\n          push\n        }\n        NEW_COMMENT {\n          email\n          push\n        }\n        NEW_MENTION {\n          email\n          push\n        }\n        NEW_ARTICLE {\n          email\n          push\n        }\n        SIMILAR_PROJECTS {\n          email\n          push\n        }\n        PRODUCT_ANNOUNCEMENTS {\n          email\n          push\n        }\n      }\n    }\n  }\n}\n    "])));
-exports.AddBlogPostDocument = client_1.gql(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n    mutation addBlogPost($id: ID, $input: BlogPostInput!) {\n  addBlogPost(id: $id, input: $input) {\n    ...BlogPost\n  }\n}\n    ", ""], ["\n    mutation addBlogPost($id: ID, $input: BlogPostInput!) {\n  addBlogPost(id: $id, input: $input) {\n    ...BlogPost\n  }\n}\n    ", ""])), exports.BlogPostFragmentDoc);
+exports.UserFragmentDoc = client_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  fragment User on User {\n    id\n    fullName\n    firstName\n    lastName\n    username\n    avatarUrl\n    isSilhouette\n    isOnline\n    website\n    location\n    bio\n    projectCount\n    dynamicLink\n  }\n"], ["\n  fragment User on User {\n    id\n    fullName\n    firstName\n    lastName\n    username\n    avatarUrl\n    isSilhouette\n    isOnline\n    website\n    location\n    bio\n    projectCount\n    dynamicLink\n  }\n"])));
+exports.BlogPostFragmentDoc = client_1.gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  fragment BlogPost on BlogPost {\n    id\n    title\n    slug\n    content\n    createdAt\n    user {\n      ...User\n    }\n  }\n  ", "\n"], ["\n  fragment BlogPost on BlogPost {\n    id\n    title\n    slug\n    content\n    createdAt\n    user {\n      ...User\n    }\n  }\n  ", "\n"])), exports.UserFragmentDoc);
+exports.CollectionFragmentDoc = client_1.gql(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  fragment Collection on Collection {\n    id\n    name\n    slug\n    cover {\n      uri\n    }\n  }\n"], ["\n  fragment Collection on Collection {\n    id\n    name\n    slug\n    cover {\n      uri\n    }\n  }\n"])));
+exports.CommentFragmentDoc = client_1.gql(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  fragment Comment on Comment {\n    id\n    text\n    createdAt\n    permissions {\n      isOwner\n    }\n    likes {\n      isLiked\n      totalCount\n    }\n    translatable\n    user {\n      ...User\n    }\n  }\n  ", "\n"], ["\n  fragment Comment on Comment {\n    id\n    text\n    createdAt\n    permissions {\n      isOwner\n    }\n    likes {\n      isLiked\n      totalCount\n    }\n    translatable\n    user {\n      ...User\n    }\n  }\n  ", "\n"])), exports.UserFragmentDoc);
+exports.CommentAndRepliesFragmentDoc = client_1.gql(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  fragment CommentAndReplies on Comment {\n    ...Comment\n    replies: repliesConnection(first: 1) {\n      pageInfo {\n        hasNextPage\n      }\n      totalCount\n      edges {\n        cursor\n        node {\n          ...Comment\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  fragment CommentAndReplies on Comment {\n    ...Comment\n    replies: repliesConnection(first: 1) {\n      pageInfo {\n        hasNextPage\n      }\n      totalCount\n      edges {\n        cursor\n        node {\n          ...Comment\n        }\n      }\n    }\n  }\n  ", "\n"])), exports.CommentFragmentDoc);
+exports.ProjectFragmentDoc = client_1.gql(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  fragment Project on Project {\n    id\n    title\n    slug\n    dynamicLink\n    user {\n      ...User\n    }\n    permissions {\n      isOwner\n      isFollower\n    }\n    type {\n      title\n    }\n    cover {\n      uri\n    }\n    followers: followersConnection(first: 3) {\n      totalCount\n      edges {\n        node {\n          id\n          username\n          avatarUrl\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  fragment Project on Project {\n    id\n    title\n    slug\n    dynamicLink\n    user {\n      ...User\n    }\n    permissions {\n      isOwner\n      isFollower\n    }\n    type {\n      title\n    }\n    cover {\n      uri\n    }\n    followers: followersConnection(first: 3) {\n      totalCount\n      edges {\n        node {\n          id\n          username\n          avatarUrl\n        }\n      }\n    }\n  }\n  ", "\n"])), exports.UserFragmentDoc);
+exports.NotificationFragmentDoc = client_1.gql(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  fragment Notification on Notification {\n    id\n    type\n    createdAt\n    user {\n      ...User\n    }\n    project {\n      ...Project\n    }\n    post {\n      id\n    }\n    comment {\n      id\n      text\n      postId\n    }\n    files: filesConnection(type: IMAGE, first: 1) {\n      edges {\n        node {\n          id\n          uri\n        }\n      }\n    }\n  }\n  ", "\n  ", "\n"], ["\n  fragment Notification on Notification {\n    id\n    type\n    createdAt\n    user {\n      ...User\n    }\n    project {\n      ...Project\n    }\n    post {\n      id\n    }\n    comment {\n      id\n      text\n      postId\n    }\n    files: filesConnection(type: IMAGE, first: 1) {\n      edges {\n        node {\n          id\n          uri\n        }\n      }\n    }\n  }\n  ", "\n  ", "\n"])), exports.UserFragmentDoc, exports.ProjectFragmentDoc);
+exports.PostFragmentDoc = client_1.gql(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  fragment Post on Post {\n    id\n    caption\n    createdAt\n    translatable\n    user {\n      ...User\n    }\n    permissions {\n      isOwner\n    }\n    files: filesConnection {\n      edges {\n        node {\n          id\n          type\n          uri\n        }\n      }\n    }\n    project {\n      ...Project\n    }\n    likes {\n      isLiked\n      totalCount\n    }\n    bookmarks {\n      isBookmarked\n    }\n    comments: commentsConnection(first: 2) @connection(key: \"comments\") {\n      totalCount\n      edges {\n        node {\n          ...Comment\n        }\n      }\n    }\n    likesConnection(first: 3) @connection(key: \"likes\") {\n      edges {\n        node {\n          id\n          avatarUrl\n        }\n      }\n    }\n    collection {\n      id\n      name\n      slug\n    }\n  }\n  ", "\n  ", "\n  ", "\n"], ["\n  fragment Post on Post {\n    id\n    caption\n    createdAt\n    translatable\n    user {\n      ...User\n    }\n    permissions {\n      isOwner\n    }\n    files: filesConnection {\n      edges {\n        node {\n          id\n          type\n          uri\n        }\n      }\n    }\n    project {\n      ...Project\n    }\n    likes {\n      isLiked\n      totalCount\n    }\n    bookmarks {\n      isBookmarked\n    }\n    comments: commentsConnection(first: 2) @connection(key: \"comments\") {\n      totalCount\n      edges {\n        node {\n          ...Comment\n        }\n      }\n    }\n    likesConnection(first: 3) @connection(key: \"likes\") {\n      edges {\n        node {\n          id\n          avatarUrl\n        }\n      }\n    }\n    collection {\n      id\n      name\n      slug\n    }\n  }\n  ", "\n  ", "\n  ", "\n"])), exports.UserFragmentDoc, exports.ProjectFragmentDoc, exports.CommentFragmentDoc);
+exports.UserProjectsFragmentDoc = client_1.gql(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  fragment UserProjects on User {\n    projects: projectsConnection {\n      edges {\n        node {\n          id\n          title\n          followers: followersConnection {\n            totalCount\n          }\n          files: filesConnection(first: 1, type: IMAGE) {\n            edges {\n              node {\n                id\n                uri\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"], ["\n  fragment UserProjects on User {\n    projects: projectsConnection {\n      edges {\n        node {\n          id\n          title\n          followers: followersConnection {\n            totalCount\n          }\n          files: filesConnection(first: 1, type: IMAGE) {\n            edges {\n              node {\n                id\n                uri\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"])));
+exports.UserSettingsFragmentDoc = client_1.gql(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n  fragment UserSettings on User {\n    id\n    role\n    settings {\n      notifications {\n        types {\n          NEW_FOLLOWER {\n            email\n            push\n          }\n          NEW_COMMENT {\n            email\n            push\n          }\n          NEW_MENTION {\n            email\n            push\n          }\n          NEW_ARTICLE {\n            email\n            push\n          }\n          SIMILAR_PROJECTS {\n            email\n            push\n          }\n          PRODUCT_ANNOUNCEMENTS {\n            email\n            push\n          }\n        }\n      }\n    }\n  }\n"], ["\n  fragment UserSettings on User {\n    id\n    role\n    settings {\n      notifications {\n        types {\n          NEW_FOLLOWER {\n            email\n            push\n          }\n          NEW_COMMENT {\n            email\n            push\n          }\n          NEW_MENTION {\n            email\n            push\n          }\n          NEW_ARTICLE {\n            email\n            push\n          }\n          SIMILAR_PROJECTS {\n            email\n            push\n          }\n          PRODUCT_ANNOUNCEMENTS {\n            email\n            push\n          }\n        }\n      }\n    }\n  }\n"])));
+exports.AddBlogPostDocument = client_1.gql(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n  mutation addBlogPost($id: ID, $input: BlogPostInput!) {\n    addBlogPost(id: $id, input: $input) {\n      ...BlogPost\n    }\n  }\n  ", "\n"], ["\n  mutation addBlogPost($id: ID, $input: BlogPostInput!) {\n    addBlogPost(id: $id, input: $input) {\n      ...BlogPost\n    }\n  }\n  ", "\n"])), exports.BlogPostFragmentDoc);
 /**
  * __useAddBlogPostMutation__
  *
@@ -103,10 +115,11 @@ exports.AddBlogPostDocument = client_1.gql(templateObject_11 || (templateObject_
  * });
  */
 function useAddBlogPostMutation(baseOptions) {
-    return Apollo.useMutation(exports.AddBlogPostDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.AddBlogPostDocument, options);
 }
 exports.useAddBlogPostMutation = useAddBlogPostMutation;
-exports.AddCollectionDocument = client_1.gql(templateObject_12 || (templateObject_12 = __makeTemplateObject(["\n    mutation addCollection($projectId: ID!, $name: String!) {\n  addCollection(projectId: $projectId, name: $name) {\n    ...Collection\n  }\n}\n    ", ""], ["\n    mutation addCollection($projectId: ID!, $name: String!) {\n  addCollection(projectId: $projectId, name: $name) {\n    ...Collection\n  }\n}\n    ", ""])), exports.CollectionFragmentDoc);
+exports.AddCollectionDocument = client_1.gql(templateObject_12 || (templateObject_12 = __makeTemplateObject(["\n  mutation addCollection($projectId: ID!, $name: String!) {\n    addCollection(projectId: $projectId, name: $name) {\n      ...Collection\n    }\n  }\n  ", "\n"], ["\n  mutation addCollection($projectId: ID!, $name: String!) {\n    addCollection(projectId: $projectId, name: $name) {\n      ...Collection\n    }\n  }\n  ", "\n"])), exports.CollectionFragmentDoc);
 /**
  * __useAddCollectionMutation__
  *
@@ -126,10 +139,11 @@ exports.AddCollectionDocument = client_1.gql(templateObject_12 || (templateObjec
  * });
  */
 function useAddCollectionMutation(baseOptions) {
-    return Apollo.useMutation(exports.AddCollectionDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.AddCollectionDocument, options);
 }
 exports.useAddCollectionMutation = useAddCollectionMutation;
-exports.AddCommentDocument = client_1.gql(templateObject_13 || (templateObject_13 = __makeTemplateObject(["\n    mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {\n  addComment(postId: $postId, commentId: $commentId, input: $input) {\n    ...CommentAndReplies\n  }\n}\n    ", ""], ["\n    mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {\n  addComment(postId: $postId, commentId: $commentId, input: $input) {\n    ...CommentAndReplies\n  }\n}\n    ", ""])), exports.CommentAndRepliesFragmentDoc);
+exports.AddCommentDocument = client_1.gql(templateObject_13 || (templateObject_13 = __makeTemplateObject(["\n  mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {\n    addComment(postId: $postId, commentId: $commentId, input: $input) {\n      ...CommentAndReplies\n    }\n  }\n  ", "\n"], ["\n  mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {\n    addComment(postId: $postId, commentId: $commentId, input: $input) {\n      ...CommentAndReplies\n    }\n  }\n  ", "\n"])), exports.CommentAndRepliesFragmentDoc);
 /**
  * __useAddCommentMutation__
  *
@@ -150,10 +164,11 @@ exports.AddCommentDocument = client_1.gql(templateObject_13 || (templateObject_1
  * });
  */
 function useAddCommentMutation(baseOptions) {
-    return Apollo.useMutation(exports.AddCommentDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.AddCommentDocument, options);
 }
 exports.useAddCommentMutation = useAddCommentMutation;
-exports.AddPostDocument = client_1.gql(templateObject_14 || (templateObject_14 = __makeTemplateObject(["\n    mutation addPost($input: PostInput!) {\n  addPost(input: $input) {\n    ...Post\n  }\n}\n    ", ""], ["\n    mutation addPost($input: PostInput!) {\n  addPost(input: $input) {\n    ...Post\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
+exports.AddPostDocument = client_1.gql(templateObject_14 || (templateObject_14 = __makeTemplateObject(["\n  mutation addPost($input: PostInput!) {\n    addPost(input: $input) {\n      ...Post\n    }\n  }\n  ", "\n"], ["\n  mutation addPost($input: PostInput!) {\n    addPost(input: $input) {\n      ...Post\n    }\n  }\n  ", "\n"])), exports.PostFragmentDoc);
 /**
  * __useAddPostMutation__
  *
@@ -172,10 +187,11 @@ exports.AddPostDocument = client_1.gql(templateObject_14 || (templateObject_14 =
  * });
  */
 function useAddPostMutation(baseOptions) {
-    return Apollo.useMutation(exports.AddPostDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.AddPostDocument, options);
 }
 exports.useAddPostMutation = useAddPostMutation;
-exports.AddProjectDocument = client_1.gql(templateObject_15 || (templateObject_15 = __makeTemplateObject(["\n    mutation addProject($input: ProjectInput!) {\n  addProject(input: $input) {\n    ...Project\n  }\n}\n    ", ""], ["\n    mutation addProject($input: ProjectInput!) {\n  addProject(input: $input) {\n    ...Project\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
+exports.AddProjectDocument = client_1.gql(templateObject_15 || (templateObject_15 = __makeTemplateObject(["\n  mutation addProject($input: ProjectInput!) {\n    addProject(input: $input) {\n      ...Project\n    }\n  }\n  ", "\n"], ["\n  mutation addProject($input: ProjectInput!) {\n    addProject(input: $input) {\n      ...Project\n    }\n  }\n  ", "\n"])), exports.ProjectFragmentDoc);
 /**
  * __useAddProjectMutation__
  *
@@ -194,10 +210,11 @@ exports.AddProjectDocument = client_1.gql(templateObject_15 || (templateObject_1
  * });
  */
 function useAddProjectMutation(baseOptions) {
-    return Apollo.useMutation(exports.AddProjectDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.AddProjectDocument, options);
 }
 exports.useAddProjectMutation = useAddProjectMutation;
-exports.AuthenticateAppleDocument = client_1.gql(templateObject_16 || (templateObject_16 = __makeTemplateObject(["\n    mutation authenticateApple($identityToken: String!, $user: ApplePayload!) {\n  authenticateApple(identityToken: $identityToken, user: $user) {\n    access_token\n    refresh_token\n  }\n}\n    "], ["\n    mutation authenticateApple($identityToken: String!, $user: ApplePayload!) {\n  authenticateApple(identityToken: $identityToken, user: $user) {\n    access_token\n    refresh_token\n  }\n}\n    "])));
+exports.AuthenticateAppleDocument = client_1.gql(templateObject_16 || (templateObject_16 = __makeTemplateObject(["\n  mutation authenticateApple($identityToken: String!, $user: ApplePayload!) {\n    authenticateApple(identityToken: $identityToken, user: $user) {\n      access_token\n      refresh_token\n    }\n  }\n"], ["\n  mutation authenticateApple($identityToken: String!, $user: ApplePayload!) {\n    authenticateApple(identityToken: $identityToken, user: $user) {\n      access_token\n      refresh_token\n    }\n  }\n"])));
 /**
  * __useAuthenticateAppleMutation__
  *
@@ -217,10 +234,11 @@ exports.AuthenticateAppleDocument = client_1.gql(templateObject_16 || (templateO
  * });
  */
 function useAuthenticateAppleMutation(baseOptions) {
-    return Apollo.useMutation(exports.AuthenticateAppleDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.AuthenticateAppleDocument, options);
 }
 exports.useAuthenticateAppleMutation = useAuthenticateAppleMutation;
-exports.AuthenticateFacebookDocument = client_1.gql(templateObject_17 || (templateObject_17 = __makeTemplateObject(["\n    mutation authenticateFacebook($token: String!) {\n  authenticateFacebook(token: $token) {\n    access_token\n    refresh_token\n  }\n}\n    "], ["\n    mutation authenticateFacebook($token: String!) {\n  authenticateFacebook(token: $token) {\n    access_token\n    refresh_token\n  }\n}\n    "])));
+exports.AuthenticateFacebookDocument = client_1.gql(templateObject_17 || (templateObject_17 = __makeTemplateObject(["\n  mutation authenticateFacebook($token: String!) {\n    authenticateFacebook(token: $token) {\n      access_token\n      refresh_token\n    }\n  }\n"], ["\n  mutation authenticateFacebook($token: String!) {\n    authenticateFacebook(token: $token) {\n      access_token\n      refresh_token\n    }\n  }\n"])));
 /**
  * __useAuthenticateFacebookMutation__
  *
@@ -239,10 +257,11 @@ exports.AuthenticateFacebookDocument = client_1.gql(templateObject_17 || (templa
  * });
  */
 function useAuthenticateFacebookMutation(baseOptions) {
-    return Apollo.useMutation(exports.AuthenticateFacebookDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.AuthenticateFacebookDocument, options);
 }
 exports.useAuthenticateFacebookMutation = useAuthenticateFacebookMutation;
-exports.AuthenticateGoogleDocument = client_1.gql(templateObject_18 || (templateObject_18 = __makeTemplateObject(["\n    mutation authenticateGoogle($idToken: String!) {\n  authenticateGoogle(idToken: $idToken) {\n    access_token\n    refresh_token\n  }\n}\n    "], ["\n    mutation authenticateGoogle($idToken: String!) {\n  authenticateGoogle(idToken: $idToken) {\n    access_token\n    refresh_token\n  }\n}\n    "])));
+exports.AuthenticateGoogleDocument = client_1.gql(templateObject_18 || (templateObject_18 = __makeTemplateObject(["\n  mutation authenticateGoogle($idToken: String!) {\n    authenticateGoogle(idToken: $idToken) {\n      access_token\n      refresh_token\n    }\n  }\n"], ["\n  mutation authenticateGoogle($idToken: String!) {\n    authenticateGoogle(idToken: $idToken) {\n      access_token\n      refresh_token\n    }\n  }\n"])));
 /**
  * __useAuthenticateGoogleMutation__
  *
@@ -261,10 +280,11 @@ exports.AuthenticateGoogleDocument = client_1.gql(templateObject_18 || (template
  * });
  */
 function useAuthenticateGoogleMutation(baseOptions) {
-    return Apollo.useMutation(exports.AuthenticateGoogleDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.AuthenticateGoogleDocument, options);
 }
 exports.useAuthenticateGoogleMutation = useAuthenticateGoogleMutation;
-exports.BanUserDocument = client_1.gql(templateObject_19 || (templateObject_19 = __makeTemplateObject(["\n    mutation banUser($id: ID!) {\n  banUser(id: $id) {\n    ...User\n  }\n}\n    ", ""], ["\n    mutation banUser($id: ID!) {\n  banUser(id: $id) {\n    ...User\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
+exports.BanUserDocument = client_1.gql(templateObject_19 || (templateObject_19 = __makeTemplateObject(["\n  mutation banUser($id: ID!) {\n    banUser(id: $id) {\n      ...User\n    }\n  }\n  ", "\n"], ["\n  mutation banUser($id: ID!) {\n    banUser(id: $id) {\n      ...User\n    }\n  }\n  ", "\n"])), exports.UserFragmentDoc);
 /**
  * __useBanUserMutation__
  *
@@ -283,10 +303,11 @@ exports.BanUserDocument = client_1.gql(templateObject_19 || (templateObject_19 =
  * });
  */
 function useBanUserMutation(baseOptions) {
-    return Apollo.useMutation(exports.BanUserDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.BanUserDocument, options);
 }
 exports.useBanUserMutation = useBanUserMutation;
-exports.BookmarkPostDocument = client_1.gql(templateObject_20 || (templateObject_20 = __makeTemplateObject(["\n    mutation bookmarkPost($id: ID!) {\n  bookmarkPost(id: $id) {\n    id\n    bookmarks {\n      isBookmarked\n    }\n  }\n}\n    "], ["\n    mutation bookmarkPost($id: ID!) {\n  bookmarkPost(id: $id) {\n    id\n    bookmarks {\n      isBookmarked\n    }\n  }\n}\n    "])));
+exports.BookmarkPostDocument = client_1.gql(templateObject_20 || (templateObject_20 = __makeTemplateObject(["\n  mutation bookmarkPost($id: ID!) {\n    bookmarkPost(id: $id) {\n      id\n      bookmarks {\n        isBookmarked\n      }\n    }\n  }\n"], ["\n  mutation bookmarkPost($id: ID!) {\n    bookmarkPost(id: $id) {\n      id\n      bookmarks {\n        isBookmarked\n      }\n    }\n  }\n"])));
 /**
  * __useBookmarkPostMutation__
  *
@@ -305,10 +326,11 @@ exports.BookmarkPostDocument = client_1.gql(templateObject_20 || (templateObject
  * });
  */
 function useBookmarkPostMutation(baseOptions) {
-    return Apollo.useMutation(exports.BookmarkPostDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.BookmarkPostDocument, options);
 }
 exports.useBookmarkPostMutation = useBookmarkPostMutation;
-exports.CollectPostsDocument = client_1.gql(templateObject_21 || (templateObject_21 = __makeTemplateObject(["\n    mutation collectPosts($projectId: ID!, $collectionId: ID!, $input: [CollectionInput]) {\n  collectPosts(projectId: $projectId, collectionId: $collectionId, input: $input) {\n    id\n    name\n    cover {\n      uri\n    }\n  }\n}\n    "], ["\n    mutation collectPosts($projectId: ID!, $collectionId: ID!, $input: [CollectionInput]) {\n  collectPosts(projectId: $projectId, collectionId: $collectionId, input: $input) {\n    id\n    name\n    cover {\n      uri\n    }\n  }\n}\n    "])));
+exports.CollectPostsDocument = client_1.gql(templateObject_21 || (templateObject_21 = __makeTemplateObject(["\n  mutation collectPosts($projectId: ID!, $collectionId: ID!, $input: [CollectionInput]) {\n    collectPosts(projectId: $projectId, collectionId: $collectionId, input: $input) {\n      id\n      name\n      cover {\n        uri\n      }\n    }\n  }\n"], ["\n  mutation collectPosts($projectId: ID!, $collectionId: ID!, $input: [CollectionInput]) {\n    collectPosts(projectId: $projectId, collectionId: $collectionId, input: $input) {\n      id\n      name\n      cover {\n        uri\n      }\n    }\n  }\n"])));
 /**
  * __useCollectPostsMutation__
  *
@@ -329,10 +351,11 @@ exports.CollectPostsDocument = client_1.gql(templateObject_21 || (templateObject
  * });
  */
 function useCollectPostsMutation(baseOptions) {
-    return Apollo.useMutation(exports.CollectPostsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.CollectPostsDocument, options);
 }
 exports.useCollectPostsMutation = useCollectPostsMutation;
-exports.DeleteBlogPostDocument = client_1.gql(templateObject_22 || (templateObject_22 = __makeTemplateObject(["\n    mutation deleteBlogPost($id: ID!) {\n  deleteBlogPost(id: $id) {\n    id\n  }\n}\n    "], ["\n    mutation deleteBlogPost($id: ID!) {\n  deleteBlogPost(id: $id) {\n    id\n  }\n}\n    "])));
+exports.DeleteBlogPostDocument = client_1.gql(templateObject_22 || (templateObject_22 = __makeTemplateObject(["\n  mutation deleteBlogPost($id: ID!) {\n    deleteBlogPost(id: $id) {\n      id\n    }\n  }\n"], ["\n  mutation deleteBlogPost($id: ID!) {\n    deleteBlogPost(id: $id) {\n      id\n    }\n  }\n"])));
 /**
  * __useDeleteBlogPostMutation__
  *
@@ -351,10 +374,11 @@ exports.DeleteBlogPostDocument = client_1.gql(templateObject_22 || (templateObje
  * });
  */
 function useDeleteBlogPostMutation(baseOptions) {
-    return Apollo.useMutation(exports.DeleteBlogPostDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.DeleteBlogPostDocument, options);
 }
 exports.useDeleteBlogPostMutation = useDeleteBlogPostMutation;
-exports.DeleteCollectionDocument = client_1.gql(templateObject_23 || (templateObject_23 = __makeTemplateObject(["\n    mutation deleteCollection($projectId: ID!, $id: ID!) {\n  deleteCollection(id: $id, projectId: $projectId) {\n    id\n  }\n}\n    "], ["\n    mutation deleteCollection($projectId: ID!, $id: ID!) {\n  deleteCollection(id: $id, projectId: $projectId) {\n    id\n  }\n}\n    "])));
+exports.DeleteCollectionDocument = client_1.gql(templateObject_23 || (templateObject_23 = __makeTemplateObject(["\n  mutation deleteCollection($projectId: ID!, $id: ID!) {\n    deleteCollection(id: $id, projectId: $projectId) {\n      id\n    }\n  }\n"], ["\n  mutation deleteCollection($projectId: ID!, $id: ID!) {\n    deleteCollection(id: $id, projectId: $projectId) {\n      id\n    }\n  }\n"])));
 /**
  * __useDeleteCollectionMutation__
  *
@@ -374,10 +398,11 @@ exports.DeleteCollectionDocument = client_1.gql(templateObject_23 || (templateOb
  * });
  */
 function useDeleteCollectionMutation(baseOptions) {
-    return Apollo.useMutation(exports.DeleteCollectionDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.DeleteCollectionDocument, options);
 }
 exports.useDeleteCollectionMutation = useDeleteCollectionMutation;
-exports.DeleteCommentDocument = client_1.gql(templateObject_24 || (templateObject_24 = __makeTemplateObject(["\n    mutation deleteComment($id: ID!) {\n  deleteComment(id: $id)\n}\n    "], ["\n    mutation deleteComment($id: ID!) {\n  deleteComment(id: $id)\n}\n    "])));
+exports.DeleteCommentDocument = client_1.gql(templateObject_24 || (templateObject_24 = __makeTemplateObject(["\n  mutation deleteComment($id: ID!) {\n    deleteComment(id: $id)\n  }\n"], ["\n  mutation deleteComment($id: ID!) {\n    deleteComment(id: $id)\n  }\n"])));
 /**
  * __useDeleteCommentMutation__
  *
@@ -396,10 +421,11 @@ exports.DeleteCommentDocument = client_1.gql(templateObject_24 || (templateObjec
  * });
  */
 function useDeleteCommentMutation(baseOptions) {
-    return Apollo.useMutation(exports.DeleteCommentDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.DeleteCommentDocument, options);
 }
 exports.useDeleteCommentMutation = useDeleteCommentMutation;
-exports.DeleteCurrentUserDocument = client_1.gql(templateObject_25 || (templateObject_25 = __makeTemplateObject(["\n    mutation deleteCurrentUser {\n  deleteCurrentUser\n}\n    "], ["\n    mutation deleteCurrentUser {\n  deleteCurrentUser\n}\n    "])));
+exports.DeleteCurrentUserDocument = client_1.gql(templateObject_25 || (templateObject_25 = __makeTemplateObject(["\n  mutation deleteCurrentUser {\n    deleteCurrentUser\n  }\n"], ["\n  mutation deleteCurrentUser {\n    deleteCurrentUser\n  }\n"])));
 /**
  * __useDeleteCurrentUserMutation__
  *
@@ -417,10 +443,11 @@ exports.DeleteCurrentUserDocument = client_1.gql(templateObject_25 || (templateO
  * });
  */
 function useDeleteCurrentUserMutation(baseOptions) {
-    return Apollo.useMutation(exports.DeleteCurrentUserDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.DeleteCurrentUserDocument, options);
 }
 exports.useDeleteCurrentUserMutation = useDeleteCurrentUserMutation;
-exports.DeleteNotificationDocument = client_1.gql(templateObject_26 || (templateObject_26 = __makeTemplateObject(["\n    mutation deleteNotification($id: ID!) {\n  deleteNotification(id: $id)\n}\n    "], ["\n    mutation deleteNotification($id: ID!) {\n  deleteNotification(id: $id)\n}\n    "])));
+exports.DeleteNotificationDocument = client_1.gql(templateObject_26 || (templateObject_26 = __makeTemplateObject(["\n  mutation deleteNotification($id: ID!) {\n    deleteNotification(id: $id)\n  }\n"], ["\n  mutation deleteNotification($id: ID!) {\n    deleteNotification(id: $id)\n  }\n"])));
 /**
  * __useDeleteNotificationMutation__
  *
@@ -439,10 +466,11 @@ exports.DeleteNotificationDocument = client_1.gql(templateObject_26 || (template
  * });
  */
 function useDeleteNotificationMutation(baseOptions) {
-    return Apollo.useMutation(exports.DeleteNotificationDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.DeleteNotificationDocument, options);
 }
 exports.useDeleteNotificationMutation = useDeleteNotificationMutation;
-exports.DeletePostDocument = client_1.gql(templateObject_27 || (templateObject_27 = __makeTemplateObject(["\n    mutation deletePost($id: ID!) {\n  deletePost(id: $id) {\n    id\n  }\n}\n    "], ["\n    mutation deletePost($id: ID!) {\n  deletePost(id: $id) {\n    id\n  }\n}\n    "])));
+exports.DeletePostDocument = client_1.gql(templateObject_27 || (templateObject_27 = __makeTemplateObject(["\n  mutation deletePost($id: ID!) {\n    deletePost(id: $id) {\n      id\n    }\n  }\n"], ["\n  mutation deletePost($id: ID!) {\n    deletePost(id: $id) {\n      id\n    }\n  }\n"])));
 /**
  * __useDeletePostMutation__
  *
@@ -461,10 +489,11 @@ exports.DeletePostDocument = client_1.gql(templateObject_27 || (templateObject_2
  * });
  */
 function useDeletePostMutation(baseOptions) {
-    return Apollo.useMutation(exports.DeletePostDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.DeletePostDocument, options);
 }
 exports.useDeletePostMutation = useDeletePostMutation;
-exports.DeleteProjectDocument = client_1.gql(templateObject_28 || (templateObject_28 = __makeTemplateObject(["\n    mutation deleteProject($id: ID!) {\n  deleteProject(id: $id)\n}\n    "], ["\n    mutation deleteProject($id: ID!) {\n  deleteProject(id: $id)\n}\n    "])));
+exports.DeleteProjectDocument = client_1.gql(templateObject_28 || (templateObject_28 = __makeTemplateObject(["\n  mutation deleteProject($id: ID!) {\n    deleteProject(id: $id)\n  }\n"], ["\n  mutation deleteProject($id: ID!) {\n    deleteProject(id: $id)\n  }\n"])));
 /**
  * __useDeleteProjectMutation__
  *
@@ -483,10 +512,11 @@ exports.DeleteProjectDocument = client_1.gql(templateObject_28 || (templateObjec
  * });
  */
 function useDeleteProjectMutation(baseOptions) {
-    return Apollo.useMutation(exports.DeleteProjectDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.DeleteProjectDocument, options);
 }
 exports.useDeleteProjectMutation = useDeleteProjectMutation;
-exports.EditCollectionDocument = client_1.gql(templateObject_29 || (templateObject_29 = __makeTemplateObject(["\n    mutation editCollection($input: EditCollectionInput!, $id: ID!) {\n  editCollection(input: $input, id: $id) {\n    ...Collection\n  }\n}\n    ", ""], ["\n    mutation editCollection($input: EditCollectionInput!, $id: ID!) {\n  editCollection(input: $input, id: $id) {\n    ...Collection\n  }\n}\n    ", ""])), exports.CollectionFragmentDoc);
+exports.EditCollectionDocument = client_1.gql(templateObject_29 || (templateObject_29 = __makeTemplateObject(["\n  mutation editCollection($input: EditCollectionInput!, $id: ID!) {\n    editCollection(input: $input, id: $id) {\n      ...Collection\n    }\n  }\n  ", "\n"], ["\n  mutation editCollection($input: EditCollectionInput!, $id: ID!) {\n    editCollection(input: $input, id: $id) {\n      ...Collection\n    }\n  }\n  ", "\n"])), exports.CollectionFragmentDoc);
 /**
  * __useEditCollectionMutation__
  *
@@ -506,10 +536,11 @@ exports.EditCollectionDocument = client_1.gql(templateObject_29 || (templateObje
  * });
  */
 function useEditCollectionMutation(baseOptions) {
-    return Apollo.useMutation(exports.EditCollectionDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.EditCollectionDocument, options);
 }
 exports.useEditCollectionMutation = useEditCollectionMutation;
-exports.EditPostDocument = client_1.gql(templateObject_30 || (templateObject_30 = __makeTemplateObject(["\n    mutation editPost($id: ID!, $input: EditPostInput!) {\n  editPost(id: $id, input: $input) {\n    ...Post\n  }\n}\n    ", ""], ["\n    mutation editPost($id: ID!, $input: EditPostInput!) {\n  editPost(id: $id, input: $input) {\n    ...Post\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
+exports.EditPostDocument = client_1.gql(templateObject_30 || (templateObject_30 = __makeTemplateObject(["\n  mutation editPost($id: ID!, $input: EditPostInput!) {\n    editPost(id: $id, input: $input) {\n      ...Post\n    }\n  }\n  ", "\n"], ["\n  mutation editPost($id: ID!, $input: EditPostInput!) {\n    editPost(id: $id, input: $input) {\n      ...Post\n    }\n  }\n  ", "\n"])), exports.PostFragmentDoc);
 /**
  * __useEditPostMutation__
  *
@@ -529,10 +560,11 @@ exports.EditPostDocument = client_1.gql(templateObject_30 || (templateObject_30 
  * });
  */
 function useEditPostMutation(baseOptions) {
-    return Apollo.useMutation(exports.EditPostDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.EditPostDocument, options);
 }
 exports.useEditPostMutation = useEditPostMutation;
-exports.EditProjectDocument = client_1.gql(templateObject_31 || (templateObject_31 = __makeTemplateObject(["\n    mutation editProject($id: ID!, $input: ProjectInput!) {\n  editProject(id: $id, input: $input) {\n    id\n    title\n  }\n}\n    "], ["\n    mutation editProject($id: ID!, $input: ProjectInput!) {\n  editProject(id: $id, input: $input) {\n    id\n    title\n  }\n}\n    "])));
+exports.EditProjectDocument = client_1.gql(templateObject_31 || (templateObject_31 = __makeTemplateObject(["\n  mutation editProject($id: ID!, $input: ProjectInput!) {\n    editProject(id: $id, input: $input) {\n      id\n      title\n    }\n  }\n"], ["\n  mutation editProject($id: ID!, $input: ProjectInput!) {\n    editProject(id: $id, input: $input) {\n      id\n      title\n    }\n  }\n"])));
 /**
  * __useEditProjectMutation__
  *
@@ -552,10 +584,11 @@ exports.EditProjectDocument = client_1.gql(templateObject_31 || (templateObject_
  * });
  */
 function useEditProjectMutation(baseOptions) {
-    return Apollo.useMutation(exports.EditProjectDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.EditProjectDocument, options);
 }
 exports.useEditProjectMutation = useEditProjectMutation;
-exports.EditUserDocument = client_1.gql(templateObject_32 || (templateObject_32 = __makeTemplateObject(["\n    mutation editUser($input: EditUserInput!, $id: ID) {\n  editUser(input: $input, id: $id) {\n    ...User\n  }\n}\n    ", ""], ["\n    mutation editUser($input: EditUserInput!, $id: ID) {\n  editUser(input: $input, id: $id) {\n    ...User\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
+exports.EditUserDocument = client_1.gql(templateObject_32 || (templateObject_32 = __makeTemplateObject(["\n  mutation editUser($input: EditUserInput!, $id: ID) {\n    editUser(input: $input, id: $id) {\n      ...User\n    }\n  }\n  ", "\n"], ["\n  mutation editUser($input: EditUserInput!, $id: ID) {\n    editUser(input: $input, id: $id) {\n      ...User\n    }\n  }\n  ", "\n"])), exports.UserFragmentDoc);
 /**
  * __useEditUserMutation__
  *
@@ -575,10 +608,11 @@ exports.EditUserDocument = client_1.gql(templateObject_32 || (templateObject_32 
  * });
  */
 function useEditUserMutation(baseOptions) {
-    return Apollo.useMutation(exports.EditUserDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.EditUserDocument, options);
 }
 exports.useEditUserMutation = useEditUserMutation;
-exports.FollowProjectDocument = client_1.gql(templateObject_33 || (templateObject_33 = __makeTemplateObject(["\n    mutation followProject($id: ID!) {\n  followProject(id: $id) {\n    cover {\n      uri\n      default\n    }\n    ...Project\n  }\n}\n    ", ""], ["\n    mutation followProject($id: ID!) {\n  followProject(id: $id) {\n    cover {\n      uri\n      default\n    }\n    ...Project\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
+exports.FollowProjectDocument = client_1.gql(templateObject_33 || (templateObject_33 = __makeTemplateObject(["\n  mutation followProject($id: ID!) {\n    followProject(id: $id) {\n      cover {\n        uri\n        default\n      }\n      ...Project\n    }\n  }\n  ", "\n"], ["\n  mutation followProject($id: ID!) {\n    followProject(id: $id) {\n      cover {\n        uri\n        default\n      }\n      ...Project\n    }\n  }\n  ", "\n"])), exports.ProjectFragmentDoc);
 /**
  * __useFollowProjectMutation__
  *
@@ -597,10 +631,11 @@ exports.FollowProjectDocument = client_1.gql(templateObject_33 || (templateObjec
  * });
  */
 function useFollowProjectMutation(baseOptions) {
-    return Apollo.useMutation(exports.FollowProjectDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.FollowProjectDocument, options);
 }
 exports.useFollowProjectMutation = useFollowProjectMutation;
-exports.LikeCommentDocument = client_1.gql(templateObject_34 || (templateObject_34 = __makeTemplateObject(["\n    mutation likeComment($id: ID!) {\n  likeComment(id: $id) {\n    id\n    likes {\n      isLiked\n      totalCount\n    }\n  }\n}\n    "], ["\n    mutation likeComment($id: ID!) {\n  likeComment(id: $id) {\n    id\n    likes {\n      isLiked\n      totalCount\n    }\n  }\n}\n    "])));
+exports.LikeCommentDocument = client_1.gql(templateObject_34 || (templateObject_34 = __makeTemplateObject(["\n  mutation likeComment($id: ID!) {\n    likeComment(id: $id) {\n      id\n      likes {\n        isLiked\n        totalCount\n      }\n    }\n  }\n"], ["\n  mutation likeComment($id: ID!) {\n    likeComment(id: $id) {\n      id\n      likes {\n        isLiked\n        totalCount\n      }\n    }\n  }\n"])));
 /**
  * __useLikeCommentMutation__
  *
@@ -619,10 +654,11 @@ exports.LikeCommentDocument = client_1.gql(templateObject_34 || (templateObject_
  * });
  */
 function useLikeCommentMutation(baseOptions) {
-    return Apollo.useMutation(exports.LikeCommentDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.LikeCommentDocument, options);
 }
 exports.useLikeCommentMutation = useLikeCommentMutation;
-exports.LikePostDocument = client_1.gql(templateObject_35 || (templateObject_35 = __makeTemplateObject(["\n    mutation likePost($id: ID!) {\n  likePost(id: $id) {\n    id\n    likes {\n      isLiked\n      totalCount\n    }\n  }\n}\n    "], ["\n    mutation likePost($id: ID!) {\n  likePost(id: $id) {\n    id\n    likes {\n      isLiked\n      totalCount\n    }\n  }\n}\n    "])));
+exports.LikePostDocument = client_1.gql(templateObject_35 || (templateObject_35 = __makeTemplateObject(["\n  mutation likePost($id: ID!) {\n    likePost(id: $id) {\n      id\n      likes {\n        isLiked\n        totalCount\n      }\n    }\n  }\n"], ["\n  mutation likePost($id: ID!) {\n    likePost(id: $id) {\n      id\n      likes {\n        isLiked\n        totalCount\n      }\n    }\n  }\n"])));
 /**
  * __useLikePostMutation__
  *
@@ -641,10 +677,11 @@ exports.LikePostDocument = client_1.gql(templateObject_35 || (templateObject_35 
  * });
  */
 function useLikePostMutation(baseOptions) {
-    return Apollo.useMutation(exports.LikePostDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.LikePostDocument, options);
 }
 exports.useLikePostMutation = useLikePostMutation;
-exports.MarkAllNotificationsSeenDocument = client_1.gql(templateObject_36 || (templateObject_36 = __makeTemplateObject(["\n    mutation markAllNotificationsSeen {\n  markAllNotificationsSeen\n}\n    "], ["\n    mutation markAllNotificationsSeen {\n  markAllNotificationsSeen\n}\n    "])));
+exports.MarkAllNotificationsSeenDocument = client_1.gql(templateObject_36 || (templateObject_36 = __makeTemplateObject(["\n  mutation markAllNotificationsSeen {\n    markAllNotificationsSeen\n  }\n"], ["\n  mutation markAllNotificationsSeen {\n    markAllNotificationsSeen\n  }\n"])));
 /**
  * __useMarkAllNotificationsSeenMutation__
  *
@@ -662,10 +699,11 @@ exports.MarkAllNotificationsSeenDocument = client_1.gql(templateObject_36 || (te
  * });
  */
 function useMarkAllNotificationsSeenMutation(baseOptions) {
-    return Apollo.useMutation(exports.MarkAllNotificationsSeenDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.MarkAllNotificationsSeenDocument, options);
 }
 exports.useMarkAllNotificationsSeenMutation = useMarkAllNotificationsSeenMutation;
-exports.MarkNotificationSeenDocument = client_1.gql(templateObject_37 || (templateObject_37 = __makeTemplateObject(["\n    mutation markNotificationSeen($id: ID!) {\n  markNotificationSeen(id: $id) {\n    ...Notification\n  }\n}\n    ", ""], ["\n    mutation markNotificationSeen($id: ID!) {\n  markNotificationSeen(id: $id) {\n    ...Notification\n  }\n}\n    ", ""])), exports.NotificationFragmentDoc);
+exports.MarkNotificationSeenDocument = client_1.gql(templateObject_37 || (templateObject_37 = __makeTemplateObject(["\n  mutation markNotificationSeen($id: ID!) {\n    markNotificationSeen(id: $id) {\n      ...Notification\n    }\n  }\n  ", "\n"], ["\n  mutation markNotificationSeen($id: ID!) {\n    markNotificationSeen(id: $id) {\n      ...Notification\n    }\n  }\n  ", "\n"])), exports.NotificationFragmentDoc);
 /**
  * __useMarkNotificationSeenMutation__
  *
@@ -684,10 +722,11 @@ exports.MarkNotificationSeenDocument = client_1.gql(templateObject_37 || (templa
  * });
  */
 function useMarkNotificationSeenMutation(baseOptions) {
-    return Apollo.useMutation(exports.MarkNotificationSeenDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.MarkNotificationSeenDocument, options);
 }
 exports.useMarkNotificationSeenMutation = useMarkNotificationSeenMutation;
-exports.PreSignUrlDocument = client_1.gql(templateObject_38 || (templateObject_38 = __makeTemplateObject(["\n    mutation preSignUrl($input: PreSignedUrlInput!) {\n  preSignUrl(input: $input) {\n    url\n    type\n    filename\n  }\n}\n    "], ["\n    mutation preSignUrl($input: PreSignedUrlInput!) {\n  preSignUrl(input: $input) {\n    url\n    type\n    filename\n  }\n}\n    "])));
+exports.PreSignUrlDocument = client_1.gql(templateObject_38 || (templateObject_38 = __makeTemplateObject(["\n  mutation preSignUrl($input: PreSignedUrlInput!) {\n    preSignUrl(input: $input) {\n      url\n      type\n      filename\n    }\n  }\n"], ["\n  mutation preSignUrl($input: PreSignedUrlInput!) {\n    preSignUrl(input: $input) {\n      url\n      type\n      filename\n    }\n  }\n"])));
 /**
  * __usePreSignUrlMutation__
  *
@@ -706,10 +745,11 @@ exports.PreSignUrlDocument = client_1.gql(templateObject_38 || (templateObject_3
  * });
  */
 function usePreSignUrlMutation(baseOptions) {
-    return Apollo.useMutation(exports.PreSignUrlDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.PreSignUrlDocument, options);
 }
 exports.usePreSignUrlMutation = usePreSignUrlMutation;
-exports.PreSignUrlsDocument = client_1.gql(templateObject_39 || (templateObject_39 = __makeTemplateObject(["\n    mutation preSignUrls($input: [PreSignedUrlnput]!) {\n  preSignUrls(input: $input) {\n    url\n    type\n    filename\n  }\n}\n    "], ["\n    mutation preSignUrls($input: [PreSignedUrlnput]!) {\n  preSignUrls(input: $input) {\n    url\n    type\n    filename\n  }\n}\n    "])));
+exports.PreSignUrlsDocument = client_1.gql(templateObject_39 || (templateObject_39 = __makeTemplateObject(["\n  mutation preSignUrls($input: [PreSignedUrlnput]!) {\n    preSignUrls(input: $input) {\n      url\n      type\n      filename\n    }\n  }\n"], ["\n  mutation preSignUrls($input: [PreSignedUrlnput]!) {\n    preSignUrls(input: $input) {\n      url\n      type\n      filename\n    }\n  }\n"])));
 /**
  * __usePreSignUrlsMutation__
  *
@@ -728,10 +768,11 @@ exports.PreSignUrlsDocument = client_1.gql(templateObject_39 || (templateObject_
  * });
  */
 function usePreSignUrlsMutation(baseOptions) {
-    return Apollo.useMutation(exports.PreSignUrlsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.PreSignUrlsDocument, options);
 }
 exports.usePreSignUrlsMutation = usePreSignUrlsMutation;
-exports.RefreshTokenDocument = client_1.gql(templateObject_40 || (templateObject_40 = __makeTemplateObject(["\n    mutation refreshToken($refreshToken: String!) {\n  token: refreshToken(refreshToken: $refreshToken) {\n    access_token\n  }\n}\n    "], ["\n    mutation refreshToken($refreshToken: String!) {\n  token: refreshToken(refreshToken: $refreshToken) {\n    access_token\n  }\n}\n    "])));
+exports.RefreshTokenDocument = client_1.gql(templateObject_40 || (templateObject_40 = __makeTemplateObject(["\n  mutation refreshToken($refreshToken: String!) {\n    token: refreshToken(refreshToken: $refreshToken) {\n      access_token\n    }\n  }\n"], ["\n  mutation refreshToken($refreshToken: String!) {\n    token: refreshToken(refreshToken: $refreshToken) {\n      access_token\n    }\n  }\n"])));
 /**
  * __useRefreshTokenMutation__
  *
@@ -750,10 +791,11 @@ exports.RefreshTokenDocument = client_1.gql(templateObject_40 || (templateObject
  * });
  */
 function useRefreshTokenMutation(baseOptions) {
-    return Apollo.useMutation(exports.RefreshTokenDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.RefreshTokenDocument, options);
 }
 exports.useRefreshTokenMutation = useRefreshTokenMutation;
-exports.RegisterDeviceTokenDocument = client_1.gql(templateObject_41 || (templateObject_41 = __makeTemplateObject(["\n    mutation registerDeviceToken($token: String!, $platform: PlatformType!) {\n  registerDeviceToken(token: $token, platform: $platform)\n}\n    "], ["\n    mutation registerDeviceToken($token: String!, $platform: PlatformType!) {\n  registerDeviceToken(token: $token, platform: $platform)\n}\n    "])));
+exports.RegisterDeviceTokenDocument = client_1.gql(templateObject_41 || (templateObject_41 = __makeTemplateObject(["\n  mutation registerDeviceToken($token: String!, $platform: PlatformType!) {\n    registerDeviceToken(token: $token, platform: $platform)\n  }\n"], ["\n  mutation registerDeviceToken($token: String!, $platform: PlatformType!) {\n    registerDeviceToken(token: $token, platform: $platform)\n  }\n"])));
 /**
  * __useRegisterDeviceTokenMutation__
  *
@@ -773,10 +815,11 @@ exports.RegisterDeviceTokenDocument = client_1.gql(templateObject_41 || (templat
  * });
  */
 function useRegisterDeviceTokenMutation(baseOptions) {
-    return Apollo.useMutation(exports.RegisterDeviceTokenDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.RegisterDeviceTokenDocument, options);
 }
 exports.useRegisterDeviceTokenMutation = useRegisterDeviceTokenMutation;
-exports.SendPromoDocument = client_1.gql(templateObject_42 || (templateObject_42 = __makeTemplateObject(["\n    mutation sendPromo($number: String!) {\n  sendPromo(number: $number)\n}\n    "], ["\n    mutation sendPromo($number: String!) {\n  sendPromo(number: $number)\n}\n    "])));
+exports.SendPromoDocument = client_1.gql(templateObject_42 || (templateObject_42 = __makeTemplateObject(["\n  mutation sendPromo($number: String!) {\n    sendPromo(number: $number)\n  }\n"], ["\n  mutation sendPromo($number: String!) {\n    sendPromo(number: $number)\n  }\n"])));
 /**
  * __useSendPromoMutation__
  *
@@ -795,10 +838,11 @@ exports.SendPromoDocument = client_1.gql(templateObject_42 || (templateObject_42
  * });
  */
 function useSendPromoMutation(baseOptions) {
-    return Apollo.useMutation(exports.SendPromoDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.SendPromoDocument, options);
 }
 exports.useSendPromoMutation = useSendPromoMutation;
-exports.ToggleNotificationSettingsDocument = client_1.gql(templateObject_43 || (templateObject_43 = __makeTemplateObject(["\n    mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {\n  toggleNotificationSettings(input: $input) {\n    ...UserSettings\n  }\n}\n    ", ""], ["\n    mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {\n  toggleNotificationSettings(input: $input) {\n    ...UserSettings\n  }\n}\n    ", ""])), exports.UserSettingsFragmentDoc);
+exports.ToggleNotificationSettingsDocument = client_1.gql(templateObject_43 || (templateObject_43 = __makeTemplateObject(["\n  mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {\n    toggleNotificationSettings(input: $input) {\n      ...UserSettings\n    }\n  }\n  ", "\n"], ["\n  mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {\n    toggleNotificationSettings(input: $input) {\n      ...UserSettings\n    }\n  }\n  ", "\n"])), exports.UserSettingsFragmentDoc);
 /**
  * __useToggleNotificationSettingsMutation__
  *
@@ -817,10 +861,11 @@ exports.ToggleNotificationSettingsDocument = client_1.gql(templateObject_43 || (
  * });
  */
 function useToggleNotificationSettingsMutation(baseOptions) {
-    return Apollo.useMutation(exports.ToggleNotificationSettingsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.ToggleNotificationSettingsDocument, options);
 }
 exports.useToggleNotificationSettingsMutation = useToggleNotificationSettingsMutation;
-exports.TranslateCommentDocument = client_1.gql(templateObject_44 || (templateObject_44 = __makeTemplateObject(["\n    mutation translateComment($id: ID!, $original: Boolean) {\n  translateComment(id: $id, original: $original) {\n    id\n    translatable\n    text\n  }\n}\n    "], ["\n    mutation translateComment($id: ID!, $original: Boolean) {\n  translateComment(id: $id, original: $original) {\n    id\n    translatable\n    text\n  }\n}\n    "])));
+exports.TranslateCommentDocument = client_1.gql(templateObject_44 || (templateObject_44 = __makeTemplateObject(["\n  mutation translateComment($id: ID!, $original: Boolean) {\n    translateComment(id: $id, original: $original) {\n      id\n      translatable\n      text\n    }\n  }\n"], ["\n  mutation translateComment($id: ID!, $original: Boolean) {\n    translateComment(id: $id, original: $original) {\n      id\n      translatable\n      text\n    }\n  }\n"])));
 /**
  * __useTranslateCommentMutation__
  *
@@ -840,10 +885,11 @@ exports.TranslateCommentDocument = client_1.gql(templateObject_44 || (templateOb
  * });
  */
 function useTranslateCommentMutation(baseOptions) {
-    return Apollo.useMutation(exports.TranslateCommentDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.TranslateCommentDocument, options);
 }
 exports.useTranslateCommentMutation = useTranslateCommentMutation;
-exports.TranslatePostDocument = client_1.gql(templateObject_45 || (templateObject_45 = __makeTemplateObject(["\n    mutation translatePost($id: ID!, $original: Boolean) {\n  translatePost(id: $id, original: $original) {\n    id\n    translatable\n    caption\n  }\n}\n    "], ["\n    mutation translatePost($id: ID!, $original: Boolean) {\n  translatePost(id: $id, original: $original) {\n    id\n    translatable\n    caption\n  }\n}\n    "])));
+exports.TranslatePostDocument = client_1.gql(templateObject_45 || (templateObject_45 = __makeTemplateObject(["\n  mutation translatePost($id: ID!, $original: Boolean) {\n    translatePost(id: $id, original: $original) {\n      id\n      translatable\n      caption\n    }\n  }\n"], ["\n  mutation translatePost($id: ID!, $original: Boolean) {\n    translatePost(id: $id, original: $original) {\n      id\n      translatable\n      caption\n    }\n  }\n"])));
 /**
  * __useTranslatePostMutation__
  *
@@ -863,10 +909,29 @@ exports.TranslatePostDocument = client_1.gql(templateObject_45 || (templateObjec
  * });
  */
 function useTranslatePostMutation(baseOptions) {
-    return Apollo.useMutation(exports.TranslatePostDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useMutation(exports.TranslatePostDocument, options);
 }
 exports.useTranslatePostMutation = useTranslatePostMutation;
-exports.BlogPostDocument = client_1.gql(templateObject_46 || (templateObject_46 = __makeTemplateObject(["\n    query blogPost($slug: LowercaseString, $id: ID) {\n  blogPost(slug: $slug, id: $id) {\n    ...BlogPost\n  }\n}\n    ", ""], ["\n    query blogPost($slug: LowercaseString, $id: ID) {\n  blogPost(slug: $slug, id: $id) {\n    ...BlogPost\n  }\n}\n    ", ""])), exports.BlogPostFragmentDoc);
+exports.BlogPostDocument = client_1.gql(templateObject_46 || (templateObject_46 = __makeTemplateObject(["\n  query blogPost($slug: LowercaseString, $id: ID) {\n    blogPost(slug: $slug, id: $id) {\n      ...BlogPost\n    }\n  }\n  ", "\n"], ["\n  query blogPost($slug: LowercaseString, $id: ID) {\n    blogPost(slug: $slug, id: $id) {\n      ...BlogPost\n    }\n  }\n  ", "\n"
+    /**
+     * __useBlogPostQuery__
+     *
+     * To run a query within a React component, call `useBlogPostQuery` and pass it any options that fit your needs.
+     * When your component renders, `useBlogPostQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useBlogPostQuery({
+     *   variables: {
+     *      slug: // value for 'slug'
+     *      id: // value for 'id'
+     *   },
+     * });
+     */
+])), exports.BlogPostFragmentDoc);
 /**
  * __useBlogPostQuery__
  *
@@ -885,14 +950,34 @@ exports.BlogPostDocument = client_1.gql(templateObject_46 || (templateObject_46 
  * });
  */
 function useBlogPostQuery(baseOptions) {
-    return Apollo.useQuery(exports.BlogPostDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.BlogPostDocument, options);
 }
 exports.useBlogPostQuery = useBlogPostQuery;
 function useBlogPostLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.BlogPostDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.BlogPostDocument, options);
 }
 exports.useBlogPostLazyQuery = useBlogPostLazyQuery;
-exports.BlogPostsDocument = client_1.gql(templateObject_47 || (templateObject_47 = __makeTemplateObject(["\n    query blogPosts($after: String, $first: Int = 5) @connection(key: \"blogPosts\") {\n  blogPosts(after: $after, first: $first) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...BlogPost\n      }\n    }\n  }\n}\n    ", ""], ["\n    query blogPosts($after: String, $first: Int = 5) @connection(key: \"blogPosts\") {\n  blogPosts(after: $after, first: $first) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...BlogPost\n      }\n    }\n  }\n}\n    ", ""])), exports.BlogPostFragmentDoc);
+exports.BlogPostsDocument = client_1.gql(templateObject_47 || (templateObject_47 = __makeTemplateObject(["\n  query blogPosts($after: String, $first: Int = 5) @connection(key: \"blogPosts\") {\n    blogPosts(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...BlogPost\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query blogPosts($after: String, $first: Int = 5) @connection(key: \"blogPosts\") {\n    blogPosts(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...BlogPost\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useBlogPostsQuery__
+     *
+     * To run a query within a React component, call `useBlogPostsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useBlogPostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useBlogPostsQuery({
+     *   variables: {
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.BlogPostFragmentDoc);
 /**
  * __useBlogPostsQuery__
  *
@@ -911,14 +996,34 @@ exports.BlogPostsDocument = client_1.gql(templateObject_47 || (templateObject_47
  * });
  */
 function useBlogPostsQuery(baseOptions) {
-    return Apollo.useQuery(exports.BlogPostsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.BlogPostsDocument, options);
 }
 exports.useBlogPostsQuery = useBlogPostsQuery;
 function useBlogPostsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.BlogPostsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.BlogPostsDocument, options);
 }
 exports.useBlogPostsLazyQuery = useBlogPostsLazyQuery;
-exports.BookmarksDocument = client_1.gql(templateObject_48 || (templateObject_48 = __makeTemplateObject(["\n    query bookmarks($after: String, $first: Int = 5) @connection(key: \"bookmarks\") {\n  bookmarks(after: $after, first: $first) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Post\n      }\n    }\n  }\n}\n    ", ""], ["\n    query bookmarks($after: String, $first: Int = 5) @connection(key: \"bookmarks\") {\n  bookmarks(after: $after, first: $first) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Post\n      }\n    }\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
+exports.BookmarksDocument = client_1.gql(templateObject_48 || (templateObject_48 = __makeTemplateObject(["\n  query bookmarks($after: String, $first: Int = 5) @connection(key: \"bookmarks\") {\n    bookmarks(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query bookmarks($after: String, $first: Int = 5) @connection(key: \"bookmarks\") {\n    bookmarks(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useBookmarksQuery__
+     *
+     * To run a query within a React component, call `useBookmarksQuery` and pass it any options that fit your needs.
+     * When your component renders, `useBookmarksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useBookmarksQuery({
+     *   variables: {
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.PostFragmentDoc);
 /**
  * __useBookmarksQuery__
  *
@@ -937,14 +1042,38 @@ exports.BookmarksDocument = client_1.gql(templateObject_48 || (templateObject_48
  * });
  */
 function useBookmarksQuery(baseOptions) {
-    return Apollo.useQuery(exports.BookmarksDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.BookmarksDocument, options);
 }
 exports.useBookmarksQuery = useBookmarksQuery;
 function useBookmarksLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.BookmarksDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.BookmarksDocument, options);
 }
 exports.useBookmarksLazyQuery = useBookmarksLazyQuery;
-exports.CollectionsDocument = client_1.gql(templateObject_49 || (templateObject_49 = __makeTemplateObject(["\n    query collections($id: ID, $slug: LowercaseString, $projectId: ID, $projectSlug: LowercaseString, $after: String, $first: Int = 5) @connection(key: \"collections\") {\n  collections(\n    id: $id\n    slug: $slug\n    projectId: $projectId\n    projectSlug: $projectSlug\n    after: $after\n    first: $first\n  ) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Post\n      }\n    }\n  }\n}\n    ", ""], ["\n    query collections($id: ID, $slug: LowercaseString, $projectId: ID, $projectSlug: LowercaseString, $after: String, $first: Int = 5) @connection(key: \"collections\") {\n  collections(\n    id: $id\n    slug: $slug\n    projectId: $projectId\n    projectSlug: $projectSlug\n    after: $after\n    first: $first\n  ) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Post\n      }\n    }\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
+exports.CollectionsDocument = client_1.gql(templateObject_49 || (templateObject_49 = __makeTemplateObject(["\n  query collections(\n    $id: ID\n    $slug: LowercaseString\n    $projectId: ID\n    $projectSlug: LowercaseString\n    $after: String\n    $first: Int = 5\n  ) @connection(key: \"collections\") {\n    collections(\n      id: $id\n      slug: $slug\n      projectId: $projectId\n      projectSlug: $projectSlug\n      after: $after\n      first: $first\n    ) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query collections(\n    $id: ID\n    $slug: LowercaseString\n    $projectId: ID\n    $projectSlug: LowercaseString\n    $after: String\n    $first: Int = 5\n  ) @connection(key: \"collections\") {\n    collections(\n      id: $id\n      slug: $slug\n      projectId: $projectId\n      projectSlug: $projectSlug\n      after: $after\n      first: $first\n    ) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useCollectionsQuery__
+     *
+     * To run a query within a React component, call `useCollectionsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useCollectionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useCollectionsQuery({
+     *   variables: {
+     *      id: // value for 'id'
+     *      slug: // value for 'slug'
+     *      projectId: // value for 'projectId'
+     *      projectSlug: // value for 'projectSlug'
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.PostFragmentDoc);
 /**
  * __useCollectionsQuery__
  *
@@ -967,14 +1096,33 @@ exports.CollectionsDocument = client_1.gql(templateObject_49 || (templateObject_
  * });
  */
 function useCollectionsQuery(baseOptions) {
-    return Apollo.useQuery(exports.CollectionsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.CollectionsDocument, options);
 }
 exports.useCollectionsQuery = useCollectionsQuery;
 function useCollectionsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.CollectionsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.CollectionsDocument, options);
 }
 exports.useCollectionsLazyQuery = useCollectionsLazyQuery;
-exports.CommentDocument = client_1.gql(templateObject_50 || (templateObject_50 = __makeTemplateObject(["\n    query comment($id: ID!) {\n  comment(id: $id) {\n    ...Comment\n  }\n}\n    ", ""], ["\n    query comment($id: ID!) {\n  comment(id: $id) {\n    ...Comment\n  }\n}\n    ", ""])), exports.CommentFragmentDoc);
+exports.CommentDocument = client_1.gql(templateObject_50 || (templateObject_50 = __makeTemplateObject(["\n  query comment($id: ID!) {\n    comment(id: $id) {\n      ...Comment\n    }\n  }\n  ", "\n"], ["\n  query comment($id: ID!) {\n    comment(id: $id) {\n      ...Comment\n    }\n  }\n  ", "\n"
+    /**
+     * __useCommentQuery__
+     *
+     * To run a query within a React component, call `useCommentQuery` and pass it any options that fit your needs.
+     * When your component renders, `useCommentQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useCommentQuery({
+     *   variables: {
+     *      id: // value for 'id'
+     *   },
+     * });
+     */
+])), exports.CommentFragmentDoc);
 /**
  * __useCommentQuery__
  *
@@ -992,14 +1140,34 @@ exports.CommentDocument = client_1.gql(templateObject_50 || (templateObject_50 =
  * });
  */
 function useCommentQuery(baseOptions) {
-    return Apollo.useQuery(exports.CommentDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.CommentDocument, options);
 }
 exports.useCommentQuery = useCommentQuery;
 function useCommentLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.CommentDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.CommentDocument, options);
 }
 exports.useCommentLazyQuery = useCommentLazyQuery;
-exports.CommentsDocument = client_1.gql(templateObject_51 || (templateObject_51 = __makeTemplateObject(["\n    query comments($postId: ID!, $after: String) {\n  post(id: $postId) {\n    ...Post\n  }\n  comments(postId: $postId, after: $after) @connection(key: \"comments\", filter: [\"postId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...CommentAndReplies\n      }\n    }\n  }\n}\n    ", "\n", ""], ["\n    query comments($postId: ID!, $after: String) {\n  post(id: $postId) {\n    ...Post\n  }\n  comments(postId: $postId, after: $after) @connection(key: \"comments\", filter: [\"postId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...CommentAndReplies\n      }\n    }\n  }\n}\n    ", "\n", ""])), exports.PostFragmentDoc, exports.CommentAndRepliesFragmentDoc);
+exports.CommentsDocument = client_1.gql(templateObject_51 || (templateObject_51 = __makeTemplateObject(["\n  query comments($postId: ID!, $after: String) {\n    post(id: $postId) {\n      ...Post\n    }\n    comments(postId: $postId, after: $after) @connection(key: \"comments\", filter: [\"postId\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...CommentAndReplies\n        }\n      }\n    }\n  }\n  ", "\n  ", "\n"], ["\n  query comments($postId: ID!, $after: String) {\n    post(id: $postId) {\n      ...Post\n    }\n    comments(postId: $postId, after: $after) @connection(key: \"comments\", filter: [\"postId\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...CommentAndReplies\n        }\n      }\n    }\n  }\n  ", "\n  ", "\n"
+    /**
+     * __useCommentsQuery__
+     *
+     * To run a query within a React component, call `useCommentsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useCommentsQuery({
+     *   variables: {
+     *      postId: // value for 'postId'
+     *      after: // value for 'after'
+     *   },
+     * });
+     */
+])), exports.PostFragmentDoc, exports.CommentAndRepliesFragmentDoc);
 /**
  * __useCommentsQuery__
  *
@@ -1018,14 +1186,32 @@ exports.CommentsDocument = client_1.gql(templateObject_51 || (templateObject_51 
  * });
  */
 function useCommentsQuery(baseOptions) {
-    return Apollo.useQuery(exports.CommentsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.CommentsDocument, options);
 }
 exports.useCommentsQuery = useCommentsQuery;
 function useCommentsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.CommentsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.CommentsDocument, options);
 }
 exports.useCommentsLazyQuery = useCommentsLazyQuery;
-exports.CurrentUserDocument = client_1.gql(templateObject_52 || (templateObject_52 = __makeTemplateObject(["\n    query currentUser {\n  user: currentUser {\n    avatarUrl\n    bio\n    dynamicLink\n    firstName\n    fullName\n    id\n    isOnline\n    isSilhouette\n    lastName\n    location\n    projectCount\n    username\n    website\n    role\n    settings {\n      timezone\n      locale\n    }\n    interestedIn {\n      id\n      title\n    }\n    ...UserProjects\n  }\n}\n    ", ""], ["\n    query currentUser {\n  user: currentUser {\n    avatarUrl\n    bio\n    dynamicLink\n    firstName\n    fullName\n    id\n    isOnline\n    isSilhouette\n    lastName\n    location\n    projectCount\n    username\n    website\n    role\n    settings {\n      timezone\n      locale\n    }\n    interestedIn {\n      id\n      title\n    }\n    ...UserProjects\n  }\n}\n    ", ""])), exports.UserProjectsFragmentDoc);
+exports.CurrentUserDocument = client_1.gql(templateObject_52 || (templateObject_52 = __makeTemplateObject(["\n  query currentUser {\n    user: currentUser {\n      avatarUrl\n      bio\n      dynamicLink\n      firstName\n      fullName\n      id\n      isOnline\n      isSilhouette\n      lastName\n      location\n      projectCount\n      username\n      website\n      role\n      settings {\n        timezone\n        locale\n      }\n      interestedIn {\n        id\n        title\n      }\n      ...UserProjects\n    }\n  }\n  ", "\n"], ["\n  query currentUser {\n    user: currentUser {\n      avatarUrl\n      bio\n      dynamicLink\n      firstName\n      fullName\n      id\n      isOnline\n      isSilhouette\n      lastName\n      location\n      projectCount\n      username\n      website\n      role\n      settings {\n        timezone\n        locale\n      }\n      interestedIn {\n        id\n        title\n      }\n      ...UserProjects\n    }\n  }\n  ", "\n"
+    /**
+     * __useCurrentUserQuery__
+     *
+     * To run a query within a React component, call `useCurrentUserQuery` and pass it any options that fit your needs.
+     * When your component renders, `useCurrentUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useCurrentUserQuery({
+     *   variables: {
+     *   },
+     * });
+     */
+])), exports.UserProjectsFragmentDoc);
 /**
  * __useCurrentUserQuery__
  *
@@ -1042,14 +1228,34 @@ exports.CurrentUserDocument = client_1.gql(templateObject_52 || (templateObject_
  * });
  */
 function useCurrentUserQuery(baseOptions) {
-    return Apollo.useQuery(exports.CurrentUserDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.CurrentUserDocument, options);
 }
 exports.useCurrentUserQuery = useCurrentUserQuery;
 function useCurrentUserLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.CurrentUserDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.CurrentUserDocument, options);
 }
 exports.useCurrentUserLazyQuery = useCurrentUserLazyQuery;
-exports.CurrentUserFollowingProjectsDocument = client_1.gql(templateObject_53 || (templateObject_53 = __makeTemplateObject(["\n    query currentUserFollowingProjects($after: String, $first: Int = 5) {\n  user: currentUser {\n    id\n    projects: followingProjects(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query currentUserFollowingProjects($after: String, $first: Int = 5) {\n  user: currentUser {\n    id\n    projects: followingProjects(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
+exports.CurrentUserFollowingProjectsDocument = client_1.gql(templateObject_53 || (templateObject_53 = __makeTemplateObject(["\n  query currentUserFollowingProjects($after: String, $first: Int = 5) {\n    user: currentUser {\n      id\n      projects: followingProjects(after: $after, first: $first) {\n        pageInfo {\n          hasNextPage\n        }\n        edges {\n          cursor\n          node {\n            ...Project\n            cover {\n              uri\n              default\n            }\n          }\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query currentUserFollowingProjects($after: String, $first: Int = 5) {\n    user: currentUser {\n      id\n      projects: followingProjects(after: $after, first: $first) {\n        pageInfo {\n          hasNextPage\n        }\n        edges {\n          cursor\n          node {\n            ...Project\n            cover {\n              uri\n              default\n            }\n          }\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useCurrentUserFollowingProjectsQuery__
+     *
+     * To run a query within a React component, call `useCurrentUserFollowingProjectsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useCurrentUserFollowingProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useCurrentUserFollowingProjectsQuery({
+     *   variables: {
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.ProjectFragmentDoc);
 /**
  * __useCurrentUserFollowingProjectsQuery__
  *
@@ -1068,14 +1274,34 @@ exports.CurrentUserFollowingProjectsDocument = client_1.gql(templateObject_53 ||
  * });
  */
 function useCurrentUserFollowingProjectsQuery(baseOptions) {
-    return Apollo.useQuery(exports.CurrentUserFollowingProjectsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.CurrentUserFollowingProjectsDocument, options);
 }
 exports.useCurrentUserFollowingProjectsQuery = useCurrentUserFollowingProjectsQuery;
 function useCurrentUserFollowingProjectsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.CurrentUserFollowingProjectsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.CurrentUserFollowingProjectsDocument, options);
 }
 exports.useCurrentUserFollowingProjectsLazyQuery = useCurrentUserFollowingProjectsLazyQuery;
-exports.CurrentUserProfileDocument = client_1.gql(templateObject_54 || (templateObject_54 = __makeTemplateObject(["\n    query currentUserProfile($after: String, $first: Int = 5) {\n  user: currentUser {\n    ...User\n    projects: projectsConnection {\n      edges {\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n      pageInfo {\n        hasNextPage\n      }\n    }\n  }\n}\n    ", "\n", "\n", ""], ["\n    query currentUserProfile($after: String, $first: Int = 5) {\n  user: currentUser {\n    ...User\n    projects: projectsConnection {\n      edges {\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n      pageInfo {\n        hasNextPage\n      }\n    }\n  }\n}\n    ", "\n", "\n", ""])), exports.UserFragmentDoc, exports.ProjectFragmentDoc, exports.PostFragmentDoc);
+exports.CurrentUserProfileDocument = client_1.gql(templateObject_54 || (templateObject_54 = __makeTemplateObject(["\n  query currentUserProfile($after: String, $first: Int = 5) {\n    user: currentUser {\n      ...User\n      projects: projectsConnection {\n        edges {\n          node {\n            ...Project\n            cover {\n              uri\n              default\n            }\n          }\n        }\n      }\n      posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n        edges {\n          cursor\n          node {\n            ...Post\n          }\n        }\n        pageInfo {\n          hasNextPage\n        }\n      }\n    }\n  }\n  ", "\n  ", "\n  ", "\n"], ["\n  query currentUserProfile($after: String, $first: Int = 5) {\n    user: currentUser {\n      ...User\n      projects: projectsConnection {\n        edges {\n          node {\n            ...Project\n            cover {\n              uri\n              default\n            }\n          }\n        }\n      }\n      posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n        edges {\n          cursor\n          node {\n            ...Post\n          }\n        }\n        pageInfo {\n          hasNextPage\n        }\n      }\n    }\n  }\n  ", "\n  ", "\n  ", "\n"
+    /**
+     * __useCurrentUserProfileQuery__
+     *
+     * To run a query within a React component, call `useCurrentUserProfileQuery` and pass it any options that fit your needs.
+     * When your component renders, `useCurrentUserProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useCurrentUserProfileQuery({
+     *   variables: {
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.UserFragmentDoc, exports.ProjectFragmentDoc, exports.PostFragmentDoc);
 /**
  * __useCurrentUserProfileQuery__
  *
@@ -1094,14 +1320,32 @@ exports.CurrentUserProfileDocument = client_1.gql(templateObject_54 || (template
  * });
  */
 function useCurrentUserProfileQuery(baseOptions) {
-    return Apollo.useQuery(exports.CurrentUserProfileDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.CurrentUserProfileDocument, options);
 }
 exports.useCurrentUserProfileQuery = useCurrentUserProfileQuery;
 function useCurrentUserProfileLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.CurrentUserProfileDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.CurrentUserProfileDocument, options);
 }
 exports.useCurrentUserProfileLazyQuery = useCurrentUserProfileLazyQuery;
-exports.CurrentUserProjectsDocument = client_1.gql(templateObject_55 || (templateObject_55 = __makeTemplateObject(["\n    query currentUserProjects {\n  user: currentUser {\n    ...UserProjects\n  }\n}\n    ", ""], ["\n    query currentUserProjects {\n  user: currentUser {\n    ...UserProjects\n  }\n}\n    ", ""])), exports.UserProjectsFragmentDoc);
+exports.CurrentUserProjectsDocument = client_1.gql(templateObject_55 || (templateObject_55 = __makeTemplateObject(["\n  query currentUserProjects {\n    user: currentUser {\n      ...UserProjects\n    }\n  }\n  ", "\n"], ["\n  query currentUserProjects {\n    user: currentUser {\n      ...UserProjects\n    }\n  }\n  ", "\n"
+    /**
+     * __useCurrentUserProjectsQuery__
+     *
+     * To run a query within a React component, call `useCurrentUserProjectsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useCurrentUserProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useCurrentUserProjectsQuery({
+     *   variables: {
+     *   },
+     * });
+     */
+])), exports.UserProjectsFragmentDoc);
 /**
  * __useCurrentUserProjectsQuery__
  *
@@ -1118,14 +1362,32 @@ exports.CurrentUserProjectsDocument = client_1.gql(templateObject_55 || (templat
  * });
  */
 function useCurrentUserProjectsQuery(baseOptions) {
-    return Apollo.useQuery(exports.CurrentUserProjectsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.CurrentUserProjectsDocument, options);
 }
 exports.useCurrentUserProjectsQuery = useCurrentUserProjectsQuery;
 function useCurrentUserProjectsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.CurrentUserProjectsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.CurrentUserProjectsDocument, options);
 }
 exports.useCurrentUserProjectsLazyQuery = useCurrentUserProjectsLazyQuery;
-exports.CurrentUserSettingsDocument = client_1.gql(templateObject_56 || (templateObject_56 = __makeTemplateObject(["\n    query currentUserSettings {\n  user: currentUser {\n    ...UserSettings\n  }\n}\n    ", ""], ["\n    query currentUserSettings {\n  user: currentUser {\n    ...UserSettings\n  }\n}\n    ", ""])), exports.UserSettingsFragmentDoc);
+exports.CurrentUserSettingsDocument = client_1.gql(templateObject_56 || (templateObject_56 = __makeTemplateObject(["\n  query currentUserSettings {\n    user: currentUser {\n      ...UserSettings\n    }\n  }\n  ", "\n"], ["\n  query currentUserSettings {\n    user: currentUser {\n      ...UserSettings\n    }\n  }\n  ", "\n"
+    /**
+     * __useCurrentUserSettingsQuery__
+     *
+     * To run a query within a React component, call `useCurrentUserSettingsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useCurrentUserSettingsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useCurrentUserSettingsQuery({
+     *   variables: {
+     *   },
+     * });
+     */
+])), exports.UserSettingsFragmentDoc);
 /**
  * __useCurrentUserSettingsQuery__
  *
@@ -1142,14 +1404,34 @@ exports.CurrentUserSettingsDocument = client_1.gql(templateObject_56 || (templat
  * });
  */
 function useCurrentUserSettingsQuery(baseOptions) {
-    return Apollo.useQuery(exports.CurrentUserSettingsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.CurrentUserSettingsDocument, options);
 }
 exports.useCurrentUserSettingsQuery = useCurrentUserSettingsQuery;
 function useCurrentUserSettingsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.CurrentUserSettingsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.CurrentUserSettingsDocument, options);
 }
 exports.useCurrentUserSettingsLazyQuery = useCurrentUserSettingsLazyQuery;
-exports.FeedDocument = client_1.gql(templateObject_57 || (templateObject_57 = __makeTemplateObject(["\n    query feed($after: String, $first: Int = 5) {\n  feed {\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query feed($after: String, $first: Int = 5) {\n  feed {\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
+exports.FeedDocument = client_1.gql(templateObject_57 || (templateObject_57 = __makeTemplateObject(["\n  query feed($after: String, $first: Int = 5) {\n    feed {\n      posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n        pageInfo {\n          hasNextPage\n        }\n        edges {\n          cursor\n          node {\n            ...Post\n          }\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query feed($after: String, $first: Int = 5) {\n    feed {\n      posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n        pageInfo {\n          hasNextPage\n        }\n        edges {\n          cursor\n          node {\n            ...Post\n          }\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useFeedQuery__
+     *
+     * To run a query within a React component, call `useFeedQuery` and pass it any options that fit your needs.
+     * When your component renders, `useFeedQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useFeedQuery({
+     *   variables: {
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.PostFragmentDoc);
 /**
  * __useFeedQuery__
  *
@@ -1168,14 +1450,34 @@ exports.FeedDocument = client_1.gql(templateObject_57 || (templateObject_57 = __
  * });
  */
 function useFeedQuery(baseOptions) {
-    return Apollo.useQuery(exports.FeedDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.FeedDocument, options);
 }
 exports.useFeedQuery = useFeedQuery;
 function useFeedLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.FeedDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.FeedDocument, options);
 }
 exports.useFeedLazyQuery = useFeedLazyQuery;
-exports.FilesDocument = client_1.gql(templateObject_58 || (templateObject_58 = __makeTemplateObject(["\n    query files($after: String, $first: Int = 10) @connection(key: \"files\") {\n  files(after: $after, first: $first) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        id\n        uri\n        postId\n      }\n    }\n  }\n}\n    "], ["\n    query files($after: String, $first: Int = 10) @connection(key: \"files\") {\n  files(after: $after, first: $first) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        id\n        uri\n        postId\n      }\n    }\n  }\n}\n    "])));
+exports.FilesDocument = client_1.gql(templateObject_58 || (templateObject_58 = __makeTemplateObject(["\n  query files($after: String, $first: Int = 10) @connection(key: \"files\") {\n    files(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          id\n          uri\n          postId\n        }\n      }\n    }\n  }\n"], ["\n  query files($after: String, $first: Int = 10) @connection(key: \"files\") {\n    files(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          id\n          uri\n          postId\n        }\n      }\n    }\n  }\n"
+    /**
+     * __useFilesQuery__
+     *
+     * To run a query within a React component, call `useFilesQuery` and pass it any options that fit your needs.
+     * When your component renders, `useFilesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useFilesQuery({
+     *   variables: {
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])));
 /**
  * __useFilesQuery__
  *
@@ -1194,14 +1496,35 @@ exports.FilesDocument = client_1.gql(templateObject_58 || (templateObject_58 = _
  * });
  */
 function useFilesQuery(baseOptions) {
-    return Apollo.useQuery(exports.FilesDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.FilesDocument, options);
 }
 exports.useFilesQuery = useFilesQuery;
 function useFilesLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.FilesDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.FilesDocument, options);
 }
 exports.useFilesLazyQuery = useFilesLazyQuery;
-exports.FollowersDocument = client_1.gql(templateObject_59 || (templateObject_59 = __makeTemplateObject(["\n    query followers($projectId: ID!, $after: String, $first: Int = 10) {\n  followers(projectId: $projectId, after: $after, first: $first) @connection(key: \"followers\", filter: [\"projectId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...User\n      }\n    }\n  }\n}\n    ", ""], ["\n    query followers($projectId: ID!, $after: String, $first: Int = 10) {\n  followers(projectId: $projectId, after: $after, first: $first) @connection(key: \"followers\", filter: [\"projectId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...User\n      }\n    }\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
+exports.FollowersDocument = client_1.gql(templateObject_59 || (templateObject_59 = __makeTemplateObject(["\n  query followers($projectId: ID!, $after: String, $first: Int = 10) {\n    followers(projectId: $projectId, after: $after, first: $first)\n      @connection(key: \"followers\", filter: [\"projectId\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...User\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query followers($projectId: ID!, $after: String, $first: Int = 10) {\n    followers(projectId: $projectId, after: $after, first: $first)\n      @connection(key: \"followers\", filter: [\"projectId\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...User\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useFollowersQuery__
+     *
+     * To run a query within a React component, call `useFollowersQuery` and pass it any options that fit your needs.
+     * When your component renders, `useFollowersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useFollowersQuery({
+     *   variables: {
+     *      projectId: // value for 'projectId'
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.UserFragmentDoc);
 /**
  * __useFollowersQuery__
  *
@@ -1221,14 +1544,33 @@ exports.FollowersDocument = client_1.gql(templateObject_59 || (templateObject_59
  * });
  */
 function useFollowersQuery(baseOptions) {
-    return Apollo.useQuery(exports.FollowersDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.FollowersDocument, options);
 }
 exports.useFollowersQuery = useFollowersQuery;
 function useFollowersLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.FollowersDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.FollowersDocument, options);
 }
 exports.useFollowersLazyQuery = useFollowersLazyQuery;
-exports.GrowthDocument = client_1.gql(templateObject_60 || (templateObject_60 = __makeTemplateObject(["\n    query growth($type: GrowthType!) {\n  growth(type: $type) {\n    date\n    count\n  }\n}\n    "], ["\n    query growth($type: GrowthType!) {\n  growth(type: $type) {\n    date\n    count\n  }\n}\n    "])));
+exports.GrowthDocument = client_1.gql(templateObject_60 || (templateObject_60 = __makeTemplateObject(["\n  query growth($type: GrowthType!) {\n    growth(type: $type) {\n      date\n      count\n    }\n  }\n"], ["\n  query growth($type: GrowthType!) {\n    growth(type: $type) {\n      date\n      count\n    }\n  }\n"
+    /**
+     * __useGrowthQuery__
+     *
+     * To run a query within a React component, call `useGrowthQuery` and pass it any options that fit your needs.
+     * When your component renders, `useGrowthQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useGrowthQuery({
+     *   variables: {
+     *      type: // value for 'type'
+     *   },
+     * });
+     */
+])));
 /**
  * __useGrowthQuery__
  *
@@ -1246,14 +1588,37 @@ exports.GrowthDocument = client_1.gql(templateObject_60 || (templateObject_60 = 
  * });
  */
 function useGrowthQuery(baseOptions) {
-    return Apollo.useQuery(exports.GrowthDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.GrowthDocument, options);
 }
 exports.useGrowthQuery = useGrowthQuery;
 function useGrowthLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.GrowthDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.GrowthDocument, options);
 }
 exports.useGrowthLazyQuery = useGrowthLazyQuery;
-exports.HashtagDocument = client_1.gql(templateObject_61 || (templateObject_61 = __makeTemplateObject(["\n    query hashtag($id: ID, $slug: LowercaseString, $name: String, $after: String, $first: Int = 5) {\n  hashtag(id: $id, slug: $slug, name: $name) {\n    posts: postsConnection(first: $first, after: $after) @connection(key: \"posts\") {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query hashtag($id: ID, $slug: LowercaseString, $name: String, $after: String, $first: Int = 5) {\n  hashtag(id: $id, slug: $slug, name: $name) {\n    posts: postsConnection(first: $first, after: $after) @connection(key: \"posts\") {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
+exports.HashtagDocument = client_1.gql(templateObject_61 || (templateObject_61 = __makeTemplateObject(["\n  query hashtag($id: ID, $slug: LowercaseString, $name: String, $after: String, $first: Int = 5) {\n    hashtag(id: $id, slug: $slug, name: $name) {\n      posts: postsConnection(first: $first, after: $after) @connection(key: \"posts\") {\n        pageInfo {\n          hasNextPage\n        }\n        edges {\n          cursor\n          node {\n            ...Post\n          }\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query hashtag($id: ID, $slug: LowercaseString, $name: String, $after: String, $first: Int = 5) {\n    hashtag(id: $id, slug: $slug, name: $name) {\n      posts: postsConnection(first: $first, after: $after) @connection(key: \"posts\") {\n        pageInfo {\n          hasNextPage\n        }\n        edges {\n          cursor\n          node {\n            ...Post\n          }\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useHashtagQuery__
+     *
+     * To run a query within a React component, call `useHashtagQuery` and pass it any options that fit your needs.
+     * When your component renders, `useHashtagQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useHashtagQuery({
+     *   variables: {
+     *      id: // value for 'id'
+     *      slug: // value for 'slug'
+     *      name: // value for 'name'
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.PostFragmentDoc);
 /**
  * __useHashtagQuery__
  *
@@ -1275,14 +1640,35 @@ exports.HashtagDocument = client_1.gql(templateObject_61 || (templateObject_61 =
  * });
  */
 function useHashtagQuery(baseOptions) {
-    return Apollo.useQuery(exports.HashtagDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.HashtagDocument, options);
 }
 exports.useHashtagQuery = useHashtagQuery;
 function useHashtagLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.HashtagDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.HashtagDocument, options);
 }
 exports.useHashtagLazyQuery = useHashtagLazyQuery;
-exports.LikesDocument = client_1.gql(templateObject_62 || (templateObject_62 = __makeTemplateObject(["\n    query likes($postId: ID!, $after: String, $first: Int = 10) {\n  likes(postId: $postId, first: $first, after: $after) @connection(key: \"comments\", filter: [\"postId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...User\n      }\n    }\n  }\n}\n    ", ""], ["\n    query likes($postId: ID!, $after: String, $first: Int = 10) {\n  likes(postId: $postId, first: $first, after: $after) @connection(key: \"comments\", filter: [\"postId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...User\n      }\n    }\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
+exports.LikesDocument = client_1.gql(templateObject_62 || (templateObject_62 = __makeTemplateObject(["\n  query likes($postId: ID!, $after: String, $first: Int = 10) {\n    likes(postId: $postId, first: $first, after: $after)\n      @connection(key: \"comments\", filter: [\"postId\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...User\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query likes($postId: ID!, $after: String, $first: Int = 10) {\n    likes(postId: $postId, first: $first, after: $after)\n      @connection(key: \"comments\", filter: [\"postId\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...User\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useLikesQuery__
+     *
+     * To run a query within a React component, call `useLikesQuery` and pass it any options that fit your needs.
+     * When your component renders, `useLikesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useLikesQuery({
+     *   variables: {
+     *      postId: // value for 'postId'
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.UserFragmentDoc);
 /**
  * __useLikesQuery__
  *
@@ -1302,14 +1688,32 @@ exports.LikesDocument = client_1.gql(templateObject_62 || (templateObject_62 = _
  * });
  */
 function useLikesQuery(baseOptions) {
-    return Apollo.useQuery(exports.LikesDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.LikesDocument, options);
 }
 exports.useLikesQuery = useLikesQuery;
 function useLikesLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.LikesDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.LikesDocument, options);
 }
 exports.useLikesLazyQuery = useLikesLazyQuery;
-exports.MetaDocument = client_1.gql(templateObject_63 || (templateObject_63 = __makeTemplateObject(["\n    query meta {\n  meta {\n    totalUsers\n    totalUsersToday\n    totalPostsToday\n    totalProjectsToday\n    totalCommentsToday\n    totalFilesToday\n    totalComments\n    totalProjects\n    totalPosts\n    totalFiles\n  }\n}\n    "], ["\n    query meta {\n  meta {\n    totalUsers\n    totalUsersToday\n    totalPostsToday\n    totalProjectsToday\n    totalCommentsToday\n    totalFilesToday\n    totalComments\n    totalProjects\n    totalPosts\n    totalFiles\n  }\n}\n    "])));
+exports.MetaDocument = client_1.gql(templateObject_63 || (templateObject_63 = __makeTemplateObject(["\n  query meta {\n    meta {\n      totalUsers\n      totalUsersToday\n      totalPostsToday\n      totalProjectsToday\n      totalCommentsToday\n      totalFilesToday\n      totalComments\n      totalProjects\n      totalPosts\n      totalFiles\n    }\n  }\n"], ["\n  query meta {\n    meta {\n      totalUsers\n      totalUsersToday\n      totalPostsToday\n      totalProjectsToday\n      totalCommentsToday\n      totalFilesToday\n      totalComments\n      totalProjects\n      totalPosts\n      totalFiles\n    }\n  }\n"
+    /**
+     * __useMetaQuery__
+     *
+     * To run a query within a React component, call `useMetaQuery` and pass it any options that fit your needs.
+     * When your component renders, `useMetaQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useMetaQuery({
+     *   variables: {
+     *   },
+     * });
+     */
+])));
 /**
  * __useMetaQuery__
  *
@@ -1326,14 +1730,34 @@ exports.MetaDocument = client_1.gql(templateObject_63 || (templateObject_63 = __
  * });
  */
 function useMetaQuery(baseOptions) {
-    return Apollo.useQuery(exports.MetaDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.MetaDocument, options);
 }
 exports.useMetaQuery = useMetaQuery;
 function useMetaLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.MetaDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.MetaDocument, options);
 }
 exports.useMetaLazyQuery = useMetaLazyQuery;
-exports.NotificationsDocument = client_1.gql(templateObject_64 || (templateObject_64 = __makeTemplateObject(["\n    query notifications($after: String, $first: Int = 10) {\n  notifications(after: $after, first: $first) @connection(key: \"notifications\") {\n    unreadCount\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Notification\n      }\n    }\n  }\n}\n    ", ""], ["\n    query notifications($after: String, $first: Int = 10) {\n  notifications(after: $after, first: $first) @connection(key: \"notifications\") {\n    unreadCount\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Notification\n      }\n    }\n  }\n}\n    ", ""])), exports.NotificationFragmentDoc);
+exports.NotificationsDocument = client_1.gql(templateObject_64 || (templateObject_64 = __makeTemplateObject(["\n  query notifications($after: String, $first: Int = 10) {\n    notifications(after: $after, first: $first) @connection(key: \"notifications\") {\n      unreadCount\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Notification\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query notifications($after: String, $first: Int = 10) {\n    notifications(after: $after, first: $first) @connection(key: \"notifications\") {\n      unreadCount\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Notification\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useNotificationsQuery__
+     *
+     * To run a query within a React component, call `useNotificationsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useNotificationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useNotificationsQuery({
+     *   variables: {
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.NotificationFragmentDoc);
 /**
  * __useNotificationsQuery__
  *
@@ -1352,14 +1776,33 @@ exports.NotificationsDocument = client_1.gql(templateObject_64 || (templateObjec
  * });
  */
 function useNotificationsQuery(baseOptions) {
-    return Apollo.useQuery(exports.NotificationsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.NotificationsDocument, options);
 }
 exports.useNotificationsQuery = useNotificationsQuery;
 function useNotificationsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.NotificationsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.NotificationsDocument, options);
 }
 exports.useNotificationsLazyQuery = useNotificationsLazyQuery;
-exports.PostDocument = client_1.gql(templateObject_65 || (templateObject_65 = __makeTemplateObject(["\n    query post($id: ID!) {\n  post(id: $id) {\n    ...Post\n  }\n}\n    ", ""], ["\n    query post($id: ID!) {\n  post(id: $id) {\n    ...Post\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
+exports.PostDocument = client_1.gql(templateObject_65 || (templateObject_65 = __makeTemplateObject(["\n  query post($id: ID!) {\n    post(id: $id) {\n      ...Post\n    }\n  }\n  ", "\n"], ["\n  query post($id: ID!) {\n    post(id: $id) {\n      ...Post\n    }\n  }\n  ", "\n"
+    /**
+     * __usePostQuery__
+     *
+     * To run a query within a React component, call `usePostQuery` and pass it any options that fit your needs.
+     * When your component renders, `usePostQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = usePostQuery({
+     *   variables: {
+     *      id: // value for 'id'
+     *   },
+     * });
+     */
+])), exports.PostFragmentDoc);
 /**
  * __usePostQuery__
  *
@@ -1377,14 +1820,34 @@ exports.PostDocument = client_1.gql(templateObject_65 || (templateObject_65 = __
  * });
  */
 function usePostQuery(baseOptions) {
-    return Apollo.useQuery(exports.PostDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.PostDocument, options);
 }
 exports.usePostQuery = usePostQuery;
 function usePostLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.PostDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.PostDocument, options);
 }
 exports.usePostLazyQuery = usePostLazyQuery;
-exports.PostsDocument = client_1.gql(templateObject_66 || (templateObject_66 = __makeTemplateObject(["\n    query posts($after: String, $first: Int = 5) @connection(key: \"posts\") {\n  posts(after: $after, first: $first) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Post\n      }\n    }\n  }\n}\n    ", ""], ["\n    query posts($after: String, $first: Int = 5) @connection(key: \"posts\") {\n  posts(after: $after, first: $first) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Post\n      }\n    }\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
+exports.PostsDocument = client_1.gql(templateObject_66 || (templateObject_66 = __makeTemplateObject(["\n  query posts($after: String, $first: Int = 5) @connection(key: \"posts\") {\n    posts(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query posts($after: String, $first: Int = 5) @connection(key: \"posts\") {\n    posts(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __usePostsQuery__
+     *
+     * To run a query within a React component, call `usePostsQuery` and pass it any options that fit your needs.
+     * When your component renders, `usePostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = usePostsQuery({
+     *   variables: {
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.PostFragmentDoc);
 /**
  * __usePostsQuery__
  *
@@ -1403,14 +1866,37 @@ exports.PostsDocument = client_1.gql(templateObject_66 || (templateObject_66 = _
  * });
  */
 function usePostsQuery(baseOptions) {
-    return Apollo.useQuery(exports.PostsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.PostsDocument, options);
 }
 exports.usePostsQuery = usePostsQuery;
 function usePostsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.PostsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.PostsDocument, options);
 }
 exports.usePostsLazyQuery = usePostsLazyQuery;
-exports.ProjectDocument = client_1.gql(templateObject_67 || (templateObject_67 = __makeTemplateObject(["\n    query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID, $first: Int = 5) {\n  post(id: $postId) {\n    ...Post\n  }\n  project(id: $id, slug: $slug) {\n    ...Project\n    posts: postsConnection(first: $first, after: $after) @connection(key: \"posts\") {\n      totalCount\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", "\n", ""], ["\n    query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID, $first: Int = 5) {\n  post(id: $postId) {\n    ...Post\n  }\n  project(id: $id, slug: $slug) {\n    ...Project\n    posts: postsConnection(first: $first, after: $after) @connection(key: \"posts\") {\n      totalCount\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", "\n", ""])), exports.PostFragmentDoc, exports.ProjectFragmentDoc);
+exports.ProjectDocument = client_1.gql(templateObject_67 || (templateObject_67 = __makeTemplateObject(["\n  query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID, $first: Int = 5) {\n    post(id: $postId) {\n      ...Post\n    }\n    project(id: $id, slug: $slug) {\n      ...Project\n      posts: postsConnection(first: $first, after: $after) @connection(key: \"posts\") {\n        totalCount\n        pageInfo {\n          hasNextPage\n        }\n        edges {\n          cursor\n          node {\n            ...Post\n          }\n        }\n      }\n    }\n  }\n  ", "\n  ", "\n"], ["\n  query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID, $first: Int = 5) {\n    post(id: $postId) {\n      ...Post\n    }\n    project(id: $id, slug: $slug) {\n      ...Project\n      posts: postsConnection(first: $first, after: $after) @connection(key: \"posts\") {\n        totalCount\n        pageInfo {\n          hasNextPage\n        }\n        edges {\n          cursor\n          node {\n            ...Post\n          }\n        }\n      }\n    }\n  }\n  ", "\n  ", "\n"
+    /**
+     * __useProjectQuery__
+     *
+     * To run a query within a React component, call `useProjectQuery` and pass it any options that fit your needs.
+     * When your component renders, `useProjectQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useProjectQuery({
+     *   variables: {
+     *      id: // value for 'id'
+     *      slug: // value for 'slug'
+     *      after: // value for 'after'
+     *      postId: // value for 'postId'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.PostFragmentDoc, exports.ProjectFragmentDoc);
 /**
  * __useProjectQuery__
  *
@@ -1432,14 +1918,37 @@ exports.ProjectDocument = client_1.gql(templateObject_67 || (templateObject_67 =
  * });
  */
 function useProjectQuery(baseOptions) {
-    return Apollo.useQuery(exports.ProjectDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.ProjectDocument, options);
 }
 exports.useProjectQuery = useProjectQuery;
 function useProjectLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.ProjectDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.ProjectDocument, options);
 }
 exports.useProjectLazyQuery = useProjectLazyQuery;
-exports.ProjectCollectionsDocument = client_1.gql(templateObject_68 || (templateObject_68 = __makeTemplateObject(["\n    query projectCollections($projectId: ID, $projectSlug: LowercaseString, $slug: LowercaseString, $after: String, $first: Int = 10) {\n  projectCollections(\n    projectId: $projectId\n    projectSlug: $projectSlug\n    slug: $slug\n    first: $first\n    after: $after\n  ) @connection(key: \"collections\", filter: [\"projectId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Collection\n      }\n    }\n  }\n}\n    ", ""], ["\n    query projectCollections($projectId: ID, $projectSlug: LowercaseString, $slug: LowercaseString, $after: String, $first: Int = 10) {\n  projectCollections(\n    projectId: $projectId\n    projectSlug: $projectSlug\n    slug: $slug\n    first: $first\n    after: $after\n  ) @connection(key: \"collections\", filter: [\"projectId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Collection\n      }\n    }\n  }\n}\n    ", ""])), exports.CollectionFragmentDoc);
+exports.ProjectCollectionsDocument = client_1.gql(templateObject_68 || (templateObject_68 = __makeTemplateObject(["\n  query projectCollections(\n    $projectId: ID\n    $projectSlug: LowercaseString\n    $slug: LowercaseString\n    $after: String\n    $first: Int = 10\n  ) {\n    projectCollections(\n      projectId: $projectId\n      projectSlug: $projectSlug\n      slug: $slug\n      first: $first\n      after: $after\n    ) @connection(key: \"collections\", filter: [\"projectId\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Collection\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query projectCollections(\n    $projectId: ID\n    $projectSlug: LowercaseString\n    $slug: LowercaseString\n    $after: String\n    $first: Int = 10\n  ) {\n    projectCollections(\n      projectId: $projectId\n      projectSlug: $projectSlug\n      slug: $slug\n      first: $first\n      after: $after\n    ) @connection(key: \"collections\", filter: [\"projectId\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Collection\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useProjectCollectionsQuery__
+     *
+     * To run a query within a React component, call `useProjectCollectionsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useProjectCollectionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useProjectCollectionsQuery({
+     *   variables: {
+     *      projectId: // value for 'projectId'
+     *      projectSlug: // value for 'projectSlug'
+     *      slug: // value for 'slug'
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.CollectionFragmentDoc);
 /**
  * __useProjectCollectionsQuery__
  *
@@ -1461,14 +1970,34 @@ exports.ProjectCollectionsDocument = client_1.gql(templateObject_68 || (template
  * });
  */
 function useProjectCollectionsQuery(baseOptions) {
-    return Apollo.useQuery(exports.ProjectCollectionsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.ProjectCollectionsDocument, options);
 }
 exports.useProjectCollectionsQuery = useProjectCollectionsQuery;
 function useProjectCollectionsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.ProjectCollectionsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.ProjectCollectionsDocument, options);
 }
 exports.useProjectCollectionsLazyQuery = useProjectCollectionsLazyQuery;
-exports.ProjectSuggestionsDocument = client_1.gql(templateObject_69 || (templateObject_69 = __makeTemplateObject(["\n    query projectSuggestions($after: String, $first: Int = 5) {\n  projects: projectSuggestions(after: $after, first: $first) @connection(key: \"projects\") {\n    type {\n      id\n      title\n    }\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      node {\n        ...Project\n        cover {\n          uri\n          default\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query projectSuggestions($after: String, $first: Int = 5) {\n  projects: projectSuggestions(after: $after, first: $first) @connection(key: \"projects\") {\n    type {\n      id\n      title\n    }\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      node {\n        ...Project\n        cover {\n          uri\n          default\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
+exports.ProjectSuggestionsDocument = client_1.gql(templateObject_69 || (templateObject_69 = __makeTemplateObject(["\n  query projectSuggestions($after: String, $first: Int = 5) {\n    projects: projectSuggestions(after: $after, first: $first) @connection(key: \"projects\") {\n      type {\n        id\n        title\n      }\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query projectSuggestions($after: String, $first: Int = 5) {\n    projects: projectSuggestions(after: $after, first: $first) @connection(key: \"projects\") {\n      type {\n        id\n        title\n      }\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useProjectSuggestionsQuery__
+     *
+     * To run a query within a React component, call `useProjectSuggestionsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useProjectSuggestionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useProjectSuggestionsQuery({
+     *   variables: {
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.ProjectFragmentDoc);
 /**
  * __useProjectSuggestionsQuery__
  *
@@ -1487,14 +2016,32 @@ exports.ProjectSuggestionsDocument = client_1.gql(templateObject_69 || (template
  * });
  */
 function useProjectSuggestionsQuery(baseOptions) {
-    return Apollo.useQuery(exports.ProjectSuggestionsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.ProjectSuggestionsDocument, options);
 }
 exports.useProjectSuggestionsQuery = useProjectSuggestionsQuery;
 function useProjectSuggestionsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.ProjectSuggestionsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.ProjectSuggestionsDocument, options);
 }
 exports.useProjectSuggestionsLazyQuery = useProjectSuggestionsLazyQuery;
-exports.ProjectTypesDocument = client_1.gql(templateObject_70 || (templateObject_70 = __makeTemplateObject(["\n    query projectTypes {\n  types: projectTypes {\n    id\n    title\n    imageUrl\n  }\n}\n    "], ["\n    query projectTypes {\n  types: projectTypes {\n    id\n    title\n    imageUrl\n  }\n}\n    "])));
+exports.ProjectTypesDocument = client_1.gql(templateObject_70 || (templateObject_70 = __makeTemplateObject(["\n  query projectTypes {\n    types: projectTypes {\n      id\n      title\n      imageUrl\n    }\n  }\n"], ["\n  query projectTypes {\n    types: projectTypes {\n      id\n      title\n      imageUrl\n    }\n  }\n"
+    /**
+     * __useProjectTypesQuery__
+     *
+     * To run a query within a React component, call `useProjectTypesQuery` and pass it any options that fit your needs.
+     * When your component renders, `useProjectTypesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useProjectTypesQuery({
+     *   variables: {
+     *   },
+     * });
+     */
+])));
 /**
  * __useProjectTypesQuery__
  *
@@ -1511,14 +2058,36 @@ exports.ProjectTypesDocument = client_1.gql(templateObject_70 || (templateObject
  * });
  */
 function useProjectTypesQuery(baseOptions) {
-    return Apollo.useQuery(exports.ProjectTypesDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.ProjectTypesDocument, options);
 }
 exports.useProjectTypesQuery = useProjectTypesQuery;
 function useProjectTypesLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.ProjectTypesDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.ProjectTypesDocument, options);
 }
 exports.useProjectTypesLazyQuery = useProjectTypesLazyQuery;
-exports.ProjectsDocument = client_1.gql(templateObject_71 || (templateObject_71 = __makeTemplateObject(["\n    query projects($typeId: ID, $after: String, $first: Int = 5, $type: ProjectSortType!) {\n  projects(typeId: $typeId, after: $after, first: $first, type: $type) @connection(key: \"projects\", filter: [\"type\", \"typeId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        cover {\n          uri\n          default\n        }\n        ...Project\n      }\n    }\n  }\n}\n    ", ""], ["\n    query projects($typeId: ID, $after: String, $first: Int = 5, $type: ProjectSortType!) {\n  projects(typeId: $typeId, after: $after, first: $first, type: $type) @connection(key: \"projects\", filter: [\"type\", \"typeId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        cover {\n          uri\n          default\n        }\n        ...Project\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
+exports.ProjectsDocument = client_1.gql(templateObject_71 || (templateObject_71 = __makeTemplateObject(["\n  query projects($typeId: ID, $after: String, $first: Int = 5, $type: ProjectSortType!) {\n    projects(typeId: $typeId, after: $after, first: $first, type: $type)\n      @connection(key: \"projects\", filter: [\"type\", \"typeId\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          cover {\n            uri\n            default\n          }\n          ...Project\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query projects($typeId: ID, $after: String, $first: Int = 5, $type: ProjectSortType!) {\n    projects(typeId: $typeId, after: $after, first: $first, type: $type)\n      @connection(key: \"projects\", filter: [\"type\", \"typeId\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          cover {\n            uri\n            default\n          }\n          ...Project\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useProjectsQuery__
+     *
+     * To run a query within a React component, call `useProjectsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useProjectsQuery({
+     *   variables: {
+     *      typeId: // value for 'typeId'
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *      type: // value for 'type'
+     *   },
+     * });
+     */
+])), exports.ProjectFragmentDoc);
 /**
  * __useProjectsQuery__
  *
@@ -1539,14 +2108,33 @@ exports.ProjectsDocument = client_1.gql(templateObject_71 || (templateObject_71 
  * });
  */
 function useProjectsQuery(baseOptions) {
-    return Apollo.useQuery(exports.ProjectsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.ProjectsDocument, options);
 }
 exports.useProjectsQuery = useProjectsQuery;
 function useProjectsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.ProjectsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.ProjectsDocument, options);
 }
 exports.useProjectsLazyQuery = useProjectsLazyQuery;
-exports.RecentCommentsDocument = client_1.gql(templateObject_72 || (templateObject_72 = __makeTemplateObject(["\n    query recentComments($after: String) {\n  comments: recentComments(after: $after) @connection(key: \"comments\", filter: [\"postId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...CommentAndReplies\n      }\n    }\n  }\n}\n    ", ""], ["\n    query recentComments($after: String) {\n  comments: recentComments(after: $after) @connection(key: \"comments\", filter: [\"postId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...CommentAndReplies\n      }\n    }\n  }\n}\n    ", ""])), exports.CommentAndRepliesFragmentDoc);
+exports.RecentCommentsDocument = client_1.gql(templateObject_72 || (templateObject_72 = __makeTemplateObject(["\n  query recentComments($after: String) {\n    comments: recentComments(after: $after) @connection(key: \"comments\", filter: [\"postId\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...CommentAndReplies\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query recentComments($after: String) {\n    comments: recentComments(after: $after) @connection(key: \"comments\", filter: [\"postId\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...CommentAndReplies\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useRecentCommentsQuery__
+     *
+     * To run a query within a React component, call `useRecentCommentsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useRecentCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useRecentCommentsQuery({
+     *   variables: {
+     *      after: // value for 'after'
+     *   },
+     * });
+     */
+])), exports.CommentAndRepliesFragmentDoc);
 /**
  * __useRecentCommentsQuery__
  *
@@ -1564,14 +2152,35 @@ exports.RecentCommentsDocument = client_1.gql(templateObject_72 || (templateObje
  * });
  */
 function useRecentCommentsQuery(baseOptions) {
-    return Apollo.useQuery(exports.RecentCommentsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.RecentCommentsDocument, options);
 }
 exports.useRecentCommentsQuery = useRecentCommentsQuery;
 function useRecentCommentsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.RecentCommentsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.RecentCommentsDocument, options);
 }
 exports.useRecentCommentsLazyQuery = useRecentCommentsLazyQuery;
-exports.RepliesDocument = client_1.gql(templateObject_73 || (templateObject_73 = __makeTemplateObject(["\n    query replies($id: ID!, $after: String, $first: Int = 5) {\n  comment(id: $id) {\n    replies: repliesConnection(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      totalCount\n      edges {\n        cursor\n        node {\n          ...Comment\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query replies($id: ID!, $after: String, $first: Int = 5) {\n  comment(id: $id) {\n    replies: repliesConnection(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      totalCount\n      edges {\n        cursor\n        node {\n          ...Comment\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.CommentFragmentDoc);
+exports.RepliesDocument = client_1.gql(templateObject_73 || (templateObject_73 = __makeTemplateObject(["\n  query replies($id: ID!, $after: String, $first: Int = 5) {\n    comment(id: $id) {\n      replies: repliesConnection(after: $after, first: $first) {\n        pageInfo {\n          hasNextPage\n        }\n        totalCount\n        edges {\n          cursor\n          node {\n            ...Comment\n          }\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query replies($id: ID!, $after: String, $first: Int = 5) {\n    comment(id: $id) {\n      replies: repliesConnection(after: $after, first: $first) {\n        pageInfo {\n          hasNextPage\n        }\n        totalCount\n        edges {\n          cursor\n          node {\n            ...Comment\n          }\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useRepliesQuery__
+     *
+     * To run a query within a React component, call `useRepliesQuery` and pass it any options that fit your needs.
+     * When your component renders, `useRepliesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useRepliesQuery({
+     *   variables: {
+     *      id: // value for 'id'
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.CommentFragmentDoc);
 /**
  * __useRepliesQuery__
  *
@@ -1591,14 +2200,35 @@ exports.RepliesDocument = client_1.gql(templateObject_73 || (templateObject_73 =
  * });
  */
 function useRepliesQuery(baseOptions) {
-    return Apollo.useQuery(exports.RepliesDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.RepliesDocument, options);
 }
 exports.useRepliesQuery = useRepliesQuery;
 function useRepliesLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.RepliesDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.RepliesDocument, options);
 }
 exports.useRepliesLazyQuery = useRepliesLazyQuery;
-exports.SearchHashtagsDocument = client_1.gql(templateObject_74 || (templateObject_74 = __makeTemplateObject(["\n    query searchHashtags($query: String!, $after: String, $first: Int = 10) {\n  hashtags: search(query: $query, after: $after, type: HASHTAGS, first: $first) @connection(key: \"hashtags\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ... on Hashtag {\n          id\n          name\n          slug\n          totalCount\n        }\n      }\n    }\n  }\n}\n    "], ["\n    query searchHashtags($query: String!, $after: String, $first: Int = 10) {\n  hashtags: search(query: $query, after: $after, type: HASHTAGS, first: $first) @connection(key: \"hashtags\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ... on Hashtag {\n          id\n          name\n          slug\n          totalCount\n        }\n      }\n    }\n  }\n}\n    "])));
+exports.SearchHashtagsDocument = client_1.gql(templateObject_74 || (templateObject_74 = __makeTemplateObject(["\n  query searchHashtags($query: String!, $after: String, $first: Int = 10) {\n    hashtags: search(query: $query, after: $after, type: HASHTAGS, first: $first)\n      @connection(key: \"hashtags\", filter: [\"query\", \"type\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ... on Hashtag {\n            id\n            name\n            slug\n            totalCount\n          }\n        }\n      }\n    }\n  }\n"], ["\n  query searchHashtags($query: String!, $after: String, $first: Int = 10) {\n    hashtags: search(query: $query, after: $after, type: HASHTAGS, first: $first)\n      @connection(key: \"hashtags\", filter: [\"query\", \"type\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ... on Hashtag {\n            id\n            name\n            slug\n            totalCount\n          }\n        }\n      }\n    }\n  }\n"
+    /**
+     * __useSearchHashtagsQuery__
+     *
+     * To run a query within a React component, call `useSearchHashtagsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useSearchHashtagsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useSearchHashtagsQuery({
+     *   variables: {
+     *      query: // value for 'query'
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])));
 /**
  * __useSearchHashtagsQuery__
  *
@@ -1618,14 +2248,35 @@ exports.SearchHashtagsDocument = client_1.gql(templateObject_74 || (templateObje
  * });
  */
 function useSearchHashtagsQuery(baseOptions) {
-    return Apollo.useQuery(exports.SearchHashtagsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.SearchHashtagsDocument, options);
 }
 exports.useSearchHashtagsQuery = useSearchHashtagsQuery;
 function useSearchHashtagsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.SearchHashtagsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.SearchHashtagsDocument, options);
 }
 exports.useSearchHashtagsLazyQuery = useSearchHashtagsLazyQuery;
-exports.SearchModelsDocument = client_1.gql(templateObject_75 || (templateObject_75 = __makeTemplateObject(["\n    query searchModels($query: String!, $after: String, $first: Int = 20) {\n  models: search(query: $query, after: $after, type: MODELS, first: $first) @connection(key: \"models\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ... on Model {\n          id\n          brand {\n            name\n          }\n          model\n          year\n        }\n      }\n    }\n  }\n}\n    "], ["\n    query searchModels($query: String!, $after: String, $first: Int = 20) {\n  models: search(query: $query, after: $after, type: MODELS, first: $first) @connection(key: \"models\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ... on Model {\n          id\n          brand {\n            name\n          }\n          model\n          year\n        }\n      }\n    }\n  }\n}\n    "])));
+exports.SearchModelsDocument = client_1.gql(templateObject_75 || (templateObject_75 = __makeTemplateObject(["\n  query searchModels($query: String!, $after: String, $first: Int = 20) {\n    models: search(query: $query, after: $after, type: MODELS, first: $first)\n      @connection(key: \"models\", filter: [\"query\", \"type\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ... on Model {\n            id\n            brand {\n              name\n            }\n            model\n            year\n          }\n        }\n      }\n    }\n  }\n"], ["\n  query searchModels($query: String!, $after: String, $first: Int = 20) {\n    models: search(query: $query, after: $after, type: MODELS, first: $first)\n      @connection(key: \"models\", filter: [\"query\", \"type\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ... on Model {\n            id\n            brand {\n              name\n            }\n            model\n            year\n          }\n        }\n      }\n    }\n  }\n"
+    /**
+     * __useSearchModelsQuery__
+     *
+     * To run a query within a React component, call `useSearchModelsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useSearchModelsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useSearchModelsQuery({
+     *   variables: {
+     *      query: // value for 'query'
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])));
 /**
  * __useSearchModelsQuery__
  *
@@ -1645,14 +2296,35 @@ exports.SearchModelsDocument = client_1.gql(templateObject_75 || (templateObject
  * });
  */
 function useSearchModelsQuery(baseOptions) {
-    return Apollo.useQuery(exports.SearchModelsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.SearchModelsDocument, options);
 }
 exports.useSearchModelsQuery = useSearchModelsQuery;
 function useSearchModelsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.SearchModelsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.SearchModelsDocument, options);
 }
 exports.useSearchModelsLazyQuery = useSearchModelsLazyQuery;
-exports.SearchProjectsDocument = client_1.gql(templateObject_76 || (templateObject_76 = __makeTemplateObject(["\n    query searchProjects($query: String!, $after: String, $first: Int = 10) {\n  projects: search(query: $query, after: $after, type: PROJECTS, first: $first) @connection(key: \"projects\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ... on Project {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query searchProjects($query: String!, $after: String, $first: Int = 10) {\n  projects: search(query: $query, after: $after, type: PROJECTS, first: $first) @connection(key: \"projects\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ... on Project {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
+exports.SearchProjectsDocument = client_1.gql(templateObject_76 || (templateObject_76 = __makeTemplateObject(["\n  query searchProjects($query: String!, $after: String, $first: Int = 10) {\n    projects: search(query: $query, after: $after, type: PROJECTS, first: $first)\n      @connection(key: \"projects\", filter: [\"query\", \"type\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ... on Project {\n            ...Project\n            cover {\n              uri\n              default\n            }\n          }\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query searchProjects($query: String!, $after: String, $first: Int = 10) {\n    projects: search(query: $query, after: $after, type: PROJECTS, first: $first)\n      @connection(key: \"projects\", filter: [\"query\", \"type\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ... on Project {\n            ...Project\n            cover {\n              uri\n              default\n            }\n          }\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useSearchProjectsQuery__
+     *
+     * To run a query within a React component, call `useSearchProjectsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useSearchProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useSearchProjectsQuery({
+     *   variables: {
+     *      query: // value for 'query'
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.ProjectFragmentDoc);
 /**
  * __useSearchProjectsQuery__
  *
@@ -1672,14 +2344,35 @@ exports.SearchProjectsDocument = client_1.gql(templateObject_76 || (templateObje
  * });
  */
 function useSearchProjectsQuery(baseOptions) {
-    return Apollo.useQuery(exports.SearchProjectsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.SearchProjectsDocument, options);
 }
 exports.useSearchProjectsQuery = useSearchProjectsQuery;
 function useSearchProjectsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.SearchProjectsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.SearchProjectsDocument, options);
 }
 exports.useSearchProjectsLazyQuery = useSearchProjectsLazyQuery;
-exports.SearchUsersDocument = client_1.gql(templateObject_77 || (templateObject_77 = __makeTemplateObject(["\n    query searchUsers($query: String!, $after: String, $first: Int = 10) {\n  users: search(query: $query, after: $after, type: USERS, first: $first) @connection(key: \"users\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ... on User {\n          ...User\n          projectCount\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query searchUsers($query: String!, $after: String, $first: Int = 10) {\n  users: search(query: $query, after: $after, type: USERS, first: $first) @connection(key: \"users\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ... on User {\n          ...User\n          projectCount\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
+exports.SearchUsersDocument = client_1.gql(templateObject_77 || (templateObject_77 = __makeTemplateObject(["\n  query searchUsers($query: String!, $after: String, $first: Int = 10) {\n    users: search(query: $query, after: $after, type: USERS, first: $first)\n      @connection(key: \"users\", filter: [\"query\", \"type\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ... on User {\n            ...User\n            projectCount\n          }\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query searchUsers($query: String!, $after: String, $first: Int = 10) {\n    users: search(query: $query, after: $after, type: USERS, first: $first)\n      @connection(key: \"users\", filter: [\"query\", \"type\"]) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ... on User {\n            ...User\n            projectCount\n          }\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useSearchUsersQuery__
+     *
+     * To run a query within a React component, call `useSearchUsersQuery` and pass it any options that fit your needs.
+     * When your component renders, `useSearchUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useSearchUsersQuery({
+     *   variables: {
+     *      query: // value for 'query'
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.UserFragmentDoc);
 /**
  * __useSearchUsersQuery__
  *
@@ -1699,14 +2392,34 @@ exports.SearchUsersDocument = client_1.gql(templateObject_77 || (templateObject_
  * });
  */
 function useSearchUsersQuery(baseOptions) {
-    return Apollo.useQuery(exports.SearchUsersDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.SearchUsersDocument, options);
 }
 exports.useSearchUsersQuery = useSearchUsersQuery;
 function useSearchUsersLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.SearchUsersDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.SearchUsersDocument, options);
 }
 exports.useSearchUsersLazyQuery = useSearchUsersLazyQuery;
-exports.SimilarProjectsDocument = client_1.gql(templateObject_78 || (templateObject_78 = __makeTemplateObject(["\n    query similarProjects($id: ID!, $first: Int = 5) {\n  similarProjects(id: $id, first: $first) {\n    edges {\n      cursor\n      node {\n        cover {\n          uri\n        }\n        ...Project\n      }\n    }\n  }\n}\n    ", ""], ["\n    query similarProjects($id: ID!, $first: Int = 5) {\n  similarProjects(id: $id, first: $first) {\n    edges {\n      cursor\n      node {\n        cover {\n          uri\n        }\n        ...Project\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
+exports.SimilarProjectsDocument = client_1.gql(templateObject_78 || (templateObject_78 = __makeTemplateObject(["\n  query similarProjects($id: ID!, $first: Int = 5) {\n    similarProjects(id: $id, first: $first) {\n      edges {\n        cursor\n        node {\n          cover {\n            uri\n          }\n          ...Project\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query similarProjects($id: ID!, $first: Int = 5) {\n    similarProjects(id: $id, first: $first) {\n      edges {\n        cursor\n        node {\n          cover {\n            uri\n          }\n          ...Project\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useSimilarProjectsQuery__
+     *
+     * To run a query within a React component, call `useSimilarProjectsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useSimilarProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useSimilarProjectsQuery({
+     *   variables: {
+     *      id: // value for 'id'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.ProjectFragmentDoc);
 /**
  * __useSimilarProjectsQuery__
  *
@@ -1725,14 +2438,32 @@ exports.SimilarProjectsDocument = client_1.gql(templateObject_78 || (templateObj
  * });
  */
 function useSimilarProjectsQuery(baseOptions) {
-    return Apollo.useQuery(exports.SimilarProjectsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.SimilarProjectsDocument, options);
 }
 exports.useSimilarProjectsQuery = useSimilarProjectsQuery;
 function useSimilarProjectsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.SimilarProjectsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.SimilarProjectsDocument, options);
 }
 exports.useSimilarProjectsLazyQuery = useSimilarProjectsLazyQuery;
-exports.UnreadNotificationsDocument = client_1.gql(templateObject_79 || (templateObject_79 = __makeTemplateObject(["\n    query unreadNotifications {\n  notifications {\n    unreadCount\n  }\n}\n    "], ["\n    query unreadNotifications {\n  notifications {\n    unreadCount\n  }\n}\n    "])));
+exports.UnreadNotificationsDocument = client_1.gql(templateObject_79 || (templateObject_79 = __makeTemplateObject(["\n  query unreadNotifications {\n    notifications {\n      unreadCount\n    }\n  }\n"], ["\n  query unreadNotifications {\n    notifications {\n      unreadCount\n    }\n  }\n"
+    /**
+     * __useUnreadNotificationsQuery__
+     *
+     * To run a query within a React component, call `useUnreadNotificationsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useUnreadNotificationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useUnreadNotificationsQuery({
+     *   variables: {
+     *   },
+     * });
+     */
+])));
 /**
  * __useUnreadNotificationsQuery__
  *
@@ -1749,14 +2480,35 @@ exports.UnreadNotificationsDocument = client_1.gql(templateObject_79 || (templat
  * });
  */
 function useUnreadNotificationsQuery(baseOptions) {
-    return Apollo.useQuery(exports.UnreadNotificationsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.UnreadNotificationsDocument, options);
 }
 exports.useUnreadNotificationsQuery = useUnreadNotificationsQuery;
 function useUnreadNotificationsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.UnreadNotificationsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.UnreadNotificationsDocument, options);
 }
 exports.useUnreadNotificationsLazyQuery = useUnreadNotificationsLazyQuery;
-exports.UserDocument = client_1.gql(templateObject_80 || (templateObject_80 = __makeTemplateObject(["\n    query user($username: LowercaseString!, $after: String, $first: Int = 5) {\n  user(username: $username) {\n    ...User\n    projects: projectsConnection {\n      edges {\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n      pageInfo {\n        hasNextPage\n      }\n    }\n  }\n}\n    ", "\n", "\n", ""], ["\n    query user($username: LowercaseString!, $after: String, $first: Int = 5) {\n  user(username: $username) {\n    ...User\n    projects: projectsConnection {\n      edges {\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n      pageInfo {\n        hasNextPage\n      }\n    }\n  }\n}\n    ", "\n", "\n", ""])), exports.UserFragmentDoc, exports.ProjectFragmentDoc, exports.PostFragmentDoc);
+exports.UserDocument = client_1.gql(templateObject_80 || (templateObject_80 = __makeTemplateObject(["\n  query user($username: LowercaseString!, $after: String, $first: Int = 5) {\n    user(username: $username) {\n      ...User\n      projects: projectsConnection {\n        edges {\n          node {\n            ...Project\n            cover {\n              uri\n              default\n            }\n          }\n        }\n      }\n      posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n        edges {\n          cursor\n          node {\n            ...Post\n          }\n        }\n        pageInfo {\n          hasNextPage\n        }\n      }\n    }\n  }\n  ", "\n  ", "\n  ", "\n"], ["\n  query user($username: LowercaseString!, $after: String, $first: Int = 5) {\n    user(username: $username) {\n      ...User\n      projects: projectsConnection {\n        edges {\n          node {\n            ...Project\n            cover {\n              uri\n              default\n            }\n          }\n        }\n      }\n      posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n        edges {\n          cursor\n          node {\n            ...Post\n          }\n        }\n        pageInfo {\n          hasNextPage\n        }\n      }\n    }\n  }\n  ", "\n  ", "\n  ", "\n"
+    /**
+     * __useUserQuery__
+     *
+     * To run a query within a React component, call `useUserQuery` and pass it any options that fit your needs.
+     * When your component renders, `useUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useUserQuery({
+     *   variables: {
+     *      username: // value for 'username'
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.UserFragmentDoc, exports.ProjectFragmentDoc, exports.PostFragmentDoc);
 /**
  * __useUserQuery__
  *
@@ -1776,14 +2528,35 @@ exports.UserDocument = client_1.gql(templateObject_80 || (templateObject_80 = __
  * });
  */
 function useUserQuery(baseOptions) {
-    return Apollo.useQuery(exports.UserDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.UserDocument, options);
 }
 exports.useUserQuery = useUserQuery;
 function useUserLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.UserDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.UserDocument, options);
 }
 exports.useUserLazyQuery = useUserLazyQuery;
-exports.UserFollowingProjectsDocument = client_1.gql(templateObject_81 || (templateObject_81 = __makeTemplateObject(["\n    query userFollowingProjects($username: LowercaseString!, $after: String, $first: Int = 5) {\n  user(username: $username) {\n    id\n    projects: followingProjects(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query userFollowingProjects($username: LowercaseString!, $after: String, $first: Int = 5) {\n  user(username: $username) {\n    id\n    projects: followingProjects(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
+exports.UserFollowingProjectsDocument = client_1.gql(templateObject_81 || (templateObject_81 = __makeTemplateObject(["\n  query userFollowingProjects($username: LowercaseString!, $after: String, $first: Int = 5) {\n    user(username: $username) {\n      id\n      projects: followingProjects(after: $after, first: $first) {\n        pageInfo {\n          hasNextPage\n        }\n        edges {\n          cursor\n          node {\n            ...Project\n            cover {\n              uri\n              default\n            }\n          }\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query userFollowingProjects($username: LowercaseString!, $after: String, $first: Int = 5) {\n    user(username: $username) {\n      id\n      projects: followingProjects(after: $after, first: $first) {\n        pageInfo {\n          hasNextPage\n        }\n        edges {\n          cursor\n          node {\n            ...Project\n            cover {\n              uri\n              default\n            }\n          }\n        }\n      }\n    }\n  }\n  ", "\n"
+    /**
+     * __useUserFollowingProjectsQuery__
+     *
+     * To run a query within a React component, call `useUserFollowingProjectsQuery` and pass it any options that fit your needs.
+     * When your component renders, `useUserFollowingProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+     * you can use to render your UI.
+     *
+     * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+     *
+     * @example
+     * const { data, loading, error } = useUserFollowingProjectsQuery({
+     *   variables: {
+     *      username: // value for 'username'
+     *      after: // value for 'after'
+     *      first: // value for 'first'
+     *   },
+     * });
+     */
+])), exports.ProjectFragmentDoc);
 /**
  * __useUserFollowingProjectsQuery__
  *
@@ -1803,11 +2576,13 @@ exports.UserFollowingProjectsDocument = client_1.gql(templateObject_81 || (templ
  * });
  */
 function useUserFollowingProjectsQuery(baseOptions) {
-    return Apollo.useQuery(exports.UserFollowingProjectsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useQuery(exports.UserFollowingProjectsDocument, options);
 }
 exports.useUserFollowingProjectsQuery = useUserFollowingProjectsQuery;
 function useUserFollowingProjectsLazyQuery(baseOptions) {
-    return Apollo.useLazyQuery(exports.UserFollowingProjectsDocument, baseOptions);
+    var options = __assign(__assign({}, defaultOptions), baseOptions);
+    return Apollo.useLazyQuery(exports.UserFollowingProjectsDocument, options);
 }
 exports.useUserFollowingProjectsLazyQuery = useUserFollowingProjectsLazyQuery;
 var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9, templateObject_10, templateObject_11, templateObject_12, templateObject_13, templateObject_14, templateObject_15, templateObject_16, templateObject_17, templateObject_18, templateObject_19, templateObject_20, templateObject_21, templateObject_22, templateObject_23, templateObject_24, templateObject_25, templateObject_26, templateObject_27, templateObject_28, templateObject_29, templateObject_30, templateObject_31, templateObject_32, templateObject_33, templateObject_34, templateObject_35, templateObject_36, templateObject_37, templateObject_38, templateObject_39, templateObject_40, templateObject_41, templateObject_42, templateObject_43, templateObject_44, templateObject_45, templateObject_46, templateObject_47, templateObject_48, templateObject_49, templateObject_50, templateObject_51, templateObject_52, templateObject_53, templateObject_54, templateObject_55, templateObject_56, templateObject_57, templateObject_58, templateObject_59, templateObject_60, templateObject_61, templateObject_62, templateObject_63, templateObject_64, templateObject_65, templateObject_66, templateObject_67, templateObject_68, templateObject_69, templateObject_70, templateObject_71, templateObject_72, templateObject_73, templateObject_74, templateObject_75, templateObject_76, templateObject_77, templateObject_78, templateObject_79, templateObject_80, templateObject_81;

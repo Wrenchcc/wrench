@@ -1,6 +1,5 @@
 import React from 'react'
 import { relayStylePagination } from '@apollo/client/utilities'
-
 import withApollo from 'next-with-apollo'
 import Router from 'next/router'
 import { ApolloClient, ApolloProvider, InMemoryCache, ApolloLink } from '@apollo/client'

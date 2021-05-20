@@ -1,9 +1,15 @@
 // @ts-nocheck
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ApolloClient, Observable, HttpLink, InMemoryCache, ApolloLink } from '@apollo/client'
+import {
+  ApolloProvider,
+  ApolloClient,
+  Observable,
+  HttpLink,
+  InMemoryCache,
+  ApolloLink,
+} from '@apollo/client'
 import { relayStylePagination } from '@apollo/client/utilities'
-import { ApolloProvider } from '@apollo/react-hooks'
 import { setContext } from '@apollo/link-context'
 import { onError } from '@apollo/link-error'
 import { RefreshTokenDocument } from '@wrench/common'

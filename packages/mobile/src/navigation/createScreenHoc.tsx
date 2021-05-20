@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import { useColorScheme } from 'react-native'
-import { ApolloProvider } from '@apollo/react-hooks'
+import { ApolloProvider } from '@apollo/client'
 import { ThemeProvider } from '@wrench/ui'
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
 import { ActionSheetProvider } from '@expo/react-native-action-sheet'

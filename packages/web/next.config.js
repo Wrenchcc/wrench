@@ -15,11 +15,4 @@ module.exports = {
     MAPBOX_API_KEY: process.env.MAPBOX_API_KEY,
     BUILD_ID: require('child_process').execSync('git rev-parse --short HEAD').toString().trim(),
   },
-  webpack: (config, options) => {
-    if (!options.isServer) {
-      config.resolve.alias['@sentry/node'] = '@sentry/browser'
-    }
-
-    return config
-  },
 }
