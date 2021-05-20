@@ -79,7 +79,7 @@
     "react-native-status-bar-height": "^2.6.0",
     "react-native-tab-view": "3.0.1",
     "react-native-unimodules": "^0.13.3",
-    "react-native-webview": "^11.4.5",
+    "react-native-webview": "^11.4.6",
     "styled-components": "5.2.3",
     "url": "^0.11.0"
   },

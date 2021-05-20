@@ -22187,10 +22187,10 @@ react-native-unimodules@^0.13.3:
     unimodules-sensors-interface "~6.1.0"
     unimodules-task-manager-interface "~6.1.0"
 
-react-native-webview@^11.4.5:
-  version "11.4.5"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-11.4.5.tgz#a264ac2f9146b23b10dcea1a12b9ce3ec0df9db8"
-  integrity sha512-hH+0QjetQ8A6TpXdXba7QLeEX1mi7fVClu+CVjj+PwKCirl1GPPhYMeq6/qR+zEifh6KnQINLFifOb651lOuhA==
+react-native-webview@^11.4.6:
+  version "11.4.6"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-11.4.6.tgz#97074fecd27c9590602a4f210164865470bc40e2"
+  integrity sha512-O5k2H3e89O6/g0qkFm0yQiEiB7mz0FUW6RsowX+a5xJ4T+0axQD1boxu3kfgH0iWBO0PVceNW402SlVNjjB5sA==
   dependencies:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"

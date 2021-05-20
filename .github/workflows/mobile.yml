@@ -87,6 +87,8 @@ jobs:
           lane: 'android'
           subdirectory: 'fastlane'
           skip-tracking: true
+          options: '{ "verbose": true }'
+
         env:
           GRAPHQL_URL: ${{ secrets.GRAPHQL_URL }}
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
@@ -113,6 +115,20 @@ jobs:
         with:
           ruby-version: '3.0.1'
           bundler-cache: true
+
+      # Uses `shimataro/ssh-key-action@v2` action to install Github SSH private key locally and setup github.com domain
+      # as a known host.
+      # The SSH Private Key being installed locally is the key used to clone the repository that contains the iOS
+      # Provisions Profiles and Certificates, used to deploy the iOS project to App Store Connect.
+      # Since this provisions and certificates are stored in an external repository, we must install the SSH private key
+      # that gives access to this repository, so we are able to clone it locally - and an easy and safe way to do it is
+      # by using SSH
+      # - name: Install SSH key
+      #   uses: shimataro/ssh-key-action@v2
+      #   with:
+      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     known_hosts: ${{ secrets.KNOWN_HOSTS }}
+      #     if_key_exists: replace
 
       - name: Install Xcode
         uses: maxim-lobanov/setup-xcode@v1
