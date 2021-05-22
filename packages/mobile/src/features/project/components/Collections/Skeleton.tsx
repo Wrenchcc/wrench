@@ -60,7 +60,7 @@ export const CollectionsSkelleton: React.FC = ({ empty, isOwner, projectId, disa
           >
             <Skeleton width={60} height={60} radius="round" />
             <Spacing.Horizontally px={12} />
-            {!empty && <Skeleton width={60} height={11} radius={0} />}
+            <Skeleton width={60} height={11} radius={0} />
           </View>
         ))}
       </ScrollView>

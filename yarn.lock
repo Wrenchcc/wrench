@@ -15603,10 +15603,17 @@ i18next@^19.6.3:
   dependencies:
     "@babel/runtime" "^7.12.0"
 
-i18next@^20.2.1, i18next@^20.2.4:
+i18next@^20.2.1:
   version "20.2.4"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-20.2.4.tgz#972220f19dfef0075a70890d3e8b1f7cf64c5bd6"
   integrity sha512-goE1LCA/IZOGG26PkkqoOl2KWR7YP606SvokVQZ29J6QwE02KycrzNetoMUJeqYrTxs4rmiiZgZp+q8qofQL6Q==
+  dependencies:
+    "@babel/runtime" "^7.12.0"
+
+i18next@^20.3.0:
+  version "20.3.0"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-20.3.0.tgz#9558b431241fb1dbbd445174391ede65d0a68ed9"
+  integrity sha512-eFv4aQvaGykp48mI4JEaCcoD/j4zoYjFnDYhChe3ukwvbHx3q4mKZlB8YnmhYrHQR5FopLlCrzcSuY0ZWfiakA==
   dependencies:
     "@babel/runtime" "^7.12.0"
 
@@ -22459,10 +22466,10 @@ react-native-pager-view@^5.1.9:
   resolved "https://registry.yarnpkg.com/react-native-pager-view/-/react-native-pager-view-5.1.9.tgz#54dafe0ec459018c925ce319fb22df0f83d08d6c"
   integrity sha512-cwBhjhr+n+VI3UHOGJg2bq9GHO/KmMuke/QH5T+hPdnS/wems5g4J96A8c+EjRCLuUrU1uSS0UQO4ONQN+5kfg==
 
-react-native-permissions@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-3.0.3.tgz#aa90649728a9720b0de9cfcfdb447b35a6630de0"
-  integrity sha512-8xiEnU29qHZcT05XXwhPHiLChTt82Pn5Z/nFdDOYGNFZ+IYSbYeGmIxFpratCRO6dgLptNaDFDPiyw2X7UZTeg==
+react-native-permissions@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-3.0.4.tgz#7771d28899d7d2b75fd2a70cd3f86d44c90397ec"
+  integrity sha512-GMd0l0TA/qupidGFfKAVNaboewQkJSW+l3ndwv1cu+tBGI+TRfJdMjg8Q714wn9roZlXsZ3z407qT2xPdQmGdg==
 
 react-native-pinchable@^0.2.1:
   version "0.2.1"
@@ -22493,10 +22500,10 @@ react-native-responsive-dimensions@^3.1.1:
   resolved "https://registry.yarnpkg.com/react-native-responsive-dimensions/-/react-native-responsive-dimensions-3.1.1.tgz#c4daf977b30a909f21164de53a8ba4c9451efefc"
   integrity sha512-Vo2OhWsphq0HgKsmeZOeyW+c+vsFn1ZaCFkGDgdeCEEiLriT76jGA1JlUjtrj27hvyo/xzeTlBZ+vBso1A84fw==
 
-react-native-share@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-6.0.1.tgz#e982be50e33490dbd953ec26375230df1188770a"
-  integrity sha512-K7mw2ep4cg++K6GUab32Kic3DeDUveonsQhTElwb6pZyjp0R/TLGQ11+pxcZBVlTiZhdOttyrLdCA6TsMX1lzg==
+react-native-share@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-6.1.0.tgz#b576461104ed0e5b3b974b679de66999ec15d63a"
+  integrity sha512-3X71U4Hz69zoQsaUMmZMBzE2BbpJdze1iGs0ifmHmLre2/0RtW2bATHH2QpQgyZry4uwFG0y4RyZBl54pvX3gw==
 
 react-native-splash-screen@^3.2.0:
   version "3.2.0"
