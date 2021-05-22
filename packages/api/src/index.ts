@@ -3,26 +3,26 @@ import { createConnection } from 'typeorm'
 import { getUserId } from './utils/tokens'
 import { options, db } from './models'
 import { PostgresDriver } from 'typeorm/driver/postgres/PostgresDriver'
-// import { RedisCache } from 'apollo-server-cache-redis'
-// import * as cache from './utils/redis'
+import { RedisCache } from 'apollo-server-cache-redis'
+import * as cache from './utils/redis'
 import createLoaders from './loaders'
 import debugOptions from './utils/debugOptions'
 import depthLimit from 'graphql-depth-limit'
 import express from 'express'
 import formatError from './utils/formatError'
 import onHealthCheck from './utils/onHealthCheck'
-// import Redis from 'ioredis'
+import Redis from 'ioredis'
 import responseCachePlugin from 'apollo-server-plugin-response-cache'
 import schema from './schema'
 import services from './services'
 
 const debug = require('debug')('api:server')
 
-const { PORT } = process.env
+const { PORT, REDIS_HOST } = process.env
 
 const TIMESTAMPTZ_OID = 1184
 
-// const redis = new Redis({ host: REDIS_HOST })
+const redis = new Redis({ host: REDIS_HOST })
 
 async function server() {
   const connection = await createConnection(options)
@@ -37,11 +37,11 @@ async function server() {
       db,
       loaders: createLoaders(),
       services,
-      // redis: {
-      //   get: cache.get(redis),
-      //   set: cache.set(redis),
-      //   delete: cache.remove(redis),
-      // },
+      redis: {
+        get: cache.get(redis),
+        set: cache.set(redis),
+        delete: cache.remove(redis),
+      },
       // @ts-ignore
       userAgent: req.headers['user-agent'],
       userId: getUserId(req),
@@ -49,9 +49,9 @@ async function server() {
     formatError,
     schema,
     validationRules: [depthLimit(10)],
-    // cache: new RedisCache({
-    //   host: REDIS_HOST,
-    // }),
+    cache: new RedisCache({
+      host: REDIS_HOST,
+    }),
     cacheControl: {
       defaultMaxAge: 60,
     },
