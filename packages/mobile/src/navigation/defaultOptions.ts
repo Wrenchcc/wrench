@@ -9,7 +9,10 @@ export default {
     titleDisplayMode: 'alwaysHide',
   },
   bottomTabs: {
-    backgroundColor: PlatformColor.black,
+    backgroundColor: {
+      light: PlatformColor.black,
+      dark: PlatformColor.black,
+    },
     titleDisplayMode: 'alwaysHide',
     tabsAttachMode: 'afterInitialTab',
   },
@@ -21,8 +24,8 @@ export default {
     ...(isAndroid && { style: Appearance.getColorScheme() === 'dark' ? 'light' : 'dark' }),
   },
   layout: {
-    backgroundColor: PlatformColor.default,
-    componentBackgroundColor: PlatformColor.default,
+    backgroundColor: { light: PlatformColor.default, dark: PlatformColor.default },
+    componentBackgroundColor: { light: PlatformColor.default, dark: PlatformColor.default },
     orientation: ['portrait'],
   },
   overlay: {
@@ -33,6 +36,9 @@ export default {
     visible: false,
   },
   navigationBar: {
-    backgroundColor: PlatformColor.black,
+    backgroundColor: {
+      light: PlatformColor.black,
+      dark: PlatformColor.black,
+    },
   },
 } as Options
