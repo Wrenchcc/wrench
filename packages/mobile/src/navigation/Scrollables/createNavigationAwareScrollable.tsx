@@ -9,11 +9,6 @@ import { keyExtractor } from '../utils'
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
 const KEYBOARD_OFFSET = 10
 
-// NOTE: https://github.com/facebook/react-native/issues/23364
-const keyboardDismissProp = isAndroid
-  ? { onMomentumScrollBegin: Keyboard.dismiss }
-  : { keyboardDismissMode: 'on-drag' }
-
 const renderLoader = (loaderInset) => <Loader inset={loaderInset} />
 const BorderSeparator = () => <Border />
 
@@ -121,6 +116,7 @@ export default function createNavigationAwareScrollable(Component) {
         keyExtractor={keyExtractor}
         contentInset={{ top: isAndroid ? 0 : CONTENT_INSET + extraContentInset }}
         contentOffset={{ y: -(CONTENT_INSET + extraContentInset) }}
+        keyboardDismissMode="on-drag"
         contentContainerStyle={{
           ...contentContainerStyle,
           flex: initialFetch ? 1 : 0,
@@ -130,7 +126,6 @@ export default function createNavigationAwareScrollable(Component) {
           paddingTop: VIEW_OFFSET,
         }}
         {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}
-        {...keyboardDismissProp}
         {...props}
       />
     )
