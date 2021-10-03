@@ -23,7 +23,7 @@ const styles = {
     width: '100%',
     zIndex: 1000,
   },
-}
+} as any
 
 const Animation = (
   { children, dismissAfter, onSlideIn, onSlideOut, onPress, gestureEnabled },
