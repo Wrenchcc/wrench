@@ -3,7 +3,7 @@ web:
   inputs:
     bucketName: wrench-web-edge
     memory: 2048
-    domain: ["wrench.cc", "www.wrench.cc"]
+    domain: ["wrench.cc"]
     cloudfront:
       distributionId: E2H6OHG3UZQPKT
       defaults:
