@@ -10,6 +10,9 @@
       "packages/*"
     ]
   },
+  "resolutions": {
+    "@apollo/client": "^3.4.16"
+  },
   "scripts": {
     "postinstall": "npx jetifier && patch-package",
     "run:ios": "yarn workspace @wrench/mobile run:ios",
