@@ -16,7 +16,7 @@
     "copy:locales:android": "node tasks/copy_locales.js"
   },
   "dependencies": {
-    "@apollo/client": "^3.4.15",
+    "@apollo/client": "^3.4.16",
     "@apollo/link-batch-http": "^2.0.0-beta.3",
     "@apollo/link-context": "^2.0.0-beta.3",
     "@apollo/link-error": "^2.0.0-beta.3",
@@ -59,7 +59,7 @@
     "rambda": "^6.9.0",
     "react": "^17.0.2",
     "react-i18next": "11.10.0",
-    "react-native": "0.65.1",
+    "react-native": "^0.66.0",
     "react-native-config": "^1.4.4",
     "react-native-deep-linking": "^2.2.0",
     "react-native-device-info": "^8.4.0",
@@ -67,11 +67,11 @@
     "react-native-fbsdk": "^3.0.0",
     "react-native-fs": "^2.18.0",
     "react-native-gesture-handler": "^1.10.3",
-    "react-native-navigation": "^7.21.0",
+    "react-native-navigation": "^7.22.3",
     "react-native-pager-view": "^5.4.6",
     "react-native-permissions": "^3.0.5",
     "react-native-pinchable": "^0.2.1",
-    "react-native-reanimated": "2.2.2",
+    "react-native-reanimated": "^2.3.0-beta.2",
     "react-native-redash": "^16.2.2",
     "react-native-responsive-dimensions": "^3.1.1",
     "react-native-share": "^7.1.1",
@@ -85,13 +85,12 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
-    "@babel/core": "^7.15.5",
+    "@babel/core": "^7.15.8",
     "@babel/runtime": "^7.15.4",
     "@types/react-native-share": "^3.3.3",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-preset-react-native": "^5.0.2",
     "concurrently": "^6.3.0",
-    "metro-react-native-babel-preset": "^0.66.2",
-    "react-native-codegen": "^0.0.8"
+    "metro-react-native-babel-preset": "^0.66.2"
   }
 }
