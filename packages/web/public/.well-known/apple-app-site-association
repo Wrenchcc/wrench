@@ -1,0 +1,22 @@
+{
+	"applinks": {
+		"apps": [],
+		"details": [{
+			"appID": "YN735AEV47.cc.wrench.app",
+			"paths": [
+				"NOT /api/*",
+				"NOT /",
+				"NOT /feed",
+				"NOT /about",
+				"NOT /press",
+				"NOT /blog",
+				"NOT /terms",
+				"NOT /policy",
+				"NOT /eula",
+				"NOT /cookies",
+				"NOT /download",
+				"*"
+			]
+		}]
+	}
+}
