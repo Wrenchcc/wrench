@@ -1,2 +1,2 @@
 web:
-  component: "./serverless.js"
+  component: "@sls-next/serverless-component@3.4.0" 

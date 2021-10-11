@@ -1,6 +1,0 @@
-{
-  "name": "wrench-web-edge",
-  "region": "us-east-1",
-  "accelerated": true,
-  "url": "https://wrench-web-edge.s3.amazonaws.com"
-}
