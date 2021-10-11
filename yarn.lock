@@ -2717,7 +2717,7 @@
     xcode "^3.0.1"
     xml2js "^0.4.23"
 
-"@expo/config-plugins@^3.0.0", "@expo/config-plugins@^3.1.0":
+"@expo/config-plugins@^3.0.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-3.1.0.tgz#0752ff33c5eab21cf42034a44e79df97f0f867f8"
   integrity sha512-V5qxaxCAExBM0TXmbU1QKiZcAGP3ecu7KXede8vByT15cro5PkcWu2sSdJCYbHQ/gw6Vf/i8sr8gKlN8V8TSLg==
@@ -2725,6 +2725,27 @@
     "@expo/config-types" "^42.0.0"
     "@expo/json-file" "8.2.33"
     "@expo/plist" "0.0.14"
+    chalk "^4.1.2"
+    debug "^4.3.1"
+    find-up "~5.0.0"
+    fs-extra "9.0.0"
+    getenv "^1.0.0"
+    glob "7.1.6"
+    resolve-from "^5.0.0"
+    semver "^7.3.5"
+    slash "^3.0.0"
+    xcode "^3.0.1"
+    xml2js "^0.4.23"
+
+"@expo/config-plugins@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-4.0.2.tgz#6c83ae373c12a240ccadc2322bd8267e4eb91f7b"
+  integrity sha512-j8IOVH0yL7ZDYcoozdpQb3ZuwUM/4eZ1QWy4icovjlyXGtRFyJvWZitZkA/7HK1+0mS2ZNSW28elp+LVTX3UfA==
+  dependencies:
+    "@expo/config-types" "^43.0.0"
+    "@expo/json-file" "8.2.33"
+    "@expo/plist" "0.0.15"
+    "@react-native/normalize-color" "^2.0.0"
     chalk "^4.1.2"
     debug "^4.3.1"
     find-up "~5.0.0"
@@ -2746,6 +2767,11 @@
   version "42.0.0"
   resolved "https://registry.yarnpkg.com/@expo/config-types/-/config-types-42.0.0.tgz#3e3e125ec092c0c34dbfaf19be5480402de3d677"
   integrity sha512-Rj02OMZke2MrGa/1Y/EScmR7VuWbDEHPJyvfFyyLbadUt+Yv6isCdeFzDt71I7gJlPR9T4fzixeYLrtXXOTq0w==
+
+"@expo/config-types@^43.0.0":
+  version "43.0.0"
+  resolved "https://registry.yarnpkg.com/@expo/config-types/-/config-types-43.0.0.tgz#e283a4a1b72a655a6a2a745bd277caef58c8edb0"
+  integrity sha512-GBbEtLdGX40DJ1wTixWtOHseupA5xWclV57KNZ58ebauWAOyK3Fyni7GD2OCOzxTIFi1nSjqgO9JlMp3ayP4Tw==
 
 "@expo/config@^4.0.0":
   version "4.0.4"
@@ -2799,6 +2825,15 @@
   version "0.0.14"
   resolved "https://registry.yarnpkg.com/@expo/plist/-/plist-0.0.14.tgz#a756903bd28aabe0a961222df2e7858a39a218c9"
   integrity sha512-bb4Ua1M/OdNgS8KiGdSDUjZ/bbPfv3xdPY/lz8Ctp/adlj/QgB8xA7tVPeqSSfJPZqFRwU0qLCnRhpUOnP51VQ==
+  dependencies:
+    "@xmldom/xmldom" "~0.7.0"
+    base64-js "^1.2.3"
+    xmlbuilder "^14.0.0"
+
+"@expo/plist@0.0.15":
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/@expo/plist/-/plist-0.0.15.tgz#41ef37b7bbe6b81c48bf4a5c359661c766bb9e90"
+  integrity sha512-LDxiS0KNZAGJu4fIJhbEKczmb+zeftl1NU0LE0tj0mozoMI5HSKdMUchgvnBm35bwBl8ekKkAfJJ0ONxljWQjQ==
   dependencies:
     "@xmldom/xmldom" "~0.7.0"
     base64-js "^1.2.3"
@@ -3647,27 +3682,27 @@
   resolved "https://registry.yarnpkg.com/@kwsites/promise-deferred/-/promise-deferred-1.1.1.tgz#8ace5259254426ccef57f3175bc64ed7095ed919"
   integrity sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==
 
-"@motify/components@^0.15.3":
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/@motify/components/-/components-0.15.3.tgz#ccfa6b8937ea53dbf4ca5477d238230a4e4ab64e"
-  integrity sha512-PDpff2qSPlGMh2lM9rt5g7+7VrJa8wh/zXzoz+uNTHEQNsx11NHGiU61wd1vo25T5+u2b2MGL0kR+9D1hzQivw==
+"@motify/components@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@motify/components/-/components-0.16.0.tgz#39d2e49528e1c7feaadd2282fcfbb226ea69a5a0"
+  integrity sha512-xDIPenMWxWEegh1mB17pogUXl9IHRcb/khcXmdrJ3Bl+EvwzQw56QC4wNNNga7PEzxaaW/Hj8k9HXn5zCRuMBg==
   dependencies:
-    "@motify/core" "^0.15.3"
+    "@motify/core" "^0.16.0"
 
-"@motify/core@^0.15.3":
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/@motify/core/-/core-0.15.3.tgz#9bfad89f23db950b232d758fa037b4d696493d99"
-  integrity sha512-ftyEGEJFOmbn7ENjNV4Y4sQQXyJuCuZMLzm4jShI6tL3BJJrvlRRGxuJmeyu4OOTGEyLPWCceXmB1pWfQJroHA==
+"@motify/core@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@motify/core/-/core-0.16.0.tgz#81f49b06b4cd593358e2d1dd8aa66f280494ef09"
+  integrity sha512-/WpXKrprNOZOydJe7+RzS/V9OCxhPaCzATTwek0hwdFpRl4jOlEpmjIUjvJdu7Oi460M69mQF6v9b14svbB4iw==
   dependencies:
     framer-motion "^3.9.1"
 
-"@motify/skeleton@^0.15.3":
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/@motify/skeleton/-/skeleton-0.15.3.tgz#2c66a4e2d205cbd23bc3636673412dee618b5956"
-  integrity sha512-80q7ml5nRZUB/QWMq/kVvJuBjLbqFN7SDV7D11YXXLr+F2XmuwbOMvTDIdFAzBtz0mgbBBVGFmhYtztu6JbbsQ==
+"@motify/skeleton@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@motify/skeleton/-/skeleton-0.16.0.tgz#7ae1a985156f7ed8b4fe506d5692474a735f0437"
+  integrity sha512-d4BidY6wMuagv8x6s0HOkTJi86NIOwHrNJsF5zgqmDNupXedmJixPh4+IBdXlRWJKBcT/FALlsRYpeVCJKvEIg==
   dependencies:
-    "@motify/components" "^0.15.3"
-    "@motify/core" "^0.15.3"
+    "@motify/components" "^0.16.0"
+    "@motify/core" "^0.16.0"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -4142,24 +4177,24 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-6.0.2.tgz#3b61757c46d0f387815d42b651bbee1eb998a385"
   integrity sha512-HbVIv6p+VAzSqALkfKKNbtSy0TneL7EILIqxiOjt/5weVdTuZ88NRyPNQAZBh6W8QYirXJo3f00ryMk9iLs7gQ==
 
-"@react-native-firebase/analytics@^12.8.0":
-  version "12.8.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-12.8.0.tgz#a4d7f6a9872945849af0a3f1bae601fa11925fad"
-  integrity sha512-aVl1pJmbs15XWpOGHiBCKbleSF4U16DgYWbbepiCW20ElKh65onhZYnlZXNMMs2v/t9lG1S3vmfpBaTR5aPZrg==
+"@react-native-firebase/analytics@^12.9.1":
+  version "12.9.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-12.9.1.tgz#45dc0390fd7608d17a4bb11b9f5377bf2202718a"
+  integrity sha512-K/2FwRmzvIWIQoW4qo9QL2GnTmfRYAjQdywNepFa8A/W1btiKdPkP41hPHFDJoKA9u1Ni9O6ZEFzY8xQbBmKpA==
 
-"@react-native-firebase/app@^12.8.0":
-  version "12.8.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-12.8.0.tgz#d9716529add20ed70e8a712dba4ce153e469fa7e"
-  integrity sha512-Ya9/3VhLOjuf3oRCx9zvmHJtKXCNgGbaQzKR0hVs5n+D0qj30O6tXqxi/I69lnH6/ZX2jJ00n8W6azVwt/iWtw==
+"@react-native-firebase/app@^12.9.1":
+  version "12.9.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-12.9.1.tgz#bfa0f2db4c6158d545dfee2e8b0684cea0742a7b"
+  integrity sha512-AXjEsjx6nJ+3UC5J5mg9uYzzRT0cuHjXvQ1t3aK72C2v/EBKADus8vhhiE33CB8wpFTe7cQmw6ygfK1KblNBaw==
   dependencies:
-    "@expo/config-plugins" "^3.1.0"
+    "@expo/config-plugins" "^4.0.2"
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/messaging@^12.8.0":
-  version "12.8.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-12.8.0.tgz#f601541be15e67678d6e44ff0a4f3fd9183142bb"
-  integrity sha512-Lc6qxhSP7w7XHSPy9CKbIuRVqCk//G3dbMFr9Jq5jmRgbT4pr6tlsZVjMVU1Yx5OBJm8beB3RPWKjZhAsRxy7Q==
+"@react-native-firebase/messaging@^12.9.1":
+  version "12.9.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-12.9.1.tgz#0c048e844a8c9876c62a3fd84c163ef6db6f6642"
+  integrity sha512-blzXeu52uKGIj/qjh6mPQzQRH+Do80MxKneSnlTdhgsb9wKiYGCky9ejyYrDIQmUKuoALGuMbuvUvWCI3BaoPg==
 
 "@react-native/assets@1.0.0":
   version "1.0.0"
@@ -4170,6 +4205,11 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@react-native/normalize-color/-/normalize-color-1.0.0.tgz#c52a99d4fe01049102d47dc45d40cbde4f720ab6"
   integrity sha512-xUNRvNmCl3UGCPbbHvfyFMnpvLPoOjDCcp5bT9m2k+TF/ZBklEQwhPZlkrxRx2NhgFh1X3a5uL7mJ7ZR+8G7Qg==
+
+"@react-native/normalize-color@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@react-native/normalize-color/-/normalize-color-2.0.0.tgz#da955909432474a9a0fe1cbffc66576a0447f567"
+  integrity sha512-Wip/xsc5lw8vsBlmY2MO/gFLp3MvuZ2baBZjDeTjjndMgM0h5sxz7AZR62RDPGgstp8Np7JzjvVqVT7tpFZqsw==
 
 "@react-native/polyfills@1.0.0":
   version "1.0.0"
@@ -18843,13 +18883,13 @@ moment@^2.29.1:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
 
-moti@^0.15.3:
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/moti/-/moti-0.15.3.tgz#84f3067c4bb60fbd2497e148ac26115108e39997"
-  integrity sha512-jvH50meF6In+YjgRPobJ2tCUHDYx3oURxR8jha8qiWKDN8PBTVacH2V8aVYXZxpoG9eoyC0e4HD1xZoIpzuAkQ==
+moti@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/moti/-/moti-0.16.0.tgz#872bcf0a7dc0c364167813699f97f99db731422d"
+  integrity sha512-tWRHpqaAJYWfS8d3aUYzaJaJA23cqyoAhJx4H3t+4ZzUdO/FLneTDuayrAXrPtKcXgmTzHk0pVjs/4RVM8A8Kg==
   dependencies:
-    "@motify/components" "^0.15.3"
-    "@motify/core" "^0.15.3"
+    "@motify/components" "^0.16.0"
+    "@motify/core" "^0.16.0"
 
 move-concurrently@^1.0.1:
   version "1.0.1"

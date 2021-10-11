@@ -175,6 +175,6 @@ jobs:
           FASTLANE_SESSION: ${{secrets.FASTLANE_SESSION}}
           FASTLANE_PASSWORD: ${{secrets.FASTLANE_PASSWORD}}
           FASTLANE_USER: ${{secrets.FASTLANE_USER}}
-          DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
+          DEVELOPER_DIR: /Applications/Xcode_13.0.app/Contents/Developer
           SLACK_URL: ${{secrets.SLACK_URL}}
           APP_STORE_CONNECT_API_KEY: ${{secrets.APP_STORE_CONNECT_API_KEY}}
