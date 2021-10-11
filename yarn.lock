@@ -22195,10 +22195,10 @@ react-native-screens@^3.4.0:
   dependencies:
     warn-once "^0.1.0"
 
-react-native-share@^7.1.1:
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-7.1.1.tgz#99cbba83e2940d6a2ec442c35ecbdbd34dfcbc2f"
-  integrity sha512-pdIr+OUmCP5+t0HHSTy5opbBle+dE7Qw98U8ixSaIGoeQbkyP7vnCDpngxQoOHJ4IdcrbGgSAx+m0OAvvACzXg==
+react-native-share@^7.1.2:
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-7.1.2.tgz#b6ef5a57ce39312ebeaec342253a43a4ab79c140"
+  integrity sha512-kmwp11XYL1TBvKQ1s3Y4HTxu5QNZM6W1SopItAovoC+UD+9g4lVFIPL64bww16Oz15xQTTDtvDHCG8zDWKOVPA==
 
 react-native-splash-screen@^3.2.0:
   version "3.2.0"
