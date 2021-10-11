@@ -2,3 +2,13 @@ web:
   component: "@sls-next/serverless-component@3.4.0"
   inputs:
     memory: 1024
+    domain: ["wrench.cc", "www.wrench.cc"]
+    cloudfront:
+      distributionId: E2H6OHG3UZQPKT
+      defaults:
+        forward:
+          headers:
+            [
+              CloudFront-Viewer-Country,
+              Accept-Language
+            ]
