@@ -1,12 +1,12 @@
 import com.android.build.OutputFile
 import groovy.json.JsonSlurper
 
+def projectRoot = "../../../../";
+
 apply plugin: "com.android.application"
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 apply from: '../../../../node_modules/react-native-unimodules/gradle.groovy'
 
-def projectRoot = "../../../../";
- 
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -87,6 +87,7 @@ project.ext.react = [
     enableHermes: true,
     entryFile: "./packages/mobile/index.js",
     hermesCommand: "../../../../node_modules/hermes-engine/%OS-BIN%/hermesc",
+    cliPath: "../../node_modules/.bin/react-native",
 ]
 
 apply from: projectRoot + "node_modules/react-native/react.gradle"
