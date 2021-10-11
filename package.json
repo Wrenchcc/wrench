@@ -31,8 +31,5 @@
     "tslint-react-hooks": "^2.2.2",
     "typescript": "^4.4.3",
     "patch-package": "^6.4.7"
-  },
-  "resolutions": {
-    "@apollo/client": "^3.4.15"
   }
 }
