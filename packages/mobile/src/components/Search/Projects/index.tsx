@@ -48,10 +48,10 @@ function Projects({ query }) {
           const limitedItems = items.slice(0, -1)
           setRecent(limitedItems)
 
-          setSavedRecent(RECENT_SEARCHES_PROJECTS, JSON.stringify(limitedItems))
+          setSavedRecent(JSON.stringify(limitedItems))
         } else {
           setRecent(items)
-          setSavedRecent(RECENT_SEARCHES_PROJECTS, JSON.stringify(items))
+          setSavedRecent(JSON.stringify(items))
         }
       }
     },

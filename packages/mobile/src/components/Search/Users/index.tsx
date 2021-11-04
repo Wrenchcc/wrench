@@ -54,10 +54,10 @@ function Users({ query }) {
           const limitedItems = items.slice(0, -1)
           setRecent(limitedItems)
 
-          setSavedRecent(RECENT_SEARCHES_USERS, JSON.stringify(limitedItems))
+          setSavedRecent(JSON.stringify(limitedItems))
         } else {
           setRecent(items)
-          setSavedRecent(RECENT_SEARCHES_USERS, JSON.stringify(items))
+          setSavedRecent(JSON.stringify(items))
         }
       }
     },

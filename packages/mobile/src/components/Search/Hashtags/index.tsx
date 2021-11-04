@@ -58,10 +58,10 @@ function Hashtags({ query }) {
           const limitedItems = items.slice(0, -1)
           setRecent(limitedItems)
 
-          setSavedRecent(RECENT_SEARCHES_HASHTAGS, JSON.stringify(limitedItems))
+          setSavedRecent(JSON.stringify(limitedItems))
         } else {
           setRecent(items)
-          setSavedRecent(RECENT_SEARCHES_HASHTAGS, JSON.stringify(items))
+          setSavedRecent(JSON.stringify(items))
         }
       }
     },
