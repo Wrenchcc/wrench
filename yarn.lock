@@ -4246,10 +4246,10 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/google-signin/-/google-signin-5.0.0.tgz#d1d89c697cc214c10017fa283817e84bd03b2d76"
   integrity sha512-MvFHImmtlmE1kJZgZ9XaULm/OBuQ/AQWOCPr3NzYTUv2cCqyGwfFrealo5PS/fuL/InCGcfqK1k/1dZ+67Hjmg==
 
-"@react-native-community/netinfo@^6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-6.0.2.tgz#3b61757c46d0f387815d42b651bbee1eb998a385"
-  integrity sha512-HbVIv6p+VAzSqALkfKKNbtSy0TneL7EILIqxiOjt/5weVdTuZ88NRyPNQAZBh6W8QYirXJo3f00ryMk9iLs7gQ==
+"@react-native-community/netinfo@^6.0.5":
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-6.0.5.tgz#05b971eacf4d25092946556c4b28cfebd799976c"
+  integrity sha512-pCkQiRFRE8fAmLNVeNwtQbAR/tjVbpSL1Oc9sWSA5tVuH3w4t9eOuqt+7wuY5ntvlWbC29tbYyqeUHfAa6cKww==
 
 "@react-native-firebase/analytics@^12.9.1":
   version "12.9.1"

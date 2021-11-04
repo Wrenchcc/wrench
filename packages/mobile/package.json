@@ -28,7 +28,7 @@
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/clipboard": "^1.5.1",
     "@react-native-community/google-signin": "^5.0.0",
-    "@react-native-community/netinfo": "^6.0.2",
+    "@react-native-community/netinfo": "^6.0.5",
     "@react-native-firebase/analytics": "^12.9.1",
     "@react-native-firebase/app": "^12.9.1",
     "@react-native-firebase/messaging": "^12.9.1",
