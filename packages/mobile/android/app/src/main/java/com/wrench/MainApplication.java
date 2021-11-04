@@ -25,11 +25,11 @@ import com.reactnativenavigation.react.NavigationPackage;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 
 import com.facebook.react.bridge.JSIModulePackage;
-import com.swmansion.reanimated.ReanimatedJSIModulePackage;
 
 public class MainApplication extends NavigationApplication {
 
     private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(new BasePackageList().getPackageList(), null);
+
 
     private final ReactNativeHost mReactNativeHost = new NavigationReactNativeHost(this) {
         @Override
@@ -39,7 +39,7 @@ public class MainApplication extends NavigationApplication {
 
         @Override
         protected JSIModulePackage getJSIModulePackage() {
-            return new ReanimatedJSIModulePackage();
+            return new WrenchJSIPackage();
         }
 
         @Override
@@ -63,7 +63,7 @@ public class MainApplication extends NavigationApplication {
     };
 
     @Override
-    protected JSIModulePackage getJSIModulePackage() {
-        return new WrenchJSIPackage();
+    public ReactNativeHost getReactNativeHost() {
+        return mReactNativeHost;
     }
 }
