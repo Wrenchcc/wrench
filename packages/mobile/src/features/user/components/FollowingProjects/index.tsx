@@ -13,9 +13,7 @@ function FollowingProjects({ user }) {
 
   const {
     data: { edges },
-    refetch,
     isFetching,
-    isRefetching,
     fetchMore,
     hasNextPage,
   } = usePaginatedQuery(['user', 'projects'])(UserFollowingProjectsDocument, {
@@ -41,9 +39,7 @@ function FollowingProjects({ user }) {
 
       <InfiniteList
         data={edges}
-        refetch={refetch}
         fetchMore={fetchMore}
-        isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
         horizontal
