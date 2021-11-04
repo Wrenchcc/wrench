@@ -50,12 +50,13 @@ function Search({ query }) {
       color: colorScheme === 'dark' ? 'white' : 'black',
       fontFamily: FONTS.MEDIUM,
       fontSize: 15,
+      textTransform: 'none',
     },
     tabBar: {
       backgroundColor: colorScheme === 'dark' ? 'black' : 'white',
       elevation: 0,
       height: isAndroid ? 65 : 50,
-      justifyContent: 'center'
+      justifyContent: 'center',
     },
   }
 
