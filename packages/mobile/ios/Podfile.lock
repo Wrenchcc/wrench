@@ -450,7 +450,7 @@ PODS:
     - React-Core
   - react-native-splash-screen (3.2.0):
     - React
-  - react-native-webview (11.14.0):
+  - react-native-webview (11.14.2):
     - React-Core
   - React-perflogger (0.66.2)
   - React-RCTActionSheet (0.66.2):
@@ -943,7 +943,7 @@ SPEC CHECKSUMS:
   react-native-pager-view: c44c385eb20f0733c53685456fb9eb8d8469a1bb
   react-native-pinchable: b4381b0807d15c12b14bfacd927128f52d96f0f1
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
-  react-native-webview: d70bc760daaa0e2667dec569b93014882565819c
+  react-native-webview: cc4ac8f021a832dce2979e1f48c5595341dd2fb5
   React-perflogger: 5ab487cacfe6ec19bfe3d3f8072bf71eb07d63da
   React-RCTActionSheet: 03f25695e095fb5aa003828620943c74cc281fec
   React-RCTAnimation: eaf82da39f0c36fb0ef2a28df797c5f73a2a98ea
