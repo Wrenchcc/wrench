@@ -1,10 +1,9 @@
 import React, { memo, useEffect, useState, useCallback } from 'react'
-import AsyncStorage from '@react-native-community/async-storage'
 import { useTranslation } from 'react-i18next'
+import { storage, useMMKVString } from 'utils/storage'
 import { usePaginatedLazyQuery, SearchProjectsDocument } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { RECENT_SEARCHES_PROJECTS } from 'utils/storage/constants'
-import { logError } from 'utils/sentry'
 import { ProjectCard, InfiniteList, NoResults, SearchingFor, Loader, Text } from 'ui'
 import { Header } from '../styles'
 import { Keyboard } from 'react-native'
@@ -13,7 +12,8 @@ const MAX_ITEMS = 4
 
 function Projects({ query }) {
   const { t } = useTranslation('search')
-  const [recent, setRecent] = useState([])
+  const [savedRecent, setSavedRecent] = useMMKVString(RECENT_SEARCHES_PROJECTS)
+  const [recent, setRecent] = useState(savedRecent ? JSON.parse(savedRecent) : [])
 
   const { navigate } = useNavigation()
 
@@ -37,22 +37,6 @@ function Projects({ query }) {
     }
   }, [query])
 
-  async function loadRecentAsync() {
-    try {
-      const items = JSON.parse(await AsyncStorage.getItem(RECENT_SEARCHES_PROJECTS))
-
-      if (items) {
-        setRecent(items)
-      }
-    } catch (err) {
-      logError(err)
-    }
-  }
-
-  useEffect(() => {
-    loadRecentAsync()
-  }, [])
-
   const handleSave = useCallback(
     (item) => {
       // NOTE: isOwner to hide the follow button
@@ -64,10 +48,10 @@ function Projects({ query }) {
           const limitedItems = items.slice(0, -1)
           setRecent(limitedItems)
 
-          AsyncStorage.setItem(RECENT_SEARCHES_PROJECTS, JSON.stringify(limitedItems))
+          setSavedRecent(RECENT_SEARCHES_PROJECTS, JSON.stringify(limitedItems))
         } else {
           setRecent(items)
-          AsyncStorage.setItem(RECENT_SEARCHES_PROJECTS, JSON.stringify(items))
+          setSavedRecent(RECENT_SEARCHES_PROJECTS, JSON.stringify(items))
         }
       }
     },
@@ -76,7 +60,7 @@ function Projects({ query }) {
 
   const handleRemove = useCallback(() => {
     setRecent([])
-    AsyncStorage.removeItem(RECENT_SEARCHES_PROJECTS)
+    storage.delete(RECENT_SEARCHES_PROJECTS)
   }, [setRecent])
 
   const renderItem = ({ item }) => {

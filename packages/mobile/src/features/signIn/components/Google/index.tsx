@@ -4,7 +4,7 @@ import { useAuthenticateGoogleMutation } from '@wrench/common'
 import { setTokens } from 'utils/storage/auth'
 import { useTranslation } from 'react-i18next'
 import { GoogleSignin } from '@react-native-community/google-signin'
-import AsyncStorage from '@react-native-community/async-storage'
+import { useMMKVString } from 'utils/storage'
 import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
 import { SIGN_IN_PROVIDERS } from 'utils/enums'
 import { getCurrentUser } from 'gql'
@@ -17,6 +17,7 @@ function Google({ border }) {
   const { t } = useTranslation('google')
   const [isLoading, setIsLoading] = useState(false)
   const [authenticate] = useAuthenticateGoogleMutation()
+  const [_, setProvider] = useMMKVString(PREFFERED_SIGN_IN_PROVIDER)
 
   const handleLoginManager = useCallback(async () => {
     try {
@@ -30,7 +31,7 @@ function Google({ border }) {
       await GoogleSignin.hasPlayServices()
       const userInfo = await GoogleSignin.signIn()
 
-      AsyncStorage.setItem(PREFFERED_SIGN_IN_PROVIDER, SIGN_IN_PROVIDERS.GOOGLE)
+      setProvider(SIGN_IN_PROVIDERS.GOOGLE)
 
       await authenticate({
         variables: {

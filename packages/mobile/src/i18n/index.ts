@@ -12,7 +12,7 @@ import FileBackend from './FileBackend'
 const languageDetector = {
   async: true,
   cacheUserLanguage: () => null,
-  detect: async (cb) => cb(await getLocale()),
+  detect: (cb) => cb(getLocale()),
   init: () => null,
   type: 'languageDetector',
 }

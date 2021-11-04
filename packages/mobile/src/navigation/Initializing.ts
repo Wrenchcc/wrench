@@ -10,7 +10,7 @@ import { registerUserLocale } from 'i18n'
 function Initializing() {
   const loadInitialState = async () => {
     try {
-      const accessToken = await getAccessToken()
+      const accessToken = getAccessToken()
 
       if (!accessToken) {
         SplashScreen.hide()

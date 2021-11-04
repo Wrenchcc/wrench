@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { useColorScheme } from 'react-native'
 import { useAuthenticateAppleMutation } from '@wrench/common'
 import { AppNavigation } from 'navigation'
-import AsyncStorage from '@react-native-community/async-storage'
+import { useMMKVString } from 'utils/storage'
 import * as AppleAuthentication from 'expo-apple-authentication'
 import { pathOr } from 'rambda'
 import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
@@ -14,6 +14,7 @@ import { setTokens } from 'utils/storage/auth'
 function Apple({ black }) {
   const [authenticate] = useAuthenticateAppleMutation()
   const colorScheme = useColorScheme()
+  const [_, setProvider] = useMMKVString(PREFFERED_SIGN_IN_PROVIDER)
 
   const handleLoginManager = useCallback(async () => {
     try {
@@ -24,7 +25,7 @@ function Apple({ black }) {
         ],
       })
 
-      AsyncStorage.setItem(PREFFERED_SIGN_IN_PROVIDER, SIGN_IN_PROVIDERS.APPLE)
+      setProvider(SIGN_IN_PROVIDERS.APPLE)
 
       await authenticate({
         variables: {

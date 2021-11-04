@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { relayStylePagination } from '@apollo/client/utilities'
 import { CachePersistor, MMKVWrapper } from 'apollo3-cache-persist'
-import { MMKV } from 'react-native-mmkv'
+import { storage } from 'utils/storage'
 import { SCHEMA_VERSION_KEY } from 'utils/storage/constants'
 import { clearTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
@@ -13,8 +13,6 @@ import { isAndroid } from 'utils/platform'
 import link from './links'
 
 export let client = null
-
-const storage = new MMKV()
 
 export default async function createClient() {
   const cache = new InMemoryCache({
@@ -72,7 +70,7 @@ export default async function createClient() {
     storage: new MMKVWrapper(storage),
   })
 
-  // Read the current schema version from AsyncStorage.
+  // Read the current schema version from MMKV.
   const currentVersion = storage.getString(SCHEMA_VERSION_KEY)
 
   if (currentVersion === readableVersion) {

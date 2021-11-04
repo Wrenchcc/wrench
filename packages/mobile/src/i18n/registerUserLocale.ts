@@ -22,7 +22,7 @@ export async function registerUserLocale(user) {
     !pathOr(false, ['user', 'settings', 'locale'], user) ||
     !pathOr(false, ['user', 'settings', 'timezone'], user)
   ) {
-    const locale = await getLocale()
+    const locale = getLocale()
 
     try {
       client.mutate({

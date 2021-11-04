@@ -24,8 +24,8 @@ function SelectProject({ black = false, selectedId: idFromNavigation }) {
     store.project.setProjectId(id)
   }, [])
 
-  async function setInitialProject() {
-    const savedId = await store.project.getProjectId()
+  function setInitialProject() {
+    const savedId = store.project.getProjectId()
 
     // if saved project is deleted
     if (projects.some(({ node }) => savedId !== node.id)) {

@@ -1,5 +1,5 @@
 import { makeVar } from '@apollo/client'
-import AsyncStorage from '@react-native-community/async-storage'
+import { storage } from 'utils/storage'
 import { SELECTED_PROJECT_ID_KEY } from 'utils/storage/constants'
 import { PROJECT } from './constants'
 
@@ -15,10 +15,9 @@ export const selectedIdVar = makeVar('')
 export const update = (field, payload) => projectVar({ ...projectVar(), [field]: payload })
 export const reset = () => projectVar(initialState)
 
-export const setProjectId = async (id) => {
+export const setProjectId = (id) => {
   selectedIdVar(id)
-
-  await AsyncStorage.setItem(SELECTED_PROJECT_ID_KEY, id)
+  storage.set(SELECTED_PROJECT_ID_KEY, id)
 }
 
-export const getProjectId = async () => AsyncStorage.getItem(SELECTED_PROJECT_ID_KEY)
+export const getProjectId = () => storage.getString(SELECTED_PROJECT_ID_KEY)

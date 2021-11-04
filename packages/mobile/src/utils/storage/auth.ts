@@ -1,38 +1,20 @@
-import AsyncStorage from '@react-native-community/async-storage'
-import { logError } from 'utils/sentry'
+import { storage } from 'utils/storage'
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from './constants'
 
-export const setTokens = async (accessToken, refreshToken) => {
-  try {
-    await AsyncStorage.multiSet([
-      [ACCESS_TOKEN_KEY, accessToken],
-      [REFRESH_TOKEN_KEY, refreshToken],
-    ])
-  } catch (error) {
-    logError('Failed to setTokens')
-  }
+export const setTokens = (accessToken, refreshToken) => {
+  storage.set(ACCESS_TOKEN_KEY, accessToken)
+  storage.set(REFRESH_TOKEN_KEY, refreshToken)
 }
 
-export const getAccessToken = async () => {
-  try {
-    return AsyncStorage.getItem(ACCESS_TOKEN_KEY)
-  } catch (error) {
-    logError(`Failed to get ${ACCESS_TOKEN_KEY}`)
-  }
+export const getAccessToken = () => {
+  return storage.getString(ACCESS_TOKEN_KEY)
 }
 
-export const getRefreshToken = async () => {
-  try {
-    return AsyncStorage.getItem(REFRESH_TOKEN_KEY)
-  } catch (error) {
-    logError(`Failed to get ${REFRESH_TOKEN_KEY}`)
-  }
+export const getRefreshToken = () => {
+  return storage.getString(REFRESH_TOKEN_KEY)
 }
 
-export const clearTokens = async () => {
-  try {
-    await AsyncStorage.multiRemove([ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY])
-  } catch (error) {
-    logError('Failed to clearTokens')
-  }
+export const clearTokens = () => {
+  storage.delete(ACCESS_TOKEN_KEY)
+  storage.delete(REFRESH_TOKEN_KEY)
 }

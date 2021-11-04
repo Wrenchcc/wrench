@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useColorScheme } from 'react-native'
-import AsyncStorage from '@react-native-community/async-storage'
 import * as AppleAuthentication from 'expo-apple-authentication'
+import { useMMKVString } from 'utils/storage'
 import { DARK_THEME, LIGHT_THEME } from '@wrench/ui'
 import { useNavigation, SCREENS, STATUS_BAR } from 'navigation'
 import { logo } from 'images'
@@ -54,24 +54,18 @@ function renderPreferredSignInProvider(provider, isAppleAvailable) {
 function SignIn() {
   const { t } = useTranslation('sign-in')
   const { showModal } = useNavigation()
-  const [provider, setProvider] = useState()
+  const [savedProvider] = useMMKVString(PREFFERED_SIGN_IN_PROVIDER)
+  const [provider] = useState(savedProvider)
   const [isAvailable, setAvailable] = useState(false)
   const [isLoading, setLoading] = useState(true)
   const colorScheme = useColorScheme()
 
   async function fetchPreferredSignInAsync() {
     try {
-      const [provider, isAvailable] = await Promise.all([
-        AsyncStorage.getItem(PREFFERED_SIGN_IN_PROVIDER),
-        AppleAuthentication.isAvailableAsync(),
-      ])
+      const isAvailable = await AppleAuthentication.isAvailableAsync()
 
       setAvailable(isAvailable)
       setLoading(false)
-
-      if (provider) {
-        setProvider(provider)
-      }
     } catch (err) {
       setLoading(false)
       logError(err)

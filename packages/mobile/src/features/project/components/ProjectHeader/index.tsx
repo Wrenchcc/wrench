@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
-import AsyncStorage from '@react-native-community/async-storage'
 import { AnimatePresence } from 'moti'
+import { storage } from 'utils/storage'
 import { useSimilarProjectsLazyQuery, useFollowProjectMutation } from '@wrench/common'
 import { ActivityIndicator, Title, Follow, Icon, UserStack } from 'ui'
 import { arrowDown, arrowUp } from 'images'
@@ -42,21 +42,17 @@ function ProjectHeader({ project, spacingHorizontal }) {
   }, [isShowingSimilarProjects, getSimilarProjects])
 
   const [followProject] = useFollowProjectMutation({
-    onCompleted: async () => {
-      const [[, followingCount], [, hasAskedForRating]] = await AsyncStorage.multiGet([
-        FOLLOWING_COUNT,
-        HAS_ASKED_FOR_RATING,
-      ])
+    onCompleted: () => {
+      const followingCount = storage.getNumber(FOLLOWING_COUNT)
+      const hasAskedForRating = storage.getBoolean(HAS_ASKED_FOR_RATING)
 
-      const count = JSON.parse(followingCount)
-
-      if (count?.value === TRIGGER_RATING_COUNT && !hasAskedForRating) {
+      if (followingCount === TRIGGER_RATING_COUNT && !hasAskedForRating) {
         askForRating()
-        AsyncStorage.setItem(HAS_ASKED_FOR_RATING, 'true')
+        storage.set(HAS_ASKED_FOR_RATING, true)
       }
 
       if (!hasAskedForRating) {
-        AsyncStorage.setItem(FOLLOWING_COUNT, JSON.stringify({ value: count?.value + 1 }))
+        storage.set(FOLLOWING_COUNT, followingCount + 1)
       }
     },
   })

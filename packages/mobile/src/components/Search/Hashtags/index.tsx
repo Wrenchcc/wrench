@@ -1,11 +1,10 @@
 import React, { memo, useEffect, useState, useCallback } from 'react'
 import { Keyboard } from 'react-native'
-import AsyncStorage from '@react-native-community/async-storage'
+import { storage, useMMKVString } from 'utils/storage'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedLazyQuery, SearchHashtagsDocument } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { RECENT_SEARCHES_HASHTAGS } from 'utils/storage/constants'
-import { logError } from 'utils/sentry'
 import { InfiniteList, NoResults, SearchingFor, Loader, Text, Hashtag } from 'ui'
 import HashtagSkeletonList from 'ui/Hashtag/SkeletonList'
 import { Header } from '../styles'
@@ -23,7 +22,8 @@ function getItemLayout(_, index) {
 
 function Hashtags({ query }) {
   const { t } = useTranslation('search')
-  const [recent, setRecent] = useState([])
+  const [savedRecent, setSavedRecent] = useMMKVString(RECENT_SEARCHES_HASHTAGS)
+  const [recent, setRecent] = useState(savedRecent ? JSON.parse(savedRecent) : [])
 
   const { navigate } = useNavigation()
 
@@ -47,22 +47,6 @@ function Hashtags({ query }) {
     }
   }, [query])
 
-  async function loadRecentAsync() {
-    try {
-      const items = JSON.parse(await AsyncStorage.getItem(RECENT_SEARCHES_HASHTAGS))
-
-      if (items) {
-        setRecent(items)
-      }
-    } catch (err) {
-      logError(err)
-    }
-  }
-
-  useEffect(() => {
-    loadRecentAsync()
-  }, [])
-
   const handleSave = useCallback(
     (item) => {
       // NOTE: isOwner to hide the follow button
@@ -74,10 +58,10 @@ function Hashtags({ query }) {
           const limitedItems = items.slice(0, -1)
           setRecent(limitedItems)
 
-          AsyncStorage.setItem(RECENT_SEARCHES_HASHTAGS, JSON.stringify(limitedItems))
+          setSavedRecent(RECENT_SEARCHES_HASHTAGS, JSON.stringify(limitedItems))
         } else {
           setRecent(items)
-          AsyncStorage.setItem(RECENT_SEARCHES_HASHTAGS, JSON.stringify(items))
+          setSavedRecent(RECENT_SEARCHES_HASHTAGS, JSON.stringify(items))
         }
       }
     },
@@ -86,7 +70,7 @@ function Hashtags({ query }) {
 
   const handleRemove = useCallback(() => {
     setRecent([])
-    AsyncStorage.removeItem(RECENT_SEARCHES_HASHTAGS)
+    storage.delete(RECENT_SEARCHES_HASHTAGS)
   }, [setRecent])
 
   const renderItem = ({ item }) => {

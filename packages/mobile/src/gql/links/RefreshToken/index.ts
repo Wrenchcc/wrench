@@ -28,9 +28,9 @@ export default onError(({ graphQLErrors, operation, forward }) => {
     }
 
     if (extensions && extensions.code === ERROR_CODES.UNAUTHENTICATED) {
-      return new Observable(async (observer) => {
+      return new Observable((observer) => {
         try {
-          const refreshToken = await getRefreshToken()
+          const refreshToken = getRefreshToken()
           const { headers } = operation.getContext()
 
           return client

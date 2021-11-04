@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
-import AsyncStorage from '@react-native-community/async-storage'
 import { useAuthenticateFacebookMutation } from '@wrench/common'
+import { useMMKVString } from 'utils/storage'
 import { setTokens } from 'utils/storage/auth'
 import { AppNavigation } from 'navigation'
 import { useTranslation } from 'react-i18next'
@@ -17,13 +17,14 @@ function Facebook() {
   const { t } = useTranslation('facebook')
   const [isLoading, setIsLoading] = useState(false)
   const [authenticate] = useAuthenticateFacebookMutation()
+  const [_, setProvider] = useMMKVString(PREFFERED_SIGN_IN_PROVIDER)
 
   const handleLoginManager = useCallback(async () => {
     try {
       const result = await LoginManager.logInWithPermissions(['public_profile', 'email'])
       setIsLoading(true)
 
-      AsyncStorage.setItem(PREFFERED_SIGN_IN_PROVIDER, SIGN_IN_PROVIDERS.FACEBOOK)
+      setProvider(SIGN_IN_PROVIDERS.FACEBOOK)
 
       if (result.isCancelled) {
         setIsLoading(false)

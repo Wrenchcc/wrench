@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { Keyboard } from 'react-native'
-import AsyncStorage from '@react-native-community/async-storage'
+import { storage, useMMKVString } from 'utils/storage'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
 import { User, InfiniteList, NoResults, Loader, Text } from 'ui'
 import { RECENT_SEARCHES_USERS } from 'utils/storage/constants'
-import { logError } from 'utils/sentry'
 import UserSkeletonList from 'ui/User/SkeletonList'
 import { Header } from '../styles'
 
@@ -20,7 +19,8 @@ const getItemLayout = (_, index) => ({
 
 function Users({ query }) {
   const { t } = useTranslation('search')
-  const [recent, setRecent] = useState([])
+  const [savedRecent, setSavedRecent] = useMMKVString(RECENT_SEARCHES_USERS)
+  const [recent, setRecent] = useState(savedRecent ? JSON.parse(savedRecent) : [])
 
   const {
     loadData,
@@ -42,22 +42,6 @@ function Users({ query }) {
     }
   }, [query])
 
-  async function loadRecentAsync() {
-    try {
-      const items = JSON.parse(await AsyncStorage.getItem(RECENT_SEARCHES_USERS))
-
-      if (items) {
-        setRecent(items)
-      }
-    } catch (err) {
-      logError(err)
-    }
-  }
-
-  useEffect(() => {
-    loadRecentAsync()
-  }, [])
-
   const handleSave = useCallback(
     (item) => {
       Keyboard.dismiss()
@@ -70,10 +54,10 @@ function Users({ query }) {
           const limitedItems = items.slice(0, -1)
           setRecent(limitedItems)
 
-          AsyncStorage.setItem(RECENT_SEARCHES_USERS, JSON.stringify(limitedItems))
+          setSavedRecent(RECENT_SEARCHES_USERS, JSON.stringify(limitedItems))
         } else {
           setRecent(items)
-          AsyncStorage.setItem(RECENT_SEARCHES_USERS, JSON.stringify(items))
+          setSavedRecent(RECENT_SEARCHES_USERS, JSON.stringify(items))
         }
       }
     },
@@ -82,7 +66,7 @@ function Users({ query }) {
 
   const handleRemove = useCallback(() => {
     setRecent([])
-    AsyncStorage.removeItem(RECENT_SEARCHES_USERS)
+    storage.delete(RECENT_SEARCHES_USERS)
   }, [setRecent])
 
   const content =

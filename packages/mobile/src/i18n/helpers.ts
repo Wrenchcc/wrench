@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-community/async-storage'
+import { storage } from 'utils/storage'
 import * as Localization from 'expo-localization'
 import { SELECTED_LOCALE_KEY } from 'utils/storage/constants'
 
@@ -11,11 +11,11 @@ const getLanguagePartFromCode = (code) => {
   return p[0]
 }
 
-export const setLocale = (locale) => AsyncStorage.setItem(SELECTED_LOCALE_KEY, locale)
+export const setLocale = (locale) => storage.set(SELECTED_LOCALE_KEY, locale)
 
-export const getLocale = async () => {
+export const getLocale = () => {
   const deviceLocale = Localization.locale
-  const savedLocale = await AsyncStorage.getItem(SELECTED_LOCALE_KEY)
+  const savedLocale = storage.getString(SELECTED_LOCALE_KEY)
 
   return getLanguagePartFromCode(savedLocale || deviceLocale)
 }
