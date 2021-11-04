@@ -11,7 +11,8 @@ export const Base = styled.div`
   box-shadow: ${(props) =>
     props.inverted ? ' 0 0 0 0' : `0 1px 1px 0 ${props.theme.colors.divider}`};
   padding: 0 50px;
-  background: ${(props) => (props.inverted ? 'transparent' : props.theme.colors.default)};
+  background: ${(props) =>
+    props.inverted ? 'transparent' : props.background || props.theme.colors.default};
   position: ${(props) => (props.inverted ? 'absolute' : 'sticky')};
   top: 0;
   z-index: 100;

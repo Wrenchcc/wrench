@@ -66,6 +66,7 @@ function Header({ isAuthenticated }) {
   useClickOutside(notificationsRef, () => setNotificationsMenu(false))
 
   const inverted = (!isAuthenticated && router.route === '/') || router.route === '/download'
+  const background = router.route === '/business' && '#232428'
 
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal}>
@@ -86,7 +87,7 @@ function Header({ isAuthenticated }) {
   ]
 
   return (
-    <Base inverted={inverted}>
+    <Base inverted={inverted} background={background}>
       <Link passHref href={'/'}>
         <a>
           <LogoIcon
