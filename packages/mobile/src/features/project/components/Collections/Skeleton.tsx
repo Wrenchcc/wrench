@@ -23,7 +23,13 @@ const styles = {
   },
 }
 
-export const CollectionsSkelleton: React.FC = ({ empty, isOwner, projectId, disableModal }) => {
+export const CollectionsSkelleton: React.FC = ({
+  empty,
+  isOwner,
+  projectId,
+  isLoading,
+  disableModal,
+}) => {
   return (
     <>
       {empty && (
@@ -49,20 +55,21 @@ export const CollectionsSkelleton: React.FC = ({ empty, isOwner, projectId, disa
             <AddCollection projectId={projectId} disableModal={disableModal} />
           </View>
         )}
-        {new Array(COUNT).fill({}).map((_, index) => (
-          <View
-            key={index}
-            style={[
-              styles.container,
-              index === COUNT - 1 && styles.last,
-              index === 0 && !isOwner && styles.first,
-            ]}
-          >
-            <Skeleton width={60} height={60} radius="round" />
-            <Spacing.Horizontally px={12} />
-            <Skeleton width={60} height={11} radius={0} />
-          </View>
-        ))}
+        {isLoading &&
+          new Array(COUNT).fill({}).map((_, index) => (
+            <View
+              key={index}
+              style={[
+                styles.container,
+                index === COUNT - 1 && styles.last,
+                index === 0 && !isOwner && styles.first,
+              ]}
+            >
+              <Skeleton width={60} height={60} radius="round" />
+              <Spacing.Horizontally px={12} />
+              <Skeleton width={60} height={11} radius={0} />
+            </View>
+          ))}
       </ScrollView>
     </>
   )

@@ -438,7 +438,7 @@ PODS:
     - React
   - react-native-netinfo (6.0.2):
     - React-Core
-  - react-native-pager-view (5.4.6):
+  - react-native-pager-view (5.4.8):
     - React-Core
   - react-native-pinchable (0.2.1):
     - React-Core
@@ -581,9 +581,9 @@ PODS:
     - React-RCTVibration
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNSentry (3.1.1):
+  - RNSentry (3.2.2):
     - React-Core
-    - Sentry (= 7.3.0)
+    - Sentry (= 7.4.8)
   - RNShare (7.1.2):
     - React-Core
   - SDWebImage (5.11.1):
@@ -592,9 +592,9 @@ PODS:
   - SDWebImageWebPCoder (0.8.4):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.10)
-  - Sentry (7.3.0):
-    - Sentry/Core (= 7.3.0)
-  - Sentry/Core (7.3.0)
+  - Sentry (7.4.8):
+    - Sentry/Core (= 7.4.8)
+  - Sentry/Core (7.4.8)
   - UMAppLoader (2.2.0)
   - UMCore (7.1.2)
   - UMReactNativeAdapter (6.3.9):
@@ -931,7 +931,7 @@ SPEC CHECKSUMS:
   react-native-config: 72d948053a442779b3178fddd571e37f118ef606
   react-native-fbsdk: 8e92c7a334fd8d9c2b5d8b8fcd7ae2c314161099
   react-native-netinfo: 92e6e4476eb8bf6fc2d7c0a6ca0a1406f663d73a
-  react-native-pager-view: b90963d848e777def6714ab7fd40d02fa797e930
+  react-native-pager-view: c44c385eb20f0733c53685456fb9eb8d8469a1bb
   react-native-pinchable: b4381b0807d15c12b14bfacd927128f52d96f0f1
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-webview: d70bc760daaa0e2667dec569b93014882565819c
@@ -960,11 +960,11 @@ SPEC CHECKSUMS:
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNPermissions: 4b54095940aea8c03fa3e6c92d4ac3647b31ed4e
   RNReanimated: 65583befd5706cc9c86ae9a081786181ced37b93
-  RNSentry: 49abc89b0190b4c8afe0fa5d065f98e36cb53233
+  RNSentry: e3595b47bc00c627d835094bd9a823b384103bcf
   RNShare: 0fec82bd2e67d09f895937ccb4f5a097e714dec2
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
-  Sentry: 9a4e621430e2dae4477d791f2f7e905720b6efbf
+  Sentry: df92b78ba4ab86cf2a47ff4cdc07758a5ce18f03
   UMAppLoader: 21af63390e55c82e037fb9752d93114a80ecf16e
   UMCore: ce3a4faa010239063b8343895b29a6d97b01069d
   UMReactNativeAdapter: d03cefd0e4e4179ab8c490408589f1c8a6c8b785

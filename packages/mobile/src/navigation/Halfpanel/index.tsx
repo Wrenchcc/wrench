@@ -39,6 +39,7 @@ const HalfPanel = ({ renderContent = () => null, data, height }) => {
 
   return (
     <BottomSheet
+      handleComponent={null}
       onChange={handleOnChange}
       animateOnMount
       backgroundComponent={Background}
@@ -47,7 +48,7 @@ const HalfPanel = ({ renderContent = () => null, data, height }) => {
       index={1}
       snapPoints={snapPoints}
     >
-      <View style={{ paddingHorizontal: 20 }}>
+      <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
         <Bar />
         {data ? <RenderDataContent /> : renderContent()}
       </View>

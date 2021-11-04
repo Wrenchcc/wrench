@@ -1,5 +1,5 @@
 import React from 'react'
-import { View as MotiView } from 'moti'
+import { MotiView } from 'moti'
 import { usePaginatedQuery, ProjectCollectionsDocument } from '@wrench/common'
 import { InfiniteList } from 'ui'
 import AddCollection from 'components/AddCollection'
@@ -30,6 +30,7 @@ function Collections({
 
   let content = (
     <CollectionsSkelleton
+      isLoading={isFetching}
       empty={!isFetching && isOwner && !edges?.length}
       isOwner={isOwner}
       projectId={projectId}
@@ -57,11 +58,42 @@ function Collections({
     content = null
   }
 
-  if (edges?.length) {
+  if ((edges?.length && disableAnimation) || (edges?.length && isOwner)) {
+    content = (
+      <InfiniteList
+        initialNumToRender={8}
+        data={edges}
+        horizontal
+        directionalLockEnabled
+        showsHorizontalScrollIndicator={false}
+        ListHeaderComponent={
+          isOwner && (
+            <AddCollection
+              style={{ marginRight: 10 }}
+              projectId={projectId}
+              disableModal={disableModal}
+            />
+          )
+        }
+        fetchMore={fetchMore}
+        isFetching={isFetching}
+        loaderInset={10}
+        hasNextPage={hasNextPage}
+        renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
+        style={{
+          marginLeft: -GUTTER,
+          marginRight: -GUTTER,
+        }}
+      />
+    )
+  }
+
+  if ((edges?.length && !disableAnimation) || (edges?.length && !isOwner)) {
     content = (
       <MotiView
         from={{ height: 0, opacity: 0 }}
-        animate={disableAnimation || isOwner ? null : { height: 85, opacity: 1 }}
+        animate={{ height: 85, opacity: 1 }}
         delay={200}
         transition={{
           type: 'timing',
