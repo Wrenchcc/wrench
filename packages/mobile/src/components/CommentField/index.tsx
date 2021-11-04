@@ -80,6 +80,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
             totalCount: 0,
           },
           text,
+          ...data,
         },
       },
       update: (cache, { data: { addComment } }) => {

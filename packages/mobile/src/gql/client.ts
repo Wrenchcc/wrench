@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { relayStylePagination } from '@apollo/client/utilities'
-import { CachePersistor } from 'apollo3-cache-persist'
-import AsyncStorage from '@react-native-community/async-storage'
+import { CachePersistor, MMKVWrapper } from 'apollo3-cache-persist'
+import { MMKV } from 'react-native-mmkv'
 import { SCHEMA_VERSION_KEY } from 'utils/storage/constants'
 import { clearTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
@@ -13,6 +13,8 @@ import { isAndroid } from 'utils/platform'
 import link from './links'
 
 export let client = null
+
+const storage = new MMKV()
 
 export default async function createClient() {
   const cache = new InMemoryCache({
@@ -67,11 +69,11 @@ export default async function createClient() {
   const persistor = new CachePersistor({
     cache,
     trigger: 'background',
-    storage: AsyncStorage,
+    storage: new MMKVWrapper(storage),
   })
 
   // Read the current schema version from AsyncStorage.
-  const currentVersion = await AsyncStorage.getItem(SCHEMA_VERSION_KEY)
+  const currentVersion = storage.getString(SCHEMA_VERSION_KEY)
 
   if (currentVersion === readableVersion) {
     // If the current version matches the latest version,
@@ -81,7 +83,7 @@ export default async function createClient() {
     // Otherwise, we'll want to purge the outdated persisted cache
     // and mark ourselves as having updated to the latest version.
     await persistor.purge()
-    await AsyncStorage.setItem(SCHEMA_VERSION_KEY, readableVersion)
+    storage.set(SCHEMA_VERSION_KEY, readableVersion)
   }
 
   client = new ApolloClient({

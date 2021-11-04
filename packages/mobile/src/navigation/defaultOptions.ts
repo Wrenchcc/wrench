@@ -1,6 +1,5 @@
 import { Options, OptionsModalPresentationStyle } from 'react-native-navigation'
 import { Appearance } from 'react-native'
-import PlatformColor from 'ui/PlatformColor'
 import { isAndroid } from 'utils/platform'
 
 export default {
@@ -9,7 +8,7 @@ export default {
     titleDisplayMode: 'alwaysHide',
   },
   bottomTabs: {
-    backgroundColor: PlatformColor.black,
+    backgroundColor: '#000',
     titleDisplayMode: 'alwaysHide',
     tabsAttachMode: 'afterInitialTab',
   },
@@ -21,8 +20,14 @@ export default {
     ...(isAndroid && { style: Appearance.getColorScheme() === 'dark' ? 'light' : 'dark' }),
   },
   layout: {
-    backgroundColor: PlatformColor.default,
-    componentBackgroundColor: PlatformColor.default,
+    backgroundColor: {
+      light: '#fff',
+      dark: '#000',
+    },
+    componentBackgroundColor: {
+      light: '#fff',
+      dark: '#000',
+    },
     orientation: ['portrait'],
   },
   overlay: {
@@ -33,6 +38,6 @@ export default {
     visible: false,
   },
   navigationBar: {
-    backgroundColor: PlatformColor.black,
+    backgroundColor: '#000',
   },
 } as Options
