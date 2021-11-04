@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import Image from 'ui/Image'
 import Title from 'ui/Title'
