@@ -63,7 +63,7 @@ public class MainApplication extends NavigationApplication {
     };
 
     @Override
-    public ReactNativeHost getReactNativeHost() {
-        return mReactNativeHost;
+    protected JSIModulePackage getJSIModulePackage() {
+        return new WrenchJSIPackage();
     }
 }
