@@ -27,6 +27,7 @@
 		37AEB748558644E38B0C637D /* inter_ui_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C53EA82FD9743C29DB6E400 /* inter_ui_bold.ttf */; };
 		485DD1115132424A8A015872 /* inter_ui.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA315EC66CEF43E0ADFD646E /* inter_ui.ttf */; };
 		71B31E1FE5BC847380864790 /* libPods-Wrench.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE884EF522CA1F6927430315 /* libPods-Wrench.a */; };
+		960B9F6B09E416296BF28E66 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6862B22134AF3CF8A098FDE6 /* ExpoModulesProvider.swift */; };
 		D2002BDB2395A01800BF4AD8 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2002BDA2395A01800BF4AD8 /* File.swift */; };
 		D2F146282200A9B000E8A474 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2F146272200A9B000E8A474 /* GoogleService-Info.plist */; };
 		D2F146A22200B0D100E8A474 /* notification.aiff in Resources */ = {isa = PBXBuildFile; fileRef = D2F146A12200B0D000E8A474 /* notification.aiff */; };
@@ -78,6 +79,7 @@
 		1698E30425D68C350065877B /* tl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = tl.json; path = ../../../translations/src/locales/tl/tl.json; sourceTree = "<group>"; };
 		1C53EA82FD9743C29DB6E400 /* inter_ui_bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = inter_ui_bold.ttf; path = ../assets/fonts/inter_ui_bold.ttf; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6862B22134AF3CF8A098FDE6 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Wrench/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		81E226C05F726DE1097FFE7F /* Pods-Wrench.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wrench.debug.xcconfig"; path = "Target Support Files/Pods-Wrench/Pods-Wrench.debug.xcconfig"; sourceTree = "<group>"; };
 		94F177B08D61476794C558FF /* inter_ui_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = inter_ui_medium.ttf; path = ../assets/fonts/inter_ui_medium.ttf; sourceTree = "<group>"; };
 		D2002BD723959FD800BF4AD8 /* Wrench-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wrench-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -168,6 +170,14 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		80A7D6029F1CE3FE26AE213B /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				A167B38495233C4C30A91E40 /* Wrench */,
+			);
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +190,7 @@
 				667F5285967449079E56D0E4 /* Resources */,
 				D2002BD723959FD800BF4AD8 /* Wrench-Bridging-Header.h */,
 				8709CD7521C9FB6D0AF4AF6E /* Pods */,
+				80A7D6029F1CE3FE26AE213B /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -201,6 +212,14 @@
 				105FEBD01AA125ECB7B4B543 /* Pods-Wrench.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A167B38495233C4C30A91E40 /* Wrench */ = {
+			isa = PBXGroup;
+			children = (
+				6862B22134AF3CF8A098FDE6 /* ExpoModulesProvider.swift */,
+			);
+			name = Wrench;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,12 +383,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Wrench/Pods-Wrench-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
@@ -434,6 +455,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				D2002BDB2395A01800BF4AD8 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				960B9F6B09E416296BF28E66 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

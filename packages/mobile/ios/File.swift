@@ -1,9 +1,4 @@
 //
-//  File.swift
-//  Wrench
+// @generated
+// A blank Swift file must be created for native modules with Swift files to work correctly.
 //
-//  Created by Pontus Abrahamsson on 2019-12-02.
-//  Copyright © 2019 Facebook. All rights reserved.
-//
-
-import Foundation
