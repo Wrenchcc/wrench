@@ -10,10 +10,10 @@
     d "1"
     es5-ext "^0.10.47"
 
-"@apollo/client@^3.0.0", "@apollo/client@^3.0.0-beta.23", "@apollo/client@^3.2.4", "@apollo/client@^3.4.16", "@apollo/client@latest":
-  version "3.4.16"
-  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.4.16.tgz#67090d5655aa843fa64d26f1913315e384a5fa0f"
-  integrity sha512-iF4zEYwvebkri0BZQyv8zfavPfVEafsK0wkOofa6eC2yZu50J18uTutKtC174rjHZ2eyxZ8tV7NvAPKRT+OtZw==
+"@apollo/client@^3.0.0", "@apollo/client@^3.0.0-beta.23", "@apollo/client@^3.2.4", "@apollo/client@^3.4.17", "@apollo/client@latest":
+  version "3.4.17"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.4.17.tgz#4972e19a49809e16d17c5adc67f45623a6dac135"
+  integrity sha512-MDt2rwMX1GqodiVEKJqmDmAz8xr0qJmq5PdWeIt0yDaT4GOkKYWZiWkyfhfv3raTk8PyJvbsNG9q2CqmUrlGfg==
   dependencies:
     "@graphql-typed-document-node/core" "^3.0.0"
     "@wry/context" "^0.6.0"
@@ -4239,17 +4239,17 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/google-signin/-/google-signin-5.0.0.tgz#d1d89c697cc214c10017fa283817e84bd03b2d76"
   integrity sha512-MvFHImmtlmE1kJZgZ9XaULm/OBuQ/AQWOCPr3NzYTUv2cCqyGwfFrealo5PS/fuL/InCGcfqK1k/1dZ+67Hjmg==
 
-"@react-native-community/netinfo@^6.0.5":
-  version "6.0.5"
-  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-6.0.5.tgz#05b971eacf4d25092946556c4b28cfebd799976c"
-  integrity sha512-pCkQiRFRE8fAmLNVeNwtQbAR/tjVbpSL1Oc9sWSA5tVuH3w4t9eOuqt+7wuY5ntvlWbC29tbYyqeUHfAa6cKww==
+"@react-native-community/netinfo@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-6.1.0.tgz#a7dd574bc5b20ecad1e6ae6494abffa2e0a4949e"
+  integrity sha512-SrO+EJYR1FhGqCoKSkvddIKB0waySXapW4inW2IQgpjBYCdCTJyKFLlvZHTVg/3N0vodR4WBGdKraECl9aVS5Q==
 
-"@react-native-firebase/analytics@^13.0.0":
+"@react-native-firebase/analytics@13.0.0":
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-13.0.0.tgz#31a0d0a45f9b6a2ba68d2917eb18e263eee7d198"
   integrity sha512-9lfij1FAOa5YbHvSXIvR5DQaol27kSD44bD8XzdggNVfC4PRaQR2882B+26aFOyszDTHLf+cKlnn02HpbTVu7A==
 
-"@react-native-firebase/app@^13.0.0":
+"@react-native-firebase/app@13.0.0":
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-13.0.0.tgz#101dbc087fdb15e136c5c816d71f3baecc01ba85"
   integrity sha512-jG/rd33Ask6+bYmQdQYkSLeIPwEWI0XlRcKaA2nj7TEFSgw66OvANgLzdxRwCXf2Qo3qfHmfBFtkrz6aQRzGbg==
@@ -4258,7 +4258,7 @@
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/messaging@^13.0.0":
+"@react-native-firebase/messaging@13.0.0":
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-13.0.0.tgz#ba0017938b352d95d9a6f0493630f6443bbdca84"
   integrity sha512-/xhMrpWl4kiwyc2SL2m4su7kBRrqBbNtf02RuKXkZ2R4YTy9qYWTBwd452qnPKQmXwUEQCXcxAe8RCeQlHiGnQ==
@@ -4428,10 +4428,10 @@
     lru_map "^0.3.3"
     tslib "^1.9.3"
 
-"@sentry/react-native@^3.2.2":
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/@sentry/react-native/-/react-native-3.2.2.tgz#be97cc3dcbd8fb30bc1914127ce53bfdab4204f1"
-  integrity sha512-jEkbtTlM71/4PgM8OjTVr6UPSHrUKHOnhaCAW7UFEG7itBMsLxmuOkzRGXdhgEBb8tLIByVOLCqjSbcIVLr+Sw==
+"@sentry/react-native@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@sentry/react-native/-/react-native-3.2.3.tgz#39faf729a152f8cc9699b1d427ed0e8d095042a8"
+  integrity sha512-1d7RpprRDZ6WG53VhP1vhGllxlk3weZ1nbsTx3rHPuFXehhUsc8+W3M+WoVB4SHIUn9LWIHe01E9XnKZX/BSoQ==
   dependencies:
     "@sentry/browser" "6.12.0"
     "@sentry/cli" "^1.68.0"
@@ -21971,10 +21971,10 @@ react-native-navigation@^7.23.1:
     react-lifecycles-compat "2.0.0"
     tslib "1.9.3"
 
-react-native-pager-view@^5.4.8:
-  version "5.4.8"
-  resolved "https://registry.yarnpkg.com/react-native-pager-view/-/react-native-pager-view-5.4.8.tgz#c0872989e3fa9ef05d5d8cf408e42fc1d3fbbd7c"
-  integrity sha512-Zfsdirwu4LIKtPMAFgt5ctE/Yg9QKG3k2pom0mDyLbUXQD/O0/yeK36JBJjsMEd/z0JJ4PsrHZ+BcGyzNVgUaQ==
+react-native-pager-view@^5.4.9:
+  version "5.4.9"
+  resolved "https://registry.yarnpkg.com/react-native-pager-view/-/react-native-pager-view-5.4.9.tgz#c0d40847cfeda5a4e729b53271b0ee0fedff3eb5"
+  integrity sha512-D6tzxpwMGdl6CXgtskGWhKRc5cJakCazESRGt7PkqnpyiH3N35ft1KmR82pCSQetAFlytFiToeu3a/dG5CELvA==
 
 react-native-permissions@^3.1.0:
   version "3.1.0"

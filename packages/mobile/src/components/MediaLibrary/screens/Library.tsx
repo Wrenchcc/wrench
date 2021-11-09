@@ -84,8 +84,8 @@ function Library({ active, animatedValue }) {
       })
     }
 
-    fetchInitialAssets()
-  }, [])
+    fetchInitialAssets(null)
+  }, [photoPermission])
 
   useEffect(() => {}, [active, isPaused])
 
@@ -97,7 +97,7 @@ function Library({ active, animatedValue }) {
     try {
       const result = await MediaLibrary.getAssetsAsync({
         first: INITIAL_PAGE_SIZE,
-        album: album?.id || null,
+        album: album?.id,
         mediaType: [MediaLibrary.MediaType.photo],
         sortBy: MediaLibrary.SortBy.creationTime,
       })

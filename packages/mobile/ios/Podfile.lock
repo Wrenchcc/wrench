@@ -442,9 +442,9 @@ PODS:
   - react-native-mmkv (1.5.3):
     - MMKV
     - React-Core
-  - react-native-netinfo (6.0.5):
+  - react-native-netinfo (6.1.0):
     - React-Core
-  - react-native-pager-view (5.4.8):
+  - react-native-pager-view (5.4.9):
     - React-Core
   - react-native-pinchable (0.2.1):
     - React-Core
@@ -585,9 +585,9 @@ PODS:
     - React-RCTVibration
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNSentry (3.2.2):
+  - RNSentry (3.2.3):
     - React-Core
-    - Sentry (= 7.4.8)
+    - Sentry (= 7.5.1)
   - RNShare (7.2.1):
     - React-Core
   - SDWebImage (5.11.1):
@@ -596,9 +596,9 @@ PODS:
   - SDWebImageWebPCoder (0.8.4):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.10)
-  - Sentry (7.4.8):
-    - Sentry/Core (= 7.4.8)
-  - Sentry/Core (7.4.8)
+  - Sentry (7.5.1):
+    - Sentry/Core (= 7.5.1)
+  - Sentry/Core (7.5.1)
   - UMAppLoader (2.2.0)
   - UMCore (7.1.2)
   - UMReactNativeAdapter (6.3.9):
@@ -939,8 +939,8 @@ SPEC CHECKSUMS:
   react-native-config: 6502b1879f97ed5ac570a029961fc35ea606cd14
   react-native-fbsdk: 8e92c7a334fd8d9c2b5d8b8fcd7ae2c314161099
   react-native-mmkv: 576edf2fb8e6a08f368357d8e02b2971abe08e0d
-  react-native-netinfo: 1bce808e01a15d6e96314241fd74887b2897a758
-  react-native-pager-view: c44c385eb20f0733c53685456fb9eb8d8469a1bb
+  react-native-netinfo: 5a001e406317eaaf1e4846906650e107dadcaa72
+  react-native-pager-view: 3ee7d4c7697fb3ef788346e834a60cca97ed8540
   react-native-pinchable: b4381b0807d15c12b14bfacd927128f52d96f0f1
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-webview: cc4ac8f021a832dce2979e1f48c5595341dd2fb5
@@ -968,11 +968,11 @@ SPEC CHECKSUMS:
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNPermissions: 4b54095940aea8c03fa3e6c92d4ac3647b31ed4e
   RNReanimated: 65583befd5706cc9c86ae9a081786181ced37b93
-  RNSentry: e3595b47bc00c627d835094bd9a823b384103bcf
+  RNSentry: 97bc62fa65b7d663daee16fbf9771470852217cf
   RNShare: edd621a71124961e29a7ba43a84bd1c6f9980d88
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
-  Sentry: df92b78ba4ab86cf2a47ff4cdc07758a5ce18f03
+  Sentry: 0718c3ad7a08e1107599610795adaf08864102f3
   UMAppLoader: 21af63390e55c82e037fb9752d93114a80ecf16e
   UMCore: ce3a4faa010239063b8343895b29a6d97b01069d
   UMReactNativeAdapter: d03cefd0e4e4179ab8c490408589f1c8a6c8b785
