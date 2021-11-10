@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { Text, View, TouchableOpacity, Image, StyleSheet, InteractionManager } from 'react-native'
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated'
+import { useTranslation } from 'react-i18next'
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { Camera as EXCamera } from 'expo-camera'
 import { BlurView } from 'expo-blur'
@@ -16,6 +17,8 @@ const AnimatedBlurView = Animated.createAnimatedComponent(BlurView)
 const PERMISSION = isIphone ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
 
 function Camera({ active, animatedValue, setAlert }) {
+  const { t } = useTranslation('camera')
+
   const cameraRef = useRef(null)
   const opacityCancel = useSharedValue(1)
   const opacityActions = useSharedValue(1)
@@ -209,7 +212,7 @@ function Camera({ active, animatedValue, setAlert }) {
   return (
     <View style={{ flex: 1 }}>
       <Header
-        headerTitle="Camera"
+        headerTitle={t('camera')}
         headerLeft={
           <>
             <Animated.View
@@ -224,7 +227,7 @@ function Camera({ active, animatedValue, setAlert }) {
                     fontSize: 16,
                   }}
                 >
-                  Cancel
+                  {t('cancel')}
                 </Text>
               </TouchableOpacity>
             </Animated.View>
@@ -241,7 +244,7 @@ function Camera({ active, animatedValue, setAlert }) {
                 opacity: !!picture ? 1 : 0.5,
               }}
             >
-              Next
+              {t('next')}
             </Text>
           </TouchableOpacity>
         }
@@ -364,7 +367,7 @@ function Camera({ active, animatedValue, setAlert }) {
               fontSize: 15,
             }}
           >
-            Delete
+            {t('delete')}
           </Text>
         </TouchableOpacity>
       </Animated.View>

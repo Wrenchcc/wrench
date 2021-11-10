@@ -72,9 +72,9 @@ function Feed() {
         <FlatList
           ref={scrollRef}
           initialNumToRender={2}
-          maintainVisibleContentPosition={{
-            minIndexForVisible: 0,
-          }}
+          // maintainVisibleContentPosition={{
+          //   minIndexForVisible: 0,
+          // }}
           spacingSeparator
           data={edges}
           ListEmptyComponent={<ProjectSuggestions />}

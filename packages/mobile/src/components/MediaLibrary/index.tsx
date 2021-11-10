@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Dimensions, Text } from 'react-native'
 import Animated, { useSharedValue, useAnimatedStyle } from 'react-native-reanimated'
+import { useTranslation } from 'react-i18next'
 import { TabView, TabBar } from 'react-native-tab-view'
 import { useNavigation } from 'navigation'
 import Library from './screens/Library'
@@ -11,6 +12,7 @@ import Alert from './Alert'
 const { width, height } = Dimensions.get('window')
 
 function MediaLibrary() {
+  const { t } = useTranslation('media-library')
   const animatedValue = useSharedValue(0)
   const { dismissModal } = useNavigation()
 
@@ -21,8 +23,8 @@ function MediaLibrary() {
 
   const [index, setIndex] = useState(0)
   const [routes] = useState([
-    { key: 'library', title: 'Library' },
-    { key: 'camera', title: 'Camera' },
+    { key: 'library', title: t('library') },
+    { key: 'camera', title: t('camera') },
   ])
 
   const handleCloseAlert = () => {
@@ -44,7 +46,7 @@ function MediaLibrary() {
   const renderScene = ({ route }) => {
     switch (route.key) {
       case 'library':
-        return <Library active={index === 0} animatedValue={animatedValue} />
+        return <Library animatedValue={animatedValue} />
       case 'camera':
         return <Camera active={index === 1} animatedValue={animatedValue} setAlert={setAlert} />
       default:

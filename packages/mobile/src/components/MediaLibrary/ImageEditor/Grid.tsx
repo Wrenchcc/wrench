@@ -1,65 +1,58 @@
 import React from 'react'
+import { View } from 'react-native'
 import Animated from 'react-native-reanimated'
-import { View, StyleSheet } from 'react-native'
-import { useAnimatedProps } from 'react-native-reanimated'
 
-const gridColor = '#000'
+const gridColor = 'black'
 
-function Grid({ opacity }) {
-  const gridOpacityStyle = useAnimatedProps(() => ({
-    opacity: opacity.value,
-  }))
-
-  return (
-    <Animated.View
-      pointerEvents="none"
-      style={[
-        {
+export default class Grid extends React.Component<{ opacity: Animated.Adaptable<number> }> {
+  private render() {
+    return (
+      <Animated.View
+        pointerEvents="none"
+        style={{
+          height: '100%',
+          opacity: this.props.opacity,
           position: 'absolute',
           width: '100%',
-          height: '100%',
-        },
-        gridOpacityStyle,
-      ]}
-    >
-      <View
-        style={{
-          width: StyleSheet.hairlineWidth,
-          height: '100%',
-          position: 'absolute',
-          left: '33%',
-          backgroundColor: gridColor,
         }}
-      />
-      <View
-        style={{
-          width: StyleSheet.hairlineWidth,
-          height: '100%',
-          position: 'absolute',
-          right: '33%',
-          backgroundColor: gridColor,
-        }}
-      />
-      <View
-        style={{
-          height: StyleSheet.hairlineWidth,
-          width: '100%',
-          position: 'absolute',
-          top: '33%',
-          backgroundColor: gridColor,
-        }}
-      />
-      <View
-        style={{
-          height: StyleSheet.hairlineWidth,
-          width: '100%',
-          position: 'absolute',
-          bottom: '33%',
-          backgroundColor: gridColor,
-        }}
-      />
-    </Animated.View>
-  )
+      >
+        <View
+          style={{
+            backgroundColor: gridColor,
+            height: '100%',
+            left: '33%',
+            position: 'absolute',
+            width: 0.5,
+          }}
+        />
+        <View
+          style={{
+            backgroundColor: gridColor,
+            height: '100%',
+            position: 'absolute',
+            right: '33%',
+            width: 0.5,
+          }}
+        />
+        <View
+          style={{
+            backgroundColor: gridColor,
+            height: 0.5,
+            position: 'absolute',
+            top: '33%',
+            width: '100%',
+          }}
+        />
+        <View
+          style={{
+            backgroundColor: gridColor,
+            bottom: '33%',
+            height: 0.5,
+            position: 'absolute',
+            width: '100%',
+          }}
+        />
+      </Animated.View>
+    )
+  }
 }
-
-export default Grid

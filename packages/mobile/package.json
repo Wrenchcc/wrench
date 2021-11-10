@@ -58,7 +58,7 @@
     "rambda": "^6.9.0",
     "react": "^17.0.2",
     "react-i18next": "11.10.0",
-    "react-native": "^0.66.2",
+    "react-native": "^0.66.3",
     "react-native-config": "^1.4.5",
     "react-native-deep-linking": "^2.2.0",
     "react-native-device-info": "^8.4.5",
@@ -86,7 +86,7 @@
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
-    "@babel/runtime": "^7.16.0",
+    "@babel/runtime": "^7.16.3",
     "@types/react-native-share": "^3.3.3",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-preset-react-native": "^5.0.2",

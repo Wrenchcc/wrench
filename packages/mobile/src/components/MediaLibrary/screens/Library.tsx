@@ -1,5 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { ActivityIndicator, View, TouchableOpacity, Text } from 'react-native'
+import { ActivityIndicator, View, Text } from 'react-native'
+import { useReactiveVar } from '@apollo/client'
+import { store } from 'gql'
+import { useTranslation } from 'react-i18next'
 import Animated, {
   useSharedValue,
   useDerivedValue,
@@ -9,13 +12,14 @@ import Animated, {
   useAnimatedGestureHandler,
   useAnimatedScrollHandler,
 } from 'react-native-reanimated'
-import { PanGestureHandler, FlatList } from 'react-native-gesture-handler'
+import { PanGestureHandler, FlatList, TouchableOpacity } from 'react-native-gesture-handler'
 import { clamp, snapPoint } from 'react-native-redash'
 import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import * as MediaLibrary from 'expo-media-library'
 import { useNavigation, SCREENS } from 'navigation'
 import AskForPermission from 'components/AskForPermission'
 import { isIphone, isAndroid } from 'utils/platform'
+import cropImage from 'utils/cropImage'
 import Item, { MARGIN, ITEM_SIZE } from '../Item'
 import Header from '../Header'
 import ImageEditor from '../ImageEditor'
@@ -42,7 +46,9 @@ const WRITE_EXTERNAL_STORAGE_PERMISSION = PERMISSIONS.ANDROID.WRITE_EXTERNAL_STO
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
-function Library({ active, animatedValue }) {
+function Library({ animatedValue }) {
+  const { t } = useTranslation('library')
+
   const cropAreaY = useSharedValue(CROP_FULLY_DOWN)
   const translationY = useSharedValue(0)
   const albumTranslateY = useSharedValue(ALBUM_FULLY_DOWN)
@@ -54,18 +60,36 @@ function Library({ active, animatedValue }) {
   const [checkingPermission, setCheckingPermission] = useState(true)
   const [photoPermission, setPhotoPermission] = useState('')
   const [selectedAlbum, setSelectedAlbum] = useState(null)
-  const [isPaused, setPaused] = useState(false)
-  const [selectedFile, selectFile] = useState([])
   const [assets, setAssets] = useState([])
   const [hasNextPage, setHasNextPage] = useState(true)
   const [endCursor, setEndCursor] = useState()
   const [lastEndCursor, setLastEndCursor] = useState()
+  const [isCropping, setCropping] = useState(false)
+
+  const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
+  const selectedFileId = useReactiveVar(store.files.selectedFileIdVar)
+  const selectedFile = selectedFiles.find(({ id }) => id === selectedFileId)
 
   const { dismissModal, navigate } = useNavigation()
 
-  const navigateToAddPost = useCallback(() => {
+  const handleOnCancel = () => {
+    store.files.reset()
+    dismissModal()
+  }
+
+  const handleCropping = useCallback(async () => {
+    try {
+      setCropping(true)
+      const files = await Promise.all(selectedFiles.map(cropImage))
+      store.files.add(files)
+    } catch (err) {
+      // logError(err)
+    }
+
     navigate(SCREENS.ADD_POST)
-  }, [])
+
+    setCropping(false)
+  }, [navigate])
 
   useEffect(() => {
     check(PERMISSION).then((res) => {
@@ -84,10 +108,10 @@ function Library({ active, animatedValue }) {
       })
     }
 
-    fetchInitialAssets(null)
+    if (!assets.length) {
+      fetchInitialAssets(null)
+    }
   }, [photoPermission])
-
-  useEffect(() => {}, [active, isPaused])
 
   const permissionAuthorized = useCallback(() => {
     setPhotoPermission(RESULTS.GRANTED)
@@ -102,11 +126,10 @@ function Library({ active, animatedValue }) {
         sortBy: MediaLibrary.SortBy.creationTime,
       })
 
-      selectFile(result.assets[0])
-
       setAssets(result.assets)
       setHasNextPage(result.hasNextPage)
       setEndCursor(result.endCursor)
+      store.files.select(result.assets[0])
     } catch {}
   }, [])
 
@@ -194,14 +217,12 @@ function Library({ active, animatedValue }) {
     },
   })
 
-  const handleOnselect = (item) => {
-    selectFile(item)
-    setPaused(false)
-
+  const handleOnSelect = useCallback((item) => {
+    store.files.select(item)
     cropAreaY.value = withTiming(CROP_FULLY_DOWN, {
       duration: TIMING_DURATION,
     })
-  }
+  }, [])
 
   const opacity = useDerivedValue(() => {
     return interpolate(cropAreaY.value, [CROP_FULLY_DOWN, CROP_FULLY_UP], [0, 0.5])
@@ -257,6 +278,12 @@ function Library({ active, animatedValue }) {
     return null
   }, [hasNextPage, assets])
 
+  const renderItem = ({ item }) => {
+    const order = selectedFiles.findIndex((e) => e.id === item.id)
+    const selected = selectedFiles.some((file) => file.id === item.id)
+    return <Item onPress={handleOnSelect} item={item} selected={selected} order={order + 1} />
+  }
+
   if (checkingPermission || isLoading) {
     return null
   }
@@ -268,7 +295,7 @@ function Library({ active, animatedValue }) {
 
         <Header
           headerLeft={
-            <TouchableOpacity onPress={dismissModal}>
+            <TouchableOpacity onPress={handleOnCancel}>
               <Text
                 style={{
                   color: 'white',
@@ -277,7 +304,7 @@ function Library({ active, animatedValue }) {
                   fontSize: 16,
                 }}
               >
-                Cancel
+                {t('cancel')}
               </Text>
             </TouchableOpacity>
           }
@@ -308,7 +335,7 @@ function Library({ active, animatedValue }) {
             selectedAlbum={selectedAlbum}
             toggleAlbum={handleToggleAlbum}
             headerLeft={
-              <TouchableOpacity onPress={dismissModal}>
+              <TouchableOpacity onPress={handleOnCancel}>
                 <Text
                   style={{
                     color: 'white',
@@ -317,29 +344,37 @@ function Library({ active, animatedValue }) {
                     fontSize: 16,
                   }}
                 >
-                  Cancel
+                  {t('cancel')}
                 </Text>
               </TouchableOpacity>
             }
             headerRight={
-              <TouchableOpacity onPress={navigateToAddPost} disabled={!selectedFile}>
-                <Text
-                  style={{
-                    color: 'white',
-                    margin: 8,
-                    fontWeight: '500',
-                    fontSize: 16,
-                    opacity: !selectedFile ? 0.5 : 1,
-                  }}
-                >
-                  Next
-                </Text>
+              <TouchableOpacity onPress={handleCropping} disabled={!selectedFiles.length}>
+                {isCropping ? (
+                  <ActivityIndicator color="white" />
+                ) : (
+                  <Text
+                    style={{
+                      color: 'white',
+                      margin: 8,
+                      fontWeight: '500',
+                      fontSize: 16,
+                      opacity: !selectedFiles.length ? 0.5 : 1,
+                    }}
+                  >
+                    {t('next')}
+                  </Text>
+                )}
               </TouchableOpacity>
             }
             animatedValue={animatedValue}
           />
 
-          <ImageEditor source={selectedFile} />
+          {selectedFile && (
+            <View style={{ width: CROP_AREA, height: CROP_AREA, overflow: 'hidden' }}>
+              <ImageEditor source={selectedFile} onChange={store.files.edit} />
+            </View>
+          )}
 
           <Animated.View
             pointerEvents="none"
@@ -387,9 +422,7 @@ function Library({ active, animatedValue }) {
               offset: ITEM_SIZE * index,
               index,
             })}
-            renderItem={({ item }) => (
-              <Item onPress={handleOnselect} item={item} selected={selectedFile.id === item.id} />
-            )}
+            renderItem={renderItem}
             onEndReached={onEndReached}
           />
         </Animated.View>

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { useTranslation } from 'react-i18next'
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -8,6 +9,8 @@ import Animated, {
 } from 'react-native-reanimated'
 
 function Alert({ onCancel, onDiscard }) {
+  const { t } = useTranslation('alert')
+
   const opacity = useSharedValue(0)
 
   useEffect(() => {
@@ -78,7 +81,8 @@ function Alert({ onCancel, onDiscard }) {
               marginBottom: 10,
             }}
           >
-            Discard photo?
+            {/* Discard photo? */}
+            {t('discardPhoto')}
           </Text>
 
           <Text
@@ -89,7 +93,8 @@ function Alert({ onCancel, onDiscard }) {
               textAlign: 'center',
             }}
           >
-            If you close the camera now, your photo will be discarded.
+            {/* If you close the camera now, your photo will be discarded. */}
+            {t('discardPhotoDescription')}
           </Text>
         </View>
 
