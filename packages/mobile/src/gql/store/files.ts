@@ -7,7 +7,6 @@ export const selectedFilesVar = makeVar([])
 export const selectedFileIdVar = makeVar('')
 
 export const add = (payload) => croppedFilesVar(payload)
-export const deselectAll = () => selectedFilesVar([])
 
 export const reset = () => {
   croppedFilesVar([])

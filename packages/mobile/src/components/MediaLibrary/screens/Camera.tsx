@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { Camera as EXCamera } from 'expo-camera'
 import { BlurView } from 'expo-blur'
+import { store } from 'gql'
 import { useNavigation, SCREENS } from 'navigation'
 import { isIphone } from 'utils/platform'
 import AskForPermission from 'components/AskForPermission'
@@ -117,6 +118,9 @@ function Camera({ active, animatedValue, setAlert }) {
 
       setMediaType('picture')
       setPicture(data)
+
+      // Add for add post screen
+      store.files.add([data])
     })
   }
 
@@ -147,6 +151,8 @@ function Camera({ active, animatedValue, setAlert }) {
   }
 
   const handleCancel = useCallback(() => {
+    store.files.reset()
+
     if (!!picture) {
       setAlert({
         visible: true,
@@ -200,7 +206,7 @@ function Camera({ active, animatedValue, setAlert }) {
                   fontSize: 16,
                 }}
               >
-                Cancel
+                {t('cancel')}
               </Text>
             </TouchableOpacity>
           }
@@ -234,7 +240,7 @@ function Camera({ active, animatedValue, setAlert }) {
           </>
         }
         headerRight={
-          <TouchableOpacity onPress={navigateToAddPost} disabled={!!picture}>
+          <TouchableOpacity onPress={navigateToAddPost} disabled={!picture}>
             <Text
               style={{
                 color: 'white',

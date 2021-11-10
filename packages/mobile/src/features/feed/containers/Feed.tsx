@@ -22,7 +22,7 @@ function Feed() {
   const closeNewPosts = useCallback(() => setHasNewPosts(false), [])
 
   const isPosting = useReactiveVar(store.post.isPostingVar)
-  const image = useReactiveVar(store.files.selectedFilesVar)[0]
+  const image = useReactiveVar(store.files.croppedFilesVar)[0]
 
   const {
     data: { edges },
