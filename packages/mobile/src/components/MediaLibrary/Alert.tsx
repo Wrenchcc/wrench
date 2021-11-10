@@ -110,7 +110,7 @@ function Alert({ onCancel, onDiscard }) {
             paddingVertical: 15,
           }}
         >
-          <Text style={{ color: '#ED4956', fontWeight: '600', fontSize: 15 }}>Discard</Text>
+          <Text style={{ color: '#ED4956', fontWeight: '600', fontSize: 15 }}>{t('discard')}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -122,7 +122,7 @@ function Alert({ onCancel, onDiscard }) {
             paddingVertical: 15,
           }}
         >
-          <Text style={{ color: 'white', fontSize: 15 }}>Keep</Text>
+          <Text style={{ color: 'white', fontSize: 15 }}>{t('keep')}</Text>
         </TouchableOpacity>
       </Animated.View>
     </Animated.View>
