@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { View, Dimensions, ScrollView, Image } from 'react-native'
+import { View, ScrollView, Image } from 'react-native'
 import { COLORS } from 'ui/constants'
 import Grid from './Grid'
 import { isAndroid } from 'utils/platform'
@@ -21,7 +21,7 @@ export default class ImageEditor extends PureComponent {
 
   private scaledImageSize = null
 
-  private componentDidMount() {
+  componentDidMount() {
     if (!this.props.source) {
       return
     }
@@ -29,7 +29,7 @@ export default class ImageEditor extends PureComponent {
     this.setImageProperties(this.props.source)
   }
 
-  private componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps) {
     if (this.props.source.uri !== prevProps.source.uri) {
       this.handleLoading(true)
       this.setImageProperties(this.props.source)
@@ -108,11 +108,14 @@ export default class ImageEditor extends PureComponent {
     })
   }
 
-  private render() {
+  render() {
     const { isLoading, isMoving } = this.state
 
     return (
-      <View key={this.props.source.uri}>
+      <View
+        key={this.props.source.uri}
+        style={{ width: CROP_AREA, height: CROP_AREA, overflow: 'hidden' }}
+      >
         <ScrollView
           alwaysBounceVertical
           automaticallyAdjustContentInsets={false}

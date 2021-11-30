@@ -4,14 +4,13 @@ import Animated from 'react-native-reanimated'
 
 const gridColor = 'black'
 
-export default class Grid extends React.Component<{ opacity: Animated.Adaptable<number> }> {
-  private render() {
+export default class Grid extends React.PureComponent {
+  render() {
     return (
       <Animated.View
         pointerEvents="none"
         style={{
           height: '100%',
-          opacity: this.props.opacity,
           position: 'absolute',
           width: '100%',
         }}

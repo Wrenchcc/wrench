@@ -10,16 +10,16 @@
   },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
-    "graphql": "^15.5.0",
-    "rambda": "^6.7.0",
+    "graphql": "^16.0.1",
+    "rambda": "^6.9.0",
     "react": "^17.0.2"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.21.4",
-    "@graphql-codegen/typescript": "1.22.0",
-    "@graphql-codegen/typescript-operations": "1.17.16",
-    "@graphql-codegen/typescript-react-apollo": "2.2.4",
-    "graphql-codegen-apollo-next-ssr": "^1.6.1",
-    "typescript": "^4.2.4"
+    "@graphql-codegen/cli": "^2.3.0",
+    "@graphql-codegen/typescript": "2.4.1",
+    "@graphql-codegen/typescript-operations": "2.2.1",
+    "@graphql-codegen/typescript-react-apollo": "3.2.2",
+    "graphql-codegen-apollo-next-ssr": "^1.7.1",
+    "typescript": "^4.5.2"
   }
 }

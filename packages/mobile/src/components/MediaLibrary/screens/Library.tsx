@@ -12,23 +12,22 @@ import Animated, {
   useAnimatedGestureHandler,
   useAnimatedScrollHandler,
 } from 'react-native-reanimated'
-import { PanGestureHandler, FlatList, TouchableOpacity } from 'react-native-gesture-handler'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import { clamp, snapPoint } from 'react-native-redash'
 import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions'
-import * as MediaLibrary from 'expo-media-library'
 import { useNavigation, SCREENS } from 'navigation'
 import AskForPermission from 'components/AskForPermission'
 import { isIphone, isAndroid } from 'utils/platform'
 import cropImage from 'utils/cropImage'
-import Item, { MARGIN, ITEM_SIZE } from '../Item'
 import Header from '../Header'
 import ImageEditor from '../ImageEditor'
 import Albums from '../Albums'
+import Dragbar from '../Dragbar'
+import Opacity from '../Opacity'
+import MediaSelector from '../MediaSelector'
 import {
   HEADER_HEIGHT,
   CROP_FULLY_DOWN,
-  INITIAL_PAGE_SIZE,
-  PAGE_SIZE,
   CROP_FULLY_UP,
   TIMING_DURATION,
   CROP_AREA,
@@ -38,13 +37,15 @@ import {
   ALBUM_FULLY_UP,
 } from '../constants'
 
-const PERMISSION = isIphone
-  ? PERMISSIONS.IOS.PHOTO_LIBRARY
-  : PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE
-
-const WRITE_EXTERNAL_STORAGE_PERMISSION = PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE
-
-const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
+const styles = {
+  cropArea: {
+    position: 'absolute',
+    zIndex: 1000,
+    width: CROP_AREA,
+    height: CROP_AREA + HEADER_HEIGHT,
+    backgroundColor: '#222',
+  },
+}
 
 function Library({ animatedValue }) {
   const { t } = useTranslation('library')
@@ -60,115 +61,31 @@ function Library({ animatedValue }) {
   const [checkingPermission, setCheckingPermission] = useState(true)
   const [photoPermission, setPhotoPermission] = useState('')
   const [selectedAlbum, setSelectedAlbum] = useState(null)
-  const [assets, setAssets] = useState([])
-  const [hasNextPage, setHasNextPage] = useState(true)
-  const [endCursor, setEndCursor] = useState()
-  const [lastEndCursor, setLastEndCursor] = useState()
-  const [isCropping, setCropping] = useState(false)
+
+  const { dismissModal, navigate } = useNavigation()
 
   const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
   const selectedFileId = useReactiveVar(store.files.selectedFileIdVar)
   const selectedFile = selectedFiles.find(({ id }) => id === selectedFileId)
 
-  const { dismissModal, navigate } = useNavigation()
-
-  const handleOnCancel = () => {
+  const handleOnCancel = useCallback(() => {
     store.files.reset()
     dismissModal()
-  }
-
-  const handleCropping = useCallback(async () => {
-    try {
-      setCropping(true)
-      const files = await Promise.all(selectedFiles.map(cropImage))
-      store.files.add(files)
-    } catch (err) {
-      // logError(err)
-    }
-
-    navigate(SCREENS.ADD_POST)
-
-    setCropping(false)
-  }, [navigate])
-
-  useEffect(() => {
-    check(PERMISSION).then((res) => {
-      setLoading(false)
-      setPhotoPermission(res)
-      setCheckingPermission(false)
-    })
-
-    // NOTE: For saving image
-    if (isAndroid) {
-      check(WRITE_EXTERNAL_STORAGE_PERMISSION).then((res) => {
-        // NOTE: Need to ask for permission here
-        if (res !== RESULTS.GRANTED) {
-          request(WRITE_EXTERNAL_STORAGE_PERMISSION)
-        }
-      })
-    }
-
-    if (!assets.length) {
-      fetchInitialAssets(null)
-    }
-  }, [photoPermission])
-
-  const permissionAuthorized = useCallback(() => {
-    setPhotoPermission(RESULTS.GRANTED)
-  }, [setPhotoPermission])
-
-  const fetchInitialAssets = useCallback(async (album) => {
-    try {
-      const result = await MediaLibrary.getAssetsAsync({
-        first: INITIAL_PAGE_SIZE,
-        album: album?.id,
-        mediaType: [MediaLibrary.MediaType.photo],
-        sortBy: MediaLibrary.SortBy.creationTime,
-      })
-
-      setAssets(result.assets)
-      setHasNextPage(result.hasNextPage)
-      setEndCursor(result.endCursor)
-      store.files.select(result.assets[0])
-    } catch {}
   }, [])
 
-  const fetchMoreAssets = useCallback(
-    async (after) => {
-      if (!hasNextPage) {
-        return
-      }
+  // const handleCropping = useCallback(async () => {
+  //   try {
+  //     setCropping(true)
+  //     const files = await Promise.all(selectedFiles.map(cropImage))
+  //     store.files.add(files)
+  //   } catch (err) {
+  //     // logError(err)
+  //   }
 
-      // NOTE: Dirty fix for fetching same data
-      setLastEndCursor(after)
+  //   navigate(SCREENS.ADD_POST)
 
-      try {
-        const result = await MediaLibrary.getAssetsAsync({
-          after,
-          album: selectedAlbum.id,
-          first: PAGE_SIZE,
-          sortBy: [[MediaLibrary.SortBy.creationTime, false]],
-        })
-
-        // NOTE: Dirty fix for fetching same data
-        if (after !== lastEndCursor) {
-          setAssets((p) => p.concat(result.assets))
-        }
-
-        setHasNextPage(result.hasNextPage)
-        setEndCursor(result.endCursor)
-      } catch (err) {
-        // logError(err)
-      }
-    },
-    [hasNextPage, setAssets, setHasNextPage, setEndCursor, lastEndCursor, selectedAlbum]
-  )
-
-  const handleChangeAlbum = (album) => {
-    handleToggleAlbum()
-    setSelectedAlbum(album)
-    fetchInitialAssets(album)
-  }
+  //   setCropping(false)
+  // }, [navigate])
 
   const handleToggleAlbum = () => {
     const toggleValue = (isUp.value = !isUp.value)
@@ -189,12 +106,6 @@ function Library({ animatedValue }) {
       duration: TIMING_DURATION,
     })
   }
-
-  const onEndReached = useCallback(() => {
-    if (hasNextPage) {
-      fetchMoreAssets(endCursor)
-    }
-  }, [hasNextPage, endCursor, fetchMoreAssets])
 
   const scrollHandler = useAnimatedScrollHandler((event) => {
     translationY.value = event.contentOffset.y
@@ -217,13 +128,6 @@ function Library({ animatedValue }) {
     },
   })
 
-  const handleOnSelect = useCallback((item) => {
-    store.files.select(item)
-    cropAreaY.value = withTiming(CROP_FULLY_DOWN, {
-      duration: TIMING_DURATION,
-    })
-  }, [])
-
   const opacity = useDerivedValue(() => {
     return interpolate(cropAreaY.value, [CROP_FULLY_DOWN, CROP_FULLY_UP], [0, 0.5])
   })
@@ -244,14 +148,6 @@ function Library({ animatedValue }) {
     }
   })
 
-  const opacityStyle = useAnimatedStyle(() => ({
-    opacity: opacity.value,
-  }))
-
-  const spacingStyle = useAnimatedStyle(() => ({
-    height: spacing.value,
-  }))
-
   const arrowStyle = useAnimatedStyle(() => {
     return {
       transform: [{ rotateZ: `${rotation.value}deg` }],
@@ -266,73 +162,23 @@ function Library({ animatedValue }) {
     opacity: headerOpacity.value,
   }))
 
-  const renderFooter = useCallback(() => {
-    if (hasNextPage && assets.length) {
-      return (
-        <View style={{ paddingTop: 30, paddingBottom: 30 }}>
-          <ActivityIndicator color="white" />
-        </View>
-      )
-    }
+  // if (checkingPermission || isLoading) {
+  //   return null
+  // }
 
-    return null
-  }, [hasNextPage, assets])
-
-  const renderItem = ({ item }) => {
-    const order = selectedFiles.findIndex((e) => e.id === item.id)
-    const selected = selectedFiles.some((file) => file.id === item.id)
-    return <Item onPress={handleOnSelect} item={item} selected={selected} order={order + 1} />
-  }
-
-  if (checkingPermission || isLoading) {
-    return null
-  }
-
-  if (photoPermission !== RESULTS.GRANTED) {
-    return (
-      <>
-        <AskForPermission permission={PERMISSION} onSuccess={permissionAuthorized} type="photo" />
-
-        <Header
-          headerLeft={
-            <TouchableOpacity onPress={handleOnCancel}>
-              <Text
-                style={{
-                  color: 'white',
-                  margin: 8,
-                  fontWeight: '500',
-                  fontSize: 16,
-                }}
-              >
-                {t('cancel')}
-              </Text>
-            </TouchableOpacity>
-          }
-        />
-      </>
-    )
-  }
+  // if (photoPermission !== RESULTS.GRANTED) {
+  //   // return <Permission />
+  // }
 
   return (
     <>
       <View style={{ flex: 1, backgroundColor: 'black' }}>
-        <Animated.View
-          style={[
-            {
-              position: 'absolute',
-              zIndex: 1000,
-              width: CROP_AREA,
-              height: CROP_AREA + HEADER_HEIGHT,
-              backgroundColor: '#222',
-            },
-            cropAreaStyle,
-          ]}
-        >
+        <Animated.View style={[styles.cropArea, cropAreaStyle]}>
           <Header
             headerLeftStyle={headerLeftStyle}
             headerRightStyle={headerRightStyle}
             arrowStyle={arrowStyle}
-            selectedAlbum={selectedAlbum}
+            // selectedAlbum={selectedAlbum}
             toggleAlbum={handleToggleAlbum}
             headerLeft={
               <TouchableOpacity onPress={handleOnCancel}>
@@ -348,91 +194,41 @@ function Library({ animatedValue }) {
                 </Text>
               </TouchableOpacity>
             }
-            headerRight={
-              <TouchableOpacity onPress={handleCropping} disabled={!selectedFiles.length}>
-                {isCropping ? (
-                  <ActivityIndicator color="white" />
-                ) : (
-                  <Text
-                    style={{
-                      color: 'white',
-                      margin: 8,
-                      fontWeight: '500',
-                      fontSize: 16,
-                      opacity: !selectedFiles.length ? 0.5 : 1,
-                    }}
-                  >
-                    {t('next')}
-                  </Text>
-                )}
-              </TouchableOpacity>
-            }
-            animatedValue={animatedValue}
+            // headerRight={
+            //   <TouchableOpacity onPress={handleCropping} disabled={!selectedFiles.length}>
+            //     {isCropping ? (
+            //       <ActivityIndicator color="white" />
+            //     ) : (
+            //       <Text
+            //         style={{
+            //           color: 'white',
+            //           margin: 8,
+            //           fontWeight: '500',
+            //           fontSize: 16,
+            //           opacity: !selectedFiles.length ? 0.5 : 1,
+            //         }}
+            //       >
+            //         {t('next')}
+            //       </Text>
+            //     )}
+            //   </TouchableOpacity>
+            // }
           />
 
-          {selectedFile && (
-            <View style={{ width: CROP_AREA, height: CROP_AREA, overflow: 'hidden' }}>
-              <ImageEditor source={selectedFile} onChange={store.files.edit} />
-            </View>
-          )}
+          {selectedFile && <ImageEditor source={selectedFile} onChange={store.files.edit} />}
 
-          <Animated.View
-            pointerEvents="none"
-            style={[
-              {
-                position: 'absolute',
-                zIndex: 1,
-                top: HEADER_HEIGHT,
-                width: CROP_AREA,
-                height: CROP_AREA,
-                backgroundColor: '#000',
-              },
-              opacityStyle,
-            ]}
-          />
-
-          <PanGestureHandler onGestureEvent={gestureHandler}>
-            <Animated.View
-              style={{
-                position: 'absolute',
-                bottom: 0,
-                zIndex: 100,
-                width: '100%',
-                height: DRAG_BAR,
-              }}
-            />
-          </PanGestureHandler>
+          <Opacity opacity={opacity} />
+          <Dragbar gestureHandler={gestureHandler} />
         </Animated.View>
 
-        <Animated.View style={{ flex: 1, marginTop: DRAG_BAR, marginBottom: TAB_BAR_HEIGHT }}>
-          <AnimatedFlatList
-            ListHeaderComponent={<Animated.View style={[{ width: '100%' }, spacingStyle]} />}
-            onScroll={scrollHandler}
-            scrollEventThrottle={1}
-            automaticallyAdjustContentInsets={false}
-            numColumns={4}
-            windowSize={17}
-            ListFooterComponent={renderFooter}
-            data={assets}
-            keyExtractor={(item) => item.id}
-            initialNumToRender={PAGE_SIZE}
-            style={{ marginLeft: -MARGIN }}
-            getItemLayout={(_, index) => ({
-              length: ITEM_SIZE,
-              offset: ITEM_SIZE * index,
-              index,
-            })}
-            renderItem={renderItem}
-            onEndReached={onEndReached}
-          />
-        </Animated.View>
+        <MediaSelector onScroll={scrollHandler} spacing={spacing} album={selectedAlbum} />
       </View>
 
-      <Albums
+      {/* <Albums
         onPress={handleChangeAlbum}
         setInitialAlbum={setSelectedAlbum}
         translateY={albumTranslateY}
-      />
+      /> */}
     </>
   )
 }

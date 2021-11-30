@@ -302,12 +302,7 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
                     <Title>{t('selectCollection')}</Title>
                     <Spacer />
 
-                    <Collections
-                      projectId={post.project.id}
-                      isOwner
-                      onSave={addToCollection}
-                      disableAnimation
-                    />
+                    <Collections projectId={post.project.id} isOwner onSave={addToCollection} />
                   </>
                 ),
               })

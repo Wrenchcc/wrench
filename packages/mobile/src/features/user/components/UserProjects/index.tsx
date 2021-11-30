@@ -1,6 +1,5 @@
 import React from 'react'
 import { ScrollView, Dimensions } from 'react-native'
-import { View as MotiView } from 'moti'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { CardSmall, Text } from 'ui'
@@ -39,15 +38,7 @@ function UserProjects({ projects, spacingHorizontal }) {
   })
 
   return (
-    <MotiView
-      from={{ height: 0, opacity: 0 }}
-      animate={{ height: 265, opacity: 1 }}
-      delay={300}
-      transition={{
-        type: 'timing',
-        duration: 300,
-      }}
-    >
+    <>
       <Text medium fontSize={21} style={{ marginLeft: spacingHorizontal ? 20 : 0 }}>
         {t('title')}
       </Text>
@@ -64,7 +55,7 @@ function UserProjects({ projects, spacingHorizontal }) {
       >
         {renderItems}
       </ScrollView>
-    </MotiView>
+    </>
   )
 }
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import { MotiView } from 'moti'
 import { usePaginatedQuery, ProjectCollectionsDocument } from '@wrench/common'
 import { InfiniteList } from 'ui'
 import AddCollection from 'components/AddCollection'
@@ -14,7 +13,6 @@ function Collections({
   onSave,
   selectedId,
   disableModal = false,
-  disableAnimation,
 }) {
   const {
     data: { edges },
@@ -58,7 +56,7 @@ function Collections({
     content = null
   }
 
-  if ((edges?.length && disableAnimation) || (edges?.length && isOwner)) {
+  if (edges?.length || (edges?.length && isOwner)) {
     content = (
       <InfiniteList
         initialNumToRender={8}
@@ -89,44 +87,34 @@ function Collections({
     )
   }
 
-  if ((edges?.length && !disableAnimation) || (edges?.length && !isOwner)) {
+  if (edges?.length || (edges?.length && !isOwner)) {
     content = (
-      <MotiView
-        from={{ height: 0, opacity: 0 }}
-        animate={{ height: 85, opacity: 1 }}
-        delay={200}
-        transition={{
-          type: 'timing',
-          duration: 300,
+      <InfiniteList
+        initialNumToRender={8}
+        data={edges}
+        horizontal
+        directionalLockEnabled
+        showsHorizontalScrollIndicator={false}
+        ListHeaderComponent={
+          isOwner && (
+            <AddCollection
+              style={{ marginRight: 10 }}
+              projectId={projectId}
+              disableModal={disableModal}
+            />
+          )
+        }
+        fetchMore={fetchMore}
+        isFetching={isFetching}
+        loaderInset={10}
+        hasNextPage={hasNextPage}
+        renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
+        style={{
+          marginLeft: -GUTTER,
+          marginRight: -GUTTER,
         }}
-      >
-        <InfiniteList
-          initialNumToRender={8}
-          data={edges}
-          horizontal
-          directionalLockEnabled
-          showsHorizontalScrollIndicator={false}
-          ListHeaderComponent={
-            isOwner && (
-              <AddCollection
-                style={{ marginRight: 10 }}
-                projectId={projectId}
-                disableModal={disableModal}
-              />
-            )
-          }
-          fetchMore={fetchMore}
-          isFetching={isFetching}
-          loaderInset={10}
-          hasNextPage={hasNextPage}
-          renderItem={renderItem}
-          showsVerticalScrollIndicator={false}
-          style={{
-            marginLeft: -GUTTER,
-            marginRight: -GUTTER,
-          }}
-        />
-      </MotiView>
+      />
     )
   }
 

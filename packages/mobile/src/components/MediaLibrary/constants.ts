@@ -11,7 +11,7 @@ export const CROP_FULLY_UP = -CROP_AREA + DRAG_BAR - HEADER_HEIGHT
 export const CROP_FULLY_DOWN = 0
 export const CROP_TIMING_DURATION = 150
 
-export const INITIAL_PAGE_SIZE = 48
+export const INITIAL_PAGE_SIZE = 32
 export const PAGE_SIZE = 80
 
 export const TIMING_DURATION = 250
