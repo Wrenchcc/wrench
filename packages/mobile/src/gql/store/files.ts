@@ -5,6 +5,7 @@ import { MAX_SELECTED_FILES } from './constants'
 export const croppedFilesVar = makeVar([])
 export const selectedFilesVar = makeVar([])
 export const selectedFileIdVar = makeVar('')
+export const selectedAlbumVar = makeVar(null)
 
 export const add = (payload) => croppedFilesVar(payload)
 
@@ -12,6 +13,10 @@ export const reset = () => {
   croppedFilesVar([])
   selectedFilesVar([])
   selectedFileIdVar('')
+}
+
+export const setAlbum = (album) => {
+  selectedAlbumVar(album)
 }
 
 export const select = async (payload) => {

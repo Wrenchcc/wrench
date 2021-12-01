@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
-import { Text, View, TouchableOpacity, Image, StyleSheet, InteractionManager } from 'react-native'
+import { View, TouchableOpacity, Image, StyleSheet, InteractionManager } from 'react-native'
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { Camera as EXCamera } from 'expo-camera'
 import { BlurView } from 'expo-blur'
 import { store } from 'gql'
+import Text from 'ui/Text'
 import { useNavigation, SCREENS } from 'navigation'
 import { isIphone } from 'utils/platform'
 import AskForPermission from 'components/AskForPermission'
@@ -198,16 +199,7 @@ function Camera({ active, animatedValue, setAlert }) {
         <Header
           headerLeft={
             <TouchableOpacity onPress={handleCancel}>
-              <Text
-                style={{
-                  color: 'white',
-                  margin: 8,
-                  fontWeight: '500',
-                  fontSize: 16,
-                }}
-              >
-                {t('cancel')}
-              </Text>
+              <Text style={{ margin: 8 }}>{t('cancel')}</Text>
             </TouchableOpacity>
           }
         />
@@ -225,14 +217,7 @@ function Camera({ active, animatedValue, setAlert }) {
               style={[{ bottom: -17, position: 'absolute', zIndex: 999 }, opacityCancelStyle]}
             >
               <TouchableOpacity onPress={handleCancel}>
-                <Text
-                  style={{
-                    color: 'white',
-                    margin: 8,
-                    fontWeight: '500',
-                    fontSize: 16,
-                  }}
-                >
+                <Text medium style={{ margin: 8 }}>
                   {t('cancel')}
                 </Text>
               </TouchableOpacity>
@@ -242,11 +227,9 @@ function Camera({ active, animatedValue, setAlert }) {
         headerRight={
           <TouchableOpacity onPress={navigateToAddPost} disabled={!picture}>
             <Text
+              medium
               style={{
-                color: 'white',
                 margin: 8,
-                fontWeight: '500',
-                fontSize: 16,
                 opacity: !!picture ? 1 : 0.5,
               }}
             >
@@ -367,6 +350,7 @@ function Camera({ active, animatedValue, setAlert }) {
       >
         <TouchableOpacity onPress={handleDelete} activeOpacity={0.8}>
           <Text
+            medium
             style={{
               color: shouldDelete ? '#ED4956' : 'white',
               fontWeight: '500',

@@ -9,19 +9,20 @@ import { INITIAL_PAGE_SIZE, PAGE_SIZE, DRAG_BAR, TAB_BAR_HEIGHT } from '../const
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
-function MediaSelector({ onScroll, spacing, album: selectedAlbum }) {
+function MediaSelector({ onScroll, spacing }) {
   const [assets, setAssets] = useState([])
   const [hasNextPage, setHasNextPage] = useState(true)
   const [endCursor, setEndCursor] = useState()
   const [lastEndCursor, setLastEndCursor] = useState()
 
   const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
+  const selectedAlbum = useReactiveVar(store.files.selectedAlbumVar)
 
   useEffect(() => {
-    if (!assets.length) {
-      fetchInitialAssets(null)
+    if (selectedAlbum?.id) {
+      fetchInitialAssets(selectedAlbum)
     }
-  }, [])
+  }, [selectedAlbum?.id])
 
   const fetchInitialAssets = useCallback(async (album) => {
     try {
@@ -107,7 +108,7 @@ function MediaSelector({ onScroll, spacing, album: selectedAlbum }) {
       <AnimatedFlatList
         ListHeaderComponent={<Animated.View style={[{ width: '100%' }, spacingStyle]} />}
         onScroll={onScroll}
-        scrollEventThrottle={1}
+        // scrollEventThrottle={1}
         automaticallyAdjustContentInsets={false}
         numColumns={4}
         windowSize={17}

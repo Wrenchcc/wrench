@@ -1,19 +1,23 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, TouchableOpacity } from 'react-native'
+import Text from 'ui/Text'
 import Animated from 'react-native-reanimated'
 import { HEADER_HEIGHT } from './constants'
 import { arrowDown } from 'images'
+import { useReactiveVar } from '@apollo/client'
+import { store } from 'gql'
 
 function Header({
   headerTitle,
   headerLeft,
   headerRight,
-  selectedAlbum,
   headerLeftStyle = {},
   headerRightStyle = {},
   arrowStyle = {},
   toggleAlbum,
 }) {
+  const selectedAlbum = useReactiveVar(store.files.selectedAlbumVar)
+
   return (
     <>
       <View
@@ -33,46 +37,41 @@ function Header({
             flex: 1,
           }}
         >
-          <Animated.View style={[{ width: 70 }, headerLeftStyle]}>{headerLeft}</Animated.View>
+          <Animated.View style={[{ flex: 1, alignItems: 'flex-start' }, headerLeftStyle]}>
+            {headerLeft}
+          </Animated.View>
 
-          {headerTitle ? (
-            <Text
-              style={{
-                color: 'white',
-                margin: 8,
-                fontWeight: '600',
-                fontSize: 16,
-              }}
-            >
-              {headerTitle}
-            </Text>
-          ) : (
-            selectedAlbum && (
-              <TouchableOpacity
-                onPress={toggleAlbum}
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <Text
+          <View
+            style={{
+              flex: 2,
+              alignItems: 'center',
+            }}
+          >
+            {headerTitle ? (
+              <Text medium>{headerTitle}</Text>
+            ) : (
+              selectedAlbum && (
+                <TouchableOpacity
+                  onPress={toggleAlbum}
                   style={{
-                    color: 'white',
-                    margin: 8,
-                    fontWeight: '600',
-                    fontSize: 16,
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
                   }}
                 >
-                  {selectedAlbum?.title}
-                </Text>
+                  <Text medium>{selectedAlbum?.title}</Text>
+                  <Animated.Image
+                    source={arrowDown}
+                    style={[{ tintColor: 'white', marginLeft: 5 }, arrowStyle]}
+                  />
+                </TouchableOpacity>
+              )
+            )}
+          </View>
 
-                <Animated.Image source={arrowDown} style={[{ tintColor: 'white' }, arrowStyle]} />
-              </TouchableOpacity>
-            )
-          )}
-
-          <Animated.View style={[{ width: 60 }, headerRightStyle]}>{headerRight}</Animated.View>
+          <Animated.View style={[{ flex: 1, alignItems: 'flex-end' }, headerRightStyle]}>
+            {headerRight}
+          </Animated.View>
         </View>
       </View>
     </>

@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { View, Image, ScrollView, TouchableOpacity, Text, StyleSheet } from 'react-native'
 import Animated, { useAnimatedStyle } from 'react-native-reanimated'
 import * as MediaLibrary from 'expo-media-library'
 import { BlurView } from 'expo-blur'
+import { store } from 'gql'
 import { ALBUM_INNER_HEIGHT, ALBUM_WIDTH, HEADER_HEIGHT } from './constants'
 
 const AnimatedBlurView = Animated.createAnimatedComponent(BlurView)
 
-function Albums({ onPress, setInitialAlbum, translateY }) {
+function Albums({ translateY, onPress }) {
   const [albums, setAlbums] = useState([])
 
-  const getAlbums = async () => {
+  const getAlbums = useCallback(async () => {
     try {
       const albums = await MediaLibrary.getAlbumsAsync({
         includeSmartAlbums: true,
@@ -36,14 +37,19 @@ function Albums({ onPress, setInitialAlbum, translateY }) {
         .filter((a) => a.totalCount > 0)
         .sort((a, b) => b.assetCount - a.assetCount)
 
-      setInitialAlbum(result[0])
-
+      store.files.setAlbum(result[0])
       setAlbums(result)
     } catch (err) {}
-  }
+  }, [])
 
   useEffect(() => {
     getAlbums()
+  }, [])
+
+  const handleOnPress = useCallback((album) => {
+    store.files.reset()
+    store.files.setAlbum(album)
+    onPress()
   }, [])
 
   const albumStyle = useAnimatedStyle(() => {
@@ -85,7 +91,7 @@ function Albums({ onPress, setInitialAlbum, translateY }) {
           {albums.map(({ id, title, totalCount, preview }) => (
             <View key={id} style={{ height: 100, width: '100%' }}>
               <TouchableOpacity
-                onPress={() => onPress({ id, title })}
+                onPress={() => handleOnPress({ id, title })}
                 style={{ flexDirection: 'row' }}
               >
                 <Image
@@ -117,4 +123,4 @@ function Albums({ onPress, setInitialAlbum, translateY }) {
   )
 }
 
-export default Albums
+export default React.memo(Albums)

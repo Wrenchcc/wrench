@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { ActivityIndicator, View, Text } from 'react-native'
+import { ActivityIndicator, View } from 'react-native'
 import { useReactiveVar } from '@apollo/client'
 import { store } from 'gql'
 import { useTranslation } from 'react-i18next'
@@ -16,7 +16,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { clamp, snapPoint } from 'react-native-redash'
 import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { useNavigation, SCREENS } from 'navigation'
-import AskForPermission from 'components/AskForPermission'
+import Text from 'ui/Text'
 import { isIphone, isAndroid } from 'utils/platform'
 import cropImage from 'utils/cropImage'
 import Header from '../Header'
@@ -25,6 +25,7 @@ import Albums from '../Albums'
 import Dragbar from '../Dragbar'
 import Opacity from '../Opacity'
 import MediaSelector from '../MediaSelector'
+import Permission from '../Permission'
 import {
   HEADER_HEIGHT,
   CROP_FULLY_DOWN,
@@ -47,6 +48,12 @@ const styles = {
   },
 }
 
+const WRITE_EXTERNAL_STORAGE_PERMISSION = PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE
+
+const PERMISSION = isIphone
+  ? PERMISSIONS.IOS.PHOTO_LIBRARY
+  : PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE
+
 function Library({ animatedValue }) {
   const { t } = useTranslation('library')
 
@@ -58,9 +65,8 @@ function Library({ animatedValue }) {
   const headerOpacity = useSharedValue(1)
 
   const [isLoading, setLoading] = useState(true)
-  const [checkingPermission, setCheckingPermission] = useState(true)
+  const [isCropping, setCropping] = useState(false)
   const [photoPermission, setPhotoPermission] = useState('')
-  const [selectedAlbum, setSelectedAlbum] = useState(null)
 
   const { dismissModal, navigate } = useNavigation()
 
@@ -68,24 +74,47 @@ function Library({ animatedValue }) {
   const selectedFileId = useReactiveVar(store.files.selectedFileIdVar)
   const selectedFile = selectedFiles.find(({ id }) => id === selectedFileId)
 
+  useEffect(() => {
+    check(PERMISSION).then((res) => {
+      setPhotoPermission(res)
+      setLoading(false)
+    })
+
+    // NOTE: For saving image
+    if (isAndroid) {
+      check(WRITE_EXTERNAL_STORAGE_PERMISSION).then((res) => {
+        // NOTE: Need to ask for permission here
+        if (res !== RESULTS.GRANTED) {
+          request(WRITE_EXTERNAL_STORAGE_PERMISSION)
+        }
+
+        setLoading(false)
+      })
+    }
+  }, [photoPermission])
+
   const handleOnCancel = useCallback(() => {
     store.files.reset()
     dismissModal()
   }, [])
 
-  // const handleCropping = useCallback(async () => {
-  //   try {
-  //     setCropping(true)
-  //     const files = await Promise.all(selectedFiles.map(cropImage))
-  //     store.files.add(files)
-  //   } catch (err) {
-  //     // logError(err)
-  //   }
+  const permissionAuthorized = useCallback(() => {
+    setPhotoPermission(RESULTS.GRANTED)
+  }, [setPhotoPermission])
 
-  //   navigate(SCREENS.ADD_POST)
+  const handleCropping = useCallback(async () => {
+    try {
+      setCropping(true)
+      const files = await Promise.all(selectedFiles.map(cropImage))
+      store.files.add(files)
+    } catch (err) {
+      // logError(err)
+    }
 
-  //   setCropping(false)
-  // }, [navigate])
+    navigate(SCREENS.ADD_POST)
+
+    setCropping(false)
+  }, [navigate])
 
   const handleToggleAlbum = () => {
     const toggleValue = (isUp.value = !isUp.value)
@@ -162,13 +191,13 @@ function Library({ animatedValue }) {
     opacity: headerOpacity.value,
   }))
 
-  // if (checkingPermission || isLoading) {
-  //   return null
-  // }
+  if (isLoading) {
+    return null
+  }
 
-  // if (photoPermission !== RESULTS.GRANTED) {
-  //   // return <Permission />
-  // }
+  if (photoPermission !== RESULTS.GRANTED) {
+    return <Permission onCancel={handleOnCancel} onSuccess={permissionAuthorized} />
+  }
 
   return (
     <>
@@ -178,41 +207,28 @@ function Library({ animatedValue }) {
             headerLeftStyle={headerLeftStyle}
             headerRightStyle={headerRightStyle}
             arrowStyle={arrowStyle}
-            // selectedAlbum={selectedAlbum}
             toggleAlbum={handleToggleAlbum}
             headerLeft={
               <TouchableOpacity onPress={handleOnCancel}>
-                <Text
-                  style={{
-                    color: 'white',
-                    margin: 8,
-                    fontWeight: '500',
-                    fontSize: 16,
-                  }}
-                >
-                  {t('cancel')}
-                </Text>
+                <Text medium>{t('cancel')}</Text>
               </TouchableOpacity>
             }
-            // headerRight={
-            //   <TouchableOpacity onPress={handleCropping} disabled={!selectedFiles.length}>
-            //     {isCropping ? (
-            //       <ActivityIndicator color="white" />
-            //     ) : (
-            //       <Text
-            //         style={{
-            //           color: 'white',
-            //           margin: 8,
-            //           fontWeight: '500',
-            //           fontSize: 16,
-            //           opacity: !selectedFiles.length ? 0.5 : 1,
-            //         }}
-            //       >
-            //         {t('next')}
-            //       </Text>
-            //     )}
-            //   </TouchableOpacity>
-            // }
+            headerRight={
+              <TouchableOpacity onPress={handleCropping} disabled={!selectedFiles.length}>
+                {isCropping ? (
+                  <ActivityIndicator color="white" />
+                ) : (
+                  <Text
+                    medium
+                    style={{
+                      opacity: !selectedFiles.length ? 0.5 : 1,
+                    }}
+                  >
+                    {t('next')}
+                  </Text>
+                )}
+              </TouchableOpacity>
+            }
           />
 
           {selectedFile && <ImageEditor source={selectedFile} onChange={store.files.edit} />}
@@ -221,14 +237,10 @@ function Library({ animatedValue }) {
           <Dragbar gestureHandler={gestureHandler} />
         </Animated.View>
 
-        <MediaSelector onScroll={scrollHandler} spacing={spacing} album={selectedAlbum} />
+        <MediaSelector onScroll={scrollHandler} spacing={spacing} />
       </View>
 
-      {/* <Albums
-        onPress={handleChangeAlbum}
-        setInitialAlbum={setSelectedAlbum}
-        translateY={albumTranslateY}
-      /> */}
+      <Albums onPress={handleToggleAlbum} translateY={albumTranslateY} />
     </>
   )
 }
