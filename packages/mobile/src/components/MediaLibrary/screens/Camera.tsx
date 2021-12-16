@@ -10,7 +10,7 @@ import Text from 'ui/Text'
 import { useNavigation, SCREENS } from 'navigation'
 import { isIphone } from 'utils/platform'
 import AskForPermission from 'components/AskForPermission'
-import { flip, flash } from 'images'
+import { flip, flash, flashOff } from 'images'
 import Header from '../Header'
 import { CAMERA_SIZE, TAB_BAR_HEIGHT, TIMING_DURATION } from '../constants'
 
@@ -34,6 +34,7 @@ function Camera({ active, animatedValue, setAlert }) {
   const [picture, setPicture] = useState(null)
   const [shouldDelete, setDelete] = useState(false)
   const [type, setType] = useState(EXCamera.Constants.Type.back)
+  const [flashMode, setFlashMode] = useState(EXCamera.Constants.FlashMode.off)
 
   const { dismissModal, navigate } = useNavigation()
 
@@ -98,6 +99,14 @@ function Camera({ active, animatedValue, setAlert }) {
       duration: TIMING_DURATION / 1.5,
     })
   }, [type])
+
+  const handleFlashMode = useCallback(() => {
+    setFlashMode(
+      flashMode === EXCamera.Constants.FlashMode.off
+        ? EXCamera.Constants.FlashMode.on
+        : EXCamera.Constants.FlashMode.off
+    )
+  }, [flashMode])
 
   const handleTakePicture = () => {
     InteractionManager.runAfterInteractions(async () => {
@@ -294,12 +303,15 @@ function Camera({ active, animatedValue, setAlert }) {
               opacityActionsStyle,
             ]}
           >
-            <TouchableOpacity onPress={handleCameraType}>
-              <Animated.Image source={flip} style={animatedStyle} />
+            <TouchableOpacity onPress={handleCameraType} style={{ width: 19, height: 19 }}>
+              <Animated.Image source={flip} style={[{ width: 19, height: 19 }, animatedStyle]} />
             </TouchableOpacity>
 
-            <TouchableOpacity>
-              <Image source={flash} />
+            <TouchableOpacity onPress={handleFlashMode} style={{ width: 19, height: 19 }}>
+              <Image
+                source={flashMode === EXCamera.Constants.FlashMode.on ? flashOff : flash}
+                style={{ width: 19, height: 19 }}
+              />
             </TouchableOpacity>
           </Animated.View>
         </View>
