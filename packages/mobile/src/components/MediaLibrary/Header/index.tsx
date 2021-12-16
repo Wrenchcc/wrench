@@ -39,7 +39,15 @@ function Header({
       // logError(err)
     }
 
-    navigate(SCREENS.ADD_POST)
+    navigate(SCREENS.ADD_POST, {
+      options: {
+        animations: {
+          push: {
+            waitForRender: true,
+          },
+        },
+      },
+    })
 
     setCropping(false)
   }, [navigate])
