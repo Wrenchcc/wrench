@@ -71,13 +71,6 @@ function Projects({ query }) {
       navigate(SCREENS.PROJECT, {
         id: item.node.id,
         project: item.node,
-        options: {
-          animations: {
-            push: {
-              waitForRender: true,
-            },
-          },
-        },
       })
     }
 

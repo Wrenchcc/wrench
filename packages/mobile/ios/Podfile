@@ -37,6 +37,7 @@ target 'Wrench' do
     exclude: [ 
       'unimodules-sensors-interface', 
       'unimodules-task-manager-interface',
+      'expo-constants',
     ]
   )
   

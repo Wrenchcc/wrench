@@ -80,13 +80,6 @@ function Hashtags({ query }) {
 
       navigate(SCREENS.HASHTAG, {
         name: item.node.name,
-        options: {
-          animations: {
-            push: {
-              waitForRender: true,
-            },
-          },
-        },
       })
     }
 
