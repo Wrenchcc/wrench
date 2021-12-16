@@ -7,7 +7,7 @@ index 8afc3d5..64ec813 100644
  def shouldUseCommonInterfaceFromReanimated() {
      if (rootProject.subprojects.find { it.name == 'react-native-reanimated' } != null) {
 -        def inputFile = new File(rootProject.projectDir, '../node_modules/react-native-reanimated/package.json')
-+        def inputFile = new File(rootProject.projectDir, 'node_modules/react-native-reanimated/package.json')
++        def inputFile = new File(rootProject.projectDir, '../../../node_modules/react-native-reanimated/package.json')
          def json = new JsonSlurper().parseText(inputFile.text)
          def reanimatedVersion = json.version as String
          def (major, minor, patch) = reanimatedVersion.tokenize('.')
