@@ -9,7 +9,7 @@ import { INITIAL_PAGE_SIZE, PAGE_SIZE, DRAG_BAR, TAB_BAR_HEIGHT } from '../const
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
-function MediaSelector({ onScroll, spacing }) {
+function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
   const [assets, setAssets] = useState([])
   const [hasNextPage, setHasNextPage] = useState(true)
   const [endCursor, setEndCursor] = useState()
@@ -37,7 +37,9 @@ function MediaSelector({ onScroll, spacing }) {
       setHasNextPage(result.hasNextPage)
       setEndCursor(result.endCursor)
       store.files.select(result.assets[0])
-    } catch {}
+    } catch {
+      onPermission()
+    }
   }, [])
 
   const fetchMoreAssets = useCallback(
@@ -76,9 +78,7 @@ function MediaSelector({ onScroll, spacing }) {
 
   const handleOnSelect = useCallback((item) => {
     store.files.select(item)
-    // cropAreaY.value = withTiming(CROP_FULLY_DOWN, {
-    //   duration: TIMING_DURATION,
-    // })
+    onSelect()
   }, [])
 
   const renderFooter = useCallback(() => {
@@ -108,7 +108,7 @@ function MediaSelector({ onScroll, spacing }) {
       <AnimatedFlatList
         ListHeaderComponent={<Animated.View style={[{ width: '100%' }, spacingStyle]} />}
         onScroll={onScroll}
-        // scrollEventThrottle={1}
+        scrollEventThrottle={1}
         automaticallyAdjustContentInsets={false}
         numColumns={4}
         windowSize={17}

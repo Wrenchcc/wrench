@@ -92,6 +92,7 @@ function MediaLibrary() {
     <>
       <TabView
         lazy
+        swipeEnabled={false}
         tabBarPosition="bottom"
         renderTabBar={renderTabBar}
         navigationState={{ index, routes }}

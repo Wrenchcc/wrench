@@ -40,6 +40,9 @@ export default class NavigationBanner {
           name: NAVIGATION_BANNER,
           passProps: options,
           options: {
+            overlay: {
+              interceptTouchOutside: false,
+            },
             layout: {
               componentBackgroundColor: 'transparent',
             },

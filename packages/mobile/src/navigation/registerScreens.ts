@@ -5,6 +5,11 @@ import createScreenHoc from './createScreenHoc'
 export default function registerScreens(client) {
   const HOC = createScreenHoc(client)
 
+  // NOTE: Slow view
+  Navigation.registerComponent(SCREENS.ADD_MEDIA, () =>
+    HOC(require('features/project/containers/AddMedia').default)
+  )
+
   Navigation.setLazyComponentRegistrator((componentName) => {
     switch (componentName) {
       case SCREENS.ME:
@@ -148,11 +153,6 @@ export default function registerScreens(client) {
       case SCREENS.NOTIFICATIONS:
         Navigation.registerComponent(SCREENS.NOTIFICATIONS, () =>
           HOC(require('features/notifications/containers/Notifications').default)
-        )
-
-      case SCREENS.ADD_MEDIA:
-        Navigation.registerComponent(SCREENS.ADD_MEDIA, () =>
-          HOC(require('features/project/containers/AddMedia').default)
         )
 
       case SCREENS.ADD_PROJECT:

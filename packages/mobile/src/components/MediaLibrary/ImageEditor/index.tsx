@@ -1,145 +1,127 @@
-import React, { PureComponent } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { View, ScrollView, Image } from 'react-native'
+import { useReactiveVar } from '@apollo/client'
 import { COLORS } from 'ui/constants'
+import { store } from 'gql'
 import Grid from './Grid'
 import { isAndroid } from 'utils/platform'
 import { CROP_AREA } from '../constants'
 
-export default class ImageEditor extends PureComponent {
-  private state = {
-    isLoading: true,
-    isMoving: false,
-  }
+function ImageEditor() {
+  const [isMoving, setMoving] = useState(false)
+  const contentOffset = useRef(null)
+  const horizontal = useRef(false)
+  const maximumZoomScale = useRef(0)
+  const minimumZoomScale = useRef(null)
+  const scaledImageSize = useRef(null)
+  const prevSource = useRef(null)
 
-  private contentOffset = {}
+  const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
+  const selectedFileId = useReactiveVar(store.files.selectedFileIdVar)
+  const source = selectedFiles.find(({ id }) => id === selectedFileId)
 
-  private horizontal = false
-
-  private maximumZoomScale = 0
-
-  private minimumZoomScale = null
-
-  private scaledImageSize = null
-
-  componentDidMount() {
-    if (!this.props.source) {
-      return
+  useEffect(() => {
+    if (source && source?.uri !== prevSource.current?.uri) {
+      prevSource.current = source
+      setImageProperties(source)
     }
 
-    this.setImageProperties(this.props.source)
-  }
+    setMoving(false)
+  }, [source])
 
-  componentDidUpdate(prevProps) {
-    if (this.props.source.uri !== prevProps.source.uri) {
-      this.handleLoading(true)
-      this.setImageProperties(this.props.source)
-    }
-  }
-
-  private setImageProperties(image) {
+  const setImageProperties = (image) => {
     const widthRatio = image.width / CROP_AREA
     const heightRatio = image.height / CROP_AREA
 
-    this.horizontal = widthRatio > heightRatio
+    horizontal.current = widthRatio > heightRatio
 
-    if (this.horizontal) {
-      this.scaledImageSize = {
+    if (horizontal.current) {
+      scaledImageSize.current = {
         height: CROP_AREA,
         width: image.width / heightRatio,
       }
     } else {
-      this.scaledImageSize = {
+      scaledImageSize.current = {
         height: image.height / widthRatio,
         width: CROP_AREA,
       }
       if (isAndroid) {
-        this.scaledImageSize.width *= 1
-        this.scaledImageSize.height *= 1
-        this.horizontal = true
+        scaledImageSize.current.width *= 1
+        scaledImageSize.current.height *= 1
+        horizontal.current = true
       }
     }
 
-    this.contentOffset = {
-      x: (this.scaledImageSize.width - CROP_AREA) / 2,
-      y: (this.scaledImageSize.height - CROP_AREA) / 2,
+    contentOffset.current = {
+      x: (scaledImageSize.current.width - CROP_AREA) / 2,
+      y: (scaledImageSize.current.height - CROP_AREA) / 2,
     }
 
-    this.maximumZoomScale = Math.min(
-      image.width / this.scaledImageSize.width,
-      image.height / this.scaledImageSize.height
+    maximumZoomScale.current = Math.min(
+      image.width / scaledImageSize.current.width,
+      image.height / scaledImageSize.current.height
     )
 
-    this.minimumZoomScale = Math.max(
-      CROP_AREA / this.scaledImageSize.width,
-      CROP_AREA / this.scaledImageSize.height
+    minimumZoomScale.current = Math.max(
+      CROP_AREA / scaledImageSize.current.width,
+      CROP_AREA / scaledImageSize.current.height
     )
 
-    this.handleOnEditImage(this.contentOffset, this.scaledImageSize, {
+    handleOnEditImage(contentOffset.current, scaledImageSize.current, {
       height: CROP_AREA,
       width: CROP_AREA,
     })
   }
 
-  private handleLoading = (isLoading) => {
-    this.setState({ isLoading })
-  }
+  const onScroll = (evt) => {
+    setMoving(true)
 
-  private onScroll = (evt) => {
-    this.setState({ isMoving: false })
-
-    this.handleOnEditImage(
+    handleOnEditImage(
       evt.nativeEvent.contentOffset,
       evt.nativeEvent.contentSize,
       evt.nativeEvent.layoutMeasurement
     )
   }
 
-  private handleOnEditImage(offset, scaledImageSize, croppedImageSize) {
+  const handleOnEditImage = (offset, scaledImageSize, croppedImageSize) => {
     const offsetRatioX = offset.x / scaledImageSize.width
     const offsetRatioY = offset.y / scaledImageSize.height
     const sizeRatioX = croppedImageSize.width / scaledImageSize.width
     const sizeRatioY = croppedImageSize.height / scaledImageSize.height
 
-    this.props.onChange({
-      height: this.props.source.height * sizeRatioY,
-      originX: this.props.source.width * offsetRatioX,
-      originY: this.props.source.height * offsetRatioY,
-      width: this.props.source.width * sizeRatioX,
+    store.files.edit({
+      height: source.height * sizeRatioY,
+      originX: source.width * offsetRatioX,
+      originY: source.height * offsetRatioY,
+      width: source.width * sizeRatioX,
     })
   }
 
-  render() {
-    const { isLoading, isMoving } = this.state
-
-    return (
-      <View
-        key={this.props.source.uri}
-        style={{ width: CROP_AREA, height: CROP_AREA, overflow: 'hidden' }}
+  return (
+    <View style={{ width: CROP_AREA, height: CROP_AREA, overflow: 'hidden' }}>
+      <ScrollView
+        alwaysBounceVertical
+        automaticallyAdjustContentInsets={false}
+        contentOffset={contentOffset.current}
+        decelerationRate="fast"
+        horizontal={horizontal.current}
+        maximumZoomScale={maximumZoomScale.current}
+        minimumZoomScale={minimumZoomScale.current}
+        onMomentumScrollEnd={onScroll}
+        onScrollEndDrag={onScroll}
+        onScrollBeginDrag={() => setMoving(true)}
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        scrollEventThrottle={1}
       >
-        <ScrollView
-          alwaysBounceVertical
-          automaticallyAdjustContentInsets={false}
-          contentOffset={this.contentOffset}
-          decelerationRate="fast"
-          horizontal={this.horizontal}
-          maximumZoomScale={this.maximumZoomScale}
-          minimumZoomScale={this.minimumZoomScale}
-          onMomentumScrollEnd={this.onScroll}
-          onScrollEndDrag={this.onScroll}
-          onScrollBeginDrag={() => this.setState({ isMoving: true })}
-          showsHorizontalScrollIndicator={false}
-          showsVerticalScrollIndicator={false}
-          scrollEventThrottle={1}
-        >
-          <Image
-            style={[{ backgroundColor: COLORS.DARK_GREY }, this.scaledImageSize]}
-            source={this.props.source}
-            blurRadius={isLoading ? 20 : 0}
-            onLoadEnd={() => this.handleLoading(false)}
-          />
-        </ScrollView>
-        {isMoving && <Grid />}
-      </View>
-    )
-  }
+        <Image
+          style={[{ backgroundColor: COLORS.DARK_GREY }, scaledImageSize.current]}
+          source={source}
+        />
+      </ScrollView>
+      {isMoving && <Grid />}
+    </View>
+  )
 }
+
+export default ImageEditor

@@ -47,7 +47,6 @@ function Albums({ translateY, onPress }) {
   }, [])
 
   const handleOnPress = useCallback((album) => {
-    store.files.reset()
     store.files.setAlbum(album)
     onPress()
   }, [])

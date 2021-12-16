@@ -69,6 +69,7 @@ export async function showHalfpanel(passProps: PassProps) {
         options: {
           overlay: {
             handleKeyboardEvents: true,
+            interceptTouchOutside: false,
           },
           layout: {
             componentBackgroundColor: 'transparent',
@@ -132,6 +133,7 @@ export function showEditPost(passProps: PassProps) {
         options: {
           overlay: {
             handleKeyboardEvents: true,
+            interceptTouchOutside: false,
           },
         },
         passProps,

@@ -1,22 +1,48 @@
-import React from 'react'
-import { View, TouchableOpacity } from 'react-native'
+import React, { useCallback, useState } from 'react'
+import { View, TouchableOpacity, ActivityIndicator } from 'react-native'
 import Text from 'ui/Text'
 import Animated from 'react-native-reanimated'
-import { HEADER_HEIGHT } from './constants'
-import { arrowDown } from 'images'
+import { useNavigation, SCREENS } from 'navigation'
 import { useReactiveVar } from '@apollo/client'
 import { store } from 'gql'
+import { useTranslation } from 'react-i18next'
+import cropImage from 'utils/cropImage'
+import { HEADER_HEIGHT } from '../constants'
+import { arrowDown } from 'images'
 
 function Header({
   headerTitle,
-  headerLeft,
-  headerRight,
   headerLeftStyle = {},
   headerRightStyle = {},
   arrowStyle = {},
   toggleAlbum,
 }) {
+  const { t } = useTranslation('library')
+  const [isCropping, setCropping] = useState(false)
+
+  const { dismissModal, navigate } = useNavigation()
+
+  const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
   const selectedAlbum = useReactiveVar(store.files.selectedAlbumVar)
+
+  const handleOnCancel = useCallback(() => {
+    store.files.reset()
+    dismissModal()
+  }, [])
+
+  const handleCropping = useCallback(async () => {
+    try {
+      setCropping(true)
+      const files = await Promise.all(selectedFiles.map(cropImage))
+      store.files.add(files)
+    } catch (err) {
+      // logError(err)
+    }
+
+    navigate(SCREENS.ADD_POST)
+
+    setCropping(false)
+  }, [navigate])
 
   return (
     <>
@@ -38,7 +64,9 @@ function Header({
           }}
         >
           <Animated.View style={[{ flex: 1, alignItems: 'flex-start' }, headerLeftStyle]}>
-            {headerLeft}
+            <TouchableOpacity onPress={handleOnCancel}>
+              <Text medium>{t('cancel')}</Text>
+            </TouchableOpacity>
           </Animated.View>
 
           <View
@@ -70,7 +98,20 @@ function Header({
           </View>
 
           <Animated.View style={[{ flex: 1, alignItems: 'flex-end' }, headerRightStyle]}>
-            {headerRight}
+            <TouchableOpacity onPress={handleCropping} disabled={!selectedFiles.length}>
+              {isCropping ? (
+                <ActivityIndicator color="white" />
+              ) : (
+                <Text
+                  medium
+                  style={{
+                    opacity: !selectedFiles.length ? 0.5 : 1,
+                  }}
+                >
+                  {t('next')}
+                </Text>
+              )}
+            </TouchableOpacity>
           </Animated.View>
         </View>
       </View>
