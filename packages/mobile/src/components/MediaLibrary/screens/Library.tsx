@@ -25,7 +25,6 @@ import {
   TIMING_DURATION,
   CROP_AREA,
   DRAG_BAR,
-  TAB_BAR_HEIGHT,
   ALBUM_FULLY_DOWN,
   ALBUM_FULLY_UP,
 } from '../constants'
@@ -40,7 +39,7 @@ const styles = {
   },
 }
 
-function Library({ animatedValue }) {
+function Library() {
   const cropAreaY = useSharedValue(CROP_FULLY_DOWN)
   const translationY = useSharedValue(0)
   const albumTranslateY = useSharedValue(ALBUM_FULLY_DOWN)
@@ -71,10 +70,6 @@ function Library({ animatedValue }) {
 
     headerOpacity.value = withTiming(toggleValue ? 0 : 1, {
       duration: TIMING_DURATION,
-    })
-
-    animatedValue.value = withTiming(toggleValue ? TAB_BAR_HEIGHT : 0, {
-      duration: TIMING_DURATION / 1.5,
     })
 
     albumTranslateY.value = withTiming(toggleValue ? ALBUM_FULLY_UP : ALBUM_FULLY_DOWN, {
