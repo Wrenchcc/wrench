@@ -5,7 +5,7 @@ import { store } from 'gql'
 import Animated, { useAnimatedStyle } from 'react-native-reanimated'
 import * as MediaLibrary from 'expo-media-library'
 import Item, { MARGIN, ITEM_SIZE } from '../Item'
-import { INITIAL_PAGE_SIZE, PAGE_SIZE, DRAG_BAR, TAB_BAR_HEIGHT } from '../constants'
+import { INITIAL_PAGE_SIZE, PAGE_SIZE, DRAG_BAR } from '../constants'
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
@@ -104,7 +104,7 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
   }))
 
   return (
-    <Animated.View style={{ flex: 1, marginTop: DRAG_BAR, marginBottom: TAB_BAR_HEIGHT }}>
+    <Animated.View style={{ flex: 1, marginTop: DRAG_BAR }}>
       <AnimatedFlatList
         ListHeaderComponent={<Animated.View style={[{ width: '100%' }, spacingStyle]} />}
         onScroll={onScroll}
