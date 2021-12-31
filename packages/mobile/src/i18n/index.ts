@@ -47,6 +47,7 @@ i18next
     cache: {
       enabled: !__DEV__,
     },
+    compatibilityJSON: 'v3',
     supportedLngs: locales,
     debug: Config.DEBUG_LANGUAGE === '1',
     fallbackLng: defaultLocale,

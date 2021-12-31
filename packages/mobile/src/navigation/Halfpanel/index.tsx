@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useMemo, useRef } from 'react'
 import { View } from 'react-native'
 import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet'
 import { useNavigation } from 'navigation'
@@ -10,10 +10,10 @@ const HalfPanel = ({ renderContent = () => null, data, height }) => {
   const bottomSheetRef = useRef<BottomSheet>(null)
   const { dismissHalfpanel } = useNavigation()
 
-  const snapPoints = [0, height]
+  const snapPoints = useMemo(() => [height], [])
 
   const handleOnChange = useCallback((index) => {
-    if (index === 0) {
+    if (index === -1) {
       dismissHalfpanel()
     }
   }, [])
@@ -44,11 +44,11 @@ const HalfPanel = ({ renderContent = () => null, data, height }) => {
     <BottomSheet
       handleComponent={null}
       onChange={handleOnChange}
-      animateOnMount
       backgroundComponent={Background}
       backdropComponent={BottomSheetBackdrop}
       ref={bottomSheetRef}
-      index={1}
+      enablePanDownToClose
+      index={0}
       snapPoints={snapPoints}
     >
       <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
