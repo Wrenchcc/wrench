@@ -73,7 +73,7 @@
     "react-native-redash": "^16.2.3",
     "react-native-responsive-dimensions": "^3.1.1",
     "react-native-share": "^7.3.2",
-    "react-native-splash-screen": "^3.3.0",
+    "react-native-splash-screen": "3.2.0",
     "react-native-status-bar-height": "^2.6.0",
     "react-native-tab-view": "3.1.1",
     "react-native-unimodules": "^0.14.8",
