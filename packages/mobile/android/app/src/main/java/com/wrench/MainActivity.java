@@ -12,7 +12,7 @@ public class MainActivity extends NavigationActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
-      SplashScreen.show(this, R.style.SplashScreenTheme); 
+      SplashScreen.show(this, R.style.SplashScreenTheme, true); 
     }
 
     @Override

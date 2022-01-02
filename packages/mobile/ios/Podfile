@@ -24,12 +24,7 @@ target 'Wrench' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
-
-  # react-native-fast-image
-  pod 'SDWebImageWebPCoder'
-
-  # @react-native-community/google-signin
-  pod 'GoogleSignIn'
+  
   pod 'Sentry'
 
   use_unimodules!(
