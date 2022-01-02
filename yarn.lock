@@ -21756,10 +21756,10 @@ react-native-gesture-handler@^2.1.0:
     lodash "^4.17.21"
     prop-types "^15.7.2"
 
-react-native-mmkv@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-1.6.0.tgz#8460166303783c0f356b8ac2aea80644d30a30a0"
-  integrity sha512-b70Qagc7LKWFBHJPlQpSLWI+VVxByHyBeJgkPFgJ7uMSxC5oSKwp5JVgUewwXiILzEr2TeaEo+9aDVK6+ubiWQ==
+react-native-mmkv@1.5.4:
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-1.5.4.tgz#41336c147c7190d2fea87c4de0be4c9b72a0c881"
+  integrity sha512-nmS5RO0tfH+KdJ0uVUPahsqw1IVXQOt+Kk6cI1/FMJz5dmvoKVC03XGYh91wmiFJFYqlKA+XFlKAhZUsLZqBYQ==
 
 react-native-navigation@^7.24.3:
   version "7.24.3"

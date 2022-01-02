@@ -64,7 +64,7 @@
     "react-native-fbsdk": "^3.0.0",
     "react-native-fs": "^2.18.0",
     "react-native-gesture-handler": "^2.1.0",
-    "react-native-mmkv": "^1.6.0",
+    "react-native-mmkv": "1.5.4",
     "react-native-navigation": "^7.24.3",
     "react-native-pager-view": "^5.4.9",
     "react-native-permissions": "^3.2.0",
