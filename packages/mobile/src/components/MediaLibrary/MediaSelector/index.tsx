@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback, useEffect, useRef } from 'react'
 import { ActivityIndicator, View, FlatList } from 'react-native'
 import { useReactiveVar } from '@apollo/client'
 import { store } from 'gql'
@@ -11,20 +11,19 @@ const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
 function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
   const [assets, setAssets] = useState([])
-  const [hasNextPage, setHasNextPage] = useState(true)
-  const [endCursor, setEndCursor] = useState()
-  const [lastEndCursor, setLastEndCursor] = useState()
+  const [hasNextPage, setHasNextPage] = useState(false)
+
+  const endCursor = useRef('')
+  const lastEndCursor = useRef('')
 
   const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
   const selectedAlbum = useReactiveVar(store.files.selectedAlbumVar)
 
   useEffect(() => {
-    if (selectedAlbum?.id) {
-      fetchInitialAssets(selectedAlbum)
-    }
+    fetchInitialAssets(selectedAlbum)
   }, [selectedAlbum?.id])
 
-  const fetchInitialAssets = useCallback(async (album) => {
+  const fetchInitialAssets = useCallback(async (album?: string) => {
     try {
       const result = await MediaLibrary.getAssetsAsync({
         first: INITIAL_PAGE_SIZE,
@@ -34,8 +33,9 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
       })
 
       setAssets(result.assets)
+
       setHasNextPage(result.hasNextPage)
-      setEndCursor(result.endCursor)
+      endCursor.current = result.endCursor
       store.files.select(result.assets[0])
     } catch {
       onPermission()
@@ -47,13 +47,14 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
       if (!hasNextPage) {
         return
       }
+
       // NOTE: Dirty fix for fetching same data
-      setLastEndCursor(after)
+      lastEndCursor.current = after
 
       try {
         const result = await MediaLibrary.getAssetsAsync({
           after,
-          album: selectedAlbum.id,
+          album: selectedAlbum?.id,
           first: PAGE_SIZE,
           sortBy: [[MediaLibrary.SortBy.creationTime, false]],
         })
@@ -61,20 +62,22 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
         if (after !== lastEndCursor) {
           setAssets((p) => p.concat(result.assets))
         }
+
         setHasNextPage(result.hasNextPage)
-        setEndCursor(result.endCursor)
+        endCursor.current = result.endCursor
       } catch (err) {
+        console.log(err)
         // logError(err)
       }
     },
-    [hasNextPage, setAssets, setHasNextPage, setEndCursor, lastEndCursor, selectedAlbum]
+    [selectedAlbum, hasNextPage]
   )
 
   const onEndReached = useCallback(() => {
     if (hasNextPage) {
-      fetchMoreAssets(endCursor)
+      fetchMoreAssets(endCursor.current)
     }
-  }, [hasNextPage, endCursor, fetchMoreAssets])
+  }, [hasNextPage, endCursor])
 
   const handleOnSelect = useCallback((item) => {
     store.files.select(item)

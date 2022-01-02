@@ -6,6 +6,7 @@ export const croppedFilesVar = makeVar([])
 export const selectedFilesVar = makeVar([])
 export const selectedFileIdVar = makeVar('')
 export const selectedAlbumVar = makeVar(null)
+export const albumTitleVar = makeVar(null)
 
 export const add = (payload) => croppedFilesVar(payload)
 
@@ -13,13 +14,18 @@ export const reset = () => {
   croppedFilesVar([])
   selectedFilesVar([])
   selectedFileIdVar('')
+  selectedAlbumVar(null)
 }
 
 export const setAlbum = (album) => {
   selectedAlbumVar(album)
 }
 
-export const select = async (payload) => {
+export const setAlbumTitle = (title) => {
+  albumTitleVar(title)
+}
+
+export const select = (payload) => {
   const currentId = payload.id
   const selectedFiles = selectedFilesVar()
   const isAdded = selectedFiles.some((file) => file.id === currentId)

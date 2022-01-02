@@ -10,7 +10,7 @@ const HalfPanel = ({ renderContent = () => null, data, height }) => {
   const bottomSheetRef = useRef<BottomSheet>(null)
   const { dismissHalfpanel } = useNavigation()
 
-  const snapPoints = useMemo(() => [height], [])
+  const snapPoints = useMemo(() => [height], [height])
 
   const handleOnChange = useCallback((index) => {
     if (index === -1) {
@@ -48,6 +48,7 @@ const HalfPanel = ({ renderContent = () => null, data, height }) => {
       backdropComponent={BottomSheetBackdrop}
       ref={bottomSheetRef}
       enablePanDownToClose
+      animateOnMount
       index={0}
       snapPoints={snapPoints}
     >

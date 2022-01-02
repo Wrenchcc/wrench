@@ -49,10 +49,14 @@ function Library() {
 
   const { dismissModal } = useNavigation()
 
-  const [askForPermission, setPermission] = useState(false)
+  const [showPermission, setShowPermission] = useState(false)
 
   const handleOnPermission = () => {
-    setPermission(true)
+    setShowPermission(true)
+  }
+
+  const handleOnPermissionAuthorized = () => {
+    setShowPermission(false)
   }
 
   const handleOnSelect = useCallback(() => {
@@ -124,16 +128,12 @@ function Library() {
     }
   })
 
-  const headerLeftStyle = useAnimatedStyle(() => ({
+  const headerStyle = useAnimatedStyle(() => ({
     opacity: headerOpacity.value,
   }))
 
-  const headerRightStyle = useAnimatedStyle(() => ({
-    opacity: headerOpacity.value,
-  }))
-
-  if (askForPermission) {
-    return <Permission onCancel={dismissModal} onSuccess={handleOnPermission} />
+  if (showPermission) {
+    return <Permission onCancel={dismissModal} onSuccess={handleOnPermissionAuthorized} />
   }
 
   return (
@@ -141,8 +141,8 @@ function Library() {
       <View style={{ flex: 1, backgroundColor: 'black' }}>
         <Animated.View style={[styles.cropArea, cropAreaStyle]}>
           <Header
-            headerLeftStyle={headerLeftStyle}
-            headerRightStyle={headerRightStyle}
+            headerLeftStyle={headerStyle}
+            headerRightStyle={headerStyle}
             arrowStyle={arrowStyle}
             toggleAlbum={handleToggleAlbum}
           />
@@ -161,7 +161,11 @@ function Library() {
         />
       </View>
 
-      <Albums onPress={handleToggleAlbum} translateY={albumTranslateY} />
+      <Albums
+        onPress={handleToggleAlbum}
+        translateY={albumTranslateY}
+        onPermission={handleOnPermission}
+      />
     </>
   )
 }

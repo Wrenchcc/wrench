@@ -10,20 +10,15 @@ import cropImage from 'utils/cropImage'
 import { HEADER_HEIGHT } from '../constants'
 import { arrowDown } from 'images'
 
-function Header({
-  headerTitle,
-  headerLeftStyle = {},
-  headerRightStyle = {},
-  arrowStyle = {},
-  toggleAlbum,
-}) {
-  const { t } = useTranslation('library')
+function Header({ headerLeftStyle = {}, headerRightStyle = {}, arrowStyle = {}, toggleAlbum }) {
+  const { t } = useTranslation('add-media')
   const [isCropping, setCropping] = useState(false)
 
   const { dismissModal, navigate } = useNavigation()
 
   const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
   const selectedAlbum = useReactiveVar(store.files.selectedAlbumVar)
+  const albumTitle = useReactiveVar(store.files.albumTitleVar)
 
   const handleOnCancel = useCallback(() => {
     store.files.reset()
@@ -73,7 +68,7 @@ function Header({
         >
           <Animated.View style={[{ flex: 1, alignItems: 'flex-start' }, headerLeftStyle]}>
             <TouchableOpacity onPress={handleOnCancel}>
-              <Text medium>{t('cancel')}</Text>
+              <Text medium>{t('options.cancel')}</Text>
             </TouchableOpacity>
           </Animated.View>
 
@@ -83,26 +78,20 @@ function Header({
               alignItems: 'center',
             }}
           >
-            {headerTitle ? (
-              <Text medium>{headerTitle}</Text>
-            ) : (
-              selectedAlbum && (
-                <TouchableOpacity
-                  onPress={toggleAlbum}
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                >
-                  <Text medium>{selectedAlbum?.title}</Text>
-                  <Animated.Image
-                    source={arrowDown}
-                    style={[{ tintColor: 'white', marginLeft: 5 }, arrowStyle]}
-                  />
-                </TouchableOpacity>
-              )
-            )}
+            <TouchableOpacity
+              onPress={toggleAlbum}
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Text medium>{selectedAlbum?.title || albumTitle}</Text>
+              <Animated.Image
+                source={arrowDown}
+                style={[{ tintColor: 'white', marginLeft: 5 }, arrowStyle]}
+              />
+            </TouchableOpacity>
           </View>
 
           <Animated.View style={[{ flex: 1, alignItems: 'flex-end' }, headerRightStyle]}>

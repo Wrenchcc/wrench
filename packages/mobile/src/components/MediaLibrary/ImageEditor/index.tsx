@@ -7,6 +7,17 @@ import Grid from './Grid'
 import { isAndroid } from 'utils/platform'
 import { CROP_AREA } from '../constants'
 
+const styles = {
+  container: {
+    width: CROP_AREA,
+    height: CROP_AREA,
+    overflow: 'hidden',
+  },
+  image: {
+    backgroundColor: COLORS.DARK_GREY,
+  },
+}
+
 function ImageEditor() {
   const [isMoving, setMoving] = useState(false)
   const contentOffset = useRef(null)
@@ -98,7 +109,7 @@ function ImageEditor() {
   }
 
   return (
-    <View style={{ width: CROP_AREA, height: CROP_AREA, overflow: 'hidden' }}>
+    <View style={styles.container}>
       <ScrollView
         alwaysBounceVertical
         automaticallyAdjustContentInsets={false}
@@ -114,10 +125,7 @@ function ImageEditor() {
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={1}
       >
-        <Image
-          style={[{ backgroundColor: COLORS.DARK_GREY }, scaledImageSize.current]}
-          source={source}
-        />
+        <Image style={[styles.image, scaledImageSize.current]} source={source} />
       </ScrollView>
       {isMoving && <Grid />}
     </View>

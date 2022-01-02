@@ -8,7 +8,7 @@ import { ALBUM_INNER_HEIGHT, ALBUM_WIDTH, HEADER_HEIGHT } from './constants'
 
 const AnimatedBlurView = Animated.createAnimatedComponent(BlurView)
 
-function Albums({ translateY, onPress }) {
+function Albums({ translateY, onPress, onPermission }) {
   const [albums, setAlbums] = useState([])
 
   const getAlbums = useCallback(async () => {
@@ -37,9 +37,11 @@ function Albums({ translateY, onPress }) {
         .filter((a) => a.totalCount > 0)
         .sort((a, b) => b.assetCount - a.assetCount)
 
-      store.files.setAlbum(result[0])
+      store.files.setAlbumTitle(result[0]?.title)
       setAlbums(result)
-    } catch (err) {}
+    } catch {
+      onPermission()
+    }
   }, [])
 
   useEffect(() => {

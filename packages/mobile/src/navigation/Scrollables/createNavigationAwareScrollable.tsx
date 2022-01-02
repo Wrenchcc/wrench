@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useCallback, forwardRef, useContext } from 'react'
-import { Keyboard, TextInput, UIManager, RefreshControl, findNodeHandle } from 'react-native'
+import { Keyboard, TextInput, UIManager, findNodeHandle } from 'react-native'
 import { ScrollContext } from 'navigation/Layout/context'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
@@ -96,17 +96,6 @@ export default function createNavigationAwareScrollable(Component) {
         onRefresh={refetch}
         onEndReached={onEndReached}
         refreshing={isRefetching}
-        // TODO: Remove transparent when fixed: https://github.com/facebook/react-native/issues/30912
-        refreshControl={
-          refetch && (
-            <RefreshControl
-              style={{ backgroundColor: 'transparent' }}
-              progressViewOffset={VIEW_OFFSET}
-              refreshing={isRefetching}
-              onRefresh={refetch}
-            />
-          )
-        }
         initialNumToRender={initialNumToRender}
         ListFooterComponent={hasNextPage && renderLoader(loaderInset)}
         ListEmptyComponent={initialFetch ? renderLoader(CONTENT_INSET) : ListEmptyComponent}

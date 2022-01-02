@@ -193,10 +193,6 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
-  - Permission-Camera (3.2.0):
-    - RNPermissions
-  - Permission-Microphone (3.2.0):
-    - RNPermissions
   - Permission-PhotoLibrary (3.2.0):
     - RNPermissions
   - PromisesObjC (2.0.0)
@@ -433,7 +429,7 @@ PODS:
   - react-native-fbsdk/Share (3.0.0):
     - FBSDKShareKit (~> 8.1)
     - React
-  - react-native-mmkv (1.5.4):
+  - react-native-mmkv (1.6.0):
     - MMKV
     - React-Core
   - react-native-netinfo (7.1.7):
@@ -624,8 +620,6 @@ DEPENDENCIES:
   - glog (from `../../../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - hermes-engine (~> 0.9.0)
   - libevent (~> 2.1.12)
-  - Permission-Camera (from `../../../node_modules/react-native-permissions/ios/Camera/Permission-Camera.podspec`)
-  - Permission-Microphone (from `../../../node_modules/react-native-permissions/ios/Microphone/Permission-Microphone.podspec`)
   - Permission-PhotoLibrary (from `../../../node_modules/react-native-permissions/ios/PhotoLibrary/Permission-PhotoLibrary.podspec`)
   - RCT-Folly (from `../../../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../../../node_modules/react-native/Libraries/RCTRequired`)
@@ -750,10 +744,6 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/react-native/React/FBReactNativeSpec"
   glog:
     :podspec: "../../../node_modules/react-native/third-party-podspecs/glog.podspec"
-  Permission-Camera:
-    :path: "../../../node_modules/react-native-permissions/ios/Camera/Permission-Camera.podspec"
-  Permission-Microphone:
-    :path: "../../../node_modules/react-native-permissions/ios/Microphone/Permission-Microphone.podspec"
   Permission-PhotoLibrary:
     :path: "../../../node_modules/react-native-permissions/ios/PhotoLibrary/Permission-PhotoLibrary.podspec"
   RCT-Folly:
@@ -902,8 +892,6 @@ SPEC CHECKSUMS:
   MMKV: 217b643c181c3d2f71983206ca1972d0a6e99881
   MMKVCore: f9e4f56742fdebbd042f7a273e278927f182cee7
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
-  Permission-Camera: 53efcbb755b0e8bdf253dbb27cc7559ccfce8480
-  Permission-Microphone: db557c64f7e9ad41bff6b3f6d93df3b67311855b
   Permission-PhotoLibrary: 7bec836dcdd04a0bfb200c314f1aae06d4476357
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   RCT-Folly: a21c126816d8025b547704b777a2ba552f3d9fa9
@@ -921,7 +909,7 @@ SPEC CHECKSUMS:
   React-logger: 933f80c97c633ee8965d609876848148e3fef438
   react-native-config: 6502b1879f97ed5ac570a029961fc35ea606cd14
   react-native-fbsdk: 8e92c7a334fd8d9c2b5d8b8fcd7ae2c314161099
-  react-native-mmkv: 01fb2fcc0853b25607bd35c9ce132e73756df52b
+  react-native-mmkv: 81b95873b18f252d0367114f00282add7fa0d873
   react-native-netinfo: 27f287f2d191693f3b9d01a4273137fcf91c3b5d
   react-native-pager-view: 3ee7d4c7697fb3ef788346e834a60cca97ed8540
   react-native-pinchable: b4381b0807d15c12b14bfacd927128f52d96f0f1
@@ -961,6 +949,6 @@ SPEC CHECKSUMS:
   UMReactNativeAdapter: d03cefd0e4e4179ab8c490408589f1c8a6c8b785
   Yoga: e7dc4e71caba6472ff48ad7d234389b91dadc280
 
-PODFILE CHECKSUM: f9c6e775a1475305ee94429f9de53b82725d653b
+PODFILE CHECKSUM: d02c082b5373d4c6ce4750e0d0a50f17eb143ffb
 
 COCOAPODS: 1.11.2
