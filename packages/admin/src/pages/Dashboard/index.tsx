@@ -6,6 +6,7 @@ import { useMetaQuery, useGrowthQuery } from '@wrench/common'
 import Layout from '../../components/Layout'
 import Chart from '../../components/Chart'
 import { PlaceholderBox } from '../../components/Placeholder'
+import ArrowIcon from './arrow.svg'
 
 export const Box = styled.div`
   width: 235px;
@@ -92,7 +93,7 @@ function Dashboard() {
             <Count>{data.meta?.totalProjects}</Count>
             {data.meta?.totalProjectsToday > 0 && (
               <Yey>
-                <Icon src={require('./arrow.svg')} />
+                <Icon src={ArrowIcon} />
                 {data.meta?.totalProjectsToday}
               </Yey>
             )}
@@ -107,7 +108,7 @@ function Dashboard() {
             <Count>{data.meta?.totalUsers}</Count>
             {data.meta?.totalUsersToday > 0 && (
               <Yey>
-                <Icon src={require('./arrow.svg')} />
+                <Icon src={ArrowIcon} />
                 {data.meta?.totalUsersToday}
               </Yey>
             )}
@@ -122,7 +123,7 @@ function Dashboard() {
             <Count>{data.meta?.totalComments}</Count>
             {data.meta?.totalCommentsToday > 0 && (
               <Yey>
-                <Icon src={require('./arrow.svg')} />
+                <Icon src={ArrowIcon} />
                 {data.meta?.totalCommentsToday}
               </Yey>
             )}
@@ -137,7 +138,7 @@ function Dashboard() {
             <Count>{data.meta?.totalPosts}</Count>
             {data.meta?.totalPostsToday > 0 && (
               <Yey>
-                <Icon src={require('./arrow.svg')} />
+                <Icon src={ArrowIcon} />
                 {data.meta?.totalPostsToday}
               </Yey>
             )}

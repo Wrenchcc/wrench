@@ -33,7 +33,11 @@ function User() {
     var result = confirm('Are you sure?')
 
     if (result) {
-      onDelete(user.id)
+      onDelete({
+        variables: {
+          id: user.id,
+        },
+      })
 
       history.push('/')
     }
