@@ -6,6 +6,7 @@ import Animated, { useAnimatedStyle } from 'react-native-reanimated'
 import * as MediaLibrary from 'expo-media-library'
 import Item, { MARGIN, ITEM_SIZE } from '../Item'
 import { INITIAL_PAGE_SIZE, PAGE_SIZE, DRAG_BAR } from '../constants'
+import { logError } from 'utils/sentry'
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
@@ -59,15 +60,14 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
           sortBy: [[MediaLibrary.SortBy.creationTime, false]],
         })
         // NOTE: Dirty fix for fetching same data
-        if (after !== lastEndCursor) {
+        if (after !== lastEndCursor.current) {
           setAssets((p) => p.concat(result.assets))
         }
 
         setHasNextPage(result.hasNextPage)
         endCursor.current = result.endCursor
       } catch (err) {
-        console.log(err)
-        // logError(err)
+        logError(err)
       }
     },
     [selectedAlbum, hasNextPage]

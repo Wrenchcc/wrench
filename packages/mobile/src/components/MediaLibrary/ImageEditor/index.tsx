@@ -109,7 +109,7 @@ function ImageEditor() {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} key={source?.uri}>
       <ScrollView
         alwaysBounceVertical
         automaticallyAdjustContentInsets={false}
