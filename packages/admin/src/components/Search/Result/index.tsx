@@ -1,15 +1,24 @@
 // @ts-nocheck
 import React, { useEffect } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
+import styled from 'styled-components'
 import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
-import { useTranslation } from 'i18n'
-import Link from 'next/link'
-import { Loader, Avatar, Text } from 'ui'
+import { Link } from 'react-router-dom'
+import Loader from '../../Loader'
+import Avatar from '../../Avatar'
 import { List, Base, Content, LoaderContainer, Empty } from './styles'
 
-function Result({ query, onPress }) {
-  const { t } = useTranslation('result')
+const Username = styled.div`
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 2px;
+`
 
+const Projects = styled.div`
+  color: #6d6f76;
+`
+
+function Result({ query, onPress }) {
   const {
     loadData,
     data: { edges },
@@ -26,10 +35,9 @@ function Result({ query, onPress }) {
       },
     })
   }, [query])
-
   return (
     <List>
-      {!isFetching && edges?.length === 0 && <Empty>{t('not_found')}</Empty>}
+      {!isFetching && edges?.length === 0 && <Empty>Not found</Empty>}
 
       <InfiniteScroll
         loadMore={fetchMore}
@@ -43,16 +51,12 @@ function Result({ query, onPress }) {
       >
         {edges?.map(({ node }, index) => (
           <Base first={index === 0} key={node.id}>
-            <Link href={`/${node.username}`}>
-              <a>
-                <Avatar size={40} uri={node.avatarUrl} isOnline={node.isOnline} onPress={onPress} />
-                <Content onClick={onPress}>
-                  <Text lineHeight={18}>{node.fullName}</Text>
-                  <Text lineHeight={18} fontSize={15} color="neutral">
-                    {t('projects', { count: node.projectCount })}
-                  </Text>
-                </Content>
-              </a>
+            <Link to={`/user/${node.username}`}>
+              <Avatar size={40} src={node.avatarUrl} isOnline={node.isOnline} onPress={onPress} />
+              <Content onClick={onPress}>
+                <Username>{node.fullName}</Username>
+                <Projects>{node.projectCount} projects</Projects>
+              </Content>
             </Link>
           </Base>
         ))}

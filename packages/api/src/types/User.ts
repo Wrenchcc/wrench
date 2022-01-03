@@ -107,5 +107,6 @@ export default gql`
     registerDeviceToken(token: String!, platform: PlatformType!): Boolean
     banUser(id: ID!): User
     deleteCurrentUser: Boolean
+    deleteUser(id: ID!): Boolean
   }
 `

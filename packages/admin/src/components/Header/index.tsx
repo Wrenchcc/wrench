@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Search from '../Search'
 import LogoIcon from './logo.svg'
 
 export const Base = styled.header`
@@ -13,6 +14,7 @@ export const Base = styled.header`
   display: flex;
   align-items: center;
   background: black;
+  justify-content: space-between;
 `
 
 export const Title = styled.h2`
@@ -22,13 +24,29 @@ export const Title = styled.h2`
   margin-left: 20px;
 `
 
+export const Inner = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+export const SearchWrapper = styled.div`
+  position: absolute;
+  right: 100px;
+`
+
 function Header() {
   return (
     <Base>
-      <Link to="/">
-        <img src={LogoIcon} alt="logo" />
-      </Link>
-      <Title>Admin</Title>
+      <Inner>
+        <Link to="/">
+          <img src={LogoIcon} alt="logo" />
+        </Link>
+        <Title>Admin</Title>
+      </Inner>
+
+      <SearchWrapper>
+        <Search />
+      </SearchWrapper>
     </Base>
   )
 }

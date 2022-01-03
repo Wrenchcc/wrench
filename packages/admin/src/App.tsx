@@ -14,6 +14,7 @@ import Projects from './pages/Projects'
 import Comments from './pages/Comments'
 import Edit from './pages/News/Edit'
 import News from './pages/News'
+import User from './pages/User'
 import PushNotifications from './pages/PushNotifications'
 
 function App() {
@@ -64,6 +65,9 @@ function App() {
             </Route>
             <Route path="/push-notifications">
               <PushNotifications />
+            </Route>
+            <Route path="/user/:username">
+              <User />
             </Route>
           </Switch>
         </>

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import gql from 'graphql-tag'
 import { makeExecutableSchema } from 'apollo-server-express'
 import merge from 'lodash.merge'
