@@ -4,9 +4,9 @@ import { useReactiveVar } from '@apollo/client'
 import { store } from 'gql'
 import Animated, { useAnimatedStyle } from 'react-native-reanimated'
 import * as MediaLibrary from 'expo-media-library'
-import Item, { MARGIN, ITEM_SIZE } from '../Item'
-import { INITIAL_PAGE_SIZE, PAGE_SIZE, DRAG_BAR } from '../constants'
 import { logError } from 'utils/sentry'
+import Item, { MARGIN } from '../Item'
+import { INITIAL_PAGE_SIZE, PAGE_SIZE, DRAG_BAR } from '../constants'
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
@@ -16,6 +16,7 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
 
   const endCursor = useRef('')
   const lastEndCursor = useRef('')
+  const init = useRef(false)
 
   const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
   const selectedAlbum = useReactiveVar(store.files.selectedAlbumVar)
@@ -24,7 +25,14 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
     fetchInitialAssets(selectedAlbum)
   }, [selectedAlbum?.id])
 
-  const fetchInitialAssets = useCallback(async (album?: string) => {
+  useEffect(() => {
+    if (!init.current && assets.length) {
+      store.files.select(assets[0])
+      init.current = true
+    }
+  }, [assets])
+
+  const fetchInitialAssets = async (album?: string) => {
     try {
       const result = await MediaLibrary.getAssetsAsync({
         first: INITIAL_PAGE_SIZE,
@@ -34,23 +42,18 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
       })
 
       setAssets(result.assets)
-
       setHasNextPage(result.hasNextPage)
       endCursor.current = result.endCursor
-      store.files.select(result.assets[0])
     } catch {
       onPermission()
     }
-  }, [])
+  }
 
   const fetchMoreAssets = useCallback(
     async (after) => {
       if (!hasNextPage) {
         return
       }
-
-      // NOTE: Dirty fix for fetching same data
-      lastEndCursor.current = after
 
       try {
         const result = await MediaLibrary.getAssetsAsync({
@@ -59,13 +62,14 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
           first: PAGE_SIZE,
           sortBy: [[MediaLibrary.SortBy.creationTime, false]],
         })
-        // NOTE: Dirty fix for fetching same data
+
         if (after !== lastEndCursor.current) {
           setAssets((p) => p.concat(result.assets))
         }
 
         setHasNextPage(result.hasNextPage)
         endCursor.current = result.endCursor
+        lastEndCursor.current = after
       } catch (err) {
         logError(err)
       }
@@ -114,17 +118,11 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
         scrollEventThrottle={1}
         automaticallyAdjustContentInsets={false}
         numColumns={4}
-        windowSize={17}
         ListFooterComponent={renderFooter}
         data={assets}
         keyExtractor={(item) => item.id}
         initialNumToRender={PAGE_SIZE}
         style={{ marginLeft: -MARGIN }}
-        getItemLayout={(_, index) => ({
-          length: ITEM_SIZE,
-          offset: ITEM_SIZE * index,
-          index,
-        })}
         renderItem={renderItem}
         onEndReached={onEndReached}
       />

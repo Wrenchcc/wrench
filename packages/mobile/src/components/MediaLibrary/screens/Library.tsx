@@ -10,7 +10,7 @@ import Animated, {
   useAnimatedScrollHandler,
 } from 'react-native-reanimated'
 import { clamp, snapPoint } from 'react-native-redash'
-import { useNavigation } from 'navigation'
+import { useNavigation, NAVIGATION } from 'navigation'
 import Header from '../Header'
 import ImageEditor from '../ImageEditor'
 import Albums from '../Albums'
@@ -34,7 +34,7 @@ const styles = {
     position: 'absolute',
     zIndex: 1000,
     width: CROP_AREA,
-    height: CROP_AREA + HEADER_HEIGHT,
+    height: CROP_AREA + HEADER_HEIGHT + NAVIGATION.STATUS_BAR_HEIGHT,
     backgroundColor: '#222',
   },
 }
@@ -108,7 +108,13 @@ function Library() {
 
   const spacing = useDerivedValue(() => {
     if (Math.abs(CROP_FULLY_UP) > translationY.value) {
-      return CROP_AREA - DRAG_BAR - Math.abs(cropAreaY.value) + HEADER_HEIGHT
+      return (
+        CROP_AREA -
+        DRAG_BAR -
+        Math.abs(cropAreaY.value) +
+        HEADER_HEIGHT +
+        NAVIGATION.STATUS_BAR_HEIGHT
+      )
     }
   })
 

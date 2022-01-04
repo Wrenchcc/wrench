@@ -2,13 +2,50 @@ import React, { useCallback, useState } from 'react'
 import { View, TouchableOpacity, ActivityIndicator } from 'react-native'
 import Text from 'ui/Text'
 import Animated from 'react-native-reanimated'
-import { useNavigation, SCREENS } from 'navigation'
+import { useNavigation, SCREENS, NAVIGATION } from 'navigation'
 import { useReactiveVar } from '@apollo/client'
 import { store } from 'gql'
 import { useTranslation } from 'react-i18next'
 import cropImage from 'utils/cropImage'
 import { HEADER_HEIGHT } from '../constants'
 import { arrowDown } from 'images'
+
+const styles = {
+  background: {
+    backgroundColor: 'black',
+  },
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: NAVIGATION.STATUS_BAR_HEIGHT,
+    paddingBottom: 20,
+    zIndex: 10,
+    paddingHorizontal: 20,
+    height: HEADER_HEIGHT,
+  },
+  left: {
+    flex: 1,
+    alignItems: 'flex-start',
+  },
+  center: {
+    flex: 2,
+    alignItems: 'center',
+  },
+  title: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  arrow: {
+    tintColor: 'white',
+    marginLeft: 5,
+  },
+  right: {
+    flex: 1,
+    alignItems: 'flex-end',
+  },
+}
 
 function Header({ headerLeftStyle = {}, headerRightStyle = {}, arrowStyle = {}, toggleAlbum }) {
   const { t } = useTranslation('add-media')
@@ -47,72 +84,49 @@ function Header({ headerLeftStyle = {}, headerRightStyle = {}, arrowStyle = {}, 
     setCropping(false)
   }, [navigate])
 
+  const albumWithFallback = selectedAlbum?.title || albumTitle
+
   return (
-    <>
-      <View
-        style={{
-          width: '100%',
-          backgroundColor: 'black',
-          height: HEADER_HEIGHT,
-        }}
-      >
-        <View
-          style={{
-            alignItems: 'center',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingTop: 30,
-            paddingHorizontal: 20,
-            flex: 1,
-          }}
-        >
-          <Animated.View style={[{ flex: 1, alignItems: 'flex-start' }, headerLeftStyle]}>
-            <TouchableOpacity onPress={handleOnCancel}>
-              <Text medium>{t('options.cancel')}</Text>
-            </TouchableOpacity>
-          </Animated.View>
+    <View style={styles.background}>
+      <View style={styles.container}>
+        <Animated.View style={[styles.left, headerLeftStyle]}>
+          <TouchableOpacity onPress={handleOnCancel}>
+            <Text medium color="white">
+              {t('options.cancel')}
+            </Text>
+          </TouchableOpacity>
+        </Animated.View>
 
-          <View
-            style={{
-              flex: 2,
-              alignItems: 'center',
-            }}
-          >
-            <TouchableOpacity
-              onPress={toggleAlbum}
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <Text medium>{selectedAlbum?.title || albumTitle}</Text>
-              <Animated.Image
-                source={arrowDown}
-                style={[{ tintColor: 'white', marginLeft: 5 }, arrowStyle]}
-              />
+        <View style={styles.center}>
+          {albumWithFallback && (
+            <TouchableOpacity onPress={toggleAlbum} style={styles.title}>
+              <Text medium color="white">
+                {albumWithFallback}
+              </Text>
+              <Animated.Image source={arrowDown} style={[styles.arrow, arrowStyle]} />
             </TouchableOpacity>
-          </View>
-
-          <Animated.View style={[{ flex: 1, alignItems: 'flex-end' }, headerRightStyle]}>
-            <TouchableOpacity onPress={handleCropping} disabled={!selectedFiles.length}>
-              {isCropping ? (
-                <ActivityIndicator color="white" />
-              ) : (
-                <Text
-                  medium
-                  style={{
-                    opacity: !selectedFiles.length ? 0.5 : 1,
-                  }}
-                >
-                  {t('next')}
-                </Text>
-              )}
-            </TouchableOpacity>
-          </Animated.View>
+          )}
         </View>
+
+        <Animated.View style={[styles.right, headerRightStyle]}>
+          <TouchableOpacity onPress={handleCropping} disabled={!selectedFiles.length}>
+            {isCropping ? (
+              <ActivityIndicator color="white" />
+            ) : (
+              <Text
+                medium
+                color="white"
+                style={{
+                  opacity: !selectedFiles.length ? 0.5 : 1,
+                }}
+              >
+                {t('next')}
+              </Text>
+            )}
+          </TouchableOpacity>
+        </Animated.View>
       </View>
-    </>
+    </View>
   )
 }
 

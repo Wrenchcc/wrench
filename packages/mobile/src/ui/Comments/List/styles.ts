@@ -1,5 +1,5 @@
 import styled from 'styled-components/native'
-import UiText from 'ui/Text'
+import ParsedText from 'ui/Text'
 import UiTouchable from 'ui/Touchable'
 
 export const Row = styled.View`
@@ -8,7 +8,7 @@ export const Row = styled.View`
   margin-bottom: 5px;
 `
 
-export const Comment = styled(UiText)`
+export const Comment = styled(ParsedText)`
   flex: 1;
 `
 

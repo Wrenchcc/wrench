@@ -3,8 +3,10 @@ import { assocPath } from 'rambda'
 import { MAX_SELECTED_FILES } from './constants'
 
 export const croppedFilesVar = makeVar([])
+export const croppedOptions = makeVar([])
 export const selectedFilesVar = makeVar([])
 export const selectedFileIdVar = makeVar('')
+export const fallbackFileVar = makeVar(null)
 export const selectedAlbumVar = makeVar(null)
 export const albumTitleVar = makeVar(null)
 
@@ -14,6 +16,7 @@ export const reset = () => {
   croppedFilesVar([])
   selectedFilesVar([])
   selectedFileIdVar('')
+  fallbackFileVar(null)
   selectedAlbumVar(null)
 }
 
@@ -31,6 +34,8 @@ export const select = (payload) => {
   const isAdded = selectedFiles.some((file) => file.id === currentId)
   const isPrevious = selectedFileIdVar() === currentId
   const currentIndex = selectedFiles.findIndex((e) => e.id === currentId)
+
+  fallbackFileVar(payload)
 
   if (!isPrevious && !isAdded && selectedFiles.length === MAX_SELECTED_FILES) {
     return
@@ -58,8 +63,14 @@ export const select = (payload) => {
 
 export const edit = (payload) => {
   const selectedFiles = selectedFilesVar()
+  const fallbackFile = fallbackFileVar()
   const selectedId = selectedFileIdVar()
   const currentIndex = selectedFiles.findIndex((e) => e.id === selectedId)
 
-  selectedFilesVar(assocPath([currentIndex, 'crop'], payload, selectedFiles))
+  if (!selectedFiles.length) {
+    selectedFilesVar([{ ...fallbackFile, ...{ crop: payload } }])
+    selectedFileIdVar(fallbackFile.id)
+  } else {
+    selectedFilesVar(assocPath([currentIndex, 'crop'], payload, selectedFiles))
+  }
 }

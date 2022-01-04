@@ -12,6 +12,7 @@ import { useDynamicColor } from 'utils/hooks'
 import LikeComment from 'components/LikeComment'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
+import ParsedText from 'ui/ParsedText'
 import TimeAgo from 'ui/TimeAgo'
 import { COLORS } from 'ui/constants'
 import { trash } from 'images'
@@ -227,11 +228,7 @@ function Item({
             <Row>
               <Text>
                 <Text fontSize={15} bold onPress={handleNavigation}>{`${user.fullName} `}</Text>
-                {text && (
-                  <Text fontSize={15} parseEnabled>
-                    {text}
-                  </Text>
-                )}
+                {text && <ParsedText fontSize={15}>{text}</ParsedText>}
               </Text>
             </Row>
 

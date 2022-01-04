@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { View, ScrollView, Image } from 'react-native'
 import { useReactiveVar } from '@apollo/client'
 import { COLORS } from 'ui/constants'
@@ -20,6 +20,7 @@ const styles = {
 
 function ImageEditor() {
   const [isMoving, setMoving] = useState(false)
+  const [isLoading, setLoading] = useState(false)
   const contentOffset = useRef(null)
   const horizontal = useRef(false)
   const maximumZoomScale = useRef(0)
@@ -27,17 +28,17 @@ function ImageEditor() {
   const scaledImageSize = useRef(null)
   const prevSource = useRef(null)
 
+  const fallbackFile = useReactiveVar(store.files.fallbackFileVar)
   const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
   const selectedFileId = useReactiveVar(store.files.selectedFileIdVar)
-  const source = selectedFiles.find(({ id }) => id === selectedFileId)
+  const source = selectedFiles.find(({ id }) => id === selectedFileId) || fallbackFile
 
   useEffect(() => {
-    if (source && source?.uri !== prevSource.current?.uri) {
-      prevSource.current = source
+    if (source && source?.id !== prevSource.current?.id) {
+      setLoading(true)
       setImageProperties(source)
+      prevSource.current = source
     }
-
-    setMoving(false)
   }, [source])
 
   const setImageProperties = (image) => {
@@ -84,9 +85,12 @@ function ImageEditor() {
     })
   }
 
-  const onScroll = (evt) => {
-    setMoving(true)
+  const onLoadEnd = useCallback(() => setLoading(false), [])
 
+  const onScrollBegin = useCallback(() => setMoving(true), [])
+
+  const onScrollEndDrag = (evt) => {
+    setMoving(false)
     handleOnEditImage(
       evt.nativeEvent.contentOffset,
       evt.nativeEvent.contentSize,
@@ -101,15 +105,15 @@ function ImageEditor() {
     const sizeRatioY = croppedImageSize.height / scaledImageSize.height
 
     store.files.edit({
-      height: source.height * sizeRatioY,
-      originX: source.width * offsetRatioX,
-      originY: source.height * offsetRatioY,
-      width: source.width * sizeRatioX,
+      height: source?.height * sizeRatioY,
+      originX: source?.width * offsetRatioX,
+      originY: source?.height * offsetRatioY,
+      width: source?.width * sizeRatioX,
     })
   }
 
   return (
-    <View style={styles.container} key={source?.uri}>
+    <View style={styles.container} key={source?.id}>
       <ScrollView
         alwaysBounceVertical
         automaticallyAdjustContentInsets={false}
@@ -118,14 +122,19 @@ function ImageEditor() {
         horizontal={horizontal.current}
         maximumZoomScale={maximumZoomScale.current}
         minimumZoomScale={minimumZoomScale.current}
-        onMomentumScrollEnd={onScroll}
-        onScrollEndDrag={onScroll}
-        onScrollBeginDrag={() => setMoving(true)}
+        onScrollBeginDrag={onScrollBegin}
+        onScrollEndDrag={onScrollEndDrag}
+        onMomentumScrollEnd={onScrollEndDrag}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={1}
       >
-        <Image style={[styles.image, scaledImageSize.current]} source={source} />
+        <Image
+          blurRadius={isLoading ? 50 : 0}
+          onLoadEnd={onLoadEnd}
+          style={[styles.image, scaledImageSize.current]}
+          source={source}
+        />
       </ScrollView>
       {isMoving && <Grid />}
     </View>

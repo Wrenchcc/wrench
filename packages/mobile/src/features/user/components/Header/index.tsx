@@ -1,5 +1,5 @@
 import React from 'react'
-import { Avatar, Title, Text } from 'ui'
+import { Avatar, Title, Text, ParsedText } from 'ui'
 import { Base, Inner, Username, Info } from './styles'
 
 function Header({
@@ -32,15 +32,15 @@ function Header({
           )}
 
           {bio && (
-            <Text fontSize={15} style={{ marginTop: 5 }} lineHeight={22} parseEnabled>
+            <ParsedText fontSize={15} style={{ marginTop: 5 }} lineHeight={22}>
               {bio}
-            </Text>
+            </ParsedText>
           )}
 
           {website && (
-            <Text fontSize={15} style={{ marginTop: 5 }} parseEnabled>
+            <ParsedText fontSize={15} style={{ marginTop: 5 }}>
               {website}
-            </Text>
+            </ParsedText>
           )}
         </Info>
       ) : null}

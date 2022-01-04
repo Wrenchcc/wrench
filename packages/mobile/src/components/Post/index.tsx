@@ -23,7 +23,7 @@ import { useNavigation, SCREENS } from 'navigation'
 import openLink from 'utils/openLink'
 import Collections from 'features/project/components/Collections'
 import { useDynamicColor } from 'utils/hooks'
-import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo } from 'ui'
+import { Avatar, Carousel, Comments, Title, Text, ParsedText, Icon, TimeAgo } from 'ui'
 import { TOAST_TYPES } from 'utils/enums'
 import { showToast } from 'navigation/banner'
 import LikePost from 'components/LikePost'
@@ -399,17 +399,16 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
           </Headline>
         )}
 
-        <Text
+        <ParsedText
           onPress={navigateToProject}
           disabled={withoutTitle}
           color={withoutTitle ? 'dark' : 'grey'}
           fontSize={15}
           lineHeight={24}
           maxText={120}
-          parseEnabled
         >
           {post.caption}
-        </Text>
+        </ParsedText>
 
         <Spacer />
 

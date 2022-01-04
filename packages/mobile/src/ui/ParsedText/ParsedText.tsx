@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { Text } from 'react-native'
 import TextExtraction from './TextExtraction'
 
@@ -8,9 +8,9 @@ export const PATTERNS = {
   url: /((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/))?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,15}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g,
 }
 
-function ParsedText({ parse, children, parseEnabled, childrenProps, ...restProps }) {
+function ParsedText({ parse, children, childrenProps, ...restProps }) {
   const getPatterns = () =>
-    parse.map(option => {
+    parse.map((option) => {
       const { type, ...patternOption } = option
 
       if (type) {
@@ -39,7 +39,7 @@ function ParsedText({ parse, children, parseEnabled, childrenProps, ...restProps
       .map((props, index) => <Text key={`text-${index}`} {...childrenProps} {...props} />)
   }
 
-  return <Text {...restProps}>{parseEnabled ? getParsedText() : children}</Text>
+  return <Text {...restProps}>{getParsedText()}</Text>
 }
 
-export default memo(ParsedText)
+export default ParsedText
