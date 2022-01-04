@@ -507,13 +507,13 @@ PODS:
     - React-jsi (= 0.66.4)
     - React-logger (= 0.66.4)
     - React-perflogger (= 0.66.4)
-  - ReactNativeNavigation (7.24.3):
+  - ReactNativeNavigation (7.25.0):
     - HMSegmentedControl
     - React-Core
     - React-RCTImage
     - React-RCTText
-    - ReactNativeNavigation/Core (= 7.24.3)
-  - ReactNativeNavigation/Core (7.24.3):
+    - ReactNativeNavigation/Core (= 7.25.0)
+  - ReactNativeNavigation/Core (7.25.0):
     - HMSegmentedControl
     - React-Core
     - React-RCTImage
@@ -927,7 +927,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: e3ffca672dd3772536cb844274094b0e2c31b187
   React-runtimeexecutor: dec32ee6f2e2a26e13e58152271535fadff5455a
   ReactCommon: 57b69f6383eafcbd7da625bfa6003810332313c4
-  ReactNativeNavigation: e16d74494fbac09d9ff9681b8089a20fad593aeb
+  ReactNativeNavigation: 0a768a3eb149e808ca28e12ffbca9b3efecb4ddf
   RNCClipboard: 41d8d918092ae8e676f18adada19104fa3e68495
   RNDeviceInfo: 0400a6d0c94186d1120c3cbd97b23abc022187a9
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7

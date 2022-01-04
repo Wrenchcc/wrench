@@ -15654,10 +15654,10 @@ i18next@^20.2.1:
   dependencies:
     "@babel/runtime" "^7.12.0"
 
-i18next@^21.6.4:
-  version "21.6.4"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-21.6.4.tgz#4da52a429094112b33d4383b5f44aa4890dcb081"
-  integrity sha512-pk0Utxtq5g//Q9ONQ0w3+PRSwOFJ7+m4rAekhHHg1Xql0KcUjJU7DzmzweGy6DsrIQ1GM/t57wLeeGuyGKtjTg==
+i18next@^21.6.5:
+  version "21.6.5"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-21.6.5.tgz#0031c62314f1a8a5e2911eecc6cdc9d044755634"
+  integrity sha512-1oimhzFEpkmxpY2yDyghdycyA1bCKrh9zf04qiB2HytKJCqlrA5e8JfL6KyK/oZvZABLP0GohsZ+tvhHmd+OTA==
   dependencies:
     "@babel/runtime" "^7.12.0"
 
@@ -22458,10 +22458,10 @@ react-native-mmkv@^1.6.1:
   resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-1.6.1.tgz#2b91b40b2d66d2ed5914485d60d38d5ad226e52a"
   integrity sha512-j5hf3Edf+C1JLlzYnpd2CwobJnmDQHwAZOfxBwMm5vKotX6JNFwm5v8AdC0Rb8awEEDK3y+Y1BfJLgbF3rdShQ==
 
-react-native-navigation@^7.24.3:
-  version "7.24.3"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.24.3.tgz#866b1cb5c8dd161517d07ae22dc4629cd5276823"
-  integrity sha512-XV8zr5d8xG+Hk0NrjRroBWjBWqSsZY9KyWVrUKialc/yHO4/Vfz131RGUlDa0XFJR25pIn6s4+6AOVHnYVOuhA==
+react-native-navigation@^7.25.0:
+  version "7.25.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.25.0.tgz#ce7ae6ad01009c7cfcbf753fd2e66a4e18d9c83b"
+  integrity sha512-JmoM58MGU/2JXR0216Ps2ZAAcFo4CHiddK9/6KYysUC7VUkWNjKcq2FOYgW4tpcQ3h/ckfQ54VlNN5nIFzu7Fw==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
