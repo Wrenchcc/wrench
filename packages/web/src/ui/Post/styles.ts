@@ -8,6 +8,7 @@ export const Base = styled.div`
   flex-direction: column;
   margin-bottom: 45px;
   max-width: 640px;
+  width: 100%;
 
   @media ${DEVICE.TABLET} {
     width: 100%;
