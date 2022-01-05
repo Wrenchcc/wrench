@@ -429,7 +429,7 @@ PODS:
   - react-native-fbsdk/Share (3.0.0):
     - FBSDKShareKit (~> 8.1)
     - React
-  - react-native-mmkv (1.6.1):
+  - react-native-mmkv (1.6.2):
     - MMKV
     - React-Core
   - react-native-netinfo (7.1.7):
@@ -914,7 +914,7 @@ SPEC CHECKSUMS:
   React-logger: 933f80c97c633ee8965d609876848148e3fef438
   react-native-config: 6502b1879f97ed5ac570a029961fc35ea606cd14
   react-native-fbsdk: 8e92c7a334fd8d9c2b5d8b8fcd7ae2c314161099
-  react-native-mmkv: 7001d2dc0f4c03f94d51d29af16d311be9df7479
+  react-native-mmkv: c5adce7da6e16b9ea875180a4c9a6be958ae8a81
   react-native-netinfo: 27f287f2d191693f3b9d01a4273137fcf91c3b5d
   react-native-pager-view: 3ee7d4c7697fb3ef788346e834a60cca97ed8540
   react-native-pinchable: b4381b0807d15c12b14bfacd927128f52d96f0f1
@@ -955,6 +955,6 @@ SPEC CHECKSUMS:
   UMReactNativeAdapter: d03cefd0e4e4179ab8c490408589f1c8a6c8b785
   Yoga: e7dc4e71caba6472ff48ad7d234389b91dadc280
 
-PODFILE CHECKSUM: 85b931a07014ca5c83e8e9ba2d22141ec7034f2d
+PODFILE CHECKSUM: 13f044c487923eae589b86ab5ed962125812b919
 
 COCOAPODS: 1.11.2
