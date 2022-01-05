@@ -1,6 +1,6 @@
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
-platform :ios, "11.0"
+platform :ios, "12.0"
 
 root_path = "../../../node_modules"
 

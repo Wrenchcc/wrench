@@ -440,6 +440,8 @@ PODS:
     - React-Core
   - react-native-splash-screen (3.3.0):
     - React-Core
+  - react-native-tracking-transparency (0.1.1):
+    - React
   - react-native-webview (11.15.0):
     - React-Core
   - React-perflogger (0.66.4)
@@ -643,6 +645,7 @@ DEPENDENCIES:
   - react-native-pager-view (from `../../../node_modules/react-native-pager-view`)
   - react-native-pinchable (from `../../../node_modules/react-native-pinchable`)
   - react-native-splash-screen (from `../../../node_modules/react-native-splash-screen`)
+  - react-native-tracking-transparency (from `../../../node_modules/react-native-tracking-transparency`)
   - react-native-webview (from `../../../node_modules/react-native-webview`)
   - React-perflogger (from `../../../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../../../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -786,6 +789,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/react-native-pinchable"
   react-native-splash-screen:
     :path: "../../../node_modules/react-native-splash-screen"
+  react-native-tracking-transparency:
+    :path: "../../../node_modules/react-native-tracking-transparency"
   react-native-webview:
     :path: "../../../node_modules/react-native-webview"
   React-perflogger:
@@ -914,6 +919,7 @@ SPEC CHECKSUMS:
   react-native-pager-view: 3ee7d4c7697fb3ef788346e834a60cca97ed8540
   react-native-pinchable: b4381b0807d15c12b14bfacd927128f52d96f0f1
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
+  react-native-tracking-transparency: b2029ff756f1128b1f2c7c7c7f3003bc3c950f9f
   react-native-webview: e89bf2dba26a04cda967814df3ed1be99f291233
   React-perflogger: 93075d8931c32cd1fce8a98c15d2d5ccc4d891bd
   React-RCTActionSheet: 7d3041e6761b4f3044a37079ddcb156575fb6d89
@@ -949,6 +955,6 @@ SPEC CHECKSUMS:
   UMReactNativeAdapter: d03cefd0e4e4179ab8c490408589f1c8a6c8b785
   Yoga: e7dc4e71caba6472ff48ad7d234389b91dadc280
 
-PODFILE CHECKSUM: d02c082b5373d4c6ce4750e0d0a50f17eb143ffb
+PODFILE CHECKSUM: 85b931a07014ca5c83e8e9ba2d22141ec7034f2d
 
 COCOAPODS: 1.11.2

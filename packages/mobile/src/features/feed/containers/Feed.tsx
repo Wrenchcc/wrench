@@ -3,6 +3,7 @@ import { KeyboardAvoidingView } from 'react-native'
 import ms from 'ms'
 import { useReactiveVar } from '@apollo/client'
 import { showPosting, NavigationBanner } from 'navigation/banner'
+import { getTrackingConsent } from 'utils/analytics'
 import { usePaginatedQuery, FeedDocument } from '@wrench/common'
 import { store } from 'gql'
 import { Layout, FlatList, useScrollToTop, SCREENS } from 'navigation'
@@ -44,6 +45,10 @@ function Feed() {
   useScrollToTop(scrollRef, SCREENS.FEED)
 
   useEffect(() => {
+    getTrackingConsent()
+  }, [])
+
+  useEffect(() => {
     if (edges?.length) {
       const id = edges[0].node.id
 
@@ -72,9 +77,6 @@ function Feed() {
         <FlatList
           ref={scrollRef}
           initialNumToRender={2}
-          // maintainVisibleContentPosition={{
-          //   minIndexForVisible: 0,
-          // }}
           spacingSeparator
           data={edges}
           ListEmptyComponent={<ProjectSuggestions />}

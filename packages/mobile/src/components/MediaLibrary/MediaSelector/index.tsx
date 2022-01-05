@@ -125,6 +125,7 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
         style={{ marginLeft: -MARGIN }}
         renderItem={renderItem}
         onEndReached={onEndReached}
+        onEndReachedThreshold={0.5}
       />
     </Animated.View>
   )

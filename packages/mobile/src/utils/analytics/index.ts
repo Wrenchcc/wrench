@@ -1,7 +1,17 @@
+import { getTrackingStatus, requestTrackingPermission } from 'react-native-tracking-transparency'
 import analytics from '@react-native-firebase/analytics'
 export { events } from './events'
 
-analytics().setAnalyticsCollectionEnabled(!__DEV__)
+export const getTrackingConsent = async () => {
+  const status = await getTrackingStatus()
+
+  if (status === 'not-determined') {
+    const trackingStatus = await requestTrackingPermission()
+    if (trackingStatus === 'authorized' || trackingStatus === 'unavailable') {
+      analytics().setAnalyticsCollectionEnabled(!__DEV__)
+    }
+  }
+}
 
 export const trackScreen = (screenName) => {
   analytics().logScreenView({
