@@ -74,7 +74,7 @@ export const edit = (payload) => {
   if (!selectedFiles.length) {
     selectedFilesVar([fallbackFile])
     selectedFileIdVar(fallbackFile.id)
-    selectedFile(fallbackFileVar)
+    selectedFile(fallbackFileVar())
   }
 
   croppedOptionsVar({ ...options, [selectedId]: payload })
