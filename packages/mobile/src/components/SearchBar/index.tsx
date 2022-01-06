@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useCallback, memo } from 'react'
 import { BackHandler, Keyboard } from 'react-native'
 import { Navigation } from 'react-native-navigation'
-import Animated, { Transition } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
 import { SCREENS, currentComponentName } from 'navigation'
 import { useReactiveVar, store } from 'gql'

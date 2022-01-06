@@ -10,6 +10,7 @@ const styles = {
     width: CROP_AREA,
     height: CROP_AREA,
     overflow: 'hidden',
+    backgroundColor: 'rgb(34,34,34)',
   },
 }
 

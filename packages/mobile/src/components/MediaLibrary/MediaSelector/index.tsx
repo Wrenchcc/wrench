@@ -37,13 +37,6 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
     fetchInitialAssets(selectedAlbum)
   }, [selectedAlbum?.id])
 
-  useEffect(() => {
-    if (!init.current && assets.length) {
-      store.files.select(assets[0])
-      init.current = true
-    }
-  }, [assets])
-
   const fetchInitialAssets = async (album?: string) => {
     try {
       const result = await MediaLibrary.getAssetsAsync({
@@ -52,6 +45,11 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
         mediaType: [MediaLibrary.MediaType.photo],
         sortBy: MediaLibrary.SortBy.creationTime,
       })
+
+      if (!init.current) {
+        store.files.select(result.assets[0])
+        init.current = true
+      }
 
       setAssets(result.assets)
       setHasNextPage(result.hasNextPage)
