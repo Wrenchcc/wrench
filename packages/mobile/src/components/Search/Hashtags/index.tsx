@@ -1,5 +1,6 @@
 import React, { memo, useEffect, useState, useCallback } from 'react'
 import { Keyboard } from 'react-native'
+import { useReactiveVar, store } from 'gql'
 import { storage, useMMKVString } from 'utils/storage'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedLazyQuery, SearchHashtagsDocument } from '@wrench/common'
@@ -9,21 +10,13 @@ import { InfiniteList, NoResults, SearchingFor, Loader, Text, Hashtag } from 'ui
 import HashtagSkeletonList from 'ui/Hashtag/SkeletonList'
 import { Header } from '../styles'
 
-const ITEM_HEIGHT = 68
 const MAX_ITEMS = 4
 
-function getItemLayout(_, index) {
-  return {
-    index,
-    length: ITEM_HEIGHT,
-    offset: ITEM_HEIGHT * index,
-  }
-}
-
-function Hashtags({ query }) {
+function Hashtags() {
   const { t } = useTranslation('search')
   const [savedRecent, setSavedRecent] = useMMKVString(RECENT_SEARCHES_HASHTAGS)
   const [recent, setRecent] = useState(savedRecent ? JSON.parse(savedRecent) : [])
+  const query = useReactiveVar(store.search.queryVar)
 
   const { navigate } = useNavigation()
 
@@ -94,8 +87,7 @@ function Hashtags({ query }) {
         borderSeparator
         initialNumToRender={4}
         paddingBottom={40}
-        getItemLayout={getItemLayout}
-        ListEmptyComponent={!isFetching && query.length > 0 && <NoResults />}
+        ListEmptyComponent={!isFetching && query.length > 1 && <NoResults />}
         data={query ? edges : recent}
         fetchMore={fetchMore}
         hasNextPage={isFetching ? false : hasNextPage}

@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { View, ScrollView, Image } from 'react-native'
-import { useReactiveVar } from '@apollo/client'
-import { COLORS } from 'ui/constants'
-import { store } from 'gql'
+import { useReactiveVar, store } from 'gql'
 import Grid from './Grid'
 import { isAndroid } from 'utils/platform'
 import { CROP_AREA } from '../constants'
@@ -12,9 +10,6 @@ const styles = {
     width: CROP_AREA,
     height: CROP_AREA,
     overflow: 'hidden',
-  },
-  image: {
-    backgroundColor: COLORS.DARK_GREY,
   },
 }
 
@@ -129,7 +124,7 @@ function ImageEditor() {
         <Image
           blurRadius={isLoading ? 50 : 0}
           onLoadEnd={onLoadEnd}
-          style={[styles.image, scaledImageSize.current]}
+          style={scaledImageSize.current}
           source={source}
         />
       </ScrollView>

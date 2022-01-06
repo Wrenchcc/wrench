@@ -3,24 +3,19 @@ import { Keyboard } from 'react-native'
 import { storage, useMMKVString } from 'utils/storage'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
+import { useReactiveVar, store } from 'gql'
 import { User, InfiniteList, NoResults, Loader, Text } from 'ui'
 import { RECENT_SEARCHES_USERS } from 'utils/storage/constants'
 import UserSkeletonList from 'ui/User/SkeletonList'
 import { Header } from '../styles'
 
-const ITEM_HEIGHT = 71
 const MAX_ITEMS = 8
 
-const getItemLayout = (_, index) => ({
-  index,
-  length: ITEM_HEIGHT,
-  offset: ITEM_HEIGHT * index,
-})
-
-function Users({ query }) {
+function Users() {
   const { t } = useTranslation('search')
   const [savedRecent, setSavedRecent] = useMMKVString(RECENT_SEARCHES_USERS)
   const [recent, setRecent] = useState(savedRecent ? JSON.parse(savedRecent) : [])
+  const query = useReactiveVar(store.search.queryVar)
 
   const {
     loadData,
@@ -76,8 +71,7 @@ function Users({ query }) {
       <InfiniteList
         borderSeparator
         paddingBottom={40}
-        getItemLayout={getItemLayout}
-        ListEmptyComponent={!isFetching && query.length > 0 && <NoResults />}
+        ListEmptyComponent={!isFetching && query.length > 1 && <NoResults />}
         data={query ? edges : recent}
         fetchMore={fetchMore}
         hasNextPage={isFetching ? false : hasNextPage}

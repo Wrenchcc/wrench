@@ -1,19 +1,21 @@
 import React, { memo, useEffect, useState, useCallback } from 'react'
+import { Keyboard } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { useReactiveVar, store } from 'gql'
 import { storage, useMMKVString } from 'utils/storage'
 import { usePaginatedLazyQuery, SearchProjectsDocument } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { RECENT_SEARCHES_PROJECTS } from 'utils/storage/constants'
 import { ProjectCard, InfiniteList, NoResults, SearchingFor, Loader, Text } from 'ui'
 import { Header } from '../styles'
-import { Keyboard } from 'react-native'
 
 const MAX_ITEMS = 4
 
-function Projects({ query }) {
+function Projects() {
   const { t } = useTranslation('search')
   const [savedRecent, setSavedRecent] = useMMKVString(RECENT_SEARCHES_PROJECTS)
   const [recent, setRecent] = useState(savedRecent ? JSON.parse(savedRecent) : [])
+  const query = useReactiveVar(store.search.queryVar)
 
   const { navigate } = useNavigation()
 
@@ -82,7 +84,7 @@ function Projects({ query }) {
       borderSeparator
       initialNumToRender={4}
       paddingBottom={40}
-      ListEmptyComponent={!isFetching && query.length > 0 && <NoResults />}
+      ListEmptyComponent={!isFetching && query.length > 1 && <NoResults />}
       data={query ? edges : recent}
       fetchMore={fetchMore}
       hasNextPage={isFetching ? false : hasNextPage}

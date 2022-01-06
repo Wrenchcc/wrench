@@ -2,7 +2,7 @@ import { makeVar } from '@apollo/client'
 import { MAX_SELECTED_FILES } from './constants'
 
 export const croppedFilesVar = makeVar([])
-export const croppedOptions = makeVar({})
+export const croppedOptionsVar = makeVar({})
 export const selectedFilesVar = makeVar([])
 export const selectedFile = makeVar(null)
 export const selectedFileIdVar = makeVar('')
@@ -19,7 +19,7 @@ export const reset = () => {
   selectedFileIdVar('')
   fallbackFileVar(null)
   selectedAlbumVar(null)
-  croppedOptions({})
+  croppedOptionsVar({})
 }
 
 export const setAlbum = (album) => {
@@ -69,7 +69,7 @@ export const edit = (payload) => {
   const selectedFiles = selectedFilesVar()
   const fallbackFile = fallbackFileVar()
   const selectedId = selectedFileIdVar()
-  const options = croppedOptions()
+  const options = croppedOptionsVar()
 
   if (!selectedFiles.length) {
     selectedFilesVar([fallbackFile])
@@ -77,5 +77,5 @@ export const edit = (payload) => {
     selectedFile(fallbackFileVar)
   }
 
-  croppedOptions({ ...options, [selectedId]: payload })
+  croppedOptionsVar({ ...options, [selectedId]: payload })
 }

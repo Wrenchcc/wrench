@@ -1,61 +1,71 @@
 import React, { useRef, useEffect, useCallback, memo } from 'react'
 import { BackHandler, Keyboard } from 'react-native'
+import { Navigation } from 'react-native-navigation'
+import Animated, { Transition } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
+import { SCREENS, currentComponentName } from 'navigation'
+import { useReactiveVar, store } from 'gql'
 import { search, close } from 'images'
 import { Text } from 'ui'
 import { Base, Inner, Input, SearchIcon, CloseIcon } from './styles'
 import { useDynamicColor } from 'utils/hooks'
 
-function SearchBar({
-  onChangeQuery,
-  searchOpen,
-  onSearchFocus,
-  searchClosed,
-  searchActive,
-  onSearchCancel,
-  query,
-}) {
+function SearchBar() {
   const inputRef = useRef(null)
   const { t } = useTranslation('search-bar')
   const dynamicPlaceholderTextColor = useDynamicColor('neutral')
+  const query = useReactiveVar(store.search.queryVar)
+  const searchActive = useReactiveVar(store.search.activeVar)
 
   const handleFocus = useCallback(() => {
-    if (onSearchFocus) {
-      onSearchFocus()
-    }
-
+    store.search.setActive(true)
     return true
-  }, [onSearchFocus])
+  }, [])
 
   const handleCancel = useCallback(() => {
     inputRef.current.blur()
-
+    store.search.setQuery('')
+    store.search.setActive(false)
     Keyboard.dismiss()
+  }, [inputRef])
 
-    if (onSearchCancel) {
-      onSearchCancel()
-    }
-  }, [inputRef, onSearchCancel])
-
-  const handleQueryChange = useCallback(
-    (value) => {
-      onChangeQuery(value)
-    },
-    [onChangeQuery]
-  )
+  const handleQueryChange = useCallback((value) => {
+    store.search.setQuery(value)
+  }, [])
 
   const clearQuery = useCallback(() => {
-    onChangeQuery('')
-  }, [onChangeQuery])
+    store.search.setQuery('')
+  }, [])
 
+  // Close on duble tap
   useEffect(() => {
-    if (searchOpen) {
-      BackHandler.addEventListener('hardwareBackPress', handleCancel)
-    }
-    if (searchClosed) {
-      BackHandler.removeEventListener('hardwareBackPress', handleCancel)
-    }
-  }, [searchActive, handleCancel])
+    const bottomTabEventListener = Navigation.events().registerBottomTabSelectedListener(
+      ({ selectedTabIndex, unselectedTabIndex }) => {
+        if (selectedTabIndex === unselectedTabIndex && currentComponentName === SCREENS.EXPLORE) {
+          store.search.setQuery('')
+          store.search.setActive(false)
+        }
+      }
+    )
+
+    return () => bottomTabEventListener.remove()
+  }, [])
+
+  // Close on android hardware button
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+      if (searchActive) {
+        store.search.setQuery('')
+        store.search.setActive(false)
+
+        return true
+      }
+
+      return false
+    })
+
+    return () => backHandler.remove()
+  }, [searchActive])
 
   return (
     <Base>

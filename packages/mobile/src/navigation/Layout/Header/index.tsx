@@ -47,4 +47,4 @@ function Header({ headerLeft, headerRight, headerTitleKey, stickyComponent }) {
   )
 }
 
-export default Header
+export default React.memo(Header)

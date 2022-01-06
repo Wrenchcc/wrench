@@ -4,6 +4,7 @@ import * as mention from './mention'
 import * as post from './post'
 import * as project from './project'
 import * as video from './video'
+import * as search from './search'
 
 export default {
   collection,
@@ -12,4 +13,5 @@ export default {
   post,
   project,
   video,
+  search,
 }

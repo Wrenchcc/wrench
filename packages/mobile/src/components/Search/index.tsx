@@ -1,7 +1,8 @@
 import React, { useState, useCallback, memo, useEffect } from 'react'
 import { Dimensions, useColorScheme } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { TabView, TabBar } from 'react-native-tab-view'
+import { TabView, TabBar, SceneMap } from 'react-native-tab-view'
+import { NAVIGATION } from 'navigation'
 import { FONTS } from 'ui/constants'
 import Users from './Users'
 import Projects from './Projects'
@@ -9,8 +10,11 @@ import Hashtags from './Hashtags'
 import { Base } from './styles'
 import { isAndroid } from 'utils/platform'
 
+const { width, height } = Dimensions.get('window')
+
 const initialLayout = {
-  width: Dimensions.get('window').width,
+  width,
+  height: height - NAVIGATION.TOTAL_TOP_BAR_HEIGHT,
 }
 
 const routes = [
@@ -25,21 +29,10 @@ const routes = [
   },
 ]
 
-function Search({ query }) {
+function Search() {
   const { t } = useTranslation('search')
   const [index, setIndex] = useState(0)
   const colorScheme = useColorScheme()
-
-  useEffect(() => {
-    setIndex(0)
-  }, [setIndex])
-
-  const handleIndexChange = useCallback(
-    (activeIndex) => {
-      setIndex(activeIndex)
-    },
-    [index]
-  )
 
   const styles = {
     indicatorStyle: {
@@ -60,26 +53,27 @@ function Search({ query }) {
     },
   }
 
+  useEffect(() => {
+    setIndex(0)
+  }, [])
+
+  const handleIndexChange = useCallback(
+    (activeIndex) => {
+      setIndex(activeIndex)
+    },
+    [index]
+  )
+
   // t('users')
   // t('projects')
   // t('hashtags')
   const handleLabelText = useCallback(({ route }) => t(route.key), [t])
 
-  const renderScene = useCallback(
-    ({ route }) => {
-      switch (route.key) {
-        case 'users':
-          return <Users query={query} />
-        case 'projects':
-          return <Projects query={query} />
-        case 'hashtags':
-          return <Hashtags query={query} />
-        default:
-          return null
-      }
-    },
-    [query]
-  )
+  const renderScene = SceneMap({
+    users: Users,
+    projects: Projects,
+    hashtags: Hashtags,
+  })
 
   const renderTabBar = useCallback(
     (props) => (
@@ -98,10 +92,7 @@ function Search({ query }) {
     <Base>
       <TabView
         keyboardDismissMode="none"
-        navigationState={{
-          index,
-          routes,
-        }}
+        navigationState={{ index, routes }}
         renderScene={renderScene}
         renderTabBar={renderTabBar}
         onIndexChange={handleIndexChange}

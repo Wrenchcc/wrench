@@ -55,7 +55,6 @@ function Header({ headerLeftStyle = {}, headerRightStyle = {}, arrowStyle = {}, 
   const { dismissModal, navigate } = useNavigation()
 
   const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
-  const cropOptions = useReactiveVar(store.files.croppedOptions)
   const selectedAlbum = useReactiveVar(store.files.selectedAlbumVar)
   const albumTitle = useReactiveVar(store.files.albumTitleVar)
 
@@ -67,9 +66,11 @@ function Header({ headerLeftStyle = {}, headerRightStyle = {}, arrowStyle = {}, 
   const handleCropping = useCallback(async () => {
     try {
       setCropping(true)
+
+      const options = store.files.croppedOptionsVar()
       const filesWithOptions = selectedFiles.map((file) => ({
         ...file,
-        crop: cropOptions[file.id],
+        crop: options[file.id],
       }))
 
       const files = await Promise.all(filesWithOptions.map(cropImage))

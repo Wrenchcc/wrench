@@ -36,7 +36,6 @@ const styles = {
     zIndex: 1000,
     width: CROP_AREA,
     height: CROP_AREA + HEADER_HEIGHT + NAVIGATION.STATUS_BAR_HEIGHT,
-    backgroundColor: '#222',
   },
 }
 
@@ -149,28 +148,26 @@ function Library() {
 
   return (
     <>
-      <View style={{ flex: 1, backgroundColor: 'black' }}>
-        <Animated.View style={[styles.cropArea, cropAreaStyle]}>
-          <Header
-            headerLeftStyle={headerStyle}
-            headerRightStyle={headerStyle}
-            arrowStyle={arrowStyle}
-            toggleAlbum={handleToggleAlbum}
-          />
-
-          <ImageEditor />
-
-          <Opacity opacity={opacity} />
-          <Dragbar gestureHandler={gestureHandler} />
-        </Animated.View>
-
-        <MediaSelector
-          onScroll={scrollHandler}
-          spacing={spacing}
-          onSelect={handleOnSelect}
-          onPermission={handleOnPermission}
+      <Animated.View style={[styles.cropArea, cropAreaStyle]}>
+        <Header
+          headerLeftStyle={headerStyle}
+          headerRightStyle={headerStyle}
+          arrowStyle={arrowStyle}
+          toggleAlbum={handleToggleAlbum}
         />
-      </View>
+
+        <ImageEditor />
+
+        <Opacity opacity={opacity} />
+        <Dragbar gestureHandler={gestureHandler} />
+      </Animated.View>
+
+      <MediaSelector
+        onScroll={scrollHandler}
+        spacing={spacing}
+        onSelect={handleOnSelect}
+        onPermission={handleOnPermission}
+      />
 
       <Albums
         onPress={handleToggleAlbum}
