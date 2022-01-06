@@ -54,7 +54,7 @@ function InfiniteList({
       ListEmptyComponent={initialFetch ? renderLoader(loaderInset) : ListEmptyComponent}
       keyboardShouldPersistTaps="always"
       keyboardDismissMode="on-drag"
-      onEndReachedThreshold={0.01}
+      onEndReachedThreshold={1}
       contentContainerStyle={{
         flex: initialFetch ? 1 : 0,
         paddingLeft: paddingHorizontal,

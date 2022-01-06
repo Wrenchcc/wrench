@@ -10,6 +10,19 @@ import { INITIAL_PAGE_SIZE, PAGE_SIZE, DRAG_BAR } from '../constants'
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
+const styles = {
+  loader: {
+    paddingTop: 30,
+    paddingBottom: 30,
+  },
+  header: {
+    width: '100%',
+  },
+  list: {
+    marginLeft: -MARGIN,
+  },
+}
+
 function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
   const [assets, setAssets] = useState([])
   const [hasNextPage, setHasNextPage] = useState(false)
@@ -18,7 +31,6 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
   const lastEndCursor = useRef('')
   const init = useRef(false)
 
-  const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
   const selectedAlbum = useReactiveVar(store.files.selectedAlbumVar)
 
   useEffect(() => {
@@ -71,6 +83,7 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
         endCursor.current = result.endCursor
         lastEndCursor.current = after
       } catch (err) {
+        setHasNextPage(false)
         logError(err)
       }
     },
@@ -85,13 +98,13 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
 
   const handleOnSelect = useCallback((item) => {
     store.files.select(item)
-    onSelect()
+    onSelect(item)
   }, [])
 
   const renderFooter = useCallback(() => {
     if (hasNextPage && assets.length) {
       return (
-        <View style={{ paddingTop: 30, paddingBottom: 30 }}>
+        <View style={styles.loader}>
           <ActivityIndicator color="white" />
         </View>
       )
@@ -100,11 +113,7 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
     return null
   }, [hasNextPage, assets])
 
-  const renderItem = ({ item }) => {
-    const order = selectedFiles.findIndex((e) => e.id === item.id)
-    const selected = selectedFiles.some((file) => file.id === item.id)
-    return <Item onPress={handleOnSelect} item={item} selected={selected} order={order + 1} />
-  }
+  const renderItem = ({ item }) => <Item onPress={handleOnSelect} item={item} />
 
   const spacingStyle = useAnimatedStyle(() => ({
     height: spacing.value,
@@ -113,7 +122,7 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
   return (
     <Animated.View style={{ flex: 1, marginTop: DRAG_BAR }}>
       <AnimatedFlatList
-        ListHeaderComponent={<Animated.View style={[{ width: '100%' }, spacingStyle]} />}
+        ListHeaderComponent={<Animated.View style={[styles.header, spacingStyle]} />}
         onScroll={onScroll}
         scrollEventThrottle={1}
         automaticallyAdjustContentInsets={false}
@@ -122,13 +131,13 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
         data={assets}
         keyExtractor={(item) => item.id}
         initialNumToRender={PAGE_SIZE}
-        style={{ marginLeft: -MARGIN }}
+        style={styles.list}
         renderItem={renderItem}
         onEndReached={onEndReached}
-        onEndReachedThreshold={0.5}
+        onEndReachedThreshold={1}
       />
     </Animated.View>
   )
 }
 
-export default MediaSelector
+export default React.memo(MediaSelector)

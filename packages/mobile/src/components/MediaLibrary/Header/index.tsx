@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next'
 import cropImage from 'utils/cropImage'
 import { HEADER_HEIGHT } from '../constants'
 import { arrowDown } from 'images'
+import { logError } from 'utils/sentry'
 
 const styles = {
   background: {
@@ -54,6 +55,7 @@ function Header({ headerLeftStyle = {}, headerRightStyle = {}, arrowStyle = {}, 
   const { dismissModal, navigate } = useNavigation()
 
   const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
+  const cropOptions = useReactiveVar(store.files.croppedOptions)
   const selectedAlbum = useReactiveVar(store.files.selectedAlbumVar)
   const albumTitle = useReactiveVar(store.files.albumTitleVar)
 
@@ -65,10 +67,16 @@ function Header({ headerLeftStyle = {}, headerRightStyle = {}, arrowStyle = {}, 
   const handleCropping = useCallback(async () => {
     try {
       setCropping(true)
-      const files = await Promise.all(selectedFiles.map(cropImage))
+      const filesWithOptions = selectedFiles.map((file) => ({
+        ...file,
+        crop: cropOptions[file.id],
+      }))
+
+      const files = await Promise.all(filesWithOptions.map(cropImage))
+
       store.files.add(files)
     } catch (err) {
-      // logError(err)
+      logError(err)
     }
 
     navigate(SCREENS.ADD_POST, {

@@ -11,6 +11,7 @@ import Animated, {
 } from 'react-native-reanimated'
 import { clamp, snapPoint } from 'react-native-redash'
 import { useNavigation, NAVIGATION } from 'navigation'
+import { store } from 'gql'
 import Header from '../Header'
 import ImageEditor from '../ImageEditor'
 import Albums from '../Albums'
@@ -59,10 +60,14 @@ function Library() {
     setShowPermission(false)
   }
 
-  const handleOnSelect = useCallback(() => {
-    cropAreaY.value = withTiming(CROP_FULLY_DOWN, {
-      duration: TIMING_DURATION,
-    })
+  const handleOnSelect = useCallback((item) => {
+    const isAdded = store.files.selectedFilesVar().some((file) => file.id === item.id)
+
+    if (isAdded) {
+      cropAreaY.value = withTiming(CROP_FULLY_DOWN, {
+        duration: TIMING_DURATION,
+      })
+    }
   }, [])
 
   const handleToggleAlbum = () => {

@@ -26,18 +26,15 @@ function ImageEditor() {
   const maximumZoomScale = useRef(0)
   const minimumZoomScale = useRef(null)
   const scaledImageSize = useRef(null)
-  const prevSource = useRef(null)
+  const prevSourceId = useRef(null)
 
-  const fallbackFile = useReactiveVar(store.files.fallbackFileVar)
-  const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
-  const selectedFileId = useReactiveVar(store.files.selectedFileIdVar)
-  const source = selectedFiles.find(({ id }) => id === selectedFileId) || fallbackFile
+  const source = useReactiveVar(store.files.selectedFile)
 
   useEffect(() => {
-    if (source && source?.id !== prevSource.current?.id) {
+    if (source && source?.id !== prevSourceId.current) {
       setLoading(true)
       setImageProperties(source)
-      prevSource.current = source
+      prevSourceId.current = source.id
     }
   }, [source])
 
@@ -141,4 +138,4 @@ function ImageEditor() {
   )
 }
 
-export default ImageEditor
+export default React.memo(ImageEditor)

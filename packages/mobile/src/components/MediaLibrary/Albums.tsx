@@ -8,6 +8,51 @@ import { ALBUM_INNER_HEIGHT, ALBUM_WIDTH, HEADER_HEIGHT } from './constants'
 
 const AnimatedBlurView = Animated.createAnimatedComponent(BlurView)
 
+const styles = {
+  container: {
+    flex: 1,
+    backgroundColor: 'rgba(000, 000, 000, .8)',
+  },
+  background: {
+    top: HEADER_HEIGHT,
+    width: ALBUM_WIDTH,
+    zIndex: 10000,
+    height: ALBUM_INNER_HEIGHT,
+  },
+  scrollview: {
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: '#222',
+  },
+  content: {
+    paddingTop: 10,
+    paddingHorizontal: 10,
+  },
+  item: {
+    height: 100,
+    width: '100%',
+  },
+  image: {
+    width: 80,
+    height: 80,
+    backgroundColor: '#222',
+  },
+  inner: {
+    paddingLeft: 10,
+    justifyContent: 'center',
+  },
+  title: {
+    marginBottom: 5,
+    color: 'white',
+    fontWeight: '500',
+    fontSize: 16,
+  },
+  count: {
+    color: 'white',
+    fontWeight: '500',
+    fontSize: 14,
+  },
+}
+
 function Albums({ translateY, onPress, onPermission }) {
   const [albums, setAlbums] = useState([])
 
@@ -67,53 +112,20 @@ function Albums({ translateY, onPress, onPermission }) {
     <AnimatedBlurView
       intensity={100}
       tint="dark"
-      style={[
-        StyleSheet.absoluteFill,
-        {
-          top: HEADER_HEIGHT,
-          width: ALBUM_WIDTH,
-          zIndex: 10000,
-          height: ALBUM_INNER_HEIGHT,
-        },
-        albumStyle,
-      ]}
+      style={[StyleSheet.absoluteFill, styles.background, albumStyle]}
     >
-      <View style={{ flex: 1, backgroundColor: 'rgba(000, 000, 000, .8)' }}>
-        <ScrollView
-          style={{
-            borderTopWidth: StyleSheet.hairlineWidth,
-            borderTopColor: '#222',
-          }}
-          contentContainerStyle={{
-            paddingTop: 10,
-            paddingHorizontal: 10,
-          }}
-        >
+      <View style={styles.container}>
+        <ScrollView style={styles.scrollview} contentContainerStyle={styles.content}>
           {albums.map(({ id, title, totalCount, preview }) => (
-            <View key={id} style={{ height: 100, width: '100%' }}>
+            <View key={id} style={styles.item}>
               <TouchableOpacity
                 onPress={() => handleOnPress({ id, title })}
                 style={{ flexDirection: 'row' }}
               >
-                <Image
-                  fadeDuration={0}
-                  source={preview}
-                  style={{ width: 80, height: 80, backgroundColor: '#222' }}
-                />
-                <View style={{ paddingLeft: 10, justifyContent: 'center' }}>
-                  <Text
-                    style={{
-                      marginBottom: 5,
-                      color: 'white',
-                      fontWeight: '500',
-                      fontSize: 16,
-                    }}
-                  >
-                    {title}
-                  </Text>
-                  <Text style={{ color: 'white', fontWeight: '500', fontSize: 14 }}>
-                    {totalCount}
-                  </Text>
+                <Image fadeDuration={0} source={preview} style={styles.image} />
+                <View style={styles.inner}>
+                  <Text style={styles.title}>{title}</Text>
+                  <Text style={styles.count}>{totalCount}</Text>
                 </View>
               </TouchableOpacity>
             </View>

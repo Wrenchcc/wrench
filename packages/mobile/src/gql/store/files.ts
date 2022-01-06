@@ -1,10 +1,10 @@
 import { makeVar } from '@apollo/client'
-import { assocPath } from 'rambda'
 import { MAX_SELECTED_FILES } from './constants'
 
 export const croppedFilesVar = makeVar([])
-export const croppedOptions = makeVar([])
+export const croppedOptions = makeVar({})
 export const selectedFilesVar = makeVar([])
+export const selectedFile = makeVar(null)
 export const selectedFileIdVar = makeVar('')
 export const fallbackFileVar = makeVar(null)
 export const selectedAlbumVar = makeVar(null)
@@ -15,9 +15,11 @@ export const add = (payload) => croppedFilesVar(payload)
 export const reset = () => {
   croppedFilesVar([])
   selectedFilesVar([])
+  selectedFile(null)
   selectedFileIdVar('')
   fallbackFileVar(null)
   selectedAlbumVar(null)
+  croppedOptions({})
 }
 
 export const setAlbum = (album) => {
@@ -44,6 +46,7 @@ export const select = (payload) => {
   if (!isPrevious && isAdded) {
     selectedFileIdVar(currentId)
     selectedFilesVar(selectedFiles)
+    selectedFile(selectedFiles.find(({ id }) => id === currentId) || fallbackFileVar())
     return
   }
 
@@ -59,18 +62,20 @@ export const select = (payload) => {
 
   selectedFileIdVar(selectedId)
   selectedFilesVar(updatedFiles)
+  selectedFile(selectedFiles.find(({ id }) => id === selectedId) || fallbackFileVar())
 }
 
 export const edit = (payload) => {
   const selectedFiles = selectedFilesVar()
   const fallbackFile = fallbackFileVar()
   const selectedId = selectedFileIdVar()
-  const currentIndex = selectedFiles.findIndex((e) => e.id === selectedId)
+  const options = croppedOptions()
 
   if (!selectedFiles.length) {
-    selectedFilesVar([{ ...fallbackFile, ...{ crop: payload } }])
+    selectedFilesVar([fallbackFile])
     selectedFileIdVar(fallbackFile.id)
-  } else {
-    selectedFilesVar(assocPath([currentIndex, 'crop'], payload, selectedFiles))
+    selectedFile(fallbackFileVar)
   }
+
+  croppedOptions({ ...options, [selectedId]: payload })
 }
