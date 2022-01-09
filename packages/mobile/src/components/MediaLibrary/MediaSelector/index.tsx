@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react'
 import { ActivityIndicator, View, FlatList } from 'react-native'
-import { useReactiveVar } from '@apollo/client'
-import { store } from 'gql'
+import { useReactiveVar, store } from 'gql'
 import Animated, { useAnimatedStyle } from 'react-native-reanimated'
 import * as MediaLibrary from 'expo-media-library'
 import { logError } from 'utils/sentry'

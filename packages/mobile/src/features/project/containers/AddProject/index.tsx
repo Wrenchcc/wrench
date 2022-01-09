@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react'
-import { useReactiveVar } from '@apollo/client'
 import { useTranslation } from 'react-i18next'
-import { store, PROJECT } from 'gql'
+import { useReactiveVar, store, PROJECT } from 'gql'
 import { useNavigation, SCREENS } from 'navigation'
 import { Header, Icon, Title, Text, Input, KeyboardAvoidingView } from 'ui'
 import { close } from 'images'

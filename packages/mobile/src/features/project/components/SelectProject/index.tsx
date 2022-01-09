@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { useReactiveVar } from '@apollo/client'
 import { useCurrentUserProjectsQuery } from '@wrench/common'
-import { store } from 'gql'
+import { useReactiveVar, store } from 'gql'
 import { Text, Icon, Touchable } from 'ui'
 import { arrowDown, arrowUp } from 'images'
 import List from './List'

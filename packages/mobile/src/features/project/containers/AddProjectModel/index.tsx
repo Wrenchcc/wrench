@@ -6,8 +6,7 @@ import {
   CurrentUserDocument,
 } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
-import { useReactiveVar } from '@apollo/client'
-import { store, PROJECT } from 'gql'
+import { useReactiveVar, store, PROJECT } from 'gql'
 import { ActivityIndicator, Header, Title, Text, Input, Icon, KeyboardAvoidingView } from 'ui'
 import { arrowLeft } from 'images'
 import SearchModel from 'features/project/components/SearchModel'

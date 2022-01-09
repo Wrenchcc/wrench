@@ -1,8 +1,7 @@
 import React, { useCallback } from 'react'
 import { Image, Dimensions, View } from 'react-native'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
-import { useReactiveVar } from '@apollo/client'
-import { store } from 'gql'
+import { useReactiveVar, store } from 'gql'
 import Text from 'ui/Text'
 import { formatTime } from './utils'
 

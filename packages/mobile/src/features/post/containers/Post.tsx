@@ -118,7 +118,7 @@ function PostContainer({ postId, commentId }) {
     if (postData) {
       content = [
         <View style={{ paddingHorizontal: 20, marginBottom: 10 }} key="1">
-          <Post post={postData.post} withoutComments paddingBottom={10} />
+          <Post post={postData.post} disableComments paddingBottom={10} />
         </View>,
       ]
     }

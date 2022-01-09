@@ -1,8 +1,7 @@
 import React, { useRef } from 'react'
 import { Icon } from 'ui'
 import { Video as Player } from 'expo-av'
-import { useReactiveVar } from '@apollo/client'
-import { store } from 'gql'
+import { useReactiveVar, store } from 'gql'
 import { muted, sound } from 'images'
 
 function Video({ size, uri }) {

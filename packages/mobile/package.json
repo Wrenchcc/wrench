@@ -78,7 +78,7 @@
     "react-native-tab-view": "3.1.1",
     "react-native-tracking-transparency": "^0.1.1",
     "react-native-unimodules": "^0.14.10",
-    "react-native-webview": "^11.15.1",
+    "react-native-webview": "^11.16.0",
     "styled-components": "5.2.3",
     "url": "^0.11.0"
   },

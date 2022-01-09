@@ -14,7 +14,7 @@
     "@apollo/client": "3.4.17"
   },
   "scripts": {
-    "postinstall": "npx jetifier && patch-package",
+    "postinstall": "patch-package",
     "run:ios": "yarn workspace @wrench/mobile run:ios",
     "start:packager": "yarn workspace @wrench/mobile start:packager",
     "run:android": "yarn workspace @wrench/mobile run:android",
