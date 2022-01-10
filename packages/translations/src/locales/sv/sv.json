@@ -409,8 +409,8 @@
     "follow": {
       "follow": "Följ detta projekt",
       "followSmall": "Följ",
-      "unfollow": "Följande",
-      "unfollowSmall": "Följande"
+      "unfollow": "Följer",
+      "unfollowSmall": "Följer"
     },
     "followers": {
       "followers": "{{count, humanFormat}} följare",
@@ -593,7 +593,7 @@
     },
     "project-card": {
       "follow": "Följ",
-      "unfollow": "Följande"
+      "unfollow": "Följer"
     },
     "project-suggestion": {
       "description": "Vi har valt ut några projekt nedan som du kanske tycker är intressanta.",
@@ -791,7 +791,7 @@
     "follow": "Följ projekt",
     "followSmall": "Följ",
     "unfollow": "Följer",
-    "unfollowSmall": "Följande",
+    "unfollowSmall": "Följer",
     "follow_short": "Följ"
   },
   "followers": {

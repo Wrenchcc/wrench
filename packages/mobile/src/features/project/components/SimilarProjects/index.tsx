@@ -6,7 +6,7 @@ import { useNavigation, SCREENS } from 'navigation'
 import { Title, InfiniteList, CardSmall } from 'ui'
 import { Base, Follow, SNAP_INTERVAL } from './styles'
 
-function SimilarProjects({ projects }) {
+function SimilarProjects({ projects, marginTop, disableAnimation }) {
   const { t } = useTranslation('similar-projects')
   const { navigate } = useNavigation()
   const [toggleFollow] = useFollowProjectMutation()
@@ -70,6 +70,31 @@ function SimilarProjects({ projects }) {
     )
   }
 
+  if (disableAnimation) {
+    return (
+      <Base marginTop={marginTop}>
+        <Title style={{ marginBottom: 20 }}>{t('title')}</Title>
+
+        <InfiniteList
+          initialNumToRender={3}
+          data={projects.edges}
+          horizontal
+          directionalLockEnabled
+          showsHorizontalScrollIndicator={false}
+          decelerationRate="fast"
+          snapToInterval={SNAP_INTERVAL}
+          snapToAlignment="start"
+          renderItem={renderItem}
+          showsVerticalScrollIndicator={false}
+          style={{
+            marginLeft: -25,
+            marginRight: -25,
+          }}
+        />
+      </Base>
+    )
+  }
+
   return (
     <MotiView
       from={{ height: 0, opacity: 0 }}
@@ -83,7 +108,7 @@ function SimilarProjects({ projects }) {
         opacity: 0,
       }}
     >
-      <Base>
+      <Base marginTop={marginTop}>
         <Title style={{ marginBottom: 20 }}>{t('title')}</Title>
 
         <InfiniteList

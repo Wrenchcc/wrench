@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from 'react'
-import { usePaginatedQuery, PostsDocument } from '@wrench/common'
+import { usePaginatedQuery, PostsDocument, useSimilarProjectsQuery } from '@wrench/common'
 import { useReactiveVar, store } from 'gql'
 import { isAndroid as _isAndroid } from 'utils/platform'
 import { Layout, FlatList, SCREENS, useScrollToTop } from 'navigation'
@@ -9,8 +9,35 @@ import Search from 'components/Search'
 import Post from 'components/Post'
 import ProjectTypes from 'components/ProjectTypes'
 import Popular from 'features/explore/components/Popular'
+import ProjectsRow from 'features/project/components/SimilarProjects'
+import * as Spacing from 'ui/Spacing'
 
-const renderItem = ({ item }) => <Post post={item.node} />
+const SimilarProjects = ({ id }) => {
+  const { loading, data } = useSimilarProjectsQuery({
+    variables: {
+      id,
+    },
+  })
+
+  if (loading) {
+    return null
+  }
+  return <ProjectsRow projects={data.similarProjects} marginTop={10} disableAnimation />
+}
+
+const renderItem = ({ item, index }) => {
+  if (index > 5 && index % 10 === 0) {
+    return (
+      <>
+        <Post post={item.node} paddingBottom={0} />
+        <SimilarProjects id={item.node?.project?.id} />
+        <Spacing.Horizontally px={50} />
+      </>
+    )
+  }
+
+  return <Post post={item.node} />
+}
 
 const STICKY_HEIGHT = 50
 

@@ -3,17 +3,45 @@ import { KeyboardAvoidingView } from 'react-native'
 import ms from 'ms'
 import { showPosting, NavigationBanner } from 'navigation/banner'
 import { getTrackingConsent } from 'utils/analytics'
-import { usePaginatedQuery, FeedDocument } from '@wrench/common'
+import { usePaginatedQuery, FeedDocument, useSimilarProjectsQuery } from '@wrench/common'
 import { useReactiveVar, store } from 'gql'
 import { Layout, FlatList, useScrollToTop, SCREENS } from 'navigation'
 import Post from 'components/Post'
 import { ShowLatest } from 'ui'
+import * as Spacing from 'ui/Spacing'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
+import ProjectsRow from 'features/project/components/SimilarProjects'
+
 import { isIphone } from 'utils/platform'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
-const renderItem = ({ item }) => <Post post={item.node} />
+const SimilarProjects = ({ id }) => {
+  const { loading, data } = useSimilarProjectsQuery({
+    variables: {
+      id,
+    },
+  })
+
+  if (loading) {
+    return null
+  }
+  return <ProjectsRow projects={data.similarProjects} marginTop={10} disableAnimation />
+}
+
+const renderItem = ({ item, index }) => {
+  if (index > 5 && index % 10 === 0) {
+    return (
+      <>
+        <Post post={item.node} paddingBottom={0} />
+        <SimilarProjects id={item.node?.project?.id} />
+        <Spacing.Horizontally px={50} />
+      </>
+    )
+  }
+
+  return <Post post={item.node} />
+}
 
 function Feed() {
   const scrollRef = useRef(null)

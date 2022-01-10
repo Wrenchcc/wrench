@@ -20,8 +20,7 @@ function ProjectSuggestions() {
 
       {loading && <Loader />}
 
-      {data &&
-        data.projects.length > 0 &&
+      {data?.projects.length > 0 &&
         data.projects.map(({ type, edges }) => (
           <ProjectSuggestion key={type.id} title={type.title} data={edges} />
         ))}

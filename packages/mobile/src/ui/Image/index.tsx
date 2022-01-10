@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react'
-import { PixelRatio, Animated, View, ImageProps } from 'react-native'
+import { Animated, View, ImageProps } from 'react-native'
 import FastImage, { FastImageProps } from 'react-native-fast-image'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import { Base } from './styles'
@@ -7,7 +7,7 @@ import Spinner from '../Spinner'
 
 const PROGRESS_COLOR = '#E1E1E2'
 
-const density = PixelRatio.get()
+const density = 3
 
 type ImageComponentProps = {
   placeholderColor?: string

@@ -6,8 +6,7 @@
     "dev": "http-server src -c-1 -o",
     "ses:create": "cross-env DEBUG=task* dotenv -e .env -- node tasks/createTemplate.js $*",
     "ses:delete": "cross-env DEBUG=task* dotenv -e .env -- node tasks/deleteTemplate.js $*",
-    "ses:test": "cross-env DEBUG=task* dotenv -e .env -- node tasks/testTemplate.js $*",
-    "ses:beta": "cross-env DEBUG=task* dotenv -e .env -- node tasks/sendBeta.js $*"
+    "ses:test": "cross-env DEBUG=task* dotenv -e .env -- node tasks/testTemplate.js $*"
   },
   "devDependencies": {
     "aws-sdk": "^2.853.0",

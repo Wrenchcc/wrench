@@ -23,24 +23,36 @@
       <!--<![endif]-->
       <style> 
          body {
-         -webkit-font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased;
          }
+         :root {
+            color-scheme: light dark;
+            supported-color-schemes: light dark;
+         }
+         @media (prefers-color-scheme: dark) {
+            .lightimage {display: none !important;}
+            .darkimageWrapper, .darkimage {display: block !important;}
+         }
+
+         [data-ogsc] .lightimage { display: none !important;}
+         [data-ogsc] .darkimageWrapper, [data-ogsc] .darkimage {display: block !important;}
+
          @media (prefers-color-scheme: dark ) {
-         body,
-         center {
-         background-color: #000000 !important;
-         }
-         /* Shows Dark Mode-Only Content, Like Images */
-         .dark-img { display:block !important; width: auto !important; overflow: visible !important; float: none !important; max-height:inherit !important; max-width:inherit !important; line-height: auto !important; margin-top:0px !important; visibility:inherit !important; }
-         /* Hides Light Mode-Only Content, Like Images */
-         .light-img { display:none; display:none !important; }
-         /* Custom Dark Mode Background Color */
-         .darkmode { background-color: black !important; color:#ffffff !important;}
-         .dark-mode-text {color: white}
-         /* Custom Dark Mode Font Colors */
-         h1, h2, p, span, a, b { color: #ffffff !important; }
-         /* Custom Dark Mode Text Link Color */
-         .link { color: #91ADD4 !important; }
+            body,
+            center {
+               background-color: #000000 !important;
+            }
+            /* Shows Dark Mode-Only Content, Like Images */
+            .dark-img { display:block !important; width: auto !important; overflow: visible !important; float: none !important; max-height:inherit !important; max-width:inherit !important; line-height: auto !important; margin-top:0px !important; visibility:inherit !important; }
+            /* Hides Light Mode-Only Content, Like Images */
+            .light-img { display:none; display:none !important; }
+            /* Custom Dark Mode Background Color */
+            .darkmode { background-color: black !important; color:#ffffff !important;}
+            .dark-mode-text {color: white}
+            /* Custom Dark Mode Font Colors */
+            h1, h2, p, span, a, b { color: #ffffff !important; }
+            /* Custom Dark Mode Text Link Color */
+            .link { color: #91ADD4 !important; }
          }
       </style>
    </head>
@@ -70,24 +82,28 @@
                         >
                         <tr>
                            <td style="padding: 40px 0 20px 0;">
+                         
                               <img
-                                 class="light-img"
+                                 class="lightimage"
                                  alt="Wrench"
                                  src="https://edge-files.wrench.cc/static/email/logo.jpg?w=60&h=60&dpr=3"
                                  width="60"
                                  height="60"
                                  style="font-family: sans-serif; color: #ffffff; font-size: 20px; display: block; padding-bottom: 20px;"
                                  border="0"
-                                 />
-                              <img
-                                 class="dark-img"
-                                 alt="Wrench"
-                                 src="https://edge-files.wrench.cc/static/email/logo-inverted.jpg?w=60&h=60&dpr=3"
-                                 width="60"
-                                 height="60"
-                                 style="font-family: sans-serif; color: #ffffff; font-size: 20px; display: block; padding-bottom: 20px;"
-                                 border="0"
-                                 />
+                              />
+
+                              <div class="darkimageWrapper" style="mso-hide: all; display: none;">
+                                 <img
+                                    class="darkimage"
+                                    alt="Wrench"
+                                    src="https://edge-files.wrench.cc/static/email/logo-inverted.jpg?w=60&h=60&dpr=3"
+                                    width="60"
+                                    height="60"
+                                    style="font-family: sans-serif; color: #ffffff; font-size: 20px; display: none; padding-bottom: 20px;"
+                                    border="0"
+                                    />
+                              </div>
                            </td>
                         </tr>
                         <tr>
