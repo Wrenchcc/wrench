@@ -1,17 +1,12 @@
 import React, { useCallback, useState } from 'react'
 import { AnimatePresence } from 'moti'
-import { storage } from 'utils/storage'
 import { useSimilarProjectsLazyQuery, useFollowProjectMutation } from '@wrench/common'
 import { ActivityIndicator, Title, Follow, Icon, UserStack } from 'ui'
 import { arrowDown, arrowUp } from 'images'
 import { useNavigation, SCREENS } from 'navigation'
-import { FOLLOWING_COUNT, HAS_ASKED_FOR_RATING } from 'utils/storage/constants'
-import { askForRating } from 'utils/rate'
 import SimilarProjects from '../SimilarProjects'
 import Collections from '../Collections'
 import { Base, Meta, Actions, Followers, OpenSimilar, Spacing } from './styles'
-
-const TRIGGER_RATING_COUNT = 3
 
 function ProjectHeader({ project, spacingHorizontal }) {
   const { navigate } = useNavigation()
@@ -41,21 +36,7 @@ function ProjectHeader({ project, spacingHorizontal }) {
     }
   }, [isShowingSimilarProjects, getSimilarProjects])
 
-  const [followProject] = useFollowProjectMutation({
-    onCompleted: () => {
-      const followingCount = storage.getNumber(FOLLOWING_COUNT)
-      const hasAskedForRating = storage.getBoolean(HAS_ASKED_FOR_RATING)
-
-      if (followingCount === TRIGGER_RATING_COUNT && !hasAskedForRating) {
-        askForRating()
-        storage.set(HAS_ASKED_FOR_RATING, true)
-      }
-
-      if (!hasAskedForRating) {
-        storage.set(FOLLOWING_COUNT, followingCount + 1)
-      }
-    },
-  })
+  const [followProject] = useFollowProjectMutation()
 
   const handleFollow = useCallback(() => {
     const totalCount = project.permissions.isFollower
