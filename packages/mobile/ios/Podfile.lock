@@ -576,7 +576,7 @@ PODS:
     - React-RCTText
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNSentry (3.2.10):
+  - RNSentry (3.2.11):
     - React-Core
     - Sentry (= 7.7.0)
   - RNShare (7.3.2):
@@ -945,7 +945,7 @@ SPEC CHECKSUMS:
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNPermissions: f7ebe52db07c00901127966ca080b4ec6a6ceb0a
   RNReanimated: da3860204e5660c0dd66739936732197d359d753
-  RNSentry: 04bb48bfdd435f5b218cf363f89e6419e9a2460c
+  RNSentry: 290e7375aa32c7edb44b404a5d4e480aa7be9bdc
   RNShare: d76b8c9c6e6ffb38fc18f40b4338c9d867592ed3
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815

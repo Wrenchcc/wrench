@@ -106,7 +106,7 @@ export default function createNavigationAwareScrollable(Component) {
         contentInset={{ top: isAndroid ? 0 : CONTENT_INSET + extraContentInset }}
         contentOffset={{ y: -(CONTENT_INSET + extraContentInset) }}
         keyboardDismissMode="on-drag"
-        onEndReachedThreshold={5}
+        onEndReachedThreshold={1}
         contentContainerStyle={{
           ...contentContainerStyle,
           flex: initialFetch ? 1 : 0,

@@ -16,7 +16,7 @@
     "copy:locales:android": "node tasks/copy_locales.js"
   },
   "dependencies": {
-    "@apollo/client": "^3.5.6",
+    "@apollo/client": "^3.5.7",
     "@apollo/link-batch-http": "^2.0.0-beta.3",
     "@apollo/link-context": "^2.0.0-beta.3",
     "@apollo/link-error": "^2.0.0-beta.3",
@@ -30,7 +30,7 @@
     "@react-native-firebase/analytics": "^14.2.2",
     "@react-native-firebase/app": "^14.2.2",
     "@react-native-firebase/messaging": "^14.2.2",
-    "@sentry/react-native": "^3.2.10",
+    "@sentry/react-native": "^3.2.11",
     "@wrench/common": "^1.0.0",
     "@wrench/translations": "^1.0.0",
     "@wrench/ui": "^1.0.0",
@@ -43,7 +43,7 @@
     "expo-image-manipulator": "^9.2.2",
     "expo-image-picker": "^10.2.3",
     "expo-linear-gradient": "^9.2.0",
-    "expo-linking": "2.3.1",
+    "expo-linking": "^2.3.1",
     "expo-localization": "^10.2.0",
     "expo-media-library": "^12.1.2",
     "expo-store-review": "4.1.0",
@@ -85,6 +85,7 @@
   "devDependencies": {
     "@babel/cli": "^7.16.7",
     "@babel/core": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
     "@babel/runtime": "^7.16.7",
     "@types/react-native-share": "^3.3.3",
     "babel-plugin-module-resolver": "^4.1.0",
