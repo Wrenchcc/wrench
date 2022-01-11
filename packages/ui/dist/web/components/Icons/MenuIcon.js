@@ -38,5 +38,5 @@ function SvgMenuIcon(_a) {
     return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 22 18", className: className, style: style, onClick: onClick },
         React.createElement("path", { d: "M21 1H1m20 8H1m20 8H1", fill: "none", fillRule: "evenodd", stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 1.5 })));
 }
-exports.default = styled_components_1.withTheme(SvgMenuIcon);
+exports.default = (0, styled_components_1.withTheme)(SvgMenuIcon);
 //# sourceMappingURL=MenuIcon.js.map

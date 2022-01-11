@@ -38,5 +38,5 @@ function SvgBookmarkIcon(_a) {
     return (React.createElement("svg", { viewBox: "0 0 16 20", width: width, height: height, className: className, style: style, onClick: onClick },
         React.createElement("path", { d: "M15 19l-7-5-7 5V3a2 2 0 012-2h10a2 2 0 012 2v16z", stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeWidth: 1.5, fill: props.theme.colors[props.fill] || 'none', fillRule: "evenodd", strokeLinecap: "round", strokeLinejoin: "round" })));
 }
-exports.default = styled_components_1.withTheme(SvgBookmarkIcon);
+exports.default = (0, styled_components_1.withTheme)(SvgBookmarkIcon);
 //# sourceMappingURL=BookmarkIcon.js.map

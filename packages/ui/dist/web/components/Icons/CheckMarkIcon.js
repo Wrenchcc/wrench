@@ -38,5 +38,5 @@ function SvgCheckMarkIcon(_a) {
     return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 18 13", className: className, style: style, onClick: onClick },
         React.createElement("path", { d: "M17 1L6 12 1 7", stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeWidth: 1.5, fill: "none", fillRule: "evenodd", strokeLinecap: "round", strokeLinejoin: "round" })));
 }
-exports.default = styled_components_1.withTheme(SvgCheckMarkIcon);
+exports.default = (0, styled_components_1.withTheme)(SvgCheckMarkIcon);
 //# sourceMappingURL=CheckMarkIcon.js.map

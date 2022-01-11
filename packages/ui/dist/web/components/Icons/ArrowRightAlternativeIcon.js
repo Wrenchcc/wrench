@@ -52,5 +52,5 @@ function SvgArrowRightAlternativeIcon(_a) {
                 React.createElement("use", { stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeWidth: 1.5, xlinkHref: "#arrow-right-alternative-icon_svg__b" })),
             React.createElement("path", { d: "M0 2h44v44H0z" }))));
 }
-exports.default = styled_components_1.withTheme(SvgArrowRightAlternativeIcon);
+exports.default = (0, styled_components_1.withTheme)(SvgArrowRightAlternativeIcon);
 //# sourceMappingURL=ArrowRightAlternativeIcon.js.map

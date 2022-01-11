@@ -9,7 +9,7 @@ var styled_components_1 = require("styled-components");
 var theme_1 = __importDefault(require("./theme"));
 function ThemeProvider(_a) {
     var children = _a.children, mode = _a.mode;
-    return react_1.default.createElement(styled_components_1.ThemeProvider, { theme: theme_1.default(mode) }, children);
+    return react_1.default.createElement(styled_components_1.ThemeProvider, { theme: (0, theme_1.default)(mode) }, children);
 }
 exports.default = ThemeProvider;
 //# sourceMappingURL=ThemeProvider.js.map

@@ -40,5 +40,5 @@ function SvgSparkIcon(_a) {
     return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 20 22", className: className, style: style, onClick: onClick },
         React.createElement("path", { fill: "none", stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 1.5, d: "M11 1L1 13h9l-1 8L19 9h-9z" })));
 }
-exports.default = styled_components_1.withTheme(SvgSparkIcon);
+exports.default = (0, styled_components_1.withTheme)(SvgSparkIcon);
 //# sourceMappingURL=SparkIcon.js.map

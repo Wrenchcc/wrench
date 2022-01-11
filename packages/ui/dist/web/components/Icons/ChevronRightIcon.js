@@ -38,5 +38,5 @@ function SvgChevronRightIcon(_a) {
     return (React.createElement("svg", { viewBox: "0 0 10 17", width: width, height: height, className: className, style: style, onClick: onClick },
         React.createElement("path", { stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeWidth: 1.5, d: "M1 1l8 7.5L1 16", fill: "none", fillRule: "evenodd", strokeLinecap: "round", strokeLinejoin: "round" })));
 }
-exports.default = styled_components_1.withTheme(SvgChevronRightIcon);
+exports.default = (0, styled_components_1.withTheme)(SvgChevronRightIcon);
 //# sourceMappingURL=ChevronRightIcon.js.map

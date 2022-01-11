@@ -22,7 +22,7 @@
     "@apollo/link-error": "^2.0.0-beta.3",
     "@apollo/link-retry": "^2.0.0-beta.3",
     "@apollo/react-hooks": "^4.0.0",
-    "@expo/react-native-action-sheet": "^3.12.0",
+    "@expo/react-native-action-sheet": "3.12.0",
     "@gorhom/bottom-sheet": "^4.1.5",
     "@react-native-community/clipboard": "^1.5.1",
     "@react-native-community/google-signin": "^5.0.0",

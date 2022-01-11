@@ -40,5 +40,5 @@ function SvgCopyIcon(_a) {
             React.createElement("rect", { width: 13, height: 13, x: 7, y: 7, rx: 2 }),
             React.createElement("path", { d: "M3 13H2a2 2 0 01-2-2V2a2 2 0 012-2h9a2 2 0 012 2v1" }))));
 }
-exports.default = styled_components_1.withTheme(SvgCopyIcon);
+exports.default = (0, styled_components_1.withTheme)(SvgCopyIcon);
 //# sourceMappingURL=CopyIcon.js.map

@@ -39,5 +39,5 @@ function SvgArrowLeftIcon(_a) {
         React.createElement("g", { fill: "none", fillRule: "evenodd", strokeLinecap: "round", strokeLinejoin: "round", stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeWidth: 1.5 },
             React.createElement("path", { d: "M21 8.5H1M9 16L1 8.5 9 1" }))));
 }
-exports.default = styled_components_1.withTheme(SvgArrowLeftIcon);
+exports.default = (0, styled_components_1.withTheme)(SvgArrowLeftIcon);
 //# sourceMappingURL=ArrowLeftIcon.js.map

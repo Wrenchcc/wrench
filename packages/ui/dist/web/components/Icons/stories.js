@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var react_2 = require("@storybook/react");
 var _1 = require(".");
-react_2.storiesOf('Icons', module)
+(0, react_2.storiesOf)('Icons', module)
     .add('LogoIcon', function () { return react_1.default.createElement(_1.LogoIcon, { width: "100", height: "100" }); })
     .add('LogoIcon - Inverted', function () { return react_1.default.createElement(_1.LogoIcon, { width: "100", height: "100", inverted: true }); })
     .add('LogoRoundedIcon', function () { return react_1.default.createElement(_1.LogoRoundedIcon, { width: "100", height: "100" }); })

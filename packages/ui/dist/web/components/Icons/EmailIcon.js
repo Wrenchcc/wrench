@@ -40,5 +40,5 @@ function SvgEmailIcon(_a) {
             React.createElement("path", { d: "M2.8 1h14.4c.99 0 1.8.81 1.8 1.8v10.8c0 .99-.81 1.8-1.8 1.8H2.8c-.99 0-1.8-.81-1.8-1.8V2.8C1 1.81 1.81 1 2.8 1z" }),
             React.createElement("path", { d: "M19 2.8l-9 6.3-9-6.3" }))));
 }
-exports.default = styled_components_1.withTheme(SvgEmailIcon);
+exports.default = (0, styled_components_1.withTheme)(SvgEmailIcon);
 //# sourceMappingURL=EmailIcon.js.map

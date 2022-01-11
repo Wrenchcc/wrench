@@ -44,5 +44,5 @@ function SvgCloseIcon(_a) {
             React.createElement("use", { fill: "#000", xlinkHref: "#close-icon_svg__a" }),
             React.createElement("path", { fill: props.theme.colors[props.color] || props.theme.colors.inverse, fillRule: "nonzero", mask: "url(#close-icon_svg__b)", d: "M7.677-13.036L28.89 8.177 7.677 29.39-13.536 8.177z" }))));
 }
-exports.default = styled_components_1.withTheme(SvgCloseIcon);
+exports.default = (0, styled_components_1.withTheme)(SvgCloseIcon);
 //# sourceMappingURL=CloseIcon.js.map

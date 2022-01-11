@@ -36,7 +36,7 @@ export const LIGHT_THEME = {
   placeholder: '#e6e7e9',
 }
 
-export default mode => ({
+export default (mode) => ({
   fontSizes: [12, 14, 16, 20, 24, 32],
   breakpoints: ['40em', '52em', '64em'],
   fonts: {
