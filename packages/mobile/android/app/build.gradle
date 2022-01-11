@@ -145,8 +145,8 @@ android {
         applicationId "com.wrench"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode project.hasProperty('versionCode') ? project.property('versionCode') as int : 1
+        versionName project.hasProperty('versionName') ? project.property('versionName') : "No version"
     }
     splits {
         abi {
@@ -182,7 +182,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
