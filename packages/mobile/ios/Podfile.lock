@@ -36,8 +36,15 @@ PODS:
     - ExpoModulesCore
     - React-Core
     - UMCore
-  - ExpoModulesCore (0.4.10):
-    - React-Core
+  - ExpoModulesCore (0.2.0):
+    - ExpoModulesCore/Core (= 0.2.0)
+    - ExpoModulesCore/Interfaces (= 0.2.0)
+    - UMCore
+  - ExpoModulesCore/Core (0.2.0):
+    - UMCore
+  - ExpoModulesCore/Interfaces (0.2.0):
+    - ExpoModulesCore/Core
+    - UMCore
   - EXStoreReview (4.1.0):
     - UMCore
   - FBLazyVector (0.66.4)
@@ -62,29 +69,18 @@ PODS:
     - FBSDKShareKit/Share (= 8.2.0)
   - FBSDKShareKit/Share (8.2.0):
     - FBSDKCoreKit (~> 8.2.0)
-  - Firebase/Analytics (8.10.0):
-    - Firebase/Core
-  - Firebase/Core (8.10.0):
+  - Firebase/AnalyticsWithoutAdIdSupport (8.10.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (~> 8.10.0)
+    - FirebaseAnalytics/WithoutAdIdSupport (~> 8.10.0)
   - Firebase/CoreOnly (8.10.0):
     - FirebaseCore (= 8.10.0)
   - Firebase/Messaging (8.10.0):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 8.10.0)
-  - FirebaseAnalytics (8.10.0):
-    - FirebaseAnalytics/AdIdSupport (= 8.10.0)
+  - FirebaseAnalytics/WithoutAdIdSupport (8.10.0):
     - FirebaseCore (~> 8.0)
     - FirebaseInstallations (~> 8.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.6)
-    - GoogleUtilities/MethodSwizzler (~> 7.6)
-    - GoogleUtilities/Network (~> 7.6)
-    - "GoogleUtilities/NSData+zlib (~> 7.6)"
-    - nanopb (~> 2.30908.0)
-  - FirebaseAnalytics/AdIdSupport (8.10.0):
-    - FirebaseCore (~> 8.0)
-    - FirebaseInstallations (~> 8.0)
-    - GoogleAppMeasurement (= 8.10.0)
+    - GoogleAppMeasurement/WithoutAdIdSupport (= 8.10.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.6)
     - GoogleUtilities/MethodSwizzler (~> 7.6)
     - GoogleUtilities/Network (~> 7.6)
@@ -115,20 +111,6 @@ PODS:
     - nanopb (~> 2.30908.0)
   - fmt (6.2.1)
   - glog (0.3.5)
-  - GoogleAppMeasurement (8.10.0):
-    - GoogleAppMeasurement/AdIdSupport (= 8.10.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.6)
-    - GoogleUtilities/MethodSwizzler (~> 7.6)
-    - GoogleUtilities/Network (~> 7.6)
-    - "GoogleUtilities/NSData+zlib (~> 7.6)"
-    - nanopb (~> 2.30908.0)
-  - GoogleAppMeasurement/AdIdSupport (8.10.0):
-    - GoogleAppMeasurement/WithoutAdIdSupport (= 8.10.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.6)
-    - GoogleUtilities/MethodSwizzler (~> 7.6)
-    - GoogleUtilities/Network (~> 7.6)
-    - "GoogleUtilities/NSData+zlib (~> 7.6)"
-    - nanopb (~> 2.30908.0)
   - GoogleAppMeasurement/WithoutAdIdSupport (8.10.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.6)
     - GoogleUtilities/MethodSwizzler (~> 7.6)
@@ -522,7 +504,7 @@ PODS:
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
   - RNFBAnalytics (14.2.2):
-    - Firebase/Analytics (= 8.10.0)
+    - Firebase/AnalyticsWithoutAdIdSupport (= 8.10.0)
     - React-Core
     - RNFBApp
   - RNFBApp (14.2.2):
@@ -605,7 +587,7 @@ DEPENDENCIES:
   - EXLinearGradient (from `../../../node_modules/expo-linear-gradient/ios`)
   - EXLocalization (from `../../../node_modules/expo-localization/ios`)
   - EXMediaLibrary (from `../../../node_modules/expo-media-library/ios`)
-  - ExpoModulesCore (from `../../../node_modules/expo-constants/node_modules/expo-modules-core/ios`)
+  - ExpoModulesCore (from `../../../node_modules/expo-modules-core/ios`)
   - EXStoreReview (from `../../../node_modules/expo-store-review/ios`)
   - FBLazyVector (from `../../../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../../../node_modules/react-native/React/FBReactNativeSpec`)
@@ -731,7 +713,7 @@ EXTERNAL SOURCES:
   EXMediaLibrary:
     :path: "../../../node_modules/expo-media-library/ios"
   ExpoModulesCore:
-    :path: "../../../node_modules/expo-constants/node_modules/expo-modules-core/ios"
+    :path: "../../../node_modules/expo-modules-core/ios"
   EXStoreReview:
     :path: "../../../node_modules/expo-store-review/ios"
   FBLazyVector:
@@ -862,7 +844,7 @@ SPEC CHECKSUMS:
   EXLinearGradient: f9ea3259f096b27008860ca50764184225dc71c9
   EXLocalization: 356f4e16a606cec21a77d6250528fde526152b45
   EXMediaLibrary: c87254f83db976563e4ee54ee67eeb065570e92b
-  ExpoModulesCore: c9438f6add0fb7b04b7c64eb97a833d2752a7834
+  ExpoModulesCore: 2734852616127a6c1fc23012197890a6f3763dc7
   EXStoreReview: 40674cc897a6d7fd249969b86d1833f67b99170a
   FBLazyVector: e5569e42a1c79ca00521846c223173a57aca1fe1
   FBReactNativeSpec: fe08c1cd7e2e205718d77ad14b34957cce949b58
@@ -930,7 +912,7 @@ SPEC CHECKSUMS:
   RNCClipboard: 41d8d918092ae8e676f18adada19104fa3e68495
   RNDeviceInfo: 0400a6d0c94186d1120c3cbd97b23abc022187a9
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
-  RNFBAnalytics: e4a511c1f6d2eeca606a0acd7d43b39c937c9afa
+  RNFBAnalytics: ad4bcbff05cad78bb41e7919461ab85762b406f2
   RNFBApp: 78d0446e8b28dc30616c134a9e4d8d4b01f9f966
   RNFBMessaging: 79910a2eb2fa5955f38259367b14431bd78bef19
   RNFS: 3ab21fa6c56d65566d1fb26c2228e2b6132e5e32
@@ -948,6 +930,6 @@ SPEC CHECKSUMS:
   UMReactNativeAdapter: d03cefd0e4e4179ab8c490408589f1c8a6c8b785
   Yoga: e7dc4e71caba6472ff48ad7d234389b91dadc280
 
-PODFILE CHECKSUM: 0755b3c25fcdb24a9e2bc5cd3c059e683f820b30
+PODFILE CHECKSUM: db9aac7b496f38d7e49fd0f337b32b9c43e5bf80
 
 COCOAPODS: 1.11.2

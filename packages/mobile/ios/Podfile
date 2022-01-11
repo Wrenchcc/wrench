@@ -2,6 +2,8 @@ ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
 platform :ios, "12.0"
 
+$RNFirebaseAnalyticsWithoutAdIdSupport=true
+
 root_path = "../../../node_modules"
 
 require_relative "#{root_path}/react-native/scripts/react_native_pods"
