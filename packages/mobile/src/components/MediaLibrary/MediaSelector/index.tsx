@@ -22,7 +22,7 @@ const styles = {
   },
 }
 
-function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
+function MediaSelector({ onScroll, spacing, onSelect }) {
   const [assets, setAssets] = useState([])
   const [hasNextPage, setHasNextPage] = useState(false)
 
@@ -53,8 +53,8 @@ function MediaSelector({ onScroll, spacing, onSelect, onPermission }) {
       setAssets(result.assets)
       setHasNextPage(result.hasNextPage)
       endCursor.current = result.endCursor
-    } catch {
-      onPermission()
+    } catch (err) {
+      logError(err)
     }
   }
 

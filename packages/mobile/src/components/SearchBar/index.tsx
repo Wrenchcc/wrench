@@ -53,7 +53,7 @@ function SearchBar() {
   // Close on android hardware button
   useEffect(() => {
     const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
-      if (searchActive) {
+      if (searchActive && currentComponentName === SCREENS.EXPLORE) {
         store.search.setQuery('')
         store.search.setActive(false)
 
@@ -64,7 +64,7 @@ function SearchBar() {
     })
 
     return () => backHandler.remove()
-  }, [searchActive])
+  }, [searchActive, currentComponentName])
 
   return (
     <Base>

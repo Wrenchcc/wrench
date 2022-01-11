@@ -23,7 +23,6 @@ function Hashtags({ name }) {
     <Page headerTitle={`#${name}`} headerAnimation={false}>
       <FlatList
         initialNumToRender={2}
-        paddingBottom={40}
         data={edges}
         refetch={refetch}
         fetchMore={fetchMore}

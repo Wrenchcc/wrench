@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Animated, {
   useSharedValue,
   useDerivedValue,
@@ -9,6 +9,7 @@ import Animated, {
   useAnimatedScrollHandler,
 } from 'react-native-reanimated'
 import { clamp, snapPoint } from 'react-native-redash'
+import * as MediaLibrary from 'expo-media-library'
 import { useNavigation, NAVIGATION } from 'navigation'
 import { store } from 'gql'
 import Header from '../Header'
@@ -48,11 +49,26 @@ function Library() {
 
   const { dismissModal } = useNavigation()
 
-  const [showPermission, setShowPermission] = useState(false)
+  const [showPermission, setShowPermission] = useState(true)
+  const [loading, setLoading] = useState(true)
 
-  const handleOnPermission = () => {
-    setShowPermission(true)
-  }
+  useEffect(() => {
+    async function getPermissions() {
+      try {
+        const status = await MediaLibrary.getPermissionsAsync()
+
+        setLoading(false)
+
+        if (status?.granted) {
+          setShowPermission(false)
+        }
+      } catch {
+        setLoading(false)
+      }
+    }
+
+    getPermissions()
+  })
 
   const handleOnPermissionAuthorized = () => {
     setShowPermission(false)
@@ -141,6 +157,10 @@ function Library() {
     opacity: headerOpacity.value,
   }))
 
+  if (loading) {
+    return null
+  }
+
   if (showPermission) {
     return <Permission onCancel={dismissModal} onSuccess={handleOnPermissionAuthorized} />
   }
@@ -161,18 +181,9 @@ function Library() {
         <Dragbar gestureHandler={gestureHandler} />
       </Animated.View>
 
-      <MediaSelector
-        onScroll={scrollHandler}
-        spacing={spacing}
-        onSelect={handleOnSelect}
-        onPermission={handleOnPermission}
-      />
+      <MediaSelector onScroll={scrollHandler} spacing={spacing} onSelect={handleOnSelect} />
 
-      <Albums
-        onPress={handleToggleAlbum}
-        translateY={albumTranslateY}
-        onPermission={handleOnPermission}
-      />
+      <Albums onPress={handleToggleAlbum} translateY={albumTranslateY} />
     </>
   )
 }

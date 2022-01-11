@@ -3,7 +3,7 @@ import { FlatList, Keyboard } from 'react-native'
 import { isAndroid } from 'utils/platform'
 import Border from 'ui/Border'
 import Loader from 'ui/Loader'
-import { CONTENT_INSET } from 'navigation/constants'
+import { CONTENT_INSET, NAVIGATION } from 'navigation/constants'
 import { keyExtractor } from 'navigation'
 
 // NOTE: https://github.com/facebook/react-native/issues/23364
@@ -18,7 +18,6 @@ function InfiniteList({
   contentContainerStyle = {},
   paddingHorizontal = 20,
   defaultPaddingTop,
-  paddingBottom,
   borderSeparator,
   data,
   isFetching,
@@ -30,6 +29,7 @@ function InfiniteList({
   initialNumToRender = 10,
   loaderInset = CONTENT_INSET,
   androidDismissKeyboard = true,
+  paddingBottom = NAVIGATION.BOTTOM_TABS_HEIGHT,
   ...props
 }) {
   const initialFetch = !data && isFetching

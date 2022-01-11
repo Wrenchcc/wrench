@@ -66,11 +66,10 @@ function Users() {
 
   const content =
     isFetching && !edges ? (
-      <UserSkeletonList contentInset={null} contentOffset={null} marginTop={15} />
+      <UserSkeletonList marginTop={15} />
     ) : (
       <InfiniteList
         borderSeparator
-        paddingBottom={40}
         ListEmptyComponent={!isFetching && query.length > 1 && <NoResults />}
         data={query ? edges : recent}
         fetchMore={fetchMore}

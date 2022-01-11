@@ -136,7 +136,6 @@ function Onboarding({ settingsPage }) {
       }
     >
       <FlatList
-        paddingBottom={70}
         paddingHorizontal={10}
         ListHeaderComponent={!settingsPage && <Content />}
         ListEmptyComponent={loading && <Loader />}

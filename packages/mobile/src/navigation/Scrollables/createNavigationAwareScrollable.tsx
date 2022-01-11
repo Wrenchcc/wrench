@@ -3,7 +3,7 @@ import { Keyboard, TextInput, UIManager, findNodeHandle } from 'react-native'
 import { ScrollContext } from 'navigation/Layout/context'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
-import { CONTENT_INSET } from '../constants'
+import { CONTENT_INSET, NAVIGATION } from '../constants'
 import { keyExtractor } from '../utils'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
@@ -11,6 +11,11 @@ const KEYBOARD_OFFSET = 10
 
 const renderLoader = (loaderInset) => <Loader inset={loaderInset} />
 const BorderSeparator = () => <Border />
+
+// NOTE: https://github.com/facebook/react-native/issues/23364
+const keyboardDismissProp = isAndroid
+  ? { onScrollEndDrag: Keyboard.dismiss }
+  : { keyboardDismissMode: 'on-drag' }
 
 export default function createNavigationAwareScrollable(Component) {
   return forwardRef(function NavigationAwareScrollable(
@@ -28,7 +33,8 @@ export default function createNavigationAwareScrollable(Component) {
       paddingHorizontal = 20,
       extraContentInset = 0,
       loaderInset = 0,
-      paddingBottom,
+      paddingBottom = NAVIGATION.BOTTOM_TABS_HEIGHT,
+      androidDismissKeyboard = true,
       ...props
     },
     ref
@@ -116,6 +122,7 @@ export default function createNavigationAwareScrollable(Component) {
           paddingTop: VIEW_OFFSET,
         }}
         {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}
+        {...(androidDismissKeyboard && keyboardDismissProp)}
         {...props}
       />
     )

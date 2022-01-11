@@ -1,12 +1,12 @@
 import React from 'react'
-import { ScrollView } from 'navigation/Scrollables'
+import { ScrollView } from 'react-native'
 import UserSkeleton from './Skeleton'
 
 const COUNT = 10
 
 const SkeletonList = (props) => {
   return (
-    <ScrollView {...props}>
+    <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }} {...props}>
       {new Array(COUNT).fill({}).map((_, index) => (
         <UserSkeleton key={index} />
       ))}

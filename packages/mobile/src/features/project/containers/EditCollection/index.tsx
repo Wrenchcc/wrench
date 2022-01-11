@@ -28,7 +28,6 @@ function EditCollection({ id, name, projectId, projectSlug, slug, onDelete }) {
   )
 
   const handleShare = useCallback(() => {
-    console.log(`https://wrench.cc/project/${projectSlug}/collection/${slug}`)
     NativeShare.open({
       url: `https://wrench.cc/project/${projectSlug}/collection/${slug}`,
     }).catch(() => {})

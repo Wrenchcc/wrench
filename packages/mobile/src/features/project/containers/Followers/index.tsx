@@ -25,7 +25,7 @@ function Followers({ id }) {
 
   const content =
     isFetching && !edges ? (
-      <UserSkeletonList />
+      <UserSkeletonList marginTop={140} />
     ) : (
       <FlatList
         ListEmptyComponent={<NoResults />}

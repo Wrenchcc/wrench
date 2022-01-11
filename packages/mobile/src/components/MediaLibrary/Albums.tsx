@@ -4,6 +4,8 @@ import Animated, { useAnimatedStyle } from 'react-native-reanimated'
 import * as MediaLibrary from 'expo-media-library'
 import { BlurView } from 'expo-blur'
 import { store } from 'gql'
+import { isAndroid } from 'utils/platform'
+import { logError } from 'utils/sentry'
 import { ALBUM_INNER_HEIGHT, ALBUM_WIDTH, HEADER_HEIGHT } from './constants'
 
 const AnimatedBlurView = Animated.createAnimatedComponent(BlurView)
@@ -11,7 +13,7 @@ const AnimatedBlurView = Animated.createAnimatedComponent(BlurView)
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: 'rgba(000, 000, 000, .8)',
+    backgroundColor: isAndroid ? 'rgba(000, 000, 000, .93)' : 'rgba(000, 000, 000, .8)',
   },
   background: {
     top: HEADER_HEIGHT,
@@ -53,7 +55,7 @@ const styles = {
   },
 }
 
-function Albums({ translateY, onPress, onPermission }) {
+function Albums({ translateY, onPress }) {
   const [albums, setAlbums] = useState([])
 
   const getAlbums = useCallback(async () => {
@@ -84,8 +86,8 @@ function Albums({ translateY, onPress, onPermission }) {
 
       store.files.setAlbumTitle(result[0]?.title)
       setAlbums(result)
-    } catch {
-      onPermission()
+    } catch (err) {
+      logError(err)
     }
   }, [])
 

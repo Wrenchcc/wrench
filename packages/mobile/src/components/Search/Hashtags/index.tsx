@@ -86,7 +86,6 @@ function Hashtags() {
       <InfiniteList
         borderSeparator
         initialNumToRender={4}
-        paddingBottom={40}
         ListEmptyComponent={!isFetching && query.length > 1 && <NoResults />}
         data={query ? edges : recent}
         fetchMore={fetchMore}

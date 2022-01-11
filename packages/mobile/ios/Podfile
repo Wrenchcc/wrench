@@ -17,9 +17,6 @@ target 'Wrench' do
   
   use_react_native!(:path => "#{root_path}/react-native", :hermes_enabled => true)
 
-  permissions_path = "#{root_path}/react-native-permissions/ios"
-  pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary/Permission-PhotoLibrary.podspec"
-
   use_unimodules!(
     modules_paths: [root_path],
     exclude: [ 

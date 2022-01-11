@@ -8,7 +8,7 @@ export const BackButton = styled(Touchable)`
   height: 50px;
   border-radius: 50px;
   position: absolute;
-  top: ${NAVIGATION.STATUS_BAR_HEIGHT + 10}px;
+  top: ${NAVIGATION.STATUS_BAR_HEIGHT}px;
   left: 10px;
   background: ${(props) => props.theme.colors.default};
   justify-content: center;

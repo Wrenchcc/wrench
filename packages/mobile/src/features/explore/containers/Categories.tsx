@@ -46,7 +46,6 @@ function Categories({ id, title }) {
     <Page headerTitle={title} headerAnimation={false}>
       <FlatList
         initialNumToRender={4}
-        paddingBottom={40}
         getItemLayout={getItemLayout}
         data={edges}
         refetch={refetch}

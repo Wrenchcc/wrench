@@ -4,7 +4,6 @@ import { useCurrentUserQuery, useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import * as ImagePicker from 'expo-image-picker'
 import { useActionSheet } from '@expo/react-native-action-sheet'
-import { request, PERMISSIONS } from 'react-native-permissions'
 import { Page, ScrollView, useNavigation, AppNavigation, SCREENS } from 'navigation'
 import { preSignUrl } from 'gql'
 import { TOAST_TYPES } from 'utils/enums'
@@ -15,10 +14,7 @@ import { close } from 'images'
 import { FILE_TYPES } from 'utils/enums'
 import uploadAsync from 'utils/storage/uploadAsync'
 import { useDynamicColor } from 'utils/hooks'
-import { isIphone } from 'utils/platform'
 import { Information, Row, Counter, ChangeAvatar, Overlay, CloseIcon, Location } from './styles'
-
-const PERMISSION = isIphone ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
 
 const CDN_DOMAIN = 'https://edge-files.wrench.cc'
 const DEFAULT_AVATAR_URL = 'https://edge-files.wrench.cc/avatar/default.jpg'
@@ -32,6 +28,7 @@ function EditProfile({ onboarding }) {
   const [upload, setUploadFile] = useState()
   const [isSaving, setSaving] = useState(false)
   const dynamicColor = useDynamicColor('inverse')
+  const dynamicBackgroundColor = useDynamicColor('default')
 
   const { showActionSheetWithOptions } = useActionSheet()
 
@@ -161,28 +158,32 @@ function EditProfile({ onboarding }) {
         title: t('imagePickerTitle'),
         destructiveButtonIndex: 2,
         cancelButtonIndex: 3,
+        titleTextStyle: {
+          color: dynamicColor,
+          fontWeight: '500',
+        },
         tintColor: dynamicColor,
+        containerStyle: {
+          backgroundColor: dynamicBackgroundColor,
+        },
       },
       async (index) => {
         if (index === 0) {
-          await request(PERMISSION, {
-            title: t('imagePickerPermissionTitle'),
-            message: t('imagePickerPermissionText'),
-            buttonNeutral: t('imagePickerPermissionRetry'),
-            buttonPositive: t('imagePickerPermissionOk'),
-          })
+          const status = await ImagePicker.requestCameraPermissionsAsync()
 
-          const res = await ImagePicker.launchCameraAsync({
-            aspect: [4, 4],
-          })
-
-          if (!res.cancelled) {
-            setAvatarUrl(res.uri)
-            const { data } = await preSignUrl({
-              path: UPLOAD_PATH,
-              type: FILE_TYPES.IMAGE,
+          if (status?.granted) {
+            const res = await ImagePicker.launchCameraAsync({
+              aspect: [4, 4],
             })
-            setUploadFile(data.preSignUrl)
+
+            if (!res.cancelled) {
+              setAvatarUrl(res.uri)
+              const { data } = await preSignUrl({
+                path: UPLOAD_PATH,
+                type: FILE_TYPES.IMAGE,
+              })
+              setUploadFile(data.preSignUrl)
+            }
           }
         }
 
