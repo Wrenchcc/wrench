@@ -1,6 +1,5 @@
 // @ts-nocheck
 import gql from 'graphql-tag'
-import { makeExecutableSchema } from 'apollo-server-express'
 import merge from 'lodash.merge'
 import scalars from './types/scalars'
 import generalTypes from './types/general'
@@ -132,7 +131,7 @@ if (process.env.NODE_ENV === 'development' && debug.enabled) {
 
 // Create the final GraphQL schema out of the type definitions
 // and the resolvers
-export default makeExecutableSchema({
+export default {
   resolvers,
   typeDefs: [
     scalars.typeDefs,
@@ -160,4 +159,4 @@ export default makeExecutableSchema({
     Upload,
     User,
   ],
-})
+}

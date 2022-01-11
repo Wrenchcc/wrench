@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import 'apollo-cache-control'
+// import 'apollo-cache-control'
 
 export default gql`
   type User @cacheControl(maxAge: 3600) {

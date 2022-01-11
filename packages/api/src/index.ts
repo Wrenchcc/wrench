@@ -47,14 +47,14 @@ async function server() {
       userId: getUserId(req),
     }),
     formatError,
-    schema,
+    ...schema,
     validationRules: [depthLimit(10)],
     cache: new RedisCache({
       host: REDIS_HOST,
+      cacheControl: {
+        defaultMaxAge: 60,
+      },
     }),
-    cacheControl: {
-      defaultMaxAge: 60,
-    },
     plugins: [
       // @ts-ignore
       responseCachePlugin({
@@ -65,6 +65,8 @@ async function server() {
   })
 
   const app = express()
+
+  await server.start()
 
   server.applyMiddleware({
     app,
