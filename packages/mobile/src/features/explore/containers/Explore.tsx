@@ -1,4 +1,5 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useRef, useEffect } from 'react'
+import { AppState } from 'react-native'
 import { usePaginatedQuery, PostsDocument, useSimilarProjectsQuery } from '@wrench/common'
 import { useReactiveVar, store } from 'gql'
 import { isAndroid as _isAndroid } from 'utils/platform'
@@ -59,6 +60,18 @@ function Explore() {
   const handleRefetch = useCallback(() => {
     refetch()
   }, [refetch])
+
+  const handleChange = useCallback((newState) => {
+    if (newState === 'active') {
+      handleRefetch()
+    }
+  }, [])
+
+  useEffect(() => {
+    const handler = AppState.addEventListener('change', handleChange)
+
+    return () => handler.remove()
+  }, [])
 
   return (
     <Layout

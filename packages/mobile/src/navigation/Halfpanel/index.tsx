@@ -18,6 +18,18 @@ const HalfPanel = ({ renderContent = () => null, data, height }) => {
     }
   }, [])
 
+  const renderBackdrop = useCallback(
+    (props) => (
+      <BottomSheetBackdrop
+        {...props}
+        disappearsOnIndex={-1}
+        appearsOnIndex={0}
+        pressBehavior="close"
+      />
+    ),
+    []
+  )
+
   const RenderDataContent = () => (
     <Base>
       {data.map(({ title, onPress }) => {
@@ -45,7 +57,7 @@ const HalfPanel = ({ renderContent = () => null, data, height }) => {
       handleComponent={null}
       onChange={handleOnChange}
       backgroundComponent={Background}
-      backdropComponent={BottomSheetBackdrop}
+      backdropComponent={renderBackdrop}
       ref={bottomSheetRef}
       enablePanDownToClose
       animateOnMount
