@@ -1,6 +1,8 @@
 import com.android.build.OutputFile
 
 apply plugin: "com.android.application"
+apply plugin: 'com.google.gms.google-services'
+
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 apply from: '../../../../node_modules/react-native-unimodules/gradle.groovy'
 

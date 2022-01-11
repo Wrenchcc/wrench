@@ -68,6 +68,8 @@
 
   [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
 
+  [FBSDKApplicationDelegate.sharedInstance initializeSDK];
+
   [RNSplashScreen show];
 
   return YES;

@@ -20,13 +20,6 @@ target 'Wrench' do
   permissions_path = "#{root_path}/react-native-permissions/ios"
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary/Permission-PhotoLibrary.podspec"
 
-  # Required by Facebook
-  pod 'FBSDKCoreKit'
-  pod 'FBSDKLoginKit'
-  pod 'FBSDKShareKit'
-
-  pod 'Sentry'
-
   use_unimodules!(
     modules_paths: [root_path],
     exclude: [ 
