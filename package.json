@@ -31,5 +31,6 @@
     "tslint-react": "^5.0.0",
     "tslint-react-hooks": "^2.2.2",
     "typescript": "^4.5.4"
-  }
+  },
+  "packageManager": "yarn@1.22.1"
 }
