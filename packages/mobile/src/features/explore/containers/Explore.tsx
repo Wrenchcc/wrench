@@ -23,6 +23,7 @@ const SimilarProjects = ({ id }) => {
   if (loading) {
     return null
   }
+
   return <ProjectsRow projects={data.similarProjects} marginTop={10} disableAnimation />
 }
 
