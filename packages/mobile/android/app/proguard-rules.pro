@@ -224,3 +224,16 @@
     private static *** mmkvLogImp(...);
     private static *** onContentChangedByOuterProcess(***);
 }
+
+-keep class expo.modules.filesystem.** { *; }
+-keep class expo.modules.av.** { *; }
+-keep class expo.modules.constants.** { *; }
+-keep class expo.modules.haptics.** { *; }
+-keep class expo.modules.imageloader.** { *; }
+-keep expo.modules.imagemanipulator.** { *; }
+-keep class expo.modules.imagepicker.** { *; }
+-keep class expo.modules.lineargradient.** { *; }
+-keep class expo.modules.localization.** { *; }
+-keep class expo.modules.medialibrary.** { *; }
+-keep class expo.modules.interfaces.** { *; }
+-keep class expo.modules.storereview.** { *; }
