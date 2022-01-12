@@ -20,6 +20,7 @@ function Popular() {
   } = usePaginatedQuery(['projects'])(ProjectsDocument, {
     variables: {
       type: 'POPULAR',
+      first: 8,
     },
   })
 

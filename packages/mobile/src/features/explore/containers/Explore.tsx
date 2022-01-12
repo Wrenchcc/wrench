@@ -70,7 +70,6 @@ function Explore() {
 
   useEffect(() => {
     const handler = AppState.addEventListener('change', handleChange)
-
     return () => handler.remove()
   }, [])
 

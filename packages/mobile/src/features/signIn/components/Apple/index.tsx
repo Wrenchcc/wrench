@@ -8,7 +8,6 @@ import { pathOr } from 'rambda'
 import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
 import { SIGN_IN_PROVIDERS } from 'utils/enums'
 import { getCurrentUser } from 'gql'
-import { logError } from 'utils/sentry'
 import { setTokens } from 'utils/storage/auth'
 
 function Apple({ black }) {
@@ -46,9 +45,7 @@ function Apple({ black }) {
       if (data.user) {
         await AppNavigation(!data.user.interestedIn)
       }
-    } catch (err) {
-      logError(err)
-    }
+    } catch {}
   }, [])
 
   const buttonStyle =
