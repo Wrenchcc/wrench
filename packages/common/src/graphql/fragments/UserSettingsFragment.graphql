@@ -28,6 +28,10 @@ fragment UserSettings on User {
           email
           push
         }
+        PROJECT_UPDATES {
+          email
+          push
+        }
       }
     }
   }

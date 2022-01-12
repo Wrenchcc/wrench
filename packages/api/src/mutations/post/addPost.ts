@@ -8,6 +8,28 @@ const debug = require('debug')('api:mutations:post:add-post')
 
 const SPAM_LMIT = 10
 
+// async function sendNotificaitonToFollowers(ctx, projectId) {
+// Get project and see if latest post was > 7 days, and if user have PROJECT_UPDATES true
+//   const followers = await ctx.db.Following.find({
+//     where: {
+//       projectId,
+//     },
+//   })
+
+//   followers.map(({ userId }) => {
+//     ctx.services.firebase.send({
+//       data: {
+//         // commentId: comment.id,
+//         // postId: post.id,
+//         // text,
+//       },
+//       to: userId,
+//       type: NOTIFICATION_TYPES.PROJECT_UPDATES,
+//       // userId: ctx.userId,
+//     })
+//   })
+// }
+
 export default isAuthenticated(async (_, { input }, ctx) => {
   let language
 

@@ -65,6 +65,7 @@ export default gql`
     NEW_ARTICLE: NotificationKindSettings
     SIMILAR_PROJECTS: NotificationKindSettings
     PRODUCT_ANNOUNCEMENTS: NotificationKindSettings
+    PROJECT_UPDATES: NotificationKindSettings
   }
 
   type UserNotificationsSettings {

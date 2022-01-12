@@ -1,3 +1,3 @@
 #!/bin/sh
 cd $ANDROID_HOME/emulator && \
-  ./emulator -avd pixelxl -netspeed full -netdelay none -gpu host
+  ./emulator -avd RF8M930S97Z -netspeed full -netdelay none -gpu host
