@@ -186,4 +186,41 @@
 -keep class com.facebook.hermes.unicode.** { *; }
 -keep class com.facebook.jni.** { *; }
 
--keep class com.facebook.react.turbomodule.** { *; } 
+-keep class com.swmansion.reanimated.** { *; }
+-keep class com.facebook.react.turbomodule.** { *; }
+
+# react-native-firebase section
+-keep class io.invertase.firebase.** { *; }
+-dontwarn io.invertase.firebase.**
+# end react-native-firebase section
+
+-keep class com.mypackage.BuildConfig { *; }
+
+-keepclassmembers class com.android.installreferrer.api.** {
+  *;
+}
+
+-keep class com.google.android.gms.common.** {*;}
+
+
+-keep public class com.dylanvann.fastimage.* {*;}
+-keep public class com.dylanvann.fastimage.** {*;}
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+
+-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+   public *;
+}
+
+-keepclasseswithmembers,includedescriptorclasses class com.tencent.mmkv.** {
+    native <methods>;
+    long nativeHandle;
+    private static *** onMMKVCRCCheckFail(***);
+    private static *** onMMKVFileLengthError(***);
+    private static *** mmkvLogImp(...);
+    private static *** onContentChangedByOuterProcess(***);
+}
