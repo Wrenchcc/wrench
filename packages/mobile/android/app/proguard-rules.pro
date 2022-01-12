@@ -230,7 +230,7 @@
 -keep class expo.modules.constants.** { *; }
 -keep class expo.modules.haptics.** { *; }
 -keep class expo.modules.imageloader.** { *; }
--keep expo.modules.imagemanipulator.** { *; }
+-keep class expo.modules.imagemanipulator.** { *; }
 -keep class expo.modules.imagepicker.** { *; }
 -keep class expo.modules.lineargradient.** { *; }
 -keep class expo.modules.localization.** { *; }
