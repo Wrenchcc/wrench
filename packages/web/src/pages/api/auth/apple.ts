@@ -3,7 +3,7 @@ import fetch from 'isomorphic-unfetch'
 import { Cookies } from 'services/cookie'
 import { serialize } from 'cookie'
 
-// const API_ENDPOINT_EDGE = 'https://api.wrench.cc/graphql'
+// const API_ENDPOINT = 'https://api.wrench.cc/graphql'
 
 export default async function handle({ body }, res) {
   try {
