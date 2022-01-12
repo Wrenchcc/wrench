@@ -35,6 +35,7 @@ function Settings({ section }) {
   // t('notifications:NEW_ARTICLE')
   // t('notifications:SIMILAR_PROJECTS')
   // t('notifications:PRODUCT_ANNOUNCEMENTS')
+  // t('notifications:PROJECT_UPDATES')
 
   // t('settings:invite')
   // t('settings:customize-interests')
