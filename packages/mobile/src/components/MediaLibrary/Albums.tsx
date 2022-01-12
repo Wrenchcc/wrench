@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import { View, Image, ScrollView, TouchableOpacity, Text, StyleSheet } from 'react-native'
+import { View, Image, ScrollView, Text, StyleSheet } from 'react-native'
+import Touchable from 'ui/Touchable'
 import Animated, { useAnimatedStyle } from 'react-native-reanimated'
 import * as MediaLibrary from 'expo-media-library'
 import { BlurView } from 'expo-blur'
@@ -120,7 +121,7 @@ function Albums({ translateY, onPress }) {
         <ScrollView style={styles.scrollview} contentContainerStyle={styles.content}>
           {albums.map(({ id, title, totalCount, preview }) => (
             <View key={id} style={styles.item}>
-              <TouchableOpacity
+              <Touchable
                 onPress={() => handleOnPress({ id, title })}
                 style={{ flexDirection: 'row' }}
               >
@@ -129,7 +130,7 @@ function Albums({ translateY, onPress }) {
                   <Text style={styles.title}>{title}</Text>
                   <Text style={styles.count}>{totalCount}</Text>
                 </View>
-              </TouchableOpacity>
+              </Touchable>
             </View>
           ))}
         </ScrollView>

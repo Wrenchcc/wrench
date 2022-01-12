@@ -1,30 +1,19 @@
 import React from 'react'
-import { Pressable, PressableProps } from 'react-native'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import evenHitSlop from 'utils/hitSlop'
 
-export type PressablePropsType = {
+export type TouchablePropsType = {
   children?: React.ReactNode
   hitSlop?: number
-  android_disableSound?: boolean
   onPress?: () => void
-} & PressableProps
+  disabled?: boolean
+}
 
-const Touchable = ({
-  children,
-  hitSlop = 10,
-  onPress,
-  android_disableSound = true,
-  ...props
-}: PressablePropsType) => {
+const Touchable = ({ children, hitSlop = 10, onPress, ...props }: TouchablePropsType) => {
   return (
-    <Pressable
-      onPress={onPress}
-      hitSlop={evenHitSlop(hitSlop)}
-      android_disableSound={android_disableSound}
-      {...props}
-    >
+    <TouchableWithoutFeedback onPress={onPress} hitSlop={evenHitSlop(hitSlop)} {...props}>
       {children}
-    </Pressable>
+    </TouchableWithoutFeedback>
   )
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import { ImageProps } from 'react-native'
-import Touchable, { TouchableProps } from 'ui/Touchable'
+import { ImageProps, View } from 'react-native'
+import Touchable, { TouchablePropsType } from 'ui/Touchable'
 import { Base } from './styles'
 
 type IconProps = {
@@ -8,7 +8,7 @@ type IconProps = {
   opacity?: number
   color?: string
 } & ImageProps &
-  TouchableProps
+  TouchablePropsType
 
 function Icon({
   onPress = () => {},
@@ -17,13 +17,16 @@ function Icon({
   color,
   width,
   height,
+  style = {},
   ...rest
 }: IconProps) {
   // TODO: Set height and width explicitly everywhere
   return (
-    <Touchable onPress={onPress} {...rest}>
-      <Base source={source} width={width} height={height} color={color} opacity={opacity} />
-    </Touchable>
+    <View style={style}>
+      <Touchable onPress={onPress} {...rest}>
+        <Base source={source} width={width} height={height} color={color} opacity={opacity} />
+      </Touchable>
+    </View>
   )
 }
 export default Icon

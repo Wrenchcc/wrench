@@ -44,11 +44,11 @@ function Form({ projectId, disableModal }) {
       },
     })
 
+    const collectionId = data.addCollection.id
+
+    store.collection.toggleCollection(collectionId)
+
     if (!disableModal) {
-      const collectionId = data.addCollection.id
-
-      store.collection.toggleCollection(collectionId)
-
       showModal(SCREENS.ADD_POST_TO_COLLECTION, {
         collectionId,
         projectId,

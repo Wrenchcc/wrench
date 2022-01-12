@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import Touchable from 'ui/Touchable'
 import { useTranslation } from 'react-i18next'
 import Text from 'ui/Text'
 import AskForPermission from 'components/AskForPermission'
@@ -13,9 +13,9 @@ function Permission({ onSuccess, onCancel }) {
       <AskForPermission onSuccess={onSuccess} type="photo" />
       <Header
         headerLeft={
-          <TouchableOpacity onPress={onCancel}>
+          <Touchable onPress={onCancel}>
             <Text>{t('cancel')}</Text>
-          </TouchableOpacity>
+          </Touchable>
         }
       />
     </>

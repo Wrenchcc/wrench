@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react'
-import { View, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { View, ActivityIndicator } from 'react-native'
 import Text from 'ui/Text'
+import Touchable from 'ui/Touchable'
 import Animated from 'react-native-reanimated'
 import { useNavigation, SCREENS, NAVIGATION } from 'navigation'
 import { useReactiveVar, store } from 'gql'
@@ -98,26 +99,26 @@ function Header({ headerLeftStyle = {}, headerRightStyle = {}, arrowStyle = {}, 
     <View style={styles.background}>
       <View style={styles.container}>
         <Animated.View style={[styles.left, headerLeftStyle]}>
-          <TouchableOpacity onPress={handleOnCancel}>
+          <Touchable onPress={handleOnCancel}>
             <Text medium color="white">
               {t('options.cancel')}
             </Text>
-          </TouchableOpacity>
+          </Touchable>
         </Animated.View>
 
         <View style={styles.center}>
           {albumWithFallback && (
-            <TouchableOpacity onPress={toggleAlbum} style={styles.title}>
+            <Touchable onPress={toggleAlbum} style={styles.title}>
               <Text medium color="white">
                 {albumWithFallback}
               </Text>
               <Animated.Image source={arrowDown} style={[styles.arrow, arrowStyle]} />
-            </TouchableOpacity>
+            </Touchable>
           )}
         </View>
 
         <Animated.View style={[styles.right, headerRightStyle]}>
-          <TouchableOpacity onPress={handleCropping} disabled={!selectedFiles.length}>
+          <Touchable onPress={handleCropping} disabled={!selectedFiles.length}>
             {isCropping ? (
               <ActivityIndicator color="white" />
             ) : (
@@ -131,7 +132,7 @@ function Header({ headerLeftStyle = {}, headerRightStyle = {}, arrowStyle = {}, 
                 {t('next')}
               </Text>
             )}
-          </TouchableOpacity>
+          </Touchable>
         </Animated.View>
       </View>
     </View>

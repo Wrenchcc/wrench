@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { Image, Dimensions, View } from 'react-native'
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
+import Touchable from 'ui/Touchable'
 import { useReactiveVar, store } from 'gql'
 import Text from 'ui/Text'
 import { formatTime } from './utils'
@@ -55,7 +55,7 @@ function Item({ onPress, item }) {
   const selected = selectedFiles.some((file) => file.id === item.id)
 
   return (
-    <TouchableWithoutFeedback onPress={handlePress}>
+    <Touchable onPress={handlePress}>
       {item.duration > 0 && <Text style={styles.duration}>{formatTime(item.duration)}</Text>}
       <Image fadeDuration={0} style={styles.image} source={item} />
       <View
@@ -69,7 +69,7 @@ function Item({ onPress, item }) {
         </Text>
       </View>
       {selected && <View style={styles.overlay} />}
-    </TouchableWithoutFeedback>
+    </Touchable>
   )
 }
 

@@ -144,7 +144,11 @@ function PostContainer({ postId, commentId }) {
 
   return (
     <Page view headerTitle={t('title')} headerAnimation={false}>
-      <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
+      <KeyboardAvoidingView
+        behavior={isIphone && 'padding'}
+        style={{ flex: 1 }}
+        keyboardVerticalOffset={-NAVIGATION.BOTTOM_TABS_HEIGHT}
+      >
         <FlatList
           inverted
           initialNumToRender={8}
@@ -164,12 +168,12 @@ function PostContainer({ postId, commentId }) {
           data={edges}
           renderItem={renderItem}
           contentContainerStyle={{
-            paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
+            paddingBottom: NAVIGATION.BOTTOM_TABS_HEIGHT,
             flexGrow: 1,
             justifyContent: 'flex-end',
           }}
         />
-        <View style={{ paddingHorizontal: 20 }}>
+        <View style={{ paddingHorizontal: 20, paddingBottom: NAVIGATION.BOTTOM_TABS_HEIGHT }}>
           <CommentField
             postId={postId}
             username={mention.username}

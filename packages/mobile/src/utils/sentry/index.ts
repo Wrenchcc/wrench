@@ -1,6 +1,5 @@
 import * as Sentry from '@sentry/react-native'
 import Config from 'react-native-config'
-import { readableVersion } from 'utils/appVersion'
 
 export let SentryInstance = Sentry
 
@@ -10,7 +9,6 @@ async function setupSentry() {
 
     SentryInstance.init({
       dsn: Config.SENTRY_DSN,
-      dist: readableVersion,
       environment,
     })
   } else {
