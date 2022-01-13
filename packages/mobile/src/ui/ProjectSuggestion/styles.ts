@@ -27,5 +27,4 @@ export const ProjectCard = styled(UiProjectCard)`
   width: ${width - GUTTER * 2}px;
   margin-right: ${({ last }) => (last ? GUTTER : BAR_SPACE)}px;
   margin-left: ${({ first }) => (first ? GUTTER : 0)}px;
-  margin-bottom: 50px;
 `

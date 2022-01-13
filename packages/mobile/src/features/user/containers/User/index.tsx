@@ -1,10 +1,9 @@
 import React from 'react'
 import { KeyboardAvoidingView } from 'react-native'
-import { useTranslation } from 'react-i18next'
 import { usePaginatedQuery, UserDocument } from '@wrench/common'
 import { Page, FlatList } from 'navigation'
 import Post from 'components/Post'
-import { Banner, Share } from 'ui'
+import { Share } from 'ui'
 import FollowingProjects from 'features/user/components/FollowingProjects'
 import Header from 'features/user/components/Header'
 import UserProjects from 'features/user/components/UserProjects'
@@ -15,8 +14,6 @@ const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 const renderItem = ({ item }) => <Post post={item.node} />
 
 function User({ user: initialUserData }) {
-  const { t } = useTranslation('user')
-
   const {
     data: { edges, user },
     isFetching,
@@ -35,25 +32,23 @@ function User({ user: initialUserData }) {
 
   const hasPosts = edges && edges.length > 0
 
-  const ListHeaderComponent = error ? (
-    <Banner content={t('notfound')} />
-  ) : (
-    user && (
-      <>
-        <Header
-          firstName={user.firstName}
-          lastName={user.lastName}
-          avatarUrl={user.avatarUrl}
-          spacingHorizontal={!hasPosts}
-          bio={user.bio}
-          website={user.website}
-          location={user.location}
-        />
+  const ListHeaderComponent = error
+    ? null //<Banner content={t('notfound')} />
+    : user && (
+        <>
+          <Header
+            firstName={user.firstName}
+            lastName={user.lastName}
+            avatarUrl={user.avatarUrl}
+            spacingHorizontal={!hasPosts}
+            bio={user.bio}
+            website={user.website}
+            location={user.location}
+          />
 
-        {user.projects && <UserProjects projects={user.projects} spacingHorizontal={!hasPosts} />}
-      </>
-    )
-  )
+          {user.projects && <UserProjects projects={user.projects} spacingHorizontal={!hasPosts} />}
+        </>
+      )
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
@@ -77,6 +72,7 @@ function User({ user: initialUserData }) {
           isFetching={isFetching}
           hasNextPage={hasNextPage}
           renderItem={renderItem}
+          contentContainerStyle={null} // Fix for draging horizontal items (looks like trying to refetch)
         />
       </Page>
     </KeyboardAvoidingView>
