@@ -1,4 +1,5 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
+import { VehicleTypes } from './enums'
 
 @Entity('project_types')
 export default class ProjectType extends BaseEntity {
@@ -13,4 +14,7 @@ export default class ProjectType extends BaseEntity {
 
   @Column()
   public imageUrl: string
+
+  @Column('enum', { enum: VehicleTypes, default: VehicleTypes.MOTORCYCLE })
+  public type: VehicleTypes
 }

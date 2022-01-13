@@ -61,6 +61,7 @@ export default gql`
     title: String
     slug: String
     imageUrl: String!
+    type: VehicleTypes
   }
 
   type ProjectsConnection {
@@ -108,7 +109,7 @@ export default gql`
       last: Int = 10
     ): ProjectsConnection
 
-    projectTypes: [ProjectType]
+    projectTypes(type: VehicleTypes): [ProjectType]
   }
 
   input ProjectTypeInput {
