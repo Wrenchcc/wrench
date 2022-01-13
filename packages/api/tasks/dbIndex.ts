@@ -16,7 +16,7 @@ createConnection(options).then(async () => {
   const model = await modelRepo.find()
 
   // NOTE: Clear search index
-  await searchRepo.clear()
+  // await searchRepo.clear()
 
   model.map(async (model) => {
     const brand = await brandRepo.findOne(model.brandId)

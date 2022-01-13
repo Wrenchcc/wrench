@@ -24,9 +24,7 @@ export function navigateWithoutContext(
         passProps,
       },
     })
-  } catch (err) {
-    console.log(err)
-  }
+  } catch {}
 }
 
 export function selectTabIndex(currentTabIndex: number) {
@@ -56,9 +54,7 @@ export function showModal(
         ],
       },
     })
-  } catch (err) {
-    console.log(err)
-  }
+  } catch {}
 }
 
 export async function showHalfpanel(passProps: PassProps) {
@@ -78,17 +74,13 @@ export async function showHalfpanel(passProps: PassProps) {
         passProps,
       },
     })
-  } catch (err) {
-    console.log(err)
-  }
+  } catch {}
 }
 
 export async function dismissHalfpanel() {
   try {
     await Navigation.dismissAllOverlays()
-  } catch (err) {
-    console.log(err)
-  }
+  } catch {}
 }
 
 export function showMention(passProps: PassProps) {
@@ -108,9 +100,8 @@ export function showMention(passProps: PassProps) {
       })
     }
     isMentionOpen = true
-  } catch (err) {
+  } catch {
     isMentionOpen = true
-    console.log(err)
   }
 }
 
@@ -118,9 +109,8 @@ export function dismissMention() {
   try {
     Navigation.dismissOverlay(SCREENS.MENTION)
     isMentionOpen = false
-  } catch (err) {
+  } catch {
     isMentionOpen = false
-    console.log(err)
   }
 }
 
@@ -139,17 +129,13 @@ export function showEditPost(passProps: PassProps) {
         passProps,
       },
     })
-  } catch (err) {
-    console.log(err)
-  }
+  } catch {}
 }
 
 export function dismissEditPost() {
   try {
     Navigation.dismissOverlay(SCREENS.EDIT_POST)
-  } catch (err) {
-    console.log(err)
-  }
+  } catch {}
 }
 
 export function showNotificationBadge() {
