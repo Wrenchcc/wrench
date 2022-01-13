@@ -12,7 +12,7 @@ import slugify from '../utils/slugify'
 export default class Hashtag extends BaseEntity {
   public static async findOrCreate(hashtags) {
     return Promise.all(
-      hashtags.map(async name => {
+      hashtags.map(async (name) => {
         const slug = slugify(name, '-')
         const hashtag = await Hashtag.findOne({
           name,

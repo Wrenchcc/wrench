@@ -8,6 +8,11 @@ export default gql`
     HASHTAGS
   }
 
+  enum VehicleTypes {
+    MOTORCYCLE
+    CAR
+  }
+
   union SearchResultNode = Project | User | Model | Hashtag
 
   type SearchResultEdge {
@@ -35,6 +40,8 @@ export default gql`
       query: String!
       # The types of items that can be searched
       type: SearchType!
+      # Used for models
+      vehicleType: VehicleTypes
     ): SearchResults
   }
 `

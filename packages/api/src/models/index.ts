@@ -13,6 +13,7 @@ import Following from './Following'
 import Hashtag from './Hashtag'
 import Like from './Like'
 import Model from './Model'
+import SearchModel from './SearchModel'
 import Notification from './Notification'
 import Post from './Post'
 import PostTranslation from './PostTranslation'
@@ -52,6 +53,7 @@ export const options: ConnectionOptions = {
     Hashtag,
     Like,
     Model,
+    SearchModel,
     Notification,
     Post,
     PostCollection,
@@ -88,6 +90,7 @@ export const db = {
   Hashtag,
   Like,
   Model,
+  SearchModel,
   Notification,
   Post,
   PostCollection,

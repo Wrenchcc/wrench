@@ -37,16 +37,10 @@ export default class BlogPost extends BaseEntity {
     return post
   }
 
-  @ManyToOne(
-    () => User,
-    user => user.posts
-  )
+  @ManyToOne(() => User, (user) => user.posts)
   public user: User
 
-  @OneToMany(
-    () => Comment,
-    comment => comment.post
-  )
+  @OneToMany(() => Comment, (comment) => comment.post)
   public comments: Comment[]
 
   @PrimaryGeneratedColumn('uuid')

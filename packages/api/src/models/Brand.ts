@@ -11,10 +11,7 @@ import Model from './Model'
 
 @Entity('brands')
 export default class Brands extends BaseEntity {
-  @OneToMany(
-    () => Model,
-    model => model.brand
-  )
+  @OneToMany(() => Model, (model) => model.brand)
   public models: Model[]
 
   @PrimaryGeneratedColumn('uuid')

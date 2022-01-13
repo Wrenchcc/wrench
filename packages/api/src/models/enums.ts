@@ -8,6 +8,11 @@ export enum FileTypes {
   VIDEO = 'VIDEO',
 }
 
+export enum VehicleTypes {
+  MOTORCYCLE = 'MOTORCYCLE',
+  CAR = 'CAR',
+}
+
 export enum LikeTypes {
   POST = 'POST',
   COMMENT = 'COMMENT',

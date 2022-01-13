@@ -14,25 +14,13 @@ import { FileTypes } from './enums'
 
 @Entity('files')
 export default class File extends BaseEntity {
-  @ManyToOne(
-    () => User,
-    user => user.files,
-    { onDelete: 'CASCADE' }
-  )
+  @ManyToOne(() => User, (user) => user.files, { onDelete: 'CASCADE' })
   public user: User
 
-  @ManyToOne(
-    () => Post,
-    post => post.files,
-    { onDelete: 'CASCADE' }
-  )
+  @ManyToOne(() => Post, (post) => post.files, { onDelete: 'CASCADE' })
   public post: Post
 
-  @ManyToOne(
-    () => Project,
-    project => project.files,
-    { onDelete: 'CASCADE' }
-  )
+  @ManyToOne(() => Project, (project) => project.files, { onDelete: 'CASCADE' })
   public project: Project
 
   @PrimaryGeneratedColumn('uuid')

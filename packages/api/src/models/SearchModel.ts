@@ -3,18 +3,14 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  ManyToOne,
   CreateDateColumn,
   UpdateDateColumn,
+  Index,
 } from 'typeorm'
-import Brand from './Brand'
 import { VehicleTypes } from './enums'
 
-@Entity('models')
-export default class Model extends BaseEntity {
-  @ManyToOne(() => Brand, (brand) => brand.models)
-  public brand: Brand
-
+@Entity('search_models')
+export default class SearchModel extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   public id: string
 
@@ -24,14 +20,24 @@ export default class Model extends BaseEntity {
   @UpdateDateColumn({ type: 'timestamptz' })
   public updatedAt: Date
 
+  @Index({ fulltext: true })
   @Column()
-  public name: string
+  public query: string
 
   @Column()
-  public year: number
+  public brand: string
 
   @Column()
   public brandId: string
+
+  @Column()
+  public model: string
+
+  @Column()
+  public modelId: string
+
+  @Column()
+  public year: number
 
   @Column('enum', { enum: VehicleTypes, default: VehicleTypes.MOTORCYCLE })
   public type: VehicleTypes

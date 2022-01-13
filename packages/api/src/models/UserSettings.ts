@@ -27,10 +27,7 @@ export default class UserSettings extends BaseEntity {
     return UserSettings.save(save)
   }
 
-  @ManyToOne(
-    () => User,
-    user => user.settings
-  )
+  @ManyToOne(() => User, (user) => user.settings)
   public user: User
 
   @PrimaryGeneratedColumn()

@@ -22,10 +22,7 @@ export default class Notification extends BaseEntity {
       .getRawOne()
   }
 
-  @ManyToOne(
-    () => User,
-    user => user.notifications
-  )
+  @ManyToOne(() => User, (user) => user.notifications)
   public user: User
 
   @PrimaryGeneratedColumn('uuid')
