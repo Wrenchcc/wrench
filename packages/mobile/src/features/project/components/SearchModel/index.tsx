@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import { usePaginatedLazyQuery, SearchModelsDocument } from '@wrench/common'
-import { InfiniteList, Text, Touchable, SearchingFor } from 'ui'
+import { InfiniteList, Text, Touchable, SearchingFor, NoResults, Loader } from 'ui'
 import { keyboardHeight } from 'utils/platform'
+import HashtagSkeletonList from 'ui/Hashtag/SkeletonList'
+
 import { Base } from './styles'
 
 const INPUT_HEIGHT = 80
@@ -31,19 +33,22 @@ function SearchModel({ query, onPress }) {
 
   const bottom = keyboardHeight + INPUT_HEIGHT
 
-  return (
-    <Base bottom={bottom}>
+  const content =
+    isFetching && !edges ? (
+      <HashtagSkeletonList contentInset={0} marginTop={15} />
+    ) : (
       <InfiniteList
+        borderSeparator
+        initialNumToRender={8}
+        paddingBottom={0}
+        keyboard
         androidDismissKeyboard={false}
-        defaultPadding
-        ListHeaderComponent={
-          (query.length === 1 && !edges) || isFetching ? <SearchingFor query={query} /> : null
-        }
         keyboardDismissMode="none"
+        ListEmptyComponent={!isFetching && query.length > 1 && <NoResults />}
         data={edges}
         fetchMore={fetchMore}
-        isFetching={false}
         hasNextPage={isFetching ? false : hasNextPage}
+        isFetching={isFetching && query.length === 0}
         renderItem={({ item }) => (
           <Touchable
             onPress={() => onPress(item.node)}
@@ -62,10 +67,18 @@ function SearchModel({ query, onPress }) {
             </Text>
           </Touchable>
         )}
-        borderSeparator
+        defaultPadding
+        ListFooterComponent={
+          isFetching && !edges ? (
+            <SearchingFor query={query} />
+          ) : (
+            hasNextPage && query && isFetching && <Loader />
+          )
+        }
       />
-    </Base>
-  )
+    )
+
+  return <Base bottom={bottom}>{content}</Base>
 }
 
 export default SearchModel
