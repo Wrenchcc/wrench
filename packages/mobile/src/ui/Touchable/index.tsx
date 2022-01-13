@@ -9,7 +9,7 @@ export type TouchablePropsType = {
   disabled?: boolean
 }
 
-const Touchable = ({ children, hitSlop = 10, onPress, ...props }: TouchablePropsType) => {
+const Touchable = ({ children, hitSlop = 15, onPress, ...props }: TouchablePropsType) => {
   return (
     <TouchableWithoutFeedback onPress={onPress} hitSlop={evenHitSlop(hitSlop)} {...props}>
       {children}

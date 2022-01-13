@@ -23,7 +23,7 @@ import { useNavigation, SCREENS } from 'navigation'
 import openLink from 'utils/openLink'
 import Collections from 'features/project/components/Collections'
 import { useDynamicColor } from 'utils/hooks'
-import { Avatar, Carousel, Comments, Title, Text, ParsedText, Icon, TimeAgo } from 'ui'
+import { Avatar, Carousel, Comments, Title, Text, ParsedText, Icon, TimeAgo, Touchable } from 'ui'
 import { TOAST_TYPES } from 'utils/enums'
 import { showToast } from 'navigation/banner'
 import LikePost from 'components/LikePost'
@@ -378,15 +378,11 @@ function Post({ post, withoutTitle, disableComments, withoutCollections, padding
             fallback={post.user.isSilhouette}
             fullName={post.user.fullName}
           />
-          <Text
-            medium
-            onPress={navigateToUser}
-            style={{ marginLeft: 10 }}
-            fontSize={14}
-            numberOfLines={1}
-          >
-            {post.user.fullName}
-          </Text>
+          <Touchable onPress={navigateToUser} style={{ marginLeft: 10 }}>
+            <Text medium fontSize={14} numberOfLines={1}>
+              {post.user.fullName}
+            </Text>
+          </Touchable>
         </Left>
         <Icon source={share} onPress={handleActionSheet} hitSlop={20} />
       </Top>
@@ -461,9 +457,11 @@ function Post({ post, withoutTitle, disableComments, withoutCollections, padding
                 {t('loading')}
               </Text>
             ) : (
-              <Text color="inverse" medium fontSize={12} onPress={handleTranslation}>
-                {original ? t('translation') : t('original')}
-              </Text>
+              <Touchable onPress={handleTranslation}>
+                <Text color="inverse" medium fontSize={12}>
+                  {original ? t('translation') : t('original')}
+                </Text>
+              </Touchable>
             )}
           </>
         )}
