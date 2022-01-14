@@ -168,7 +168,7 @@ function PostContainer({ postId, commentId }) {
           data={edges}
           renderItem={renderItem}
           contentContainerStyle={{
-            paddingBottom: NAVIGATION.BOTTOM_TABS_HEIGHT,
+            paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
             flexGrow: 1,
             justifyContent: 'flex-end',
           }}

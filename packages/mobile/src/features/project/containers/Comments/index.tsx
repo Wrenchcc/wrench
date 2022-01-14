@@ -144,7 +144,7 @@ function Comments({ postId }) {
             justifyContent: 'flex-end',
           }}
         />
-        <View style={{ paddingHorizontal: 20 }}>
+        <View style={{ paddingHorizontal: 20, paddingBottom: NAVIGATION.BOTTOM_TABS_HEIGHT }}>
           <CommentField postId={postId} username={username} commentId={commentId} emoji />
         </View>
       </KeyboardAvoidingView>
