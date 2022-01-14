@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import UiFollowers from 'ui/Followers'
-import UiTouchable from 'ui/Touchable'
 
 export const Base = styled.View`
   padding-left: ${(props) => (props.spacingHorizontal ? 20 : 0)}px;
@@ -29,7 +28,7 @@ export const Spacing = styled.View`
   height: 30px;
 `
 
-export const OpenSimilar = styled(UiTouchable)`
+export const OpenSimilar = styled.View`
   border-width: 1px;
   border-color: ${(props) => props.theme.colors.divider};
   height: 40px;

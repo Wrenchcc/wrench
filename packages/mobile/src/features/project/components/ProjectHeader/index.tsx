@@ -96,11 +96,14 @@ function ProjectHeader({ project, spacingHorizontal }) {
         {!isOwner && <Follow following={project.permissions.isFollower} onPress={handleFollow} />}
 
         {!isOwner && (
-          <OpenSimilar onPress={handleSimilarProjects}>
+          <OpenSimilar>
             {loading ? (
               <ActivityIndicator />
             ) : (
-              <Icon source={isShowingSimilarProjects ? arrowUp : arrowDown} disabled />
+              <Icon
+                source={isShowingSimilarProjects ? arrowUp : arrowDown}
+                onPress={handleSimilarProjects}
+              />
             )}
           </OpenSimilar>
         )}

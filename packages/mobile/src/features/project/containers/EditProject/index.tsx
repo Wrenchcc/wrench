@@ -11,6 +11,7 @@ import { SCREENS, useNavigation, ScrollView } from 'navigation'
 import Header from 'navigation/Page/Header'
 import { ActivityIndicator, Text, Title, Icon, Input, SelectionItem } from 'ui'
 import { close } from 'images'
+import { logError } from 'utils/sentry'
 import { Inner, Spacing } from './styles'
 
 function EditProject({ project, onDeleteCallback }) {
@@ -93,7 +94,7 @@ function EditProject({ project, onDeleteCallback }) {
             },
           })
         } catch (err) {
-          console.log(err)
+          logError(err)
         }
       },
     })

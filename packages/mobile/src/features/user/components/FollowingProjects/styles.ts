@@ -10,10 +10,10 @@ export const GUTTER = 20
 export const BAR_SPACE = GUTTER / 2
 
 export const Base = styled.View`
-  background-color: ${props => props.theme.colors.placeholder};
-  flex: 1;
+  background-color: ${(props) => props.theme.colors.placeholder};
   padding-left: 20px;
   padding-right: 20px;
+  height: 100%;
 `
 
 export const Headline = styled(UiTitle)`

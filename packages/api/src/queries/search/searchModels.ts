@@ -42,15 +42,15 @@ export default async (
     queryBuilder.take(first).getMany(),
   ])
 
-  const nodes = data.map((model) => ({
-    id: model.id,
-    createdAt: model.createdAt,
+  const nodes = data.map((result) => ({
+    id: result.modelId,
+    createdAt: result.createdAt,
     brand: {
-      id: model.brandId,
-      name: model.brand,
+      id: result.brandId,
+      name: result.brand,
     },
-    model: model.model,
-    year: model.year,
+    model: result.model,
+    year: result.year,
   }))
 
   const edges = convertNodesToEdges(nodes, ORDER_BY)

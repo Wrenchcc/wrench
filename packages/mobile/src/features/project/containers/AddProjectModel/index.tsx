@@ -11,6 +11,7 @@ import { ActivityIndicator, Header, Title, Text, Input, Icon, KeyboardAvoidingVi
 import { arrowLeft } from 'images'
 import SearchModel from 'features/project/components/SearchModel'
 import { COLORS } from 'ui/constants'
+import { logError } from 'utils/sentry'
 
 function formatModel(model) {
   return `${model.brand.name} ${model.model} ${model.year}`
@@ -97,7 +98,7 @@ function AddProjectModel() {
 
           store.project.setProjectId(addProject.id)
         } catch (err) {
-          console.log(err)
+          logError(err)
         }
       },
     })

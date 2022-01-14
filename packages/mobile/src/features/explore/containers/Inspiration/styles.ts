@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { Touchable } from 'ui'
 import { NAVIGATION } from 'navigation/constants'
 
-export const BackButton = styled(Touchable)`
-  z-index: 1000;
+export const BackButton = styled.View`
+  z-index: 10;
   width: 50px;
   height: 50px;
   border-radius: 50px;

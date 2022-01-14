@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navigation } from 'react-native-navigation'
+import { logError } from 'utils/sentry'
 import Animation from './Animation'
 import { NAVIGATION_BANNER } from './constants'
 
@@ -50,7 +51,7 @@ export default class NavigationBanner {
         },
       })
     } catch (err) {
-      console.log(err)
+      logError(err)
     }
   }
 
@@ -65,7 +66,7 @@ export default class NavigationBanner {
         this.setQueue(otherBanners)
       }
     } catch (err) {
-      console.log(err)
+      logError(err)
     }
   }
 
@@ -88,7 +89,7 @@ export default class NavigationBanner {
         this.setQueue(otherBanners)
       }
     } catch (err) {
-      console.log(err)
+      logError(err)
     }
   }
 
