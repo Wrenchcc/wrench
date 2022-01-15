@@ -10,7 +10,7 @@ const renderPreviewType = (file) => {
       return <Video source={file} resizeMode="cover" muted paused />
     }
     default:
-      return <Image source={file} />
+      return <Image source={file} fadeDuration={0} />
   }
 }
 function Posting({ file }) {

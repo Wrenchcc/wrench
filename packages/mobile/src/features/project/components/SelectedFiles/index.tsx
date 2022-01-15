@@ -35,7 +35,12 @@ const PlayableVideo = ({ source }) => {
     <Touchable onPress={handlePlay}>
       {isPaused && (
         <View style={styles.play}>
-          <RNImage source={play} style={{ widht: 20, height: 20, left: 2 }} resizeMode="contain" />
+          <RNImage
+            source={play}
+            style={{ widht: 20, height: 20, left: 2 }}
+            resizeMode="contain"
+            fadeDuration={0}
+          />
         </View>
       )}
       <Video ref={videoRef} source={source} repeat paused muted resizeMode="cover" />

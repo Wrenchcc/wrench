@@ -23,6 +23,10 @@ buildscript {
     }
 }
 
+ext {
+    ffmpegKitPackage = "video"
+}
+
 allprojects {
     repositories {
         maven {

@@ -62,12 +62,9 @@ PODS:
     - FBSDKCoreKit (= 12.2.1)
   - FBSDKShareKit (12.2.1):
     - FBSDKCoreKit (= 12.2.1)
-  - ffmpeg-kit-ios-https (4.5.1)
-  - ffmpeg-kit-react-native (4.5.1):
-    - ffmpeg-kit-react-native/https (= 4.5.1)
-    - React-Core
-  - ffmpeg-kit-react-native/https (4.5.1):
-    - ffmpeg-kit-ios-https (= 4.5.1)
+  - ffmpeg-kit-ios-video (4.5.1)
+  - ffmpeg-kit-react-native/video (4.5.1):
+    - ffmpeg-kit-ios-video (= 4.5.1)
     - React-Core
   - Firebase/AnalyticsWithoutAdIdSupport (8.10.0):
     - Firebase/CoreOnly
@@ -591,7 +588,7 @@ DEPENDENCIES:
   - EXStoreReview (from `../../../node_modules/expo-store-review/ios`)
   - FBLazyVector (from `../../../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../../../node_modules/react-native/React/FBReactNativeSpec`)
-  - ffmpeg-kit-react-native (from `../../../node_modules/ffmpeg-kit-react-native`)
+  - ffmpeg-kit-react-native/video (from `../../../node_modules/ffmpeg-kit-react-native/ffmpeg-kit-react-native.podspec`)
   - glog (from `../../../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - hermes-engine (~> 0.9.0)
   - libevent (~> 2.1.12)
@@ -658,7 +655,7 @@ SPEC REPOS:
     - FBSDKCoreKit_Basics
     - FBSDKLoginKit
     - FBSDKShareKit
-    - ffmpeg-kit-ios-https
+    - ffmpeg-kit-ios-video
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -718,7 +715,7 @@ EXTERNAL SOURCES:
   FBReactNativeSpec:
     :path: "../../../node_modules/react-native/React/FBReactNativeSpec"
   ffmpeg-kit-react-native:
-    :path: "../../../node_modules/ffmpeg-kit-react-native"
+    :podspec: "../../../node_modules/ffmpeg-kit-react-native/ffmpeg-kit-react-native.podspec"
   glog:
     :podspec: "../../../node_modules/react-native/third-party-podspecs/glog.podspec"
   RCT-Folly:
@@ -849,7 +846,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit_Basics: a6a92ca628e05f86f458a4721574c5ddfb058ba3
   FBSDKLoginKit: 7467b7f988ca4fdf48f12a839bcfce4264752429
   FBSDKShareKit: 25fe0e2cd0811918e5b5b1603cb3fc580154cc48
-  ffmpeg-kit-ios-https: cec24d405b511e4f274980d8a9c751d384f89558
+  ffmpeg-kit-ios-video: df117a872eafb186e287e3c254ad52c52e90c586
   ffmpeg-kit-react-native: f07dd13b146f9bdef9e2639ab68c9e3ddeedc099
   Firebase: 44213362f1dcc52555b935dc925ed35ac55f1b20
   FirebaseAnalytics: 319c9b3b1bdd400d60e2f415dff0c5f6959e6760
@@ -929,6 +926,6 @@ SPEC CHECKSUMS:
   UMReactNativeAdapter: d03cefd0e4e4179ab8c490408589f1c8a6c8b785
   Yoga: e7dc4e71caba6472ff48ad7d234389b91dadc280
 
-PODFILE CHECKSUM: aa467db85d77d533c7f92911fb0940ec89190335
+PODFILE CHECKSUM: b973bb15424febdbc1601a1c8f28e6b6a069b44b
 
 COCOAPODS: 1.11.2
