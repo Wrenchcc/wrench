@@ -46,7 +46,7 @@ export default isAuthenticated(async (_, { input }, ctx) => {
   const filesToSave = input.files.map(({ filename }) => ({
     filename,
     project,
-    type: FILE_TYPES.IMAGE,
+    type: FILE_TYPES.IMAGE, // Extract type from file extension
     userId: ctx.userId,
   }))
 
