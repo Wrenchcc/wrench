@@ -37,7 +37,7 @@ const PlayableVideo = ({ source }) => {
         <View style={styles.play}>
           <RNImage
             source={play}
-            style={{ widht: 20, height: 20, left: 2 }}
+            style={{ width: 20, height: 20, left: 2 }}
             resizeMode="contain"
             fadeDuration={0}
           />
