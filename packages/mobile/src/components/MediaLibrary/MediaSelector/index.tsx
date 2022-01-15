@@ -41,7 +41,7 @@ function MediaSelector({ onScroll, spacing, onSelect }) {
       const result = await MediaLibrary.getAssetsAsync({
         first: INITIAL_PAGE_SIZE,
         album: album?.id,
-        mediaType: [MediaLibrary.MediaType.photo],
+        mediaType: [MediaLibrary.MediaType.video],
         sortBy: MediaLibrary.SortBy.creationTime,
       })
 
@@ -69,6 +69,7 @@ function MediaSelector({ onScroll, spacing, onSelect }) {
           after,
           album: selectedAlbum?.id,
           first: PAGE_SIZE,
+          mediaType: [MediaLibrary.MediaType.photo, MediaLibrary.MediaType.video],
           sortBy: [[MediaLibrary.SortBy.creationTime, false]],
         })
 

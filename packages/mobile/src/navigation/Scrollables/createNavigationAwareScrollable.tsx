@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useCallback, forwardRef, useContext } from 'r
 import { Keyboard, TextInput, UIManager, findNodeHandle } from 'react-native'
 import { ScrollContext } from 'navigation/Layout/context'
 import { isAndroid } from 'utils/platform'
+import { FILE_TYPES } from 'utils/enums'
+import { store } from 'gql'
 import { Border, Loader } from 'ui'
 import { CONTENT_INSET, NAVIGATION } from '../constants'
 import { keyExtractor } from '../utils'
@@ -16,6 +18,25 @@ const BorderSeparator = () => <Border />
 const keyboardDismissProp = isAndroid
   ? { onScrollEndDrag: Keyboard.dismiss }
   : { keyboardDismissMode: 'on-drag' }
+
+const viewabilityConfig = {
+  itemVisiblePercentThreshold: 80,
+}
+
+const onViewableItemsChanged = ({ changed }) => {
+  const current = changed[0]
+
+  if (current.item.node.type !== FILE_TYPES.VIDEO) {
+    return
+  }
+
+  if (current?.isViewable && current?.item?.node?.files) {
+    const videoId = current.item.node.files.edges[0].node.id
+    store.post.videoIdInViewport(videoId)
+  } else {
+    store.post.videoIdInViewport('')
+  }
+}
 
 export default function createNavigationAwareScrollable(Component) {
   return forwardRef(function NavigationAwareScrollable(
@@ -93,6 +114,8 @@ export default function createNavigationAwareScrollable(Component) {
     return (
       <Component
         ref={setRef}
+        viewabilityConfig={viewabilityConfig}
+        onViewableItemsChanged={onViewableItemsChanged}
         onScroll={onScroll}
         onScrollBeginDrag={onScrollBeginDrag}
         onScrollEndDrag={onScrollEndDrag}

@@ -56,7 +56,11 @@ function Item({ onPress, item }) {
 
   return (
     <Touchable onPress={handlePress}>
-      {item.duration > 0 && <Text style={styles.duration}>{formatTime(item.duration)}</Text>}
+      {item.duration > 0 && (
+        <Text fontSize={12} medium style={styles.duration}>
+          {formatTime(item.duration)}
+        </Text>
+      )}
       <Image fadeDuration={0} style={styles.image} source={item} />
       <View
         style={[

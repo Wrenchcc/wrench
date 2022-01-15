@@ -3,6 +3,7 @@ import { View, ScrollView, Image } from 'react-native'
 import { useReactiveVar, store } from 'gql'
 import Grid from './Grid'
 import { isAndroid } from 'utils/platform'
+import VideoEditor from './VideoEditor'
 import { CROP_AREA } from '../constants'
 
 const styles = {
@@ -10,7 +11,7 @@ const styles = {
     width: CROP_AREA,
     height: CROP_AREA,
     overflow: 'hidden',
-    backgroundColor: 'rgb(34,34,34)',
+    backgroundColor: 'rgb(34, 34, 34)',
   },
 }
 
@@ -103,6 +104,10 @@ function ImageEditor() {
       originY: source?.height * offsetRatioY,
       width: source?.width * sizeRatioX,
     })
+  }
+
+  if (source?.mediaType === 'video') {
+    return <VideoEditor source={source} />
   }
 
   return (

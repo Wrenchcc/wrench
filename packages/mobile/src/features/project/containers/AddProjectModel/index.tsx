@@ -19,7 +19,7 @@ function formatModel(model) {
 
 function AddProjectModel() {
   const { t } = useTranslation('add-project-model')
-  const { navigate, navigateBack, dismissModal } = useNavigation()
+  const { navigate, navigateBack } = useNavigation()
   const [addProject] = useAddProjectMutation()
   const [query, setQuery] = useState()
   const [isSearching, setIsSearching] = useState(false)
@@ -103,20 +103,16 @@ function AddProjectModel() {
       },
     })
 
-    if (data.user.projects.edges.length > 0) {
-      dismissModal()
-    } else {
-      navigate(SCREENS.ADD_MEDIA, {
-        options: {
-          layout: {
-            componentBackgroundColor: COLORS.DARK,
-          },
+    navigate(SCREENS.ADD_MEDIA, {
+      options: {
+        layout: {
+          componentBackgroundColor: COLORS.DARK,
         },
-      })
-    }
+      },
+    })
 
     store.project.reset()
-  }, [dismissModal, model, type, title, data])
+  }, [model, type, title, data])
 
   const handleModelChange = useCallback(
     (selectedModel) => {

@@ -38,7 +38,6 @@
     "apollo-link-queue": "^3.1.0",
     "apollo3-cache-persist": "^0.13.0",
     "expo-apple-authentication": "^3.2.1",
-    "expo-av": "^9.2.3",
     "expo-blur": "^9.0.3",
     "expo-haptics": "^10.1.0",
     "expo-image-manipulator": "^9.2.2",
@@ -48,6 +47,7 @@
     "expo-localization": "^10.2.0",
     "expo-media-library": "^12.1.2",
     "expo-store-review": "4.1.0",
+    "ffmpeg-kit-react-native": "^4.5.1",
     "human-format": "^0.11.0",
     "i18next": "^21.6.6",
     "i18next-chained-backend": "^3.0.2",
@@ -78,6 +78,7 @@
     "react-native-tab-view": "3.1.1",
     "react-native-tracking-transparency": "^0.1.1",
     "react-native-unimodules": "^0.14.10",
+    "react-native-video": "^5.2.0",
     "react-native-webview": "^11.16.0",
     "styled-components": "5.2.3",
     "url": "^0.11.0"

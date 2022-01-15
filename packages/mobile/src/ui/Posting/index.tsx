@@ -1,15 +1,25 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import Text from 'ui/Text'
-import { Base, Inner, Cover } from './styles'
+import { FILE_TYPES } from 'utils/enums'
+import { Base, Inner, Image, Video } from './styles'
 
-function Posting({ image }) {
+const renderPreviewType = (file) => {
+  switch (file.type) {
+    case FILE_TYPES.VIDEO: {
+      return <Video source={file} resizeMode="cover" muted paused />
+    }
+    default:
+      return <Image source={file} />
+  }
+}
+function Posting({ file }) {
   const { t } = useTranslation('posting')
 
   return (
     <Base>
       <Inner>
-        <Cover source={image} />
+        {renderPreviewType(file)}
         <Text fontSize={15}>{t('description')}</Text>
       </Inner>
     </Base>

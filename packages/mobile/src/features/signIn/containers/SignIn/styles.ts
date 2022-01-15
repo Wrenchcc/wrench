@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Video as RVideo } from 'expo-av'
+import RVideo from 'react-native-video'
 import { Text, Title, Touchable } from 'ui'
 import { NAVIGATION } from 'navigation'
 import { isAndroid } from 'utils/platform'

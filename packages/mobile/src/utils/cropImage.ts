@@ -8,10 +8,10 @@ export default async function cropImage({ uri, crop }) {
   try {
     // TODO: Enable cropping again doesn't work in prod
     if (isAndroid) {
-      return Promise.resolve({ uri })
+      return Promise.resolve(uri)
     }
 
-    return ImageManipulator.manipulateAsync(uri, [
+    const result = await ImageManipulator.manipulateAsync(uri, [
       { crop },
       {
         resize: {
@@ -20,6 +20,8 @@ export default async function cropImage({ uri, crop }) {
         },
       },
     ])
+
+    return result?.uri
   } catch (err) {
     logError(err)
   }

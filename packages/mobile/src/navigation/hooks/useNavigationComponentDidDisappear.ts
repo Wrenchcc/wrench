@@ -6,7 +6,7 @@ export default function useNavigationComponentDidDisappear(
   componentId?: string
 ) {
   useLayoutEffect(() => {
-    const subscription = Navigation.events().registerComponentDidDisappearListener(event => {
+    const subscription = Navigation.events().registerComponentDidDisappearListener((event) => {
       const equalComponentId = event.componentId === componentId
 
       if (componentId && !equalComponentId) {

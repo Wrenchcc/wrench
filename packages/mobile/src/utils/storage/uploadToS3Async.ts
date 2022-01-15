@@ -1,10 +1,9 @@
 import { preSignUrls } from 'gql'
 import { logError } from 'utils/sentry'
-import { FILE_TYPES } from 'utils/enums'
 
 export default async function uploadToS3Async(files) {
   try {
-    const input = files.map(() => ({ type: FILE_TYPES.IMAGE }))
+    const input = files.map(({ type }) => ({ type }))
     const urls = await preSignUrls(input)
 
     return Promise.all(

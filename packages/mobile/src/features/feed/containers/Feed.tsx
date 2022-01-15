@@ -11,7 +11,6 @@ import { ShowLatest } from 'ui'
 import * as Spacing from 'ui/Spacing'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import ProjectsRow from 'features/project/components/SimilarProjects'
-
 import { isIphone } from 'utils/platform'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
@@ -50,7 +49,7 @@ function Feed() {
   const closeNewPosts = useCallback(() => setHasNewPosts(false), [])
 
   const isPosting = useReactiveVar(store.post.isPostingVar)
-  const image = useReactiveVar(store.files.croppedFilesVar)[0]
+  const file = useReactiveVar(store.files.croppedFilesVar)[0]
 
   const {
     data: { edges },
@@ -89,7 +88,7 @@ function Feed() {
 
   useEffect(() => {
     if (isPosting) {
-      showPosting({ image })
+      showPosting({ file })
       scrollToTop()
     } else {
       NavigationBanner.dismiss()

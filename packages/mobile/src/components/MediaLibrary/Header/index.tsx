@@ -7,9 +7,11 @@ import { useNavigation, SCREENS, NAVIGATION } from 'navigation'
 import { useReactiveVar, store } from 'gql'
 import { useTranslation } from 'react-i18next'
 import cropImage from 'utils/cropImage'
+import trimVideo from 'utils/trimVideo'
 import { HEADER_HEIGHT } from '../constants'
 import { arrowDown } from 'images'
 import { logError } from 'utils/sentry'
+import { FILE_TYPES } from 'utils/enums'
 
 const styles = {
   background: {
@@ -73,7 +75,23 @@ function Header({ headerLeftStyle = {}, headerRightStyle = {}, arrowStyle = {}, 
         crop: options[file.id],
       }))
 
-      const files = await Promise.all(filesWithOptions.map(cropImage))
+      const files = await Promise.all(
+        filesWithOptions.map(async (file) => {
+          if (file.mediaType === 'video') {
+            return {
+              uri: await trimVideo(file),
+              type: FILE_TYPES.VIDEO,
+            }
+          }
+
+          if (file.mediaType === 'photo') {
+            return {
+              uri: await cropImage(file),
+              type: FILE_TYPES.IMAGE,
+            }
+          }
+        })
+      )
 
       store.files.add(files)
     } catch (err) {

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import RNVideo from 'react-native-video'
 
 export const Base = styled.View`
   background-color: ${(props) =>
@@ -7,7 +8,12 @@ export const Base = styled.View`
   margin-horizontal: 10px;
 `
 
-export const Cover = styled.Image`
+export const Image = styled.Image`
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+`
+export const Video = styled(RNVideo)`
   width: 40px;
   height: 40px;
   margin-right: 10px;
