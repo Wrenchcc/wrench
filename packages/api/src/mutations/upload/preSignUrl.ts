@@ -1,5 +1,5 @@
 import { v4 } from 'uuid'
-import getExtFromType from '../../utils/getExtFromType'
+import { getExtFromType } from '../../utils/getExtFromType'
 import { isAuthenticated } from '../../utils/permissions'
 
 const debug = require('debug')('api:preSignUrl')

@@ -1,7 +1,7 @@
 import { ForbiddenError, ApolloError } from 'apollo-server-express'
 import { trim } from 'ramda'
 import { isAuthenticated, canModerateProject } from '../../utils/permissions'
-import { ERROR_CODES } from '../../utils/enums'
+import { FILE_TYPES, ERROR_CODES } from '../../utils/enums'
 import { extractHashtags } from '../../utils/regex'
 
 const debug = require('debug')('api:mutations:post:add-post')
@@ -43,10 +43,10 @@ export default isAuthenticated(async (_, { input }, ctx) => {
   ctx.redis.delete(`project:filesConnection:${input.projectId}:*`)
   ctx.redis.delete(`project:cover:${input.projectId}`)
 
-  const filesToSave = input.files.map(({ filename, type }) => ({
+  const filesToSave = input.files.map(({ filename }) => ({
     filename,
     project,
-    type,
+    type: FILE_TYPES.IMAGE,
     userId: ctx.userId,
   }))
 
