@@ -1,26 +1,28 @@
 service: 'resizer'
 
 plugins:
-  - serverless-webpack
+  - serverless-bundle
 
 provider:
   name: aws
   region: us-east-1
-  runtime: nodejs12.x
+  runtime: nodejs14.x
   deploymentBucket: wrench-image-resizer
   memorySize: 2048
+  lambdaHashingVersion: 20201221
 
 custom:
-  webpack:
-    includeModules:
-      forceExclude:
-        - aws-sdk
-        - serverless
-    packager: 'yarn'
+  bundle:
     packagerOptions:
       scripts:
         - npm rm sharp && npm install --arch=x64 --platform=linux sharp
 
 functions:
   OriginResponse:
-    handler: handler.originResponse
+    handler: ./src/index.originResponse
+    # /images*
+    # events:
+    #   - cloudFront:
+    #       eventType: origin-response
+
+# s3://wrench-image-resize

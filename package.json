@@ -5,10 +5,13 @@
   "workspaces": {
     "packages": [
       "packages/*"
+    ],
+    "nohoist": [
+      "**/sharp"
     ]
   },
   "resolutions": {
-    "@apollo/client": "3.4.17"
+    "@apollo/client": "3.5.7"
   },
   "scripts": {
     "postinstall": "patch-package",

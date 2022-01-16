@@ -16,7 +16,7 @@ export default isAuthenticated(async (_, { id, input }, ctx) => {
     ...collection,
     ...input,
     cover: {
-      uri: file && transformFileUrl(file.filename),
+      uri: file && transformFileUrl(file),
     },
   })
 })

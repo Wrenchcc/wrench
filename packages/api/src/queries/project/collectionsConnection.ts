@@ -32,7 +32,7 @@ export default async ({ id }, args, ctx) => {
             node: {
               ...n.node,
               cover: {
-                uri: transformFileUrl(file.filename),
+                uri: transformFileUrl(file),
               },
             },
           })),

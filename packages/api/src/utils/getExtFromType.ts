@@ -1,5 +1,7 @@
 import { FILE_TYPES } from './enums'
 
+export const getFilenameExtention = (filename) => filename.split('.').pop()
+
 export function getExtFromType(type) {
   switch (type) {
     case FILE_TYPES.IMAGE:

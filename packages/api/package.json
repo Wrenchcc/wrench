@@ -16,7 +16,7 @@
     "apollo-server-cache-redis": "^3.3.0",
     "apollo-server-express": "^3.6.1",
     "apollo-server-plugin-response-cache": "^3.5.0",
-    "aws-sdk": "^2.1056.0",
+    "aws-sdk": "^2.1058.0",
     "axios": "^0.24.0",
     "base-64": "^1.0.0",
     "dataloader": "^1.4.0",
@@ -33,7 +33,7 @@
     "luxon": "^2.3.0",
     "ms": "^2.1.3",
     "pg": "^8.7.1",
-    "ramda": "^0.27.2",
+    "ramda": "^0.28.0",
     "reflect-metadata": "^0.1.13",
     "typeorm": "0.2.24",
     "uuid": "^8.3.2"

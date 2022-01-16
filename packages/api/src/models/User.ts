@@ -18,6 +18,7 @@ import File from './File'
 import Post from './Post'
 import Comment from './Comment'
 import DeviceToken from './DeviceToken'
+import { capitalizeWords } from '../utils/strings'
 
 @Entity('users')
 export default class User extends BaseEntity {
@@ -46,12 +47,15 @@ export default class User extends BaseEntity {
     let user
     let times = 0
 
-    const { firstName, lastName } = data
+    const { firstName, lastName, fullName } = data
 
     while (times < 100) {
       try {
         user = await User.save({
           ...data,
+          firstName: capitalizeWords(firstName),
+          lastName: capitalizeWords(lastName),
+          fullName: capitalizeWords(fullName),
           username: times
             ? slugify(`${firstName}.${lastName}-${times}`)
             : slugify(`${firstName}.${lastName}`),

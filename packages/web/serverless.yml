@@ -1,8 +1,9 @@
 web:
-  component: "@sls-next/serverless-component@3.4.0"
+  component: "@sls-next/serverless-component@3.6.0"
   inputs:
     bucketName: wrench-web-edge
     memory: 2048
+    runtime: nodejs14.x
     domain: ["wrench.cc"]
     cloudfront:
       distributionId: E2H6OHG3UZQPKT

@@ -21,7 +21,7 @@ export default async ({ id }, args, ctx) => {
     cursor,
     node: {
       ...node,
-      uri: transformFileUrl(node.filename),
+      uri: transformFileUrl(node),
     },
   }))
 

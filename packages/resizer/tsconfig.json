@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
-    "target": "es2017",
-    "lib": ["es2017"],
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "target": "es6",
     "moduleResolution": "node",
-    "esModuleInterop": true
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true
   },
   "exclude": ["node_modules"]
 }

@@ -1,9 +1,7 @@
-// @ts-nocheck
 import { CloudFrontResponseHandler, CloudFrontResultResponse } from 'aws-lambda'
 import * as qs from 'querystring'
 import { S3 } from 'aws-sdk'
-import * as sharp from 'sharp'
-// import { mediaType } from '@hapi/accept'
+import sharp from 'sharp'
 
 type S3Object = S3.GetObjectOutput
 
@@ -16,12 +14,19 @@ type Query = {
   quality?: number
 }
 
+type ParsedQuery = {
+  w?: string
+  webp?: boolean
+  q?: string
+  dpr?: string
+}
+
 const WEBP = 'image/webp'
 const PNG = 'image/png'
 const JPEG = 'image/jpeg'
 
 const parseQuery = (querystring: string): Query => {
-  const { w, webp, q, dpr } = qs.parse(querystring)
+  const { w, webp, q, dpr }: ParsedQuery = qs.parse(querystring)
 
   return {
     width: parseInt(w, 10),
@@ -44,11 +49,8 @@ const resize = async <T extends CloudFrontResultResponse>({
 }): Promise<T> => {
   try {
     const { width, webp, quality, dpr } = parsedQuery
-
     const contentType = headers['accept'][0]?.value === 'webp' ? WEBP : JPEG
-
     const upstreamBuffer = await s3Object.then((data) => data.Body).then(Buffer.from)
-
     const transformer = sharp(upstreamBuffer)
 
     transformer.rotate()
@@ -66,8 +68,8 @@ const resize = async <T extends CloudFrontResultResponse>({
 
     if (contentType === WEBP || webp) {
       transformer.webp({ quality })
-    } else if (contentType === PNG) {
-      transformer.png({ quality })
+      // } else if (contentType === PNG) {
+      //   transformer.png({ quality })
     } else if (contentType === JPEG) {
       transformer.jpeg({ quality })
     }

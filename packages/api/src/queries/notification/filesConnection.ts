@@ -27,7 +27,7 @@ export default async ({ post, comment, type }, args, ctx) => {
     cursor,
     node: {
       ...node,
-      uri: transformFileUrl(node.filename),
+      uri: transformFileUrl(node),
     },
   }))
 

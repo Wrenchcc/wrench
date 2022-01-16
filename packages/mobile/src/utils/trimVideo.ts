@@ -4,7 +4,7 @@ import * as MediaLibrary from 'expo-media-library'
 import { MainBundlePath, CachesDirectoryPath, unlink } from 'react-native-fs'
 import { logError } from 'utils/sentry'
 
-const MAX_DURATION = 30
+const MAX_DURATION = 60
 
 const deleteFile = async (filepath) => {
   return unlink(filepath).catch((_) => _)
