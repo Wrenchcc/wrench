@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState } from 'react'
-import { omit } from 'ramda'
+import { omit } from 'rambda'
 import { useProjectTypesQuery, useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'i18n'
 import { Text, ProgressBar } from 'ui'

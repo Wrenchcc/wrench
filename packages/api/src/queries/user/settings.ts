@@ -1,16 +1,9 @@
-import { mergeRight, mergeAll, mergeDeepRight } from 'ramda'
+import { mergeAll, mergeDeepRight } from 'rambda'
 import { isAuthenticated } from '../../utils/permissions'
 import { NOTIFICATIONS_COLUMN, LOCALE_COLUMN, TIMEZONE_COLUMN } from '../../models/UserSettings'
 import { DEFAULT_NOTIFICATIONS } from '../../utils/defaultNotifications'
 
 export default isAuthenticated(async (_, __, ctx) => {
-  // const cacheKey = `user:settings:${ctx.userId}`
-  // const cache = await ctx.redis.get(cacheKey)
-
-  // if (cache) {
-  //   return cache
-  // }
-
   const settings = await ctx.db.UserSettings.find({
     where: {
       userId: ctx.userId,
@@ -34,7 +27,7 @@ export default isAuthenticated(async (_, __, ctx) => {
     }
   })
 
-  const response = mergeRight(
+  const response = mergeDeepRight(
     {
       notifications: {
         types: DEFAULT_NOTIFICATIONS,
@@ -42,8 +35,6 @@ export default isAuthenticated(async (_, __, ctx) => {
     },
     mergeAll(transformSettings)
   )
-
-  // ctx.redis.set(cacheKey, response)
 
   return response
 })

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import styled from 'styled-components'
-import { toUpper } from 'ramda'
+import { toUpper } from 'rambda'
 import { FONTS, COLORS } from '../constants'
 
 export const Base = styled.h1`

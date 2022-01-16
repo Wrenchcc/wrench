@@ -36,7 +36,7 @@
     "next-with-apollo": "^5.2.1",
     "nprogress": "^0.2.0",
     "pure-react-carousel": "^1.27.8",
-    "ramda": "^0.27.2",
+    "rambda": "^7.0.1",
     "react": "^17.0.2",
     "react-content-loader": "^6.1.0",
     "react-copy-to-clipboard": "^5.0.4",

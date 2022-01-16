@@ -2,7 +2,7 @@
 import React, { memo, useState, useEffect, useCallback } from 'react'
 import { useTranslation } from 'i18n'
 import { Mention, MentionsInput } from 'react-mentions'
-import { prepend, append } from 'ramda'
+import { prepend, append } from 'rambda'
 import { useAddCommentMutation, useCurrentUserQuery, useSearchUsersLazyQuery } from '@wrench/common'
 import { Avatar, Text } from 'ui'
 import { COLORS } from 'ui/constants'

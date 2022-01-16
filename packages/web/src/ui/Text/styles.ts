@@ -1,6 +1,6 @@
 // @ts-nocheck
 import styled from 'styled-components'
-import { toUpper } from 'ramda'
+import { toUpper } from 'rambda'
 import ParsedText from '../ParsedText'
 import { FONTS, COLORS } from '../constants'
 

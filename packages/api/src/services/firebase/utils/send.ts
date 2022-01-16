@@ -1,4 +1,4 @@
-import { pathOr } from 'ramda'
+import { pathOr } from 'rambda'
 import { getDeviceToken } from '../../../models/DeviceToken'
 import { getNotificationSettings, getUserLocale } from '../../../models/UserSettings'
 import { getUserById } from '../../../models/User'

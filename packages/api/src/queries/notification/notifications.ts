@@ -1,4 +1,4 @@
-import { filter } from 'ramda'
+import { filter } from 'rambda'
 import { DateTime } from 'luxon'
 import { NOTIFICATION_TYPES } from '../../utils/enums'
 import { isAuthenticated } from '../../utils/permissions'
@@ -106,7 +106,7 @@ export default isAuthenticated(async (_, { after, before, last = 10, first = 10 
   const pageInfo = convertPageInfo(totalCount, first, last)
 
   return {
-    edges: filter(n => n !== null, edges),
+    edges: filter((n) => n !== null, edges),
     pageInfo,
     unreadCount,
   }

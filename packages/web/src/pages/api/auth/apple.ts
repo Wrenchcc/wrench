@@ -1,4 +1,4 @@
-import { pathOr } from 'ramda'
+import { pathOr } from 'rambda'
 import fetch from 'isomorphic-unfetch'
 import { Cookies } from 'services/cookie'
 import { serialize } from 'cookie'

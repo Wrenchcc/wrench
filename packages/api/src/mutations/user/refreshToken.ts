@@ -1,5 +1,5 @@
 import { ApolloError } from 'apollo-server-express'
-import { path } from 'ramda'
+import { path } from 'rambda'
 import { ERROR_CODES } from '../../utils/enums'
 import { verifyRefreshToken, createAccessToken } from '../../utils/tokens'
 
