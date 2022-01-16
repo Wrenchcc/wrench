@@ -30,13 +30,6 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
     }
   }
 
-  // await Promise.all([
-  //   ctx.redis.delete(`comment:commentsConnection:${postId}:*`),
-  //   ctx.redis.delete(`comment:comments:${postId}:*`),
-  //   ctx.redis.delete(`comment:repliesConnection:${commentId}:*`),
-  //   ctx.redis.delete(`post:commentsConnection:${postId}:*`),
-  // ])
-
   const notificationType = commentId ? NOTIFICATION_TYPES.NEW_REPLY : NOTIFICATION_TYPES.NEW_COMMENT
   const post = await ctx.db.Post.findOne(postId)
   const project = await ctx.db.Project.findOne(post.projectId)

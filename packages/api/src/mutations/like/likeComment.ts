@@ -7,18 +7,6 @@ export default isAuthenticated(async (_, { id }, ctx) => {
     ctx.db.Comment.findOne(id),
   ])
 
-  const cacheKey = `comment:commentsConnection:${comment.postId}:*`
-  const cacheKey2 = `comment:comments:${comment.postId}:*`
-  const cacheKey3 = `comment:likes:${id}:${ctx.userId}`
-  const cacheKey4 = `comment:comment:${id}`
-
-  await Promise.all([
-    ctx.redis.delete(cacheKey),
-    ctx.redis.delete(cacheKey2),
-    ctx.redis.delete(cacheKey3),
-    ctx.redis.delete(cacheKey4),
-  ])
-
   if (isLiked) {
     await ctx.db.Like.delete({ typeId: id, userId: ctx.userId })
   } else {

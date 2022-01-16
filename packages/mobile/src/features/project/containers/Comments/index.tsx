@@ -119,7 +119,11 @@ function Comments({ postId }) {
 
   return (
     <Page headerTitle={t('title')} headerAnimation={false} view>
-      <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
+      <KeyboardAvoidingView
+        behavior={isIphone && 'padding'}
+        style={{ flex: 1 }}
+        keyboardVerticalOffset={-NAVIGATION.BOTTOM_TABS_HEIGHT}
+      >
         <FlatList
           inverted
           initialNumToRender={8}
