@@ -11,7 +11,7 @@
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
     "graphql": "^16.2.0",
-    "rambda": "^7.0.1",
+    "ramda": "^0.28.0",
     "react": "^17.0.2"
   },
   "devDependencies": {
