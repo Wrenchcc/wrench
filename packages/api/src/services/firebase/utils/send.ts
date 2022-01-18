@@ -47,6 +47,7 @@ export default async ({ data, userId, to, type }) => {
 
   client
     .messaging()
+    // @ts-ignore
     .send(message)
     .then((response) => {
       debug('Successfully sent message: %o', response)
