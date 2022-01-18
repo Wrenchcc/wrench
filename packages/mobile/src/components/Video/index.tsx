@@ -87,7 +87,6 @@ function Video({ size, source, currentId }) {
       />
       <Touchable onPress={handlePlay}>
         <Player
-          onError={(e) => console.log(e)}
           ref={videoRef}
           source={source}
           paused
