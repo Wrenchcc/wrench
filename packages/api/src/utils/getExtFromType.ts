@@ -20,6 +20,19 @@ export function getDirectory(type) {
     case FILE_TYPES.VIDEO:
       return 'videos'
     default:
-      return null
+      return 'unknown'
+  }
+}
+
+export function getFileTypeFromFilename(filename) {
+  const type = filename.split('.').pop()
+
+  switch (type) {
+    case 'jpg':
+      return FILE_TYPES.IMAGE
+    case 'mp4':
+      return FILE_TYPES.VIDEO
+    default:
+      return FILE_TYPES.IMAGE
   }
 }

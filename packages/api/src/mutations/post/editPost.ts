@@ -8,11 +8,6 @@ export default isAuthenticated(async (_, { id, input }, ctx) => {
     return new ForbiddenError('You don’t have permission to manage this post.')
   }
 
-  // await Promise.all([
-  //   ctx.redis.delete(`post:filesConnection:${id}:*`),
-  //   ctx.redis.delete(`project:cover:${id}`),
-  // ])
-
   ctx.redis.delete(`post:filesConnection:${id}:*`)
   ctx.redis.delete(`project:cover:${id}`)
   ctx.db.PostTranslation.delete({ postId: id })

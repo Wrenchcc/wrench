@@ -1,8 +1,9 @@
 import { ForbiddenError, ApolloError } from 'apollo-server-express'
 import { trim } from 'ramda'
 import { isAuthenticated, canModerateProject } from '../../utils/permissions'
-import { FILE_TYPES, ERROR_CODES } from '../../utils/enums'
+import { ERROR_CODES } from '../../utils/enums'
 import { extractHashtags } from '../../utils/regex'
+import { getFileTypeFromFilename } from '../../utils/getExtFromType'
 
 const debug = require('debug')('api:mutations:post:add-post')
 
@@ -35,18 +36,13 @@ export default isAuthenticated(async (_, { input }, ctx) => {
     }
   }
 
-  // await Promise.all([
-  //   ctx.redis.delete(`project:filesConnection:${input.projectId}:*`),
-  //   ctx.redis.delete(`project:cover:${input.projectId}`),
-  // ])
-
   ctx.redis.delete(`project:filesConnection:${input.projectId}:*`)
   ctx.redis.delete(`project:cover:${input.projectId}`)
 
   const filesToSave = input.files.map(({ filename }) => ({
     filename,
     project,
-    type: FILE_TYPES.IMAGE, // Extract type from file extension
+    type: getFileTypeFromFilename(filename),
     userId: ctx.userId,
   }))
 
