@@ -1,5 +1,5 @@
 export const capitalizeWords = (word) => {
-  const words = word.split(' ')
+  const words = word.toLowerCase().split(' ')
 
   return words
     .map((word) => {
