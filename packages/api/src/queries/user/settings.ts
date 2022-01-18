@@ -1,5 +1,4 @@
-import { mergeAll, mergeDeepRight } from 'rambda'
-import { mergeRight } from 'ramda'
+import { mergeAll, mergeDeepRight, mergeRight } from 'ramda'
 import { isAuthenticated } from '../../utils/permissions'
 import { NOTIFICATIONS_COLUMN, LOCALE_COLUMN, TIMEZONE_COLUMN } from '../../models/UserSettings'
 import { DEFAULT_NOTIFICATIONS } from '../../utils/defaultNotifications'

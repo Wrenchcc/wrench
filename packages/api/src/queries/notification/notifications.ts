@@ -1,4 +1,4 @@
-import { filter } from 'rambda'
+import { filter } from 'ramda'
 import { DateTime } from 'luxon'
 import { NOTIFICATION_TYPES } from '../../utils/enums'
 import { isAuthenticated } from '../../utils/permissions'

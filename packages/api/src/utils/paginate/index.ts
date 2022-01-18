@@ -1,5 +1,5 @@
 import { ForbiddenError } from 'apollo-server-express'
-import { pathOr } from 'rambda'
+import { pathOr } from 'ramda'
 import convertNodesToEdges from './convertNodesToEdges'
 import convertPageInfo from './convertPageInfo'
 import findOperators from './findOperators'

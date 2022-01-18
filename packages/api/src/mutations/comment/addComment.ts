@@ -1,5 +1,5 @@
 import { ApolloError } from 'apollo-server-express'
-import { trim } from 'rambda'
+import { trim } from 'ramda'
 import { isAuthenticated, canModeratePost, canModerateComment } from '../../utils/permissions'
 import { NOTIFICATION_TYPES, ERROR_CODES } from '../../utils/enums'
 import { extractMentionedUsers } from '../../utils/regex'

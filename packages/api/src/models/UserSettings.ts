@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
-import { pathOr } from 'rambda'
+import { pathOr } from 'ramda'
 import { DEFAULT_LOCALE } from '../utils/locale'
 import User from './User'
 

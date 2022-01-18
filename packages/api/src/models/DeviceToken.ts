@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
-import { pathOr } from 'rambda'
+import { pathOr } from 'ramda'
 import User from './User'
 import { PlatformTypes } from './enums'
 

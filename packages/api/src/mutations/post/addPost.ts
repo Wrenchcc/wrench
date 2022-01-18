@@ -1,5 +1,5 @@
 import { ForbiddenError, ApolloError } from 'apollo-server-express'
-import { trim } from 'rambda'
+import { trim } from 'ramda'
 import { isAuthenticated, canModerateProject } from '../../utils/permissions'
 import { FILE_TYPES, ERROR_CODES } from '../../utils/enums'
 import { extractHashtags } from '../../utils/regex'
