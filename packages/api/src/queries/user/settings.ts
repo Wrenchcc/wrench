@@ -1,4 +1,5 @@
 import { mergeAll, mergeDeepRight } from 'rambda'
+import { mergeRight } from 'ramda'
 import { isAuthenticated } from '../../utils/permissions'
 import { NOTIFICATIONS_COLUMN, LOCALE_COLUMN, TIMEZONE_COLUMN } from '../../models/UserSettings'
 import { DEFAULT_NOTIFICATIONS } from '../../utils/defaultNotifications'
@@ -27,7 +28,7 @@ export default isAuthenticated(async (_, __, ctx) => {
     }
   })
 
-  const response = mergeDeepRight(
+  const response = mergeRight(
     {
       notifications: {
         types: DEFAULT_NOTIFICATIONS,
