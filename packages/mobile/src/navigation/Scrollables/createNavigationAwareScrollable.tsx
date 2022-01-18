@@ -25,8 +25,9 @@ const viewabilityConfig = {
 
 const onViewableItemsChanged = ({ changed }) => {
   const current = changed[0]
+  const type = current.item?.node?.type
 
-  if (current.item.node.type !== FILE_TYPES.VIDEO) {
+  if (type !== FILE_TYPES.VIDEO) {
     return
   }
 

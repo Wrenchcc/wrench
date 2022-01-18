@@ -7,7 +7,7 @@ import { Navigation } from 'react-native-navigation'
 import { useNavigationComponentDidAppear } from 'navigation/hooks'
 import { muted, sound } from 'images'
 
-function Video({ size, uri, currentId }) {
+function Video({ size, source, currentId }) {
   const videoRef = useRef(null)
   const isPlaying = useRef(false)
   const videoIdInViewport = useReactiveVar(store.post.videoIdInViewport)
@@ -87,8 +87,9 @@ function Video({ size, uri, currentId }) {
       />
       <Touchable onPress={handlePlay}>
         <Player
+          onError={(e) => console.log(e)}
           ref={videoRef}
-          source={{ uri }}
+          source={source}
           paused
           repeat
           resizeMode="cover"
