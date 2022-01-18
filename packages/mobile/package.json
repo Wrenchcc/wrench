@@ -31,7 +31,7 @@
     "@react-native-firebase/analytics": "^14.2.2",
     "@react-native-firebase/app": "^14.2.2",
     "@react-native-firebase/messaging": "^14.2.2",
-    "@sentry/react-native": "^3.2.11",
+    "@sentry/react-native": "^3.2.12",
     "@wrench/common": "^1.0.0",
     "@wrench/translations": "^1.0.0",
     "@wrench/ui": "^1.0.0",

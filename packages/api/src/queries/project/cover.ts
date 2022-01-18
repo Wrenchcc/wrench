@@ -13,7 +13,6 @@ export default async ({ id }, _, ctx) => {
   const file = await ctx.db.File.findOne({
     where: {
       projectId: id,
-      type: 'IMAGE',
     },
     order: {
       createdAt: 'DESC',
