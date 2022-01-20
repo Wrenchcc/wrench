@@ -1,10 +1,10 @@
 import React, { useRef, useEffect, useCallback } from 'react'
 import { Icon } from 'ui'
 import Player from 'react-native-video'
+import { Navigation } from 'react-native-navigation'
 import { Touchable } from 'ui'
 import { useReactiveVar, store } from 'gql'
-import { Navigation } from 'react-native-navigation'
-import { useNavigationComponentDidAppear } from 'navigation/hooks'
+import { useVisibility } from 'navigation/hooks'
 import { muted, sound } from 'images'
 
 function Video({ size, source, currentId }) {
@@ -12,6 +12,7 @@ function Video({ size, source, currentId }) {
   const isPlaying = useRef(false)
   const videoIdInViewport = useReactiveVar(store.post.videoIdInViewport)
   const isMuted = useReactiveVar(store.video.isMutedVar)
+  const isVisible = useVisibility()
 
   const play = useCallback(() => {
     videoRef?.current.setNativeProps({ paused: false })
@@ -23,21 +24,13 @@ function Video({ size, source, currentId }) {
     isPlaying.current = false
   }, [videoRef, isPlaying])
 
-  useNavigationComponentDidAppear(() => {
-    if (videoIdInViewport === currentId && !isPlaying.current) {
-      play()
-    } else if (isPlaying.current) {
-      pause()
-    }
-  })
-
   useEffect(() => {
-    if (videoIdInViewport === currentId && !isPlaying.current) {
+    if (isVisible && videoIdInViewport === currentId && !isPlaying.current) {
       play()
     } else if (isPlaying.current) {
       pause()
     }
-  }, [videoIdInViewport])
+  }, [videoIdInViewport, isVisible, isPlaying])
 
   useEffect(() => {
     const commandListener = Navigation.events().registerCommandListener(() => {
@@ -49,6 +42,7 @@ function Video({ size, source, currentId }) {
 
   useEffect(() => {
     const bottomTabEventListener = Navigation.events().registerBottomTabSelectedListener(() => {
+      store.post.videoIdInViewport('')
       pause()
     })
 

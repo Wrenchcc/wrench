@@ -19,7 +19,7 @@ fragment Notification on Notification {
     text
     postId
   }
-  files: filesConnection(type: IMAGE, first: 1) {
+  files: filesConnection(first: 1) {
     edges {
       node {
         id

@@ -7,7 +7,7 @@ fragment UserProjects on User {
         followers: followersConnection {
           totalCount
         }
-        files: filesConnection(first: 1, type: IMAGE) {
+        files: filesConnection(first: 1) {
           edges {
             node {
               id

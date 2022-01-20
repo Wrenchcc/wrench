@@ -1,7 +1,9 @@
 import React, { memo, useState } from 'react'
 import { Animated, View, ImageProps } from 'react-native'
 import FastImage, { FastImageProps } from 'react-native-fast-image'
+import Video from 'react-native-video'
 import { IMAGE_PRIORITY } from 'ui/constants'
+import { FILE_TYPES } from 'utils/enums'
 import { Base } from './styles'
 import Spinner from '../Spinner'
 
@@ -18,6 +20,19 @@ type ImageComponentProps = {
   showIndicator?: boolean
 } & ImageProps &
   FastImageProps
+
+function getFileTypeFromFilename(source) {
+  const type = source.split('.').pop()
+
+  switch (type) {
+    case 'jpg':
+      return FILE_TYPES.IMAGE
+    case 'mp4':
+      return FILE_TYPES.VIDEO
+    default:
+      return FILE_TYPES.IMAGE
+  }
+}
 
 function Image({
   width,
@@ -68,6 +83,20 @@ function Image({
         setProgress(loaded)
       }
     }
+  }
+
+  if (getFileTypeFromFilename(source.uri) === FILE_TYPES.VIDEO) {
+    return (
+      <Base
+        width={width}
+        height={height}
+        borderRadius={borderRadius}
+        placeholderColor={placeholderColor}
+        style={style}
+      >
+        <Video source={source} repeat paused muted resizeMode="cover" style={{ flex: 1 }} />
+      </Base>
+    )
   }
 
   const uri = `${source.uri}?w=${width}&h=${height}&dpr=${density}&webp=1`

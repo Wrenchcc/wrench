@@ -26,13 +26,10 @@ const viewabilityConfig = {
 
 const onViewableItemsChanged = ({ changed }) => {
   const current = changed[0]
-  const type = current.item?.node?.type
 
-  if (type !== FILE_TYPES.VIDEO) {
-    return
-  }
+  const itemType = current?.item?.node?.files?.edges[0]?.node?.type
 
-  if (current?.isViewable && current?.item?.node?.files) {
+  if (current?.isViewable && itemType === FILE_TYPES.VIDEO) {
     const videoId = current.item.node.files.edges[0].node.id
     store.post.videoIdInViewport(videoId)
   } else {

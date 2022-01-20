@@ -772,6 +772,7 @@ export type ProjectType = {
   imageUrl: Scalars['String']
   slug?: Maybe<Scalars['String']>
   title?: Maybe<Scalars['String']>
+  type?: Maybe<VehicleTypes>
 }
 
 export type ProjectTypeInput = {
@@ -943,6 +944,10 @@ export type QueryProjectSuggestionsArgs = {
   last?: InputMaybe<Scalars['Int']>
 }
 
+export type QueryProjectTypesArgs = {
+  type?: InputMaybe<VehicleTypes>
+}
+
 export type QueryProjectsArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
@@ -966,6 +971,7 @@ export type QuerySearchArgs = {
   last?: InputMaybe<Scalars['Int']>
   query: Scalars['String']
   type: SearchType
+  vehicleType?: InputMaybe<VehicleTypes>
 }
 
 export type QuerySimilarProjectsArgs = {
@@ -1112,6 +1118,11 @@ export type UserSettings = {
   locale?: Maybe<Scalars['String']>
   notifications?: Maybe<UserNotificationsSettings>
   timezone?: Maybe<Scalars['String']>
+}
+
+export enum VehicleTypes {
+  Car = 'CAR',
+  Motorcycle = 'MOTORCYCLE',
 }
 
 export type BlogPostFragment = {
@@ -7759,7 +7770,7 @@ export const NotificationFragmentDoc = gql`
       text
       postId
     }
-    files: filesConnection(type: IMAGE, first: 1) {
+    files: filesConnection(first: 1) {
       edges {
         node {
           id
@@ -7838,7 +7849,7 @@ export const UserProjectsFragmentDoc = gql`
           followers: followersConnection {
             totalCount
           }
-          files: filesConnection(first: 1, type: IMAGE) {
+          files: filesConnection(first: 1) {
             edges {
               node {
                 id
