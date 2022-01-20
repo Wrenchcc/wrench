@@ -38,11 +38,6 @@ public class MainApplication extends NavigationApplication {
         }
 
         @Override
-        protected JSIModulePackage getJSIModulePackage() {
-            return new WrenchJSIPackage();
-        }
-
-        @Override
         public boolean getUseDeveloperSupport() {
             return BuildConfig.DEBUG;
         }

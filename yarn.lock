@@ -4917,7 +4917,7 @@
   resolved "https://registry.yarnpkg.com/@react-native/normalize-color/-/normalize-color-1.0.0.tgz#c52a99d4fe01049102d47dc45d40cbde4f720ab6"
   integrity sha512-xUNRvNmCl3UGCPbbHvfyFMnpvLPoOjDCcp5bT9m2k+TF/ZBklEQwhPZlkrxRx2NhgFh1X3a5uL7mJ7ZR+8G7Qg==
 
-"@react-native/normalize-color@^2.0.0":
+"@react-native/normalize-color@2.0.0", "@react-native/normalize-color@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@react-native/normalize-color/-/normalize-color-2.0.0.tgz#da955909432474a9a0fe1cbffc66576a0447f567"
   integrity sha512-Wip/xsc5lw8vsBlmY2MO/gFLp3MvuZ2baBZjDeTjjndMgM0h5sxz7AZR62RDPGgstp8Np7JzjvVqVT7tpFZqsw==
@@ -13900,11 +13900,6 @@ fecha@^4.2.0:
   resolved "https://registry.yarnpkg.com/fecha/-/fecha-4.2.1.tgz#0a83ad8f86ef62a091e22bb5a039cd03d23eecce"
   integrity sha512-MMMQ0ludy/nBs1/o0zVOiKTpG7qMbonKUzjJgQFEuvq6INZ1OraKPRAWkBq5vlKLOUMpmNYG1JoN3oDPUQ9m3Q==
 
-ffmpeg-kit-react-native@^4.5.1:
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/ffmpeg-kit-react-native/-/ffmpeg-kit-react-native-4.5.1.tgz#ce964a16f39b92332076f5cd983e343cdd45d676"
-  integrity sha512-0+ubxRRkMMHCbLZPEevT4643IHKK7aQqjxQJgNl9pZCvN7+p5C1Bku0Sa9G0uzZWCf40z2MQOnAzFHolq00uOQ==
-
 figgy-pudding@^3.5.1:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/figgy-pudding/-/figgy-pudding-3.5.2.tgz#b4eee8148abb01dcf1d1ac34367d59e12fa61d6e"
@@ -22669,6 +22664,14 @@ react-dev-utils@^12.0.0:
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
 
+react-devtools-core@4.19.1:
+  version "4.19.1"
+  resolved "https://registry.yarnpkg.com/react-devtools-core/-/react-devtools-core-4.19.1.tgz#bc37c2ef2f48f28c6af4c7292be9dca1b63deace"
+  integrity sha512-2wJiGffPWK0KggBjVwnTaAk+Z3MSxKInHmdzPTrBh1mAarexsa93Kw+WMX88+XjN+TtYgAiLe9xeTqcO5FfJTw==
+  dependencies:
+    shell-quote "^1.6.1"
+    ws "^7"
+
 react-devtools-core@^4.13.0:
   version "4.22.1"
   resolved "https://registry.yarnpkg.com/react-devtools-core/-/react-devtools-core-4.22.1.tgz#b276d42f860bedc373c9b3c0f5f96734318dd453"
@@ -22826,6 +22829,20 @@ react-native-codegen@^0.0.7:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
+react-native-codegen@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/react-native-codegen/-/react-native-codegen-0.0.8.tgz#b7796a54074139d956fff2862cf1285db43c891b"
+  integrity sha512-k/944+0XD+8l7zDaiKfYabyEKmAmyZgS1mj+4LcSRPyHnrjgCHKrh/Y6jM6kucQ6xU1+1uyMmF/dSkikxK8i+Q==
+  dependencies:
+    flow-parser "^0.121.0"
+    jscodeshift "^0.11.0"
+    nullthrows "^1.1.1"
+
+react-native-compressor@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/react-native-compressor/-/react-native-compressor-1.3.4.tgz#010f44caac5205881f44a36824db6136ed57f7e1"
+  integrity sha512-rXCd+11ilENNpmbpODciaduKtkzBQGw1ctPjk61MaV7mt0IGvc/lkTOO+sLQOdFwgv010yJCDvk3KVqHASRrvg==
+
 react-native-config@^1.4.5:
   version "1.4.5"
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-1.4.5.tgz#6fe5895410b75e44fe4f4bf00caaf894a0981f3a"
@@ -22870,15 +22887,15 @@ react-native-gesture-handler@^2.2.0:
     lodash "^4.17.21"
     prop-types "^15.7.2"
 
-react-native-mmkv@^1.6.3:
-  version "1.6.3"
-  resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-1.6.3.tgz#09987d3d6aabdce1ff6efe0973c30bca1474d154"
-  integrity sha512-NZyF+psSnIOjvP0VGC6rK/UgVR6ml77MzYGyxKxucZMUZR3pIt+fyc9zat8RtAxHhLJdinNhpqXPee3MZ4Izyg==
+react-native-mmkv@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-2.0.0.tgz#761e6362bbfe0e81f923b3febae0225413dee228"
+  integrity sha512-Dhy3HrwpWdA7r4vNclKLaD/PgdpsLz0mTzvnNUqbQss1yh3D2ThgFVn8rVKToXHyipxs+Y5eDMLMGGDQyIOV2Q==
 
-react-native-navigation@^7.25.0:
-  version "7.25.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.25.0.tgz#ce7ae6ad01009c7cfcbf753fd2e66a4e18d9c83b"
-  integrity sha512-JmoM58MGU/2JXR0216Ps2ZAAcFo4CHiddK9/6KYysUC7VUkWNjKcq2FOYgW4tpcQ3h/ckfQ54VlNN5nIFzu7Fw==
+react-native-navigation@^7.25.1:
+  version "7.25.1"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.25.1.tgz#cf54df11a669998de04c109743e65cdc96d876bb"
+  integrity sha512-s7OZJ9aJcO1ZqJqueRqSCL2pLjVe4WLnSnVnLXHiLVn2IZGf3uWx/mGzeJLqoYbjzCZhlJjL49eS9lwsKr2vfQ==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
@@ -22982,10 +22999,10 @@ react-native-video@^5.2.0:
     prop-types "^15.7.2"
     shaka-player "^2.5.9"
 
-react-native-webview@^11.16.0:
-  version "11.16.0"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-11.16.0.tgz#51dce13480aa4f8f727307df05b8bfaf74ca3d14"
-  integrity sha512-yap3dO3adMQp4z5oDzlcgcv6XPsfHAtt1E3ort94GthrunswaZhL6AfMiDOsNnKQmlUA+o4LNJsnlAy1b10rUg==
+react-native-webview@^11.17.0:
+  version "11.17.0"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-11.17.0.tgz#318ee8314662866148ca2b8db07549038e1c0c64"
+  integrity sha512-mm6XYOne4K0c9eYOArmJOuo9fOUeESB7DT+xihLcX84qMTsepPTcnkKha5BxuFwlvKKlSj4KzgkUMl15Mhbvdw==
   dependencies:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
@@ -23019,6 +23036,42 @@ react-native@^0.66.4:
     prop-types "^15.7.2"
     react-devtools-core "^4.13.0"
     react-native-codegen "^0.0.7"
+    react-refresh "^0.4.0"
+    regenerator-runtime "^0.13.2"
+    scheduler "^0.20.2"
+    stacktrace-parser "^0.1.3"
+    use-subscription "^1.0.0"
+    whatwg-fetch "^3.0.0"
+    ws "^6.1.4"
+
+react-native@^0.67.0:
+  version "0.67.0"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.67.0.tgz#401c0ab75566f1086ad194ef9c3e4551c10c14e5"
+  integrity sha512-LTrLbZhapgsF0J1fgKvkMVealNKVZ+Fp3XWVFHWmglVQvdmALdcafZR2Plvhe9IH8KJddj3LAU9nV3rHot7q4Q==
+  dependencies:
+    "@jest/create-cache-key-function" "^27.0.1"
+    "@react-native-community/cli" "^6.0.0"
+    "@react-native-community/cli-platform-android" "^6.0.0"
+    "@react-native-community/cli-platform-ios" "^6.0.0"
+    "@react-native/assets" "1.0.0"
+    "@react-native/normalize-color" "2.0.0"
+    "@react-native/polyfills" "2.0.0"
+    abort-controller "^3.0.0"
+    anser "^1.4.9"
+    base64-js "^1.1.2"
+    event-target-shim "^5.0.1"
+    hermes-engine "~0.9.0"
+    invariant "^2.2.4"
+    jsc-android "^250230.2.1"
+    metro-react-native-babel-transformer "0.66.2"
+    metro-runtime "0.66.2"
+    metro-source-map "0.66.2"
+    nullthrows "^1.1.1"
+    pretty-format "^26.5.2"
+    promise "^8.0.3"
+    prop-types "^15.7.2"
+    react-devtools-core "4.19.1"
+    react-native-codegen "^0.0.8"
     react-refresh "^0.4.0"
     regenerator-runtime "^0.13.2"
     scheduler "^0.20.2"

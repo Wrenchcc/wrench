@@ -20,6 +20,7 @@ const keyboardDismissProp = isAndroid
   : { keyboardDismissMode: 'on-drag' }
 
 const viewabilityConfig = {
+  waitForInteraction: false,
   itemVisiblePercentThreshold: 80,
 }
 

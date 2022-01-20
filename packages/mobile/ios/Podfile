@@ -1,6 +1,6 @@
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
-platform :ios, "12.1"
+platform :ios, "12"
 
 $RNFirebaseAnalyticsWithoutAdIdSupport=true
 
@@ -25,8 +25,6 @@ target 'Wrench' do
       'expo-constants',
     ]
   )
-
-  pod 'ffmpeg-kit-react-native', :subspecs => ['video'], :podspec => "#{root_path}/ffmpeg-kit-react-native/ffmpeg-kit-react-native.podspec"
   
   # Enables Flipper.
   #
