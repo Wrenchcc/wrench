@@ -4888,24 +4888,24 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-7.1.7.tgz#10e96922c90a0ff9755dcfbfc92a9d83ec45cd87"
   integrity sha512-QCEuvbTAD7vyCsSsgbWedhTfXlClp4TVHVWYYMjnN7nz6xgZbSp+MI3oo7X5C4JlDHpRm/Q+63hsCgAqKt3WVA==
 
-"@react-native-firebase/analytics@^14.2.2":
-  version "14.2.2"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-14.2.2.tgz#353c1fc184bd74c30fee5cf977d4cafe0a5a22be"
-  integrity sha512-5qIGO3QSNhGbQaVzlaSjfg1AoYM5Qr9GV2/Vo/asfMHAhEI4sI5vomsNeQC9nUI1yrh+Morcrp6dAzhVtOkETQ==
+"@react-native-firebase/analytics@^14.2.3":
+  version "14.2.3"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-14.2.3.tgz#d88a4681420922685cf8363313c8f7e0ec55ed48"
+  integrity sha512-QxgN214X+cxCyrzm+lIA+76+P+UI/pfVXVSD1qd7z1AzGZ5WR9pmgHw8hK/KkxKkx5XWEHPV59X2eIHAMtm7Ug==
 
-"@react-native-firebase/app@^14.2.2":
-  version "14.2.2"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-14.2.2.tgz#a6bd7cf0d53cabb4d548f1d4805c4bbe5c6dc725"
-  integrity sha512-kp4diBisEJVKwhPMFCj0kLoG+1ofuj3WHH4lx8OPgnSi6hsfYiyN1BrDJLTYTyouhLkNYdyoRYl6sAxFY7K62Q==
+"@react-native-firebase/app@^14.2.3":
+  version "14.2.3"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-14.2.3.tgz#6e451c579b1f126b144810ffce750905a7926296"
+  integrity sha512-PSAYqQGo+/k2KgqOk3sLu0lRxvymvB7Ps4qX2A5JyaYWM419ofZtmYn8glwOB0qWaaMiF+dsh9gAzikxTD3DkA==
   dependencies:
     "@expo/config-plugins" "^4.0.15"
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/messaging@^14.2.2":
-  version "14.2.2"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-14.2.2.tgz#85167578c60ab63a022b0274a7f3215e09b25994"
-  integrity sha512-0755cINvakKZ4lnyUr7weNPbhOSS9FpvR9VD20XrgBGBCkCy84NUSq51y2+Ita5lvU+Ni2Q++Z/Y1h/2BqjLlw==
+"@react-native-firebase/messaging@^14.2.3":
+  version "14.2.3"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-14.2.3.tgz#8cbef6dc29ffcc9d31adfdc7b8b82666d0015ae4"
+  integrity sha512-/d5ZGCWvIFJ8HS7gzpLUYIXevOGSrH6NaHaQJSVl0pus19E9aC9WMb2GJANtCGXD+/XmXz2c7amUTNgrteCgVQ==
 
 "@react-native/assets@1.0.0":
   version "1.0.0"
