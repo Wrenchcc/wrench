@@ -28,7 +28,7 @@ function Carousel({ files }) {
 
       if (index !== currentIndex) {
         if (files.edges[index].node.type === FILE_TYPES.VIDEO) {
-          store.post.videoIdInViewport(files.edges[index].node.id)
+          store.video.pauseVar(true)
         }
         setCurrentIndex(index)
       }
@@ -38,7 +38,7 @@ function Carousel({ files }) {
 
   const renderType = (item, index) => {
     if (item.node.type === FILE_TYPES.VIDEO) {
-      return <Video source={item.node} size={SIZE} currentId={item.node.id} />
+      return <Video source={item.node} size={SIZE} />
     }
 
     if (item.node.type === FILE_TYPES.IMAGE) {

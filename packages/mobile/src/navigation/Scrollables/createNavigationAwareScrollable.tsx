@@ -21,19 +21,14 @@ const keyboardDismissProp = isAndroid
 
 const viewabilityConfig = {
   waitForInteraction: false,
-  itemVisiblePercentThreshold: 80,
+  itemVisiblePercentThreshold: 70,
 }
 
 const onViewableItemsChanged = ({ changed }) => {
   const current = changed[0]
 
-  const itemType = current?.item?.node?.files?.edges[0]?.node?.type
-
-  if (current?.isViewable && itemType === FILE_TYPES.VIDEO) {
-    const videoId = current.item.node.files.edges[0].node.id
-    store.post.videoIdInViewport(videoId)
-  } else {
-    store.post.videoIdInViewport('')
+  if (current?.isViewable) {
+    store.video.pauseVar(true)
   }
 }
 
