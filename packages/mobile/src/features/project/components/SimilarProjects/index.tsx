@@ -76,7 +76,6 @@ function SimilarProjects({ projects, marginTop, disableAnimation }) {
         <Title style={{ marginBottom: 20 }}>{t('title')}</Title>
 
         <InfiniteList
-          paddingBottom={0}
           initialNumToRender={3}
           data={projects.edges}
           horizontal
@@ -113,7 +112,6 @@ function SimilarProjects({ projects, marginTop, disableAnimation }) {
         <Title style={{ marginBottom: 20 }}>{t('title')}</Title>
 
         <InfiniteList
-          paddingBottom={0}
           initialNumToRender={3}
           data={projects.edges}
           horizontal

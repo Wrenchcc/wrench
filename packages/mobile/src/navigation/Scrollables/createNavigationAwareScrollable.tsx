@@ -5,7 +5,7 @@ import { isAndroid } from 'utils/platform'
 import { FILE_TYPES } from 'utils/enums'
 import { store } from 'gql'
 import { Border, Loader } from 'ui'
-import { CONTENT_INSET, NAVIGATION } from '../constants'
+import { CONTENT_INSET } from '../constants'
 import { keyExtractor } from '../utils'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
@@ -53,8 +53,8 @@ export default function createNavigationAwareScrollable(Component) {
       paddingHorizontal = 20,
       extraContentInset = 0,
       loaderInset = 0,
-      paddingBottom = NAVIGATION.BOTTOM_TABS_HEIGHT,
       androidDismissKeyboard = true,
+      paddingBottom = 0,
       ...props
     },
     ref
@@ -138,10 +138,10 @@ export default function createNavigationAwareScrollable(Component) {
         contentContainerStyle={{
           ...contentContainerStyle,
           flex: initialFetch ? 1 : 0,
-          paddingBottom,
           paddingLeft: paddingHorizontal,
           paddingRight: paddingHorizontal,
           paddingTop: VIEW_OFFSET,
+          paddingBottom,
         }}
         {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}
         {...(androidDismissKeyboard && keyboardDismissProp)}

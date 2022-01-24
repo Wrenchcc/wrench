@@ -10,8 +10,7 @@ import {
   RepliesDocument,
 } from '@wrench/common'
 import { update } from 'rambda'
-import { Page, useNavigation, keyExtractor } from 'navigation'
-import { NAVIGATION } from 'navigation/constants'
+import { Page, useNavigation, keyExtractor, NAVIGATION } from 'navigation'
 import Post from 'components/Post'
 import CommentField from 'components/CommentField'
 import { CommentItem, ActivityIndicator, Text } from 'ui'
@@ -144,11 +143,7 @@ function PostContainer({ postId, commentId }) {
 
   return (
     <Page view headerTitle={t('title')} headerAnimation={false}>
-      <KeyboardAvoidingView
-        behavior={isIphone && 'padding'}
-        style={{ flex: 1 }}
-        keyboardVerticalOffset={-NAVIGATION.BOTTOM_TABS_HEIGHT}
-      >
+      <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
         <FlatList
           inverted
           initialNumToRender={8}
@@ -173,7 +168,7 @@ function PostContainer({ postId, commentId }) {
             justifyContent: 'flex-end',
           }}
         />
-        <View style={{ paddingHorizontal: 20, paddingBottom: NAVIGATION.BOTTOM_TABS_HEIGHT }}>
+        <View style={{ paddingHorizontal: 20 }}>
           <CommentField
             postId={postId}
             username={mention.username}

@@ -119,11 +119,7 @@ function Comments({ postId }) {
 
   return (
     <Page headerTitle={t('title')} headerAnimation={false} view>
-      <KeyboardAvoidingView
-        behavior={isIphone && 'padding'}
-        style={{ flex: 1 }}
-        keyboardVerticalOffset={-NAVIGATION.BOTTOM_TABS_HEIGHT}
-      >
+      <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
         <FlatList
           inverted
           initialNumToRender={8}
@@ -148,7 +144,7 @@ function Comments({ postId }) {
             justifyContent: 'flex-end',
           }}
         />
-        <View style={{ paddingHorizontal: 20, paddingBottom: NAVIGATION.BOTTOM_TABS_HEIGHT }}>
+        <View style={{ paddingHorizontal: 20 }}>
           <CommentField postId={postId} username={username} commentId={commentId} emoji />
         </View>
       </KeyboardAvoidingView>

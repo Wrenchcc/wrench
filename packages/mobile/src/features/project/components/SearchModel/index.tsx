@@ -40,7 +40,6 @@ function SearchModel({ query, onPress }) {
       <InfiniteList
         borderSeparator
         initialNumToRender={8}
-        paddingBottom={0}
         keyboard
         androidDismissKeyboard={false}
         keyboardDismissMode="none"
