@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
-import { KeyboardAvoidingView } from 'react-native'
+import { KeyboardAvoidingView, View } from 'react-native'
 import ms from 'ms'
 import { showPosting, NavigationBanner } from 'navigation/banner'
 import { getTrackingConsent } from 'utils/analytics'
@@ -22,10 +22,11 @@ const SimilarProjects = ({ id }) => {
     },
   })
 
-  if (loading) {
-    return null
-  }
-  return <ProjectsRow projects={data.similarProjects} marginTop={10} disableAnimation />
+  return (
+    <View style={{ height: 290 }}>
+      {!loading && <ProjectsRow projects={data.similarProjects} marginTop={10} disableAnimation />}
+    </View>
+  )
 }
 
 const renderItem = ({ item, index }) => {

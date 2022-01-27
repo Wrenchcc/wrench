@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useEffect } from 'react'
-import { AppState } from 'react-native'
+import { AppState, View } from 'react-native'
 import { usePaginatedQuery, PostsDocument, useSimilarProjectsQuery } from '@wrench/common'
 import { useReactiveVar, store } from 'gql'
 import { isAndroid as _isAndroid } from 'utils/platform'
@@ -20,11 +20,11 @@ const SimilarProjects = ({ id }) => {
     },
   })
 
-  if (loading) {
-    return null
-  }
-
-  return <ProjectsRow projects={data.similarProjects} marginTop={10} disableAnimation />
+  return (
+    <View style={{ height: 290 }}>
+      {!loading && <ProjectsRow projects={data.similarProjects} marginTop={10} disableAnimation />}
+    </View>
+  )
 }
 
 const renderItem = ({ item, index }) => {

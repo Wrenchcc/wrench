@@ -36,20 +36,23 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
   const hasPosts = post || edges?.length > 0
   const isOwner = project?.permissions.isOwner
   const emptyState = isOwner ? TYPES.PROJECT_POST : TYPES.PROJECT_NO_POSTS
-
   const filteredEdges = edges?.filter((item) => item.node.id !== post?.id)
-  const reorderedEdges = [{ node: post, recent: true }, ...filteredEdges]
+  const reorderedEdges = post?.id
+    ? [
+        { node: post, recent: hasPosts && edges && edges.length > 1 },
+        ...(filteredEdges ? filteredEdges : []),
+      ]
+    : filteredEdges
 
   const renderItem = ({ item }) => {
-    if (item.recent) {
+    if (item?.recent) {
       return (
         <>
           <Post post={item.node} withoutTitle />
-          {hasPosts && edges && edges.length > 1 && (
-            <View style={{ marginTop: -20, paddingBottom: 50 }}>
-              <Title medium>{t('recent')}</Title>
-            </View>
-          )}
+
+          <View style={{ marginTop: -20, paddingBottom: 50 }}>
+            <Title medium>{t('recent')}</Title>
+          </View>
         </>
       )
     }
