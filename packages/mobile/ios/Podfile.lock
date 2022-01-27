@@ -402,7 +402,7 @@ PODS:
   - react-native-mmkv (2.0.0):
     - MMKV
     - React-Core
-  - react-native-netinfo (7.1.7):
+  - react-native-netinfo (7.1.9):
     - React-Core
   - react-native-pager-view (5.4.9):
     - React-Core
@@ -503,14 +503,14 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
-  - RNFBAnalytics (14.2.4):
+  - RNFBAnalytics (14.3.0):
     - Firebase/AnalyticsWithoutAdIdSupport (= 8.11.0)
     - React-Core
     - RNFBApp
-  - RNFBApp (14.2.4):
+  - RNFBApp (14.3.0):
     - Firebase/CoreOnly (= 8.11.0)
     - React-Core
-  - RNFBMessaging (14.2.4):
+  - RNFBMessaging (14.3.0):
     - Firebase/Messaging (= 8.11.0)
     - React-Core
     - RNFBApp
@@ -886,7 +886,7 @@ SPEC CHECKSUMS:
   react-native-config: 6502b1879f97ed5ac570a029961fc35ea606cd14
   react-native-fbsdk-next: 800e60618cd7b861eb5d37ed4b653b5bc72e7ceb
   react-native-mmkv: 0eda0c2a8af66073f5e7067558189bb920867aee
-  react-native-netinfo: 27f287f2d191693f3b9d01a4273137fcf91c3b5d
+  react-native-netinfo: 87e5bfaf21ea5c6c110941290aa481dd8e849f98
   react-native-pager-view: 3ee7d4c7697fb3ef788346e834a60cca97ed8540
   react-native-pinchable: b4381b0807d15c12b14bfacd927128f52d96f0f1
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
@@ -909,9 +909,9 @@ SPEC CHECKSUMS:
   RNCClipboard: 41d8d918092ae8e676f18adada19104fa3e68495
   RNDeviceInfo: 0400a6d0c94186d1120c3cbd97b23abc022187a9
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
-  RNFBAnalytics: be94b39214e41b0493ced392bf71a8be7d3ed2c0
-  RNFBApp: 7777c22386149f3845f1b0ca74e3d69a574559c5
-  RNFBMessaging: 94fdb127cfa77647ebc85fb53ea6efaec40d344e
+  RNFBAnalytics: 9d4d7543a977f1d3d89e6830ec65f7930e86448e
+  RNFBApp: 16bdf8b75b84631513da3d5f5e2520a436ec9b29
+  RNFBMessaging: ee73f1b9d0ea6781f32251401fc884549fd0bc44
   RNFS: 3ab21fa6c56d65566d1fb26c2228e2b6132e5e32
   RNGestureHandler: bf572f552ea324acd5b5464b8d30755b2d8c1de6
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
