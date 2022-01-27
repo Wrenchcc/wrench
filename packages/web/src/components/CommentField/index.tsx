@@ -71,18 +71,19 @@ const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' },
     skip: !isAuthenticated,
   })
 
-  const [searchUser, { data }] = useSearchUsersLazyQuery()
+  // const [searchUser, { data }] = useSearchUsersLazyQuery()
   const [addCommentMutation] = useAddCommentMutation()
 
   async function fetchUsers(query, callback) {
+    console.log(query)
     if (!query) return
 
-    searchUser({
-      variables: {
-        query,
-        type: 'USERS',
-      },
-    })
+    // searchUser({
+    //   variables: {
+    //     query,
+    //     type: 'USERS',
+    //   },
+    // })
 
     if (data) {
       callback(

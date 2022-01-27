@@ -21,7 +21,7 @@ const NextI18NextInstance = new NextI18Next({
   },
   react: {
     useSuspense: false,
-    wait: true
+    wait: true,
   },
   interpolation: {
     escapeValue: false,
