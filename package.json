@@ -11,7 +11,7 @@
     ]
   },
   "resolutions": {
-    "@apollo/client": "3.5.7"
+    "@apollo/client": "3.5.8"
   },
   "scripts": {
     "postinstall": "patch-package",

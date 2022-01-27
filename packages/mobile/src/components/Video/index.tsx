@@ -1,51 +1,49 @@
-import React, { useRef, useEffect, useCallback } from 'react'
-import { View, Dimensions } from 'react-native'
-import { Icon } from 'ui'
+import React, { useRef, useEffect, useContext, useCallback } from 'react'
 import Player from 'react-native-video'
 import { Navigation } from 'react-native-navigation'
-import { Touchable } from 'ui'
+import { useAnimatedReaction, runOnJS } from 'react-native-reanimated'
+import { ItemKeyContext, ViewabilityItemsContext } from 'navigation'
+import { Touchable, Icon } from 'ui'
 import { useReactiveVar, store } from 'gql'
-import { muted, sound, play } from 'images'
-
-const { width } = Dimensions.get('window')
-
-const styles = {
-  play: {
-    width: 65,
-    height: 65,
-    backgroundColor: 'rgba(000, 000, 000, 0.96)',
-    position: 'absolute',
-    zIndex: 10,
-    left: width / 2 - 65 / 2,
-    right: 0,
-    top: width / 2 - 65 / 2,
-    bottom: 0,
-    borderRadius: 65,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-}
+import { muted, sound } from 'images'
 
 function Video({ size, source }) {
   const videoRef = useRef(null)
+  const isPlaying = useRef(false)
+
   const isMuted = useReactiveVar(store.video.isMutedVar)
-  const isPaused = useReactiveVar(store.video.pauseVar)
+  const id = useContext(ItemKeyContext)
+  const context = useContext(ViewabilityItemsContext)
+
+  const play = useCallback(() => {
+    videoRef?.current?.setNativeProps({ paused: false })
+    isPlaying.current = true
+  }, [])
+
+  const togglePlay = useCallback(() => {
+    if (isPlaying.current) {
+      pause()
+    } else {
+      play()
+    }
+  }, [isPlaying])
 
   const pause = useCallback(() => {
-    videoRef?.current.setNativeProps({ paused: true })
-    store.video.pauseVar(true)
-  }, [videoRef])
+    videoRef?.current?.setNativeProps({ paused: true })
+    isPlaying.current = false
+  }, [])
 
-  const handlePlay = useCallback(() => {
-    videoRef?.current.setNativeProps({ paused: !isPaused })
-    store.video.pauseVar(!isPaused)
-  }, [isPaused])
-
-  useEffect(() => {
-    if (isPaused) {
-      pause()
-    }
-  }, [isPaused])
+  useAnimatedReaction(
+    () => context.value,
+    (ctx) => {
+      if (ctx.includes(id)) {
+        runOnJS(play)()
+      } else if (!ctx.includes(id)) {
+        runOnJS(pause)()
+      }
+    },
+    []
+  )
 
   useEffect(() => {
     const commandListener = Navigation.events().registerCommandListener(() => {
@@ -85,12 +83,7 @@ function Video({ size, source }) {
           alignItems: 'center',
         }}
       />
-      <Touchable onPress={handlePlay}>
-        {isPaused && (
-          <View style={styles.play}>
-            <Icon source={play} style={{ left: 2 }} onPress={handlePlay} />
-          </View>
-        )}
+      <Touchable onPress={togglePlay}>
         <Player
           ref={videoRef}
           source={source}
