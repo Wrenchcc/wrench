@@ -399,7 +399,7 @@ PODS:
   - react-native-fbsdk-next/Share (7.0.1):
     - FBSDKShareKit (~> 12.2.1)
     - React-Core
-  - react-native-mmkv (2.0.0):
+  - react-native-mmkv (2.0.1):
     - MMKV
     - React-Core
   - react-native-netinfo (7.1.9):
@@ -885,7 +885,7 @@ SPEC CHECKSUMS:
   react-native-compressor: 51ff09f82568875703fd448efd7322aa13695a38
   react-native-config: 6502b1879f97ed5ac570a029961fc35ea606cd14
   react-native-fbsdk-next: 800e60618cd7b861eb5d37ed4b653b5bc72e7ceb
-  react-native-mmkv: 0eda0c2a8af66073f5e7067558189bb920867aee
+  react-native-mmkv: bb1b8057949b5318bca2c0f6ba832051b713403c
   react-native-netinfo: 87e5bfaf21ea5c6c110941290aa481dd8e849f98
   react-native-pager-view: 3ee7d4c7697fb3ef788346e834a60cca97ed8540
   react-native-pinchable: b4381b0807d15c12b14bfacd927128f52d96f0f1

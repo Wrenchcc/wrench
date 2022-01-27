@@ -237,4 +237,3 @@
 -keep class expo.modules.medialibrary.** { *; }
 -keep class expo.modules.interfaces.** { *; }
 -keep class expo.modules.storereview.** { *; }
--keep class com.arthenica.ffmpegkit.** { *; }
