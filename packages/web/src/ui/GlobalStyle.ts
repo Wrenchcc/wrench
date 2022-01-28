@@ -253,4 +253,8 @@ export default createGlobalStyle`
   [data-theme='dark'] .mention {
     color: white;
   }
+
+  video {
+    object-fit: cover;
+  }
 `

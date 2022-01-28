@@ -1,7 +1,34 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useRef, useEffect } from 'react'
 import { CarouselProvider } from 'pure-react-carousel'
 import { ArrowLeftAlternativeIcon, ArrowRightAlternativeIcon } from '@wrench/ui'
 import { Base, Slider, Slide, ButtonBack, ButtonNext, DotGroup, Image } from './styles'
+
+function Video({ source }) {
+  const videoRef = useRef(null)
+
+  useEffect(() => {
+    const options = {
+      rootMargin: '0px',
+      threshold: [0.25, 0.75],
+    }
+
+    const handlePlay = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          videoRef?.current?.play()
+        } else {
+          videoRef?.current?.pause()
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(handlePlay, options)
+
+    observer.observe(videoRef.current)
+  })
+
+  return <video width={640} height={640} ref={videoRef} muted src={source}></video>
+}
 
 function Carousel({ files }) {
   return (
@@ -16,7 +43,11 @@ function Carousel({ files }) {
         <Slider>
           {files.edges.map(({ node }, index) => (
             <Slide index={index} key={index}>
-              <Image source={node.uri} key={node.id} width={640} height={640} />
+              {node.type === 'IMAGE' ? (
+                <Image source={node.uri} key={node.id} width={640} height={640} />
+              ) : (
+                <Video source={node.uri} key={node.id} />
+              )}
             </Slide>
           ))}
         </Slider>
