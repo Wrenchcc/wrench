@@ -4,7 +4,7 @@ import { useSharedValue } from 'react-native-reanimated'
 import { ScrollContext } from 'navigation/Layout/context'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
-import { CONTENT_INSET, MAX_VIEWABLE_ITEMS } from '../constants'
+import { CONTENT_INSET, MAX_VIEWABLE_ITEMS, NAVIGATION } from '../constants'
 import { keyExtractor } from '../utils'
 import { ViewabilityItemsContext, ViewabilityItemsContextType, ItemKeyContext } from './context'
 
@@ -36,7 +36,7 @@ export default function createNavigationAwareScrollable(Component) {
       extraContentInset = 0,
       loaderInset = 0,
       androidDismissKeyboard = true,
-      paddingBottom = 0,
+      paddingBottom = NAVIGATION.BOTTOM_TABS_HEIGHT,
       renderItem: _renderItem,
       ...props
     },

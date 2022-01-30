@@ -49,6 +49,7 @@ function Popular() {
   if (edges) {
     content = (
       <InfiniteList
+        paddingBottom={0}
         initialNumToRender={3}
         data={edges}
         horizontal

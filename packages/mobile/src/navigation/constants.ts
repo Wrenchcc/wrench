@@ -7,7 +7,7 @@ export enum NAVIGATION {
   LIST_INSET_TOP = 30,
   LIST_OFFSET = hasNotch ? 120 : 90,
   STATUS_BAR_HEIGHT = getStatusBarHeight(),
-  BOTTOM_TABS_HEIGHT = 80,
+  BOTTOM_TABS_HEIGHT = hasNotch ? 80 : 60,
   TAB_HEIGHT = 60,
   TOP_BAR_HEIGHT = 60,
   TOTAL_TOP_BAR_HEIGHT = hasNotch ? 104 : 80,
