@@ -85,7 +85,7 @@ function MediaSelector({ onScroll, spacing, onSelect }) {
         logError(err)
       }
     },
-    [selectedAlbum, hasNextPage]
+    [selectedAlbum?.id, hasNextPage]
   )
 
   const onEndReached = useCallback(() => {
