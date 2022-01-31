@@ -6,25 +6,19 @@ $RNFirebaseAnalyticsWithoutAdIdSupport=true
 
 root_path = "../../../node_modules"
 
+require File.join(File.dirname(`node --print "require.resolve('expo/package.json')"`), "scripts/autolinking")
 require_relative "#{root_path}/react-native/scripts/react_native_pods"
 require_relative "#{root_path}/@react-native-community/cli-platform-ios/native_modules"
-require_relative "#{root_path}/react-native-unimodules/cocoapods.rb"
 
 install! 'cocoapods', :deterministic_uuids => false
 
 target 'Wrench' do
+  use_expo_modules!
   config = use_native_modules!
   
   use_react_native!(:path => "#{root_path}/react-native", :hermes_enabled => true)
 
-  use_unimodules!(
-    modules_paths: [root_path],
-    exclude: [ 
-      'unimodules-sensors-interface', 
-      'unimodules-task-manager-interface',
-      'expo-constants',
-    ]
-  )
+  # use_flipper!()
 
   post_install do |installer|
     react_native_post_install(installer)

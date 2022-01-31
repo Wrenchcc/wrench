@@ -2,10 +2,10 @@
 #import <UIKit/UIKit.h>
 #import <React/RCTBridgeDelegate.h>
 
-#import <UMCore/UMAppDelegateWrapper.h>
+#import <Expo/Expo.h>
 
 @import UserNotifications;
 
-@interface AppDelegate : UMAppDelegateWrapper <RCTBridgeDelegate, UNUserNotificationCenterDelegate>
+@interface AppDelegate : EXAppDelegateWrapper <RCTBridgeDelegate, UNUserNotificationCenterDelegate>
 
 @end

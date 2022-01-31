@@ -12,6 +12,8 @@ export default {
     backgroundColor: '#000',
     titleDisplayMode: 'alwaysHide',
     tabsAttachMode: 'afterInitialTab',
+    hideShadow: true,
+    elevation: 0,
   },
   statusBar: {
     drawBehind: true,

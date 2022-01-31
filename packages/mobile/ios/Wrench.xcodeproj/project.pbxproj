@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		034BE8E718F1CDA80DE167BE /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE3C8AB7D1AF8FC03A5B8FC /* ExpoModulesProvider.swift */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -76,6 +77,7 @@
 		1698E2FE25D68C0A0065877B /* ru.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ru.json; path = ../../../translations/src/locales/ru/ru.json; sourceTree = "<group>"; };
 		1698E30125D68C290065877B /* sv.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = sv.json; path = ../../../translations/src/locales/sv/sv.json; sourceTree = "<group>"; };
 		1698E30425D68C350065877B /* tl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = tl.json; path = ../../../translations/src/locales/tl/tl.json; sourceTree = "<group>"; };
+		1BE3C8AB7D1AF8FC03A5B8FC /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Wrench/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		1C53EA82FD9743C29DB6E400 /* inter_ui_bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = inter_ui_bold.ttf; path = ../assets/fonts/inter_ui_bold.ttf; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		81E226C05F726DE1097FFE7F /* Pods-Wrench.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wrench.debug.xcconfig"; path = "Target Support Files/Pods-Wrench/Pods-Wrench.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +124,14 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				1698E2CF25D6887E0065877B /* InfoPlist.strings */,
+			);
+			name = Wrench;
+			sourceTree = "<group>";
+		};
+		16885B35D80D28677EEC0B46 /* Wrench */ = {
+			isa = PBXGroup;
+			children = (
+				1BE3C8AB7D1AF8FC03A5B8FC /* ExpoModulesProvider.swift */,
 			);
 			name = Wrench;
 			sourceTree = "<group>";
@@ -180,6 +190,7 @@
 				667F5285967449079E56D0E4 /* Resources */,
 				D2002BD723959FD800BF4AD8 /* Wrench-Bridging-Header.h */,
 				8709CD7521C9FB6D0AF4AF6E /* Pods */,
+				84674ABABA21C176088E1342 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -192,6 +203,14 @@
 				13B07F961A680F5B00A75B9A /* Wrench.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		84674ABABA21C176088E1342 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				16885B35D80D28677EEC0B46 /* Wrench */,
+			);
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 		8709CD7521C9FB6D0AF4AF6E /* Pods */ = {
@@ -364,11 +383,13 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Wrench/Pods-Wrench-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
@@ -442,6 +463,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				D2002BDB2395A01800BF4AD8 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				034BE8E718F1CDA80DE167BE /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
