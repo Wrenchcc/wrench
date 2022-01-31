@@ -52,27 +52,27 @@ function Library() {
   const [showPermission, setShowPermission] = useState(true)
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    async function getPermissions() {
-      try {
-        const status = await MediaLibrary.getPermissionsAsync()
+  async function getPermissions() {
+    try {
+      const status = await MediaLibrary.getPermissionsAsync()
 
-        setLoading(false)
+      setLoading(false)
 
-        if (status?.granted) {
-          setShowPermission(false)
-        }
-      } catch {
-        setLoading(false)
+      if (status?.granted) {
+        setShowPermission(false)
       }
+    } catch {
+      setLoading(false)
     }
+  }
 
+  useEffect(() => {
     getPermissions()
   })
 
-  const handleOnPermissionAuthorized = () => {
+  const handleOnPermissionAuthorized = useCallback(() => {
     setShowPermission(false)
-  }
+  }, [])
 
   const handleOnSelect = useCallback((item) => {
     const isAdded = store.files.selectedFilesVar().some((file) => file.id === item.id)
@@ -84,7 +84,7 @@ function Library() {
     }
   }, [])
 
-  const handleToggleAlbum = () => {
+  const handleToggleAlbum = useCallback(() => {
     const toggleValue = (isUp.value = !isUp.value)
 
     rotation.value = withTiming(toggleValue ? 180 : 0, {
@@ -98,7 +98,7 @@ function Library() {
     albumTranslateY.value = withTiming(toggleValue ? ALBUM_FULLY_UP : ALBUM_FULLY_DOWN, {
       duration: TIMING_DURATION,
     })
-  }
+  }, [])
 
   const scrollHandler = useAnimatedScrollHandler((event) => {
     translationY.value = event.contentOffset.y

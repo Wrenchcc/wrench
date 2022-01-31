@@ -6,7 +6,6 @@ import * as MediaLibrary from 'expo-media-library'
 import { BlurView } from 'expo-blur'
 import { store } from 'gql'
 import { isAndroid } from 'utils/platform'
-import { logError } from 'utils/sentry'
 import { ALBUM_INNER_HEIGHT, ALBUM_WIDTH, HEADER_HEIGHT } from './constants'
 
 const AnimatedBlurView = Animated.createAnimatedComponent(BlurView)
@@ -87,9 +86,7 @@ function Albums({ translateY, onPress }) {
 
       store.files.setAlbumTitle(result[0]?.title)
       setAlbums(result)
-    } catch (err) {
-      logError(err)
-    }
+    } catch {}
   }, [])
 
   useEffect(() => {
