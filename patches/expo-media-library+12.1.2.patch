@@ -7,7 +7,7 @@ index cbd1780..a1d0e7e 100644
    testImplementation "org.robolectric:robolectric:4.3.1"
  
 -  api "androidx.exifinterface:exifinterface:1.0.0"
-+  api "androidx.exifinterface:exifinterface:1.3.3"
++  api "androidx.exifinterface:exifinterface:1.3.0"
  
    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${safeExtGet('kotlinVersion', '1.4.21')}"
  }
