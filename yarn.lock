@@ -23050,10 +23050,10 @@ react-native-codegen@^0.0.7:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
-react-native-compressor@^1.3.4:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/react-native-compressor/-/react-native-compressor-1.3.4.tgz#010f44caac5205881f44a36824db6136ed57f7e1"
-  integrity sha512-rXCd+11ilENNpmbpODciaduKtkzBQGw1ctPjk61MaV7mt0IGvc/lkTOO+sLQOdFwgv010yJCDvk3KVqHASRrvg==
+react-native-compressor@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-compressor/-/react-native-compressor-1.5.0.tgz#3bf1292f885b293eb3665a3986a6695b718a4571"
+  integrity sha512-sLzUSMSKLvEHVb6necOkeCRO1Tb44lhpBkX590c7orZLJ469tsEQAPvpM1UQ0LrD7wCDAINrwX8lHBBGCmcBdg==
 
 react-native-config@^1.4.5:
   version "1.4.5"

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Linking } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Touchable, Text } from 'ui'
 import { Base, Headline, Description } from './styles'
@@ -9,8 +10,11 @@ const AskForPermission = ({ type, onSuccess }) => {
 
   const onPress = async () => {
     const status = await MediaLibrary.requestPermissionsAsync()
+
     if (status?.granted) {
       onSuccess()
+    } else {
+      await Linking.openSettings()
     }
   }
 

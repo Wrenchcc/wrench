@@ -378,7 +378,7 @@ PODS:
   - React-jsinspector (0.66.4)
   - React-logger (0.66.4):
     - glog
-  - react-native-compressor (1.3.4):
+  - react-native-compressor (1.5.0):
     - NextLevelSessionExporter
     - React-Core
   - react-native-config (1.4.5):
@@ -882,7 +882,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 94ce921e1d8ce7023366873ec371f3441383b396
   React-jsinspector: d0374f7509d407d2264168b6d0fad0b54e300b85
   React-logger: 933f80c97c633ee8965d609876848148e3fef438
-  react-native-compressor: 51ff09f82568875703fd448efd7322aa13695a38
+  react-native-compressor: 4bb16f68ac8d8c59e1e97a0eb3948492b80a820a
   react-native-config: 6502b1879f97ed5ac570a029961fc35ea606cd14
   react-native-fbsdk-next: 800e60618cd7b861eb5d37ed4b653b5bc72e7ceb
   react-native-mmkv: bb1b8057949b5318bca2c0f6ba832051b713403c
