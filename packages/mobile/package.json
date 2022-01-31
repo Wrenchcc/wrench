@@ -91,6 +91,6 @@
     "babel-plugin-module-resolver": "*",
     "babel-preset-react-native": "^5.0.2",
     "concurrently": "^7.0.0",
-    "metro-react-native-babel-preset": "^0.66.2"
+    "metro-react-native-babel-preset": "^0.67.0"
   }
 }

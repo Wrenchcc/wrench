@@ -33,14 +33,14 @@ function MediaSelector({ onScroll, spacing, onSelect }) {
   const selectedAlbum = useReactiveVar(store.files.selectedAlbumVar)
 
   useEffect(() => {
-    fetchInitialAssets(selectedAlbum)
+    fetchInitialAssets(selectedAlbum?.id)
   }, [selectedAlbum?.id])
 
-  const fetchInitialAssets = async (album?: string) => {
+  const fetchInitialAssets = async (albumId?: string) => {
     try {
       const result = await MediaLibrary.getAssetsAsync({
         first: INITIAL_PAGE_SIZE,
-        album: album?.id,
+        album: albumId,
         mediaType: [MediaLibrary.MediaType.photo, MediaLibrary.MediaType.video],
         sortBy: MediaLibrary.SortBy.creationTime,
       })
