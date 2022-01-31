@@ -4,7 +4,6 @@ apply plugin: "com.android.application"
 apply plugin: 'com.google.gms.google-services'
 
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
-apply from: '../../../../node_modules/react-native-unimodules/gradle.groovy'
 
 def projectRoot = "../../../../";
 
@@ -84,14 +83,14 @@ def projectRoot = "../../../../";
  */
 
 project.ext.react = [
-    composeSourceMapsPath: "../../node_modules/react-native/scripts/compose-source-maps.js",
     enableHermes: true,
     entryFile: "./packages/mobile/index.js",
-    hermesCommand: "../../../../node_modules/hermes-engine/%OS-BIN%/hermesc",
-    cliPath: "../../node_modules/.bin/react-native",
+    cliPath: new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsolutePath() + "/cli.js",
+    hermesCommand: new File(["node", "--print", "require.resolve('hermes-engine/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsolutePath() + "/%OS-BIN%/hermesc",
+    composeSourceMapsPath: new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsolutePath() + "/scripts/compose-source-maps.js",
 ]
 
-apply from: projectRoot + "node_modules/react-native/react.gradle"
+apply from: new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim(), "../react.gradle")
 apply from: projectRoot + "node_modules/@sentry/react-native/sentry.gradle"
 
 /**
@@ -224,8 +223,6 @@ dependencies {
         exclude group:'com.facebook.flipper'
     }
 
-    addUnimodulesDependencies([modulesPaths: [projectRoot + "node_modules/"]])
-
     if (enableHermes) {
         def hermesPath = projectRoot + "node_modules/hermes-engine/android/";
         debugImplementation files(hermesPath + "hermes-debug.aar")
@@ -242,5 +239,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     into 'libs'
 }
 
-apply from: file(projectRoot + "node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
+apply from: new File(["node", "--print", "require.resolve('@react-native-community/cli-platform-android/package.json')"].execute(null, rootDir).text.trim(), "../native_modules.gradle");
 applyNativeModulesAppBuildGradle(project)
