@@ -38,11 +38,15 @@ function MediaSelector({ onScroll, spacing, onSelect }) {
 
   const fetchInitialAssets = async (albumId?: string) => {
     try {
+      if (assets.length) {
+        // NOTE: Empty when chaning album
+        setAssets([])
+      }
+
       const result = await MediaLibrary.getAssetsAsync({
         first: INITIAL_PAGE_SIZE,
         album: albumId,
         mediaType: [MediaLibrary.MediaType.photo, MediaLibrary.MediaType.video],
-        sortBy: MediaLibrary.SortBy.creationTime,
       })
 
       if (!init.current) {
@@ -59,7 +63,7 @@ function MediaSelector({ onScroll, spacing, onSelect }) {
   }
 
   const fetchMoreAssets = useCallback(
-    async (after) => {
+    async (after: string, albumId?: string) => {
       if (!hasNextPage) {
         return
       }
@@ -67,10 +71,9 @@ function MediaSelector({ onScroll, spacing, onSelect }) {
       try {
         const result = await MediaLibrary.getAssetsAsync({
           after,
-          album: selectedAlbum?.id,
+          album: albumId,
           first: PAGE_SIZE,
           mediaType: [MediaLibrary.MediaType.photo, MediaLibrary.MediaType.video],
-          sortBy: [[MediaLibrary.SortBy.creationTime, false]],
         })
 
         if (after !== lastEndCursor.current) {
@@ -85,14 +88,14 @@ function MediaSelector({ onScroll, spacing, onSelect }) {
         logError(err)
       }
     },
-    [selectedAlbum?.id, hasNextPage]
+    [hasNextPage]
   )
 
   const onEndReached = useCallback(() => {
     if (hasNextPage) {
-      fetchMoreAssets(endCursor.current)
+      fetchMoreAssets(endCursor.current, selectedAlbum?.id)
     }
-  }, [hasNextPage, endCursor])
+  }, [hasNextPage, endCursor, selectedAlbum])
 
   const handleOnSelect = useCallback((item) => {
     store.files.select(item)
