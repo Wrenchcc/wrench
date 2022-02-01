@@ -1,8 +1,6 @@
 import { getStatusBarHeight } from 'react-native-status-bar-height'
 import { hasNotch } from 'utils/platform'
 
-export const MAX_VIEWABLE_ITEMS = 1
-
 export enum NAVIGATION {
   LIST_INSET_TOP = 30,
   LIST_OFFSET = hasNotch ? 120 : 90,

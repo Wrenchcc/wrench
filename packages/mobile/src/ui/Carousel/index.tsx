@@ -1,8 +1,8 @@
-import React, { memo, useState, useCallback } from 'react'
+import React, { memo, useState, useCallback, useContext } from 'react'
 import { FlatList } from 'react-native'
 import Pinchable from 'react-native-pinchable'
+import { ViewabilityItemsContext } from 'navigation'
 import { FILE_TYPES } from 'utils/enums'
-import { store } from 'gql'
 import Video from 'components/Video'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import Pagination from './Pagination'
@@ -17,19 +17,24 @@ const getItemLayout = (_, index: number) => ({
   offset: SIZE * index,
 })
 
-function Carousel({ files }) {
+function Carousel({ postId, files }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const scrollEnabled = files.edges.length > 1
+
+  const { setVisibleItemId, setVisibleIndex } = useContext(ViewabilityItemsContext)
 
   const handleScroll = useCallback(
     ({ nativeEvent }) => {
       const offset = nativeEvent.contentOffset.x
       const index = Math.round(offset / SIZE)
+      const node = files.edges[index].node
 
       if (index !== currentIndex) {
-        if (files.edges[index].node.type === FILE_TYPES.VIDEO) {
-          store.video.pauseVar(true)
-        }
+        // NOTE: Update visible id
+        setVisibleItemId(node.id)
+        // NOTE: Set index on post id
+        setVisibleIndex(postId, index)
+
         setCurrentIndex(index)
       }
     },
@@ -38,7 +43,7 @@ function Carousel({ files }) {
 
   const renderType = (item, index) => {
     if (item.node.type === FILE_TYPES.VIDEO) {
-      return <Video source={item.node} size={SIZE} />
+      return <Video source={item.node} size={SIZE} id={item.node.id} />
     }
 
     if (item.node.type === FILE_TYPES.IMAGE) {

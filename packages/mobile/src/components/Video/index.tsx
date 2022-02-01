@@ -2,17 +2,16 @@ import React, { useRef, useEffect, useContext, useCallback } from 'react'
 import Player from 'react-native-video'
 import { Navigation } from 'react-native-navigation'
 import { useAnimatedReaction, runOnJS } from 'react-native-reanimated'
-import { ItemKeyContext, ViewabilityItemsContext } from 'navigation'
+import { ViewabilityItemsContext } from 'navigation'
 import { Touchable, Icon } from 'ui'
 import { useReactiveVar, store } from 'gql'
 import { muted, sound } from 'images'
 
-function Video({ size, source }) {
+function Video({ size, source, id }) {
   const videoRef = useRef(null)
   const isPlaying = useRef(false)
 
   const isMuted = useReactiveVar(store.video.isMutedVar)
-  const id = useContext(ItemKeyContext)
   const context = useContext(ViewabilityItemsContext)
 
   const play = useCallback(() => {
@@ -34,11 +33,11 @@ function Video({ size, source }) {
   }, [])
 
   useAnimatedReaction(
-    () => context.value,
-    (ctx) => {
-      if (ctx.includes(id)) {
+    () => context.visibleItemId.value,
+    (visibleItemId) => {
+      if (visibleItemId === id) {
         runOnJS(play)()
-      } else if (!ctx.includes(id)) {
+      } else {
         runOnJS(pause)()
       }
     },

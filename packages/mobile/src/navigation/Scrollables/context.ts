@@ -1,12 +1,9 @@
 import { createContext } from 'react'
-import Animated from 'react-native-reanimated'
 
 export type ViewabilityItemsContextType = string[]
 
-export const ViewabilityItemsContext = createContext<
-  Animated.SharedValue<ViewabilityItemsContextType>
->({
-  value: [],
+export const ViewabilityItemsContext = createContext({
+  visibleItemId: null,
+  setVisibleItemId: (item: any) => {},
+  setVisibleIndex: (id: string, index: number) => {},
 })
-
-export const ItemKeyContext = createContext<string | undefined>(undefined)

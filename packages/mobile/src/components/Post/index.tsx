@@ -417,7 +417,7 @@ function Post({ post, withoutTitle, disableComments, withoutCollections, padding
                   alignItems: 'center',
                 }}
               >
-                <Carousel files={post.files} />
+                <Carousel files={post.files} postId={post.id} />
 
                 <Animated.Image
                   pointerEvents="none"

@@ -4,15 +4,19 @@ import { useSharedValue } from 'react-native-reanimated'
 import { ScrollContext } from 'navigation/Layout/context'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
-import { CONTENT_INSET, MAX_VIEWABLE_ITEMS, NAVIGATION } from '../constants'
+import { CONTENT_INSET, NAVIGATION } from '../constants'
 import { keyExtractor } from '../utils'
-import { ViewabilityItemsContext, ViewabilityItemsContextType, ItemKeyContext } from './context'
+import { ViewabilityItemsContext, ViewabilityItemsContextType } from './context'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
 const KEYBOARD_OFFSET = 10
 
 const renderLoader = (loaderInset) => <Loader inset={loaderInset} />
 const BorderSeparator = () => <Border />
+
+const getNodeIdByIndex = (post, index = 0) => {
+  return post?.node?.files?.edges[index]?.node?.id
+}
 
 // NOTE: https://github.com/facebook/react-native/issues/23364
 const keyboardDismissProp = isAndroid
@@ -37,7 +41,6 @@ export default function createNavigationAwareScrollable(Component) {
       loaderInset = 0,
       androidDismissKeyboard = true,
       paddingBottom = NAVIGATION.BOTTOM_TABS_HEIGHT,
-      renderItem: _renderItem,
       ...props
     },
     ref
@@ -46,21 +49,22 @@ export default function createNavigationAwareScrollable(Component) {
     const { onScroll, onScrollBeginDrag, onScrollEndDrag } = useContext(ScrollContext)
     const VIEW_OFFSET = isAndroid ? CONTENT_INSET + extraContentInset : 0
 
-    const visibleItems = useSharedValue<ViewabilityItemsContextType>([])
+    const visibleItemId = useSharedValue<ViewabilityItemsContextType>(null)
+    const visibleIndexes = useSharedValue({})
 
-    const renderItem = useCallback(
-      (params: any) => (
-        <ItemKeyContext.Provider value={keyExtractor(params.item)}>
-          {_renderItem?.(params)}
-        </ItemKeyContext.Provider>
-      ),
-      [_renderItem]
-    )
+    const setVisibleItemId = useCallback((id) => {
+      visibleItemId.value = id
+    }, [])
+
+    const setVisibleIndex = useCallback((id, index) => {
+      visibleIndexes.value = { ...visibleIndexes.value, [id]: index }
+    }, [])
 
     const onViewableItemsChanged = useCallback(({ viewableItems }: any) => {
-      visibleItems.value = viewableItems
-        .slice(0, MAX_VIEWABLE_ITEMS)
-        .map((edge: any) => keyExtractor(edge.item))
+      const post = viewableItems[0]?.item
+      const currentIndex = visibleIndexes.value[post?.node?.id]
+
+      visibleItemId.value = getNodeIdByIndex(post, currentIndex)
     }, [])
 
     // Scroll to input
@@ -111,7 +115,9 @@ export default function createNavigationAwareScrollable(Component) {
     const initialFetch = !data && isFetching
 
     return (
-      <ViewabilityItemsContext.Provider value={visibleItems}>
+      <ViewabilityItemsContext.Provider
+        value={{ visibleItemId, setVisibleItemId, setVisibleIndex }}
+      >
         <Component
           ref={setRef}
           onScroll={onScroll}
@@ -145,7 +151,6 @@ export default function createNavigationAwareScrollable(Component) {
           {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}
           {...(androidDismissKeyboard && keyboardDismissProp)}
           {...props}
-          renderItem={renderItem}
           onViewableItemsChanged={onViewableItemsChanged}
           viewabilityConfig={useMemo(
             () => ({
