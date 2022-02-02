@@ -53,6 +53,11 @@ const VideoEditor = ({ source }) => {
     return () => commandListener.remove()
   })
 
+  useEffect(() => {
+    videoRef?.current.pauseAsync()
+    setPaused(true)
+  }, [source])
+
   const handlePlay = useCallback(() => {
     if (isPaused) {
       videoRef?.current.playAsync()
@@ -70,14 +75,7 @@ const VideoEditor = ({ source }) => {
             <Image source={play} style={{ left: 2 }} />
           </View>
         )}
-        <Video
-          ref={videoRef}
-          source={source}
-          style={styles.video}
-          isLooping
-          isMuted
-          resizeMode="cover"
-        />
+        <Video ref={videoRef} source={source} style={styles.video} isLooping resizeMode="cover" />
       </Touchable>
     </View>
   )

@@ -51,10 +51,10 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Uses Node.js 14
+      - name: Uses Node.js 16
         uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 16
       - run: npm install -g yarn
       
       - name: Install dependencies
@@ -118,10 +118,10 @@ jobs:
         with:
           xcode-version: '13.0'
 
-      - name: Uses Node.js 14
+      - name: Uses Node.js 16
         uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 16
       - run: npm install -g yarn
 
       - name: Install dependencies
