@@ -98,7 +98,16 @@ function Feed() {
   }, [isPosting])
 
   const StickyComponent = hasNewPosts && <ShowLatest onHide={closeNewPosts} onPress={scrollToTop} />
-  const ListEmptyComponent = isFetching ? <PostSkeleton /> : <ProjectSuggestions />
+  const ListEmptyComponent =
+    isFetching && !isRefetching ? (
+      <>
+        <PostSkeleton />
+        <Spacing.Horizontally px={50} />
+        <PostSkeleton />
+      </>
+    ) : (
+      <ProjectSuggestions />
+    )
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>

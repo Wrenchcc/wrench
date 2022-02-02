@@ -70,6 +70,7 @@ function Albums({ translateY, onPress }) {
           const result = await MediaLibrary.getAssetsAsync({
             album: album.id,
             first: 1,
+            sortBy: [[MediaLibrary.SortBy.creationTime, false]],
           })
 
           return {
@@ -83,6 +84,7 @@ function Albums({ translateY, onPress }) {
       const videos = await MediaLibrary.getAssetsAsync({
         mediaType: 'video',
         first: 1,
+        sortBy: [[MediaLibrary.SortBy.creationTime, false]],
       })
 
       const videoAlbum = {

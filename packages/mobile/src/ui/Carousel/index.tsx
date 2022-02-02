@@ -1,5 +1,5 @@
 import React, { memo, useState, useCallback, useContext } from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, View } from 'react-native'
 import Pinchable from 'react-native-pinchable'
 import Animated, {
   useAnimatedReaction,
@@ -96,7 +96,7 @@ function Carousel({ postId, files }) {
   }))
 
   return (
-    <>
+    <View style={{ height: SIZE }}>
       {files.edges.length > 1 && (
         <Animated.View
           style={[
@@ -143,7 +143,7 @@ function Carousel({ postId, files }) {
       />
 
       {scrollEnabled && <Pagination files={files.edges} currentIndex={currentIndex} />}
-    </>
+    </View>
   )
 }
 

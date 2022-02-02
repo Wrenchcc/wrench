@@ -1,14 +1,14 @@
 import React, { useRef, useEffect, useContext, useCallback } from 'react'
 import { Video as Player } from 'expo-av'
 import { Navigation } from 'react-native-navigation'
-import { useAnimatedReaction, runOnJS } from 'react-native-reanimated'
+import { useAnimatedReaction, useAnimatedRef, runOnJS } from 'react-native-reanimated'
 import { ViewabilityItemsContext } from 'navigation'
 import { Touchable, Icon } from 'ui'
 import { useReactiveVar, store } from 'gql'
 import { muted, sound } from 'images'
 
 function Video({ size, source, id }) {
-  const videoRef = useRef(null)
+  const videoRef = useAnimatedRef()
   const isPlaying = useRef(false)
 
   const isMuted = useReactiveVar(store.video.isMutedVar)

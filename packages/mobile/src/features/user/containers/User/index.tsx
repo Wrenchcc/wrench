@@ -78,9 +78,6 @@ function User({ user: initialUserData }) {
             url: user.dynamicLink,
           }).catch(() => {})
         }
-
-        if (index === 3) {
-        }
       }
     )
   }, [])
@@ -107,11 +104,12 @@ function User({ user: initialUserData }) {
     )
   )
 
-  const ListEmptyComponent = isFetching ? (
-    <PostSkeleton />
-  ) : (
-    user && !error && <FollowingProjects user={user} />
-  )
+  const ListEmptyComponent =
+    isFetching && !isRefetching ? (
+      <PostSkeleton />
+    ) : (
+      user && !error && <FollowingProjects user={user} />
+    )
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>

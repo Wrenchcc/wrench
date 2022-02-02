@@ -68,13 +68,14 @@ function SelectProject({ black = false, selectedId: idFromNavigation }) {
         </Touchable>
       </Base>
 
-      <List
-        projects={projects}
-        selectedId={selectedId}
-        open={isOpen}
-        onPress={handleOnPress}
-        onClose={handleClose}
-      />
+      {isOpen && (
+        <List
+          projects={projects}
+          selectedId={selectedId}
+          onPress={handleOnPress}
+          onClose={handleClose}
+        />
+      )}
     </>
   )
 }

@@ -61,11 +61,12 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
     return <Post post={item.node} avatar={false} withoutTitle />
   }
 
-  const ListEmptyComponent = isFetching ? (
-    <PostSkeleton />
-  ) : (
-    !hasPosts && <EmptyState type={emptyState} params={{ id: project?.id }} />
-  )
+  const ListEmptyComponent =
+    isFetching && !isRefetching ? (
+      <PostSkeleton />
+    ) : (
+      !hasPosts && <EmptyState type={emptyState} params={{ id: project?.id }} />
+    )
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>

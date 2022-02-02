@@ -11,7 +11,11 @@ export const selectedAlbumVar = makeVar(null)
 export const albumTitleVar = makeVar(null)
 
 export const add = (payload) => croppedFilesVar(payload)
+export const remove = (uri) => {
+  const files = croppedFilesVar()
 
+  croppedFilesVar(files.filter((item) => item.uri !== uri))
+}
 export const reset = () => {
   croppedFilesVar([])
   selectedFilesVar([])

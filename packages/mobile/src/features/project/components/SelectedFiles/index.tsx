@@ -1,8 +1,10 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { FlatList, View, Image as RNImage } from 'react-native'
+import Animated, { FadeOut } from 'react-native-reanimated'
+import { store, useReactiveVar } from 'gql'
 import { FILE_TYPES } from 'utils/enums'
-import { Touchable } from 'ui'
-import { play } from 'images'
+import { Touchable, Icon } from 'ui'
+import { play, close } from 'images'
 import { Image, Video, GUTTER, SNAP_INTERVAL } from './styles'
 
 const styles = {
@@ -20,6 +22,34 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
   },
+}
+
+const RemoveItem = ({ children, uri }) => {
+  const files = useReactiveVar(store.files.croppedFilesVar)
+  const handleRemove = useCallback(() => store.files.remove(uri), [uri])
+
+  return (
+    <Animated.View exiting={FadeOut.springify()}>
+      {files.length > 1 && (
+        <View
+          style={{
+            position: 'absolute',
+            right: 15,
+            top: 5,
+            zIndex: 100000,
+            width: 30,
+            height: 30,
+            borderRadius: 30,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <Icon source={close} color="white" onPress={handleRemove} />
+        </View>
+      )}
+      {children}
+    </Animated.View>
+  )
 }
 
 const PlayableVideo = ({ source }) => {
@@ -48,7 +78,7 @@ const PlayableVideo = ({ source }) => {
           />
         </View>
       )}
-      <Video ref={videoRef} source={source} isLooping isMuted resizeMode="cover" />
+      <Video ref={videoRef} source={source} isLooping resizeMode="cover" />
     </Touchable>
   )
 }
@@ -56,10 +86,18 @@ const PlayableVideo = ({ source }) => {
 const renderItem = ({ item }) => {
   switch (item.type) {
     case FILE_TYPES.VIDEO: {
-      return <PlayableVideo source={item} />
+      return (
+        <RemoveItem uri={item.uri}>
+          <PlayableVideo source={item} />
+        </RemoveItem>
+      )
     }
     default:
-      return <Image source={item} />
+      return (
+        <RemoveItem uri={item.uri}>
+          <Image source={item} />
+        </RemoveItem>
+      )
   }
 }
 

@@ -27,8 +27,8 @@ export const PostSkeleton = () => {
 
         <Spacing.Horizontally px={20} />
         <Skeleton
-          width={'100%'}
-          height={width}
+          width={width}
+          height={width - GUTTER * 2}
           radius="square"
           style={{ marginLeft: -GUTTER, marginRight: -GUTTER }}
         />

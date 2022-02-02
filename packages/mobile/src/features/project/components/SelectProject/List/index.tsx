@@ -1,14 +1,13 @@
-import React, { useCallback, useRef, useEffect } from 'react'
-import { Animated, Pressable } from 'react-native'
+import React, { useCallback } from 'react'
+import Animated, { FadeInUp, FadeOut } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
 import Project from '../Project'
-import { Base, Scroll, NewProject, SPACER, BUTTON_HEIGHT, ITEM_HEIGHT } from './styles'
+import { Base, Scroll, NewProject } from './styles'
 
-function List({ projects, onPress, onClose, open, selectedId }) {
+function List({ projects, onPress, onClose, selectedId }) {
   const { t } = useTranslation('select-project')
-  const animatedValue = useRef(new Animated.Value(0))
   const { showModal } = useNavigation()
 
   const handleNavigation = useCallback(() => {
@@ -16,24 +15,9 @@ function List({ projects, onPress, onClose, open, selectedId }) {
     onClose()
   }, [onClose])
 
-  const getHeight = useCallback(() => {
-    const itemCount = Object.keys(projects).length
-    const itemsHeight = itemCount >= 4 ? 4 : itemCount
-    return itemsHeight * ITEM_HEIGHT + BUTTON_HEIGHT + SPACER
-  }, [projects])
-
-  useEffect(() => {
-    Animated.spring(animatedValue.current, {
-      bounciness: 0,
-      speed: 7,
-      toValue: open ? getHeight() : 0,
-    }).start()
-  }, [open])
-
   const renderProjects = () =>
-    projects &&
     projects
-      .slice()
+      ?.slice()
       .sort((a, b) => a.node.files.edges.length > b.node.files.edges.length)
       .reverse()
       .map(({ node }) => (
@@ -41,38 +25,22 @@ function List({ projects, onPress, onClose, open, selectedId }) {
       ))
 
   return (
-    <>
-      <Animated.View
-        style={{
-          height: animatedValue.current,
-          overflow: 'hidden',
-          position: 'absolute',
-          width: '100%',
-          zIndex: 10,
-        }}
-      >
-        <Base>
-          <Scroll>{renderProjects()}</Scroll>
-          <NewProject onPress={handleNavigation}>
-            <Text medium>{t('create')}</Text>
-          </NewProject>
-        </Base>
-      </Animated.View>
-
-      {open && (
-        <Pressable
-          onPress={onClose}
-          style={{
-            height: '100%',
-            overflow: 'hidden',
-            position: 'absolute',
-            width: '100%',
-            zIndex: 1,
-            bottom: 0,
-          }}
-        />
-      )}
-    </>
+    <Animated.View
+      entering={FadeInUp.duration(200)}
+      exiting={FadeOut.duration(200)}
+      style={{
+        position: 'absolute',
+        width: '100%',
+        zIndex: 10,
+      }}
+    >
+      <Base>
+        <Scroll>{renderProjects()}</Scroll>
+        <NewProject onPress={handleNavigation}>
+          <Text medium>{t('create')}</Text>
+        </NewProject>
+      </Base>
+    </Animated.View>
   )
 }
 
