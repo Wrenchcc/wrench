@@ -45,7 +45,7 @@ PODS:
     - ExpoModulesCore
   - EXTrackingTransparency (2.1.0):
     - ExpoModulesCore
-  - EXVideoThumbnails (6.1.1):
+  - EXVideoThumbnails (6.2.0):
     - ExpoModulesCore
   - FBAEMKit (12.2.1):
     - FBSDKCoreKit_Basics (= 12.2.1)
@@ -832,7 +832,7 @@ SPEC CHECKSUMS:
   ExpoModulesCore: 32c0ccb47f477d330ee93db72505380adf0de09a
   EXStoreReview: 5a24fd222d193878a7d4f6059dd19f51c808af66
   EXTrackingTransparency: 0622e1c7e10f5cae378f6d77dc6fdf433c9a7d81
-  EXVideoThumbnails: 813d6aad70f81f1b3af01f1436e18ff88871206c
+  EXVideoThumbnails: 847d648d6f4bc0c1afad05caa56a487dc543445e
   FBAEMKit: 4cea610d0bc1680572f2aad7b25db7a2f2690d82
   FBLazyVector: 244195e30d63d7f564c55da4410b9a24e8fbceaa
   FBReactNativeSpec: c94002c1d93da3658f4d5119c6994d19961e3d52
