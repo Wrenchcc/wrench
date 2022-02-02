@@ -1,6 +1,13 @@
 import React, { memo, useState, useCallback, useContext } from 'react'
 import { FlatList } from 'react-native'
 import Pinchable from 'react-native-pinchable'
+import Animated, {
+  useAnimatedReaction,
+  withTiming,
+  withDelay,
+  useSharedValue,
+  useAnimatedStyle,
+} from 'react-native-reanimated'
 import { ViewabilityItemsContext } from 'navigation'
 import { FILE_TYPES } from 'utils/enums'
 import Video from 'components/Video'
@@ -8,6 +15,7 @@ import { IMAGE_PRIORITY } from 'ui/constants'
 import Pagination from './Pagination'
 import { Picture, SIZE, GUTTER } from './styles'
 import { keyExtractor } from 'navigation'
+import { Text } from 'ui'
 
 const SNAP_INTERVAL = SIZE
 
@@ -20,8 +28,21 @@ const getItemLayout = (_, index: number) => ({
 function Carousel({ postId, files }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const scrollEnabled = files.edges.length > 1
+  const node = files.edges[currentIndex].node
+  const opacity = useSharedValue(1)
+  const context = useContext(ViewabilityItemsContext)
 
-  const { setVisibleItemId, setVisibleIndex } = useContext(ViewabilityItemsContext)
+  useAnimatedReaction(
+    () => context.visibleItemId.value,
+    (visibleItemId) => {
+      if (visibleItemId === node.id) {
+        opacity.value = withDelay(5000, withTiming(0, { duration: 250 }))
+      } else {
+        opacity.value = withDelay(500, withTiming(1))
+      }
+    },
+    []
+  )
 
   const handleScroll = useCallback(
     ({ nativeEvent }) => {
@@ -31,9 +52,9 @@ function Carousel({ postId, files }) {
 
       if (index !== currentIndex) {
         // NOTE: Update visible id
-        setVisibleItemId(node.id)
+        context.setVisibleItemId(node.id)
         // NOTE: Set index on post id
-        setVisibleIndex(postId, index)
+        context.setVisibleIndex(postId, index)
 
         setCurrentIndex(index)
       }
@@ -70,8 +91,36 @@ function Carousel({ postId, files }) {
     []
   )
 
+  const animatedStyle = useAnimatedStyle(() => ({
+    opacity: opacity.value,
+  }))
+
   return (
     <>
+      {files.edges.length > 1 && (
+        <Animated.View
+          style={[
+            {
+              position: 'absolute',
+              right: 0,
+              top: 20,
+              height: 27,
+              borderRadius: 30,
+              paddingLeft: 10,
+              paddingRight: 10,
+              backgroundColor: 'rgba(0, 0, 0, 0.75)',
+              zIndex: 1000,
+              justifyContent: 'center',
+              alignItems: 'center',
+            },
+            animatedStyle,
+          ]}
+        >
+          <Text fontSize={12} medium>
+            {currentIndex + 1}/{files.edges.length}
+          </Text>
+        </Animated.View>
+      )}
       <FlatList
         keyExtractor={keyExtractor}
         getItemLayout={getItemLayout}
