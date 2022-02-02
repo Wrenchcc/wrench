@@ -1,4 +1,7 @@
 {
   "name": "Wrench",
-  "displayName": "Wrench"
+  "displayName": "Wrench",
+  "plugins": [
+    "expo-tracking-transparency"
+  ]
 }

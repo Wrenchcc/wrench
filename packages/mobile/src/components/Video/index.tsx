@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useContext, useCallback } from 'react'
-import Player from 'react-native-video'
+import { Video as Player } from 'expo-av'
 import { Navigation } from 'react-native-navigation'
 import { useAnimatedReaction, runOnJS } from 'react-native-reanimated'
 import { ViewabilityItemsContext } from 'navigation'
@@ -15,7 +15,7 @@ function Video({ size, source, id }) {
   const context = useContext(ViewabilityItemsContext)
 
   const play = useCallback(() => {
-    videoRef?.current?.setNativeProps({ paused: false })
+    videoRef?.current?.playAsync()
     isPlaying.current = true
   }, [])
 
@@ -28,7 +28,7 @@ function Video({ size, source, id }) {
   }, [isPlaying])
 
   const pause = useCallback(() => {
-    videoRef?.current?.setNativeProps({ paused: true })
+    videoRef?.current?.pauseAsync()
     isPlaying.current = false
   }, [])
 
@@ -69,6 +69,7 @@ function Video({ size, source, id }) {
       <Icon
         source={isMuted ? muted : sound}
         onPress={handleMute}
+        color="white"
         style={{
           zIndex: 10,
           position: 'absolute',
@@ -86,10 +87,9 @@ function Video({ size, source, id }) {
         <Player
           ref={videoRef}
           source={source}
-          paused
-          repeat
+          isLooping
           resizeMode="cover"
-          muted={isMuted}
+          isMuted={isMuted}
           style={{ width: size, height: size }}
         />
       </Touchable>

@@ -93,7 +93,7 @@ function SignIn() {
 
   return (
     <Base>
-      <Video source={video} muted resizeMode="cover" />
+      <Video source={video} isMuted resizeMode="cover" />
       <Overlay />
       <Inner>
         <Icon source={logo} />

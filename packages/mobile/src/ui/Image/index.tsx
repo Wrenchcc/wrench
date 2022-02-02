@@ -1,7 +1,7 @@
 import React, { memo, useState } from 'react'
 import { Animated, View, ImageProps } from 'react-native'
 import FastImage, { FastImageProps } from 'react-native-fast-image'
-import Video from 'react-native-video'
+import { Video } from 'expo-av'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import { FILE_TYPES } from 'utils/enums'
 import { Base } from './styles'
@@ -94,7 +94,7 @@ function Image({
         placeholderColor={placeholderColor}
         style={style}
       >
-        <Video source={source} repeat paused muted resizeMode="cover" style={{ flex: 1 }} />
+        <Video source={source} isLooping isMuted resizeMode="cover" style={{ flex: 1 }} />
       </Base>
     )
   }

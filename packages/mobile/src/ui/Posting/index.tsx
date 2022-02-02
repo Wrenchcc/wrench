@@ -7,7 +7,7 @@ import { Base, Inner, Image, Video } from './styles'
 const renderPreviewType = (file) => {
   switch (file.type) {
     case FILE_TYPES.VIDEO: {
-      return <Video source={file} resizeMode="cover" muted paused />
+      return <Video source={file} resizeMode="cover" isMuted />
     }
     default:
       return <Image source={file} fadeDuration={0} />

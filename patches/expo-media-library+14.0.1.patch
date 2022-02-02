@@ -1,0 +1,49 @@
+diff --git a/node_modules/expo-media-library/ios/EXMediaLibrary.podspec b/node_modules/expo-media-library/ios/EXMediaLibrary.podspec
+index a10a093..65b3b13 100644
+--- a/node_modules/expo-media-library/ios/EXMediaLibrary.podspec
++++ b/node_modules/expo-media-library/ios/EXMediaLibrary.podspec
+@@ -18,10 +18,5 @@ Pod::Spec.new do |s|
+   s.dependency 'ExpoModulesCore'
+   s.dependency 'React-Core'
+ 
+-  if !$ExpoUseSources&.include?(package['name']) && ENV['EXPO_USE_SOURCE'].to_i == 0 && File.exist?("#{s.name}.xcframework") && Gem::Version.new(Pod::VERSION) >= Gem::Version.new('1.10.0')
+-    s.source_files = "#{s.name}/**/*.h"
+-    s.vendored_frameworks = "#{s.name}.xcframework"
+-  else
+-    s.source_files = "#{s.name}/**/*.{h,m}"
+-  end
++  s.source_files = "#{s.name}/**/*.{h,m}"
+ end
+diff --git a/node_modules/expo-media-library/ios/EXMediaLibrary/EXMediaLibrary.m b/node_modules/expo-media-library/ios/EXMediaLibrary/EXMediaLibrary.m
+index de37f72..3eae27c 100644
+--- a/node_modules/expo-media-library/ios/EXMediaLibrary/EXMediaLibrary.m
++++ b/node_modules/expo-media-library/ios/EXMediaLibrary/EXMediaLibrary.m
+@@ -817,11 +817,12 @@ + (NSDictionary *)_exportAsset:(PHAsset *)asset
+ {
+   if (asset) {
+     NSString *fileName = [asset valueForKey:@"filename"];
++    NSString *assetExtension = [fileName pathExtension];
+     
+     return @{
+              @"id": asset.localIdentifier,
+              @"filename": fileName,
+-             @"uri": [EXMediaLibrary _assetUriForLocalId:asset.localIdentifier],
++             @"uri": [EXMediaLibrary _assetUriForLocalId:asset.localIdentifier andExtension:assetExtension],
+              @"mediaType": [EXMediaLibrary _stringifyMediaType:asset.mediaType],
+              @"mediaSubtypes": [EXMediaLibrary _stringifyMediaSubtypes:asset.mediaSubtypes],
+              @"width": @(asset.pixelWidth),
+@@ -915,10 +916,12 @@ + (NSString *)_assetIdFromLocalId:(nonnull NSString *)localId
+   return [localId stringByReplacingOccurrencesOfString:@"/.*" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, localId.length)];
+ }
+ 
+-+ (NSString *)_assetUriForLocalId:(nonnull NSString *)localId
+++ (NSString *)_assetUriForLocalId:(nonnull NSString *)localId andExtension:(nonnull NSString *)extension
+ {
+   NSString *assetId = [EXMediaLibrary _assetIdFromLocalId:localId];
+-  return [NSString stringWithFormat:@"ph://%@", assetId];
++  NSString *uppercasedExtension = [extension uppercaseString];
++
++  return [NSString stringWithFormat:@"assets-library://asset/asset.%@?id=%@&ext=%@", uppercasedExtension, assetId, uppercasedExtension];
+ }
+ 
+ + (PHAssetMediaType)_assetTypeForUri:(nonnull NSString *)localUri

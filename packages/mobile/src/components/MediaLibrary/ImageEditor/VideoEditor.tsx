@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { View, Image } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { SCREENS } from 'navigation'
-import Video from 'react-native-video'
+import { Video } from 'expo-av'
 import { Touchable } from 'ui'
 import { play } from 'images'
 import { CROP_AREA } from '../constants'
@@ -41,7 +41,7 @@ const VideoEditor = ({ source }) => {
   useEffect(() => {
     const commandListener = Navigation.events().registerCommandListener((_, { componentId }) => {
       if (componentId === SCREENS.ADD_MEDIA) {
-        videoRef?.current.setNativeProps({ paused: true })
+        videoRef?.current.pauseAsync()
 
         // TODO: Find a way to set when view is unmounted
         setTimeout(() => {
@@ -54,7 +54,11 @@ const VideoEditor = ({ source }) => {
   })
 
   const handlePlay = useCallback(() => {
-    videoRef?.current.setNativeProps({ paused: !isPaused })
+    if (isPaused) {
+      videoRef?.current.playAsync()
+    } else {
+      videoRef?.current.pauseAsync()
+    }
     setPaused(!isPaused)
   }, [isPaused])
 
@@ -70,9 +74,8 @@ const VideoEditor = ({ source }) => {
           ref={videoRef}
           source={source}
           style={styles.video}
-          repeat
-          paused
-          muted
+          isLooping
+          isMuted
           resizeMode="cover"
         />
       </Touchable>

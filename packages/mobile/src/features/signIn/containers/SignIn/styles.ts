@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import RVideo from 'react-native-video'
+import { Video as RNVideo } from 'expo-av'
 import { Text, Title, Touchable } from 'ui'
 import { NAVIGATION } from 'navigation'
 import { isAndroid } from 'utils/platform'
@@ -10,7 +10,7 @@ export const Base = styled.SafeAreaView`
 
 export const Icon = styled.Image``
 
-export const Video = styled(RVideo)`
+export const Video = styled(RNVideo)`
   position: absolute;
   top: 0px;
   left: 0px;

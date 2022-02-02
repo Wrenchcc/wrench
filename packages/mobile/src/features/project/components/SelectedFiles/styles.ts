@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Dimensions } from 'react-native'
-import RNVideo from 'react-native-video'
+import { Video as RNVideo } from 'expo-av'
 
 const { width } = Dimensions.get('window')
 

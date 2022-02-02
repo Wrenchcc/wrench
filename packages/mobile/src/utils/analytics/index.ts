@@ -1,13 +1,21 @@
-import { getTrackingStatus, requestTrackingPermission } from 'react-native-tracking-transparency'
+import {
+  requestTrackingPermissionsAsync,
+  getTrackingPermissionsAsync,
+} from 'expo-tracking-transparency'
 import analytics from '@react-native-firebase/analytics'
 export { events } from './events'
 
 export const getTrackingConsent = async () => {
-  const status = await getTrackingStatus()
+  const { granted } = await getTrackingPermissionsAsync()
 
-  if (status === 'not-determined') {
-    const trackingStatus = await requestTrackingPermission()
-    if (trackingStatus === 'authorized' || trackingStatus === 'unavailable') {
+  if (granted) {
+    analytics().setAnalyticsCollectionEnabled(!__DEV__)
+  }
+
+  if (!granted) {
+    const { status } = await requestTrackingPermissionsAsync()
+
+    if (status === 'granted') {
       analytics().setAnalyticsCollectionEnabled(!__DEV__)
     }
   }

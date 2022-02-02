@@ -16,7 +16,7 @@ import {
 } from '@wrench/common'
 import { State, TapGestureHandler } from 'react-native-gesture-handler'
 import NativeShare from 'react-native-share'
-import Clipboard from '@react-native-community/clipboard'
+import * as Clipboard from 'expo-clipboard'
 import * as Haptics from 'expo-haptics'
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import { useNavigation, SCREENS } from 'navigation'

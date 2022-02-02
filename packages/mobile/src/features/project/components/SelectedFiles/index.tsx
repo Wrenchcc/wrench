@@ -27,7 +27,12 @@ const PlayableVideo = ({ source }) => {
   const [isPaused, setPaused] = useState(true)
 
   const handlePlay = useCallback(() => {
-    videoRef?.current.setNativeProps({ paused: !isPaused })
+    if (isPaused) {
+      videoRef?.current.playAsync()
+    } else {
+      videoRef?.current.pauseAsync()
+    }
+
     setPaused(!isPaused)
   }, [isPaused])
 
@@ -43,7 +48,7 @@ const PlayableVideo = ({ source }) => {
           />
         </View>
       )}
-      <Video ref={videoRef} source={source} repeat paused muted resizeMode="cover" />
+      <Video ref={videoRef} source={source} isLooping isMuted resizeMode="cover" />
     </Touchable>
   )
 }

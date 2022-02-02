@@ -94,19 +94,19 @@ function Header({ headerLeftStyle = {}, headerRightStyle = {}, arrowStyle = {}, 
       )
 
       store.files.add(files)
+
+      navigate(SCREENS.ADD_POST, {
+        options: {
+          animations: {
+            push: {
+              waitForRender: true,
+            },
+          },
+        },
+      })
     } catch (err) {
       logError(err)
     }
-
-    navigate(SCREENS.ADD_POST, {
-      options: {
-        animations: {
-          push: {
-            waitForRender: true,
-          },
-        },
-      },
-    })
 
     setCropping(false)
   }, [navigate])

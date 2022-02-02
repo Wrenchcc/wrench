@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import RNVideo from 'react-native-video'
+import { Video as RNVideo } from 'expo-av'
 
 export const Base = styled.View`
   background-color: ${(props) =>
