@@ -76,7 +76,7 @@ function Users() {
         hasNextPage={isFetching ? false : hasNextPage}
         isFetching={isFetching && query.length === 0}
         isRefetching={isRefetching}
-        refetch={refetch}
+        refetch={query && refetch}
         renderItem={({ item }) => <User data={item.node} onPress={handleSave} />}
         defaultPadding
         ListHeaderComponent={

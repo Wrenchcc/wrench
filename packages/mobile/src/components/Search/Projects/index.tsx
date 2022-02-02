@@ -89,7 +89,7 @@ function Projects() {
       hasNextPage={isFetching ? false : hasNextPage}
       isFetching={isFetching && query.length === 0}
       isRefetching={isRefetching}
-      refetch={refetch}
+      refetch={query && refetch}
       renderItem={renderItem}
       defaultPadding
       ListHeaderComponent={

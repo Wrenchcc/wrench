@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigation, SCREENS } from 'navigation'
 import InfiniteList from 'ui/InfiniteList'
+import * as Spacing from 'ui/Spacing'
 import { Title, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
@@ -63,6 +64,8 @@ function ProjectSuggestion({
           marginRight: -GUTTER,
         }}
       />
+
+      <Spacing.Horizontally px={40} />
     </>
   )
 }

@@ -665,6 +665,7 @@ export declare type ProjectType = {
     imageUrl: Scalars['String'];
     slug?: Maybe<Scalars['String']>;
     title?: Maybe<Scalars['String']>;
+    type?: Maybe<VehicleTypes>;
 };
 export declare type ProjectTypeInput = {
     id?: InputMaybe<Scalars['ID']>;
@@ -814,6 +815,9 @@ export declare type QueryProjectSuggestionsArgs = {
     first?: InputMaybe<Scalars['Int']>;
     last?: InputMaybe<Scalars['Int']>;
 };
+export declare type QueryProjectTypesArgs = {
+    type?: InputMaybe<VehicleTypes>;
+};
 export declare type QueryProjectsArgs = {
     after?: InputMaybe<Scalars['String']>;
     before?: InputMaybe<Scalars['String']>;
@@ -835,6 +839,7 @@ export declare type QuerySearchArgs = {
     last?: InputMaybe<Scalars['Int']>;
     query: Scalars['String'];
     type: SearchType;
+    vehicleType?: InputMaybe<VehicleTypes>;
 };
 export declare type QuerySimilarProjectsArgs = {
     after?: InputMaybe<Scalars['String']>;
@@ -961,6 +966,10 @@ export declare type UserSettings = {
     notifications?: Maybe<UserNotificationsSettings>;
     timezone?: Maybe<Scalars['String']>;
 };
+export declare enum VehicleTypes {
+    Car = "CAR",
+    Motorcycle = "MOTORCYCLE"
+}
 export declare type BlogPostFragment = {
     __typename?: 'BlogPost';
     id?: string | null | undefined;

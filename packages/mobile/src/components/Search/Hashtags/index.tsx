@@ -85,14 +85,14 @@ function Hashtags() {
     ) : (
       <InfiniteList
         borderSeparator
-        initialNumToRender={4}
+        initialNumToRender={10}
         ListEmptyComponent={!isFetching && query.length > 1 && <NoResults />}
         data={query ? edges : recent}
         fetchMore={fetchMore}
         hasNextPage={isFetching ? false : hasNextPage}
         isFetching={isFetching && query.length === 0}
         isRefetching={isRefetching}
-        refetch={refetch}
+        refetch={query && refetch}
         renderItem={renderItem}
         defaultPadding
         ListHeaderComponent={

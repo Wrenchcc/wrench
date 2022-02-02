@@ -1,8 +1,8 @@
 // @ts-nocheck
 import { useCallback } from 'react'
+import { NetworkStatus } from '@apollo/client'
 import { useLazyQuery } from '@apollo/react-hooks'
 import { pathOr } from 'rambda'
-import { isRefetching, isFetchingMore } from './networkStatus'
 
 export default (path, initialData?) => (query, options?) => {
   const [loadData, { fetchMore, data, error, refetch, loading, networkStatus }] = useLazyQuery(
@@ -40,7 +40,7 @@ export default (path, initialData?) => (query, options?) => {
     },
     fetchMore: handleFetchMore,
     hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], result),
-    isFetching: loading || isFetchingMore(networkStatus),
-    isRefetching: isRefetching(networkStatus),
+    isFetching: loading || networkStatus === 3,
+    isRefetching: networkStatus === NetworkStatus.refetch,
   }
 }

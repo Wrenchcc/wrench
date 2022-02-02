@@ -3,7 +3,7 @@ import { AppState, View } from 'react-native'
 import { usePaginatedQuery, PostsDocument, useSimilarProjectsQuery } from '@wrench/common'
 import { useReactiveVar, store } from 'gql'
 import { isAndroid as _isAndroid } from 'utils/platform'
-import { Layout, FlatList, SCREENS, useScrollToTop } from 'navigation'
+import { Layout, FlatList, SCREENS, useScrollToTop, CONTENT_INSET } from 'navigation'
 import Header from 'navigation/Layout/Header'
 import SearchBar from 'components/SearchBar'
 import Search from 'components/Search'
@@ -89,6 +89,7 @@ function Explore() {
       <FlatList
         ref={scrollRef}
         spacingSeparator
+        progressViewOffset={CONTENT_INSET + 25}
         initialNumToRender={2}
         ListHeaderComponent={<Popular />}
         ListEmptyComponent={ListEmptyComponent}

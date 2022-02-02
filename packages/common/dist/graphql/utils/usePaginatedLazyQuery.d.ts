@@ -1,9 +1,9 @@
 declare const _default: (path: any, initialData?: any) => (query: any, options?: any) => {
-    loadData: (options?: import("@apollo/react-hooks").QueryLazyOptions<import("@apollo/react-hooks").OperationVariables> | undefined) => void;
-    error: import("@apollo/react-hooks").ApolloError | undefined;
-    refetch: ((variables?: Partial<import("@apollo/react-hooks").OperationVariables> | undefined) => Promise<import("@apollo/react-hooks").ApolloQueryResult<any>>) | undefined;
+    loadData: (options?: import("@apollo/client").QueryLazyOptions<import("@apollo/client").OperationVariables> | undefined) => Promise<import("@apollo/client").LazyQueryResult<any, import("@apollo/client").OperationVariables>>;
+    error: import("@apollo/client").ApolloError | undefined;
+    refetch: (variables?: Partial<import("@apollo/client").OperationVariables> | undefined) => Promise<import("@apollo/client").ApolloQueryResult<any>>;
     data: any;
-    fetchMore: (variables?: any) => Promise<import("@apollo/react-hooks").ApolloQueryResult<any>>;
+    fetchMore: (variables?: any) => Promise<import("@apollo/client").ApolloQueryResult<any>>;
     hasNextPage: boolean;
     isFetching: boolean;
     isRefetching: boolean;

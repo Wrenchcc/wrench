@@ -13,9 +13,9 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 // @ts-nocheck
 var react_1 = require("react");
+var client_1 = require("@apollo/client");
 var react_hooks_1 = require("@apollo/react-hooks");
 var rambda_1 = require("rambda");
-var networkStatus_1 = require("./networkStatus");
 exports.default = (function (path, initialData) { return function (query, options) {
     var _a = (0, react_hooks_1.useLazyQuery)(query, __assign({ fetchPolicy: 'cache-and-network', nextFetchPolicy: 'cache-first', notifyOnNetworkStatusChange: true }, options)), loadData = _a[0], _b = _a[1], fetchMore = _b.fetchMore, data = _b.data, error = _b.error, refetch = _b.refetch, loading = _b.loading, networkStatus = _b.networkStatus;
     var result = (0, rambda_1.pathOr)({}, path, data);
@@ -32,8 +32,8 @@ exports.default = (function (path, initialData) { return function (query, option
         data: __assign(__assign(__assign(__assign({}, initialData), data), result), { edges: (0, rambda_1.pathOr)(null, ['edges'], result) }),
         fetchMore: handleFetchMore,
         hasNextPage: (0, rambda_1.pathOr)(false, ['pageInfo', 'hasNextPage'], result),
-        isFetching: loading || (0, networkStatus_1.isFetchingMore)(networkStatus),
-        isRefetching: (0, networkStatus_1.isRefetching)(networkStatus),
+        isFetching: loading || networkStatus === 3,
+        isRefetching: networkStatus === client_1.NetworkStatus.refetch,
     };
 }; });
 //# sourceMappingURL=usePaginatedLazyQuery.js.map

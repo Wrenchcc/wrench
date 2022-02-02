@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { FlatList, Keyboard } from 'react-native'
 import { isAndroid } from 'utils/platform'
 import Border from 'ui/Border'
@@ -32,8 +32,21 @@ function InfiniteList({
   paddingBottom = 0,
   ...props
 }) {
+  const [isRefetchingLocal, setRefresh] = useState(false)
   const initialFetch = !data && isFetching
   const paddingTop = contentContainerStyle.paddingTop || (defaultPaddingTop && 20) || 0
+
+  useEffect(() => {
+    setRefresh(!!isRefetching)
+  }, [isRefetching])
+
+  // NOTE: Without this hack the refresh jumps around
+  const onRefresh = useCallback(() => {
+    if (refetch) {
+      setRefresh(true)
+      refetch()
+    }
+  }, [refetch])
 
   const onEndReached = useCallback(() => {
     if (hasNextPage && isRefetching !== true && !isFetching) {
@@ -46,9 +59,9 @@ function InfiniteList({
       style={{ flex: 1 }}
       data={data}
       keyExtractor={keyExtractor}
-      onRefresh={refetch}
+      onRefresh={refetch && onRefresh}
       onEndReached={onEndReached}
-      refreshing={isRefetching}
+      refreshing={isRefetchingLocal}
       initialNumToRender={initialNumToRender}
       ListFooterComponent={hasNextPage ? renderLoader(loaderInset) : null}
       ListEmptyComponent={initialFetch ? renderLoader(loaderInset) : ListEmptyComponent}

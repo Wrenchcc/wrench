@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useContext, useMemo, useEffect, useRef } from 'react'
+import React, { forwardRef, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { Keyboard, TextInput, UIManager, findNodeHandle } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 import { ScrollContext } from 'navigation/Layout/context'
@@ -41,11 +41,14 @@ export default function createNavigationAwareScrollable(Component) {
       loaderInset = 0,
       androidDismissKeyboard = true,
       paddingBottom = NAVIGATION.BOTTOM_TABS_HEIGHT,
+      progressViewOffset = CONTENT_INSET - 30,
       ...props
     },
     ref
   ) {
     const scrollRef = useRef(null)
+    const [isRefetchingLocal, setRefresh] = useState(false)
+
     const { onScroll, onScrollBeginDrag, onScrollEndDrag } = useContext(ScrollContext)
     const VIEW_OFFSET = isAndroid ? CONTENT_INSET + extraContentInset : 0
 
@@ -66,6 +69,18 @@ export default function createNavigationAwareScrollable(Component) {
 
       visibleItemId.value = getNodeIdByIndex(post, currentIndex)
     }, [])
+
+    useEffect(() => {
+      setRefresh(!!isRefetching)
+    }, [isRefetching])
+
+    // NOTE: Without this hack the refresh jumps around
+    const onRefresh = useCallback(() => {
+      if (refetch) {
+        setRefresh(true)
+        refetch()
+      }
+    }, [refetch])
 
     // Scroll to input
     useEffect(() => {
@@ -126,9 +141,10 @@ export default function createNavigationAwareScrollable(Component) {
           scrollEventThrottle={1}
           style={{ flex: 1 }}
           data={data}
-          onRefresh={refetch}
+          onRefresh={refetch && onRefresh}
           onEndReached={onEndReached}
-          refreshing={isRefetching}
+          progressViewOffset={progressViewOffset}
+          refreshing={isRefetchingLocal}
           initialNumToRender={initialNumToRender}
           ListFooterComponent={hasNextPage && renderLoader(loaderInset)}
           ListEmptyComponent={initialFetch ? renderLoader(CONTENT_INSET) : ListEmptyComponent}
@@ -152,14 +168,11 @@ export default function createNavigationAwareScrollable(Component) {
           {...(androidDismissKeyboard && keyboardDismissProp)}
           {...props}
           onViewableItemsChanged={onViewableItemsChanged}
-          viewabilityConfig={useMemo(
-            () => ({
-              waitForInteractions: false,
-              itemVisiblePercentThreshold: 70,
-              minimumViewTime: 100,
-            }),
-            []
-          )}
+          viewabilityConfig={{
+            waitForInteractions: false,
+            itemVisiblePercentThreshold: 70,
+            minimumViewTime: 100,
+          }}
         />
       </ViewabilityItemsContext.Provider>
     )

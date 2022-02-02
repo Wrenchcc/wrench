@@ -1,8 +1,8 @@
 // @ts-nocheck
 import { useCallback } from 'react'
+import { NetworkStatus } from '@apollo/client'
 import { useQuery } from '@apollo/react-hooks'
 import { pathOr } from 'rambda'
-import { isRefetching, isFetchingMore } from './networkStatus'
 
 export default (path, initialData?: any) => (query, options?: any) => {
   const { fetchMore, error, data, refetch, loading, networkStatus } = useQuery(query, {
@@ -36,7 +36,7 @@ export default (path, initialData?: any) => (query, options?: any) => {
     },
     fetchMore: handleFetchMore,
     hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], result),
-    isFetching: loading || isFetchingMore(networkStatus),
-    isRefetching: isRefetching(networkStatus),
+    isFetching: loading || networkStatus === 3,
+    isRefetching: networkStatus === NetworkStatus.refetch,
   }
 }
