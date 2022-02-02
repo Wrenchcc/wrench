@@ -15,6 +15,8 @@ PODS:
     - ExpoModulesCore
   - EXClipboard (2.1.1):
     - ExpoModulesCore
+  - EXConstants (13.0.1):
+    - ExpoModulesCore
   - EXFileSystem (13.1.3):
     - ExpoModulesCore
   - EXImageLoader (3.1.0):
@@ -564,6 +566,7 @@ DEPENDENCIES:
   - EXAV (from `../../../node_modules/expo-av/ios`)
   - EXBlur (from `../../../node_modules/expo-blur/ios`)
   - EXClipboard (from `../../../node_modules/expo-clipboard/ios`)
+  - EXConstants (from `../../../node_modules/expo-constants/ios`)
   - EXFileSystem (from `../../../node_modules/expo-file-system/ios`)
   - EXImageLoader (from `../../../node_modules/expo-image-loader/ios`)
   - EXImageManipulator (from `../../../node_modules/expo-image-manipulator/ios`)
@@ -679,6 +682,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/expo-blur/ios"
   EXClipboard:
     :path: "../../../node_modules/expo-clipboard/ios"
+  EXConstants:
+    :path: "../../../node_modules/expo-constants/ios"
   EXFileSystem:
     :path: "../../../node_modules/expo-file-system/ios"
   EXImageLoader:
@@ -814,11 +819,12 @@ SPEC CHECKSUMS:
   EXAV: b9ed0c201092244c46aa78f907f5c66176bed236
   EXBlur: 82055865de17cf2cf797ff064c50fb59fcbe703f
   EXClipboard: 8123fcda680538bb0e1f4e6511106553e52d3760
+  EXConstants: 6966f4fa7a22770dd240a66d029819ff94c748c9
   EXFileSystem: c7187bfe9ed1eda11e7fda5953125695d791a24b
   EXImageLoader: df83442d32bcfb57b7cfc5690096b6caf8203f8d
   EXImageManipulator: 60d1bf3f1d7709453b1feb38adf8594b7f58710f
   EXImagePicker: bf4d62532cc2bf217edbe4abbb0014e73e079eac
-  EXMediaLibrary: 843669e1d9d38965057830138609ee99ef260cf1
+  EXMediaLibrary: 95366ceaf5f94551e84d5828339678fb5b90c428
   Expo: 534e51e607aba8229293297da5585f4b26f50fa1
   ExpoHaptics: 0d0b69b2414755a4057ffad0a10315902c0ea1b7
   ExpoLinearGradient: 9ad5ca20ed594b8b5f460eb7434769d1b9a835ec

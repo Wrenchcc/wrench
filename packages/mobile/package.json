@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "yarn copy:locales:android",
+    "postinstall": "yarn patch-package && yarn copy:locales:android",
+    "patch-package": "tasks/patch_package",
     "emulator:create": "tasks/emulator_create",
     "emulator:ensureready": "tasks/emulator_ensureready",
     "emulator:start": "tasks/emulator_start",
@@ -21,8 +22,7 @@
         "expo-application",
         "expo-keep-awake",
         "expo-font",
-        "expo-asset",
-        "expo-constants"
+        "expo-asset"
       ]
     }
   },
