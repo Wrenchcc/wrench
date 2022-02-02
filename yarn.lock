@@ -5592,21 +5592,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-native-share@^3.3.3":
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/@types/react-native-share/-/react-native-share-3.3.3.tgz#95e1087ad1d7972c85223dbfa52450455f604c9c"
-  integrity sha512-aZNKQjXtsuooG21wSsT8WUMkD+TiSNGi6i1XEKHLEFD3CSRUGAJI/PFXPzdWGsPw7Z0z4xW3IDKCbjyu0grRVg==
-  dependencies:
-    "@types/react" "*"
-    "@types/react-native" "*"
-
-"@types/react-native@*":
-  version "0.66.15"
-  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.66.15.tgz#d332d82b04635adabbd8e1976f9547ce8662300b"
-  integrity sha512-qNK3LZhNpSd2Hdr0OFdvQ/VOb1qcjNhmw96LsOtxIN+1RtXHO/1dVzxYUlWnKMCtV+E5WSaWM703c9Q7gG9tyg==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react-router-dom@^5.3.2":
   version "5.3.3"
   resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-5.3.3.tgz#e9d6b4a66fcdbd651a5f106c2656a30088cc1e83"
@@ -20535,10 +20520,10 @@ react-native-screens@^3.4.0:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
-react-native-share@^7.3.4:
-  version "7.3.4"
-  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-7.3.4.tgz#7f2e5aed313b409167b6acf79752e18161388636"
-  integrity sha512-mLbL0IWv5Aocly3WKv9kkmbILeTR9fhiD1IMtbHDm6vKK3kp2sTYYRECoQrV4kvpo9m70AJ1o/El9dls2eICgQ==
+react-native-share@^7.3.5:
+  version "7.3.5"
+  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-7.3.5.tgz#68b6076136ceac7cd5921bb84680fe46ed4383a3"
+  integrity sha512-5uulG2cQ2WfPSjZoEU/EGMycUFZEO99g3EqnKsO/7JNx5Tb465or35am4Kuezi4QU0YsOc3AqxzrW10UkI0+Ag==
 
 react-native-splash-screen@^3.3.0:
   version "3.3.0"

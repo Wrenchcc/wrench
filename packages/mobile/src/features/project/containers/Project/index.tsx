@@ -8,6 +8,7 @@ import { EmptyState, Title, Share, Edit } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import ProjectHeader from 'features/project/components/ProjectHeader'
 import { isIphone } from 'utils/platform'
+import PostSkeleton from 'components/Post/Skeleton'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
@@ -60,6 +61,12 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
     return <Post post={item.node} avatar={false} withoutTitle />
   }
 
+  const ListEmptyComponent = isFetching ? (
+    <PostSkeleton />
+  ) : (
+    !hasPosts && <EmptyState type={emptyState} params={{ id: project?.id }} />
+  )
+
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
       <Page
@@ -77,9 +84,7 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
           spacingSeparator
           paddingHorizontal={hasPosts ? 20 : 0}
           contentContainerStyle={{ flexGrow: 1 }}
-          ListEmptyComponent={
-            !hasPosts && <EmptyState type={emptyState} params={{ id: project?.id }} />
-          }
+          ListEmptyComponent={ListEmptyComponent}
           ListHeaderComponent={
             project?.title && <ProjectHeader project={project} spacingHorizontal={!hasPosts} />
           }
@@ -87,7 +92,6 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}
-          isFetching={isFetching}
           hasNextPage={hasNextPage}
           renderItem={renderItem}
         />

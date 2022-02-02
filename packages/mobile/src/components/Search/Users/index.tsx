@@ -4,7 +4,7 @@ import { storage, useMMKVString } from 'utils/storage'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
 import { useReactiveVar, store } from 'gql'
-import { User, InfiniteList, NoResults, Loader, Text } from 'ui'
+import { User, InfiniteList, NoResults, Loader, Text, Touchable } from 'ui'
 import { RECENT_SEARCHES_USERS } from 'utils/storage/constants'
 import UserSkeletonList from 'ui/User/SkeletonList'
 import { Header } from '../styles'
@@ -84,9 +84,11 @@ function Users() {
           recent.length > 0 && (
             <Header>
               <Text medium>{t('recent')}</Text>
-              <Text fontSize={14} onPress={handleRemove} medium>
-                {t('clear')}
-              </Text>
+              <Touchable onPress={handleRemove}>
+                <Text fontSize={14} medium>
+                  {t('clear')}
+                </Text>
+              </Touchable>
             </Header>
           )
         }

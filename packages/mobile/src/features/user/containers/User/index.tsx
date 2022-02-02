@@ -9,6 +9,7 @@ import FollowingProjects from 'features/user/components/FollowingProjects'
 import Header from 'features/user/components/Header'
 import UserProjects from 'features/user/components/UserProjects'
 import { isIphone } from 'utils/platform'
+import PostSkeleton from 'components/Post/Skeleton'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
@@ -54,6 +55,12 @@ function User({ user: initialUserData }) {
     )
   )
 
+  const ListEmptyComponent = isFetching ? (
+    <PostSkeleton />
+  ) : (
+    user && !error && <FollowingProjects user={user} />
+  )
+
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
       <Page
@@ -68,12 +75,11 @@ function User({ user: initialUserData }) {
           paddingHorizontal={hasPosts ? 20 : 0}
           contentContainerStyle={{ flexGrow: 1 }}
           ListHeaderComponent={ListHeaderComponent}
-          ListEmptyComponent={user && !error && <FollowingProjects user={user} />}
+          ListEmptyComponent={ListEmptyComponent}
           data={edges}
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}
-          isFetching={isFetching}
           hasNextPage={hasNextPage}
           renderItem={renderItem}
         />

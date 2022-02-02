@@ -25,7 +25,7 @@ function AddCollection({ projectId, style = {}, disableModal }) {
   return (
     <Base style={style}>
       <Center>
-        <Icon source={add} onPress={handleHalfPanel} />
+        <Icon source={add} onPress={handleHalfPanel} style={{ marginLeft: -2, marginTop: -2 }} />
       </Center>
       <Text fontSize={12}>{t('add')}</Text>
     </Base>

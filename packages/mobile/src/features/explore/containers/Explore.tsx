@@ -12,6 +12,7 @@ import ProjectTypes from 'components/ProjectTypes'
 import Popular from 'features/explore/components/Popular'
 import ProjectsRow from 'features/project/components/SimilarProjects'
 import * as Spacing from 'ui/Spacing'
+import PostSkeleton from 'components/Post/Skeleton'
 
 const SimilarProjects = ({ id }) => {
   const { loading, data } = useSimilarProjectsQuery({
@@ -73,6 +74,8 @@ function Explore() {
     return () => handler.remove()
   }, [])
 
+  const ListEmptyComponent = isFetching && <PostSkeleton />
+
   return (
     <Layout
       extraContentInset={STICKY_HEIGHT}
@@ -88,12 +91,12 @@ function Explore() {
         spacingSeparator
         initialNumToRender={2}
         ListHeaderComponent={<Popular />}
+        ListEmptyComponent={ListEmptyComponent}
         extraContentInset={STICKY_HEIGHT}
         data={edges}
         refetch={handleRefetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
-        isFetching={isFetching}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />

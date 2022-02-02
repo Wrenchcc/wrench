@@ -12,6 +12,7 @@ import * as Spacing from 'ui/Spacing'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import ProjectsRow from 'features/project/components/SimilarProjects'
 import { isIphone } from 'utils/platform'
+import PostSkeleton from 'components/Post/Skeleton'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
@@ -97,6 +98,7 @@ function Feed() {
   }, [isPosting])
 
   const StickyComponent = hasNewPosts && <ShowLatest onHide={closeNewPosts} onPress={scrollToTop} />
+  const ListEmptyComponent = isFetching ? <PostSkeleton /> : <ProjectSuggestions />
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
@@ -106,11 +108,10 @@ function Feed() {
           initialNumToRender={2}
           spacingSeparator
           data={edges}
-          ListEmptyComponent={<ProjectSuggestions />}
+          ListEmptyComponent={ListEmptyComponent}
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}
-          isFetching={isFetching}
           hasNextPage={hasNextPage}
           renderItem={renderItem}
         />

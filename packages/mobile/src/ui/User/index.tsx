@@ -19,7 +19,7 @@ function User({ data, onPress }) {
   }, [data, onPress])
 
   return (
-    <Base onPress={handleNavigation}>
+    <Base onPress={handleNavigation} hitSlop={5}>
       <Avatar
         uri={data.avatarUrl}
         size={40}
