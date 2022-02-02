@@ -49,7 +49,6 @@ jobs:
       - name: Ruby Setup for Fastlane
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0.2'
           bundler-cache: true
 
       - name: Uses Node.js 14
@@ -112,7 +111,6 @@ jobs:
       - name: Ruby Setup for Fastlane
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0.2'
           bundler-cache: true
 
       - name: Install Xcode

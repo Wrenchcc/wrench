@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import { View, Image, ScrollView, Text, StyleSheet } from 'react-native'
+import { View, Image, ScrollView, StyleSheet } from 'react-native'
 import Touchable from 'ui/Touchable'
+import Text from 'ui/Text'
 import Animated, { useAnimatedStyle } from 'react-native-reanimated'
 import * as MediaLibrary from 'expo-media-library'
 import { BlurView } from 'expo-blur'
@@ -69,7 +70,6 @@ function Albums({ translateY, onPress }) {
           const result = await MediaLibrary.getAssetsAsync({
             album: album.id,
             first: 1,
-            sortBy: [[MediaLibrary.SortBy.creationTime, false]],
           })
 
           return {
@@ -80,12 +80,25 @@ function Albums({ translateY, onPress }) {
         })
       )
 
+      const videos = await MediaLibrary.getAssetsAsync({
+        mediaType: 'video',
+        first: 1,
+      })
+
+      const videoAlbum = {
+        isVideo: true,
+        id: 'video',
+        title: 'Videos',
+        totalCount: videos.totalCount,
+        preview: videos.assets[0],
+      }
+
       const result = data
         .filter((a) => a.totalCount > 0)
         .sort((a, b) => b.assetCount - a.assetCount)
 
       store.files.setAlbumTitle(result[0]?.title)
-      setAlbums(result)
+      setAlbums([...result, videoAlbum])
     } catch {}
   }, [])
 
@@ -123,6 +136,7 @@ function Albums({ translateY, onPress }) {
                 style={{ flexDirection: 'row' }}
               >
                 <Image fadeDuration={0} source={preview} style={styles.image} />
+
                 <View style={styles.inner}>
                   <Text style={styles.title}>{title}</Text>
                   <Text style={styles.count}>{totalCount}</Text>
