@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "yarn patch-package && yarn copy:locales:android && yarn pod:install",
+    "postinstall": "yarn patch-package && yarn copy:locales:android",
     "patch-package": "tasks/patch_package",
     "pod:install": "pod install --project-directory=ios",
     "emulator:create": "tasks/emulator_create",
