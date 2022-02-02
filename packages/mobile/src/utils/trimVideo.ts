@@ -1,5 +1,6 @@
 import * as MediaLibrary from 'expo-media-library'
 import { Video } from 'react-native-compressor'
+import * as VideoThumbnails from 'expo-video-thumbnails'
 import { showToast } from 'navigation/banner'
 import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from './enums'
@@ -20,11 +21,17 @@ export default async function trimVideo(asset) {
       return Promise.reject({ message: 'Video to long' })
     }
 
-    const result = await Video.compress(video.localUri, {
-      compressionMethod: 'auto',
-    })
+    const [uri, poster] = await Promise.all([
+      Video.compress(video.localUri, {
+        compressionMethod: 'auto',
+      }),
+      VideoThumbnails.getThumbnailAsync(video.localUri),
+    ])
 
-    return result
+    return {
+      uri,
+      poster: poster.uri,
+    }
   } catch (err) {
     logError(err)
   }

@@ -78,8 +78,11 @@ function Header({ headerLeftStyle = {}, headerRightStyle = {}, arrowStyle = {}, 
       const files = await Promise.all(
         filesWithOptions.map(async (file) => {
           if (file.mediaType === 'video') {
+            const { uri, poster } = await trimVideo(file)
+
             return {
-              uri: await trimVideo(file),
+              uri,
+              poster,
               type: FILE_TYPES.VIDEO,
             }
           }
