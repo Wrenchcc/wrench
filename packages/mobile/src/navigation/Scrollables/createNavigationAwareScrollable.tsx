@@ -53,6 +53,7 @@ export default function createNavigationAwareScrollable(Component) {
     const VIEW_OFFSET = isAndroid ? CONTENT_INSET + extraContentInset : 0
 
     const visibleItemId = useSharedValue<ViewabilityItemsContextType>(null)
+    const visiblePostId = useSharedValue<ViewabilityItemsContextType>(null)
     const visibleIndexes = useSharedValue({})
 
     const setVisibleItemId = useCallback((id) => {
@@ -67,6 +68,7 @@ export default function createNavigationAwareScrollable(Component) {
       const post = viewableItems[0]?.item
       const currentIndex = visibleIndexes.value[post?.node?.id]
 
+      visiblePostId.value = post?.node?.id
       visibleItemId.value = getNodeIdByIndex(post, currentIndex)
     }, [])
 
@@ -131,7 +133,7 @@ export default function createNavigationAwareScrollable(Component) {
 
     return (
       <ViewabilityItemsContext.Provider
-        value={{ visibleItemId, setVisibleItemId, setVisibleIndex }}
+        value={{ visibleItemId, visiblePostId, setVisibleItemId, setVisibleIndex }}
       >
         <Component
           ref={setRef}
@@ -168,8 +170,12 @@ export default function createNavigationAwareScrollable(Component) {
           {...(androidDismissKeyboard && keyboardDismissProp)}
           {...props}
           onViewableItemsChanged={onViewableItemsChanged}
+          windowSize={5}
+          maxToRenderPerBatch={5}
+          updateCellsBatchingPeriod={50}
+          removeClippedSubviews={false}
           viewabilityConfig={{
-            waitForInteractions: false,
+            waitForInteractions: true,
             itemVisiblePercentThreshold: 70,
             minimumViewTime: 100,
           }}

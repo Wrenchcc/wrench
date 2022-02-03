@@ -29,6 +29,7 @@ const styles = {
   content: {
     paddingTop: 10,
     paddingHorizontal: 10,
+    paddingBottom: 40,
   },
   item: {
     height: 100,

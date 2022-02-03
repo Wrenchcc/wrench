@@ -1,6 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { FlatList, View, Image as RNImage } from 'react-native'
 import Animated, { FadeOut } from 'react-native-reanimated'
+import * as Haptics from 'expo-haptics'
 import { store, useReactiveVar } from 'gql'
 import { FILE_TYPES } from 'utils/enums'
 import { Touchable, Icon } from 'ui'
@@ -26,10 +27,13 @@ const styles = {
 
 const RemoveItem = ({ children, uri }) => {
   const files = useReactiveVar(store.files.croppedFilesVar)
-  const handleRemove = useCallback(() => store.files.remove(uri), [uri])
+  const handleRemove = useCallback(() => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+    store.files.remove(uri)
+  }, [uri])
 
   return (
-    <Animated.View exiting={FadeOut.springify()}>
+    <Animated.View exiting={FadeOut.delay(0).duration(100)}>
       {files.length > 1 && (
         <View
           style={{

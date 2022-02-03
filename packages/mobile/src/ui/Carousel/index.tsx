@@ -7,7 +7,10 @@ import Animated, {
   withDelay,
   useSharedValue,
   useAnimatedStyle,
+  FadeOut,
+  FadeIn,
 } from 'react-native-reanimated'
+import * as Haptics from 'expo-haptics'
 import { ViewabilityItemsContext } from 'navigation'
 import { FILE_TYPES } from 'utils/enums'
 import Video from 'components/Video'
@@ -15,7 +18,8 @@ import { IMAGE_PRIORITY } from 'ui/constants'
 import Pagination from './Pagination'
 import { Picture, SIZE, GUTTER } from './styles'
 import { keyExtractor } from 'navigation'
-import { Text } from 'ui'
+import { Text, Icon, Touchable } from 'ui'
+import { close } from 'images'
 
 const SNAP_INTERVAL = SIZE
 
@@ -25,18 +29,59 @@ const getItemLayout = (_, index: number) => ({
   offset: SIZE * index,
 })
 
-function Carousel({ postId, files }) {
+const RemoveItem = ({ children, id, onRemove, files }) => {
+  const handleRemove = useCallback(() => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+    onRemove(id)
+  }, [id, onRemove])
+
+  // TODO: Translate
+  return (
+    <Animated.View exiting={FadeOut.delay(0).duration(100)}>
+      {files?.edges?.length > 1 && (
+        <Animated.View
+          entering={FadeIn.delay(100).duration(200)}
+          style={{
+            position: 'absolute',
+            right: 20,
+            top: 20,
+            zIndex: 100000,
+            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+            height: 30,
+            width: 30,
+            borderRadius: 30,
+          }}
+        >
+          <Touchable
+            onPress={handleRemove}
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexDirection: 'row',
+              height: 30,
+              width: 30,
+            }}
+          >
+            <Icon source={close} color="white" width={12} height={12} onPress={handleRemove} />
+          </Touchable>
+        </Animated.View>
+      )}
+      {children}
+    </Animated.View>
+  )
+}
+
+function Carousel({ postId, files, onRemove }) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const scrollEnabled = files.edges.length > 1
-  const node = files.edges[currentIndex].node
+  const scrollEnabled = files?.edges?.length > 1
   const opacity = useSharedValue(1)
   const context = useContext(ViewabilityItemsContext)
 
   useAnimatedReaction(
-    () => context.visibleItemId.value,
-    (visibleItemId) => {
-      if (visibleItemId === node.id) {
-        opacity.value = withDelay(5000, withTiming(0, { duration: 250 }))
+    () => context.visiblePostId.value,
+    (visiblePostId) => {
+      if (visiblePostId === postId) {
+        opacity.value = withDelay(4000, withTiming(0, { duration: 250 }))
       } else {
         opacity.value = withDelay(500, withTiming(1))
       }
@@ -48,7 +93,7 @@ function Carousel({ postId, files }) {
     ({ nativeEvent }) => {
       const offset = nativeEvent.contentOffset.x
       const index = Math.round(offset / SIZE)
-      const node = files.edges[index].node
+      const node = files?.edges[currentIndex].node
 
       if (index !== currentIndex) {
         // NOTE: Update visible id
@@ -83,12 +128,22 @@ function Carousel({ postId, files }) {
   }
 
   const renderItem = useCallback(
-    ({ item, index }) => (
-      <Pinchable key={item.node.uri} maximumZoomScale={5}>
-        {renderType(item, index)}
-      </Pinchable>
-    ),
-    []
+    ({ item, index }) => {
+      if (onRemove) {
+        return (
+          <RemoveItem id={item.node.id} files={files} onRemove={onRemove}>
+            {renderType(item, index)}
+          </RemoveItem>
+        )
+      }
+
+      return (
+        <Pinchable key={item.node.uri} maximumZoomScale={5}>
+          {renderType(item, index)}
+        </Pinchable>
+      )
+    },
+    [files]
   )
 
   const animatedStyle = useAnimatedStyle(() => ({
@@ -97,7 +152,7 @@ function Carousel({ postId, files }) {
 
   return (
     <View style={{ height: SIZE }}>
-      {files.edges.length > 1 && (
+      {files?.edges?.length > 1 && !onRemove && (
         <Animated.View
           style={[
             {
@@ -121,6 +176,7 @@ function Carousel({ postId, files }) {
           </Text>
         </Animated.View>
       )}
+
       <FlatList
         keyExtractor={keyExtractor}
         getItemLayout={getItemLayout}

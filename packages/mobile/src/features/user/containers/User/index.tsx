@@ -51,8 +51,8 @@ function User({ user: initialUserData }) {
     showActionSheetWithOptions(
       {
         options,
-        destructiveButtonIndex: 3,
-        cancelButtonIndex: 4,
+        destructiveButtonIndex: 0,
+        cancelButtonIndex: 3,
         tintColor: dynamicColor,
         containerStyle: {
           backgroundColor: dynamicBackgroundColor,
@@ -80,7 +80,7 @@ function User({ user: initialUserData }) {
         }
       }
     )
-  }, [])
+  }, [showActionSheetWithOptions])
 
   const hasPosts = edges && edges.length > 0
 

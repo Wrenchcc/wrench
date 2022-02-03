@@ -22,6 +22,13 @@ const styles = {
   },
 }
 
+const getSelectedMediaType = (type) =>
+  type === 'video'
+    ? MediaLibrary.MediaType.video
+    : [MediaLibrary.MediaType.photo, MediaLibrary.MediaType.video]
+
+const getSelectedAlbum = (albumId) => (albumId === 'video' ? null : albumId)
+
 function MediaSelector({ onScroll, spacing, onSelect }) {
   const [assets, setAssets] = useState([])
   const [hasNextPage, setHasNextPage] = useState(false)
@@ -45,12 +52,9 @@ function MediaSelector({ onScroll, spacing, onSelect }) {
 
       const result = await MediaLibrary.getAssetsAsync({
         first: INITIAL_PAGE_SIZE,
-        album: albumId === 'video' ? null : albumId,
+        album: getSelectedAlbum(albumId),
         sortBy: [[MediaLibrary.SortBy.creationTime, false]],
-        mediaType:
-          albumId === 'video'
-            ? MediaLibrary.MediaType.video
-            : [MediaLibrary.MediaType.photo, MediaLibrary.MediaType.video],
+        mediaType: getSelectedMediaType(albumId),
       })
 
       if (!init.current) {
@@ -75,9 +79,9 @@ function MediaSelector({ onScroll, spacing, onSelect }) {
       try {
         const result = await MediaLibrary.getAssetsAsync({
           after,
-          album: albumId,
+          album: getSelectedAlbum(albumId),
           first: PAGE_SIZE,
-          mediaType: [MediaLibrary.MediaType.photo, MediaLibrary.MediaType.video],
+          mediaType: getSelectedMediaType(albumId),
           sortBy: [[MediaLibrary.SortBy.creationTime, false]],
         })
 

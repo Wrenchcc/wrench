@@ -2,16 +2,26 @@ import React, { useState, useCallback } from 'react'
 import { useEditPostMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { Page, ScrollView, useNavigation } from 'navigation'
-import { ActivityIndicator, Text, Carousel } from 'ui'
+import { ActivityIndicator, Text, Carousel, KeyboardAvoidingView } from 'ui'
 import { Content, Input } from './styles'
 
 function EditPost({ post }) {
   const { t } = useTranslation('edit-post')
   const [isSaving, setIsSaving] = useState(false)
   const [caption, setCaption] = useState(post.caption)
-  const [editPost] = useEditPostMutation()
+  const [files, setFiles] = useState(post.files)
 
+  const [editPost] = useEditPostMutation()
   const { dismissEditPost } = useNavigation()
+
+  const handleRemove = useCallback(
+    (id) => {
+      setFiles({
+        edges: files.edges.filter((item) => item.node.id !== id),
+      })
+    },
+    [files]
+  )
 
   const handleSave = useCallback(async () => {
     setIsSaving(true)
@@ -22,13 +32,14 @@ function EditPost({ post }) {
         input: {
           collectionId: post?.collection.id,
           caption,
+          files: files.edges.map(({ node }) => node.id),
         },
       },
     })
 
     setIsSaving(false)
     dismissEditPost()
-  }, [post, editPost, caption])
+  }, [post, editPost, caption, files])
 
   return (
     <Page
@@ -50,23 +61,26 @@ function EditPost({ post }) {
         </Text>
       }
     >
-      <ScrollView paddingHorizontal={0}>
-        <Content>
-          <Input
-            autoFocus
-            multiline
-            keyboardType="twitter"
-            noBorder
-            scrollEnabled={false}
-            color="dark"
-            value={caption}
-            onChangeText={(text) => setCaption(text)}
-            placeholder={t('placeholder')}
-            style={{ marginBottom: 20 }}
-          />
-          <Carousel files={post.files} />
-        </Content>
-      </ScrollView>
+      <KeyboardAvoidingView paddingHorizontal={0} keyboardVerticalOffset={20}>
+        <ScrollView paddingHorizontal={0}>
+          <Content>
+            <Carousel files={files} onRemove={handleRemove} />
+
+            <Input
+              autoFocus
+              multiline
+              keyboardType="twitter"
+              noBorder
+              scrollEnabled={false}
+              color="dark"
+              value={caption}
+              onChangeText={(text) => setCaption(text)}
+              placeholder={t('placeholder')}
+              style={{ marginBottom: 20 }}
+            />
+          </Content>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </Page>
   )
 }

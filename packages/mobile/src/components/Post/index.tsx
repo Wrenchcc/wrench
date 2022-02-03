@@ -209,6 +209,7 @@ function Post({ post, withoutTitle, disableComments, withoutCollections, padding
     },
     [deletePost]
   )
+
   const { showActionSheetWithOptions } = useActionSheet()
 
   const navigateToProject = useCallback(() => {
