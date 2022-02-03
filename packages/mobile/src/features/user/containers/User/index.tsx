@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react'
-import { KeyboardAvoidingView } from 'react-native'
 import { usePaginatedQuery, UserDocument } from '@wrench/common'
 import { Page, FlatList } from 'navigation'
 import { useTranslation } from 'react-i18next'
@@ -9,17 +8,14 @@ import NativeShare from 'react-native-share'
 import * as Clipboard from 'expo-clipboard'
 import openLink from 'utils/openLink'
 import Post from 'components/Post'
-import { Toast, Icon } from 'ui'
+import { KeyboardAvoidingView, Toast, Icon } from 'ui'
 import { TOAST_TYPES } from 'utils/enums'
 import { showToast } from 'navigation/banner'
 import FollowingProjects from 'features/user/components/FollowingProjects'
 import Header from 'features/user/components/Header'
 import UserProjects from 'features/user/components/UserProjects'
-import { isIphone } from 'utils/platform'
 import PostSkeleton from 'components/Post/Skeleton'
 import { share } from 'images'
-
-const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
@@ -112,7 +108,7 @@ function User({ user: initialUserData }) {
     )
 
   return (
-    <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
+    <KeyboardAvoidingView paddingHorizontal={0}>
       <Page
         headerTitle={user.fullName}
         headerRight={<Icon source={share} onPress={handleActionSheet} />}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
-import { KeyboardAvoidingView, View } from 'react-native'
+import { View } from 'react-native'
 import ms from 'ms'
 import { showPosting, NavigationBanner } from 'navigation/banner'
 import { getTrackingConsent } from 'utils/analytics'
@@ -7,14 +7,11 @@ import { usePaginatedQuery, FeedDocument, useSimilarProjectsQuery } from '@wrenc
 import { useReactiveVar, store } from 'gql'
 import { Layout, FlatList, useScrollToTop, SCREENS } from 'navigation'
 import Post from 'components/Post'
-import { ShowLatest } from 'ui'
+import { ShowLatest, KeyboardAvoidingView } from 'ui'
 import * as Spacing from 'ui/Spacing'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import ProjectsRow from 'features/project/components/SimilarProjects'
-import { isIphone } from 'utils/platform'
 import PostSkeleton from 'components/Post/Skeleton'
-
-const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 const SimilarProjects = ({ id }) => {
   const { loading, data } = useSimilarProjectsQuery({
@@ -110,7 +107,7 @@ function Feed() {
     )
 
   return (
-    <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
+    <KeyboardAvoidingView paddingHorizontal={0}>
       <Layout headerTitleKey="home" stickyComponent={StickyComponent}>
         <FlatList
           ref={scrollRef}

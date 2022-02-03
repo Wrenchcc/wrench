@@ -1,16 +1,13 @@
 import React from 'react'
-import { View, KeyboardAvoidingView } from 'react-native'
+import { View } from 'react-native'
 import { usePaginatedQuery, ProjectDocument } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { Page, FlatList, useNavigation } from 'navigation'
 import Post from 'components/Post'
-import { EmptyState, Title, Share, Edit } from 'ui'
+import { KeyboardAvoidingView, EmptyState, Title, Share, Edit } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import ProjectHeader from 'features/project/components/ProjectHeader'
-import { isIphone } from 'utils/platform'
 import PostSkeleton from 'components/Post/Skeleton'
-
-const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 function Project({ slug, id, postId, project: initialProjectData, post: initialPostData }) {
   const { t } = useTranslation('project')
@@ -69,7 +66,7 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
     )
 
   return (
-    <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
+    <KeyboardAvoidingView paddingHorizontal={0}>
       <Page
         headerTitle={project?.title}
         headerRight={

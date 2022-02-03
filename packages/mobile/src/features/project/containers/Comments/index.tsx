@@ -1,13 +1,12 @@
 import React, { useState, useCallback } from 'react'
-import { KeyboardAvoidingView, FlatList, View } from 'react-native'
+import { FlatList, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { CommentsDocument, RepliesDocument, usePaginatedQuery } from '@wrench/common'
 import { Page, keyExtractor } from 'navigation'
 import { NAVIGATION } from 'navigation/constants'
 import CommentField from 'components/CommentField'
-import { ActivityIndicator, CommentItem, Text } from 'ui'
+import { KeyboardAvoidingView, ActivityIndicator, CommentItem, Text } from 'ui'
 import { update } from 'rambda'
-import { isIphone } from 'utils/platform'
 
 function Comments({ postId }) {
   const { t } = useTranslation('comments')
@@ -120,8 +119,7 @@ function Comments({ postId }) {
   return (
     <Page headerTitle={t('title')} headerAnimation={false} view>
       <KeyboardAvoidingView
-        behavior={isIphone && 'padding'}
-        style={{ flex: 1 }}
+        paddingHorizontal={0}
         keyboardVerticalOffset={-NAVIGATION.BOTTOM_TABS_HEIGHT}
       >
         <FlatList

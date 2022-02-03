@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { View, FlatList, KeyboardAvoidingView } from 'react-native'
+import { View, FlatList } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import {
   usePaginatedQuery,
@@ -13,8 +13,7 @@ import { update } from 'rambda'
 import { Page, useNavigation, keyExtractor, NAVIGATION } from 'navigation'
 import Post from 'components/Post'
 import CommentField from 'components/CommentField'
-import { CommentItem, ActivityIndicator, Text } from 'ui'
-import { isIphone } from 'utils/platform'
+import { CommentItem, ActivityIndicator, Text, KeyboardAvoidingView } from 'ui'
 
 function PostContainer({ postId, commentId }) {
   const { t } = useTranslation('post-container')
@@ -144,8 +143,7 @@ function PostContainer({ postId, commentId }) {
   return (
     <Page view headerTitle={t('title')} headerAnimation={false}>
       <KeyboardAvoidingView
-        behavior={isIphone && 'padding'}
-        style={{ flex: 1 }}
+        paddingHorizontal={0}
         keyboardVerticalOffset={-NAVIGATION.BOTTOM_TABS_HEIGHT}
       >
         <FlatList

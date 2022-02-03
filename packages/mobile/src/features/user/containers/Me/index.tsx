@@ -1,17 +1,13 @@
 import React, { useRef, useCallback } from 'react'
-import { KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Layout, FlatList, SCREENS, useScrollToTop, useNavigation } from 'navigation'
 import { usePaginatedQuery, CurrentUserProfileDocument } from '@wrench/common'
 import Post from 'components/Post'
-import { EmptyState, Icon } from 'ui'
+import { KeyboardAvoidingView, EmptyState, Icon } from 'ui'
 import Header from 'features/user/components/Header'
 import { TYPES } from 'ui/EmptyState/constants'
 import UserProjects from 'features/user/components/UserProjects'
-import { isIphone } from 'utils/platform'
 import { menu, add } from 'images'
-
-const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
@@ -57,7 +53,7 @@ function Me() {
   }
 
   return (
-    <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
+    <KeyboardAvoidingView paddingHorizontal={0}>
       <Layout
         headerLeft={
           <Icon
