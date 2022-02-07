@@ -21,7 +21,7 @@ const renderItem = ({ item }) => <Post post={item.node} />
 function Me() {
   const { t } = useTranslation(['me', 'select-project', 'edit-collection'])
 
-  useScrollToTop()
+  useScrollToTop(SCREENS.ME)
 
   const {
     data: { edges, user },

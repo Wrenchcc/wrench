@@ -11,6 +11,7 @@ import {
   useScrollContext,
   withScrollableContext,
   FlatList,
+  SCREENS,
 } from 'navigation'
 import Post from 'components/Post'
 import { ShowLatest } from 'ui'
@@ -59,7 +60,7 @@ function Feed() {
   const isPosting = useReactiveVar(store.post.isPostingVar)
   const file = useReactiveVar(store.files.croppedFilesVar)[0]
 
-  useScrollToTop()
+  useScrollToTop(SCREENS.FEED)
 
   const {
     data: { edges },

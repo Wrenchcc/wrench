@@ -11,14 +11,13 @@ import { ScrollContext } from './context'
 import { clamp, snapPoint } from './worklets'
 import { CONTENT_INSET, NAVIGATION } from '../constants'
 
-export default function withScrollableContext<T>(Component: FC<T>) {
+export default function withScrollableContext<T>(Component: FC<T>, extraContentInset = 0) {
   return (props: T) => {
     const scrollRef = useAnimatedRef()
     const headerY = useSharedValue(0)
     const scrollY = useSharedValue(0)
     const scrollVelocity = useSharedValue({ x: 0, y: 0 })
-
-    const initialScrolloffset = isAndroid ? 0 : -CONTENT_INSET
+    const initialViewOffset = isAndroid ? 0 : -CONTENT_INSET - extraContentInset
 
     useScrollToInput(scrollRef)
 
@@ -29,7 +28,7 @@ export default function withScrollableContext<T>(Component: FC<T>) {
         const velocityY = scrollVelocity.value.y
         const direction = evt.contentOffset.y > ctx.beginOffset ? 'down' : 'up'
 
-        scrollY.value = evt.contentOffset.y - initialScrolloffset
+        scrollY.value = evt.contentOffset.y - initialViewOffset
 
         if (evt.velocity !== undefined) {
           scrollVelocity.value = evt.velocity

@@ -9,10 +9,11 @@ function Layout({
   headerRight,
   stickyComponent,
   children,
+  keyboardAvoidingViewEnabled,
 }) {
   return (
     // TODO: Only enable when last item in list
-    <KeyboardAvoidingView paddingHorizontal={0}>
+    <KeyboardAvoidingView paddingHorizontal={0} enabled={keyboardAvoidingViewEnabled}>
       {headerComponent || (
         <Header
           headerLeft={headerLeft}

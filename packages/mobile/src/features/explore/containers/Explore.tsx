@@ -3,7 +3,14 @@ import { AppState, View, Dimensions } from 'react-native'
 import { usePaginatedQuery, PostsDocument, useSimilarProjectsQuery } from '@wrench/common'
 import { useReactiveVar, store } from 'gql'
 import { isAndroid as _isAndroid } from 'utils/platform'
-import { Layout, FlatList, CONTENT_INSET, useScrollToTop, withScrollableContext } from 'navigation'
+import {
+  Layout,
+  FlatList,
+  CONTENT_INSET,
+  useScrollToTop,
+  withScrollableContext,
+  SCREENS,
+} from 'navigation'
 import Header from 'navigation/Layout/Header'
 import SearchBar from 'components/SearchBar'
 import Search from 'components/Search'
@@ -49,7 +56,7 @@ const STICKY_HEIGHT = 50
 function Explore() {
   const searchActive = useReactiveVar(store.search.activeVar)
 
-  useScrollToTop()
+  useScrollToTop(SCREENS.EXPLORE, !searchActive)
 
   const {
     data: { edges },
@@ -79,7 +86,7 @@ function Explore() {
 
   return (
     <Layout
-      extraContentInset={STICKY_HEIGHT}
+      keyboardAvoidingViewEnabled={false}
       headerComponent={
         <Header
           headerLeft={<SearchBar />}
@@ -107,4 +114,4 @@ function Explore() {
   )
 }
 
-export default withScrollableContext(Explore)
+export default withScrollableContext(Explore, STICKY_HEIGHT)

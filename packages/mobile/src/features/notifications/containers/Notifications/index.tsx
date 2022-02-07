@@ -7,7 +7,14 @@ import {
 } from '@wrench/common'
 import { Navigation } from 'react-native-navigation'
 import ms from 'ms'
-import { Layout, FlatList, useNavigation, useScrollToTop, withScrollableContext } from 'navigation'
+import {
+  Layout,
+  FlatList,
+  useNavigation,
+  useScrollToTop,
+  withScrollableContext,
+  SCREENS,
+} from 'navigation'
 import { Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 
@@ -16,7 +23,7 @@ function Notifications({ componentId }) {
   const [deleteNotification] = useDeleteNotificationMutation()
   const { showNotificationBadge, hideNotificationBadge } = useNavigation()
 
-  useScrollToTop()
+  useScrollToTop(SCREENS.NOTIFICATIONS)
 
   const handleDeleteNotification = useCallback((id) => {
     deleteNotification({
