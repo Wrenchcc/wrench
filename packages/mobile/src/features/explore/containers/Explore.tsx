@@ -1,9 +1,9 @@
-import React, { useCallback, useRef, useEffect } from 'react'
-import { AppState, View } from 'react-native'
+import React, { useCallback, useEffect } from 'react'
+import { AppState, View, Dimensions } from 'react-native'
 import { usePaginatedQuery, PostsDocument, useSimilarProjectsQuery } from '@wrench/common'
 import { useReactiveVar, store } from 'gql'
 import { isAndroid as _isAndroid } from 'utils/platform'
-import { Layout, FlatList, SCREENS, useScrollToTop, CONTENT_INSET } from 'navigation'
+import { Layout, FlatList, CONTENT_INSET, useScrollToTop, withScrollableContext } from 'navigation'
 import Header from 'navigation/Layout/Header'
 import SearchBar from 'components/SearchBar'
 import Search from 'components/Search'
@@ -14,6 +14,8 @@ import ProjectsRow from 'features/project/components/SimilarProjects'
 import * as Spacing from 'ui/Spacing'
 import PostSkeleton from 'components/Post/Skeleton'
 
+const { width } = Dimensions.get('window')
+
 const SimilarProjects = ({ id }) => {
   const { loading, data } = useSimilarProjectsQuery({
     variables: {
@@ -22,7 +24,7 @@ const SimilarProjects = ({ id }) => {
   })
 
   return (
-    <View style={{ height: 290 }}>
+    <View style={{ height: 290, width }}>
       {!loading && <ProjectsRow projects={data.similarProjects} marginTop={10} disableAnimation />}
     </View>
   )
@@ -45,10 +47,9 @@ const renderItem = ({ item, index }) => {
 const STICKY_HEIGHT = 50
 
 function Explore() {
-  const scrollRef = useRef(null)
   const searchActive = useReactiveVar(store.search.activeVar)
 
-  useScrollToTop(scrollRef, SCREENS.EXPLORE, !searchActive)
+  useScrollToTop()
 
   const {
     data: { edges },
@@ -87,7 +88,6 @@ function Explore() {
       }
     >
       <FlatList
-        ref={scrollRef}
         spacingSeparator
         progressViewOffset={CONTENT_INSET + 25}
         initialNumToRender={2}
@@ -107,4 +107,4 @@ function Explore() {
   )
 }
 
-export default Explore
+export default withScrollableContext(Explore)

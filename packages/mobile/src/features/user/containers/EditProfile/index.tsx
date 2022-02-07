@@ -8,7 +8,7 @@ import { Page, ScrollView, useNavigation, AppNavigation, SCREENS } from 'navigat
 import { preSignUrl } from 'gql'
 import { TOAST_TYPES } from 'utils/enums'
 import { showToast } from 'navigation/banner'
-import { ActivityIndicator, Text, Title, Touchable, Input, Icon, KeyboardAvoidingView } from 'ui'
+import { ActivityIndicator, Text, Title, Touchable, Input, Icon } from 'ui'
 import { logError } from 'utils/sentry'
 import { close } from 'images'
 import { FILE_TYPES } from 'utils/enums'
@@ -225,108 +225,106 @@ function EditProfile({ onboarding }) {
       view
       headerAnimation={false}
     >
-      <KeyboardAvoidingView paddingHorizontal={0}>
-        <ScrollView
-          contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 60 }}
-          keyboardDismissMode="on-drag"
-        >
-          <ChangeAvatar>
-            {/* NOTE: Use image Avatar can't handle file:// Android format */}
-            <Image
-              fadeDuration={0}
-              style={{ width: 120, height: 120, borderRadius: 120 }}
-              source={{
-                uri: avatarUrl,
-              }}
+      <ScrollView
+        contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 60 }}
+        keyboardDismissMode="on-drag"
+      >
+        <ChangeAvatar>
+          {/* NOTE: Use image Avatar can't handle file:// Android format */}
+          <Image
+            fadeDuration={0}
+            style={{ width: 120, height: 120, borderRadius: 120 }}
+            source={{
+              uri: avatarUrl,
+            }}
+          />
+          <Overlay onPress={handleChangeAvatar} activeOpacity={1}>
+            <Text color="white" medium fontSize={15}>
+              {t('change')}
+            </Text>
+          </Overlay>
+        </ChangeAvatar>
+
+        <Information>
+          <Title>{t('information')}</Title>
+
+          <Row first>
+            <Input
+              color="dark"
+              placeholder={t('firstName')}
+              onChangeText={(value) => setFirstName(value)}
+              defaultValue={firstName}
+              error={firstName.length === 0}
             />
-            <Overlay onPress={handleChangeAvatar} activeOpacity={1}>
-              <Text color="white" medium fontSize={15}>
-                {t('change')}
+          </Row>
+
+          <Row>
+            <Input
+              color="dark"
+              placeholder={t('lastName')}
+              onChangeText={(value) => setLastName(value)}
+              defaultValue={lastName}
+              error={lastName.length === 0}
+            />
+          </Row>
+
+          <Row>
+            <Input
+              color="dark"
+              placeholder={t('username')}
+              onChangeText={(value) => setUsername(value)}
+              defaultValue={username}
+              error={username.length === 0}
+            />
+          </Row>
+
+          <Row>
+            <Location>
+              <Text
+                fontSize={17}
+                color={location ? 'dark' : 'light_grey'}
+                onPress={navigateToAddLocation}
+                numberOfLines={1}
+              >
+                {location ? location : t('place')}
               </Text>
-            </Overlay>
-          </ChangeAvatar>
+            </Location>
 
-          <Information>
-            <Title>{t('information')}</Title>
+            <CloseIcon
+              source={close}
+              color="accent"
+              width={12}
+              height={12}
+              onPress={() => setLocation('')}
+            />
+          </Row>
 
-            <Row first>
-              <Input
-                color="dark"
-                placeholder={t('firstName')}
-                onChangeText={(value) => setFirstName(value)}
-                defaultValue={firstName}
-                error={firstName.length === 0}
-              />
-            </Row>
+          <Row>
+            <Input
+              color="dark"
+              placeholder={t('bio')}
+              defaultValue={bio}
+              onChangeText={handleBio}
+              style={{ paddingRight: 55 }}
+            />
+            <Counter color="accent" fontSize={15}>
+              {`${bio ? bio.length : 0}/${MAX_CHARACTERS}`}
+            </Counter>
+          </Row>
 
-            <Row>
-              <Input
-                color="dark"
-                placeholder={t('lastName')}
-                onChangeText={(value) => setLastName(value)}
-                defaultValue={lastName}
-                error={lastName.length === 0}
-              />
-            </Row>
-
-            <Row>
-              <Input
-                color="dark"
-                placeholder={t('username')}
-                onChangeText={(value) => setUsername(value)}
-                defaultValue={username}
-                error={username.length === 0}
-              />
-            </Row>
-
-            <Row>
-              <Location>
-                <Text
-                  fontSize={17}
-                  color={location ? 'dark' : 'light_grey'}
-                  onPress={navigateToAddLocation}
-                  numberOfLines={1}
-                >
-                  {location ? location : t('place')}
-                </Text>
-              </Location>
-
-              <CloseIcon
-                source={close}
-                color="accent"
-                width={12}
-                height={12}
-                onPress={() => setLocation('')}
-              />
-            </Row>
-
-            <Row>
-              <Input
-                color="dark"
-                placeholder={t('bio')}
-                defaultValue={bio}
-                onChangeText={handleBio}
-                style={{ paddingRight: 55 }}
-              />
-              <Counter color="accent" fontSize={15}>
-                {`${bio ? bio.length : 0}/${MAX_CHARACTERS}`}
-              </Counter>
-            </Row>
-
-            <Row>
-              <Input
-                color="dark"
-                placeholder={t('website')}
-                keyboardType="url"
-                textContentType="URL"
-                onChangeText={(value) => setWebsite(value)}
-                defaultValue={website}
-                autoCorrect={false}
-              />
-            </Row>
-          </Information>
-        </ScrollView>
-      </KeyboardAvoidingView>
+          <Row>
+            <Input
+              color="dark"
+              placeholder={t('website')}
+              keyboardType="url"
+              textContentType="URL"
+              onChangeText={(value) => setWebsite(value)}
+              defaultValue={website}
+              autoCorrect={false}
+            />
+          </Row>
+        </Information>
+      </ScrollView>
     </Page>
   )
 }

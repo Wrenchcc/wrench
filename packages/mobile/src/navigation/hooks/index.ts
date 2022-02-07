@@ -5,3 +5,4 @@ export { default as useNavigationComponentDidDisappear } from './useNavigationCo
 export { default as useNavigationComponentDidAppear } from './useNavigationComponentDidAppear'
 export { default as useNavigationButtonPress } from './useNavigationButtonPress'
 export { default as useVisibility } from './useVisibility'
+export { default as useScrollToInput } from './useScrollToInput'

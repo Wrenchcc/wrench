@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react'
 import { useEditPostMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { Page, ScrollView, useNavigation } from 'navigation'
-import { ActivityIndicator, Text, Carousel, KeyboardAvoidingView } from 'ui'
+import { ActivityIndicator, Text, Carousel } from 'ui'
 import { Content, Input } from './styles'
 
 function EditPost({ post }) {
@@ -46,6 +46,7 @@ function EditPost({ post }) {
       view
       headerAnimation={false}
       headerTitle={t('headerTitle')}
+      keyboardVerticalOffset={20}
       headerRight={
         isSaving ? (
           <ActivityIndicator />
@@ -61,26 +62,24 @@ function EditPost({ post }) {
         </Text>
       }
     >
-      <KeyboardAvoidingView paddingHorizontal={0} keyboardVerticalOffset={20}>
-        <ScrollView paddingHorizontal={0}>
-          <Content>
-            <Carousel files={files} onRemove={handleRemove} />
+      <ScrollView paddingHorizontal={0}>
+        <Content>
+          <Carousel files={files} onRemove={handleRemove} />
 
-            <Input
-              autoFocus
-              multiline
-              keyboardType="twitter"
-              noBorder
-              scrollEnabled={false}
-              color="dark"
-              value={caption}
-              onChangeText={(text) => setCaption(text)}
-              placeholder={t('placeholder')}
-              style={{ marginBottom: 20 }}
-            />
-          </Content>
-        </ScrollView>
-      </KeyboardAvoidingView>
+          <Input
+            autoFocus
+            multiline
+            keyboardType="twitter"
+            noBorder
+            scrollEnabled={false}
+            color="dark"
+            value={caption}
+            onChangeText={(text) => setCaption(text)}
+            placeholder={t('placeholder')}
+            style={{ marginBottom: 20 }}
+          />
+        </Content>
+      </ScrollView>
     </Page>
   )
 }

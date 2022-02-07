@@ -4,7 +4,7 @@ import { usePaginatedQuery, ProjectDocument } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { Page, FlatList, useNavigation } from 'navigation'
 import Post from 'components/Post'
-import { KeyboardAvoidingView, EmptyState, Title, Share, Edit } from 'ui'
+import { EmptyState, Title, Share, Edit } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import ProjectHeader from 'features/project/components/ProjectHeader'
 import PostSkeleton from 'components/Post/Skeleton'
@@ -66,35 +66,33 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
     )
 
   return (
-    <KeyboardAvoidingView paddingHorizontal={0}>
-      <Page
-        headerTitle={project?.title}
-        headerRight={
-          isOwner ? (
-            <Edit project={project} onDeleteCallback={navigateBack} />
-          ) : (
-            <Share title={project?.title} url={project?.dynamicLink} text />
-          )
+    <Page
+      headerTitle={project?.title}
+      headerRight={
+        isOwner ? (
+          <Edit project={project} onDeleteCallback={navigateBack} />
+        ) : (
+          <Share title={project?.title} url={project?.dynamicLink} text />
+        )
+      }
+    >
+      <FlatList
+        initialNumToRender={2}
+        spacingSeparator
+        paddingHorizontal={hasPosts ? 20 : 0}
+        contentContainerStyle={{ flexGrow: 1 }}
+        ListEmptyComponent={ListEmptyComponent}
+        ListHeaderComponent={
+          project?.title && <ProjectHeader project={project} spacingHorizontal={!hasPosts} />
         }
-      >
-        <FlatList
-          initialNumToRender={2}
-          spacingSeparator
-          paddingHorizontal={hasPosts ? 20 : 0}
-          contentContainerStyle={{ flexGrow: 1 }}
-          ListEmptyComponent={ListEmptyComponent}
-          ListHeaderComponent={
-            project?.title && <ProjectHeader project={project} spacingHorizontal={!hasPosts} />
-          }
-          data={reorderedEdges}
-          refetch={refetch}
-          fetchMore={fetchMore}
-          isRefetching={isRefetching}
-          hasNextPage={hasNextPage}
-          renderItem={renderItem}
-        />
-      </Page>
-    </KeyboardAvoidingView>
+        data={reorderedEdges}
+        refetch={refetch}
+        fetchMore={fetchMore}
+        isRefetching={isRefetching}
+        hasNextPage={hasNextPage}
+        renderItem={renderItem}
+      />
+    </Page>
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext, useCallback, useState } from 'react'
+import React, { useRef, useEffect, useCallback, useState } from 'react'
 import { Video as Player } from 'expo-av'
 import { Image } from 'react-native'
 import { Navigation } from 'react-native-navigation'
@@ -9,7 +9,7 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
 } from 'react-native-reanimated'
-import { ViewabilityItemsContext } from 'navigation'
+import { useViewability } from 'navigation'
 import { Touchable, Icon } from 'ui'
 import { useReactiveVar, store } from 'gql'
 import { muted, sound } from 'images'
@@ -19,7 +19,7 @@ function Video({ size, source, id }) {
   const isPlaying = useRef(false)
   const opacity = useSharedValue(0)
   const isMuted = useReactiveVar(store.video.isMutedVar)
-  const context = useContext(ViewabilityItemsContext)
+  const context = useViewability()
 
   const play = useCallback(() => {
     if (!isPlaying.current) {
@@ -50,7 +50,7 @@ function Video({ size, source, id }) {
   }, [videoRef])
 
   useAnimatedReaction(
-    () => context.visibleItemId.value,
+    () => context?.visibleItemId?.value,
     (visibleItemId) => {
       if (visibleItemId === id) {
         opacity.value = withTiming(1, { duration: 200 })

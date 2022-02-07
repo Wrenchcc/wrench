@@ -5,7 +5,7 @@ import { CommentsDocument, RepliesDocument, usePaginatedQuery } from '@wrench/co
 import { Page, keyExtractor } from 'navigation'
 import { NAVIGATION } from 'navigation/constants'
 import CommentField from 'components/CommentField'
-import { KeyboardAvoidingView, ActivityIndicator, CommentItem, Text } from 'ui'
+import { ActivityIndicator, CommentItem, Text } from 'ui'
 import { update } from 'rambda'
 
 function Comments({ postId }) {
@@ -117,39 +117,39 @@ function Comments({ postId }) {
   const initialFetch = isFetching && !edges
 
   return (
-    <Page headerTitle={t('title')} headerAnimation={false} view>
-      <KeyboardAvoidingView
-        paddingHorizontal={0}
-        keyboardVerticalOffset={-NAVIGATION.BOTTOM_TABS_HEIGHT}
-      >
-        <FlatList
-          inverted
-          initialNumToRender={8}
-          contentInsetAdjustmentBehavior="never"
-          automaticallyAdjustContentInsets={false}
-          keyboardDismissMode="on-drag"
-          keyboardShouldPersistTaps="always"
-          keyExtractor={keyExtractor}
-          ListFooterComponent={renderTopComponent}
-          ListEmptyComponent={
-            initialFetch && (
-              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <ActivityIndicator />
-              </View>
-            )
-          }
-          data={edges}
-          renderItem={renderItem}
-          contentContainerStyle={{
-            paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
-            flexGrow: 1,
-            justifyContent: 'flex-end',
-          }}
-        />
-        <View style={{ paddingHorizontal: 20, paddingBottom: NAVIGATION.BOTTOM_TABS_HEIGHT }}>
-          <CommentField postId={postId} username={username} commentId={commentId} emoji />
-        </View>
-      </KeyboardAvoidingView>
+    <Page
+      headerTitle={t('title')}
+      headerAnimation={false}
+      view
+      keyboardVerticalOffset={-NAVIGATION.BOTTOM_TABS_HEIGHT}
+    >
+      <FlatList
+        inverted
+        initialNumToRender={8}
+        contentInsetAdjustmentBehavior="never"
+        automaticallyAdjustContentInsets={false}
+        keyboardDismissMode="on-drag"
+        keyboardShouldPersistTaps="always"
+        keyExtractor={keyExtractor}
+        ListFooterComponent={renderTopComponent}
+        ListEmptyComponent={
+          initialFetch && (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+              <ActivityIndicator />
+            </View>
+          )
+        }
+        data={edges}
+        renderItem={renderItem}
+        contentContainerStyle={{
+          paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
+          flexGrow: 1,
+          justifyContent: 'flex-end',
+        }}
+      />
+      <View style={{ paddingHorizontal: 20, paddingBottom: NAVIGATION.BOTTOM_TABS_HEIGHT }}>
+        <CommentField postId={postId} username={username} commentId={commentId} emoji />
+      </View>
     </Page>
   )
 }

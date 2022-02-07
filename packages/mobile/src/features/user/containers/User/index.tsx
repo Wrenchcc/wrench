@@ -8,7 +8,7 @@ import NativeShare from 'react-native-share'
 import * as Clipboard from 'expo-clipboard'
 import openLink from 'utils/openLink'
 import Post from 'components/Post'
-import { KeyboardAvoidingView, Toast, Icon } from 'ui'
+import { Toast, Icon } from 'ui'
 import { TOAST_TYPES } from 'utils/enums'
 import { showToast } from 'navigation/banner'
 import FollowingProjects from 'features/user/components/FollowingProjects'
@@ -108,27 +108,25 @@ function User({ user: initialUserData }) {
     )
 
   return (
-    <KeyboardAvoidingView paddingHorizontal={0}>
-      <Page
-        headerTitle={user.fullName}
-        headerRight={<Icon source={share} onPress={handleActionSheet} />}
-      >
-        <FlatList
-          initialNumToRender={1}
-          spacingSeparator
-          paddingHorizontal={hasPosts ? 20 : 0}
-          contentContainerStyle={{ flexGrow: 1 }}
-          ListHeaderComponent={ListHeaderComponent}
-          ListEmptyComponent={ListEmptyComponent}
-          data={edges}
-          refetch={refetch}
-          fetchMore={fetchMore}
-          isRefetching={isRefetching}
-          hasNextPage={hasNextPage}
-          renderItem={renderItem}
-        />
-      </Page>
-    </KeyboardAvoidingView>
+    <Page
+      headerTitle={user.fullName}
+      headerRight={<Icon source={share} onPress={handleActionSheet} />}
+    >
+      <FlatList
+        initialNumToRender={1}
+        spacingSeparator
+        paddingHorizontal={hasPosts ? 20 : 0}
+        contentContainerStyle={{ flexGrow: 1 }}
+        ListHeaderComponent={ListHeaderComponent}
+        ListEmptyComponent={ListEmptyComponent}
+        data={edges}
+        refetch={refetch}
+        fetchMore={fetchMore}
+        isRefetching={isRefetching}
+        hasNextPage={hasNextPage}
+        renderItem={renderItem}
+      />
+    </Page>
   )
 }
 

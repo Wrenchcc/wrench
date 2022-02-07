@@ -1,4 +1,4 @@
-import React, { memo, useState, useCallback, useContext } from 'react'
+import React, { memo, useState, useCallback } from 'react'
 import { FlatList, View } from 'react-native'
 import Pinchable from 'react-native-pinchable'
 import Animated, {
@@ -11,7 +11,7 @@ import Animated, {
   FadeIn,
 } from 'react-native-reanimated'
 import * as Haptics from 'expo-haptics'
-import { ViewabilityItemsContext } from 'navigation'
+import { useViewability } from 'navigation'
 import { FILE_TYPES } from 'utils/enums'
 import Video from 'components/Video'
 import { IMAGE_PRIORITY } from 'ui/constants'
@@ -75,10 +75,10 @@ function Carousel({ postId, files, onRemove }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const scrollEnabled = files?.edges?.length > 1
   const opacity = useSharedValue(1)
-  const context = useContext(ViewabilityItemsContext)
+  const context = useViewability()
 
   useAnimatedReaction(
-    () => context.visiblePostId.value,
+    () => context?.visiblePostId?.value,
     (visiblePostId) => {
       if (visiblePostId === postId) {
         opacity.value = withDelay(4000, withTiming(0, { duration: 250 }))

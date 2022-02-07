@@ -1,14 +1,10 @@
 import { createContext } from 'react'
+import type { ScrollContextType, ViewabilityItemContextType } from './types'
 
-export type ViewabilityItemsContextType = string[]
-
-export const ViewabilityItemsContext = createContext({
-  visibleItemId: {
-    value: [],
-  },
-  visiblePostId: {
-    value: [],
-  },
-  setVisibleItemId: (item: any) => {},
-  setVisibleIndex: (id: string, index: number) => {},
+// @ts-ignore
+export const ScrollContext = createContext<ScrollContextType>({
+  scrollHandler: () => null,
 })
+
+// @ts-ignore
+export const ViewabilityItemsContext = createContext<ViewabilityItemContextType>()

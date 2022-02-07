@@ -1,17 +1,25 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react'
-import { View } from 'react-native'
+import React, { useEffect, useState, useCallback } from 'react'
+import { View, Dimensions } from 'react-native'
 import ms from 'ms'
 import { showPosting, NavigationBanner } from 'navigation/banner'
 import { getTrackingConsent } from 'utils/analytics'
 import { usePaginatedQuery, FeedDocument, useSimilarProjectsQuery } from '@wrench/common'
 import { useReactiveVar, store } from 'gql'
-import { Layout, FlatList, useScrollToTop, SCREENS } from 'navigation'
+import {
+  Layout,
+  useScrollToTop,
+  useScrollContext,
+  withScrollableContext,
+  FlatList,
+} from 'navigation'
 import Post from 'components/Post'
-import { ShowLatest, KeyboardAvoidingView } from 'ui'
+import { ShowLatest } from 'ui'
 import * as Spacing from 'ui/Spacing'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import ProjectsRow from 'features/project/components/SimilarProjects'
 import PostSkeleton from 'components/Post/Skeleton'
+
+const { width } = Dimensions.get('window')
 
 const SimilarProjects = ({ id }) => {
   const { loading, data } = useSimilarProjectsQuery({
@@ -21,7 +29,7 @@ const SimilarProjects = ({ id }) => {
   })
 
   return (
-    <View style={{ height: 290 }}>
+    <View style={{ height: 290, width }}>
       {!loading && <ProjectsRow projects={data.similarProjects} marginTop={10} disableAnimation />}
     </View>
   )
@@ -42,13 +50,16 @@ const renderItem = ({ item, index }) => {
 }
 
 function Feed() {
-  const scrollRef = useRef(null)
+  const { scrollTo } = useScrollContext()
+
   const [hasNewPosts, setHasNewPosts] = useState(false)
   const [latestId, setLatestId] = useState('')
   const closeNewPosts = useCallback(() => setHasNewPosts(false), [])
 
   const isPosting = useReactiveVar(store.post.isPostingVar)
   const file = useReactiveVar(store.files.croppedFilesVar)[0]
+
+  useScrollToTop()
 
   const {
     data: { edges },
@@ -60,14 +71,6 @@ function Feed() {
   } = usePaginatedQuery(['feed', 'posts'])(FeedDocument, {
     pollInterval: ms('3m'),
   })
-
-  const scrollToTop = useCallback(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollToOffset({ offset: -10000000 })
-    }
-  }, [scrollRef])
-
-  useScrollToTop(scrollRef, SCREENS.FEED)
 
   useEffect(() => {
     getTrackingConsent()
@@ -88,13 +91,13 @@ function Feed() {
   useEffect(() => {
     if (isPosting) {
       showPosting({ file })
-      scrollToTop()
+      scrollTo(-1000)
     } else {
       NavigationBanner.dismiss()
     }
   }, [isPosting])
 
-  const StickyComponent = hasNewPosts && <ShowLatest onHide={closeNewPosts} onPress={scrollToTop} />
+  const StickyComponent = hasNewPosts && <ShowLatest onHide={closeNewPosts} />
   const ListEmptyComponent =
     isFetching && !isRefetching ? (
       <>
@@ -107,23 +110,20 @@ function Feed() {
     )
 
   return (
-    <KeyboardAvoidingView paddingHorizontal={0}>
-      <Layout headerTitleKey="home" stickyComponent={StickyComponent}>
-        <FlatList
-          ref={scrollRef}
-          initialNumToRender={2}
-          spacingSeparator
-          data={edges}
-          ListEmptyComponent={ListEmptyComponent}
-          refetch={refetch}
-          fetchMore={fetchMore}
-          isRefetching={isRefetching}
-          hasNextPage={hasNextPage}
-          renderItem={renderItem}
-        />
-      </Layout>
-    </KeyboardAvoidingView>
+    <Layout headerTitleKey="home" stickyComponent={StickyComponent}>
+      <FlatList
+        initialNumToRender={2}
+        spacingSeparator
+        data={edges}
+        ListEmptyComponent={ListEmptyComponent}
+        refetch={refetch}
+        fetchMore={fetchMore}
+        isRefetching={isRefetching}
+        hasNextPage={hasNextPage}
+        renderItem={renderItem}
+      />
+    </Layout>
   )
 }
 
-export default Feed
+export default withScrollableContext(Feed)

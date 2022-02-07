@@ -1,6 +1,6 @@
 import React from 'react'
+import { KeyboardAvoidingView } from 'ui'
 import Header from './Header'
-import Provider from './Provider'
 
 function Layout({
   headerComponent,
@@ -9,10 +9,10 @@ function Layout({
   headerRight,
   stickyComponent,
   children,
-  extraContentInset = 0,
 }) {
   return (
-    <Provider extraContentInset={extraContentInset}>
+    // TODO: Only enable when last item in list
+    <KeyboardAvoidingView paddingHorizontal={0}>
       {headerComponent || (
         <Header
           headerLeft={headerLeft}
@@ -21,9 +21,8 @@ function Layout({
           stickyComponent={stickyComponent}
         />
       )}
-
       {children}
-    </Provider>
+    </KeyboardAvoidingView>
   )
 }
 

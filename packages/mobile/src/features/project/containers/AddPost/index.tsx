@@ -9,7 +9,7 @@ import { TOAST_TYPES } from 'utils/enums'
 import { showToast } from 'navigation/banner'
 import uploadToS3Async from 'utils/storage/uploadToS3Async'
 import Collections from 'features/project/components/Collections'
-import { Header, Input, KeyboardAvoidingView, Icon, Text, Title } from 'ui'
+import { Header, Input, Icon, Text, Title } from 'ui'
 import { arrowLeft } from 'images'
 import SelectedFiles from '../../components/SelectedFiles'
 import SelectProject from '../../components/SelectProject'
@@ -131,31 +131,29 @@ function AddPost() {
 
       <SelectProject black />
 
-      <KeyboardAvoidingView paddingHorizontal={0} keyboardVerticalOffset={0}>
-        <ScrollView style={{ paddingHorizontal: 20 }} keyboardDismissMode="on-drag">
-          <SelectedFiles selectedFiles={files} />
+      <ScrollView style={{ paddingHorizontal: 20 }} keyboardDismissMode="on-drag">
+        <SelectedFiles selectedFiles={files} />
 
-          <Input
-            scrollEnabled={false}
-            keyboardType="twitter"
-            multiline
-            color="dark"
-            onChangeText={onChangeText}
-            placeholder={t('placeholder')}
-            value={caption}
-            style={{ marginBottom: 40 }}
-          />
+        <Input
+          scrollEnabled={false}
+          keyboardType="twitter"
+          multiline
+          color="dark"
+          onChangeText={onChangeText}
+          placeholder={t('placeholder')}
+          value={caption}
+          style={{ marginBottom: 40 }}
+        />
 
-          <Title style={{ marginBottom: 20 }}>{t('collection')}</Title>
-          <Collections
-            disableModal
-            isOwner
-            projectId={projectId}
-            onPress={onChangeCollection}
-            selectedId={collectionId}
-          />
-        </ScrollView>
-      </KeyboardAvoidingView>
+        <Title style={{ marginBottom: 20 }}>{t('collection')}</Title>
+        <Collections
+          disableModal
+          isOwner
+          projectId={projectId}
+          onPress={onChangeCollection}
+          selectedId={collectionId}
+        />
+      </ScrollView>
     </>
   )
 }

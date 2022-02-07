@@ -1,9 +1,16 @@
-import React, { useRef, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Layout, FlatList, SCREENS, useScrollToTop, useNavigation } from 'navigation'
+import {
+  Layout,
+  FlatList,
+  SCREENS,
+  useNavigation,
+  useScrollToTop,
+  withScrollableContext,
+} from 'navigation'
 import { usePaginatedQuery, CurrentUserProfileDocument } from '@wrench/common'
 import Post from 'components/Post'
-import { KeyboardAvoidingView, EmptyState, Icon } from 'ui'
+import { EmptyState, Icon } from 'ui'
 import Header from 'features/user/components/Header'
 import { TYPES } from 'ui/EmptyState/constants'
 import UserProjects from 'features/user/components/UserProjects'
@@ -13,7 +20,8 @@ const renderItem = ({ item }) => <Post post={item.node} />
 
 function Me() {
   const { t } = useTranslation(['me', 'select-project', 'edit-collection'])
-  const scrollRef = useRef(null)
+
+  useScrollToTop()
 
   const {
     data: { edges, user },
@@ -25,8 +33,6 @@ function Me() {
   } = usePaginatedQuery(['user', 'posts'])(CurrentUserProfileDocument)
 
   const { showHalfpanel, navigate, showModal } = useNavigation()
-
-  useScrollToTop(scrollRef, SCREENS.ME)
 
   const navigateEditProfile = useCallback(() => showModal(SCREENS.EDIT_PROFILE), [])
   const navigateSettings = useCallback(() => navigate(SCREENS.SETTINGS), [])
@@ -53,79 +59,76 @@ function Me() {
   }
 
   return (
-    <KeyboardAvoidingView paddingHorizontal={0}>
-      <Layout
-        headerLeft={
-          <Icon
-            source={add}
-            onPress={() =>
-              showHalfpanel({
-                height: 240,
-                data: addOptions,
-              })
-            }
-          />
-        }
-        headerRight={
-          <Icon
-            source={menu}
-            onPress={() =>
-              showHalfpanel({
-                height: 280,
-                data: [
-                  {
-                    title: t('edit'),
-                    onPress: navigateEditProfile,
-                  },
-                  {
-                    title: t('settings'),
-                    onPress: navigateSettings,
-                  },
-                  {
-                    title: t('bookmarks'),
-                    onPress: navigateBookmarks,
-                  },
-                ],
-              })
-            }
-          />
-        }
-      >
-        <FlatList
-          ref={scrollRef}
-          initialNumToRender={1}
-          spacingSeparator
-          paddingHorizontal={hasPosts ? 20 : 0}
-          contentContainerStyle={{ flexGrow: 1 }}
-          ListHeaderComponent={
-            user && (
-              <>
-                <Header
-                  firstName={user.firstName}
-                  lastName={user.lastName}
-                  avatarUrl={user.avatarUrl}
-                  spacingHorizontal={!hasPosts}
-                  bio={user.bio}
-                  website={user.website}
-                  location={user.location}
-                />
-
-                <UserProjects projects={user.projects} spacingHorizontal={!hasPosts} />
-              </>
-            )
+    <Layout
+      headerLeft={
+        <Icon
+          source={add}
+          onPress={() =>
+            showHalfpanel({
+              height: 240,
+              data: addOptions,
+            })
           }
-          ListEmptyComponent={<EmptyState type={emptyState} />}
-          data={edges}
-          refetch={refetch}
-          fetchMore={fetchMore}
-          isRefetching={isRefetching}
-          isFetching={isFetching}
-          hasNextPage={hasNextPage}
-          renderItem={renderItem}
         />
-      </Layout>
-    </KeyboardAvoidingView>
+      }
+      headerRight={
+        <Icon
+          source={menu}
+          onPress={() =>
+            showHalfpanel({
+              height: 280,
+              data: [
+                {
+                  title: t('edit'),
+                  onPress: navigateEditProfile,
+                },
+                {
+                  title: t('settings'),
+                  onPress: navigateSettings,
+                },
+                {
+                  title: t('bookmarks'),
+                  onPress: navigateBookmarks,
+                },
+              ],
+            })
+          }
+        />
+      }
+    >
+      <FlatList
+        initialNumToRender={1}
+        spacingSeparator
+        paddingHorizontal={hasPosts ? 20 : 0}
+        contentContainerStyle={{ flexGrow: 1 }}
+        ListHeaderComponent={
+          user && (
+            <>
+              <Header
+                firstName={user.firstName}
+                lastName={user.lastName}
+                avatarUrl={user.avatarUrl}
+                spacingHorizontal={!hasPosts}
+                bio={user.bio}
+                website={user.website}
+                location={user.location}
+              />
+
+              <UserProjects projects={user.projects} spacingHorizontal={!hasPosts} />
+            </>
+          )
+        }
+        ListEmptyComponent={<EmptyState type={emptyState} />}
+        data={edges}
+        refetch={refetch}
+        fetchMore={fetchMore}
+        isRefetching={isRefetching}
+        isFetching={isFetching}
+        hasNextPage={hasNextPage}
+        renderItem={renderItem}
+      />
+    </Layout>
   )
 }
 
-export default Me
+export default withScrollableContext(Me)

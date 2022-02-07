@@ -30,7 +30,6 @@ function Mention({ onPress }) {
     <Base>
       <InfiniteList
         defaultPadding
-        androidDismissKeyboard={false}
         keyboardDismissMode="none"
         ListEmptyComponent={!isFetching && query.length > 0 && <NoResults />}
         data={edges}
