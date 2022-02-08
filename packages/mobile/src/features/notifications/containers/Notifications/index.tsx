@@ -1,27 +1,16 @@
-import React, { useEffect, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import {
   usePaginatedQuery,
   NotificationsDocument,
-  useMarkAllNotificationsSeenMutation,
   useDeleteNotificationMutation,
 } from '@wrench/common'
-import { Navigation } from 'react-native-navigation'
-import ms from 'ms'
-import {
-  Layout,
-  FlatList,
-  useNavigation,
-  useScrollToTop,
-  withScrollableContext,
-  SCREENS,
-} from 'navigation'
+import { Layout, FlatList, useScrollToTop, withScrollableContext, SCREENS } from 'navigation'
 import { Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
+import NotificationSkeletonList from 'ui/Notification/SkeletonList'
 
-function Notifications({ componentId }) {
-  const [markAllNotificationsSeen] = useMarkAllNotificationsSeenMutation()
+function Notifications() {
   const [deleteNotification] = useDeleteNotificationMutation()
-  const { showNotificationBadge, hideNotificationBadge } = useNavigation()
 
   useScrollToTop(SCREENS.NOTIFICATIONS)
 
@@ -50,67 +39,32 @@ function Notifications({ componentId }) {
   }, [])
 
   const {
-    data: { edges, unreadCount },
+    data: { edges },
     isFetching,
     fetchMore,
     isRefetching,
     hasNextPage,
     refetch,
-  } = usePaginatedQuery(['notifications'])(NotificationsDocument, {
-    pollInterval: ms('1m'),
-  })
-
-  useEffect(() => {
-    if (unreadCount > 0) {
-      showNotificationBadge()
-    }
-
-    const componentAppearListener = Navigation.events().registerComponentDidAppearListener(
-      ({ componentId: id }) => {
-        if (componentId === id) {
-          if (unreadCount > 0) {
-            markAllNotificationsSeen({
-              update: (cache) => {
-                const data = cache.readQuery({ query: NotificationsDocument })
-
-                cache.writeQuery({
-                  query: NotificationsDocument,
-                  data: {
-                    ...data,
-                    notifications: {
-                      ...data.notifications,
-                      unreadCount: 0,
-                    },
-                  },
-                })
-              },
-            })
-          }
-
-          hideNotificationBadge()
-        }
-      }
-    )
-
-    return () => componentAppearListener.remove()
-  }, [componentId, unreadCount])
+  } = usePaginatedQuery(['notifications'])(NotificationsDocument)
 
   const renderItem = ({ item }) => (
     <Notification data={item.node} deleteNotification={handleDeleteNotification} />
   )
+
+  const ListEmptyComponent =
+    isFetching && !edges ? <NotificationSkeletonList /> : <EmptyState type={TYPES.NOTIFICATIONS} />
 
   return (
     <Layout headerTitleKey="notifications">
       <FlatList
         paddingHorizontal={0}
         contentContainerStyle={{ flexGrow: 1 }}
-        ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} />}
+        ListEmptyComponent={ListEmptyComponent}
         borderSeparator
         data={edges}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
-        isFetching={isFetching}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />

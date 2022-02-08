@@ -82,7 +82,7 @@ function Explore() {
     return () => handler.remove()
   }, [])
 
-  const ListEmptyComponent = isFetching && !isRefetching && <PostSkeleton />
+  const ListEmptyComponent = isFetching && !isRefetching && <PostSkeleton paddingHorizontal={0} />
 
   return (
     <Layout

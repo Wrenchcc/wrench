@@ -102,9 +102,9 @@ function Feed() {
   const ListEmptyComponent =
     isFetching && !isRefetching ? (
       <>
-        <PostSkeleton />
+        <PostSkeleton paddingHorizontal={0} />
         <Spacing.Horizontally px={50} />
-        <PostSkeleton />
+        <PostSkeleton paddingHorizontal={0} />
       </>
     ) : (
       <ProjectSuggestions />

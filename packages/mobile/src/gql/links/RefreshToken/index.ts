@@ -1,5 +1,5 @@
 import { Observable } from '@apollo/client'
-import { onError } from '@apollo/link-error'
+import { onError } from '@apollo/client/link/error'
 import { RefreshTokenDocument } from '@wrench/common'
 import { getRefreshToken, setTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'

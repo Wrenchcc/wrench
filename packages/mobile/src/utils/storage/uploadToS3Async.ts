@@ -45,6 +45,13 @@ export default async function uploadToS3Async(files) {
           }
         }
 
+        // NOTE: Image
+        await fetch(currentSignedRequest.url, {
+          // @ts-ignore
+          body: { uri: file.uri },
+          method: 'PUT',
+        })
+
         return {
           filename: currentSignedRequest.filename,
         }

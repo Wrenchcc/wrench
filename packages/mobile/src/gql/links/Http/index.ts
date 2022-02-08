@@ -1,6 +1,6 @@
 import Config from 'react-native-config'
-import { BatchHttpLink } from '@apollo/link-batch-http'
+import { HttpLink } from '@apollo/client'
 
-export default new BatchHttpLink({
+export default new HttpLink({
   uri: Config.GRAPHQL_URL,
 })

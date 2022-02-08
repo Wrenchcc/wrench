@@ -73,15 +73,18 @@ export default async function createClient() {
   // Read the current schema version from MMKV.
   const currentVersion = storage.getString(SCHEMA_VERSION_KEY)
 
-  if (currentVersion === readableVersion) {
-    // If the current version matches the latest version,
-    // we're good to go and can restore the cache.
-    await persistor.restore()
-  } else {
-    // Otherwise, we'll want to purge the outdated persisted cache
-    // and mark ourselves as having updated to the latest version.
-    await persistor.purge()
-    storage.set(SCHEMA_VERSION_KEY, readableVersion)
+  // NOTE: Disable cache in development
+  if (!__DEV__) {
+    if (currentVersion === readableVersion) {
+      // If the current version matches the latest version,
+      // we're good to go and can restore the cache.
+      await persistor.restore()
+    } else {
+      // Otherwise, we'll want to purge the outdated persisted cache
+      // and mark ourselves as having updated to the latest version.
+      await persistor.purge()
+      storage.set(SCHEMA_VERSION_KEY, readableVersion)
+    }
   }
 
   client = new ApolloClient({

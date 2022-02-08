@@ -32,7 +32,6 @@ export default function createScrollable(Component) {
 
     const visibleItemId = useSharedValue(null)
     const visiblePostId = useSharedValue(null)
-
     const visibleIndexes = useSharedValue({})
 
     const setVisibleItemId = useCallback((id) => {

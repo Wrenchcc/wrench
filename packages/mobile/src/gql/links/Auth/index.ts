@@ -1,4 +1,4 @@
-import { setContext } from '@apollo/link-context'
+import { setContext } from '@apollo/client/link/context'
 import { getAccessToken } from 'utils/storage/auth'
 
 export default setContext((_, { headers }) => ({

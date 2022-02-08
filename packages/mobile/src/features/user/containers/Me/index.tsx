@@ -15,6 +15,7 @@ import Header from 'features/user/components/Header'
 import { TYPES } from 'ui/EmptyState/constants'
 import UserProjects from 'features/user/components/UserProjects'
 import { menu, add } from 'images'
+import Skeleton from './Skeleton'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
@@ -58,72 +59,73 @@ function Me() {
     })
   }
 
+  const handleRightMenu = useCallback(
+    () =>
+      showHalfpanel({
+        height: 280,
+        data: [
+          {
+            title: t('edit'),
+            onPress: navigateEditProfile,
+          },
+          {
+            title: t('settings'),
+            onPress: navigateSettings,
+          },
+          {
+            title: t('bookmarks'),
+            onPress: navigateBookmarks,
+          },
+        ],
+      }),
+    []
+  )
+
+  const handleLeftMenu = useCallback(
+    () =>
+      showHalfpanel({
+        height: 240,
+        data: addOptions,
+      }),
+    [addOptions]
+  )
+
+  const ListHeaderComponent = user && (
+    <>
+      <Header
+        firstName={user.firstName}
+        lastName={user.lastName}
+        avatarUrl={user.avatarUrl}
+        spacingHorizontal={!hasPosts}
+        bio={user.bio}
+        website={user.website}
+        location={user.location}
+      />
+
+      <UserProjects projects={user.projects} spacingHorizontal={!hasPosts} />
+    </>
+  )
+
+  const ListEmptyComponent =
+    isFetching && !hasPosts ? <Skeleton /> : <EmptyState type={emptyState} />
+
   return (
     <Layout
-      headerLeft={
-        <Icon
-          source={add}
-          onPress={() =>
-            showHalfpanel({
-              height: 240,
-              data: addOptions,
-            })
-          }
-        />
-      }
-      headerRight={
-        <Icon
-          source={menu}
-          onPress={() =>
-            showHalfpanel({
-              height: 280,
-              data: [
-                {
-                  title: t('edit'),
-                  onPress: navigateEditProfile,
-                },
-                {
-                  title: t('settings'),
-                  onPress: navigateSettings,
-                },
-                {
-                  title: t('bookmarks'),
-                  onPress: navigateBookmarks,
-                },
-              ],
-            })
-          }
-        />
-      }
+      headerLeft={<Icon source={add} onPress={handleLeftMenu} />}
+      headerRight={<Icon source={menu} onPress={handleRightMenu} />}
     >
+      {/* <Skeleton /> */}
       <FlatList
         initialNumToRender={1}
         spacingSeparator
         paddingHorizontal={hasPosts ? 20 : 0}
         contentContainerStyle={{ flexGrow: 1 }}
-        ListHeaderComponent={
-          user && (
-            <>
-              <Header
-                firstName={user.firstName}
-                lastName={user.lastName}
-                avatarUrl={user.avatarUrl}
-                spacingHorizontal={!hasPosts}
-                bio={user.bio}
-                website={user.website}
-                location={user.location}
-              />
-
-              <UserProjects projects={user.projects} spacingHorizontal={!hasPosts} />
-            </>
-          )
-        }
-        ListEmptyComponent={<EmptyState type={emptyState} />}
+        ListHeaderComponent={ListHeaderComponent}
+        ListEmptyComponent={ListEmptyComponent}
         data={edges}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
-        isFetching={isFetching}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />

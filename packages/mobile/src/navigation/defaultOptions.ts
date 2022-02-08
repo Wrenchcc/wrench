@@ -11,7 +11,7 @@ export default {
     drawBehind: false,
     backgroundColor: '#000',
     titleDisplayMode: 'alwaysHide',
-    tabsAttachMode: 'afterInitialTab',
+    tabsAttachMode: 'onSwitchToTab',
     hideShadow: true,
     elevation: 0,
   },

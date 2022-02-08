@@ -5,11 +5,12 @@ import * as Spacing from 'ui/Spacing'
 import { Top, Left, Content } from './styles'
 
 const { width } = Dimensions.get('window')
+
 const GUTTER = 20
 
-export const PostSkeleton = () => {
+export const PostSkeleton = ({ paddingHorizontal = GUTTER }) => {
   return (
-    <View style={{ paddingHorizontal: 20 }}>
+    <View style={{ paddingHorizontal }}>
       <Top>
         <Left>
           <Skeleton width={30} height={30} radius="round" />

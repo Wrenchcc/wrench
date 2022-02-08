@@ -45,6 +45,7 @@ function Video({ size, source, id }) {
 
   const play = useCallback(
     async ({ isMuted }) => {
+      // TODO: Check if video is ready
       if (!isPlaying.value) {
         await videoRef?.current?.loadAsync(source, {
           shouldPlay: true,
