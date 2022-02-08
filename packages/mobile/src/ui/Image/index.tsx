@@ -36,8 +36,10 @@ function Image({
   const [progress, setProgress] = useState(0)
   const loading = useRef(false)
 
+  const uri = source.poster || source.uri
+
   // NOTE: Guard for crash on Android
-  if (!source.uri) {
+  if (!uri) {
     return null
   }
 
@@ -70,9 +72,9 @@ function Image({
     }
   }, [])
 
-  const uri = `${source.uri}?w=${width}&h=${height}&dpr=${density}&webp=1`
+  const imageUri = `${uri}?w=${width}&h=${height}&dpr=${density}&webp=1`
 
-  const placeholder = `${source.uri}?w=${Math.round(width / placeholderDensity)}&h=${Math.round(
+  const placeholder = `${uri}?w=${Math.round(width / placeholderDensity)}&h=${Math.round(
     height / placeholderDensity
   )}&dpr=1`
 
@@ -96,7 +98,7 @@ function Image({
 
       <FastImage
         {...props}
-        source={{ uri, priority: priority || IMAGE_PRIORITY.NORMAL }}
+        source={{ uri: imageUri, priority: priority || IMAGE_PRIORITY.NORMAL }}
         onLoadStart={handleLoadStart}
         onLoadEnd={handleLoadEnd}
         onProgress={handleProgress}

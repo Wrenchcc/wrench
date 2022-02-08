@@ -6739,7 +6739,7 @@ apollo-reporting-protobuf@^3.3.0:
   dependencies:
     "@apollo/protobufjs" "1.2.2"
 
-apollo-server-cache-redis@^3.3.0:
+apollo-server-cache-redis@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/apollo-server-cache-redis/-/apollo-server-cache-redis-3.3.1.tgz#fb2e7f243a624179dce9e2b93a559313c78dea72"
   integrity sha512-z+WX74PKM8Epsyd+cjRq789b2RtgARcdQ/u8acs+T5nf32Qt7eYhumKemUZf7lkwnKfh0nCNf81+e1Ll4xckAA==
@@ -6794,7 +6794,7 @@ apollo-server-errors@^3.3.1:
   resolved "https://registry.yarnpkg.com/apollo-server-errors/-/apollo-server-errors-3.3.1.tgz#ba5c00cdaa33d4cbd09779f8cb6f47475d1cd655"
   integrity sha512-xnZJ5QWs6FixHICXHxUfm+ZWqqxrNuPlQ+kj5m6RtEgIpekOPssH/SD9gf2B4HuWV0QozorrygwZnux8POvyPA==
 
-apollo-server-express@^3.6.1:
+apollo-server-express@^3.6.2:
   version "3.6.2"
   resolved "https://registry.yarnpkg.com/apollo-server-express/-/apollo-server-express-3.6.2.tgz#859022b95247e1329e1ed96425c10143598b8fd7"
   integrity sha512-C/guyWmewY/7rjI1Y2Fdpvq0TgF3F/7kTWcGzQhRe/h31ehvFFCeulrmxJ0MEpnIPB3eX7WHS2DZnyuJplsHKQ==
@@ -6818,7 +6818,7 @@ apollo-server-plugin-base@^3.5.1:
   dependencies:
     apollo-server-types "^3.5.1"
 
-apollo-server-plugin-response-cache@^3.5.0:
+apollo-server-plugin-response-cache@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/apollo-server-plugin-response-cache/-/apollo-server-plugin-response-cache-3.5.1.tgz#256698f050be7181bf47a84b688429ebaafdc177"
   integrity sha512-2kIt8ri6MFLyasqsVKVSHvy5UosCNniyMbkj00pDN5eRQSeqL6K8O63URUwtQxIVoE0gv8E2RT1QG8RfjD3+pA==
@@ -7221,10 +7221,10 @@ aws-sdk@*, aws-sdk@^2.1065.0, aws-sdk@^2.1066.0:
     uuid "3.3.2"
     xml2js "0.4.19"
 
-aws-sdk@^2.1067.0:
-  version "2.1067.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1067.0.tgz#2e7f5a2d765fcf77a45f25fdd1f12a64942628a7"
-  integrity sha512-3Ys1k4cNQy4z37IpPjQ9c5ldkXMeZGbWoarKHynPPY3WCEj+Nw2u6zk484fA9/lTHNN3YesLuZ0OmEzGgjFEOw==
+aws-sdk@^2.1070.0:
+  version "2.1070.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1070.0.tgz#e7a27c34ed3a92776aa9128ed3469cb94bba9655"
+  integrity sha512-tkmuycoJ9k0qF1iq03iqyhevxP3l0OlrnUxjd0x8nZ9Ko1TGjyj0yJS4Vbd4r5RBpKUwRqedB7TAyZ/71mcZKw==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -12374,7 +12374,7 @@ find-yarn-workspace-root@^2.0.0:
   dependencies:
     micromatch "^4.0.2"
 
-firebase-admin@^10.0.1:
+firebase-admin@^10.0.2:
   version "10.0.2"
   resolved "https://registry.yarnpkg.com/firebase-admin/-/firebase-admin-10.0.2.tgz#d1142fb40738fa9b62f6625c4e3fc8cbc0ba61c6"
   integrity sha512-MLH0SPmC4L0aCHvPjs1KThraru/T84T3hxiPY3uCH7NZEgE/T5n4GwecwU3RcM3X+br75BIBY7qhaR5uCxhdXA==
@@ -13306,7 +13306,7 @@ graphql@^15.5.0:
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.8.0.tgz#33410e96b012fa3bdb1091cc99a94769db212b38"
   integrity sha512-5gghUc24tP9HRznNpV2+FIoq3xKkj5dTQqf4v0CpdPbFVwFkWoxOM+o+2OC9ZSvjEMTjfmG9QT+gcvggTwW1zw==
 
-graphql@^16.2.0, graphql@^16.3.0:
+graphql@^16.3.0:
   version "16.3.0"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.3.0.tgz#a91e24d10babf9e60c706919bb182b53ccdffc05"
   integrity sha512-xm+ANmA16BzCT5pLjuXySbQVFwH3oJctUVdy81w1sV0vBU0KgDdBGtxQOUd5zqOBk/JayAFeG8Dlmeq74rjm/A==
@@ -14314,10 +14314,27 @@ invariant@2.2.4, invariant@^2.2.0, invariant@^2.2.4:
   dependencies:
     loose-envify "^1.0.0"
 
-ioredis@^4.14.1, ioredis@^4.17.3, ioredis@^4.28.3:
+ioredis@^4.14.1, ioredis@^4.17.3:
   version "4.28.3"
   resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-4.28.3.tgz#b13fce8a6a7c525ba22e666d72980a3c0ba799aa"
   integrity sha512-9JOWVgBnuSxpIgfpjc1OeY1OLmA4t2KOWWURTDRXky+eWO0LZhI33pQNT9gYxANUXfh5p/zYephYni6GPRsksQ==
+  dependencies:
+    cluster-key-slot "^1.1.0"
+    debug "^4.3.1"
+    denque "^1.1.0"
+    lodash.defaults "^4.2.0"
+    lodash.flatten "^4.4.0"
+    lodash.isarguments "^3.1.0"
+    p-map "^2.1.0"
+    redis-commands "1.7.0"
+    redis-errors "^1.2.0"
+    redis-parser "^3.0.0"
+    standard-as-callback "^2.1.0"
+
+ioredis@^4.28.5:
+  version "4.28.5"
+  resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-4.28.5.tgz#5c149e6a8d76a7f8fa8a504ffc85b7d5b6797f9f"
+  integrity sha512-3GYo0GJtLqgNXj4YhrisLaNNvWSNwSS2wS4OELGfGxH8I69+XfNdnmV1AyN+ZqMh0i7eX+SWjrwFKDBDgfBC1A==
   dependencies:
     cluster-key-slot "^1.1.0"
     debug "^4.3.1"
@@ -20270,10 +20287,15 @@ raf@^3.4.0, raf@^3.4.1:
   dependencies:
     performance-now "^2.1.0"
 
-rambda@*, rambda@^7.0.1:
+rambda@*:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/rambda/-/rambda-7.0.1.tgz#691fac4e0ca291af303e95e2b6d357293e01923a"
   integrity sha512-u4isl3leprMj337gTNc7YOfxa9p0RKlK1RXgHQvCnxjlqy95tWKLCFh+7vZ3kE4bhSX7z2TxaorFDYo20FtHJw==
+
+rambda@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/rambda/-/rambda-7.0.2.tgz#5a136cf41c869ab6bd5953cddfbd6dc27413a867"
+  integrity sha512-oM1In0rXyFIzhYDIwREhdOm+oTDwtGW5WIgo/m8TqzS5kSBvsu8UoqzQFrSA0SJCdWJQCqOsvK0pKEINTwcEIA==
 
 ramda@*, ramda@^0.28.0:
   version "0.28.0"

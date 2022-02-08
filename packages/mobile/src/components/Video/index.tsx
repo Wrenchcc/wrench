@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback, useState } from 'react'
+import React, { useEffect, useCallback, useState } from 'react'
 import { Video as Player } from 'expo-av'
 import { Navigation } from 'react-native-navigation'
 import Animated, {
@@ -31,10 +31,6 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
   },
-}
-
-const poster = {
-  uri: 'https://edge-files.wrench.cc/images/ef58738a-e3ee-4dbc-bc34-9337add8b59b.jpg',
 }
 
 const OPACITY_DURATION = 200
@@ -128,7 +124,7 @@ function Video({ size, source, id }) {
       </Animated.View>
 
       <Touchable onPress={togglePlay}>
-        {showPoster && <Image source={poster} style={{ width: size, height: size }} />}
+        {showPoster && <Image source={source} style={{ width: size, height: size }} />}
 
         <Player
           ref={videoRef}
