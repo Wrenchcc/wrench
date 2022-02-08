@@ -9,7 +9,7 @@ export default async ({ post, comment, type }, args, ctx) => {
     return null
   }
 
-  const cacheKey = `notification:filesConnection${postId}:${JSON.stringify(args)}`
+  const cacheKey = `notification:filesConnection:v2:${postId}:${JSON.stringify(args)}`
   const cache = await ctx.redis.get(cacheKey)
 
   if (cache) {
