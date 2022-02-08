@@ -35,6 +35,9 @@ export default class File extends BaseEntity {
   @Column({ unique: true })
   public filename: string
 
+  @Column({ unique: true, nullable: true })
+  public poster: string
+
   @Column('enum', { enum: FileTypes })
   public type: FileTypes
 

@@ -21,7 +21,6 @@ function InfiniteList({
   ListEmptyComponent,
   initialNumToRender = 10,
   loaderInset = CONTENT_INSET,
-  paddingBottom = 0,
   ...props
 }) {
   const [isRefetchingLocal, setRefresh] = useState(false)
@@ -65,7 +64,6 @@ function InfiniteList({
         paddingLeft: paddingHorizontal,
         paddingRight: paddingHorizontal,
         paddingTop,
-        paddingBottom,
         ...contentContainerStyle,
       }}
       {...(borderSeparator && { ItemSeparatorComponent: Border })}

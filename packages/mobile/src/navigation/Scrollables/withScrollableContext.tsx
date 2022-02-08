@@ -45,7 +45,11 @@ export default function withScrollableContext<T>(Component: FC<T>, extraContentI
         }
 
         if (direction === 'down' || scrollY.value <= 0) {
-          headerY.value = clamp(scrollY.value, 0, NAVIGATION.TOP_BAR_HEIGHT)
+          // TODO: When scroll by press skip spring
+          headerY.value = withSpring(clamp(scrollY.value, 0, NAVIGATION.TOP_BAR_HEIGHT), {
+            mass: 0.5,
+            velocity: velocityY,
+          })
         }
       },
       onBeginDrag: (evt, ctx) => {

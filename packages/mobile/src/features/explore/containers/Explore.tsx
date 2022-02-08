@@ -96,7 +96,7 @@ function Explore() {
     >
       <FlatList
         spacingSeparator
-        progressViewOffset={CONTENT_INSET + 25}
+        progressViewOffset={CONTENT_INSET + STICKY_HEIGHT / 2}
         initialNumToRender={2}
         ListHeaderComponent={<Popular />}
         ListEmptyComponent={ListEmptyComponent}

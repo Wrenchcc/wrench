@@ -141,12 +141,7 @@ function PostContainer({ postId, commentId }) {
   const initialFetch = isFetching && !edges
 
   return (
-    <Page
-      view
-      headerTitle={t('title')}
-      headerAnimation={false}
-      keyboardVerticalOffset={-NAVIGATION.BOTTOM_TABS_HEIGHT}
-    >
+    <Page view headerTitle={t('title')} headerAnimation={false}>
       <FlatList
         inverted
         initialNumToRender={8}
@@ -171,7 +166,7 @@ function PostContainer({ postId, commentId }) {
           justifyContent: 'flex-end',
         }}
       />
-      <View style={{ paddingHorizontal: 20, paddingBottom: NAVIGATION.BOTTOM_TABS_HEIGHT }}>
+      <View style={{ paddingHorizontal: 20 }}>
         <CommentField
           postId={postId}
           username={mention.username}

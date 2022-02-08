@@ -39,8 +39,9 @@ export default isAuthenticated(async (_, { input }, ctx) => {
   ctx.redis.delete(`project:filesConnection:${input.projectId}:*`)
   ctx.redis.delete(`project:cover:${input.projectId}`)
 
-  const filesToSave = input.files.map(({ filename }) => ({
+  const filesToSave = input.files.map(({ filename, poster }) => ({
     filename,
+    poster,
     project,
     type: getFileTypeFromFilename(filename),
     userId: ctx.userId,

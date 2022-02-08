@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Video as RNVideo } from 'expo-av'
 
 export const Base = styled.View`
   background-color: ${(props) =>
@@ -9,11 +8,6 @@ export const Base = styled.View`
 `
 
 export const Image = styled.Image`
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-`
-export const Video = styled(RNVideo)`
   width: 40px;
   height: 40px;
   margin-right: 10px;

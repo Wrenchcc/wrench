@@ -38,7 +38,8 @@ function AddPost() {
 
     try {
       const uploaded = await uploadToS3Async(files)
-
+      console.log(uploaded)
+      return
       await addPost({
         variables: {
           input: {

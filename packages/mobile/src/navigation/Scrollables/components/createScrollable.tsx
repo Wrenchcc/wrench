@@ -3,7 +3,7 @@ import { useSharedValue } from 'react-native-reanimated'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
 import { useScrollContext, ViewabilityItemsContext } from '../'
-import { CONTENT_INSET, NAVIGATION } from '../../constants'
+import { CONTENT_INSET } from '../../constants'
 import { keyExtractor, getNodeIdByIndex } from '../../utils'
 
 const renderLoader = (loaderInset) => <Loader inset={loaderInset} />
@@ -23,7 +23,6 @@ export default function createScrollable(Component) {
     paddingHorizontal = 20,
     extraContentInset = 0,
     loaderInset = 0,
-    paddingBottom = NAVIGATION.BOTTOM_TABS_HEIGHT,
     progressViewOffset = CONTENT_INSET - 30,
     ...props
   }) {
@@ -105,15 +104,13 @@ export default function createScrollable(Component) {
             paddingLeft: paddingHorizontal,
             paddingRight: paddingHorizontal,
             paddingTop: VIEW_OFFSET,
-            paddingBottom,
           }}
           {...(borderSeparator && { ItemSeparatorComponent: Border })}
           {...props}
           onViewableItemsChanged={onViewableItemsChanged}
           viewabilityConfig={{
             waitForInteractions: false,
-            itemVisiblePercentThreshold: 70,
-            minimumViewTime: 100,
+            itemVisiblePercentThreshold: 40,
           }}
         />
       </ViewabilityItemsContext.Provider>

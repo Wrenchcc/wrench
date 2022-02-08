@@ -40,7 +40,6 @@ function SearchModel({ query, onPress }) {
       <InfiniteList
         borderSeparator
         initialNumToRender={8}
-        paddingBottom={0}
         keyboard
         keyboardDismissMode="none"
         ListEmptyComponent={!isFetching && query.length > 1 && <NoResults />}

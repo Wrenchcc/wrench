@@ -117,12 +117,7 @@ function Comments({ postId }) {
   const initialFetch = isFetching && !edges
 
   return (
-    <Page
-      headerTitle={t('title')}
-      headerAnimation={false}
-      view
-      keyboardVerticalOffset={-NAVIGATION.BOTTOM_TABS_HEIGHT}
-    >
+    <Page headerTitle={t('title')} headerAnimation={false} view>
       <FlatList
         inverted
         initialNumToRender={8}
@@ -147,7 +142,7 @@ function Comments({ postId }) {
           justifyContent: 'flex-end',
         }}
       />
-      <View style={{ paddingHorizontal: 20, paddingBottom: NAVIGATION.BOTTOM_TABS_HEIGHT }}>
+      <View style={{ paddingHorizontal: 20 }}>
         <CommentField postId={postId} username={username} commentId={commentId} emoji />
       </View>
     </Page>
