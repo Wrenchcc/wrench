@@ -44,45 +44,7 @@ export default class Project extends BaseEntity {
   public static async getPopularProjects() {
     return Project.query(
       `
-      SELECT
-        "f_count",
-        "p_count",
-        p.*
-      FROM
-        projects p
-        LEFT JOIN (
-          SELECT
-            "projectId",
-            count("projectId") AS f_count
-          FROM
-            following
-          GROUP BY
-            "projectId") f ON ("f"."projectId" = "p"."id")
-        LEFT JOIN (
-          SELECT
-            "posts"."projectId",
-            count("posts"."id") AS p_count
-          FROM
-            posts
-          GROUP BY
-            "posts"."projectId") pp ON ("pp"."projectId" = "p"."id")
-        LEFT JOIN (
-          SELECT
-            "createdAt" AS f_date
-          FROM
-            following
-          GROUP BY
-            "createdAt") f2 ON ("f"."projectId" = "p"."id")
-      WHERE
-        "f_count" IS NOT NULL
-        AND "p_count" IS NOT NULL
-        AND "createdAt" > NOW()::timestamp - interval '14 day'
-      GROUP BY
-        p. "id",
-        "f_count",
-        "p_count"
-      ORDER BY
-        "f_count" DESC
+      SELECT * from PROJECTS LIMIT 50
     `
     )
   }
