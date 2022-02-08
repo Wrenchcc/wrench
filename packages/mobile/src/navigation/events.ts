@@ -33,7 +33,6 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
     //   markAllNotificationsSeen({
     //     update: (cache) => {
     //       const data = cache.readQuery({ query: NotificationsDocument })
-
     //       cache.writeQuery({
     //         query: NotificationsDocument,
     //         data: {
@@ -47,8 +46,7 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
     //     },
     //   })
     // }
-
-    hideNotificationBadge()
+    // hideNotificationBadge()
   }
 
   if (tabIndex === TABS_INDEX.ADD) {
