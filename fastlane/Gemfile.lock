@@ -275,8 +275,8 @@ GEM
 
 PLATFORMS
   ruby
-  universal-darwin-20
-  universal-darwin-21
+  x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   cocoapods
