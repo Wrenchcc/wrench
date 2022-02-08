@@ -12,6 +12,7 @@ fragment UserProjects on User {
             node {
               id
               uri
+              poster
             }
           }
         }

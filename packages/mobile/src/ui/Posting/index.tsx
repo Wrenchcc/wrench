@@ -5,12 +5,10 @@ import { Base, Inner, Image } from './styles'
 
 function Posting({ file }) {
   const { t } = useTranslation('posting')
-
-  // TODO: file.uri or file.posterUri
   return (
     <Base>
       <Inner>
-        <Image source={file} fadeDuration={0} />
+        <Image source={file} />
         <Text fontSize={15}>{t('description')}</Text>
       </Inner>
     </Base>

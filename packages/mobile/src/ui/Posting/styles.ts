@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import UiImage from 'ui/Image'
 
 export const Base = styled.View`
   background-color: ${(props) =>
@@ -7,7 +8,7 @@ export const Base = styled.View`
   margin-horizontal: 10px;
 `
 
-export const Image = styled.Image`
+export const Image = styled(UiImage)`
   width: 40px;
   height: 40px;
   margin-right: 10px;

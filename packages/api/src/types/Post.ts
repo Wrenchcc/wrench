@@ -49,6 +49,7 @@ export default gql`
 
   input FileInput {
     filename: String!
+    poster: String
   }
 
   input EditFileInput {
