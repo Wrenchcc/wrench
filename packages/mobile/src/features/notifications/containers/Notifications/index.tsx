@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import {
   usePaginatedQuery,
   NotificationsDocument,
@@ -7,15 +7,23 @@ import {
 } from '@wrench/common'
 import { Navigation } from 'react-native-navigation'
 import ms from 'ms'
-import { Layout, FlatList, SCREENS, useNavigation, useScrollToTop } from 'navigation'
+import {
+  Layout,
+  FlatList,
+  useNavigation,
+  useScrollToTop,
+  withScrollableContext,
+  SCREENS,
+} from 'navigation'
 import { Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 
 function Notifications({ componentId }) {
-  const scrollRef = useRef(null)
   const [markAllNotificationsSeen] = useMarkAllNotificationsSeenMutation()
   const [deleteNotification] = useDeleteNotificationMutation()
   const { showNotificationBadge, hideNotificationBadge } = useNavigation()
+
+  useScrollToTop(SCREENS.NOTIFICATIONS)
 
   const handleDeleteNotification = useCallback((id) => {
     deleteNotification({
@@ -51,8 +59,6 @@ function Notifications({ componentId }) {
   } = usePaginatedQuery(['notifications'])(NotificationsDocument, {
     pollInterval: ms('1m'),
   })
-
-  useScrollToTop(scrollRef, SCREENS.NOTIFICATIONS)
 
   useEffect(() => {
     if (unreadCount > 0) {
@@ -96,7 +102,6 @@ function Notifications({ componentId }) {
   return (
     <Layout headerTitleKey="notifications">
       <FlatList
-        ref={scrollRef}
         paddingHorizontal={0}
         contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} />}
@@ -113,4 +118,4 @@ function Notifications({ componentId }) {
   )
 }
 
-export default Notifications
+export default withScrollableContext(Notifications)

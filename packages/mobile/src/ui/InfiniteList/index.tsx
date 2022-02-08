@@ -1,18 +1,11 @@
 import React, { useCallback, useState, useEffect } from 'react'
-import { FlatList, Keyboard } from 'react-native'
-import { isAndroid } from 'utils/platform'
+import { FlatList } from 'react-native'
 import Border from 'ui/Border'
 import Loader from 'ui/Loader'
 import { CONTENT_INSET } from 'navigation/constants'
 import { keyExtractor } from 'navigation'
 
-// NOTE: https://github.com/facebook/react-native/issues/23364
-const keyboardDismissProp = isAndroid
-  ? { onScrollEndDrag: Keyboard.dismiss }
-  : { keyboardDismissMode: 'on-drag' }
-
 const renderLoader = (loaderInset?) => <Loader inset={loaderInset} />
-const BorderSeparator = () => <Border />
 
 function InfiniteList({
   contentContainerStyle = {},
@@ -28,8 +21,6 @@ function InfiniteList({
   ListEmptyComponent,
   initialNumToRender = 10,
   loaderInset = CONTENT_INSET,
-  androidDismissKeyboard = true,
-  paddingBottom = 0,
   ...props
 }) {
   const [isRefetchingLocal, setRefresh] = useState(false)
@@ -73,11 +64,9 @@ function InfiniteList({
         paddingLeft: paddingHorizontal,
         paddingRight: paddingHorizontal,
         paddingTop,
-        paddingBottom,
         ...contentContainerStyle,
       }}
-      {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}
-      {...(androidDismissKeyboard && keyboardDismissProp)}
+      {...(borderSeparator && { ItemSeparatorComponent: Border })}
       {...props}
     />
   )

@@ -49,6 +49,11 @@ export default gql`
 
   input FileInput {
     filename: String!
+    poster: String
+  }
+
+  input EditFileInput {
+    id: String
   }
 
   extend type Query {
@@ -67,6 +72,7 @@ export default gql`
   input EditPostInput {
     caption: String
     collectionId: ID
+    files: [EditFileInput]
   }
 
   extend type Mutation {

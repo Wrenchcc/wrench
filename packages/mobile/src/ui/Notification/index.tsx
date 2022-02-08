@@ -86,7 +86,6 @@ function Notification({ data, deleteNotification }) {
   const transitionRef = useRef(null)
 
   const image = pathOr(false, ['files', 'edges', 0, 'node'], data)
-
   const { navigate } = useNavigation()
 
   const navigateToUser = useCallback(

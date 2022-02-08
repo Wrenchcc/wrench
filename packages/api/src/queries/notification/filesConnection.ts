@@ -1,5 +1,5 @@
 import paginate from '../../utils/paginate'
-import { transformFileUrl } from '../../utils/transformFileUrl'
+import { transformFileUrl, transformPosterUrl } from '../../utils/transformFileUrl'
 import { NOTIFICATION_TYPES } from '../../utils/enums'
 
 export default async ({ post, comment, type }, args, ctx) => {
@@ -19,7 +19,6 @@ export default async ({ post, comment, type }, args, ctx) => {
   const files = await paginate(ctx.db.File, args, {
     where: {
       postId,
-      type: args.type,
     },
   })
 
@@ -28,6 +27,7 @@ export default async ({ post, comment, type }, args, ctx) => {
     node: {
       ...node,
       uri: transformFileUrl(node),
+      poster: node.poster ? transformPosterUrl(node) : null,
     },
   }))
 

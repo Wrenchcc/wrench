@@ -1,4 +1,6 @@
 import 'react-native-gesture-handler'
+import 'react-native-reanimated'
+
 import 'i18n'
 
 import { Linking } from 'react-native'

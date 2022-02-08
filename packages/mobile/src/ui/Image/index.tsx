@@ -1,9 +1,7 @@
-import React, { memo, useState } from 'react'
+import React, { useState, useCallback, useRef } from 'react'
 import { Animated, View, ImageProps } from 'react-native'
 import FastImage, { FastImageProps } from 'react-native-fast-image'
-import { Video } from 'expo-av'
 import { IMAGE_PRIORITY } from 'ui/constants'
-import { FILE_TYPES } from 'utils/enums'
 import { Base } from './styles'
 import Spinner from '../Spinner'
 
@@ -21,19 +19,6 @@ type ImageComponentProps = {
 } & ImageProps &
   FastImageProps
 
-function getFileTypeFromFilename(source) {
-  const type = source.split('.').pop()
-
-  switch (type) {
-    case 'jpg':
-      return FILE_TYPES.IMAGE
-    case 'mp4':
-      return FILE_TYPES.VIDEO
-    default:
-      return FILE_TYPES.IMAGE
-  }
-}
-
 function Image({
   width,
   height,
@@ -49,59 +34,47 @@ function Image({
   ...props
 }: ImageComponentProps) {
   const [progress, setProgress] = useState(0)
-  const [loading, setLoading] = useState(false)
+  const loading = useRef(false)
+
+  const uri = source.poster || source.uri
 
   // NOTE: Guard for crash on Android
-  if (!source.uri) {
+  if (!uri) {
     return null
   }
 
-  const handleLoadStart = () => {
-    if (showIndicator && !loading && progress !== 1) {
-      setLoading(true)
+  const handleLoadStart = useCallback(() => {
+    if (showIndicator && !loading.current && progress !== 1) {
+      loading.current = true
     }
-  }
+  }, [showIndicator, loading, progress])
 
-  const handleLoadEnd = () => {
+  const handleLoadEnd = useCallback(() => {
     if (showIndicator) {
-      setLoading(false)
+      loading.current = false
       setProgress(1)
     }
-  }
+  }, [showIndicator])
 
-  const handleError = () => {
+  const handleError = useCallback(() => {
     if (showIndicator) {
-      setLoading(false)
+      loading.current = false
     }
-  }
+  }, [showIndicator])
 
-  const handleProgress = (evt) => {
+  const handleProgress = useCallback((evt) => {
     if (showIndicator) {
       const loaded = evt.nativeEvent.loaded / evt.nativeEvent.total
       if (loaded !== progress && progress !== 1) {
-        setLoading(loaded < 1)
+        loading.current = loaded < 1
         setProgress(loaded)
       }
     }
-  }
+  }, [])
 
-  if (getFileTypeFromFilename(source.uri) === FILE_TYPES.VIDEO) {
-    return (
-      <Base
-        width={width}
-        height={height}
-        borderRadius={borderRadius}
-        placeholderColor={placeholderColor}
-        style={style}
-      >
-        <Video source={source} isLooping isMuted resizeMode="cover" style={{ flex: 1 }} />
-      </Base>
-    )
-  }
+  const imageUri = `${uri}?w=${width}&h=${height}&dpr=${density}&webp=1`
 
-  const uri = `${source.uri}?w=${width}&h=${height}&dpr=${density}&webp=1`
-
-  const placeholder = `${source.uri}?w=${Math.round(width / placeholderDensity)}&h=${Math.round(
+  const placeholder = `${uri}?w=${Math.round(width / placeholderDensity)}&h=${Math.round(
     height / placeholderDensity
   )}&dpr=1`
 
@@ -125,7 +98,7 @@ function Image({
 
       <FastImage
         {...props}
-        source={{ uri, priority: priority || IMAGE_PRIORITY.NORMAL }}
+        source={{ uri: imageUri, priority: priority || IMAGE_PRIORITY.NORMAL }}
         onLoadStart={handleLoadStart}
         onLoadEnd={handleLoadEnd}
         onProgress={handleProgress}
@@ -146,7 +119,7 @@ function Image({
         ]}
       />
 
-      {(showIndicator && loading) || (showIndicator && progress < 1) ? (
+      {showIndicator && progress < 1 ? (
         <View
           style={{
             position: 'absolute',
@@ -171,4 +144,4 @@ function Image({
   )
 }
 
-export default memo(Image)
+export default Image

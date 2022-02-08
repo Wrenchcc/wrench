@@ -1,6 +1,6 @@
 import { ScrollView } from 'react-native'
 import Animated from 'react-native-reanimated'
-import createNavigationAwareScrollable from './createNavigationAwareScrollable'
+import createScrollable from './createScrollable'
 
 const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView)
-export default createNavigationAwareScrollable(AnimatedScrollView)
+export default createScrollable(AnimatedScrollView)

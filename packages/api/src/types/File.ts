@@ -6,6 +6,7 @@ export default gql`
     postId: ID
     type: FileType
     uri: String!
+    poster: String
     createdAt: Date
     updatedAt: Date
   }

@@ -1,66 +1,92 @@
-import React, { useRef, useEffect, useContext, useCallback, useState } from 'react'
+import React, { useEffect, useCallback, useState } from 'react'
 import { Video as Player } from 'expo-av'
-import { Image } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import Animated, {
   useAnimatedReaction,
   runOnJS,
   useSharedValue,
   useAnimatedStyle,
+  useAnimatedRef,
   withTiming,
 } from 'react-native-reanimated'
-import { ViewabilityItemsContext } from 'navigation'
-import { Touchable, Icon } from 'ui'
+import { useViewability } from 'navigation'
+import { Touchable, Icon, Image } from 'ui'
 import { useReactiveVar, store } from 'gql'
 import { muted, sound } from 'images'
 
+const styles = {
+  mute: {
+    width: 30,
+    height: 30,
+    zIndex: 10,
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+  },
+  muteIcon: {
+    width: 30,
+    height: 30,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+}
+
+const OPACITY_DURATION = 200
+
 function Video({ size, source, id }) {
-  const videoRef = useRef()
-  const isPlaying = useRef(false)
+  const [showPoster, setShowPoster] = useState(true)
+  const videoRef = useAnimatedRef()
+  const isPlaying = useSharedValue(false)
   const opacity = useSharedValue(0)
   const isMuted = useReactiveVar(store.video.isMutedVar)
-  const context = useContext(ViewabilityItemsContext)
+  const context = useViewability()
 
-  const play = useCallback(() => {
-    if (!isPlaying.current) {
-      // videoRef?.current?.playAsync()
+  const play = useCallback(
+    async ({ isMuted }) => {
+      if (!isPlaying.value) {
+        await videoRef?.current?.loadAsync(source, {
+          shouldPlay: true,
+          isMuted,
+          isLooping: true,
+        })
 
-      videoRef?.current?.loadAsync(source, { shouldPlay: true, isMuted, isLooping: true })
+        setShowPoster(false)
 
-      isPlaying.current = true
-    }
-  }, [isMuted])
+        isPlaying.value = true
+      }
+    },
+    [videoRef]
+  )
 
   const togglePlay = useCallback(() => {
-    if (isPlaying.current) {
+    if (isPlaying.value) {
       videoRef?.current?.pauseAsync()
     } else {
       videoRef?.current?.playAsync()
     }
+    isPlaying.value = !isPlaying.value
+  }, [isPlaying, isMuted])
 
-    isPlaying.current = !isPlaying.current
-  }, [])
-
-  const pause = useCallback(() => {
-    if (isPlaying.current) {
-      videoRef?.current?.unloadAsync()
-    }
-
-    isPlaying.current = false
+  const pause = useCallback(async () => {
+    await videoRef?.current?.unloadAsync()
+    setShowPoster(true)
+    isPlaying.value = false
   }, [videoRef])
 
   useAnimatedReaction(
-    () => context.visibleItemId.value,
+    () => context?.visibleItemId?.value,
     (visibleItemId) => {
       if (visibleItemId === id) {
-        opacity.value = withTiming(1, { duration: 200 })
-        runOnJS(play)()
+        opacity.value = withTiming(1, { duration: OPACITY_DURATION })
+        runOnJS(play)({ isMuted })
       } else {
-        opacity.value = withTiming(0, { duration: 200 })
+        opacity.value = withTiming(0, { duration: OPACITY_DURATION })
         runOnJS(pause)()
       }
     },
-    []
+    [isMuted]
   )
 
   useEffect(() => {
@@ -88,31 +114,20 @@ function Video({ size, source, id }) {
 
   return (
     <>
-      <Animated.View
-        style={[
-          { width: 30, height: 30, zIndex: 10, position: 'absolute', bottom: 20, right: 20 },
-          animatedStyle,
-        ]}
-      >
+      <Animated.View style={[styles.mute, animatedStyle]}>
         <Icon
           source={isMuted ? muted : sound}
           onPress={handleMute}
           color="white"
-          style={{
-            width: 30,
-            height: 30,
-            backgroundColor: 'rgba(0, 0, 0, 0.75)',
-            borderRadius: 30,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
+          style={styles.muteIcon}
         />
       </Animated.View>
 
       <Touchable onPress={togglePlay}>
+        {showPoster && <Image source={source} style={{ width: size, height: size }} />}
+
         <Player
           ref={videoRef}
-          source={source}
           isLooping
           resizeMode="cover"
           isMuted={isMuted}

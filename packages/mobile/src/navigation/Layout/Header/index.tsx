@@ -1,50 +1,82 @@
-import React, { useContext } from 'react'
-import Animated from 'react-native-reanimated'
+import React from 'react'
+import { View } from 'react-native'
+import Animated, { useAnimatedStyle, interpolate } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
-import { ScrollContext } from 'navigation/Layout/context'
 import { Title } from 'ui'
-import { Base, Background, Content, Inner } from './styles'
-
-const { interpolateNode } = Animated
+import PlatformColor from 'ui/PlatformColor'
+import { useScrollContext } from 'navigation'
+import { NAVIGATION } from '../../constants'
 
 // NOTE: Used to create translation files
 // t('notifications')
 // t('home')
 
+const styles = {
+  container: {
+    left: 0,
+    right: 0,
+    top: 0,
+    width: '100%',
+    zIndex: 10000,
+    position: 'absolute',
+  },
+  backgrond: {
+    zIndex: 10000,
+    backgroundColor: PlatformColor.default,
+  },
+  content: {
+    backgroundColor: PlatformColor.default,
+    marginTop: NAVIGATION.STATUS_BAR_HEIGHT,
+  },
+  inner: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    height: NAVIGATION.TOP_BAR_HEIGHT,
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+  },
+}
+
 function Header({ headerLeft, headerRight, headerTitleKey, stickyComponent }) {
   const { t } = useTranslation('header')
+  const { headerY } = useScrollContext()
 
-  const { translateY, headerHeight } = useContext(ScrollContext)
+  const transformStyle = useAnimatedStyle(() => ({
+    transform: [
+      {
+        translateY: interpolate(
+          headerY.value,
+          [0, NAVIGATION.TOP_BAR_HEIGHT],
+          [0, -NAVIGATION.TOP_BAR_HEIGHT],
+          Animated.Extrapolate.CLAMP
+        ),
+      },
+    ],
+  }))
 
-  const transform = [
-    {
-      translateY: interpolateNode(translateY, {
-        inputRange: [-headerHeight, 0],
-        outputRange: [-headerHeight, 0],
-      }),
-    },
-  ]
-
-  const opacity = interpolateNode(translateY, {
-    inputRange: [-headerHeight, 0],
-    outputRange: [0, 1],
-  })
+  const opacityStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(
+      headerY.value,
+      [NAVIGATION.TOP_BAR_HEIGHT / 1.5, 0],
+      [0, 1],
+      Animated.Extrapolate.CLAMP
+    ),
+  }))
 
   return (
-    <Base style={{ transform }}>
-      <Background>
-        <Content style={{ opacity }}>
-          <Inner>
+    <Animated.View style={[styles.container, transformStyle]}>
+      <View style={styles.backgrond}>
+        <Animated.View style={[styles.content, opacityStyle]}>
+          <View style={styles.inner}>
             {headerLeft}
             {headerTitleKey && <Title medium>{t(headerTitleKey)}</Title>}
             {headerRight}
-          </Inner>
-        </Content>
-      </Background>
-
+          </View>
+        </Animated.View>
+      </View>
       {stickyComponent}
-    </Base>
+    </Animated.View>
   )
 }
 
-export default React.memo(Header)
+export default Header

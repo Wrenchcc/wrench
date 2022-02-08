@@ -28,6 +28,10 @@ export default isAuthenticated(async (_, { id, input }, ctx) => {
     })
   }
 
+  if (input.files) {
+    // TODO: Remove files that are not included in paylaod
+  }
+
   return ctx.db.Post.save({
     ...post,
     ...input,

@@ -1,5 +1,5 @@
 import paginate from '../../utils/paginate'
-import { transformFileUrl } from '../../utils/transformFileUrl'
+import { transformFileUrl, transformPosterUrl } from '../../utils/transformFileUrl'
 
 // TODO: Use dataloader
 export default async ({ id }, args, ctx) => {
@@ -25,7 +25,7 @@ export default async ({ id }, args, ctx) => {
             node: {
               ...n.node,
               cover: {
-                uri: transformFileUrl(file),
+                uri: file.poster ? transformPosterUrl(file) : file ? transformFileUrl(file) : null,
               },
             },
           })),

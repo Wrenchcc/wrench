@@ -24,6 +24,7 @@ fragment Notification on Notification {
       node {
         id
         uri
+        poster
       }
     }
   }

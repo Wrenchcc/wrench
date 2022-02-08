@@ -1,6 +1,6 @@
 import { SectionList } from 'react-native'
 import Animated from 'react-native-reanimated'
-import createNavigationAwareScrollable from './createNavigationAwareScrollable'
+import createScrollable from './createScrollable'
 
 const AnimatedSectionList = Animated.createAnimatedComponent(SectionList)
-export default createNavigationAwareScrollable(AnimatedSectionList)
+export default createScrollable(AnimatedSectionList)

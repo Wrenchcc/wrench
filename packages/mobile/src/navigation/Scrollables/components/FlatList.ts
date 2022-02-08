@@ -1,6 +1,6 @@
 import { FlatList } from 'react-native'
 import Animated from 'react-native-reanimated'
-import createNavigationAwareScrollable from './createNavigationAwareScrollable'
+import createScrollable from './createScrollable'
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
-export default createNavigationAwareScrollable(AnimatedFlatList)
+export default createScrollable(AnimatedFlatList)

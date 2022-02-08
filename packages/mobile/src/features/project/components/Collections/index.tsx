@@ -59,7 +59,6 @@ function Collections({
   if (edges?.length || (edges?.length && isOwner)) {
     content = (
       <InfiniteList
-        paddingBottom={0}
         initialNumToRender={8}
         data={edges}
         horizontal
@@ -91,7 +90,6 @@ function Collections({
   if (edges?.length || (edges?.length && !isOwner)) {
     content = (
       <InfiniteList
-        paddingBottom={0}
         initialNumToRender={8}
         data={edges}
         horizontal

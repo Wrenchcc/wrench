@@ -19,6 +19,7 @@ fragment Post on Post {
         id
         type
         uri
+        poster
       }
     }
   }

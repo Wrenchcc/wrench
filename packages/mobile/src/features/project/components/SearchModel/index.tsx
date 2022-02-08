@@ -40,9 +40,7 @@ function SearchModel({ query, onPress }) {
       <InfiniteList
         borderSeparator
         initialNumToRender={8}
-        paddingBottom={0}
         keyboard
-        androidDismissKeyboard={false}
         keyboardDismissMode="none"
         ListEmptyComponent={!isFetching && query.length > 1 && <NoResults />}
         data={edges}

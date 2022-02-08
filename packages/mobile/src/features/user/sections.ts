@@ -165,11 +165,11 @@ const sections = ({ t, ...props }) => {
                 ],
                 { cancelable: false }
               ),
-            important: true,
           },
           {
             title: t('settings:logout'),
             onPress: () => client.clearStore(),
+            important: true,
           },
         ],
       },

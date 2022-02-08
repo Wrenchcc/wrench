@@ -8,7 +8,7 @@ export default {
     titleDisplayMode: 'alwaysHide',
   },
   bottomTabs: {
-    drawBehind: true,
+    drawBehind: false,
     backgroundColor: '#000',
     titleDisplayMode: 'alwaysHide',
     tabsAttachMode: 'afterInitialTab',
