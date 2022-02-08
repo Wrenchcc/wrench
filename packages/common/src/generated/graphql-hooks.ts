@@ -177,7 +177,7 @@ export type EditFileInput = {
 export type EditPostInput = {
   caption?: InputMaybe<Scalars['String']>
   collectionId?: InputMaybe<Scalars['ID']>
-  files: Array<InputMaybe<EditFileInput>>
+  files?: InputMaybe<Array<InputMaybe<EditFileInput>>>
 }
 
 export type EditUserInput = {

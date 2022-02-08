@@ -72,7 +72,7 @@ export default gql`
   input EditPostInput {
     caption: String
     collectionId: ID
-    files: [EditFileInput]!
+    files: [EditFileInput]
   }
 
   extend type Mutation {

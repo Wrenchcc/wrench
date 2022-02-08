@@ -152,9 +152,13 @@ export declare type CoverType = {
 export declare type EditCollectionInput = {
     name?: InputMaybe<Scalars['String']>;
 };
+export declare type EditFileInput = {
+    id?: InputMaybe<Scalars['String']>;
+};
 export declare type EditPostInput = {
     caption?: InputMaybe<Scalars['String']>;
     collectionId?: InputMaybe<Scalars['ID']>;
+    files?: InputMaybe<Array<InputMaybe<EditFileInput>>>;
 };
 export declare type EditUserInput = {
     avatarUrl?: InputMaybe<Scalars['String']>;
@@ -183,6 +187,7 @@ export declare type File = {
     createdAt?: Maybe<Scalars['Date']>;
     id?: Maybe<Scalars['ID']>;
     postId?: Maybe<Scalars['ID']>;
+    poster?: Maybe<Scalars['String']>;
     type?: Maybe<FileType>;
     updatedAt?: Maybe<Scalars['Date']>;
     uri: Scalars['String'];
@@ -199,6 +204,7 @@ export declare type FileEdge = {
 };
 export declare type FileInput = {
     filename: Scalars['String'];
+    poster?: InputMaybe<Scalars['String']>;
 };
 export declare enum FileType {
     Image = "IMAGE",
@@ -972,373 +978,375 @@ export declare enum VehicleTypes {
 }
 export declare type BlogPostFragment = {
     __typename?: 'BlogPost';
-    id?: string | null | undefined;
-    title?: string | null | undefined;
-    slug?: string | null | undefined;
-    content?: string | null | undefined;
-    createdAt?: any | null | undefined;
+    id?: string | null;
+    title?: string | null;
+    slug?: string | null;
+    content?: string | null;
+    createdAt?: any | null;
     user?: {
         __typename?: 'User';
         id: string;
-        fullName?: string | null | undefined;
-        firstName?: string | null | undefined;
-        lastName?: string | null | undefined;
-        username?: any | null | undefined;
-        avatarUrl?: string | null | undefined;
-        isSilhouette?: boolean | null | undefined;
-        isOnline?: boolean | null | undefined;
-        website?: string | null | undefined;
-        location?: string | null | undefined;
-        bio?: string | null | undefined;
-        projectCount?: number | null | undefined;
-        dynamicLink?: string | null | undefined;
-    } | null | undefined;
+        fullName?: string | null;
+        firstName?: string | null;
+        lastName?: string | null;
+        username?: any | null;
+        avatarUrl?: string | null;
+        isSilhouette?: boolean | null;
+        isOnline?: boolean | null;
+        website?: string | null;
+        location?: string | null;
+        bio?: string | null;
+        projectCount?: number | null;
+        dynamicLink?: string | null;
+    } | null;
 };
 export declare type CollectionFragment = {
     __typename?: 'Collection';
-    id?: string | null | undefined;
-    name?: string | null | undefined;
-    slug?: string | null | undefined;
+    id?: string | null;
+    name?: string | null;
+    slug?: string | null;
     cover?: {
         __typename?: 'CoverType';
-        uri?: string | null | undefined;
-    } | null | undefined;
+        uri?: string | null;
+    } | null;
 };
 export declare type CommentAndRepliesFragment = {
     __typename?: 'Comment';
-    id?: string | null | undefined;
+    id?: string | null;
     text: string;
-    createdAt?: any | null | undefined;
-    translatable?: boolean | null | undefined;
+    createdAt?: any | null;
+    translatable?: boolean | null;
     replies?: {
         __typename?: 'CommentConnection';
-        totalCount?: number | null | undefined;
+        totalCount?: number | null;
         pageInfo: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
+            hasNextPage?: boolean | null;
         };
         edges?: Array<{
             __typename?: 'CommentEdge';
             cursor: string;
             node: {
                 __typename?: 'Comment';
-                id?: string | null | undefined;
+                id?: string | null;
                 text: string;
-                createdAt?: any | null | undefined;
-                translatable?: boolean | null | undefined;
+                createdAt?: any | null;
+                translatable?: boolean | null;
                 permissions?: {
                     __typename?: 'CommentPermissions';
-                    isOwner?: boolean | null | undefined;
-                } | null | undefined;
+                    isOwner?: boolean | null;
+                } | null;
                 likes?: {
                     __typename?: 'Likes';
-                    isLiked?: boolean | null | undefined;
-                    totalCount?: number | null | undefined;
-                } | null | undefined;
+                    isLiked?: boolean | null;
+                    totalCount?: number | null;
+                } | null;
                 user?: {
                     __typename?: 'User';
                     id: string;
-                    fullName?: string | null | undefined;
-                    firstName?: string | null | undefined;
-                    lastName?: string | null | undefined;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
-                    isSilhouette?: boolean | null | undefined;
-                    isOnline?: boolean | null | undefined;
-                    website?: string | null | undefined;
-                    location?: string | null | undefined;
-                    bio?: string | null | undefined;
-                    projectCount?: number | null | undefined;
-                    dynamicLink?: string | null | undefined;
-                } | null | undefined;
+                    fullName?: string | null;
+                    firstName?: string | null;
+                    lastName?: string | null;
+                    username?: any | null;
+                    avatarUrl?: string | null;
+                    isSilhouette?: boolean | null;
+                    isOnline?: boolean | null;
+                    website?: string | null;
+                    location?: string | null;
+                    bio?: string | null;
+                    projectCount?: number | null;
+                    dynamicLink?: string | null;
+                } | null;
             };
-        }> | null | undefined;
-    } | null | undefined;
+        }> | null;
+    } | null;
     permissions?: {
         __typename?: 'CommentPermissions';
-        isOwner?: boolean | null | undefined;
-    } | null | undefined;
+        isOwner?: boolean | null;
+    } | null;
     likes?: {
         __typename?: 'Likes';
-        isLiked?: boolean | null | undefined;
-        totalCount?: number | null | undefined;
-    } | null | undefined;
+        isLiked?: boolean | null;
+        totalCount?: number | null;
+    } | null;
     user?: {
         __typename?: 'User';
         id: string;
-        fullName?: string | null | undefined;
-        firstName?: string | null | undefined;
-        lastName?: string | null | undefined;
-        username?: any | null | undefined;
-        avatarUrl?: string | null | undefined;
-        isSilhouette?: boolean | null | undefined;
-        isOnline?: boolean | null | undefined;
-        website?: string | null | undefined;
-        location?: string | null | undefined;
-        bio?: string | null | undefined;
-        projectCount?: number | null | undefined;
-        dynamicLink?: string | null | undefined;
-    } | null | undefined;
+        fullName?: string | null;
+        firstName?: string | null;
+        lastName?: string | null;
+        username?: any | null;
+        avatarUrl?: string | null;
+        isSilhouette?: boolean | null;
+        isOnline?: boolean | null;
+        website?: string | null;
+        location?: string | null;
+        bio?: string | null;
+        projectCount?: number | null;
+        dynamicLink?: string | null;
+    } | null;
 };
 export declare type CommentFragment = {
     __typename?: 'Comment';
-    id?: string | null | undefined;
+    id?: string | null;
     text: string;
-    createdAt?: any | null | undefined;
-    translatable?: boolean | null | undefined;
+    createdAt?: any | null;
+    translatable?: boolean | null;
     permissions?: {
         __typename?: 'CommentPermissions';
-        isOwner?: boolean | null | undefined;
-    } | null | undefined;
+        isOwner?: boolean | null;
+    } | null;
     likes?: {
         __typename?: 'Likes';
-        isLiked?: boolean | null | undefined;
-        totalCount?: number | null | undefined;
-    } | null | undefined;
+        isLiked?: boolean | null;
+        totalCount?: number | null;
+    } | null;
     user?: {
         __typename?: 'User';
         id: string;
-        fullName?: string | null | undefined;
-        firstName?: string | null | undefined;
-        lastName?: string | null | undefined;
-        username?: any | null | undefined;
-        avatarUrl?: string | null | undefined;
-        isSilhouette?: boolean | null | undefined;
-        isOnline?: boolean | null | undefined;
-        website?: string | null | undefined;
-        location?: string | null | undefined;
-        bio?: string | null | undefined;
-        projectCount?: number | null | undefined;
-        dynamicLink?: string | null | undefined;
-    } | null | undefined;
+        fullName?: string | null;
+        firstName?: string | null;
+        lastName?: string | null;
+        username?: any | null;
+        avatarUrl?: string | null;
+        isSilhouette?: boolean | null;
+        isOnline?: boolean | null;
+        website?: string | null;
+        location?: string | null;
+        bio?: string | null;
+        projectCount?: number | null;
+        dynamicLink?: string | null;
+    } | null;
 };
 export declare type NotificationFragment = {
     __typename?: 'Notification';
     id: string;
-    type?: NotificationTypes | null | undefined;
+    type?: NotificationTypes | null;
     createdAt: any;
     user: {
         __typename?: 'User';
         id: string;
-        fullName?: string | null | undefined;
-        firstName?: string | null | undefined;
-        lastName?: string | null | undefined;
-        username?: any | null | undefined;
-        avatarUrl?: string | null | undefined;
-        isSilhouette?: boolean | null | undefined;
-        isOnline?: boolean | null | undefined;
-        website?: string | null | undefined;
-        location?: string | null | undefined;
-        bio?: string | null | undefined;
-        projectCount?: number | null | undefined;
-        dynamicLink?: string | null | undefined;
+        fullName?: string | null;
+        firstName?: string | null;
+        lastName?: string | null;
+        username?: any | null;
+        avatarUrl?: string | null;
+        isSilhouette?: boolean | null;
+        isOnline?: boolean | null;
+        website?: string | null;
+        location?: string | null;
+        bio?: string | null;
+        projectCount?: number | null;
+        dynamicLink?: string | null;
     };
     project?: {
         __typename?: 'Project';
-        id?: string | null | undefined;
-        title?: string | null | undefined;
-        slug?: string | null | undefined;
-        dynamicLink?: string | null | undefined;
+        id?: string | null;
+        title?: string | null;
+        slug?: string | null;
+        dynamicLink?: string | null;
         user?: {
             __typename?: 'User';
             id: string;
-            fullName?: string | null | undefined;
-            firstName?: string | null | undefined;
-            lastName?: string | null | undefined;
-            username?: any | null | undefined;
-            avatarUrl?: string | null | undefined;
-            isSilhouette?: boolean | null | undefined;
-            isOnline?: boolean | null | undefined;
-            website?: string | null | undefined;
-            location?: string | null | undefined;
-            bio?: string | null | undefined;
-            projectCount?: number | null | undefined;
-            dynamicLink?: string | null | undefined;
-        } | null | undefined;
+            fullName?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            username?: any | null;
+            avatarUrl?: string | null;
+            isSilhouette?: boolean | null;
+            isOnline?: boolean | null;
+            website?: string | null;
+            location?: string | null;
+            bio?: string | null;
+            projectCount?: number | null;
+            dynamicLink?: string | null;
+        } | null;
         permissions?: {
             __typename?: 'ProjectPermissions';
-            isOwner?: boolean | null | undefined;
-            isFollower?: boolean | null | undefined;
-        } | null | undefined;
+            isOwner?: boolean | null;
+            isFollower?: boolean | null;
+        } | null;
         type?: {
             __typename?: 'ProjectType';
-            title?: string | null | undefined;
-        } | null | undefined;
+            title?: string | null;
+        } | null;
         cover?: {
             __typename?: 'CoverType';
-            uri?: string | null | undefined;
-        } | null | undefined;
+            uri?: string | null;
+        } | null;
         followers?: {
             __typename?: 'FollowersConnection';
-            totalCount?: number | null | undefined;
+            totalCount?: number | null;
             edges?: Array<{
                 __typename?: 'FollowersEdge';
                 node: {
                     __typename?: 'User';
                     id: string;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
+                    username?: any | null;
+                    avatarUrl?: string | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            }> | null;
+        } | null;
+    } | null;
     post?: {
         __typename?: 'Post';
-        id?: string | null | undefined;
-    } | null | undefined;
+        id?: string | null;
+    } | null;
     comment?: {
         __typename?: 'Comment';
-        id?: string | null | undefined;
+        id?: string | null;
         text: string;
-        postId?: string | null | undefined;
-    } | null | undefined;
+        postId?: string | null;
+    } | null;
     files?: {
         __typename?: 'FileConnection';
         edges?: Array<{
             __typename?: 'FileEdge';
             node: {
                 __typename?: 'File';
-                id?: string | null | undefined;
+                id?: string | null;
                 uri: string;
+                poster?: string | null;
             };
-        } | null | undefined> | null | undefined;
-    } | null | undefined;
+        } | null> | null;
+    } | null;
 };
 export declare type PostFragment = {
     __typename?: 'Post';
-    id?: string | null | undefined;
-    caption?: string | null | undefined;
-    createdAt?: any | null | undefined;
-    translatable?: boolean | null | undefined;
+    id?: string | null;
+    caption?: string | null;
+    createdAt?: any | null;
+    translatable?: boolean | null;
     user?: {
         __typename?: 'User';
         id: string;
-        fullName?: string | null | undefined;
-        firstName?: string | null | undefined;
-        lastName?: string | null | undefined;
-        username?: any | null | undefined;
-        avatarUrl?: string | null | undefined;
-        isSilhouette?: boolean | null | undefined;
-        isOnline?: boolean | null | undefined;
-        website?: string | null | undefined;
-        location?: string | null | undefined;
-        bio?: string | null | undefined;
-        projectCount?: number | null | undefined;
-        dynamicLink?: string | null | undefined;
-    } | null | undefined;
+        fullName?: string | null;
+        firstName?: string | null;
+        lastName?: string | null;
+        username?: any | null;
+        avatarUrl?: string | null;
+        isSilhouette?: boolean | null;
+        isOnline?: boolean | null;
+        website?: string | null;
+        location?: string | null;
+        bio?: string | null;
+        projectCount?: number | null;
+        dynamicLink?: string | null;
+    } | null;
     permissions?: {
         __typename?: 'PostPermissions';
-        isOwner?: boolean | null | undefined;
-    } | null | undefined;
+        isOwner?: boolean | null;
+    } | null;
     files?: {
         __typename?: 'FileConnection';
         edges?: Array<{
             __typename?: 'FileEdge';
             node: {
                 __typename?: 'File';
-                id?: string | null | undefined;
-                type?: FileType | null | undefined;
+                id?: string | null;
+                type?: FileType | null;
                 uri: string;
+                poster?: string | null;
             };
-        } | null | undefined> | null | undefined;
-    } | null | undefined;
+        } | null> | null;
+    } | null;
     project?: {
         __typename?: 'Project';
-        id?: string | null | undefined;
-        title?: string | null | undefined;
-        slug?: string | null | undefined;
-        dynamicLink?: string | null | undefined;
+        id?: string | null;
+        title?: string | null;
+        slug?: string | null;
+        dynamicLink?: string | null;
         user?: {
             __typename?: 'User';
             id: string;
-            fullName?: string | null | undefined;
-            firstName?: string | null | undefined;
-            lastName?: string | null | undefined;
-            username?: any | null | undefined;
-            avatarUrl?: string | null | undefined;
-            isSilhouette?: boolean | null | undefined;
-            isOnline?: boolean | null | undefined;
-            website?: string | null | undefined;
-            location?: string | null | undefined;
-            bio?: string | null | undefined;
-            projectCount?: number | null | undefined;
-            dynamicLink?: string | null | undefined;
-        } | null | undefined;
+            fullName?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            username?: any | null;
+            avatarUrl?: string | null;
+            isSilhouette?: boolean | null;
+            isOnline?: boolean | null;
+            website?: string | null;
+            location?: string | null;
+            bio?: string | null;
+            projectCount?: number | null;
+            dynamicLink?: string | null;
+        } | null;
         permissions?: {
             __typename?: 'ProjectPermissions';
-            isOwner?: boolean | null | undefined;
-            isFollower?: boolean | null | undefined;
-        } | null | undefined;
+            isOwner?: boolean | null;
+            isFollower?: boolean | null;
+        } | null;
         type?: {
             __typename?: 'ProjectType';
-            title?: string | null | undefined;
-        } | null | undefined;
+            title?: string | null;
+        } | null;
         cover?: {
             __typename?: 'CoverType';
-            uri?: string | null | undefined;
-        } | null | undefined;
+            uri?: string | null;
+        } | null;
         followers?: {
             __typename?: 'FollowersConnection';
-            totalCount?: number | null | undefined;
+            totalCount?: number | null;
             edges?: Array<{
                 __typename?: 'FollowersEdge';
                 node: {
                     __typename?: 'User';
                     id: string;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
+                    username?: any | null;
+                    avatarUrl?: string | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            }> | null;
+        } | null;
+    } | null;
     likes?: {
         __typename?: 'Likes';
-        isLiked?: boolean | null | undefined;
-        totalCount?: number | null | undefined;
-    } | null | undefined;
+        isLiked?: boolean | null;
+        totalCount?: number | null;
+    } | null;
     bookmarks?: {
         __typename?: 'Bookmarks';
-        isBookmarked?: boolean | null | undefined;
-    } | null | undefined;
+        isBookmarked?: boolean | null;
+    } | null;
     comments?: {
         __typename?: 'CommentConnection';
-        totalCount?: number | null | undefined;
+        totalCount?: number | null;
         edges?: Array<{
             __typename?: 'CommentEdge';
             node: {
                 __typename?: 'Comment';
-                id?: string | null | undefined;
+                id?: string | null;
                 text: string;
-                createdAt?: any | null | undefined;
-                translatable?: boolean | null | undefined;
+                createdAt?: any | null;
+                translatable?: boolean | null;
                 permissions?: {
                     __typename?: 'CommentPermissions';
-                    isOwner?: boolean | null | undefined;
-                } | null | undefined;
+                    isOwner?: boolean | null;
+                } | null;
                 likes?: {
                     __typename?: 'Likes';
-                    isLiked?: boolean | null | undefined;
-                    totalCount?: number | null | undefined;
-                } | null | undefined;
+                    isLiked?: boolean | null;
+                    totalCount?: number | null;
+                } | null;
                 user?: {
                     __typename?: 'User';
                     id: string;
-                    fullName?: string | null | undefined;
-                    firstName?: string | null | undefined;
-                    lastName?: string | null | undefined;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
-                    isSilhouette?: boolean | null | undefined;
-                    isOnline?: boolean | null | undefined;
-                    website?: string | null | undefined;
-                    location?: string | null | undefined;
-                    bio?: string | null | undefined;
-                    projectCount?: number | null | undefined;
-                    dynamicLink?: string | null | undefined;
-                } | null | undefined;
+                    fullName?: string | null;
+                    firstName?: string | null;
+                    lastName?: string | null;
+                    username?: any | null;
+                    avatarUrl?: string | null;
+                    isSilhouette?: boolean | null;
+                    isOnline?: boolean | null;
+                    website?: string | null;
+                    location?: string | null;
+                    bio?: string | null;
+                    projectCount?: number | null;
+                    dynamicLink?: string | null;
+                } | null;
             };
-        }> | null | undefined;
-    } | null | undefined;
+        }> | null;
+    } | null;
     likesConnection?: {
         __typename?: 'LikeConnection';
         edges?: Array<{
@@ -1346,81 +1354,81 @@ export declare type PostFragment = {
             node: {
                 __typename?: 'User';
                 id: string;
-                avatarUrl?: string | null | undefined;
+                avatarUrl?: string | null;
             };
-        }> | null | undefined;
-    } | null | undefined;
+        }> | null;
+    } | null;
     collection?: {
         __typename?: 'Collection';
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        slug?: string | null | undefined;
-    } | null | undefined;
+        id?: string | null;
+        name?: string | null;
+        slug?: string | null;
+    } | null;
 };
 export declare type ProjectFragment = {
     __typename?: 'Project';
-    id?: string | null | undefined;
-    title?: string | null | undefined;
-    slug?: string | null | undefined;
-    dynamicLink?: string | null | undefined;
+    id?: string | null;
+    title?: string | null;
+    slug?: string | null;
+    dynamicLink?: string | null;
     user?: {
         __typename?: 'User';
         id: string;
-        fullName?: string | null | undefined;
-        firstName?: string | null | undefined;
-        lastName?: string | null | undefined;
-        username?: any | null | undefined;
-        avatarUrl?: string | null | undefined;
-        isSilhouette?: boolean | null | undefined;
-        isOnline?: boolean | null | undefined;
-        website?: string | null | undefined;
-        location?: string | null | undefined;
-        bio?: string | null | undefined;
-        projectCount?: number | null | undefined;
-        dynamicLink?: string | null | undefined;
-    } | null | undefined;
+        fullName?: string | null;
+        firstName?: string | null;
+        lastName?: string | null;
+        username?: any | null;
+        avatarUrl?: string | null;
+        isSilhouette?: boolean | null;
+        isOnline?: boolean | null;
+        website?: string | null;
+        location?: string | null;
+        bio?: string | null;
+        projectCount?: number | null;
+        dynamicLink?: string | null;
+    } | null;
     permissions?: {
         __typename?: 'ProjectPermissions';
-        isOwner?: boolean | null | undefined;
-        isFollower?: boolean | null | undefined;
-    } | null | undefined;
+        isOwner?: boolean | null;
+        isFollower?: boolean | null;
+    } | null;
     type?: {
         __typename?: 'ProjectType';
-        title?: string | null | undefined;
-    } | null | undefined;
+        title?: string | null;
+    } | null;
     cover?: {
         __typename?: 'CoverType';
-        uri?: string | null | undefined;
-    } | null | undefined;
+        uri?: string | null;
+    } | null;
     followers?: {
         __typename?: 'FollowersConnection';
-        totalCount?: number | null | undefined;
+        totalCount?: number | null;
         edges?: Array<{
             __typename?: 'FollowersEdge';
             node: {
                 __typename?: 'User';
                 id: string;
-                username?: any | null | undefined;
-                avatarUrl?: string | null | undefined;
+                username?: any | null;
+                avatarUrl?: string | null;
             };
-        }> | null | undefined;
-    } | null | undefined;
+        }> | null;
+    } | null;
 };
 export declare type UserFragment = {
     __typename?: 'User';
     id: string;
-    fullName?: string | null | undefined;
-    firstName?: string | null | undefined;
-    lastName?: string | null | undefined;
-    username?: any | null | undefined;
-    avatarUrl?: string | null | undefined;
-    isSilhouette?: boolean | null | undefined;
-    isOnline?: boolean | null | undefined;
-    website?: string | null | undefined;
-    location?: string | null | undefined;
-    bio?: string | null | undefined;
-    projectCount?: number | null | undefined;
-    dynamicLink?: string | null | undefined;
+    fullName?: string | null;
+    firstName?: string | null;
+    lastName?: string | null;
+    username?: any | null;
+    avatarUrl?: string | null;
+    isSilhouette?: boolean | null;
+    isOnline?: boolean | null;
+    website?: string | null;
+    location?: string | null;
+    bio?: string | null;
+    projectCount?: number | null;
+    dynamicLink?: string | null;
 };
 export declare type UserProjectsFragment = {
     __typename?: 'User';
@@ -1430,31 +1438,32 @@ export declare type UserProjectsFragment = {
             __typename?: 'ProjectEdge';
             node: {
                 __typename?: 'Project';
-                id?: string | null | undefined;
-                title?: string | null | undefined;
+                id?: string | null;
+                title?: string | null;
                 followers?: {
                     __typename?: 'FollowersConnection';
-                    totalCount?: number | null | undefined;
-                } | null | undefined;
+                    totalCount?: number | null;
+                } | null;
                 files?: {
                     __typename?: 'FileConnection';
                     edges?: Array<{
                         __typename?: 'FileEdge';
                         node: {
                             __typename?: 'File';
-                            id?: string | null | undefined;
+                            id?: string | null;
                             uri: string;
+                            poster?: string | null;
                         };
-                    } | null | undefined> | null | undefined;
-                } | null | undefined;
+                    } | null> | null;
+                } | null;
             };
-        }> | null | undefined;
-    } | null | undefined;
+        }> | null;
+    } | null;
 };
 export declare type UserSettingsFragment = {
     __typename?: 'User';
     id: string;
-    role?: UserRole | null | undefined;
+    role?: UserRole | null;
     settings?: {
         __typename?: 'UserSettings';
         notifications?: {
@@ -1463,37 +1472,37 @@ export declare type UserSettingsFragment = {
                 __typename?: 'NotificationSettingsType';
                 NEW_FOLLOWER?: {
                     __typename?: 'NotificationKindSettings';
-                    email?: boolean | null | undefined;
-                    push?: boolean | null | undefined;
-                } | null | undefined;
+                    email?: boolean | null;
+                    push?: boolean | null;
+                } | null;
                 NEW_COMMENT?: {
                     __typename?: 'NotificationKindSettings';
-                    email?: boolean | null | undefined;
-                    push?: boolean | null | undefined;
-                } | null | undefined;
+                    email?: boolean | null;
+                    push?: boolean | null;
+                } | null;
                 NEW_MENTION?: {
                     __typename?: 'NotificationKindSettings';
-                    email?: boolean | null | undefined;
-                    push?: boolean | null | undefined;
-                } | null | undefined;
+                    email?: boolean | null;
+                    push?: boolean | null;
+                } | null;
                 NEW_ARTICLE?: {
                     __typename?: 'NotificationKindSettings';
-                    email?: boolean | null | undefined;
-                    push?: boolean | null | undefined;
-                } | null | undefined;
+                    email?: boolean | null;
+                    push?: boolean | null;
+                } | null;
                 SIMILAR_PROJECTS?: {
                     __typename?: 'NotificationKindSettings';
-                    email?: boolean | null | undefined;
-                    push?: boolean | null | undefined;
-                } | null | undefined;
+                    email?: boolean | null;
+                    push?: boolean | null;
+                } | null;
                 PRODUCT_ANNOUNCEMENTS?: {
                     __typename?: 'NotificationKindSettings';
-                    email?: boolean | null | undefined;
-                    push?: boolean | null | undefined;
-                } | null | undefined;
-            } | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+                    email?: boolean | null;
+                    push?: boolean | null;
+                } | null;
+            } | null;
+        } | null;
+    } | null;
 };
 export declare type AddBlogPostMutationVariables = Exact<{
     id?: InputMaybe<Scalars['ID']>;
@@ -1503,28 +1512,28 @@ export declare type AddBlogPostMutation = {
     __typename?: 'Mutation';
     addBlogPost?: {
         __typename?: 'BlogPost';
-        id?: string | null | undefined;
-        title?: string | null | undefined;
-        slug?: string | null | undefined;
-        content?: string | null | undefined;
-        createdAt?: any | null | undefined;
+        id?: string | null;
+        title?: string | null;
+        slug?: string | null;
+        content?: string | null;
+        createdAt?: any | null;
         user?: {
             __typename?: 'User';
             id: string;
-            fullName?: string | null | undefined;
-            firstName?: string | null | undefined;
-            lastName?: string | null | undefined;
-            username?: any | null | undefined;
-            avatarUrl?: string | null | undefined;
-            isSilhouette?: boolean | null | undefined;
-            isOnline?: boolean | null | undefined;
-            website?: string | null | undefined;
-            location?: string | null | undefined;
-            bio?: string | null | undefined;
-            projectCount?: number | null | undefined;
-            dynamicLink?: string | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            fullName?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            username?: any | null;
+            avatarUrl?: string | null;
+            isSilhouette?: boolean | null;
+            isOnline?: boolean | null;
+            website?: string | null;
+            location?: string | null;
+            bio?: string | null;
+            projectCount?: number | null;
+            dynamicLink?: string | null;
+        } | null;
+    } | null;
 };
 export declare type AddCollectionMutationVariables = Exact<{
     projectId: Scalars['ID'];
@@ -1534,14 +1543,14 @@ export declare type AddCollectionMutation = {
     __typename?: 'Mutation';
     addCollection?: {
         __typename?: 'Collection';
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        slug?: string | null | undefined;
+        id?: string | null;
+        name?: string | null;
+        slug?: string | null;
         cover?: {
             __typename?: 'CoverType';
-            uri?: string | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            uri?: string | null;
+        } | null;
+    } | null;
 };
 export declare type AddCommentMutationVariables = Exact<{
     postId: Scalars['ID'];
@@ -1552,80 +1561,80 @@ export declare type AddCommentMutation = {
     __typename?: 'Mutation';
     addComment?: {
         __typename?: 'Comment';
-        id?: string | null | undefined;
+        id?: string | null;
         text: string;
-        createdAt?: any | null | undefined;
-        translatable?: boolean | null | undefined;
+        createdAt?: any | null;
+        translatable?: boolean | null;
         replies?: {
             __typename?: 'CommentConnection';
-            totalCount?: number | null | undefined;
+            totalCount?: number | null;
             pageInfo: {
                 __typename?: 'PageInfo';
-                hasNextPage?: boolean | null | undefined;
+                hasNextPage?: boolean | null;
             };
             edges?: Array<{
                 __typename?: 'CommentEdge';
                 cursor: string;
                 node: {
                     __typename?: 'Comment';
-                    id?: string | null | undefined;
+                    id?: string | null;
                     text: string;
-                    createdAt?: any | null | undefined;
-                    translatable?: boolean | null | undefined;
+                    createdAt?: any | null;
+                    translatable?: boolean | null;
                     permissions?: {
                         __typename?: 'CommentPermissions';
-                        isOwner?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                    } | null;
                     likes?: {
                         __typename?: 'Likes';
-                        isLiked?: boolean | null | undefined;
-                        totalCount?: number | null | undefined;
-                    } | null | undefined;
+                        isLiked?: boolean | null;
+                        totalCount?: number | null;
+                    } | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
+            }> | null;
+        } | null;
         permissions?: {
             __typename?: 'CommentPermissions';
-            isOwner?: boolean | null | undefined;
-        } | null | undefined;
+            isOwner?: boolean | null;
+        } | null;
         likes?: {
             __typename?: 'Likes';
-            isLiked?: boolean | null | undefined;
-            totalCount?: number | null | undefined;
-        } | null | undefined;
+            isLiked?: boolean | null;
+            totalCount?: number | null;
+        } | null;
         user?: {
             __typename?: 'User';
             id: string;
-            fullName?: string | null | undefined;
-            firstName?: string | null | undefined;
-            lastName?: string | null | undefined;
-            username?: any | null | undefined;
-            avatarUrl?: string | null | undefined;
-            isSilhouette?: boolean | null | undefined;
-            isOnline?: boolean | null | undefined;
-            website?: string | null | undefined;
-            location?: string | null | undefined;
-            bio?: string | null | undefined;
-            projectCount?: number | null | undefined;
-            dynamicLink?: string | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            fullName?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            username?: any | null;
+            avatarUrl?: string | null;
+            isSilhouette?: boolean | null;
+            isOnline?: boolean | null;
+            website?: string | null;
+            location?: string | null;
+            bio?: string | null;
+            projectCount?: number | null;
+            dynamicLink?: string | null;
+        } | null;
+    } | null;
 };
 export declare type AddPostMutationVariables = Exact<{
     input: PostInput;
@@ -1634,139 +1643,140 @@ export declare type AddPostMutation = {
     __typename?: 'Mutation';
     addPost?: {
         __typename?: 'Post';
-        id?: string | null | undefined;
-        caption?: string | null | undefined;
-        createdAt?: any | null | undefined;
-        translatable?: boolean | null | undefined;
+        id?: string | null;
+        caption?: string | null;
+        createdAt?: any | null;
+        translatable?: boolean | null;
         user?: {
             __typename?: 'User';
             id: string;
-            fullName?: string | null | undefined;
-            firstName?: string | null | undefined;
-            lastName?: string | null | undefined;
-            username?: any | null | undefined;
-            avatarUrl?: string | null | undefined;
-            isSilhouette?: boolean | null | undefined;
-            isOnline?: boolean | null | undefined;
-            website?: string | null | undefined;
-            location?: string | null | undefined;
-            bio?: string | null | undefined;
-            projectCount?: number | null | undefined;
-            dynamicLink?: string | null | undefined;
-        } | null | undefined;
+            fullName?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            username?: any | null;
+            avatarUrl?: string | null;
+            isSilhouette?: boolean | null;
+            isOnline?: boolean | null;
+            website?: string | null;
+            location?: string | null;
+            bio?: string | null;
+            projectCount?: number | null;
+            dynamicLink?: string | null;
+        } | null;
         permissions?: {
             __typename?: 'PostPermissions';
-            isOwner?: boolean | null | undefined;
-        } | null | undefined;
+            isOwner?: boolean | null;
+        } | null;
         files?: {
             __typename?: 'FileConnection';
             edges?: Array<{
                 __typename?: 'FileEdge';
                 node: {
                     __typename?: 'File';
-                    id?: string | null | undefined;
-                    type?: FileType | null | undefined;
+                    id?: string | null;
+                    type?: FileType | null;
                     uri: string;
+                    poster?: string | null;
                 };
-            } | null | undefined> | null | undefined;
-        } | null | undefined;
+            } | null> | null;
+        } | null;
         project?: {
             __typename?: 'Project';
-            id?: string | null | undefined;
-            title?: string | null | undefined;
-            slug?: string | null | undefined;
-            dynamicLink?: string | null | undefined;
+            id?: string | null;
+            title?: string | null;
+            slug?: string | null;
+            dynamicLink?: string | null;
             user?: {
                 __typename?: 'User';
                 id: string;
-                fullName?: string | null | undefined;
-                firstName?: string | null | undefined;
-                lastName?: string | null | undefined;
-                username?: any | null | undefined;
-                avatarUrl?: string | null | undefined;
-                isSilhouette?: boolean | null | undefined;
-                isOnline?: boolean | null | undefined;
-                website?: string | null | undefined;
-                location?: string | null | undefined;
-                bio?: string | null | undefined;
-                projectCount?: number | null | undefined;
-                dynamicLink?: string | null | undefined;
-            } | null | undefined;
+                fullName?: string | null;
+                firstName?: string | null;
+                lastName?: string | null;
+                username?: any | null;
+                avatarUrl?: string | null;
+                isSilhouette?: boolean | null;
+                isOnline?: boolean | null;
+                website?: string | null;
+                location?: string | null;
+                bio?: string | null;
+                projectCount?: number | null;
+                dynamicLink?: string | null;
+            } | null;
             permissions?: {
                 __typename?: 'ProjectPermissions';
-                isOwner?: boolean | null | undefined;
-                isFollower?: boolean | null | undefined;
-            } | null | undefined;
+                isOwner?: boolean | null;
+                isFollower?: boolean | null;
+            } | null;
             type?: {
                 __typename?: 'ProjectType';
-                title?: string | null | undefined;
-            } | null | undefined;
+                title?: string | null;
+            } | null;
             cover?: {
                 __typename?: 'CoverType';
-                uri?: string | null | undefined;
-            } | null | undefined;
+                uri?: string | null;
+            } | null;
             followers?: {
                 __typename?: 'FollowersConnection';
-                totalCount?: number | null | undefined;
+                totalCount?: number | null;
                 edges?: Array<{
                     __typename?: 'FollowersEdge';
                     node: {
                         __typename?: 'User';
                         id: string;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
+                        username?: any | null;
+                        avatarUrl?: string | null;
                     };
-                }> | null | undefined;
-            } | null | undefined;
-        } | null | undefined;
+                }> | null;
+            } | null;
+        } | null;
         likes?: {
             __typename?: 'Likes';
-            isLiked?: boolean | null | undefined;
-            totalCount?: number | null | undefined;
-        } | null | undefined;
+            isLiked?: boolean | null;
+            totalCount?: number | null;
+        } | null;
         bookmarks?: {
             __typename?: 'Bookmarks';
-            isBookmarked?: boolean | null | undefined;
-        } | null | undefined;
+            isBookmarked?: boolean | null;
+        } | null;
         comments?: {
             __typename?: 'CommentConnection';
-            totalCount?: number | null | undefined;
+            totalCount?: number | null;
             edges?: Array<{
                 __typename?: 'CommentEdge';
                 node: {
                     __typename?: 'Comment';
-                    id?: string | null | undefined;
+                    id?: string | null;
                     text: string;
-                    createdAt?: any | null | undefined;
-                    translatable?: boolean | null | undefined;
+                    createdAt?: any | null;
+                    translatable?: boolean | null;
                     permissions?: {
                         __typename?: 'CommentPermissions';
-                        isOwner?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                    } | null;
                     likes?: {
                         __typename?: 'Likes';
-                        isLiked?: boolean | null | undefined;
-                        totalCount?: number | null | undefined;
-                    } | null | undefined;
+                        isLiked?: boolean | null;
+                        totalCount?: number | null;
+                    } | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
+            }> | null;
+        } | null;
         likesConnection?: {
             __typename?: 'LikeConnection';
             edges?: Array<{
@@ -1774,17 +1784,17 @@ export declare type AddPostMutation = {
                 node: {
                     __typename?: 'User';
                     id: string;
-                    avatarUrl?: string | null | undefined;
+                    avatarUrl?: string | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
+            }> | null;
+        } | null;
         collection?: {
             __typename?: 'Collection';
-            id?: string | null | undefined;
-            name?: string | null | undefined;
-            slug?: string | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            id?: string | null;
+            name?: string | null;
+            slug?: string | null;
+        } | null;
+    } | null;
 };
 export declare type AddProjectMutationVariables = Exact<{
     input: ProjectInput;
@@ -1793,53 +1803,53 @@ export declare type AddProjectMutation = {
     __typename?: 'Mutation';
     addProject?: {
         __typename?: 'Project';
-        id?: string | null | undefined;
-        title?: string | null | undefined;
-        slug?: string | null | undefined;
-        dynamicLink?: string | null | undefined;
+        id?: string | null;
+        title?: string | null;
+        slug?: string | null;
+        dynamicLink?: string | null;
         user?: {
             __typename?: 'User';
             id: string;
-            fullName?: string | null | undefined;
-            firstName?: string | null | undefined;
-            lastName?: string | null | undefined;
-            username?: any | null | undefined;
-            avatarUrl?: string | null | undefined;
-            isSilhouette?: boolean | null | undefined;
-            isOnline?: boolean | null | undefined;
-            website?: string | null | undefined;
-            location?: string | null | undefined;
-            bio?: string | null | undefined;
-            projectCount?: number | null | undefined;
-            dynamicLink?: string | null | undefined;
-        } | null | undefined;
+            fullName?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            username?: any | null;
+            avatarUrl?: string | null;
+            isSilhouette?: boolean | null;
+            isOnline?: boolean | null;
+            website?: string | null;
+            location?: string | null;
+            bio?: string | null;
+            projectCount?: number | null;
+            dynamicLink?: string | null;
+        } | null;
         permissions?: {
             __typename?: 'ProjectPermissions';
-            isOwner?: boolean | null | undefined;
-            isFollower?: boolean | null | undefined;
-        } | null | undefined;
+            isOwner?: boolean | null;
+            isFollower?: boolean | null;
+        } | null;
         type?: {
             __typename?: 'ProjectType';
-            title?: string | null | undefined;
-        } | null | undefined;
+            title?: string | null;
+        } | null;
         cover?: {
             __typename?: 'CoverType';
-            uri?: string | null | undefined;
-        } | null | undefined;
+            uri?: string | null;
+        } | null;
         followers?: {
             __typename?: 'FollowersConnection';
-            totalCount?: number | null | undefined;
+            totalCount?: number | null;
             edges?: Array<{
                 __typename?: 'FollowersEdge';
                 node: {
                     __typename?: 'User';
                     id: string;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
+                    username?: any | null;
+                    avatarUrl?: string | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            }> | null;
+        } | null;
+    } | null;
 };
 export declare type AuthenticateAppleMutationVariables = Exact<{
     identityToken: Scalars['String'];
@@ -1849,9 +1859,9 @@ export declare type AuthenticateAppleMutation = {
     __typename?: 'Mutation';
     authenticateApple?: {
         __typename?: 'Tokens';
-        access_token?: string | null | undefined;
-        refresh_token?: string | null | undefined;
-    } | null | undefined;
+        access_token?: string | null;
+        refresh_token?: string | null;
+    } | null;
 };
 export declare type AuthenticateFacebookMutationVariables = Exact<{
     token: Scalars['String'];
@@ -1860,9 +1870,9 @@ export declare type AuthenticateFacebookMutation = {
     __typename?: 'Mutation';
     authenticateFacebook?: {
         __typename?: 'Tokens';
-        access_token?: string | null | undefined;
-        refresh_token?: string | null | undefined;
-    } | null | undefined;
+        access_token?: string | null;
+        refresh_token?: string | null;
+    } | null;
 };
 export declare type AuthenticateGoogleMutationVariables = Exact<{
     idToken: Scalars['String'];
@@ -1871,9 +1881,9 @@ export declare type AuthenticateGoogleMutation = {
     __typename?: 'Mutation';
     authenticateGoogle?: {
         __typename?: 'Tokens';
-        access_token?: string | null | undefined;
-        refresh_token?: string | null | undefined;
-    } | null | undefined;
+        access_token?: string | null;
+        refresh_token?: string | null;
+    } | null;
 };
 export declare type BanUserMutationVariables = Exact<{
     id: Scalars['ID'];
@@ -1883,19 +1893,19 @@ export declare type BanUserMutation = {
     banUser?: {
         __typename?: 'User';
         id: string;
-        fullName?: string | null | undefined;
-        firstName?: string | null | undefined;
-        lastName?: string | null | undefined;
-        username?: any | null | undefined;
-        avatarUrl?: string | null | undefined;
-        isSilhouette?: boolean | null | undefined;
-        isOnline?: boolean | null | undefined;
-        website?: string | null | undefined;
-        location?: string | null | undefined;
-        bio?: string | null | undefined;
-        projectCount?: number | null | undefined;
-        dynamicLink?: string | null | undefined;
-    } | null | undefined;
+        fullName?: string | null;
+        firstName?: string | null;
+        lastName?: string | null;
+        username?: any | null;
+        avatarUrl?: string | null;
+        isSilhouette?: boolean | null;
+        isOnline?: boolean | null;
+        website?: string | null;
+        location?: string | null;
+        bio?: string | null;
+        projectCount?: number | null;
+        dynamicLink?: string | null;
+    } | null;
 };
 export declare type BookmarkPostMutationVariables = Exact<{
     id: Scalars['ID'];
@@ -1904,12 +1914,12 @@ export declare type BookmarkPostMutation = {
     __typename?: 'Mutation';
     bookmarkPost?: {
         __typename?: 'Post';
-        id?: string | null | undefined;
+        id?: string | null;
         bookmarks?: {
             __typename?: 'Bookmarks';
-            isBookmarked?: boolean | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            isBookmarked?: boolean | null;
+        } | null;
+    } | null;
 };
 export declare type CollectPostsMutationVariables = Exact<{
     projectId: Scalars['ID'];
@@ -1920,13 +1930,13 @@ export declare type CollectPostsMutation = {
     __typename?: 'Mutation';
     collectPosts?: {
         __typename?: 'Collection';
-        id?: string | null | undefined;
-        name?: string | null | undefined;
+        id?: string | null;
+        name?: string | null;
         cover?: {
             __typename?: 'CoverType';
-            uri?: string | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            uri?: string | null;
+        } | null;
+    } | null;
 };
 export declare type DeleteBlogPostMutationVariables = Exact<{
     id: Scalars['ID'];
@@ -1935,8 +1945,8 @@ export declare type DeleteBlogPostMutation = {
     __typename?: 'Mutation';
     deleteBlogPost?: {
         __typename?: 'BlogPost';
-        id?: string | null | undefined;
-    } | null | undefined;
+        id?: string | null;
+    } | null;
 };
 export declare type DeleteCollectionMutationVariables = Exact<{
     projectId: Scalars['ID'];
@@ -1946,29 +1956,29 @@ export declare type DeleteCollectionMutation = {
     __typename?: 'Mutation';
     deleteCollection?: {
         __typename?: 'Collection';
-        id?: string | null | undefined;
-    } | null | undefined;
+        id?: string | null;
+    } | null;
 };
 export declare type DeleteCommentMutationVariables = Exact<{
     id: Scalars['ID'];
 }>;
 export declare type DeleteCommentMutation = {
     __typename?: 'Mutation';
-    deleteComment?: boolean | null | undefined;
+    deleteComment?: boolean | null;
 };
 export declare type DeleteCurrentUserMutationVariables = Exact<{
     [key: string]: never;
 }>;
 export declare type DeleteCurrentUserMutation = {
     __typename?: 'Mutation';
-    deleteCurrentUser?: boolean | null | undefined;
+    deleteCurrentUser?: boolean | null;
 };
 export declare type DeleteNotificationMutationVariables = Exact<{
     id: Scalars['ID'];
 }>;
 export declare type DeleteNotificationMutation = {
     __typename?: 'Mutation';
-    deleteNotification?: boolean | null | undefined;
+    deleteNotification?: boolean | null;
 };
 export declare type DeletePostMutationVariables = Exact<{
     id: Scalars['ID'];
@@ -1977,22 +1987,22 @@ export declare type DeletePostMutation = {
     __typename?: 'Mutation';
     deletePost?: {
         __typename?: 'Post';
-        id?: string | null | undefined;
-    } | null | undefined;
+        id?: string | null;
+    } | null;
 };
 export declare type DeleteProjectMutationVariables = Exact<{
     id: Scalars['ID'];
 }>;
 export declare type DeleteProjectMutation = {
     __typename?: 'Mutation';
-    deleteProject?: boolean | null | undefined;
+    deleteProject?: boolean | null;
 };
 export declare type DeleteUserMutationVariables = Exact<{
     id: Scalars['ID'];
 }>;
 export declare type DeleteUserMutation = {
     __typename?: 'Mutation';
-    deleteUser?: boolean | null | undefined;
+    deleteUser?: boolean | null;
 };
 export declare type EditCollectionMutationVariables = Exact<{
     input: EditCollectionInput;
@@ -2002,14 +2012,14 @@ export declare type EditCollectionMutation = {
     __typename?: 'Mutation';
     editCollection?: {
         __typename?: 'Collection';
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        slug?: string | null | undefined;
+        id?: string | null;
+        name?: string | null;
+        slug?: string | null;
         cover?: {
             __typename?: 'CoverType';
-            uri?: string | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            uri?: string | null;
+        } | null;
+    } | null;
 };
 export declare type EditPostMutationVariables = Exact<{
     id: Scalars['ID'];
@@ -2019,139 +2029,140 @@ export declare type EditPostMutation = {
     __typename?: 'Mutation';
     editPost?: {
         __typename?: 'Post';
-        id?: string | null | undefined;
-        caption?: string | null | undefined;
-        createdAt?: any | null | undefined;
-        translatable?: boolean | null | undefined;
+        id?: string | null;
+        caption?: string | null;
+        createdAt?: any | null;
+        translatable?: boolean | null;
         user?: {
             __typename?: 'User';
             id: string;
-            fullName?: string | null | undefined;
-            firstName?: string | null | undefined;
-            lastName?: string | null | undefined;
-            username?: any | null | undefined;
-            avatarUrl?: string | null | undefined;
-            isSilhouette?: boolean | null | undefined;
-            isOnline?: boolean | null | undefined;
-            website?: string | null | undefined;
-            location?: string | null | undefined;
-            bio?: string | null | undefined;
-            projectCount?: number | null | undefined;
-            dynamicLink?: string | null | undefined;
-        } | null | undefined;
+            fullName?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            username?: any | null;
+            avatarUrl?: string | null;
+            isSilhouette?: boolean | null;
+            isOnline?: boolean | null;
+            website?: string | null;
+            location?: string | null;
+            bio?: string | null;
+            projectCount?: number | null;
+            dynamicLink?: string | null;
+        } | null;
         permissions?: {
             __typename?: 'PostPermissions';
-            isOwner?: boolean | null | undefined;
-        } | null | undefined;
+            isOwner?: boolean | null;
+        } | null;
         files?: {
             __typename?: 'FileConnection';
             edges?: Array<{
                 __typename?: 'FileEdge';
                 node: {
                     __typename?: 'File';
-                    id?: string | null | undefined;
-                    type?: FileType | null | undefined;
+                    id?: string | null;
+                    type?: FileType | null;
                     uri: string;
+                    poster?: string | null;
                 };
-            } | null | undefined> | null | undefined;
-        } | null | undefined;
+            } | null> | null;
+        } | null;
         project?: {
             __typename?: 'Project';
-            id?: string | null | undefined;
-            title?: string | null | undefined;
-            slug?: string | null | undefined;
-            dynamicLink?: string | null | undefined;
+            id?: string | null;
+            title?: string | null;
+            slug?: string | null;
+            dynamicLink?: string | null;
             user?: {
                 __typename?: 'User';
                 id: string;
-                fullName?: string | null | undefined;
-                firstName?: string | null | undefined;
-                lastName?: string | null | undefined;
-                username?: any | null | undefined;
-                avatarUrl?: string | null | undefined;
-                isSilhouette?: boolean | null | undefined;
-                isOnline?: boolean | null | undefined;
-                website?: string | null | undefined;
-                location?: string | null | undefined;
-                bio?: string | null | undefined;
-                projectCount?: number | null | undefined;
-                dynamicLink?: string | null | undefined;
-            } | null | undefined;
+                fullName?: string | null;
+                firstName?: string | null;
+                lastName?: string | null;
+                username?: any | null;
+                avatarUrl?: string | null;
+                isSilhouette?: boolean | null;
+                isOnline?: boolean | null;
+                website?: string | null;
+                location?: string | null;
+                bio?: string | null;
+                projectCount?: number | null;
+                dynamicLink?: string | null;
+            } | null;
             permissions?: {
                 __typename?: 'ProjectPermissions';
-                isOwner?: boolean | null | undefined;
-                isFollower?: boolean | null | undefined;
-            } | null | undefined;
+                isOwner?: boolean | null;
+                isFollower?: boolean | null;
+            } | null;
             type?: {
                 __typename?: 'ProjectType';
-                title?: string | null | undefined;
-            } | null | undefined;
+                title?: string | null;
+            } | null;
             cover?: {
                 __typename?: 'CoverType';
-                uri?: string | null | undefined;
-            } | null | undefined;
+                uri?: string | null;
+            } | null;
             followers?: {
                 __typename?: 'FollowersConnection';
-                totalCount?: number | null | undefined;
+                totalCount?: number | null;
                 edges?: Array<{
                     __typename?: 'FollowersEdge';
                     node: {
                         __typename?: 'User';
                         id: string;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
+                        username?: any | null;
+                        avatarUrl?: string | null;
                     };
-                }> | null | undefined;
-            } | null | undefined;
-        } | null | undefined;
+                }> | null;
+            } | null;
+        } | null;
         likes?: {
             __typename?: 'Likes';
-            isLiked?: boolean | null | undefined;
-            totalCount?: number | null | undefined;
-        } | null | undefined;
+            isLiked?: boolean | null;
+            totalCount?: number | null;
+        } | null;
         bookmarks?: {
             __typename?: 'Bookmarks';
-            isBookmarked?: boolean | null | undefined;
-        } | null | undefined;
+            isBookmarked?: boolean | null;
+        } | null;
         comments?: {
             __typename?: 'CommentConnection';
-            totalCount?: number | null | undefined;
+            totalCount?: number | null;
             edges?: Array<{
                 __typename?: 'CommentEdge';
                 node: {
                     __typename?: 'Comment';
-                    id?: string | null | undefined;
+                    id?: string | null;
                     text: string;
-                    createdAt?: any | null | undefined;
-                    translatable?: boolean | null | undefined;
+                    createdAt?: any | null;
+                    translatable?: boolean | null;
                     permissions?: {
                         __typename?: 'CommentPermissions';
-                        isOwner?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                    } | null;
                     likes?: {
                         __typename?: 'Likes';
-                        isLiked?: boolean | null | undefined;
-                        totalCount?: number | null | undefined;
-                    } | null | undefined;
+                        isLiked?: boolean | null;
+                        totalCount?: number | null;
+                    } | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
+            }> | null;
+        } | null;
         likesConnection?: {
             __typename?: 'LikeConnection';
             edges?: Array<{
@@ -2159,17 +2170,17 @@ export declare type EditPostMutation = {
                 node: {
                     __typename?: 'User';
                     id: string;
-                    avatarUrl?: string | null | undefined;
+                    avatarUrl?: string | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
+            }> | null;
+        } | null;
         collection?: {
             __typename?: 'Collection';
-            id?: string | null | undefined;
-            name?: string | null | undefined;
-            slug?: string | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            id?: string | null;
+            name?: string | null;
+            slug?: string | null;
+        } | null;
+    } | null;
 };
 export declare type EditProjectMutationVariables = Exact<{
     id: Scalars['ID'];
@@ -2179,9 +2190,9 @@ export declare type EditProjectMutation = {
     __typename?: 'Mutation';
     editProject?: {
         __typename?: 'Project';
-        id?: string | null | undefined;
-        title?: string | null | undefined;
-    } | null | undefined;
+        id?: string | null;
+        title?: string | null;
+    } | null;
 };
 export declare type EditUserMutationVariables = Exact<{
     input: EditUserInput;
@@ -2192,19 +2203,19 @@ export declare type EditUserMutation = {
     editUser?: {
         __typename?: 'User';
         id: string;
-        fullName?: string | null | undefined;
-        firstName?: string | null | undefined;
-        lastName?: string | null | undefined;
-        username?: any | null | undefined;
-        avatarUrl?: string | null | undefined;
-        isSilhouette?: boolean | null | undefined;
-        isOnline?: boolean | null | undefined;
-        website?: string | null | undefined;
-        location?: string | null | undefined;
-        bio?: string | null | undefined;
-        projectCount?: number | null | undefined;
-        dynamicLink?: string | null | undefined;
-    } | null | undefined;
+        fullName?: string | null;
+        firstName?: string | null;
+        lastName?: string | null;
+        username?: any | null;
+        avatarUrl?: string | null;
+        isSilhouette?: boolean | null;
+        isOnline?: boolean | null;
+        website?: string | null;
+        location?: string | null;
+        bio?: string | null;
+        projectCount?: number | null;
+        dynamicLink?: string | null;
+    } | null;
 };
 export declare type FollowProjectMutationVariables = Exact<{
     id: Scalars['ID'];
@@ -2213,54 +2224,54 @@ export declare type FollowProjectMutation = {
     __typename?: 'Mutation';
     followProject?: {
         __typename?: 'Project';
-        id?: string | null | undefined;
-        title?: string | null | undefined;
-        slug?: string | null | undefined;
-        dynamicLink?: string | null | undefined;
+        id?: string | null;
+        title?: string | null;
+        slug?: string | null;
+        dynamicLink?: string | null;
         cover?: {
             __typename?: 'CoverType';
-            uri?: string | null | undefined;
-            default?: boolean | null | undefined;
-        } | null | undefined;
+            uri?: string | null;
+            default?: boolean | null;
+        } | null;
         user?: {
             __typename?: 'User';
             id: string;
-            fullName?: string | null | undefined;
-            firstName?: string | null | undefined;
-            lastName?: string | null | undefined;
-            username?: any | null | undefined;
-            avatarUrl?: string | null | undefined;
-            isSilhouette?: boolean | null | undefined;
-            isOnline?: boolean | null | undefined;
-            website?: string | null | undefined;
-            location?: string | null | undefined;
-            bio?: string | null | undefined;
-            projectCount?: number | null | undefined;
-            dynamicLink?: string | null | undefined;
-        } | null | undefined;
+            fullName?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            username?: any | null;
+            avatarUrl?: string | null;
+            isSilhouette?: boolean | null;
+            isOnline?: boolean | null;
+            website?: string | null;
+            location?: string | null;
+            bio?: string | null;
+            projectCount?: number | null;
+            dynamicLink?: string | null;
+        } | null;
         permissions?: {
             __typename?: 'ProjectPermissions';
-            isOwner?: boolean | null | undefined;
-            isFollower?: boolean | null | undefined;
-        } | null | undefined;
+            isOwner?: boolean | null;
+            isFollower?: boolean | null;
+        } | null;
         type?: {
             __typename?: 'ProjectType';
-            title?: string | null | undefined;
-        } | null | undefined;
+            title?: string | null;
+        } | null;
         followers?: {
             __typename?: 'FollowersConnection';
-            totalCount?: number | null | undefined;
+            totalCount?: number | null;
             edges?: Array<{
                 __typename?: 'FollowersEdge';
                 node: {
                     __typename?: 'User';
                     id: string;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
+                    username?: any | null;
+                    avatarUrl?: string | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            }> | null;
+        } | null;
+    } | null;
 };
 export declare type LikeCommentMutationVariables = Exact<{
     id: Scalars['ID'];
@@ -2269,13 +2280,13 @@ export declare type LikeCommentMutation = {
     __typename?: 'Mutation';
     likeComment?: {
         __typename?: 'Comment';
-        id?: string | null | undefined;
+        id?: string | null;
         likes?: {
             __typename?: 'Likes';
-            isLiked?: boolean | null | undefined;
-            totalCount?: number | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            isLiked?: boolean | null;
+            totalCount?: number | null;
+        } | null;
+    } | null;
 };
 export declare type LikePostMutationVariables = Exact<{
     id: Scalars['ID'];
@@ -2284,20 +2295,20 @@ export declare type LikePostMutation = {
     __typename?: 'Mutation';
     likePost?: {
         __typename?: 'Post';
-        id?: string | null | undefined;
+        id?: string | null;
         likes?: {
             __typename?: 'Likes';
-            isLiked?: boolean | null | undefined;
-            totalCount?: number | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            isLiked?: boolean | null;
+            totalCount?: number | null;
+        } | null;
+    } | null;
 };
 export declare type MarkAllNotificationsSeenMutationVariables = Exact<{
     [key: string]: never;
 }>;
 export declare type MarkAllNotificationsSeenMutation = {
     __typename?: 'Mutation';
-    markAllNotificationsSeen?: boolean | null | undefined;
+    markAllNotificationsSeen?: boolean | null;
 };
 export declare type MarkNotificationSeenMutationVariables = Exact<{
     id: Scalars['ID'];
@@ -2307,95 +2318,96 @@ export declare type MarkNotificationSeenMutation = {
     markNotificationSeen?: {
         __typename?: 'Notification';
         id: string;
-        type?: NotificationTypes | null | undefined;
+        type?: NotificationTypes | null;
         createdAt: any;
         user: {
             __typename?: 'User';
             id: string;
-            fullName?: string | null | undefined;
-            firstName?: string | null | undefined;
-            lastName?: string | null | undefined;
-            username?: any | null | undefined;
-            avatarUrl?: string | null | undefined;
-            isSilhouette?: boolean | null | undefined;
-            isOnline?: boolean | null | undefined;
-            website?: string | null | undefined;
-            location?: string | null | undefined;
-            bio?: string | null | undefined;
-            projectCount?: number | null | undefined;
-            dynamicLink?: string | null | undefined;
+            fullName?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            username?: any | null;
+            avatarUrl?: string | null;
+            isSilhouette?: boolean | null;
+            isOnline?: boolean | null;
+            website?: string | null;
+            location?: string | null;
+            bio?: string | null;
+            projectCount?: number | null;
+            dynamicLink?: string | null;
         };
         project?: {
             __typename?: 'Project';
-            id?: string | null | undefined;
-            title?: string | null | undefined;
-            slug?: string | null | undefined;
-            dynamicLink?: string | null | undefined;
+            id?: string | null;
+            title?: string | null;
+            slug?: string | null;
+            dynamicLink?: string | null;
             user?: {
                 __typename?: 'User';
                 id: string;
-                fullName?: string | null | undefined;
-                firstName?: string | null | undefined;
-                lastName?: string | null | undefined;
-                username?: any | null | undefined;
-                avatarUrl?: string | null | undefined;
-                isSilhouette?: boolean | null | undefined;
-                isOnline?: boolean | null | undefined;
-                website?: string | null | undefined;
-                location?: string | null | undefined;
-                bio?: string | null | undefined;
-                projectCount?: number | null | undefined;
-                dynamicLink?: string | null | undefined;
-            } | null | undefined;
+                fullName?: string | null;
+                firstName?: string | null;
+                lastName?: string | null;
+                username?: any | null;
+                avatarUrl?: string | null;
+                isSilhouette?: boolean | null;
+                isOnline?: boolean | null;
+                website?: string | null;
+                location?: string | null;
+                bio?: string | null;
+                projectCount?: number | null;
+                dynamicLink?: string | null;
+            } | null;
             permissions?: {
                 __typename?: 'ProjectPermissions';
-                isOwner?: boolean | null | undefined;
-                isFollower?: boolean | null | undefined;
-            } | null | undefined;
+                isOwner?: boolean | null;
+                isFollower?: boolean | null;
+            } | null;
             type?: {
                 __typename?: 'ProjectType';
-                title?: string | null | undefined;
-            } | null | undefined;
+                title?: string | null;
+            } | null;
             cover?: {
                 __typename?: 'CoverType';
-                uri?: string | null | undefined;
-            } | null | undefined;
+                uri?: string | null;
+            } | null;
             followers?: {
                 __typename?: 'FollowersConnection';
-                totalCount?: number | null | undefined;
+                totalCount?: number | null;
                 edges?: Array<{
                     __typename?: 'FollowersEdge';
                     node: {
                         __typename?: 'User';
                         id: string;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
+                        username?: any | null;
+                        avatarUrl?: string | null;
                     };
-                }> | null | undefined;
-            } | null | undefined;
-        } | null | undefined;
+                }> | null;
+            } | null;
+        } | null;
         post?: {
             __typename?: 'Post';
-            id?: string | null | undefined;
-        } | null | undefined;
+            id?: string | null;
+        } | null;
         comment?: {
             __typename?: 'Comment';
-            id?: string | null | undefined;
+            id?: string | null;
             text: string;
-            postId?: string | null | undefined;
-        } | null | undefined;
+            postId?: string | null;
+        } | null;
         files?: {
             __typename?: 'FileConnection';
             edges?: Array<{
                 __typename?: 'FileEdge';
                 node: {
                     __typename?: 'File';
-                    id?: string | null | undefined;
+                    id?: string | null;
                     uri: string;
+                    poster?: string | null;
                 };
-            } | null | undefined> | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            } | null> | null;
+        } | null;
+    } | null;
 };
 export declare type PreSignUrlMutationVariables = Exact<{
     input: PreSignedUrlInput;
@@ -2404,10 +2416,10 @@ export declare type PreSignUrlMutation = {
     __typename?: 'Mutation';
     preSignUrl?: {
         __typename?: 'PreSignedUrl';
-        url?: string | null | undefined;
-        type?: string | null | undefined;
-        filename?: string | null | undefined;
-    } | null | undefined;
+        url?: string | null;
+        type?: string | null;
+        filename?: string | null;
+    } | null;
 };
 export declare type PreSignUrlsMutationVariables = Exact<{
     input: Array<InputMaybe<PreSignedUrlnput>> | InputMaybe<PreSignedUrlnput>;
@@ -2416,10 +2428,10 @@ export declare type PreSignUrlsMutation = {
     __typename?: 'Mutation';
     preSignUrls?: Array<{
         __typename?: 'PreSignedUrl';
-        url?: string | null | undefined;
-        type?: string | null | undefined;
-        filename?: string | null | undefined;
-    } | null | undefined> | null | undefined;
+        url?: string | null;
+        type?: string | null;
+        filename?: string | null;
+    } | null> | null;
 };
 export declare type RefreshTokenMutationVariables = Exact<{
     refreshToken: Scalars['String'];
@@ -2428,8 +2440,8 @@ export declare type RefreshTokenMutation = {
     __typename?: 'Mutation';
     token?: {
         __typename?: 'AccessToken';
-        access_token?: string | null | undefined;
-    } | null | undefined;
+        access_token?: string | null;
+    } | null;
 };
 export declare type RegisterDeviceTokenMutationVariables = Exact<{
     token: Scalars['String'];
@@ -2437,14 +2449,14 @@ export declare type RegisterDeviceTokenMutationVariables = Exact<{
 }>;
 export declare type RegisterDeviceTokenMutation = {
     __typename?: 'Mutation';
-    registerDeviceToken?: boolean | null | undefined;
+    registerDeviceToken?: boolean | null;
 };
 export declare type SendPromoMutationVariables = Exact<{
     number: Scalars['String'];
 }>;
 export declare type SendPromoMutation = {
     __typename?: 'Mutation';
-    sendPromo?: boolean | null | undefined;
+    sendPromo?: boolean | null;
 };
 export declare type ToggleNotificationSettingsMutationVariables = Exact<{
     input?: InputMaybe<ToggleNotificationSettingsInput>;
@@ -2454,7 +2466,7 @@ export declare type ToggleNotificationSettingsMutation = {
     toggleNotificationSettings?: {
         __typename?: 'User';
         id: string;
-        role?: UserRole | null | undefined;
+        role?: UserRole | null;
         settings?: {
             __typename?: 'UserSettings';
             notifications?: {
@@ -2463,38 +2475,38 @@ export declare type ToggleNotificationSettingsMutation = {
                     __typename?: 'NotificationSettingsType';
                     NEW_FOLLOWER?: {
                         __typename?: 'NotificationKindSettings';
-                        email?: boolean | null | undefined;
-                        push?: boolean | null | undefined;
-                    } | null | undefined;
+                        email?: boolean | null;
+                        push?: boolean | null;
+                    } | null;
                     NEW_COMMENT?: {
                         __typename?: 'NotificationKindSettings';
-                        email?: boolean | null | undefined;
-                        push?: boolean | null | undefined;
-                    } | null | undefined;
+                        email?: boolean | null;
+                        push?: boolean | null;
+                    } | null;
                     NEW_MENTION?: {
                         __typename?: 'NotificationKindSettings';
-                        email?: boolean | null | undefined;
-                        push?: boolean | null | undefined;
-                    } | null | undefined;
+                        email?: boolean | null;
+                        push?: boolean | null;
+                    } | null;
                     NEW_ARTICLE?: {
                         __typename?: 'NotificationKindSettings';
-                        email?: boolean | null | undefined;
-                        push?: boolean | null | undefined;
-                    } | null | undefined;
+                        email?: boolean | null;
+                        push?: boolean | null;
+                    } | null;
                     SIMILAR_PROJECTS?: {
                         __typename?: 'NotificationKindSettings';
-                        email?: boolean | null | undefined;
-                        push?: boolean | null | undefined;
-                    } | null | undefined;
+                        email?: boolean | null;
+                        push?: boolean | null;
+                    } | null;
                     PRODUCT_ANNOUNCEMENTS?: {
                         __typename?: 'NotificationKindSettings';
-                        email?: boolean | null | undefined;
-                        push?: boolean | null | undefined;
-                    } | null | undefined;
-                } | null | undefined;
-            } | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+                        email?: boolean | null;
+                        push?: boolean | null;
+                    } | null;
+                } | null;
+            } | null;
+        } | null;
+    } | null;
 };
 export declare type TranslateCommentMutationVariables = Exact<{
     id: Scalars['ID'];
@@ -2504,10 +2516,10 @@ export declare type TranslateCommentMutation = {
     __typename?: 'Mutation';
     translateComment?: {
         __typename?: 'Comment';
-        id?: string | null | undefined;
-        translatable?: boolean | null | undefined;
+        id?: string | null;
+        translatable?: boolean | null;
         text: string;
-    } | null | undefined;
+    } | null;
 };
 export declare type TranslatePostMutationVariables = Exact<{
     id: Scalars['ID'];
@@ -2517,10 +2529,10 @@ export declare type TranslatePostMutation = {
     __typename?: 'Mutation';
     translatePost?: {
         __typename?: 'Post';
-        id?: string | null | undefined;
-        translatable?: boolean | null | undefined;
-        caption?: string | null | undefined;
-    } | null | undefined;
+        id?: string | null;
+        translatable?: boolean | null;
+        caption?: string | null;
+    } | null;
 };
 export declare type BlogPostQueryVariables = Exact<{
     slug?: InputMaybe<Scalars['LowercaseString']>;
@@ -2530,28 +2542,28 @@ export declare type BlogPostQuery = {
     __typename?: 'Query';
     blogPost?: {
         __typename?: 'BlogPost';
-        id?: string | null | undefined;
-        title?: string | null | undefined;
-        slug?: string | null | undefined;
-        content?: string | null | undefined;
-        createdAt?: any | null | undefined;
+        id?: string | null;
+        title?: string | null;
+        slug?: string | null;
+        content?: string | null;
+        createdAt?: any | null;
         user?: {
             __typename?: 'User';
             id: string;
-            fullName?: string | null | undefined;
-            firstName?: string | null | undefined;
-            lastName?: string | null | undefined;
-            username?: any | null | undefined;
-            avatarUrl?: string | null | undefined;
-            isSilhouette?: boolean | null | undefined;
-            isOnline?: boolean | null | undefined;
-            website?: string | null | undefined;
-            location?: string | null | undefined;
-            bio?: string | null | undefined;
-            projectCount?: number | null | undefined;
-            dynamicLink?: string | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            fullName?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            username?: any | null;
+            avatarUrl?: string | null;
+            isSilhouette?: boolean | null;
+            isOnline?: boolean | null;
+            website?: string | null;
+            location?: string | null;
+            bio?: string | null;
+            projectCount?: number | null;
+            dynamicLink?: string | null;
+        } | null;
+    } | null;
 };
 export declare type BlogPostsQueryVariables = Exact<{
     after?: InputMaybe<Scalars['String']>;
@@ -2563,37 +2575,37 @@ export declare type BlogPostsQuery = {
         __typename?: 'BlogPostConnection';
         pageInfo: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
+            hasNextPage?: boolean | null;
         };
         edges?: Array<{
             __typename?: 'BlogPostEdge';
             cursor: string;
             node: {
                 __typename?: 'BlogPost';
-                id?: string | null | undefined;
-                title?: string | null | undefined;
-                slug?: string | null | undefined;
-                content?: string | null | undefined;
-                createdAt?: any | null | undefined;
+                id?: string | null;
+                title?: string | null;
+                slug?: string | null;
+                content?: string | null;
+                createdAt?: any | null;
                 user?: {
                     __typename?: 'User';
                     id: string;
-                    fullName?: string | null | undefined;
-                    firstName?: string | null | undefined;
-                    lastName?: string | null | undefined;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
-                    isSilhouette?: boolean | null | undefined;
-                    isOnline?: boolean | null | undefined;
-                    website?: string | null | undefined;
-                    location?: string | null | undefined;
-                    bio?: string | null | undefined;
-                    projectCount?: number | null | undefined;
-                    dynamicLink?: string | null | undefined;
-                } | null | undefined;
+                    fullName?: string | null;
+                    firstName?: string | null;
+                    lastName?: string | null;
+                    username?: any | null;
+                    avatarUrl?: string | null;
+                    isSilhouette?: boolean | null;
+                    isOnline?: boolean | null;
+                    website?: string | null;
+                    location?: string | null;
+                    bio?: string | null;
+                    projectCount?: number | null;
+                    dynamicLink?: string | null;
+                } | null;
             };
-        }> | null | undefined;
-    } | null | undefined;
+        }> | null;
+    } | null;
 };
 export declare type BookmarksQueryVariables = Exact<{
     after?: InputMaybe<Scalars['String']>;
@@ -2605,146 +2617,147 @@ export declare type BookmarksQuery = {
         __typename?: 'BookmarkConnection';
         pageInfo: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
+            hasNextPage?: boolean | null;
         };
         edges?: Array<{
             __typename?: 'BookmarkEdge';
             cursor: string;
             node: {
                 __typename?: 'Post';
-                id?: string | null | undefined;
-                caption?: string | null | undefined;
-                createdAt?: any | null | undefined;
-                translatable?: boolean | null | undefined;
+                id?: string | null;
+                caption?: string | null;
+                createdAt?: any | null;
+                translatable?: boolean | null;
                 user?: {
                     __typename?: 'User';
                     id: string;
-                    fullName?: string | null | undefined;
-                    firstName?: string | null | undefined;
-                    lastName?: string | null | undefined;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
-                    isSilhouette?: boolean | null | undefined;
-                    isOnline?: boolean | null | undefined;
-                    website?: string | null | undefined;
-                    location?: string | null | undefined;
-                    bio?: string | null | undefined;
-                    projectCount?: number | null | undefined;
-                    dynamicLink?: string | null | undefined;
-                } | null | undefined;
+                    fullName?: string | null;
+                    firstName?: string | null;
+                    lastName?: string | null;
+                    username?: any | null;
+                    avatarUrl?: string | null;
+                    isSilhouette?: boolean | null;
+                    isOnline?: boolean | null;
+                    website?: string | null;
+                    location?: string | null;
+                    bio?: string | null;
+                    projectCount?: number | null;
+                    dynamicLink?: string | null;
+                } | null;
                 permissions?: {
                     __typename?: 'PostPermissions';
-                    isOwner?: boolean | null | undefined;
-                } | null | undefined;
+                    isOwner?: boolean | null;
+                } | null;
                 files?: {
                     __typename?: 'FileConnection';
                     edges?: Array<{
                         __typename?: 'FileEdge';
                         node: {
                             __typename?: 'File';
-                            id?: string | null | undefined;
-                            type?: FileType | null | undefined;
+                            id?: string | null;
+                            type?: FileType | null;
                             uri: string;
+                            poster?: string | null;
                         };
-                    } | null | undefined> | null | undefined;
-                } | null | undefined;
+                    } | null> | null;
+                } | null;
                 project?: {
                     __typename?: 'Project';
-                    id?: string | null | undefined;
-                    title?: string | null | undefined;
-                    slug?: string | null | undefined;
-                    dynamicLink?: string | null | undefined;
+                    id?: string | null;
+                    title?: string | null;
+                    slug?: string | null;
+                    dynamicLink?: string | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                     permissions?: {
                         __typename?: 'ProjectPermissions';
-                        isOwner?: boolean | null | undefined;
-                        isFollower?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                        isFollower?: boolean | null;
+                    } | null;
                     type?: {
                         __typename?: 'ProjectType';
-                        title?: string | null | undefined;
-                    } | null | undefined;
+                        title?: string | null;
+                    } | null;
                     cover?: {
                         __typename?: 'CoverType';
-                        uri?: string | null | undefined;
-                    } | null | undefined;
+                        uri?: string | null;
+                    } | null;
                     followers?: {
                         __typename?: 'FollowersConnection';
-                        totalCount?: number | null | undefined;
+                        totalCount?: number | null;
                         edges?: Array<{
                             __typename?: 'FollowersEdge';
                             node: {
                                 __typename?: 'User';
                                 id: string;
-                                username?: any | null | undefined;
-                                avatarUrl?: string | null | undefined;
+                                username?: any | null;
+                                avatarUrl?: string | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
-                } | null | undefined;
+                        }> | null;
+                    } | null;
+                } | null;
                 likes?: {
                     __typename?: 'Likes';
-                    isLiked?: boolean | null | undefined;
-                    totalCount?: number | null | undefined;
-                } | null | undefined;
+                    isLiked?: boolean | null;
+                    totalCount?: number | null;
+                } | null;
                 bookmarks?: {
                     __typename?: 'Bookmarks';
-                    isBookmarked?: boolean | null | undefined;
-                } | null | undefined;
+                    isBookmarked?: boolean | null;
+                } | null;
                 comments?: {
                     __typename?: 'CommentConnection';
-                    totalCount?: number | null | undefined;
+                    totalCount?: number | null;
                     edges?: Array<{
                         __typename?: 'CommentEdge';
                         node: {
                             __typename?: 'Comment';
-                            id?: string | null | undefined;
+                            id?: string | null;
                             text: string;
-                            createdAt?: any | null | undefined;
-                            translatable?: boolean | null | undefined;
+                            createdAt?: any | null;
+                            translatable?: boolean | null;
                             permissions?: {
                                 __typename?: 'CommentPermissions';
-                                isOwner?: boolean | null | undefined;
-                            } | null | undefined;
+                                isOwner?: boolean | null;
+                            } | null;
                             likes?: {
                                 __typename?: 'Likes';
-                                isLiked?: boolean | null | undefined;
-                                totalCount?: number | null | undefined;
-                            } | null | undefined;
+                                isLiked?: boolean | null;
+                                totalCount?: number | null;
+                            } | null;
                             user?: {
                                 __typename?: 'User';
                                 id: string;
-                                fullName?: string | null | undefined;
-                                firstName?: string | null | undefined;
-                                lastName?: string | null | undefined;
-                                username?: any | null | undefined;
-                                avatarUrl?: string | null | undefined;
-                                isSilhouette?: boolean | null | undefined;
-                                isOnline?: boolean | null | undefined;
-                                website?: string | null | undefined;
-                                location?: string | null | undefined;
-                                bio?: string | null | undefined;
-                                projectCount?: number | null | undefined;
-                                dynamicLink?: string | null | undefined;
-                            } | null | undefined;
+                                fullName?: string | null;
+                                firstName?: string | null;
+                                lastName?: string | null;
+                                username?: any | null;
+                                avatarUrl?: string | null;
+                                isSilhouette?: boolean | null;
+                                isOnline?: boolean | null;
+                                website?: string | null;
+                                location?: string | null;
+                                bio?: string | null;
+                                projectCount?: number | null;
+                                dynamicLink?: string | null;
+                            } | null;
                         };
-                    }> | null | undefined;
-                } | null | undefined;
+                    }> | null;
+                } | null;
                 likesConnection?: {
                     __typename?: 'LikeConnection';
                     edges?: Array<{
@@ -2752,19 +2765,19 @@ export declare type BookmarksQuery = {
                         node: {
                             __typename?: 'User';
                             id: string;
-                            avatarUrl?: string | null | undefined;
+                            avatarUrl?: string | null;
                         };
-                    }> | null | undefined;
-                } | null | undefined;
+                    }> | null;
+                } | null;
                 collection?: {
                     __typename?: 'Collection';
-                    id?: string | null | undefined;
-                    name?: string | null | undefined;
-                    slug?: string | null | undefined;
-                } | null | undefined;
+                    id?: string | null;
+                    name?: string | null;
+                    slug?: string | null;
+                } | null;
             };
-        }> | null | undefined;
-    } | null | undefined;
+        }> | null;
+    } | null;
 };
 export declare type CollectionsQueryVariables = Exact<{
     id?: InputMaybe<Scalars['ID']>;
@@ -2780,146 +2793,147 @@ export declare type CollectionsQuery = {
         __typename?: 'PostConnection';
         pageInfo: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
+            hasNextPage?: boolean | null;
         };
         edges?: Array<{
             __typename?: 'PostEdge';
             cursor: string;
             node: {
                 __typename?: 'Post';
-                id?: string | null | undefined;
-                caption?: string | null | undefined;
-                createdAt?: any | null | undefined;
-                translatable?: boolean | null | undefined;
+                id?: string | null;
+                caption?: string | null;
+                createdAt?: any | null;
+                translatable?: boolean | null;
                 user?: {
                     __typename?: 'User';
                     id: string;
-                    fullName?: string | null | undefined;
-                    firstName?: string | null | undefined;
-                    lastName?: string | null | undefined;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
-                    isSilhouette?: boolean | null | undefined;
-                    isOnline?: boolean | null | undefined;
-                    website?: string | null | undefined;
-                    location?: string | null | undefined;
-                    bio?: string | null | undefined;
-                    projectCount?: number | null | undefined;
-                    dynamicLink?: string | null | undefined;
-                } | null | undefined;
+                    fullName?: string | null;
+                    firstName?: string | null;
+                    lastName?: string | null;
+                    username?: any | null;
+                    avatarUrl?: string | null;
+                    isSilhouette?: boolean | null;
+                    isOnline?: boolean | null;
+                    website?: string | null;
+                    location?: string | null;
+                    bio?: string | null;
+                    projectCount?: number | null;
+                    dynamicLink?: string | null;
+                } | null;
                 permissions?: {
                     __typename?: 'PostPermissions';
-                    isOwner?: boolean | null | undefined;
-                } | null | undefined;
+                    isOwner?: boolean | null;
+                } | null;
                 files?: {
                     __typename?: 'FileConnection';
                     edges?: Array<{
                         __typename?: 'FileEdge';
                         node: {
                             __typename?: 'File';
-                            id?: string | null | undefined;
-                            type?: FileType | null | undefined;
+                            id?: string | null;
+                            type?: FileType | null;
                             uri: string;
+                            poster?: string | null;
                         };
-                    } | null | undefined> | null | undefined;
-                } | null | undefined;
+                    } | null> | null;
+                } | null;
                 project?: {
                     __typename?: 'Project';
-                    id?: string | null | undefined;
-                    title?: string | null | undefined;
-                    slug?: string | null | undefined;
-                    dynamicLink?: string | null | undefined;
+                    id?: string | null;
+                    title?: string | null;
+                    slug?: string | null;
+                    dynamicLink?: string | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                     permissions?: {
                         __typename?: 'ProjectPermissions';
-                        isOwner?: boolean | null | undefined;
-                        isFollower?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                        isFollower?: boolean | null;
+                    } | null;
                     type?: {
                         __typename?: 'ProjectType';
-                        title?: string | null | undefined;
-                    } | null | undefined;
+                        title?: string | null;
+                    } | null;
                     cover?: {
                         __typename?: 'CoverType';
-                        uri?: string | null | undefined;
-                    } | null | undefined;
+                        uri?: string | null;
+                    } | null;
                     followers?: {
                         __typename?: 'FollowersConnection';
-                        totalCount?: number | null | undefined;
+                        totalCount?: number | null;
                         edges?: Array<{
                             __typename?: 'FollowersEdge';
                             node: {
                                 __typename?: 'User';
                                 id: string;
-                                username?: any | null | undefined;
-                                avatarUrl?: string | null | undefined;
+                                username?: any | null;
+                                avatarUrl?: string | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
-                } | null | undefined;
+                        }> | null;
+                    } | null;
+                } | null;
                 likes?: {
                     __typename?: 'Likes';
-                    isLiked?: boolean | null | undefined;
-                    totalCount?: number | null | undefined;
-                } | null | undefined;
+                    isLiked?: boolean | null;
+                    totalCount?: number | null;
+                } | null;
                 bookmarks?: {
                     __typename?: 'Bookmarks';
-                    isBookmarked?: boolean | null | undefined;
-                } | null | undefined;
+                    isBookmarked?: boolean | null;
+                } | null;
                 comments?: {
                     __typename?: 'CommentConnection';
-                    totalCount?: number | null | undefined;
+                    totalCount?: number | null;
                     edges?: Array<{
                         __typename?: 'CommentEdge';
                         node: {
                             __typename?: 'Comment';
-                            id?: string | null | undefined;
+                            id?: string | null;
                             text: string;
-                            createdAt?: any | null | undefined;
-                            translatable?: boolean | null | undefined;
+                            createdAt?: any | null;
+                            translatable?: boolean | null;
                             permissions?: {
                                 __typename?: 'CommentPermissions';
-                                isOwner?: boolean | null | undefined;
-                            } | null | undefined;
+                                isOwner?: boolean | null;
+                            } | null;
                             likes?: {
                                 __typename?: 'Likes';
-                                isLiked?: boolean | null | undefined;
-                                totalCount?: number | null | undefined;
-                            } | null | undefined;
+                                isLiked?: boolean | null;
+                                totalCount?: number | null;
+                            } | null;
                             user?: {
                                 __typename?: 'User';
                                 id: string;
-                                fullName?: string | null | undefined;
-                                firstName?: string | null | undefined;
-                                lastName?: string | null | undefined;
-                                username?: any | null | undefined;
-                                avatarUrl?: string | null | undefined;
-                                isSilhouette?: boolean | null | undefined;
-                                isOnline?: boolean | null | undefined;
-                                website?: string | null | undefined;
-                                location?: string | null | undefined;
-                                bio?: string | null | undefined;
-                                projectCount?: number | null | undefined;
-                                dynamicLink?: string | null | undefined;
-                            } | null | undefined;
+                                fullName?: string | null;
+                                firstName?: string | null;
+                                lastName?: string | null;
+                                username?: any | null;
+                                avatarUrl?: string | null;
+                                isSilhouette?: boolean | null;
+                                isOnline?: boolean | null;
+                                website?: string | null;
+                                location?: string | null;
+                                bio?: string | null;
+                                projectCount?: number | null;
+                                dynamicLink?: string | null;
+                            } | null;
                         };
-                    }> | null | undefined;
-                } | null | undefined;
+                    }> | null;
+                } | null;
                 likesConnection?: {
                     __typename?: 'LikeConnection';
                     edges?: Array<{
@@ -2927,19 +2941,19 @@ export declare type CollectionsQuery = {
                         node: {
                             __typename?: 'User';
                             id: string;
-                            avatarUrl?: string | null | undefined;
+                            avatarUrl?: string | null;
                         };
-                    }> | null | undefined;
-                } | null | undefined;
+                    }> | null;
+                } | null;
                 collection?: {
                     __typename?: 'Collection';
-                    id?: string | null | undefined;
-                    name?: string | null | undefined;
-                    slug?: string | null | undefined;
-                } | null | undefined;
+                    id?: string | null;
+                    name?: string | null;
+                    slug?: string | null;
+                } | null;
             };
-        }> | null | undefined;
-    } | null | undefined;
+        }> | null;
+    } | null;
 };
 export declare type CommentQueryVariables = Exact<{
     id: Scalars['ID'];
@@ -2948,36 +2962,36 @@ export declare type CommentQuery = {
     __typename?: 'Query';
     comment?: {
         __typename?: 'Comment';
-        id?: string | null | undefined;
+        id?: string | null;
         text: string;
-        createdAt?: any | null | undefined;
-        translatable?: boolean | null | undefined;
+        createdAt?: any | null;
+        translatable?: boolean | null;
         permissions?: {
             __typename?: 'CommentPermissions';
-            isOwner?: boolean | null | undefined;
-        } | null | undefined;
+            isOwner?: boolean | null;
+        } | null;
         likes?: {
             __typename?: 'Likes';
-            isLiked?: boolean | null | undefined;
-            totalCount?: number | null | undefined;
-        } | null | undefined;
+            isLiked?: boolean | null;
+            totalCount?: number | null;
+        } | null;
         user?: {
             __typename?: 'User';
             id: string;
-            fullName?: string | null | undefined;
-            firstName?: string | null | undefined;
-            lastName?: string | null | undefined;
-            username?: any | null | undefined;
-            avatarUrl?: string | null | undefined;
-            isSilhouette?: boolean | null | undefined;
-            isOnline?: boolean | null | undefined;
-            website?: string | null | undefined;
-            location?: string | null | undefined;
-            bio?: string | null | undefined;
-            projectCount?: number | null | undefined;
-            dynamicLink?: string | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            fullName?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            username?: any | null;
+            avatarUrl?: string | null;
+            isSilhouette?: boolean | null;
+            isOnline?: boolean | null;
+            website?: string | null;
+            location?: string | null;
+            bio?: string | null;
+            projectCount?: number | null;
+            dynamicLink?: string | null;
+        } | null;
+    } | null;
 };
 export declare type CommentsQueryVariables = Exact<{
     postId: Scalars['ID'];
@@ -2987,139 +3001,140 @@ export declare type CommentsQuery = {
     __typename?: 'Query';
     post?: {
         __typename?: 'Post';
-        id?: string | null | undefined;
-        caption?: string | null | undefined;
-        createdAt?: any | null | undefined;
-        translatable?: boolean | null | undefined;
+        id?: string | null;
+        caption?: string | null;
+        createdAt?: any | null;
+        translatable?: boolean | null;
         user?: {
             __typename?: 'User';
             id: string;
-            fullName?: string | null | undefined;
-            firstName?: string | null | undefined;
-            lastName?: string | null | undefined;
-            username?: any | null | undefined;
-            avatarUrl?: string | null | undefined;
-            isSilhouette?: boolean | null | undefined;
-            isOnline?: boolean | null | undefined;
-            website?: string | null | undefined;
-            location?: string | null | undefined;
-            bio?: string | null | undefined;
-            projectCount?: number | null | undefined;
-            dynamicLink?: string | null | undefined;
-        } | null | undefined;
+            fullName?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            username?: any | null;
+            avatarUrl?: string | null;
+            isSilhouette?: boolean | null;
+            isOnline?: boolean | null;
+            website?: string | null;
+            location?: string | null;
+            bio?: string | null;
+            projectCount?: number | null;
+            dynamicLink?: string | null;
+        } | null;
         permissions?: {
             __typename?: 'PostPermissions';
-            isOwner?: boolean | null | undefined;
-        } | null | undefined;
+            isOwner?: boolean | null;
+        } | null;
         files?: {
             __typename?: 'FileConnection';
             edges?: Array<{
                 __typename?: 'FileEdge';
                 node: {
                     __typename?: 'File';
-                    id?: string | null | undefined;
-                    type?: FileType | null | undefined;
+                    id?: string | null;
+                    type?: FileType | null;
                     uri: string;
+                    poster?: string | null;
                 };
-            } | null | undefined> | null | undefined;
-        } | null | undefined;
+            } | null> | null;
+        } | null;
         project?: {
             __typename?: 'Project';
-            id?: string | null | undefined;
-            title?: string | null | undefined;
-            slug?: string | null | undefined;
-            dynamicLink?: string | null | undefined;
+            id?: string | null;
+            title?: string | null;
+            slug?: string | null;
+            dynamicLink?: string | null;
             user?: {
                 __typename?: 'User';
                 id: string;
-                fullName?: string | null | undefined;
-                firstName?: string | null | undefined;
-                lastName?: string | null | undefined;
-                username?: any | null | undefined;
-                avatarUrl?: string | null | undefined;
-                isSilhouette?: boolean | null | undefined;
-                isOnline?: boolean | null | undefined;
-                website?: string | null | undefined;
-                location?: string | null | undefined;
-                bio?: string | null | undefined;
-                projectCount?: number | null | undefined;
-                dynamicLink?: string | null | undefined;
-            } | null | undefined;
+                fullName?: string | null;
+                firstName?: string | null;
+                lastName?: string | null;
+                username?: any | null;
+                avatarUrl?: string | null;
+                isSilhouette?: boolean | null;
+                isOnline?: boolean | null;
+                website?: string | null;
+                location?: string | null;
+                bio?: string | null;
+                projectCount?: number | null;
+                dynamicLink?: string | null;
+            } | null;
             permissions?: {
                 __typename?: 'ProjectPermissions';
-                isOwner?: boolean | null | undefined;
-                isFollower?: boolean | null | undefined;
-            } | null | undefined;
+                isOwner?: boolean | null;
+                isFollower?: boolean | null;
+            } | null;
             type?: {
                 __typename?: 'ProjectType';
-                title?: string | null | undefined;
-            } | null | undefined;
+                title?: string | null;
+            } | null;
             cover?: {
                 __typename?: 'CoverType';
-                uri?: string | null | undefined;
-            } | null | undefined;
+                uri?: string | null;
+            } | null;
             followers?: {
                 __typename?: 'FollowersConnection';
-                totalCount?: number | null | undefined;
+                totalCount?: number | null;
                 edges?: Array<{
                     __typename?: 'FollowersEdge';
                     node: {
                         __typename?: 'User';
                         id: string;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
+                        username?: any | null;
+                        avatarUrl?: string | null;
                     };
-                }> | null | undefined;
-            } | null | undefined;
-        } | null | undefined;
+                }> | null;
+            } | null;
+        } | null;
         likes?: {
             __typename?: 'Likes';
-            isLiked?: boolean | null | undefined;
-            totalCount?: number | null | undefined;
-        } | null | undefined;
+            isLiked?: boolean | null;
+            totalCount?: number | null;
+        } | null;
         bookmarks?: {
             __typename?: 'Bookmarks';
-            isBookmarked?: boolean | null | undefined;
-        } | null | undefined;
+            isBookmarked?: boolean | null;
+        } | null;
         comments?: {
             __typename?: 'CommentConnection';
-            totalCount?: number | null | undefined;
+            totalCount?: number | null;
             edges?: Array<{
                 __typename?: 'CommentEdge';
                 node: {
                     __typename?: 'Comment';
-                    id?: string | null | undefined;
+                    id?: string | null;
                     text: string;
-                    createdAt?: any | null | undefined;
-                    translatable?: boolean | null | undefined;
+                    createdAt?: any | null;
+                    translatable?: boolean | null;
                     permissions?: {
                         __typename?: 'CommentPermissions';
-                        isOwner?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                    } | null;
                     likes?: {
                         __typename?: 'Likes';
-                        isLiked?: boolean | null | undefined;
-                        totalCount?: number | null | undefined;
-                    } | null | undefined;
+                        isLiked?: boolean | null;
+                        totalCount?: number | null;
+                    } | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
+            }> | null;
+        } | null;
         likesConnection?: {
             __typename?: 'LikeConnection';
             edges?: Array<{
@@ -3127,104 +3142,104 @@ export declare type CommentsQuery = {
                 node: {
                     __typename?: 'User';
                     id: string;
-                    avatarUrl?: string | null | undefined;
+                    avatarUrl?: string | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
+            }> | null;
+        } | null;
         collection?: {
             __typename?: 'Collection';
-            id?: string | null | undefined;
-            name?: string | null | undefined;
-            slug?: string | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            id?: string | null;
+            name?: string | null;
+            slug?: string | null;
+        } | null;
+    } | null;
     comments?: {
         __typename?: 'CommentConnection';
         pageInfo: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
+            hasNextPage?: boolean | null;
         };
         edges?: Array<{
             __typename?: 'CommentEdge';
             cursor: string;
             node: {
                 __typename?: 'Comment';
-                id?: string | null | undefined;
+                id?: string | null;
                 text: string;
-                createdAt?: any | null | undefined;
-                translatable?: boolean | null | undefined;
+                createdAt?: any | null;
+                translatable?: boolean | null;
                 replies?: {
                     __typename?: 'CommentConnection';
-                    totalCount?: number | null | undefined;
+                    totalCount?: number | null;
                     pageInfo: {
                         __typename?: 'PageInfo';
-                        hasNextPage?: boolean | null | undefined;
+                        hasNextPage?: boolean | null;
                     };
                     edges?: Array<{
                         __typename?: 'CommentEdge';
                         cursor: string;
                         node: {
                             __typename?: 'Comment';
-                            id?: string | null | undefined;
+                            id?: string | null;
                             text: string;
-                            createdAt?: any | null | undefined;
-                            translatable?: boolean | null | undefined;
+                            createdAt?: any | null;
+                            translatable?: boolean | null;
                             permissions?: {
                                 __typename?: 'CommentPermissions';
-                                isOwner?: boolean | null | undefined;
-                            } | null | undefined;
+                                isOwner?: boolean | null;
+                            } | null;
                             likes?: {
                                 __typename?: 'Likes';
-                                isLiked?: boolean | null | undefined;
-                                totalCount?: number | null | undefined;
-                            } | null | undefined;
+                                isLiked?: boolean | null;
+                                totalCount?: number | null;
+                            } | null;
                             user?: {
                                 __typename?: 'User';
                                 id: string;
-                                fullName?: string | null | undefined;
-                                firstName?: string | null | undefined;
-                                lastName?: string | null | undefined;
-                                username?: any | null | undefined;
-                                avatarUrl?: string | null | undefined;
-                                isSilhouette?: boolean | null | undefined;
-                                isOnline?: boolean | null | undefined;
-                                website?: string | null | undefined;
-                                location?: string | null | undefined;
-                                bio?: string | null | undefined;
-                                projectCount?: number | null | undefined;
-                                dynamicLink?: string | null | undefined;
-                            } | null | undefined;
+                                fullName?: string | null;
+                                firstName?: string | null;
+                                lastName?: string | null;
+                                username?: any | null;
+                                avatarUrl?: string | null;
+                                isSilhouette?: boolean | null;
+                                isOnline?: boolean | null;
+                                website?: string | null;
+                                location?: string | null;
+                                bio?: string | null;
+                                projectCount?: number | null;
+                                dynamicLink?: string | null;
+                            } | null;
                         };
-                    }> | null | undefined;
-                } | null | undefined;
+                    }> | null;
+                } | null;
                 permissions?: {
                     __typename?: 'CommentPermissions';
-                    isOwner?: boolean | null | undefined;
-                } | null | undefined;
+                    isOwner?: boolean | null;
+                } | null;
                 likes?: {
                     __typename?: 'Likes';
-                    isLiked?: boolean | null | undefined;
-                    totalCount?: number | null | undefined;
-                } | null | undefined;
+                    isLiked?: boolean | null;
+                    totalCount?: number | null;
+                } | null;
                 user?: {
                     __typename?: 'User';
                     id: string;
-                    fullName?: string | null | undefined;
-                    firstName?: string | null | undefined;
-                    lastName?: string | null | undefined;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
-                    isSilhouette?: boolean | null | undefined;
-                    isOnline?: boolean | null | undefined;
-                    website?: string | null | undefined;
-                    location?: string | null | undefined;
-                    bio?: string | null | undefined;
-                    projectCount?: number | null | undefined;
-                    dynamicLink?: string | null | undefined;
-                } | null | undefined;
+                    fullName?: string | null;
+                    firstName?: string | null;
+                    lastName?: string | null;
+                    username?: any | null;
+                    avatarUrl?: string | null;
+                    isSilhouette?: boolean | null;
+                    isOnline?: boolean | null;
+                    website?: string | null;
+                    location?: string | null;
+                    bio?: string | null;
+                    projectCount?: number | null;
+                    dynamicLink?: string | null;
+                } | null;
             };
-        }> | null | undefined;
-    } | null | undefined;
+        }> | null;
+    } | null;
 };
 export declare type CurrentUserQueryVariables = Exact<{
     [key: string]: never;
@@ -3233,57 +3248,58 @@ export declare type CurrentUserQuery = {
     __typename?: 'Query';
     user?: {
         __typename?: 'User';
-        avatarUrl?: string | null | undefined;
-        bio?: string | null | undefined;
-        dynamicLink?: string | null | undefined;
-        firstName?: string | null | undefined;
-        fullName?: string | null | undefined;
+        avatarUrl?: string | null;
+        bio?: string | null;
+        dynamicLink?: string | null;
+        firstName?: string | null;
+        fullName?: string | null;
         id: string;
-        isOnline?: boolean | null | undefined;
-        isSilhouette?: boolean | null | undefined;
-        lastName?: string | null | undefined;
-        location?: string | null | undefined;
-        projectCount?: number | null | undefined;
-        username?: any | null | undefined;
-        website?: string | null | undefined;
-        role?: UserRole | null | undefined;
+        isOnline?: boolean | null;
+        isSilhouette?: boolean | null;
+        lastName?: string | null;
+        location?: string | null;
+        projectCount?: number | null;
+        username?: any | null;
+        website?: string | null;
+        role?: UserRole | null;
         settings?: {
             __typename?: 'UserSettings';
-            timezone?: string | null | undefined;
-            locale?: string | null | undefined;
-        } | null | undefined;
+            timezone?: string | null;
+            locale?: string | null;
+        } | null;
         interestedIn?: Array<{
             __typename?: 'ProjectType';
-            id?: string | null | undefined;
-            title?: string | null | undefined;
-        } | null | undefined> | null | undefined;
+            id?: string | null;
+            title?: string | null;
+        } | null> | null;
         projects?: {
             __typename?: 'ProjectsConnection';
             edges?: Array<{
                 __typename?: 'ProjectEdge';
                 node: {
                     __typename?: 'Project';
-                    id?: string | null | undefined;
-                    title?: string | null | undefined;
+                    id?: string | null;
+                    title?: string | null;
                     followers?: {
                         __typename?: 'FollowersConnection';
-                        totalCount?: number | null | undefined;
-                    } | null | undefined;
+                        totalCount?: number | null;
+                    } | null;
                     files?: {
                         __typename?: 'FileConnection';
                         edges?: Array<{
                             __typename?: 'FileEdge';
                             node: {
                                 __typename?: 'File';
-                                id?: string | null | undefined;
+                                id?: string | null;
                                 uri: string;
+                                poster?: string | null;
                             };
-                        } | null | undefined> | null | undefined;
-                    } | null | undefined;
+                        } | null> | null;
+                    } | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            }> | null;
+        } | null;
+    } | null;
 };
 export declare type CurrentUserFollowingProjectsQueryVariables = Exact<{
     after?: InputMaybe<Scalars['String']>;
@@ -3298,64 +3314,64 @@ export declare type CurrentUserFollowingProjectsQuery = {
             __typename?: 'ProjectsConnection';
             pageInfo: {
                 __typename?: 'PageInfo';
-                hasNextPage?: boolean | null | undefined;
+                hasNextPage?: boolean | null;
             };
             edges?: Array<{
                 __typename?: 'ProjectEdge';
                 cursor: string;
                 node: {
                     __typename?: 'Project';
-                    id?: string | null | undefined;
-                    title?: string | null | undefined;
-                    slug?: string | null | undefined;
-                    dynamicLink?: string | null | undefined;
+                    id?: string | null;
+                    title?: string | null;
+                    slug?: string | null;
+                    dynamicLink?: string | null;
                     cover?: {
                         __typename?: 'CoverType';
-                        uri?: string | null | undefined;
-                        default?: boolean | null | undefined;
-                    } | null | undefined;
+                        uri?: string | null;
+                        default?: boolean | null;
+                    } | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                     permissions?: {
                         __typename?: 'ProjectPermissions';
-                        isOwner?: boolean | null | undefined;
-                        isFollower?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                        isFollower?: boolean | null;
+                    } | null;
                     type?: {
                         __typename?: 'ProjectType';
-                        title?: string | null | undefined;
-                    } | null | undefined;
+                        title?: string | null;
+                    } | null;
                     followers?: {
                         __typename?: 'FollowersConnection';
-                        totalCount?: number | null | undefined;
+                        totalCount?: number | null;
                         edges?: Array<{
                             __typename?: 'FollowersEdge';
                             node: {
                                 __typename?: 'User';
                                 id: string;
-                                username?: any | null | undefined;
-                                avatarUrl?: string | null | undefined;
+                                username?: any | null;
+                                avatarUrl?: string | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
+                        }> | null;
+                    } | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            }> | null;
+        } | null;
+    } | null;
 };
 export declare type CurrentUserProfileQueryVariables = Exact<{
     after?: InputMaybe<Scalars['String']>;
@@ -3366,74 +3382,74 @@ export declare type CurrentUserProfileQuery = {
     user?: {
         __typename?: 'User';
         id: string;
-        fullName?: string | null | undefined;
-        firstName?: string | null | undefined;
-        lastName?: string | null | undefined;
-        username?: any | null | undefined;
-        avatarUrl?: string | null | undefined;
-        isSilhouette?: boolean | null | undefined;
-        isOnline?: boolean | null | undefined;
-        website?: string | null | undefined;
-        location?: string | null | undefined;
-        bio?: string | null | undefined;
-        projectCount?: number | null | undefined;
-        dynamicLink?: string | null | undefined;
+        fullName?: string | null;
+        firstName?: string | null;
+        lastName?: string | null;
+        username?: any | null;
+        avatarUrl?: string | null;
+        isSilhouette?: boolean | null;
+        isOnline?: boolean | null;
+        website?: string | null;
+        location?: string | null;
+        bio?: string | null;
+        projectCount?: number | null;
+        dynamicLink?: string | null;
         projects?: {
             __typename?: 'ProjectsConnection';
             edges?: Array<{
                 __typename?: 'ProjectEdge';
                 node: {
                     __typename?: 'Project';
-                    id?: string | null | undefined;
-                    title?: string | null | undefined;
-                    slug?: string | null | undefined;
-                    dynamicLink?: string | null | undefined;
+                    id?: string | null;
+                    title?: string | null;
+                    slug?: string | null;
+                    dynamicLink?: string | null;
                     cover?: {
                         __typename?: 'CoverType';
-                        uri?: string | null | undefined;
-                        default?: boolean | null | undefined;
-                    } | null | undefined;
+                        uri?: string | null;
+                        default?: boolean | null;
+                    } | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                     permissions?: {
                         __typename?: 'ProjectPermissions';
-                        isOwner?: boolean | null | undefined;
-                        isFollower?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                        isFollower?: boolean | null;
+                    } | null;
                     type?: {
                         __typename?: 'ProjectType';
-                        title?: string | null | undefined;
-                    } | null | undefined;
+                        title?: string | null;
+                    } | null;
                     followers?: {
                         __typename?: 'FollowersConnection';
-                        totalCount?: number | null | undefined;
+                        totalCount?: number | null;
                         edges?: Array<{
                             __typename?: 'FollowersEdge';
                             node: {
                                 __typename?: 'User';
                                 id: string;
-                                username?: any | null | undefined;
-                                avatarUrl?: string | null | undefined;
+                                username?: any | null;
+                                avatarUrl?: string | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
+                        }> | null;
+                    } | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
+            }> | null;
+        } | null;
         posts?: {
             __typename?: 'PostConnection';
             edges?: Array<{
@@ -3441,139 +3457,140 @@ export declare type CurrentUserProfileQuery = {
                 cursor: string;
                 node: {
                     __typename?: 'Post';
-                    id?: string | null | undefined;
-                    caption?: string | null | undefined;
-                    createdAt?: any | null | undefined;
-                    translatable?: boolean | null | undefined;
+                    id?: string | null;
+                    caption?: string | null;
+                    createdAt?: any | null;
+                    translatable?: boolean | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                     permissions?: {
                         __typename?: 'PostPermissions';
-                        isOwner?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                    } | null;
                     files?: {
                         __typename?: 'FileConnection';
                         edges?: Array<{
                             __typename?: 'FileEdge';
                             node: {
                                 __typename?: 'File';
-                                id?: string | null | undefined;
-                                type?: FileType | null | undefined;
+                                id?: string | null;
+                                type?: FileType | null;
                                 uri: string;
+                                poster?: string | null;
                             };
-                        } | null | undefined> | null | undefined;
-                    } | null | undefined;
+                        } | null> | null;
+                    } | null;
                     project?: {
                         __typename?: 'Project';
-                        id?: string | null | undefined;
-                        title?: string | null | undefined;
-                        slug?: string | null | undefined;
-                        dynamicLink?: string | null | undefined;
+                        id?: string | null;
+                        title?: string | null;
+                        slug?: string | null;
+                        dynamicLink?: string | null;
                         user?: {
                             __typename?: 'User';
                             id: string;
-                            fullName?: string | null | undefined;
-                            firstName?: string | null | undefined;
-                            lastName?: string | null | undefined;
-                            username?: any | null | undefined;
-                            avatarUrl?: string | null | undefined;
-                            isSilhouette?: boolean | null | undefined;
-                            isOnline?: boolean | null | undefined;
-                            website?: string | null | undefined;
-                            location?: string | null | undefined;
-                            bio?: string | null | undefined;
-                            projectCount?: number | null | undefined;
-                            dynamicLink?: string | null | undefined;
-                        } | null | undefined;
+                            fullName?: string | null;
+                            firstName?: string | null;
+                            lastName?: string | null;
+                            username?: any | null;
+                            avatarUrl?: string | null;
+                            isSilhouette?: boolean | null;
+                            isOnline?: boolean | null;
+                            website?: string | null;
+                            location?: string | null;
+                            bio?: string | null;
+                            projectCount?: number | null;
+                            dynamicLink?: string | null;
+                        } | null;
                         permissions?: {
                             __typename?: 'ProjectPermissions';
-                            isOwner?: boolean | null | undefined;
-                            isFollower?: boolean | null | undefined;
-                        } | null | undefined;
+                            isOwner?: boolean | null;
+                            isFollower?: boolean | null;
+                        } | null;
                         type?: {
                             __typename?: 'ProjectType';
-                            title?: string | null | undefined;
-                        } | null | undefined;
+                            title?: string | null;
+                        } | null;
                         cover?: {
                             __typename?: 'CoverType';
-                            uri?: string | null | undefined;
-                        } | null | undefined;
+                            uri?: string | null;
+                        } | null;
                         followers?: {
                             __typename?: 'FollowersConnection';
-                            totalCount?: number | null | undefined;
+                            totalCount?: number | null;
                             edges?: Array<{
                                 __typename?: 'FollowersEdge';
                                 node: {
                                     __typename?: 'User';
                                     id: string;
-                                    username?: any | null | undefined;
-                                    avatarUrl?: string | null | undefined;
+                                    username?: any | null;
+                                    avatarUrl?: string | null;
                                 };
-                            }> | null | undefined;
-                        } | null | undefined;
-                    } | null | undefined;
+                            }> | null;
+                        } | null;
+                    } | null;
                     likes?: {
                         __typename?: 'Likes';
-                        isLiked?: boolean | null | undefined;
-                        totalCount?: number | null | undefined;
-                    } | null | undefined;
+                        isLiked?: boolean | null;
+                        totalCount?: number | null;
+                    } | null;
                     bookmarks?: {
                         __typename?: 'Bookmarks';
-                        isBookmarked?: boolean | null | undefined;
-                    } | null | undefined;
+                        isBookmarked?: boolean | null;
+                    } | null;
                     comments?: {
                         __typename?: 'CommentConnection';
-                        totalCount?: number | null | undefined;
+                        totalCount?: number | null;
                         edges?: Array<{
                             __typename?: 'CommentEdge';
                             node: {
                                 __typename?: 'Comment';
-                                id?: string | null | undefined;
+                                id?: string | null;
                                 text: string;
-                                createdAt?: any | null | undefined;
-                                translatable?: boolean | null | undefined;
+                                createdAt?: any | null;
+                                translatable?: boolean | null;
                                 permissions?: {
                                     __typename?: 'CommentPermissions';
-                                    isOwner?: boolean | null | undefined;
-                                } | null | undefined;
+                                    isOwner?: boolean | null;
+                                } | null;
                                 likes?: {
                                     __typename?: 'Likes';
-                                    isLiked?: boolean | null | undefined;
-                                    totalCount?: number | null | undefined;
-                                } | null | undefined;
+                                    isLiked?: boolean | null;
+                                    totalCount?: number | null;
+                                } | null;
                                 user?: {
                                     __typename?: 'User';
                                     id: string;
-                                    fullName?: string | null | undefined;
-                                    firstName?: string | null | undefined;
-                                    lastName?: string | null | undefined;
-                                    username?: any | null | undefined;
-                                    avatarUrl?: string | null | undefined;
-                                    isSilhouette?: boolean | null | undefined;
-                                    isOnline?: boolean | null | undefined;
-                                    website?: string | null | undefined;
-                                    location?: string | null | undefined;
-                                    bio?: string | null | undefined;
-                                    projectCount?: number | null | undefined;
-                                    dynamicLink?: string | null | undefined;
-                                } | null | undefined;
+                                    fullName?: string | null;
+                                    firstName?: string | null;
+                                    lastName?: string | null;
+                                    username?: any | null;
+                                    avatarUrl?: string | null;
+                                    isSilhouette?: boolean | null;
+                                    isOnline?: boolean | null;
+                                    website?: string | null;
+                                    location?: string | null;
+                                    bio?: string | null;
+                                    projectCount?: number | null;
+                                    dynamicLink?: string | null;
+                                } | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
+                        }> | null;
+                    } | null;
                     likesConnection?: {
                         __typename?: 'LikeConnection';
                         edges?: Array<{
@@ -3581,24 +3598,24 @@ export declare type CurrentUserProfileQuery = {
                             node: {
                                 __typename?: 'User';
                                 id: string;
-                                avatarUrl?: string | null | undefined;
+                                avatarUrl?: string | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
+                        }> | null;
+                    } | null;
                     collection?: {
                         __typename?: 'Collection';
-                        id?: string | null | undefined;
-                        name?: string | null | undefined;
-                        slug?: string | null | undefined;
-                    } | null | undefined;
+                        id?: string | null;
+                        name?: string | null;
+                        slug?: string | null;
+                    } | null;
                 };
-            }> | null | undefined;
+            }> | null;
             pageInfo: {
                 __typename?: 'PageInfo';
-                hasNextPage?: boolean | null | undefined;
+                hasNextPage?: boolean | null;
             };
-        } | null | undefined;
-    } | null | undefined;
+        } | null;
+    } | null;
 };
 export declare type CurrentUserProjectsQueryVariables = Exact<{
     [key: string]: never;
@@ -3613,27 +3630,28 @@ export declare type CurrentUserProjectsQuery = {
                 __typename?: 'ProjectEdge';
                 node: {
                     __typename?: 'Project';
-                    id?: string | null | undefined;
-                    title?: string | null | undefined;
+                    id?: string | null;
+                    title?: string | null;
                     followers?: {
                         __typename?: 'FollowersConnection';
-                        totalCount?: number | null | undefined;
-                    } | null | undefined;
+                        totalCount?: number | null;
+                    } | null;
                     files?: {
                         __typename?: 'FileConnection';
                         edges?: Array<{
                             __typename?: 'FileEdge';
                             node: {
                                 __typename?: 'File';
-                                id?: string | null | undefined;
+                                id?: string | null;
                                 uri: string;
+                                poster?: string | null;
                             };
-                        } | null | undefined> | null | undefined;
-                    } | null | undefined;
+                        } | null> | null;
+                    } | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            }> | null;
+        } | null;
+    } | null;
 };
 export declare type CurrentUserSettingsQueryVariables = Exact<{
     [key: string]: never;
@@ -3643,7 +3661,7 @@ export declare type CurrentUserSettingsQuery = {
     user?: {
         __typename?: 'User';
         id: string;
-        role?: UserRole | null | undefined;
+        role?: UserRole | null;
         settings?: {
             __typename?: 'UserSettings';
             notifications?: {
@@ -3652,38 +3670,38 @@ export declare type CurrentUserSettingsQuery = {
                     __typename?: 'NotificationSettingsType';
                     NEW_FOLLOWER?: {
                         __typename?: 'NotificationKindSettings';
-                        email?: boolean | null | undefined;
-                        push?: boolean | null | undefined;
-                    } | null | undefined;
+                        email?: boolean | null;
+                        push?: boolean | null;
+                    } | null;
                     NEW_COMMENT?: {
                         __typename?: 'NotificationKindSettings';
-                        email?: boolean | null | undefined;
-                        push?: boolean | null | undefined;
-                    } | null | undefined;
+                        email?: boolean | null;
+                        push?: boolean | null;
+                    } | null;
                     NEW_MENTION?: {
                         __typename?: 'NotificationKindSettings';
-                        email?: boolean | null | undefined;
-                        push?: boolean | null | undefined;
-                    } | null | undefined;
+                        email?: boolean | null;
+                        push?: boolean | null;
+                    } | null;
                     NEW_ARTICLE?: {
                         __typename?: 'NotificationKindSettings';
-                        email?: boolean | null | undefined;
-                        push?: boolean | null | undefined;
-                    } | null | undefined;
+                        email?: boolean | null;
+                        push?: boolean | null;
+                    } | null;
                     SIMILAR_PROJECTS?: {
                         __typename?: 'NotificationKindSettings';
-                        email?: boolean | null | undefined;
-                        push?: boolean | null | undefined;
-                    } | null | undefined;
+                        email?: boolean | null;
+                        push?: boolean | null;
+                    } | null;
                     PRODUCT_ANNOUNCEMENTS?: {
                         __typename?: 'NotificationKindSettings';
-                        email?: boolean | null | undefined;
-                        push?: boolean | null | undefined;
-                    } | null | undefined;
-                } | null | undefined;
-            } | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+                        email?: boolean | null;
+                        push?: boolean | null;
+                    } | null;
+                } | null;
+            } | null;
+        } | null;
+    } | null;
 };
 export declare type FeedQueryVariables = Exact<{
     after?: InputMaybe<Scalars['String']>;
@@ -3697,146 +3715,147 @@ export declare type FeedQuery = {
             __typename?: 'PostConnection';
             pageInfo: {
                 __typename?: 'PageInfo';
-                hasNextPage?: boolean | null | undefined;
+                hasNextPage?: boolean | null;
             };
             edges?: Array<{
                 __typename?: 'PostEdge';
                 cursor: string;
                 node: {
                     __typename?: 'Post';
-                    id?: string | null | undefined;
-                    caption?: string | null | undefined;
-                    createdAt?: any | null | undefined;
-                    translatable?: boolean | null | undefined;
+                    id?: string | null;
+                    caption?: string | null;
+                    createdAt?: any | null;
+                    translatable?: boolean | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                     permissions?: {
                         __typename?: 'PostPermissions';
-                        isOwner?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                    } | null;
                     files?: {
                         __typename?: 'FileConnection';
                         edges?: Array<{
                             __typename?: 'FileEdge';
                             node: {
                                 __typename?: 'File';
-                                id?: string | null | undefined;
-                                type?: FileType | null | undefined;
+                                id?: string | null;
+                                type?: FileType | null;
                                 uri: string;
+                                poster?: string | null;
                             };
-                        } | null | undefined> | null | undefined;
-                    } | null | undefined;
+                        } | null> | null;
+                    } | null;
                     project?: {
                         __typename?: 'Project';
-                        id?: string | null | undefined;
-                        title?: string | null | undefined;
-                        slug?: string | null | undefined;
-                        dynamicLink?: string | null | undefined;
+                        id?: string | null;
+                        title?: string | null;
+                        slug?: string | null;
+                        dynamicLink?: string | null;
                         user?: {
                             __typename?: 'User';
                             id: string;
-                            fullName?: string | null | undefined;
-                            firstName?: string | null | undefined;
-                            lastName?: string | null | undefined;
-                            username?: any | null | undefined;
-                            avatarUrl?: string | null | undefined;
-                            isSilhouette?: boolean | null | undefined;
-                            isOnline?: boolean | null | undefined;
-                            website?: string | null | undefined;
-                            location?: string | null | undefined;
-                            bio?: string | null | undefined;
-                            projectCount?: number | null | undefined;
-                            dynamicLink?: string | null | undefined;
-                        } | null | undefined;
+                            fullName?: string | null;
+                            firstName?: string | null;
+                            lastName?: string | null;
+                            username?: any | null;
+                            avatarUrl?: string | null;
+                            isSilhouette?: boolean | null;
+                            isOnline?: boolean | null;
+                            website?: string | null;
+                            location?: string | null;
+                            bio?: string | null;
+                            projectCount?: number | null;
+                            dynamicLink?: string | null;
+                        } | null;
                         permissions?: {
                             __typename?: 'ProjectPermissions';
-                            isOwner?: boolean | null | undefined;
-                            isFollower?: boolean | null | undefined;
-                        } | null | undefined;
+                            isOwner?: boolean | null;
+                            isFollower?: boolean | null;
+                        } | null;
                         type?: {
                             __typename?: 'ProjectType';
-                            title?: string | null | undefined;
-                        } | null | undefined;
+                            title?: string | null;
+                        } | null;
                         cover?: {
                             __typename?: 'CoverType';
-                            uri?: string | null | undefined;
-                        } | null | undefined;
+                            uri?: string | null;
+                        } | null;
                         followers?: {
                             __typename?: 'FollowersConnection';
-                            totalCount?: number | null | undefined;
+                            totalCount?: number | null;
                             edges?: Array<{
                                 __typename?: 'FollowersEdge';
                                 node: {
                                     __typename?: 'User';
                                     id: string;
-                                    username?: any | null | undefined;
-                                    avatarUrl?: string | null | undefined;
+                                    username?: any | null;
+                                    avatarUrl?: string | null;
                                 };
-                            }> | null | undefined;
-                        } | null | undefined;
-                    } | null | undefined;
+                            }> | null;
+                        } | null;
+                    } | null;
                     likes?: {
                         __typename?: 'Likes';
-                        isLiked?: boolean | null | undefined;
-                        totalCount?: number | null | undefined;
-                    } | null | undefined;
+                        isLiked?: boolean | null;
+                        totalCount?: number | null;
+                    } | null;
                     bookmarks?: {
                         __typename?: 'Bookmarks';
-                        isBookmarked?: boolean | null | undefined;
-                    } | null | undefined;
+                        isBookmarked?: boolean | null;
+                    } | null;
                     comments?: {
                         __typename?: 'CommentConnection';
-                        totalCount?: number | null | undefined;
+                        totalCount?: number | null;
                         edges?: Array<{
                             __typename?: 'CommentEdge';
                             node: {
                                 __typename?: 'Comment';
-                                id?: string | null | undefined;
+                                id?: string | null;
                                 text: string;
-                                createdAt?: any | null | undefined;
-                                translatable?: boolean | null | undefined;
+                                createdAt?: any | null;
+                                translatable?: boolean | null;
                                 permissions?: {
                                     __typename?: 'CommentPermissions';
-                                    isOwner?: boolean | null | undefined;
-                                } | null | undefined;
+                                    isOwner?: boolean | null;
+                                } | null;
                                 likes?: {
                                     __typename?: 'Likes';
-                                    isLiked?: boolean | null | undefined;
-                                    totalCount?: number | null | undefined;
-                                } | null | undefined;
+                                    isLiked?: boolean | null;
+                                    totalCount?: number | null;
+                                } | null;
                                 user?: {
                                     __typename?: 'User';
                                     id: string;
-                                    fullName?: string | null | undefined;
-                                    firstName?: string | null | undefined;
-                                    lastName?: string | null | undefined;
-                                    username?: any | null | undefined;
-                                    avatarUrl?: string | null | undefined;
-                                    isSilhouette?: boolean | null | undefined;
-                                    isOnline?: boolean | null | undefined;
-                                    website?: string | null | undefined;
-                                    location?: string | null | undefined;
-                                    bio?: string | null | undefined;
-                                    projectCount?: number | null | undefined;
-                                    dynamicLink?: string | null | undefined;
-                                } | null | undefined;
+                                    fullName?: string | null;
+                                    firstName?: string | null;
+                                    lastName?: string | null;
+                                    username?: any | null;
+                                    avatarUrl?: string | null;
+                                    isSilhouette?: boolean | null;
+                                    isOnline?: boolean | null;
+                                    website?: string | null;
+                                    location?: string | null;
+                                    bio?: string | null;
+                                    projectCount?: number | null;
+                                    dynamicLink?: string | null;
+                                } | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
+                        }> | null;
+                    } | null;
                     likesConnection?: {
                         __typename?: 'LikeConnection';
                         edges?: Array<{
@@ -3844,20 +3863,20 @@ export declare type FeedQuery = {
                             node: {
                                 __typename?: 'User';
                                 id: string;
-                                avatarUrl?: string | null | undefined;
+                                avatarUrl?: string | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
+                        }> | null;
+                    } | null;
                     collection?: {
                         __typename?: 'Collection';
-                        id?: string | null | undefined;
-                        name?: string | null | undefined;
-                        slug?: string | null | undefined;
-                    } | null | undefined;
+                        id?: string | null;
+                        name?: string | null;
+                        slug?: string | null;
+                    } | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            }> | null;
+        } | null;
+    } | null;
 };
 export declare type FilesQueryVariables = Exact<{
     after?: InputMaybe<Scalars['String']>;
@@ -3869,19 +3888,19 @@ export declare type FilesQuery = {
         __typename?: 'FileConnection';
         pageInfo: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
+            hasNextPage?: boolean | null;
         };
         edges?: Array<{
             __typename?: 'FileEdge';
             cursor: string;
             node: {
                 __typename?: 'File';
-                id?: string | null | undefined;
+                id?: string | null;
                 uri: string;
-                postId?: string | null | undefined;
+                postId?: string | null;
             };
-        } | null | undefined> | null | undefined;
-    } | null | undefined;
+        } | null> | null;
+    } | null;
 };
 export declare type FollowersQueryVariables = Exact<{
     projectId: Scalars['ID'];
@@ -3894,7 +3913,7 @@ export declare type FollowersQuery = {
         __typename?: 'FollowersConnection';
         pageInfo: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
+            hasNextPage?: boolean | null;
         };
         edges?: Array<{
             __typename?: 'FollowersEdge';
@@ -3902,21 +3921,21 @@ export declare type FollowersQuery = {
             node: {
                 __typename?: 'User';
                 id: string;
-                fullName?: string | null | undefined;
-                firstName?: string | null | undefined;
-                lastName?: string | null | undefined;
-                username?: any | null | undefined;
-                avatarUrl?: string | null | undefined;
-                isSilhouette?: boolean | null | undefined;
-                isOnline?: boolean | null | undefined;
-                website?: string | null | undefined;
-                location?: string | null | undefined;
-                bio?: string | null | undefined;
-                projectCount?: number | null | undefined;
-                dynamicLink?: string | null | undefined;
+                fullName?: string | null;
+                firstName?: string | null;
+                lastName?: string | null;
+                username?: any | null;
+                avatarUrl?: string | null;
+                isSilhouette?: boolean | null;
+                isOnline?: boolean | null;
+                website?: string | null;
+                location?: string | null;
+                bio?: string | null;
+                projectCount?: number | null;
+                dynamicLink?: string | null;
             };
-        }> | null | undefined;
-    } | null | undefined;
+        }> | null;
+    } | null;
 };
 export declare type GrowthQueryVariables = Exact<{
     type: GrowthType;
@@ -3925,9 +3944,9 @@ export declare type GrowthQuery = {
     __typename?: 'Query';
     growth?: Array<{
         __typename?: 'GrowthData';
-        date?: any | null | undefined;
-        count?: number | null | undefined;
-    } | null | undefined> | null | undefined;
+        date?: any | null;
+        count?: number | null;
+    } | null> | null;
 };
 export declare type HashtagQueryVariables = Exact<{
     id?: InputMaybe<Scalars['ID']>;
@@ -3944,146 +3963,147 @@ export declare type HashtagQuery = {
             __typename?: 'PostConnection';
             pageInfo: {
                 __typename?: 'PageInfo';
-                hasNextPage?: boolean | null | undefined;
+                hasNextPage?: boolean | null;
             };
             edges?: Array<{
                 __typename?: 'PostEdge';
                 cursor: string;
                 node: {
                     __typename?: 'Post';
-                    id?: string | null | undefined;
-                    caption?: string | null | undefined;
-                    createdAt?: any | null | undefined;
-                    translatable?: boolean | null | undefined;
+                    id?: string | null;
+                    caption?: string | null;
+                    createdAt?: any | null;
+                    translatable?: boolean | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                     permissions?: {
                         __typename?: 'PostPermissions';
-                        isOwner?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                    } | null;
                     files?: {
                         __typename?: 'FileConnection';
                         edges?: Array<{
                             __typename?: 'FileEdge';
                             node: {
                                 __typename?: 'File';
-                                id?: string | null | undefined;
-                                type?: FileType | null | undefined;
+                                id?: string | null;
+                                type?: FileType | null;
                                 uri: string;
+                                poster?: string | null;
                             };
-                        } | null | undefined> | null | undefined;
-                    } | null | undefined;
+                        } | null> | null;
+                    } | null;
                     project?: {
                         __typename?: 'Project';
-                        id?: string | null | undefined;
-                        title?: string | null | undefined;
-                        slug?: string | null | undefined;
-                        dynamicLink?: string | null | undefined;
+                        id?: string | null;
+                        title?: string | null;
+                        slug?: string | null;
+                        dynamicLink?: string | null;
                         user?: {
                             __typename?: 'User';
                             id: string;
-                            fullName?: string | null | undefined;
-                            firstName?: string | null | undefined;
-                            lastName?: string | null | undefined;
-                            username?: any | null | undefined;
-                            avatarUrl?: string | null | undefined;
-                            isSilhouette?: boolean | null | undefined;
-                            isOnline?: boolean | null | undefined;
-                            website?: string | null | undefined;
-                            location?: string | null | undefined;
-                            bio?: string | null | undefined;
-                            projectCount?: number | null | undefined;
-                            dynamicLink?: string | null | undefined;
-                        } | null | undefined;
+                            fullName?: string | null;
+                            firstName?: string | null;
+                            lastName?: string | null;
+                            username?: any | null;
+                            avatarUrl?: string | null;
+                            isSilhouette?: boolean | null;
+                            isOnline?: boolean | null;
+                            website?: string | null;
+                            location?: string | null;
+                            bio?: string | null;
+                            projectCount?: number | null;
+                            dynamicLink?: string | null;
+                        } | null;
                         permissions?: {
                             __typename?: 'ProjectPermissions';
-                            isOwner?: boolean | null | undefined;
-                            isFollower?: boolean | null | undefined;
-                        } | null | undefined;
+                            isOwner?: boolean | null;
+                            isFollower?: boolean | null;
+                        } | null;
                         type?: {
                             __typename?: 'ProjectType';
-                            title?: string | null | undefined;
-                        } | null | undefined;
+                            title?: string | null;
+                        } | null;
                         cover?: {
                             __typename?: 'CoverType';
-                            uri?: string | null | undefined;
-                        } | null | undefined;
+                            uri?: string | null;
+                        } | null;
                         followers?: {
                             __typename?: 'FollowersConnection';
-                            totalCount?: number | null | undefined;
+                            totalCount?: number | null;
                             edges?: Array<{
                                 __typename?: 'FollowersEdge';
                                 node: {
                                     __typename?: 'User';
                                     id: string;
-                                    username?: any | null | undefined;
-                                    avatarUrl?: string | null | undefined;
+                                    username?: any | null;
+                                    avatarUrl?: string | null;
                                 };
-                            }> | null | undefined;
-                        } | null | undefined;
-                    } | null | undefined;
+                            }> | null;
+                        } | null;
+                    } | null;
                     likes?: {
                         __typename?: 'Likes';
-                        isLiked?: boolean | null | undefined;
-                        totalCount?: number | null | undefined;
-                    } | null | undefined;
+                        isLiked?: boolean | null;
+                        totalCount?: number | null;
+                    } | null;
                     bookmarks?: {
                         __typename?: 'Bookmarks';
-                        isBookmarked?: boolean | null | undefined;
-                    } | null | undefined;
+                        isBookmarked?: boolean | null;
+                    } | null;
                     comments?: {
                         __typename?: 'CommentConnection';
-                        totalCount?: number | null | undefined;
+                        totalCount?: number | null;
                         edges?: Array<{
                             __typename?: 'CommentEdge';
                             node: {
                                 __typename?: 'Comment';
-                                id?: string | null | undefined;
+                                id?: string | null;
                                 text: string;
-                                createdAt?: any | null | undefined;
-                                translatable?: boolean | null | undefined;
+                                createdAt?: any | null;
+                                translatable?: boolean | null;
                                 permissions?: {
                                     __typename?: 'CommentPermissions';
-                                    isOwner?: boolean | null | undefined;
-                                } | null | undefined;
+                                    isOwner?: boolean | null;
+                                } | null;
                                 likes?: {
                                     __typename?: 'Likes';
-                                    isLiked?: boolean | null | undefined;
-                                    totalCount?: number | null | undefined;
-                                } | null | undefined;
+                                    isLiked?: boolean | null;
+                                    totalCount?: number | null;
+                                } | null;
                                 user?: {
                                     __typename?: 'User';
                                     id: string;
-                                    fullName?: string | null | undefined;
-                                    firstName?: string | null | undefined;
-                                    lastName?: string | null | undefined;
-                                    username?: any | null | undefined;
-                                    avatarUrl?: string | null | undefined;
-                                    isSilhouette?: boolean | null | undefined;
-                                    isOnline?: boolean | null | undefined;
-                                    website?: string | null | undefined;
-                                    location?: string | null | undefined;
-                                    bio?: string | null | undefined;
-                                    projectCount?: number | null | undefined;
-                                    dynamicLink?: string | null | undefined;
-                                } | null | undefined;
+                                    fullName?: string | null;
+                                    firstName?: string | null;
+                                    lastName?: string | null;
+                                    username?: any | null;
+                                    avatarUrl?: string | null;
+                                    isSilhouette?: boolean | null;
+                                    isOnline?: boolean | null;
+                                    website?: string | null;
+                                    location?: string | null;
+                                    bio?: string | null;
+                                    projectCount?: number | null;
+                                    dynamicLink?: string | null;
+                                } | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
+                        }> | null;
+                    } | null;
                     likesConnection?: {
                         __typename?: 'LikeConnection';
                         edges?: Array<{
@@ -4091,20 +4111,20 @@ export declare type HashtagQuery = {
                             node: {
                                 __typename?: 'User';
                                 id: string;
-                                avatarUrl?: string | null | undefined;
+                                avatarUrl?: string | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
+                        }> | null;
+                    } | null;
                     collection?: {
                         __typename?: 'Collection';
-                        id?: string | null | undefined;
-                        name?: string | null | undefined;
-                        slug?: string | null | undefined;
-                    } | null | undefined;
+                        id?: string | null;
+                        name?: string | null;
+                        slug?: string | null;
+                    } | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            }> | null;
+        } | null;
+    } | null;
 };
 export declare type LikesQueryVariables = Exact<{
     postId: Scalars['ID'];
@@ -4117,7 +4137,7 @@ export declare type LikesQuery = {
         __typename?: 'LikeConnection';
         pageInfo: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
+            hasNextPage?: boolean | null;
         };
         edges?: Array<{
             __typename?: 'LikeEdge';
@@ -4125,21 +4145,21 @@ export declare type LikesQuery = {
             node: {
                 __typename?: 'User';
                 id: string;
-                fullName?: string | null | undefined;
-                firstName?: string | null | undefined;
-                lastName?: string | null | undefined;
-                username?: any | null | undefined;
-                avatarUrl?: string | null | undefined;
-                isSilhouette?: boolean | null | undefined;
-                isOnline?: boolean | null | undefined;
-                website?: string | null | undefined;
-                location?: string | null | undefined;
-                bio?: string | null | undefined;
-                projectCount?: number | null | undefined;
-                dynamicLink?: string | null | undefined;
+                fullName?: string | null;
+                firstName?: string | null;
+                lastName?: string | null;
+                username?: any | null;
+                avatarUrl?: string | null;
+                isSilhouette?: boolean | null;
+                isOnline?: boolean | null;
+                website?: string | null;
+                location?: string | null;
+                bio?: string | null;
+                projectCount?: number | null;
+                dynamicLink?: string | null;
             };
-        }> | null | undefined;
-    } | null | undefined;
+        }> | null;
+    } | null;
 };
 export declare type MetaQueryVariables = Exact<{
     [key: string]: never;
@@ -4148,17 +4168,17 @@ export declare type MetaQuery = {
     __typename?: 'Query';
     meta?: {
         __typename?: 'Meta';
-        totalUsers?: number | null | undefined;
-        totalUsersToday?: number | null | undefined;
-        totalPostsToday?: number | null | undefined;
-        totalProjectsToday?: number | null | undefined;
-        totalCommentsToday?: number | null | undefined;
-        totalFilesToday?: number | null | undefined;
-        totalComments?: number | null | undefined;
-        totalProjects?: number | null | undefined;
-        totalPosts?: number | null | undefined;
-        totalFiles?: number | null | undefined;
-    } | null | undefined;
+        totalUsers?: number | null;
+        totalUsersToday?: number | null;
+        totalPostsToday?: number | null;
+        totalProjectsToday?: number | null;
+        totalCommentsToday?: number | null;
+        totalFilesToday?: number | null;
+        totalComments?: number | null;
+        totalProjects?: number | null;
+        totalPosts?: number | null;
+        totalFiles?: number | null;
+    } | null;
 };
 export declare type NotificationsQueryVariables = Exact<{
     after?: InputMaybe<Scalars['String']>;
@@ -4168,108 +4188,109 @@ export declare type NotificationsQuery = {
     __typename?: 'Query';
     notifications?: {
         __typename?: 'NotificationsConnection';
-        unreadCount?: number | null | undefined;
+        unreadCount?: number | null;
         pageInfo?: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
-        } | null | undefined;
+            hasNextPage?: boolean | null;
+        } | null;
         edges?: Array<{
             __typename?: 'NotificationEdge';
-            cursor?: string | null | undefined;
+            cursor?: string | null;
             node?: {
                 __typename?: 'Notification';
                 id: string;
-                type?: NotificationTypes | null | undefined;
+                type?: NotificationTypes | null;
                 createdAt: any;
                 user: {
                     __typename?: 'User';
                     id: string;
-                    fullName?: string | null | undefined;
-                    firstName?: string | null | undefined;
-                    lastName?: string | null | undefined;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
-                    isSilhouette?: boolean | null | undefined;
-                    isOnline?: boolean | null | undefined;
-                    website?: string | null | undefined;
-                    location?: string | null | undefined;
-                    bio?: string | null | undefined;
-                    projectCount?: number | null | undefined;
-                    dynamicLink?: string | null | undefined;
+                    fullName?: string | null;
+                    firstName?: string | null;
+                    lastName?: string | null;
+                    username?: any | null;
+                    avatarUrl?: string | null;
+                    isSilhouette?: boolean | null;
+                    isOnline?: boolean | null;
+                    website?: string | null;
+                    location?: string | null;
+                    bio?: string | null;
+                    projectCount?: number | null;
+                    dynamicLink?: string | null;
                 };
                 project?: {
                     __typename?: 'Project';
-                    id?: string | null | undefined;
-                    title?: string | null | undefined;
-                    slug?: string | null | undefined;
-                    dynamicLink?: string | null | undefined;
+                    id?: string | null;
+                    title?: string | null;
+                    slug?: string | null;
+                    dynamicLink?: string | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                     permissions?: {
                         __typename?: 'ProjectPermissions';
-                        isOwner?: boolean | null | undefined;
-                        isFollower?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                        isFollower?: boolean | null;
+                    } | null;
                     type?: {
                         __typename?: 'ProjectType';
-                        title?: string | null | undefined;
-                    } | null | undefined;
+                        title?: string | null;
+                    } | null;
                     cover?: {
                         __typename?: 'CoverType';
-                        uri?: string | null | undefined;
-                    } | null | undefined;
+                        uri?: string | null;
+                    } | null;
                     followers?: {
                         __typename?: 'FollowersConnection';
-                        totalCount?: number | null | undefined;
+                        totalCount?: number | null;
                         edges?: Array<{
                             __typename?: 'FollowersEdge';
                             node: {
                                 __typename?: 'User';
                                 id: string;
-                                username?: any | null | undefined;
-                                avatarUrl?: string | null | undefined;
+                                username?: any | null;
+                                avatarUrl?: string | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
-                } | null | undefined;
+                        }> | null;
+                    } | null;
+                } | null;
                 post?: {
                     __typename?: 'Post';
-                    id?: string | null | undefined;
-                } | null | undefined;
+                    id?: string | null;
+                } | null;
                 comment?: {
                     __typename?: 'Comment';
-                    id?: string | null | undefined;
+                    id?: string | null;
                     text: string;
-                    postId?: string | null | undefined;
-                } | null | undefined;
+                    postId?: string | null;
+                } | null;
                 files?: {
                     __typename?: 'FileConnection';
                     edges?: Array<{
                         __typename?: 'FileEdge';
                         node: {
                             __typename?: 'File';
-                            id?: string | null | undefined;
+                            id?: string | null;
                             uri: string;
+                            poster?: string | null;
                         };
-                    } | null | undefined> | null | undefined;
-                } | null | undefined;
-            } | null | undefined;
-        } | null | undefined> | null | undefined;
-    } | null | undefined;
+                    } | null> | null;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
 };
 export declare type PostQueryVariables = Exact<{
     id: Scalars['ID'];
@@ -4278,139 +4299,140 @@ export declare type PostQuery = {
     __typename?: 'Query';
     post?: {
         __typename?: 'Post';
-        id?: string | null | undefined;
-        caption?: string | null | undefined;
-        createdAt?: any | null | undefined;
-        translatable?: boolean | null | undefined;
+        id?: string | null;
+        caption?: string | null;
+        createdAt?: any | null;
+        translatable?: boolean | null;
         user?: {
             __typename?: 'User';
             id: string;
-            fullName?: string | null | undefined;
-            firstName?: string | null | undefined;
-            lastName?: string | null | undefined;
-            username?: any | null | undefined;
-            avatarUrl?: string | null | undefined;
-            isSilhouette?: boolean | null | undefined;
-            isOnline?: boolean | null | undefined;
-            website?: string | null | undefined;
-            location?: string | null | undefined;
-            bio?: string | null | undefined;
-            projectCount?: number | null | undefined;
-            dynamicLink?: string | null | undefined;
-        } | null | undefined;
+            fullName?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            username?: any | null;
+            avatarUrl?: string | null;
+            isSilhouette?: boolean | null;
+            isOnline?: boolean | null;
+            website?: string | null;
+            location?: string | null;
+            bio?: string | null;
+            projectCount?: number | null;
+            dynamicLink?: string | null;
+        } | null;
         permissions?: {
             __typename?: 'PostPermissions';
-            isOwner?: boolean | null | undefined;
-        } | null | undefined;
+            isOwner?: boolean | null;
+        } | null;
         files?: {
             __typename?: 'FileConnection';
             edges?: Array<{
                 __typename?: 'FileEdge';
                 node: {
                     __typename?: 'File';
-                    id?: string | null | undefined;
-                    type?: FileType | null | undefined;
+                    id?: string | null;
+                    type?: FileType | null;
                     uri: string;
+                    poster?: string | null;
                 };
-            } | null | undefined> | null | undefined;
-        } | null | undefined;
+            } | null> | null;
+        } | null;
         project?: {
             __typename?: 'Project';
-            id?: string | null | undefined;
-            title?: string | null | undefined;
-            slug?: string | null | undefined;
-            dynamicLink?: string | null | undefined;
+            id?: string | null;
+            title?: string | null;
+            slug?: string | null;
+            dynamicLink?: string | null;
             user?: {
                 __typename?: 'User';
                 id: string;
-                fullName?: string | null | undefined;
-                firstName?: string | null | undefined;
-                lastName?: string | null | undefined;
-                username?: any | null | undefined;
-                avatarUrl?: string | null | undefined;
-                isSilhouette?: boolean | null | undefined;
-                isOnline?: boolean | null | undefined;
-                website?: string | null | undefined;
-                location?: string | null | undefined;
-                bio?: string | null | undefined;
-                projectCount?: number | null | undefined;
-                dynamicLink?: string | null | undefined;
-            } | null | undefined;
+                fullName?: string | null;
+                firstName?: string | null;
+                lastName?: string | null;
+                username?: any | null;
+                avatarUrl?: string | null;
+                isSilhouette?: boolean | null;
+                isOnline?: boolean | null;
+                website?: string | null;
+                location?: string | null;
+                bio?: string | null;
+                projectCount?: number | null;
+                dynamicLink?: string | null;
+            } | null;
             permissions?: {
                 __typename?: 'ProjectPermissions';
-                isOwner?: boolean | null | undefined;
-                isFollower?: boolean | null | undefined;
-            } | null | undefined;
+                isOwner?: boolean | null;
+                isFollower?: boolean | null;
+            } | null;
             type?: {
                 __typename?: 'ProjectType';
-                title?: string | null | undefined;
-            } | null | undefined;
+                title?: string | null;
+            } | null;
             cover?: {
                 __typename?: 'CoverType';
-                uri?: string | null | undefined;
-            } | null | undefined;
+                uri?: string | null;
+            } | null;
             followers?: {
                 __typename?: 'FollowersConnection';
-                totalCount?: number | null | undefined;
+                totalCount?: number | null;
                 edges?: Array<{
                     __typename?: 'FollowersEdge';
                     node: {
                         __typename?: 'User';
                         id: string;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
+                        username?: any | null;
+                        avatarUrl?: string | null;
                     };
-                }> | null | undefined;
-            } | null | undefined;
-        } | null | undefined;
+                }> | null;
+            } | null;
+        } | null;
         likes?: {
             __typename?: 'Likes';
-            isLiked?: boolean | null | undefined;
-            totalCount?: number | null | undefined;
-        } | null | undefined;
+            isLiked?: boolean | null;
+            totalCount?: number | null;
+        } | null;
         bookmarks?: {
             __typename?: 'Bookmarks';
-            isBookmarked?: boolean | null | undefined;
-        } | null | undefined;
+            isBookmarked?: boolean | null;
+        } | null;
         comments?: {
             __typename?: 'CommentConnection';
-            totalCount?: number | null | undefined;
+            totalCount?: number | null;
             edges?: Array<{
                 __typename?: 'CommentEdge';
                 node: {
                     __typename?: 'Comment';
-                    id?: string | null | undefined;
+                    id?: string | null;
                     text: string;
-                    createdAt?: any | null | undefined;
-                    translatable?: boolean | null | undefined;
+                    createdAt?: any | null;
+                    translatable?: boolean | null;
                     permissions?: {
                         __typename?: 'CommentPermissions';
-                        isOwner?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                    } | null;
                     likes?: {
                         __typename?: 'Likes';
-                        isLiked?: boolean | null | undefined;
-                        totalCount?: number | null | undefined;
-                    } | null | undefined;
+                        isLiked?: boolean | null;
+                        totalCount?: number | null;
+                    } | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
+            }> | null;
+        } | null;
         likesConnection?: {
             __typename?: 'LikeConnection';
             edges?: Array<{
@@ -4418,17 +4440,17 @@ export declare type PostQuery = {
                 node: {
                     __typename?: 'User';
                     id: string;
-                    avatarUrl?: string | null | undefined;
+                    avatarUrl?: string | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
+            }> | null;
+        } | null;
         collection?: {
             __typename?: 'Collection';
-            id?: string | null | undefined;
-            name?: string | null | undefined;
-            slug?: string | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            id?: string | null;
+            name?: string | null;
+            slug?: string | null;
+        } | null;
+    } | null;
 };
 export declare type PostsQueryVariables = Exact<{
     after?: InputMaybe<Scalars['String']>;
@@ -4440,146 +4462,147 @@ export declare type PostsQuery = {
         __typename?: 'PostConnection';
         pageInfo: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
+            hasNextPage?: boolean | null;
         };
         edges?: Array<{
             __typename?: 'PostEdge';
             cursor: string;
             node: {
                 __typename?: 'Post';
-                id?: string | null | undefined;
-                caption?: string | null | undefined;
-                createdAt?: any | null | undefined;
-                translatable?: boolean | null | undefined;
+                id?: string | null;
+                caption?: string | null;
+                createdAt?: any | null;
+                translatable?: boolean | null;
                 user?: {
                     __typename?: 'User';
                     id: string;
-                    fullName?: string | null | undefined;
-                    firstName?: string | null | undefined;
-                    lastName?: string | null | undefined;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
-                    isSilhouette?: boolean | null | undefined;
-                    isOnline?: boolean | null | undefined;
-                    website?: string | null | undefined;
-                    location?: string | null | undefined;
-                    bio?: string | null | undefined;
-                    projectCount?: number | null | undefined;
-                    dynamicLink?: string | null | undefined;
-                } | null | undefined;
+                    fullName?: string | null;
+                    firstName?: string | null;
+                    lastName?: string | null;
+                    username?: any | null;
+                    avatarUrl?: string | null;
+                    isSilhouette?: boolean | null;
+                    isOnline?: boolean | null;
+                    website?: string | null;
+                    location?: string | null;
+                    bio?: string | null;
+                    projectCount?: number | null;
+                    dynamicLink?: string | null;
+                } | null;
                 permissions?: {
                     __typename?: 'PostPermissions';
-                    isOwner?: boolean | null | undefined;
-                } | null | undefined;
+                    isOwner?: boolean | null;
+                } | null;
                 files?: {
                     __typename?: 'FileConnection';
                     edges?: Array<{
                         __typename?: 'FileEdge';
                         node: {
                             __typename?: 'File';
-                            id?: string | null | undefined;
-                            type?: FileType | null | undefined;
+                            id?: string | null;
+                            type?: FileType | null;
                             uri: string;
+                            poster?: string | null;
                         };
-                    } | null | undefined> | null | undefined;
-                } | null | undefined;
+                    } | null> | null;
+                } | null;
                 project?: {
                     __typename?: 'Project';
-                    id?: string | null | undefined;
-                    title?: string | null | undefined;
-                    slug?: string | null | undefined;
-                    dynamicLink?: string | null | undefined;
+                    id?: string | null;
+                    title?: string | null;
+                    slug?: string | null;
+                    dynamicLink?: string | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                     permissions?: {
                         __typename?: 'ProjectPermissions';
-                        isOwner?: boolean | null | undefined;
-                        isFollower?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                        isFollower?: boolean | null;
+                    } | null;
                     type?: {
                         __typename?: 'ProjectType';
-                        title?: string | null | undefined;
-                    } | null | undefined;
+                        title?: string | null;
+                    } | null;
                     cover?: {
                         __typename?: 'CoverType';
-                        uri?: string | null | undefined;
-                    } | null | undefined;
+                        uri?: string | null;
+                    } | null;
                     followers?: {
                         __typename?: 'FollowersConnection';
-                        totalCount?: number | null | undefined;
+                        totalCount?: number | null;
                         edges?: Array<{
                             __typename?: 'FollowersEdge';
                             node: {
                                 __typename?: 'User';
                                 id: string;
-                                username?: any | null | undefined;
-                                avatarUrl?: string | null | undefined;
+                                username?: any | null;
+                                avatarUrl?: string | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
-                } | null | undefined;
+                        }> | null;
+                    } | null;
+                } | null;
                 likes?: {
                     __typename?: 'Likes';
-                    isLiked?: boolean | null | undefined;
-                    totalCount?: number | null | undefined;
-                } | null | undefined;
+                    isLiked?: boolean | null;
+                    totalCount?: number | null;
+                } | null;
                 bookmarks?: {
                     __typename?: 'Bookmarks';
-                    isBookmarked?: boolean | null | undefined;
-                } | null | undefined;
+                    isBookmarked?: boolean | null;
+                } | null;
                 comments?: {
                     __typename?: 'CommentConnection';
-                    totalCount?: number | null | undefined;
+                    totalCount?: number | null;
                     edges?: Array<{
                         __typename?: 'CommentEdge';
                         node: {
                             __typename?: 'Comment';
-                            id?: string | null | undefined;
+                            id?: string | null;
                             text: string;
-                            createdAt?: any | null | undefined;
-                            translatable?: boolean | null | undefined;
+                            createdAt?: any | null;
+                            translatable?: boolean | null;
                             permissions?: {
                                 __typename?: 'CommentPermissions';
-                                isOwner?: boolean | null | undefined;
-                            } | null | undefined;
+                                isOwner?: boolean | null;
+                            } | null;
                             likes?: {
                                 __typename?: 'Likes';
-                                isLiked?: boolean | null | undefined;
-                                totalCount?: number | null | undefined;
-                            } | null | undefined;
+                                isLiked?: boolean | null;
+                                totalCount?: number | null;
+                            } | null;
                             user?: {
                                 __typename?: 'User';
                                 id: string;
-                                fullName?: string | null | undefined;
-                                firstName?: string | null | undefined;
-                                lastName?: string | null | undefined;
-                                username?: any | null | undefined;
-                                avatarUrl?: string | null | undefined;
-                                isSilhouette?: boolean | null | undefined;
-                                isOnline?: boolean | null | undefined;
-                                website?: string | null | undefined;
-                                location?: string | null | undefined;
-                                bio?: string | null | undefined;
-                                projectCount?: number | null | undefined;
-                                dynamicLink?: string | null | undefined;
-                            } | null | undefined;
+                                fullName?: string | null;
+                                firstName?: string | null;
+                                lastName?: string | null;
+                                username?: any | null;
+                                avatarUrl?: string | null;
+                                isSilhouette?: boolean | null;
+                                isOnline?: boolean | null;
+                                website?: string | null;
+                                location?: string | null;
+                                bio?: string | null;
+                                projectCount?: number | null;
+                                dynamicLink?: string | null;
+                            } | null;
                         };
-                    }> | null | undefined;
-                } | null | undefined;
+                    }> | null;
+                } | null;
                 likesConnection?: {
                     __typename?: 'LikeConnection';
                     edges?: Array<{
@@ -4587,19 +4610,19 @@ export declare type PostsQuery = {
                         node: {
                             __typename?: 'User';
                             id: string;
-                            avatarUrl?: string | null | undefined;
+                            avatarUrl?: string | null;
                         };
-                    }> | null | undefined;
-                } | null | undefined;
+                    }> | null;
+                } | null;
                 collection?: {
                     __typename?: 'Collection';
-                    id?: string | null | undefined;
-                    name?: string | null | undefined;
-                    slug?: string | null | undefined;
-                } | null | undefined;
+                    id?: string | null;
+                    name?: string | null;
+                    slug?: string | null;
+                } | null;
             };
-        }> | null | undefined;
-    } | null | undefined;
+        }> | null;
+    } | null;
 };
 export declare type ProjectQueryVariables = Exact<{
     id?: InputMaybe<Scalars['ID']>;
@@ -4612,139 +4635,140 @@ export declare type ProjectQuery = {
     __typename?: 'Query';
     post?: {
         __typename?: 'Post';
-        id?: string | null | undefined;
-        caption?: string | null | undefined;
-        createdAt?: any | null | undefined;
-        translatable?: boolean | null | undefined;
+        id?: string | null;
+        caption?: string | null;
+        createdAt?: any | null;
+        translatable?: boolean | null;
         user?: {
             __typename?: 'User';
             id: string;
-            fullName?: string | null | undefined;
-            firstName?: string | null | undefined;
-            lastName?: string | null | undefined;
-            username?: any | null | undefined;
-            avatarUrl?: string | null | undefined;
-            isSilhouette?: boolean | null | undefined;
-            isOnline?: boolean | null | undefined;
-            website?: string | null | undefined;
-            location?: string | null | undefined;
-            bio?: string | null | undefined;
-            projectCount?: number | null | undefined;
-            dynamicLink?: string | null | undefined;
-        } | null | undefined;
+            fullName?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            username?: any | null;
+            avatarUrl?: string | null;
+            isSilhouette?: boolean | null;
+            isOnline?: boolean | null;
+            website?: string | null;
+            location?: string | null;
+            bio?: string | null;
+            projectCount?: number | null;
+            dynamicLink?: string | null;
+        } | null;
         permissions?: {
             __typename?: 'PostPermissions';
-            isOwner?: boolean | null | undefined;
-        } | null | undefined;
+            isOwner?: boolean | null;
+        } | null;
         files?: {
             __typename?: 'FileConnection';
             edges?: Array<{
                 __typename?: 'FileEdge';
                 node: {
                     __typename?: 'File';
-                    id?: string | null | undefined;
-                    type?: FileType | null | undefined;
+                    id?: string | null;
+                    type?: FileType | null;
                     uri: string;
+                    poster?: string | null;
                 };
-            } | null | undefined> | null | undefined;
-        } | null | undefined;
+            } | null> | null;
+        } | null;
         project?: {
             __typename?: 'Project';
-            id?: string | null | undefined;
-            title?: string | null | undefined;
-            slug?: string | null | undefined;
-            dynamicLink?: string | null | undefined;
+            id?: string | null;
+            title?: string | null;
+            slug?: string | null;
+            dynamicLink?: string | null;
             user?: {
                 __typename?: 'User';
                 id: string;
-                fullName?: string | null | undefined;
-                firstName?: string | null | undefined;
-                lastName?: string | null | undefined;
-                username?: any | null | undefined;
-                avatarUrl?: string | null | undefined;
-                isSilhouette?: boolean | null | undefined;
-                isOnline?: boolean | null | undefined;
-                website?: string | null | undefined;
-                location?: string | null | undefined;
-                bio?: string | null | undefined;
-                projectCount?: number | null | undefined;
-                dynamicLink?: string | null | undefined;
-            } | null | undefined;
+                fullName?: string | null;
+                firstName?: string | null;
+                lastName?: string | null;
+                username?: any | null;
+                avatarUrl?: string | null;
+                isSilhouette?: boolean | null;
+                isOnline?: boolean | null;
+                website?: string | null;
+                location?: string | null;
+                bio?: string | null;
+                projectCount?: number | null;
+                dynamicLink?: string | null;
+            } | null;
             permissions?: {
                 __typename?: 'ProjectPermissions';
-                isOwner?: boolean | null | undefined;
-                isFollower?: boolean | null | undefined;
-            } | null | undefined;
+                isOwner?: boolean | null;
+                isFollower?: boolean | null;
+            } | null;
             type?: {
                 __typename?: 'ProjectType';
-                title?: string | null | undefined;
-            } | null | undefined;
+                title?: string | null;
+            } | null;
             cover?: {
                 __typename?: 'CoverType';
-                uri?: string | null | undefined;
-            } | null | undefined;
+                uri?: string | null;
+            } | null;
             followers?: {
                 __typename?: 'FollowersConnection';
-                totalCount?: number | null | undefined;
+                totalCount?: number | null;
                 edges?: Array<{
                     __typename?: 'FollowersEdge';
                     node: {
                         __typename?: 'User';
                         id: string;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
+                        username?: any | null;
+                        avatarUrl?: string | null;
                     };
-                }> | null | undefined;
-            } | null | undefined;
-        } | null | undefined;
+                }> | null;
+            } | null;
+        } | null;
         likes?: {
             __typename?: 'Likes';
-            isLiked?: boolean | null | undefined;
-            totalCount?: number | null | undefined;
-        } | null | undefined;
+            isLiked?: boolean | null;
+            totalCount?: number | null;
+        } | null;
         bookmarks?: {
             __typename?: 'Bookmarks';
-            isBookmarked?: boolean | null | undefined;
-        } | null | undefined;
+            isBookmarked?: boolean | null;
+        } | null;
         comments?: {
             __typename?: 'CommentConnection';
-            totalCount?: number | null | undefined;
+            totalCount?: number | null;
             edges?: Array<{
                 __typename?: 'CommentEdge';
                 node: {
                     __typename?: 'Comment';
-                    id?: string | null | undefined;
+                    id?: string | null;
                     text: string;
-                    createdAt?: any | null | undefined;
-                    translatable?: boolean | null | undefined;
+                    createdAt?: any | null;
+                    translatable?: boolean | null;
                     permissions?: {
                         __typename?: 'CommentPermissions';
-                        isOwner?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                    } | null;
                     likes?: {
                         __typename?: 'Likes';
-                        isLiked?: boolean | null | undefined;
-                        totalCount?: number | null | undefined;
-                    } | null | undefined;
+                        isLiked?: boolean | null;
+                        totalCount?: number | null;
+                    } | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
+            }> | null;
+        } | null;
         likesConnection?: {
             __typename?: 'LikeConnection';
             edges?: Array<{
@@ -4752,168 +4776,169 @@ export declare type ProjectQuery = {
                 node: {
                     __typename?: 'User';
                     id: string;
-                    avatarUrl?: string | null | undefined;
+                    avatarUrl?: string | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
+            }> | null;
+        } | null;
         collection?: {
             __typename?: 'Collection';
-            id?: string | null | undefined;
-            name?: string | null | undefined;
-            slug?: string | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            id?: string | null;
+            name?: string | null;
+            slug?: string | null;
+        } | null;
+    } | null;
     project?: {
         __typename?: 'Project';
-        id?: string | null | undefined;
-        title?: string | null | undefined;
-        slug?: string | null | undefined;
-        dynamicLink?: string | null | undefined;
+        id?: string | null;
+        title?: string | null;
+        slug?: string | null;
+        dynamicLink?: string | null;
         posts?: {
             __typename?: 'PostConnection';
-            totalCount?: number | null | undefined;
+            totalCount?: number | null;
             pageInfo: {
                 __typename?: 'PageInfo';
-                hasNextPage?: boolean | null | undefined;
+                hasNextPage?: boolean | null;
             };
             edges?: Array<{
                 __typename?: 'PostEdge';
                 cursor: string;
                 node: {
                     __typename?: 'Post';
-                    id?: string | null | undefined;
-                    caption?: string | null | undefined;
-                    createdAt?: any | null | undefined;
-                    translatable?: boolean | null | undefined;
+                    id?: string | null;
+                    caption?: string | null;
+                    createdAt?: any | null;
+                    translatable?: boolean | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                     permissions?: {
                         __typename?: 'PostPermissions';
-                        isOwner?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                    } | null;
                     files?: {
                         __typename?: 'FileConnection';
                         edges?: Array<{
                             __typename?: 'FileEdge';
                             node: {
                                 __typename?: 'File';
-                                id?: string | null | undefined;
-                                type?: FileType | null | undefined;
+                                id?: string | null;
+                                type?: FileType | null;
                                 uri: string;
+                                poster?: string | null;
                             };
-                        } | null | undefined> | null | undefined;
-                    } | null | undefined;
+                        } | null> | null;
+                    } | null;
                     project?: {
                         __typename?: 'Project';
-                        id?: string | null | undefined;
-                        title?: string | null | undefined;
-                        slug?: string | null | undefined;
-                        dynamicLink?: string | null | undefined;
+                        id?: string | null;
+                        title?: string | null;
+                        slug?: string | null;
+                        dynamicLink?: string | null;
                         user?: {
                             __typename?: 'User';
                             id: string;
-                            fullName?: string | null | undefined;
-                            firstName?: string | null | undefined;
-                            lastName?: string | null | undefined;
-                            username?: any | null | undefined;
-                            avatarUrl?: string | null | undefined;
-                            isSilhouette?: boolean | null | undefined;
-                            isOnline?: boolean | null | undefined;
-                            website?: string | null | undefined;
-                            location?: string | null | undefined;
-                            bio?: string | null | undefined;
-                            projectCount?: number | null | undefined;
-                            dynamicLink?: string | null | undefined;
-                        } | null | undefined;
+                            fullName?: string | null;
+                            firstName?: string | null;
+                            lastName?: string | null;
+                            username?: any | null;
+                            avatarUrl?: string | null;
+                            isSilhouette?: boolean | null;
+                            isOnline?: boolean | null;
+                            website?: string | null;
+                            location?: string | null;
+                            bio?: string | null;
+                            projectCount?: number | null;
+                            dynamicLink?: string | null;
+                        } | null;
                         permissions?: {
                             __typename?: 'ProjectPermissions';
-                            isOwner?: boolean | null | undefined;
-                            isFollower?: boolean | null | undefined;
-                        } | null | undefined;
+                            isOwner?: boolean | null;
+                            isFollower?: boolean | null;
+                        } | null;
                         type?: {
                             __typename?: 'ProjectType';
-                            title?: string | null | undefined;
-                        } | null | undefined;
+                            title?: string | null;
+                        } | null;
                         cover?: {
                             __typename?: 'CoverType';
-                            uri?: string | null | undefined;
-                        } | null | undefined;
+                            uri?: string | null;
+                        } | null;
                         followers?: {
                             __typename?: 'FollowersConnection';
-                            totalCount?: number | null | undefined;
+                            totalCount?: number | null;
                             edges?: Array<{
                                 __typename?: 'FollowersEdge';
                                 node: {
                                     __typename?: 'User';
                                     id: string;
-                                    username?: any | null | undefined;
-                                    avatarUrl?: string | null | undefined;
+                                    username?: any | null;
+                                    avatarUrl?: string | null;
                                 };
-                            }> | null | undefined;
-                        } | null | undefined;
-                    } | null | undefined;
+                            }> | null;
+                        } | null;
+                    } | null;
                     likes?: {
                         __typename?: 'Likes';
-                        isLiked?: boolean | null | undefined;
-                        totalCount?: number | null | undefined;
-                    } | null | undefined;
+                        isLiked?: boolean | null;
+                        totalCount?: number | null;
+                    } | null;
                     bookmarks?: {
                         __typename?: 'Bookmarks';
-                        isBookmarked?: boolean | null | undefined;
-                    } | null | undefined;
+                        isBookmarked?: boolean | null;
+                    } | null;
                     comments?: {
                         __typename?: 'CommentConnection';
-                        totalCount?: number | null | undefined;
+                        totalCount?: number | null;
                         edges?: Array<{
                             __typename?: 'CommentEdge';
                             node: {
                                 __typename?: 'Comment';
-                                id?: string | null | undefined;
+                                id?: string | null;
                                 text: string;
-                                createdAt?: any | null | undefined;
-                                translatable?: boolean | null | undefined;
+                                createdAt?: any | null;
+                                translatable?: boolean | null;
                                 permissions?: {
                                     __typename?: 'CommentPermissions';
-                                    isOwner?: boolean | null | undefined;
-                                } | null | undefined;
+                                    isOwner?: boolean | null;
+                                } | null;
                                 likes?: {
                                     __typename?: 'Likes';
-                                    isLiked?: boolean | null | undefined;
-                                    totalCount?: number | null | undefined;
-                                } | null | undefined;
+                                    isLiked?: boolean | null;
+                                    totalCount?: number | null;
+                                } | null;
                                 user?: {
                                     __typename?: 'User';
                                     id: string;
-                                    fullName?: string | null | undefined;
-                                    firstName?: string | null | undefined;
-                                    lastName?: string | null | undefined;
-                                    username?: any | null | undefined;
-                                    avatarUrl?: string | null | undefined;
-                                    isSilhouette?: boolean | null | undefined;
-                                    isOnline?: boolean | null | undefined;
-                                    website?: string | null | undefined;
-                                    location?: string | null | undefined;
-                                    bio?: string | null | undefined;
-                                    projectCount?: number | null | undefined;
-                                    dynamicLink?: string | null | undefined;
-                                } | null | undefined;
+                                    fullName?: string | null;
+                                    firstName?: string | null;
+                                    lastName?: string | null;
+                                    username?: any | null;
+                                    avatarUrl?: string | null;
+                                    isSilhouette?: boolean | null;
+                                    isOnline?: boolean | null;
+                                    website?: string | null;
+                                    location?: string | null;
+                                    bio?: string | null;
+                                    projectCount?: number | null;
+                                    dynamicLink?: string | null;
+                                } | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
+                        }> | null;
+                    } | null;
                     likesConnection?: {
                         __typename?: 'LikeConnection';
                         edges?: Array<{
@@ -4921,62 +4946,62 @@ export declare type ProjectQuery = {
                             node: {
                                 __typename?: 'User';
                                 id: string;
-                                avatarUrl?: string | null | undefined;
+                                avatarUrl?: string | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
+                        }> | null;
+                    } | null;
                     collection?: {
                         __typename?: 'Collection';
-                        id?: string | null | undefined;
-                        name?: string | null | undefined;
-                        slug?: string | null | undefined;
-                    } | null | undefined;
+                        id?: string | null;
+                        name?: string | null;
+                        slug?: string | null;
+                    } | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
+            }> | null;
+        } | null;
         user?: {
             __typename?: 'User';
             id: string;
-            fullName?: string | null | undefined;
-            firstName?: string | null | undefined;
-            lastName?: string | null | undefined;
-            username?: any | null | undefined;
-            avatarUrl?: string | null | undefined;
-            isSilhouette?: boolean | null | undefined;
-            isOnline?: boolean | null | undefined;
-            website?: string | null | undefined;
-            location?: string | null | undefined;
-            bio?: string | null | undefined;
-            projectCount?: number | null | undefined;
-            dynamicLink?: string | null | undefined;
-        } | null | undefined;
+            fullName?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            username?: any | null;
+            avatarUrl?: string | null;
+            isSilhouette?: boolean | null;
+            isOnline?: boolean | null;
+            website?: string | null;
+            location?: string | null;
+            bio?: string | null;
+            projectCount?: number | null;
+            dynamicLink?: string | null;
+        } | null;
         permissions?: {
             __typename?: 'ProjectPermissions';
-            isOwner?: boolean | null | undefined;
-            isFollower?: boolean | null | undefined;
-        } | null | undefined;
+            isOwner?: boolean | null;
+            isFollower?: boolean | null;
+        } | null;
         type?: {
             __typename?: 'ProjectType';
-            title?: string | null | undefined;
-        } | null | undefined;
+            title?: string | null;
+        } | null;
         cover?: {
             __typename?: 'CoverType';
-            uri?: string | null | undefined;
-        } | null | undefined;
+            uri?: string | null;
+        } | null;
         followers?: {
             __typename?: 'FollowersConnection';
-            totalCount?: number | null | undefined;
+            totalCount?: number | null;
             edges?: Array<{
                 __typename?: 'FollowersEdge';
                 node: {
                     __typename?: 'User';
                     id: string;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
+                    username?: any | null;
+                    avatarUrl?: string | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            }> | null;
+        } | null;
+    } | null;
 };
 export declare type ProjectCollectionsQueryVariables = Exact<{
     projectId?: InputMaybe<Scalars['ID']>;
@@ -4991,23 +5016,23 @@ export declare type ProjectCollectionsQuery = {
         __typename?: 'CollectionConnection';
         pageInfo: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
+            hasNextPage?: boolean | null;
         };
         edges?: Array<{
             __typename?: 'CollectionEdge';
             cursor: string;
             node: {
                 __typename?: 'Collection';
-                id?: string | null | undefined;
-                name?: string | null | undefined;
-                slug?: string | null | undefined;
+                id?: string | null;
+                name?: string | null;
+                slug?: string | null;
                 cover?: {
                     __typename?: 'CoverType';
-                    uri?: string | null | undefined;
-                } | null | undefined;
+                    uri?: string | null;
+                } | null;
             };
-        }> | null | undefined;
-    } | null | undefined;
+        }> | null;
+    } | null;
 };
 export declare type ProjectSuggestionsQueryVariables = Exact<{
     after?: InputMaybe<Scalars['String']>;
@@ -5019,67 +5044,67 @@ export declare type ProjectSuggestionsQuery = {
         __typename?: 'ProjectSuggestionsConnection';
         type?: {
             __typename?: 'ProjectType';
-            id?: string | null | undefined;
-            title?: string | null | undefined;
-        } | null | undefined;
+            id?: string | null;
+            title?: string | null;
+        } | null;
         pageInfo: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
+            hasNextPage?: boolean | null;
         };
         edges?: Array<{
             __typename?: 'ProjectEdge';
             node: {
                 __typename?: 'Project';
-                id?: string | null | undefined;
-                title?: string | null | undefined;
-                slug?: string | null | undefined;
-                dynamicLink?: string | null | undefined;
+                id?: string | null;
+                title?: string | null;
+                slug?: string | null;
+                dynamicLink?: string | null;
                 cover?: {
                     __typename?: 'CoverType';
-                    uri?: string | null | undefined;
-                    default?: boolean | null | undefined;
-                } | null | undefined;
+                    uri?: string | null;
+                    default?: boolean | null;
+                } | null;
                 user?: {
                     __typename?: 'User';
                     id: string;
-                    fullName?: string | null | undefined;
-                    firstName?: string | null | undefined;
-                    lastName?: string | null | undefined;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
-                    isSilhouette?: boolean | null | undefined;
-                    isOnline?: boolean | null | undefined;
-                    website?: string | null | undefined;
-                    location?: string | null | undefined;
-                    bio?: string | null | undefined;
-                    projectCount?: number | null | undefined;
-                    dynamicLink?: string | null | undefined;
-                } | null | undefined;
+                    fullName?: string | null;
+                    firstName?: string | null;
+                    lastName?: string | null;
+                    username?: any | null;
+                    avatarUrl?: string | null;
+                    isSilhouette?: boolean | null;
+                    isOnline?: boolean | null;
+                    website?: string | null;
+                    location?: string | null;
+                    bio?: string | null;
+                    projectCount?: number | null;
+                    dynamicLink?: string | null;
+                } | null;
                 permissions?: {
                     __typename?: 'ProjectPermissions';
-                    isOwner?: boolean | null | undefined;
-                    isFollower?: boolean | null | undefined;
-                } | null | undefined;
+                    isOwner?: boolean | null;
+                    isFollower?: boolean | null;
+                } | null;
                 type?: {
                     __typename?: 'ProjectType';
-                    title?: string | null | undefined;
-                } | null | undefined;
+                    title?: string | null;
+                } | null;
                 followers?: {
                     __typename?: 'FollowersConnection';
-                    totalCount?: number | null | undefined;
+                    totalCount?: number | null;
                     edges?: Array<{
                         __typename?: 'FollowersEdge';
                         node: {
                             __typename?: 'User';
                             id: string;
-                            username?: any | null | undefined;
-                            avatarUrl?: string | null | undefined;
+                            username?: any | null;
+                            avatarUrl?: string | null;
                         };
-                    }> | null | undefined;
-                } | null | undefined;
+                    }> | null;
+                } | null;
             };
-        }> | null | undefined;
-    } | null | undefined> | null | undefined;
+        }> | null;
+    } | null> | null;
 };
 export declare type ProjectTypesQueryVariables = Exact<{
     [key: string]: never;
@@ -5088,10 +5113,10 @@ export declare type ProjectTypesQuery = {
     __typename?: 'Query';
     types?: Array<{
         __typename?: 'ProjectType';
-        id?: string | null | undefined;
-        title?: string | null | undefined;
+        id?: string | null;
+        title?: string | null;
         imageUrl: string;
-    } | null | undefined> | null | undefined;
+    } | null> | null;
 };
 export declare type ProjectsQueryVariables = Exact<{
     typeId?: InputMaybe<Scalars['ID']>;
@@ -5105,63 +5130,63 @@ export declare type ProjectsQuery = {
         __typename?: 'ProjectsConnection';
         pageInfo: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
+            hasNextPage?: boolean | null;
         };
         edges?: Array<{
             __typename?: 'ProjectEdge';
             cursor: string;
             node: {
                 __typename?: 'Project';
-                id?: string | null | undefined;
-                title?: string | null | undefined;
-                slug?: string | null | undefined;
-                dynamicLink?: string | null | undefined;
+                id?: string | null;
+                title?: string | null;
+                slug?: string | null;
+                dynamicLink?: string | null;
                 cover?: {
                     __typename?: 'CoverType';
-                    uri?: string | null | undefined;
-                    default?: boolean | null | undefined;
-                } | null | undefined;
+                    uri?: string | null;
+                    default?: boolean | null;
+                } | null;
                 user?: {
                     __typename?: 'User';
                     id: string;
-                    fullName?: string | null | undefined;
-                    firstName?: string | null | undefined;
-                    lastName?: string | null | undefined;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
-                    isSilhouette?: boolean | null | undefined;
-                    isOnline?: boolean | null | undefined;
-                    website?: string | null | undefined;
-                    location?: string | null | undefined;
-                    bio?: string | null | undefined;
-                    projectCount?: number | null | undefined;
-                    dynamicLink?: string | null | undefined;
-                } | null | undefined;
+                    fullName?: string | null;
+                    firstName?: string | null;
+                    lastName?: string | null;
+                    username?: any | null;
+                    avatarUrl?: string | null;
+                    isSilhouette?: boolean | null;
+                    isOnline?: boolean | null;
+                    website?: string | null;
+                    location?: string | null;
+                    bio?: string | null;
+                    projectCount?: number | null;
+                    dynamicLink?: string | null;
+                } | null;
                 permissions?: {
                     __typename?: 'ProjectPermissions';
-                    isOwner?: boolean | null | undefined;
-                    isFollower?: boolean | null | undefined;
-                } | null | undefined;
+                    isOwner?: boolean | null;
+                    isFollower?: boolean | null;
+                } | null;
                 type?: {
                     __typename?: 'ProjectType';
-                    title?: string | null | undefined;
-                } | null | undefined;
+                    title?: string | null;
+                } | null;
                 followers?: {
                     __typename?: 'FollowersConnection';
-                    totalCount?: number | null | undefined;
+                    totalCount?: number | null;
                     edges?: Array<{
                         __typename?: 'FollowersEdge';
                         node: {
                             __typename?: 'User';
                             id: string;
-                            username?: any | null | undefined;
-                            avatarUrl?: string | null | undefined;
+                            username?: any | null;
+                            avatarUrl?: string | null;
                         };
-                    }> | null | undefined;
-                } | null | undefined;
+                    }> | null;
+                } | null;
             };
-        }> | null | undefined;
-    } | null | undefined;
+        }> | null;
+    } | null;
 };
 export declare type RecentCommentsQueryVariables = Exact<{
     after?: InputMaybe<Scalars['String']>;
@@ -5172,89 +5197,89 @@ export declare type RecentCommentsQuery = {
         __typename?: 'CommentConnection';
         pageInfo: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
+            hasNextPage?: boolean | null;
         };
         edges?: Array<{
             __typename?: 'CommentEdge';
             cursor: string;
             node: {
                 __typename?: 'Comment';
-                id?: string | null | undefined;
+                id?: string | null;
                 text: string;
-                createdAt?: any | null | undefined;
-                translatable?: boolean | null | undefined;
+                createdAt?: any | null;
+                translatable?: boolean | null;
                 replies?: {
                     __typename?: 'CommentConnection';
-                    totalCount?: number | null | undefined;
+                    totalCount?: number | null;
                     pageInfo: {
                         __typename?: 'PageInfo';
-                        hasNextPage?: boolean | null | undefined;
+                        hasNextPage?: boolean | null;
                     };
                     edges?: Array<{
                         __typename?: 'CommentEdge';
                         cursor: string;
                         node: {
                             __typename?: 'Comment';
-                            id?: string | null | undefined;
+                            id?: string | null;
                             text: string;
-                            createdAt?: any | null | undefined;
-                            translatable?: boolean | null | undefined;
+                            createdAt?: any | null;
+                            translatable?: boolean | null;
                             permissions?: {
                                 __typename?: 'CommentPermissions';
-                                isOwner?: boolean | null | undefined;
-                            } | null | undefined;
+                                isOwner?: boolean | null;
+                            } | null;
                             likes?: {
                                 __typename?: 'Likes';
-                                isLiked?: boolean | null | undefined;
-                                totalCount?: number | null | undefined;
-                            } | null | undefined;
+                                isLiked?: boolean | null;
+                                totalCount?: number | null;
+                            } | null;
                             user?: {
                                 __typename?: 'User';
                                 id: string;
-                                fullName?: string | null | undefined;
-                                firstName?: string | null | undefined;
-                                lastName?: string | null | undefined;
-                                username?: any | null | undefined;
-                                avatarUrl?: string | null | undefined;
-                                isSilhouette?: boolean | null | undefined;
-                                isOnline?: boolean | null | undefined;
-                                website?: string | null | undefined;
-                                location?: string | null | undefined;
-                                bio?: string | null | undefined;
-                                projectCount?: number | null | undefined;
-                                dynamicLink?: string | null | undefined;
-                            } | null | undefined;
+                                fullName?: string | null;
+                                firstName?: string | null;
+                                lastName?: string | null;
+                                username?: any | null;
+                                avatarUrl?: string | null;
+                                isSilhouette?: boolean | null;
+                                isOnline?: boolean | null;
+                                website?: string | null;
+                                location?: string | null;
+                                bio?: string | null;
+                                projectCount?: number | null;
+                                dynamicLink?: string | null;
+                            } | null;
                         };
-                    }> | null | undefined;
-                } | null | undefined;
+                    }> | null;
+                } | null;
                 permissions?: {
                     __typename?: 'CommentPermissions';
-                    isOwner?: boolean | null | undefined;
-                } | null | undefined;
+                    isOwner?: boolean | null;
+                } | null;
                 likes?: {
                     __typename?: 'Likes';
-                    isLiked?: boolean | null | undefined;
-                    totalCount?: number | null | undefined;
-                } | null | undefined;
+                    isLiked?: boolean | null;
+                    totalCount?: number | null;
+                } | null;
                 user?: {
                     __typename?: 'User';
                     id: string;
-                    fullName?: string | null | undefined;
-                    firstName?: string | null | undefined;
-                    lastName?: string | null | undefined;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
-                    isSilhouette?: boolean | null | undefined;
-                    isOnline?: boolean | null | undefined;
-                    website?: string | null | undefined;
-                    location?: string | null | undefined;
-                    bio?: string | null | undefined;
-                    projectCount?: number | null | undefined;
-                    dynamicLink?: string | null | undefined;
-                } | null | undefined;
+                    fullName?: string | null;
+                    firstName?: string | null;
+                    lastName?: string | null;
+                    username?: any | null;
+                    avatarUrl?: string | null;
+                    isSilhouette?: boolean | null;
+                    isOnline?: boolean | null;
+                    website?: string | null;
+                    location?: string | null;
+                    bio?: string | null;
+                    projectCount?: number | null;
+                    dynamicLink?: string | null;
+                } | null;
             };
-        }> | null | undefined;
-    } | null | undefined;
+        }> | null;
+    } | null;
 };
 export declare type RepliesQueryVariables = Exact<{
     id: Scalars['ID'];
@@ -5267,49 +5292,49 @@ export declare type RepliesQuery = {
         __typename?: 'Comment';
         replies?: {
             __typename?: 'CommentConnection';
-            totalCount?: number | null | undefined;
+            totalCount?: number | null;
             pageInfo: {
                 __typename?: 'PageInfo';
-                hasNextPage?: boolean | null | undefined;
+                hasNextPage?: boolean | null;
             };
             edges?: Array<{
                 __typename?: 'CommentEdge';
                 cursor: string;
                 node: {
                     __typename?: 'Comment';
-                    id?: string | null | undefined;
+                    id?: string | null;
                     text: string;
-                    createdAt?: any | null | undefined;
-                    translatable?: boolean | null | undefined;
+                    createdAt?: any | null;
+                    translatable?: boolean | null;
                     permissions?: {
                         __typename?: 'CommentPermissions';
-                        isOwner?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                    } | null;
                     likes?: {
                         __typename?: 'Likes';
-                        isLiked?: boolean | null | undefined;
-                        totalCount?: number | null | undefined;
-                    } | null | undefined;
+                        isLiked?: boolean | null;
+                        totalCount?: number | null;
+                    } | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            }> | null;
+        } | null;
+    } | null;
 };
 export declare type SearchHashtagsQueryVariables = Exact<{
     query: Scalars['String'];
@@ -5322,26 +5347,26 @@ export declare type SearchHashtagsQuery = {
         __typename?: 'SearchResults';
         pageInfo?: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
-        } | null | undefined;
+            hasNextPage?: boolean | null;
+        } | null;
         edges?: Array<{
             __typename?: 'SearchResultEdge';
-            cursor?: string | null | undefined;
+            cursor?: string | null;
             node?: {
                 __typename?: 'Hashtag';
-                id?: string | null | undefined;
-                name?: string | null | undefined;
-                slug?: any | null | undefined;
-                totalCount?: number | null | undefined;
+                id?: string | null;
+                name?: string | null;
+                slug?: any | null;
+                totalCount?: number | null;
             } | {
                 __typename?: 'Model';
             } | {
                 __typename?: 'Project';
             } | {
                 __typename?: 'User';
-            } | null | undefined;
-        } | null | undefined> | null | undefined;
-    } | null | undefined;
+            } | null;
+        } | null> | null;
+    } | null;
 };
 export declare type SearchModelsQueryVariables = Exact<{
     query: Scalars['String'];
@@ -5354,29 +5379,29 @@ export declare type SearchModelsQuery = {
         __typename?: 'SearchResults';
         pageInfo?: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
-        } | null | undefined;
+            hasNextPage?: boolean | null;
+        } | null;
         edges?: Array<{
             __typename?: 'SearchResultEdge';
-            cursor?: string | null | undefined;
+            cursor?: string | null;
             node?: {
                 __typename?: 'Hashtag';
             } | {
                 __typename?: 'Model';
                 id: string;
-                model?: string | null | undefined;
-                year?: number | null | undefined;
+                model?: string | null;
+                year?: number | null;
                 brand?: {
                     __typename?: 'Brand';
-                    name?: string | null | undefined;
-                } | null | undefined;
+                    name?: string | null;
+                } | null;
             } | {
                 __typename?: 'Project';
             } | {
                 __typename?: 'User';
-            } | null | undefined;
-        } | null | undefined> | null | undefined;
-    } | null | undefined;
+            } | null;
+        } | null> | null;
+    } | null;
 };
 export declare type SearchProjectsQueryVariables = Exact<{
     query: Scalars['String'];
@@ -5389,69 +5414,69 @@ export declare type SearchProjectsQuery = {
         __typename?: 'SearchResults';
         pageInfo?: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
-        } | null | undefined;
+            hasNextPage?: boolean | null;
+        } | null;
         edges?: Array<{
             __typename?: 'SearchResultEdge';
-            cursor?: string | null | undefined;
+            cursor?: string | null;
             node?: {
                 __typename?: 'Hashtag';
             } | {
                 __typename?: 'Model';
             } | {
                 __typename?: 'Project';
-                id?: string | null | undefined;
-                title?: string | null | undefined;
-                slug?: string | null | undefined;
-                dynamicLink?: string | null | undefined;
+                id?: string | null;
+                title?: string | null;
+                slug?: string | null;
+                dynamicLink?: string | null;
                 cover?: {
                     __typename?: 'CoverType';
-                    uri?: string | null | undefined;
-                    default?: boolean | null | undefined;
-                } | null | undefined;
+                    uri?: string | null;
+                    default?: boolean | null;
+                } | null;
                 user?: {
                     __typename?: 'User';
                     id: string;
-                    fullName?: string | null | undefined;
-                    firstName?: string | null | undefined;
-                    lastName?: string | null | undefined;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
-                    isSilhouette?: boolean | null | undefined;
-                    isOnline?: boolean | null | undefined;
-                    website?: string | null | undefined;
-                    location?: string | null | undefined;
-                    bio?: string | null | undefined;
-                    projectCount?: number | null | undefined;
-                    dynamicLink?: string | null | undefined;
-                } | null | undefined;
+                    fullName?: string | null;
+                    firstName?: string | null;
+                    lastName?: string | null;
+                    username?: any | null;
+                    avatarUrl?: string | null;
+                    isSilhouette?: boolean | null;
+                    isOnline?: boolean | null;
+                    website?: string | null;
+                    location?: string | null;
+                    bio?: string | null;
+                    projectCount?: number | null;
+                    dynamicLink?: string | null;
+                } | null;
                 permissions?: {
                     __typename?: 'ProjectPermissions';
-                    isOwner?: boolean | null | undefined;
-                    isFollower?: boolean | null | undefined;
-                } | null | undefined;
+                    isOwner?: boolean | null;
+                    isFollower?: boolean | null;
+                } | null;
                 type?: {
                     __typename?: 'ProjectType';
-                    title?: string | null | undefined;
-                } | null | undefined;
+                    title?: string | null;
+                } | null;
                 followers?: {
                     __typename?: 'FollowersConnection';
-                    totalCount?: number | null | undefined;
+                    totalCount?: number | null;
                     edges?: Array<{
                         __typename?: 'FollowersEdge';
                         node: {
                             __typename?: 'User';
                             id: string;
-                            username?: any | null | undefined;
-                            avatarUrl?: string | null | undefined;
+                            username?: any | null;
+                            avatarUrl?: string | null;
                         };
-                    }> | null | undefined;
-                } | null | undefined;
+                    }> | null;
+                } | null;
             } | {
                 __typename?: 'User';
-            } | null | undefined;
-        } | null | undefined> | null | undefined;
-    } | null | undefined;
+            } | null;
+        } | null> | null;
+    } | null;
 };
 export declare type SearchUsersQueryVariables = Exact<{
     query: Scalars['String'];
@@ -5464,11 +5489,11 @@ export declare type SearchUsersQuery = {
         __typename?: 'SearchResults';
         pageInfo?: {
             __typename?: 'PageInfo';
-            hasNextPage?: boolean | null | undefined;
-        } | null | undefined;
+            hasNextPage?: boolean | null;
+        } | null;
         edges?: Array<{
             __typename?: 'SearchResultEdge';
-            cursor?: string | null | undefined;
+            cursor?: string | null;
             node?: {
                 __typename?: 'Hashtag';
             } | {
@@ -5477,22 +5502,22 @@ export declare type SearchUsersQuery = {
                 __typename?: 'Project';
             } | {
                 __typename?: 'User';
-                projectCount?: number | null | undefined;
+                projectCount?: number | null;
                 id: string;
-                fullName?: string | null | undefined;
-                firstName?: string | null | undefined;
-                lastName?: string | null | undefined;
-                username?: any | null | undefined;
-                avatarUrl?: string | null | undefined;
-                isSilhouette?: boolean | null | undefined;
-                isOnline?: boolean | null | undefined;
-                website?: string | null | undefined;
-                location?: string | null | undefined;
-                bio?: string | null | undefined;
-                dynamicLink?: string | null | undefined;
-            } | null | undefined;
-        } | null | undefined> | null | undefined;
-    } | null | undefined;
+                fullName?: string | null;
+                firstName?: string | null;
+                lastName?: string | null;
+                username?: any | null;
+                avatarUrl?: string | null;
+                isSilhouette?: boolean | null;
+                isOnline?: boolean | null;
+                website?: string | null;
+                location?: string | null;
+                bio?: string | null;
+                dynamicLink?: string | null;
+            } | null;
+        } | null> | null;
+    } | null;
 };
 export declare type SimilarProjectsQueryVariables = Exact<{
     id: Scalars['ID'];
@@ -5507,55 +5532,55 @@ export declare type SimilarProjectsQuery = {
             cursor: string;
             node: {
                 __typename?: 'Project';
-                id?: string | null | undefined;
-                title?: string | null | undefined;
-                slug?: string | null | undefined;
-                dynamicLink?: string | null | undefined;
+                id?: string | null;
+                title?: string | null;
+                slug?: string | null;
+                dynamicLink?: string | null;
                 cover?: {
                     __typename?: 'CoverType';
-                    uri?: string | null | undefined;
-                } | null | undefined;
+                    uri?: string | null;
+                } | null;
                 user?: {
                     __typename?: 'User';
                     id: string;
-                    fullName?: string | null | undefined;
-                    firstName?: string | null | undefined;
-                    lastName?: string | null | undefined;
-                    username?: any | null | undefined;
-                    avatarUrl?: string | null | undefined;
-                    isSilhouette?: boolean | null | undefined;
-                    isOnline?: boolean | null | undefined;
-                    website?: string | null | undefined;
-                    location?: string | null | undefined;
-                    bio?: string | null | undefined;
-                    projectCount?: number | null | undefined;
-                    dynamicLink?: string | null | undefined;
-                } | null | undefined;
+                    fullName?: string | null;
+                    firstName?: string | null;
+                    lastName?: string | null;
+                    username?: any | null;
+                    avatarUrl?: string | null;
+                    isSilhouette?: boolean | null;
+                    isOnline?: boolean | null;
+                    website?: string | null;
+                    location?: string | null;
+                    bio?: string | null;
+                    projectCount?: number | null;
+                    dynamicLink?: string | null;
+                } | null;
                 permissions?: {
                     __typename?: 'ProjectPermissions';
-                    isOwner?: boolean | null | undefined;
-                    isFollower?: boolean | null | undefined;
-                } | null | undefined;
+                    isOwner?: boolean | null;
+                    isFollower?: boolean | null;
+                } | null;
                 type?: {
                     __typename?: 'ProjectType';
-                    title?: string | null | undefined;
-                } | null | undefined;
+                    title?: string | null;
+                } | null;
                 followers?: {
                     __typename?: 'FollowersConnection';
-                    totalCount?: number | null | undefined;
+                    totalCount?: number | null;
                     edges?: Array<{
                         __typename?: 'FollowersEdge';
                         node: {
                             __typename?: 'User';
                             id: string;
-                            username?: any | null | undefined;
-                            avatarUrl?: string | null | undefined;
+                            username?: any | null;
+                            avatarUrl?: string | null;
                         };
-                    }> | null | undefined;
-                } | null | undefined;
+                    }> | null;
+                } | null;
             };
-        }> | null | undefined;
-    } | null | undefined;
+        }> | null;
+    } | null;
 };
 export declare type UnreadNotificationsQueryVariables = Exact<{
     [key: string]: never;
@@ -5564,8 +5589,8 @@ export declare type UnreadNotificationsQuery = {
     __typename?: 'Query';
     notifications?: {
         __typename?: 'NotificationsConnection';
-        unreadCount?: number | null | undefined;
-    } | null | undefined;
+        unreadCount?: number | null;
+    } | null;
 };
 export declare type UserQueryVariables = Exact<{
     username: Scalars['LowercaseString'];
@@ -5577,74 +5602,74 @@ export declare type UserQuery = {
     user?: {
         __typename?: 'User';
         id: string;
-        fullName?: string | null | undefined;
-        firstName?: string | null | undefined;
-        lastName?: string | null | undefined;
-        username?: any | null | undefined;
-        avatarUrl?: string | null | undefined;
-        isSilhouette?: boolean | null | undefined;
-        isOnline?: boolean | null | undefined;
-        website?: string | null | undefined;
-        location?: string | null | undefined;
-        bio?: string | null | undefined;
-        projectCount?: number | null | undefined;
-        dynamicLink?: string | null | undefined;
+        fullName?: string | null;
+        firstName?: string | null;
+        lastName?: string | null;
+        username?: any | null;
+        avatarUrl?: string | null;
+        isSilhouette?: boolean | null;
+        isOnline?: boolean | null;
+        website?: string | null;
+        location?: string | null;
+        bio?: string | null;
+        projectCount?: number | null;
+        dynamicLink?: string | null;
         projects?: {
             __typename?: 'ProjectsConnection';
             edges?: Array<{
                 __typename?: 'ProjectEdge';
                 node: {
                     __typename?: 'Project';
-                    id?: string | null | undefined;
-                    title?: string | null | undefined;
-                    slug?: string | null | undefined;
-                    dynamicLink?: string | null | undefined;
+                    id?: string | null;
+                    title?: string | null;
+                    slug?: string | null;
+                    dynamicLink?: string | null;
                     cover?: {
                         __typename?: 'CoverType';
-                        uri?: string | null | undefined;
-                        default?: boolean | null | undefined;
-                    } | null | undefined;
+                        uri?: string | null;
+                        default?: boolean | null;
+                    } | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                     permissions?: {
                         __typename?: 'ProjectPermissions';
-                        isOwner?: boolean | null | undefined;
-                        isFollower?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                        isFollower?: boolean | null;
+                    } | null;
                     type?: {
                         __typename?: 'ProjectType';
-                        title?: string | null | undefined;
-                    } | null | undefined;
+                        title?: string | null;
+                    } | null;
                     followers?: {
                         __typename?: 'FollowersConnection';
-                        totalCount?: number | null | undefined;
+                        totalCount?: number | null;
                         edges?: Array<{
                             __typename?: 'FollowersEdge';
                             node: {
                                 __typename?: 'User';
                                 id: string;
-                                username?: any | null | undefined;
-                                avatarUrl?: string | null | undefined;
+                                username?: any | null;
+                                avatarUrl?: string | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
+                        }> | null;
+                    } | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
+            }> | null;
+        } | null;
         posts?: {
             __typename?: 'PostConnection';
             edges?: Array<{
@@ -5652,139 +5677,140 @@ export declare type UserQuery = {
                 cursor: string;
                 node: {
                     __typename?: 'Post';
-                    id?: string | null | undefined;
-                    caption?: string | null | undefined;
-                    createdAt?: any | null | undefined;
-                    translatable?: boolean | null | undefined;
+                    id?: string | null;
+                    caption?: string | null;
+                    createdAt?: any | null;
+                    translatable?: boolean | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                     permissions?: {
                         __typename?: 'PostPermissions';
-                        isOwner?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                    } | null;
                     files?: {
                         __typename?: 'FileConnection';
                         edges?: Array<{
                             __typename?: 'FileEdge';
                             node: {
                                 __typename?: 'File';
-                                id?: string | null | undefined;
-                                type?: FileType | null | undefined;
+                                id?: string | null;
+                                type?: FileType | null;
                                 uri: string;
+                                poster?: string | null;
                             };
-                        } | null | undefined> | null | undefined;
-                    } | null | undefined;
+                        } | null> | null;
+                    } | null;
                     project?: {
                         __typename?: 'Project';
-                        id?: string | null | undefined;
-                        title?: string | null | undefined;
-                        slug?: string | null | undefined;
-                        dynamicLink?: string | null | undefined;
+                        id?: string | null;
+                        title?: string | null;
+                        slug?: string | null;
+                        dynamicLink?: string | null;
                         user?: {
                             __typename?: 'User';
                             id: string;
-                            fullName?: string | null | undefined;
-                            firstName?: string | null | undefined;
-                            lastName?: string | null | undefined;
-                            username?: any | null | undefined;
-                            avatarUrl?: string | null | undefined;
-                            isSilhouette?: boolean | null | undefined;
-                            isOnline?: boolean | null | undefined;
-                            website?: string | null | undefined;
-                            location?: string | null | undefined;
-                            bio?: string | null | undefined;
-                            projectCount?: number | null | undefined;
-                            dynamicLink?: string | null | undefined;
-                        } | null | undefined;
+                            fullName?: string | null;
+                            firstName?: string | null;
+                            lastName?: string | null;
+                            username?: any | null;
+                            avatarUrl?: string | null;
+                            isSilhouette?: boolean | null;
+                            isOnline?: boolean | null;
+                            website?: string | null;
+                            location?: string | null;
+                            bio?: string | null;
+                            projectCount?: number | null;
+                            dynamicLink?: string | null;
+                        } | null;
                         permissions?: {
                             __typename?: 'ProjectPermissions';
-                            isOwner?: boolean | null | undefined;
-                            isFollower?: boolean | null | undefined;
-                        } | null | undefined;
+                            isOwner?: boolean | null;
+                            isFollower?: boolean | null;
+                        } | null;
                         type?: {
                             __typename?: 'ProjectType';
-                            title?: string | null | undefined;
-                        } | null | undefined;
+                            title?: string | null;
+                        } | null;
                         cover?: {
                             __typename?: 'CoverType';
-                            uri?: string | null | undefined;
-                        } | null | undefined;
+                            uri?: string | null;
+                        } | null;
                         followers?: {
                             __typename?: 'FollowersConnection';
-                            totalCount?: number | null | undefined;
+                            totalCount?: number | null;
                             edges?: Array<{
                                 __typename?: 'FollowersEdge';
                                 node: {
                                     __typename?: 'User';
                                     id: string;
-                                    username?: any | null | undefined;
-                                    avatarUrl?: string | null | undefined;
+                                    username?: any | null;
+                                    avatarUrl?: string | null;
                                 };
-                            }> | null | undefined;
-                        } | null | undefined;
-                    } | null | undefined;
+                            }> | null;
+                        } | null;
+                    } | null;
                     likes?: {
                         __typename?: 'Likes';
-                        isLiked?: boolean | null | undefined;
-                        totalCount?: number | null | undefined;
-                    } | null | undefined;
+                        isLiked?: boolean | null;
+                        totalCount?: number | null;
+                    } | null;
                     bookmarks?: {
                         __typename?: 'Bookmarks';
-                        isBookmarked?: boolean | null | undefined;
-                    } | null | undefined;
+                        isBookmarked?: boolean | null;
+                    } | null;
                     comments?: {
                         __typename?: 'CommentConnection';
-                        totalCount?: number | null | undefined;
+                        totalCount?: number | null;
                         edges?: Array<{
                             __typename?: 'CommentEdge';
                             node: {
                                 __typename?: 'Comment';
-                                id?: string | null | undefined;
+                                id?: string | null;
                                 text: string;
-                                createdAt?: any | null | undefined;
-                                translatable?: boolean | null | undefined;
+                                createdAt?: any | null;
+                                translatable?: boolean | null;
                                 permissions?: {
                                     __typename?: 'CommentPermissions';
-                                    isOwner?: boolean | null | undefined;
-                                } | null | undefined;
+                                    isOwner?: boolean | null;
+                                } | null;
                                 likes?: {
                                     __typename?: 'Likes';
-                                    isLiked?: boolean | null | undefined;
-                                    totalCount?: number | null | undefined;
-                                } | null | undefined;
+                                    isLiked?: boolean | null;
+                                    totalCount?: number | null;
+                                } | null;
                                 user?: {
                                     __typename?: 'User';
                                     id: string;
-                                    fullName?: string | null | undefined;
-                                    firstName?: string | null | undefined;
-                                    lastName?: string | null | undefined;
-                                    username?: any | null | undefined;
-                                    avatarUrl?: string | null | undefined;
-                                    isSilhouette?: boolean | null | undefined;
-                                    isOnline?: boolean | null | undefined;
-                                    website?: string | null | undefined;
-                                    location?: string | null | undefined;
-                                    bio?: string | null | undefined;
-                                    projectCount?: number | null | undefined;
-                                    dynamicLink?: string | null | undefined;
-                                } | null | undefined;
+                                    fullName?: string | null;
+                                    firstName?: string | null;
+                                    lastName?: string | null;
+                                    username?: any | null;
+                                    avatarUrl?: string | null;
+                                    isSilhouette?: boolean | null;
+                                    isOnline?: boolean | null;
+                                    website?: string | null;
+                                    location?: string | null;
+                                    bio?: string | null;
+                                    projectCount?: number | null;
+                                    dynamicLink?: string | null;
+                                } | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
+                        }> | null;
+                    } | null;
                     likesConnection?: {
                         __typename?: 'LikeConnection';
                         edges?: Array<{
@@ -5792,24 +5818,24 @@ export declare type UserQuery = {
                             node: {
                                 __typename?: 'User';
                                 id: string;
-                                avatarUrl?: string | null | undefined;
+                                avatarUrl?: string | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
+                        }> | null;
+                    } | null;
                     collection?: {
                         __typename?: 'Collection';
-                        id?: string | null | undefined;
-                        name?: string | null | undefined;
-                        slug?: string | null | undefined;
-                    } | null | undefined;
+                        id?: string | null;
+                        name?: string | null;
+                        slug?: string | null;
+                    } | null;
                 };
-            }> | null | undefined;
+            }> | null;
             pageInfo: {
                 __typename?: 'PageInfo';
-                hasNextPage?: boolean | null | undefined;
+                hasNextPage?: boolean | null;
             };
-        } | null | undefined;
-    } | null | undefined;
+        } | null;
+    } | null;
 };
 export declare type UserFollowingProjectsQueryVariables = Exact<{
     username: Scalars['LowercaseString'];
@@ -5825,64 +5851,64 @@ export declare type UserFollowingProjectsQuery = {
             __typename?: 'ProjectsConnection';
             pageInfo: {
                 __typename?: 'PageInfo';
-                hasNextPage?: boolean | null | undefined;
+                hasNextPage?: boolean | null;
             };
             edges?: Array<{
                 __typename?: 'ProjectEdge';
                 cursor: string;
                 node: {
                     __typename?: 'Project';
-                    id?: string | null | undefined;
-                    title?: string | null | undefined;
-                    slug?: string | null | undefined;
-                    dynamicLink?: string | null | undefined;
+                    id?: string | null;
+                    title?: string | null;
+                    slug?: string | null;
+                    dynamicLink?: string | null;
                     cover?: {
                         __typename?: 'CoverType';
-                        uri?: string | null | undefined;
-                        default?: boolean | null | undefined;
-                    } | null | undefined;
+                        uri?: string | null;
+                        default?: boolean | null;
+                    } | null;
                     user?: {
                         __typename?: 'User';
                         id: string;
-                        fullName?: string | null | undefined;
-                        firstName?: string | null | undefined;
-                        lastName?: string | null | undefined;
-                        username?: any | null | undefined;
-                        avatarUrl?: string | null | undefined;
-                        isSilhouette?: boolean | null | undefined;
-                        isOnline?: boolean | null | undefined;
-                        website?: string | null | undefined;
-                        location?: string | null | undefined;
-                        bio?: string | null | undefined;
-                        projectCount?: number | null | undefined;
-                        dynamicLink?: string | null | undefined;
-                    } | null | undefined;
+                        fullName?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        username?: any | null;
+                        avatarUrl?: string | null;
+                        isSilhouette?: boolean | null;
+                        isOnline?: boolean | null;
+                        website?: string | null;
+                        location?: string | null;
+                        bio?: string | null;
+                        projectCount?: number | null;
+                        dynamicLink?: string | null;
+                    } | null;
                     permissions?: {
                         __typename?: 'ProjectPermissions';
-                        isOwner?: boolean | null | undefined;
-                        isFollower?: boolean | null | undefined;
-                    } | null | undefined;
+                        isOwner?: boolean | null;
+                        isFollower?: boolean | null;
+                    } | null;
                     type?: {
                         __typename?: 'ProjectType';
-                        title?: string | null | undefined;
-                    } | null | undefined;
+                        title?: string | null;
+                    } | null;
                     followers?: {
                         __typename?: 'FollowersConnection';
-                        totalCount?: number | null | undefined;
+                        totalCount?: number | null;
                         edges?: Array<{
                             __typename?: 'FollowersEdge';
                             node: {
                                 __typename?: 'User';
                                 id: string;
-                                username?: any | null | undefined;
-                                avatarUrl?: string | null | undefined;
+                                username?: any | null;
+                                avatarUrl?: string | null;
                             };
-                        }> | null | undefined;
-                    } | null | undefined;
+                        }> | null;
+                    } | null;
                 };
-            }> | null | undefined;
-        } | null | undefined;
-    } | null | undefined;
+            }> | null;
+        } | null;
+    } | null;
 };
 export declare const UserFragmentDoc: Apollo.DocumentNode;
 export declare const BlogPostFragmentDoc: Apollo.DocumentNode;

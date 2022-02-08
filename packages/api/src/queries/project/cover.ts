@@ -1,4 +1,4 @@
-import { transformFileUrl } from '../../utils/transformFileUrl'
+import { transformFileUrl, transformPosterUrl } from '../../utils/transformFileUrl'
 
 const { CDN_DOMAIN } = process.env
 
@@ -22,7 +22,7 @@ export default async ({ id }, _, ctx) => {
   if (file) {
     return {
       default: false,
-      uri: transformFileUrl(file),
+      uri: file.poster ? transformPosterUrl(file) : transformFileUrl(file),
     }
   }
 

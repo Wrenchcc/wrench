@@ -19,7 +19,6 @@ export default async ({ post, comment, type }, args, ctx) => {
   const files = await paginate(ctx.db.File, args, {
     where: {
       postId,
-      type: args.type,
     },
   })
 
