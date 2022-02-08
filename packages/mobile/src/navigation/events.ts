@@ -6,6 +6,7 @@ import { logError } from 'utils/sentry'
 import { trackScreen } from 'utils/analytics'
 import PlatformColor from 'ui/PlatformColor'
 import { SCREENS, TABS_INDEX } from './constants'
+import { hideNotificationBadge } from './api'
 
 // TODO: Find a way to know when pressing tab from
 // stack that we should not scroll to top first press
@@ -27,6 +28,29 @@ Navigation.events().registerComponentDidAppearListener(({ componentId: id, compo
 const dynamicStatusbar = Appearance.getColorScheme() === 'dark' ? 'light' : 'dark'
 
 Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
+  if (tabIndex === TABS_INDEX.NOTIFICATIONS) {
+    // if (unreadCount > 0) {
+    //   markAllNotificationsSeen({
+    //     update: (cache) => {
+    //       const data = cache.readQuery({ query: NotificationsDocument })
+
+    //       cache.writeQuery({
+    //         query: NotificationsDocument,
+    //         data: {
+    //           ...data,
+    //           notifications: {
+    //             ...data.notifications,
+    //             unreadCount: 0,
+    //           },
+    //         },
+    //       })
+    //     },
+    //   })
+    // }
+
+    hideNotificationBadge()
+  }
+
   if (tabIndex === TABS_INDEX.ADD) {
     try {
       const { data } = await getCurrentUserProjects()

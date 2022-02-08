@@ -114,7 +114,6 @@ function Me() {
       headerLeft={<Icon source={add} onPress={handleLeftMenu} />}
       headerRight={<Icon source={menu} onPress={handleRightMenu} />}
     >
-      {/* <Skeleton /> */}
       <FlatList
         initialNumToRender={1}
         spacingSeparator
