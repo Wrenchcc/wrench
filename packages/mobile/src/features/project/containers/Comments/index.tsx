@@ -117,7 +117,7 @@ function Comments({ postId }) {
   const initialFetch = isFetching && !edges
 
   return (
-    <Page headerTitle={t('title')} headerAnimation={false} view>
+    <Page headerTitle={t('title')} disableAnimation>
       <FlatList
         inverted
         initialNumToRender={8}

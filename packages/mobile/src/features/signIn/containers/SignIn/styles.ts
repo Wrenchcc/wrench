@@ -47,8 +47,3 @@ export const Description = styled(Text)`
   line-height: 30px;
   color: ${(props) => props.theme.colors.white};
 `
-
-export const Options = styled(Touchable)`
-  padding-top: 30px;
-  padding-bottom: 30px;
-`

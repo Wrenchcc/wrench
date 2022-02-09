@@ -1,39 +1,18 @@
-import React, { useRef, cloneElement, useEffect, useCallback } from 'react'
-import Animated from 'react-native-reanimated'
+import React from 'react'
 import { KeyboardAvoidingView } from 'ui'
+import { withScrollableContext } from '../scrollables'
 import Header from './Header'
-import { NAVIGATION } from '../constants'
-
-const { event, set, Value } = Animated
 
 function Page({
   children,
-  stickyFooter,
-  scrollToIndex,
   headerTitle,
   headerSubTitle,
   headerRight,
   headerLeft,
-  headerAnimation,
-  view,
+  disableAnimation,
   keyboardVerticalOffset = 0,
   paddingHorizontal = 0,
 }) {
-  const scrollRef = useRef(null)
-  const scrollY = useRef(new Value(-NAVIGATION.LIST_OFFSET))
-
-  const scrollToTop = useCallback(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollToOffset({ offset: -NAVIGATION.LIST_OFFSET })
-    }
-  }, [scrollRef])
-
-  useEffect(() => {
-    if (scrollToIndex && scrollRef.current) {
-      scrollRef.current.scrollToOffset({ top: 600 })
-    }
-  }, [scrollRef, scrollToIndex])
-
   return (
     <KeyboardAvoidingView
       paddingHorizontal={paddingHorizontal}
@@ -42,30 +21,13 @@ function Page({
       <Header
         headerTitle={headerTitle}
         headerSubTitle={headerSubTitle}
-        scrollY={scrollY.current}
         headerLeft={headerLeft}
         headerRight={headerRight}
-        headerAnimation={headerAnimation}
-        onPress={scrollToTop}
+        disableAnimation={disableAnimation}
       />
-
-      {view
-        ? children
-        : cloneElement(children, {
-            onScroll: event(
-              [
-                {
-                  nativeEvent: ({ contentOffset }) => set(scrollY.current, contentOffset.y),
-                },
-              ],
-              { useNativeDriver: true }
-            ),
-            ref: scrollRef,
-          })}
-
-      {stickyFooter}
+      {children}
     </KeyboardAvoidingView>
   )
 }
 
-export default Page
+export default withScrollableContext(Page)

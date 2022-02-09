@@ -1,0 +1,37 @@
+#!/bin/bash
+set -e
+
+# NOTE: Only works when run from xCode
+export SENTRY_PROPERTIES=sentry.properties
+
+OUTPUT_DIR=${OUTPUT_DIR:-$PWD/dist/ios}
+NODE_MODULES_PATH=../../../node_modules
+VERSION=`$NODE_MODULES_PATH/@sentry/cli/bin/sentry-cli releases propose-version`
+ 
+# Delete previous versions
+rm -rf "$OUTPUT_DIR"
+mkdir -p "$OUTPUT_DIR"
+
+$NODE_MODULES_PATH/.bin/react-native bundle \
+  --dev false \
+  --platform ios \
+  --entry-file ./packages/mobile/index.js \
+  --assets-dest $OUTPUT_DIR \
+  --bundle-output $OUTPUT_DIR/index.ios.bundle \
+  --sourcemap-output $OUTPUT_DIR/index.ios.bundle.map
+
+$NODE_MODULES_PATH/hermes-engine/osx-bin/hermesc \
+  -emit-binary \
+  -out $OUTPUT_DIR/index.ios.bundle.hbc $OUTPUT_DIR/index.ios.bundle \
+  -output-source-map -w
+
+$NODE_MODULES_PATH/react-native/scripts/compose-source-maps.js \
+  $OUTPUT_DIR/index.ios.bundle.map $OUTPUT_DIR/index.ios.bundle.hbc.map \
+  -o $OUTPUT_DIR/index.ios.bundle.map
+
+if [ "${CONFIGURATION}" == "Release" ]; then
+  $NODE_MODULES_PATH/@sentry/cli/bin/sentry-cli releases \
+    files "$VERSION" \
+    upload-sourcemaps $OUTPUT_DIR
+fi
+

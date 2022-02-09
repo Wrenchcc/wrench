@@ -8,9 +8,9 @@ import Animated, {
   useAnimatedGestureHandler,
   useAnimatedScrollHandler,
 } from 'react-native-reanimated'
-import { clamp, snapPoint } from 'react-native-redash'
 import * as MediaLibrary from 'expo-media-library'
 import { useNavigation, NAVIGATION } from 'navigation'
+import { clamp, snapPoint } from 'navigation/scrollables/worklets'
 import { store } from 'gql'
 import Header from '../Header'
 import ImageEditor from '../ImageEditor'

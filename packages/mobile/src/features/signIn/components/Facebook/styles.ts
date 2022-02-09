@@ -4,19 +4,15 @@ import Touchable from 'ui/Touchable'
 
 export const Button = styled(Touchable)`
   width: 100%;
-  background: ${props => props.theme.colors.facebook};
+  background: ${(props) => props.theme.colors.facebook};
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  padding: 20px;
+  padding: 13px;
   margin-top: 15px;
 `
 
 export const Text = styled(UiText)`
   text-align: center;
-  color: ${props => props.theme.colors.white};
-`
-
-export const Loader = styled.ActivityIndicator`
-  margin-left: 10px;
+  color: ${(props) => props.theme.colors.white};
 `

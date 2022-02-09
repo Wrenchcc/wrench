@@ -1,5 +1,6 @@
 import filesConnection from './filesConnection'
 import notifications from './notifications'
+import unreadNotifications from './unreadNotifications'
 
 export default {
   Notification: {
@@ -7,5 +8,6 @@ export default {
   },
   Query: {
     notifications,
+    unreadNotifications,
   },
 }

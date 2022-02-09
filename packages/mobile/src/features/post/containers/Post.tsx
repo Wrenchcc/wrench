@@ -141,7 +141,7 @@ function PostContainer({ postId, commentId }) {
   const initialFetch = isFetching && !edges
 
   return (
-    <Page view headerTitle={t('title')} headerAnimation={false}>
+    <Page headerTitle={t('title')} disableAnimation>
       <FlatList
         inverted
         initialNumToRender={8}

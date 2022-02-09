@@ -30,7 +30,7 @@ export default gql`
   }
 
   type NotificationsConnection {
-    unreadCount: Int
+    unreadCount: Int # @deprecated(reason: "Use unreadNotifications.")
     pageInfo: PageInfo
     edges: [NotificationEdge]
   }
@@ -42,6 +42,7 @@ export default gql`
 
   extend type Query {
     notifications(first: Int = 10, after: String): NotificationsConnection
+    unreadNotifications: Int
   }
 
   extend type Mutation {

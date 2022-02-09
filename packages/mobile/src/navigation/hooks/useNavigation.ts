@@ -1,5 +1,4 @@
 import { Navigation, Options } from 'react-native-navigation'
-import { TextInput } from 'react-native'
 import useComponentId from './useComponentId'
 import { SCREENS, TABS_INDEX } from '../constants'
 import * as api from '../api'
@@ -23,11 +22,6 @@ export default function useNavigation() {
       }
     },
     navigate: (screen: SCREENS, { options = {}, ...passProps }: OptionsWithPassProps = {}) => {
-      const currentlyFocusedInput = TextInput.State
-      if (currentlyFocusedInput) {
-        currentlyFocusedInput.blurTextInput()
-      }
-
       Navigation.push(componentId, {
         component: {
           name: screen,

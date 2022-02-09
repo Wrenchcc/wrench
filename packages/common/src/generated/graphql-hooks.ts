@@ -821,6 +821,7 @@ export type Query = {
   recentComments?: Maybe<CommentConnection>
   search?: Maybe<SearchResults>
   similarProjects?: Maybe<ProjectsConnection>
+  unreadNotifications?: Maybe<Scalars['Int']>
   user?: Maybe<User>
   users?: Maybe<UserConnection>
 }
@@ -5245,10 +5246,7 @@ export type SimilarProjectsQuery = {
 
 export type UnreadNotificationsQueryVariables = Exact<{ [key: string]: never }>
 
-export type UnreadNotificationsQuery = {
-  __typename?: 'Query'
-  notifications?: { __typename?: 'NotificationsConnection'; unreadCount?: number | null } | null
-}
+export type UnreadNotificationsQuery = { __typename?: 'Query'; unreadNotifications?: number | null }
 
 export type UserQueryVariables = Exact<{
   username: Scalars['LowercaseString']
@@ -9288,9 +9286,7 @@ export type SimilarProjectsQueryResult = Apollo.QueryResult<
 >
 export const UnreadNotificationsDocument = gql`
   query unreadNotifications {
-    notifications {
-      unreadCount
-    }
+    unreadNotifications
   }
 `
 

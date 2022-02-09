@@ -14,7 +14,6 @@ install! 'cocoapods', :deterministic_uuids => false
 
 target 'Wrench' do
   use_expo_modules!
-
   config = use_native_modules!
   
   use_react_native!(:path => "#{root_path}/react-native", :hermes_enabled => true)

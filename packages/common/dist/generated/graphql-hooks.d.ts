@@ -710,6 +710,7 @@ export declare type Query = {
     recentComments?: Maybe<CommentConnection>;
     search?: Maybe<SearchResults>;
     similarProjects?: Maybe<ProjectsConnection>;
+    unreadNotifications?: Maybe<Scalars['Int']>;
     user?: Maybe<User>;
     users?: Maybe<UserConnection>;
 };
@@ -5587,10 +5588,7 @@ export declare type UnreadNotificationsQueryVariables = Exact<{
 }>;
 export declare type UnreadNotificationsQuery = {
     __typename?: 'Query';
-    notifications?: {
-        __typename?: 'NotificationsConnection';
-        unreadCount?: number | null;
-    } | null;
+    unreadNotifications?: number | null;
 };
 export declare type UserQueryVariables = Exact<{
     username: Scalars['LowercaseString'];

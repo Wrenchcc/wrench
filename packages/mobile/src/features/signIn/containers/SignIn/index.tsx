@@ -7,26 +7,17 @@ import { DARK_THEME, LIGHT_THEME } from '@wrench/ui'
 import { useNavigation, SCREENS, STATUS_BAR } from 'navigation'
 import { logo } from 'images'
 import video from 'videos/background.mp4'
-import { Text } from 'ui'
+import { Text, Touchable } from 'ui'
 import { isIphone, isAndroid } from 'utils/platform'
 import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
 import { SIGN_IN_PROVIDERS } from 'utils/enums'
 import { logError } from 'utils/sentry'
+import * as Spacing from 'ui/Spacing'
 import Apple from '../../components/Apple'
 import Facebook from '../../components/Facebook'
 import Google from '../../components/Google'
 import Legal from '../../components/Legal'
-import {
-  Base,
-  Inner,
-  Content,
-  Video,
-  Icon,
-  Description,
-  Headline,
-  Overlay,
-  Options,
-} from './styles'
+import { Base, Inner, Content, Video, Icon, Description, Headline, Overlay } from './styles'
 
 function renderPreferredSignInProvider(provider, isAppleAvailable) {
   switch (provider) {
@@ -109,11 +100,15 @@ function SignIn() {
 
         {!isLoading && renderPreferredSignInProvider(provider, isAvailable)}
 
-        <Options onPress={handleOtherOptions}>
+        <Spacing.Horizontally px={30} />
+
+        <Touchable onPress={handleOtherOptions}>
           <Text color="white" medium center>
             {t('other')}
           </Text>
-        </Options>
+        </Touchable>
+
+        <Spacing.Horizontally px={30} />
 
         <Legal />
       </Inner>

@@ -80,7 +80,7 @@ function EditCollection({ id, name, projectId, projectSlug, slug, onDelete }) {
   return (
     <Page
       headerTitle={name}
-      headerAnimation={false}
+      disableAnimation
       headerLeft={<Icon onPress={handleDismiss} source={close} />}
       headerRight={
         isSaving ? (

@@ -115,8 +115,7 @@ function Onboarding({ settingsPage }) {
 
   return (
     <Page
-      view
-      headerAnimation={false}
+      disableAnimation
       {...(!settingsPage && { headerLeft: true })}
       headerTitle={settingsPage && t('headerTitle')}
       headerRight={

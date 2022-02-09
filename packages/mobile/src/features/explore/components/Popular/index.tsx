@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from 'react-native'
 import { usePaginatedQuery, ProjectsDocument } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
@@ -72,7 +73,7 @@ function Popular() {
   }
 
   return (
-    <>
+    <View style={{ height: 450 }}>
       <Header>
         <Title medium>{t('popular')}</Title>
       </Header>
@@ -82,7 +83,7 @@ function Popular() {
       <Footer>
         <Title medium>{t('recent')}</Title>
       </Footer>
-    </>
+    </View>
   )
 }
 

@@ -20,7 +20,7 @@ function Hashtags({ name }) {
   })
 
   return (
-    <Page headerTitle={`#${name}`} headerAnimation={false}>
+    <Page headerTitle={`#${name}`} disableAnimation>
       <FlatList
         initialNumToRender={2}
         data={edges}

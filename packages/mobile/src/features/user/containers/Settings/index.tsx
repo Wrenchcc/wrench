@@ -102,11 +102,7 @@ function Settings({ section }) {
   const settings = data?.user.settings
 
   return (
-    <Page
-      headerTitle={section ? t(`settings:${section}`) : t('settings')}
-      headerAnimation={false}
-      view
-    >
+    <Page headerTitle={section ? t(`settings:${section}`) : t('settings')} disableAnimation>
       <SectionList
         contentContainerStyle={style.container}
         stickySectionHeadersEnabled={false}

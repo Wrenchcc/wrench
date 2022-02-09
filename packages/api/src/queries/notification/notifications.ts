@@ -7,11 +7,13 @@ import findOperators from '../../utils/paginate/findOperators'
 import { encodeCursor } from '../../utils/paginate/cursor'
 
 export default isAuthenticated(async (_, { after, before, last = 10, first = 10 }, ctx) => {
+  // TODO: Remove for unreadNotifications
   // Set user last seen for isOnline (clients are polling every 1m)
   await ctx.db.User.update(ctx.userId, {
     lastSeen: DateTime.local().toFormat('yyyy-MM-dd HH:mm:ss+00'),
   })
 
+  // TODO: Remove for unreadNotifications
   const { unreadCount } = await ctx.db.Notification.unreadCount(ctx.userId)
 
   const [notifications, totalCount] = await ctx.db.Notification.findAndCount({

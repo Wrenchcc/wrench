@@ -1,10 +1,55 @@
 import React, { useCallback, useMemo, useRef } from 'react'
 import { View } from 'react-native'
-import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet'
+import BottomSheet, { BottomSheetBackdropProps, useBottomSheet } from '@gorhom/bottom-sheet'
+import { TapGestureHandler, TapGestureHandlerGestureEvent } from 'react-native-gesture-handler'
+import Animated, {
+  useAnimatedStyle,
+  Extrapolate,
+  interpolate,
+  useAnimatedGestureHandler,
+  runOnJS,
+} from 'react-native-reanimated'
 import { useNavigation } from 'navigation'
 import { Text } from 'ui'
 import Background from './Background'
 import { Base, Bar, Row } from './styles'
+
+const styles = {
+  container: {
+    backgroundColor: 'black',
+  },
+}
+
+const Backdrop = ({ animatedIndex }: BottomSheetBackdropProps) => {
+  const ref = useRef()
+  const { close } = useBottomSheet()
+
+  const handleClose = useCallback(() => {
+    // NOTE: Hack to get the underlaying view to react to touches
+    ref?.current?.setNativeProps({ pointerEvents: 'none' })
+    close()
+  }, [ref])
+
+  const gestureHandler = useAnimatedGestureHandler<TapGestureHandlerGestureEvent>(
+    {
+      onFinish: () => {
+        runOnJS(handleClose)()
+      },
+    },
+    [handleClose]
+  )
+
+  const containerAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(animatedIndex.value, [-1, -1, 0], [0, 0, 0.5], Extrapolate.CLAMP),
+    flex: 1,
+  }))
+
+  return (
+    <TapGestureHandler onGestureEvent={gestureHandler}>
+      <Animated.View style={[containerAnimatedStyle, styles.container]} ref={ref} />
+    </TapGestureHandler>
+  )
+}
 
 const HalfPanel = ({ renderContent = () => null, data, height }) => {
   const bottomSheetRef = useRef<BottomSheet>(null)
@@ -18,17 +63,7 @@ const HalfPanel = ({ renderContent = () => null, data, height }) => {
     }
   }, [])
 
-  const renderBackdrop = useCallback(
-    (props) => (
-      <BottomSheetBackdrop
-        {...props}
-        disappearsOnIndex={-1}
-        appearsOnIndex={0}
-        pressBehavior="close"
-      />
-    ),
-    []
-  )
+  const renderBackdrop = useCallback((props) => <Backdrop {...props} />, [])
 
   const RenderDataContent = () => (
     <Base>

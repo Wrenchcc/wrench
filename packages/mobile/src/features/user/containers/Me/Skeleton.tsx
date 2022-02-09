@@ -25,18 +25,18 @@ export const MeSkeleton = () => {
     <View>
       <View style={styles.container}>
         <View style={styles.content}>
-          <Skeleton width={150} height={30} radius={0} />
+          <Skeleton width={150} height={25} radius={0} />
           <Spacing.Horizontally px={16} />
-          <Skeleton width={'88%'} height={30} radius={0} />
+          <Skeleton width={'88%'} height={25} radius={0} />
 
           <Spacing.Horizontally px={23} />
-          <Skeleton width={'100%'} height={16} />
+          <Skeleton width={'100%'} height={16} radius={0} />
 
           <Spacing.Horizontally px={10} />
-          <Skeleton width={'58%'} height={13} />
+          <Skeleton width={'58%'} height={13} radius={0} />
 
           <Spacing.Horizontally px={12} />
-          <Skeleton width={'50%'} height={13} />
+          <Skeleton width={'50%'} height={13} radius={0} />
         </View>
 
         <Skeleton width={80} height={80} radius="round" />

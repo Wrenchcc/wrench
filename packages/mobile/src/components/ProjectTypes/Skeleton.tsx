@@ -30,7 +30,7 @@ export const CategoriesSkeleton: React.FC = () => {
         <Skeleton
           key={index}
           width={100}
-          height={40}
+          height={35}
           radius={0}
           style={[styles.category, index === 0 && styles.first, index === COUNT - 1 && styles.last]}
         />
