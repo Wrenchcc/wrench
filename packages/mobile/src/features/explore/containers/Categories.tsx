@@ -2,16 +2,7 @@ import React from 'react'
 import { usePaginatedQuery, ProjectsDocument } from '@wrench/common'
 import { Page, FlatList, useNavigation, SCREENS } from 'navigation'
 import { ProjectCard } from 'ui'
-
-const ITEM_HEIGHT = 200
-
-function getItemLayout(_, index) {
-  return {
-    index,
-    length: ITEM_HEIGHT,
-    offset: ITEM_HEIGHT * index,
-  }
-}
+import SkeletonList from 'ui/ProjectCard/SkeletonList'
 
 function Categories({ id, title }) {
   const { navigate } = useNavigation()
@@ -42,16 +33,17 @@ function Categories({ id, title }) {
     return <ProjectCard project={project} onPress={onPress} />
   }
 
+  const ListEmptyComponent = isFetching && <SkeletonList />
+
   return (
     <Page headerTitle={title} headerAnimation={false}>
       <FlatList
+        ListEmptyComponent={ListEmptyComponent}
         initialNumToRender={4}
-        getItemLayout={getItemLayout}
         data={edges}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
-        isFetching={isFetching}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />

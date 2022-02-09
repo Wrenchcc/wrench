@@ -2476,7 +2476,7 @@ function useSimilarProjectsLazyQuery(baseOptions) {
     return Apollo.useLazyQuery(exports.SimilarProjectsDocument, options);
 }
 exports.useSimilarProjectsLazyQuery = useSimilarProjectsLazyQuery;
-exports.UnreadNotificationsDocument = (0, client_1.gql)(templateObject_80 || (templateObject_80 = __makeTemplateObject(["\n  query unreadNotifications {\n    notifications {\n      unreadCount\n    }\n  }\n"], ["\n  query unreadNotifications {\n    notifications {\n      unreadCount\n    }\n  }\n"
+exports.UnreadNotificationsDocument = (0, client_1.gql)(templateObject_80 || (templateObject_80 = __makeTemplateObject(["\n  query unreadNotifications {\n    unreadNotifications\n  }\n"], ["\n  query unreadNotifications {\n    unreadNotifications\n  }\n"
     /**
      * __useUnreadNotificationsQuery__
      *

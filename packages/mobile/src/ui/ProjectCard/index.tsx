@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react'
 import { useFollowProjectMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
-import { useResponsiveHeight } from 'react-native-responsive-dimensions'
 import Image from 'ui/Image'
 import Touchable from 'ui/Touchable'
 import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './styles'
 
+const height = 190
+
 function ProjectCard({ onPress, onFollow, project, style }) {
   const { t } = useTranslation('project-card')
   const [followProject] = useFollowProjectMutation()
-  const height = useResponsiveHeight(24)
 
   const handleFollow = useCallback(() => {
     const totalCount = project.permissions.isFollower

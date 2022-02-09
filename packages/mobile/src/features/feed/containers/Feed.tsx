@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { View, Dimensions } from 'react-native'
-import ms from 'ms'
 import { showPosting, NavigationBanner } from 'navigation/banner'
 import { getTrackingConsent } from 'utils/analytics'
 import { usePaginatedQuery, FeedDocument, useSimilarProjectsQuery } from '@wrench/common'
@@ -50,6 +49,8 @@ const renderItem = ({ item, index }) => {
   return <Post post={item.node} />
 }
 
+const THREE_MINUTES = 180000
+
 function Feed() {
   const { scrollTo } = useScrollContext()
 
@@ -70,7 +71,7 @@ function Feed() {
     hasNextPage,
     refetch,
   } = usePaginatedQuery(['feed', 'posts'])(FeedDocument, {
-    pollInterval: ms('3m'),
+    pollInterval: THREE_MINUTES,
   })
 
   useEffect(() => {
