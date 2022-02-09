@@ -222,8 +222,7 @@ function EditProfile({ onboarding }) {
         )
       }
       headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
-      view
-      headerAnimation={false}
+      disableAnimation
     >
       <ScrollView
         contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 60 }}

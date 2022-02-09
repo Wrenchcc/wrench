@@ -114,26 +114,25 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
       !hasPosts && <EmptyState type={emptyState} params={{ id: project?.id }} />
     )
 
+  const ListHeaderComponent = project?.title && (
+    <ProjectHeader project={project} spacingHorizontal={!hasPosts} />
+  )
+
+  const headerRight = isOwner ? (
+    <Edit project={project} onDeleteCallback={navigateBack} />
+  ) : (
+    <Icon source={share} onPress={handleActionSheet} />
+  )
+
   return (
-    <Page
-      headerTitle={project?.title}
-      headerRight={
-        isOwner ? (
-          <Edit project={project} onDeleteCallback={navigateBack} />
-        ) : (
-          <Icon source={share} onPress={handleActionSheet} />
-        )
-      }
-    >
+    <Page headerTitle={project?.title} headerRight={headerRight}>
       <FlatList
         initialNumToRender={2}
         spacingSeparator
         paddingHorizontal={hasPosts ? 20 : 0}
         contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={ListEmptyComponent}
-        ListHeaderComponent={
-          project?.title && <ProjectHeader project={project} spacingHorizontal={!hasPosts} />
-        }
+        ListHeaderComponent={ListHeaderComponent}
         data={reorderedEdges}
         refetch={refetch}
         fetchMore={fetchMore}

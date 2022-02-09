@@ -43,8 +43,7 @@ function EditPost({ post }) {
 
   return (
     <Page
-      view
-      headerAnimation={false}
+      disableAnimation
       headerTitle={t('headerTitle')}
       keyboardVerticalOffset={20}
       headerRight={

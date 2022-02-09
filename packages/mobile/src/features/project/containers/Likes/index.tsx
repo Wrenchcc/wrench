@@ -41,7 +41,7 @@ function Sparks({ id }) {
     )
 
   return (
-    <Page headerTitle={t('title')} headerAnimation={false}>
+    <Page headerTitle={t('title')} disableAnimation>
       {content}
     </Page>
   )

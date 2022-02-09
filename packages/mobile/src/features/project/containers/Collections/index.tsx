@@ -64,7 +64,7 @@ function Collections({ id, name, projectId, isOwner, projectSlug, slug }) {
   return (
     <Page
       headerTitle={name}
-      headerAnimation={false}
+      disableAnimation
       headerRight={
         isOwner ? (
           <Text medium onPress={navigateToEdit}>

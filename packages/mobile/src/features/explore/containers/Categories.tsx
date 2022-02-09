@@ -36,7 +36,7 @@ function Categories({ id, title }) {
   const ListEmptyComponent = isFetching && <SkeletonList />
 
   return (
-    <Page headerTitle={title} headerAnimation={false}>
+    <Page headerTitle={title} disableAnimation>
       <FlatList
         ListEmptyComponent={ListEmptyComponent}
         initialNumToRender={4}
