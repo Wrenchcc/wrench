@@ -23,6 +23,7 @@ DerivedData
 project.xcworkspace
 xcshareddata
 translations
+dist
 
 # Android/IntelliJ
 #

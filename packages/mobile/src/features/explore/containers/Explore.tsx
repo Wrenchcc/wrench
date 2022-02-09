@@ -84,16 +84,12 @@ function Explore() {
 
   const ListEmptyComponent = isFetching && !isRefetching && <PostSkeleton paddingHorizontal={0} />
 
+  const HeaderComponent = (
+    <Header headerLeft={<SearchBar />} stickyComponent={<ProjectTypes visible={!searchActive} />} />
+  )
+
   return (
-    <Layout
-      keyboardAvoidingViewEnabled={false}
-      headerComponent={
-        <Header
-          headerLeft={<SearchBar />}
-          stickyComponent={<ProjectTypes visible={!searchActive} />}
-        />
-      }
-    >
+    <Layout keyboardAvoidingViewEnabled={false} headerComponent={HeaderComponent}>
       <FlatList
         spacingSeparator
         progressViewOffset={CONTENT_INSET + STICKY_HEIGHT / 2}

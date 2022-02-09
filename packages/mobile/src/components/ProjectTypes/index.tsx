@@ -67,4 +67,4 @@ function ProjectTypes({ visible }) {
   )
 }
 
-export default memo(ProjectTypes)
+export default ProjectTypes

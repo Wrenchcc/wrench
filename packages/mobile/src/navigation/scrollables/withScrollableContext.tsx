@@ -4,6 +4,7 @@ import {
   useSharedValue,
   useAnimatedScrollHandler,
   withSpring,
+  withTiming,
 } from 'react-native-reanimated'
 import { isAndroid } from 'utils/platform'
 import { useScrollToInput } from '../hooks'
@@ -34,6 +35,12 @@ export default function withScrollableContext<T>(Component: FC<T>, extraContentI
           scrollVelocity.value = evt.velocity
         }
 
+        // When pressing tab or scroll to top
+        // NOTE: Velocity is always 0 in emulator
+        if (direction === 'up' && scrollVelocity.value.y === 0) {
+          headerY.value = withTiming(0, { duration: 100 })
+        }
+
         const isScrollingUp = evt.contentOffset.y - ctx.beginOffset < -300
         const velocityThreshold = Math.abs(velocityY) > 0.2
 
@@ -45,7 +52,6 @@ export default function withScrollableContext<T>(Component: FC<T>, extraContentI
         }
 
         if (direction === 'down' || scrollY.value <= 0) {
-          // TODO: When scroll by press skip spring
           headerY.value = withSpring(clamp(scrollY.value, 0, NAVIGATION.TOP_BAR_HEIGHT), {
             mass: 0.5,
             velocity: velocityY,
