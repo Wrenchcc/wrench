@@ -1,11 +1,36 @@
 import React, { useCallback } from 'react'
+import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from 'navigation'
 import { Icon } from 'ui'
 import { add } from 'images'
 import { keyboardHeight, isIphone } from 'utils/platform'
+import { Text } from 'ui'
+import PlatformColor from 'ui/PlatformColor'
 import Form from './Form'
-import { Base, Center, Text } from './styles'
+
+const styles = {
+  base: {
+    width: 60,
+    height: 60,
+    borderWidth: 1,
+    borderColor: PlatformColor.divider,
+    borderRadius: 60,
+  },
+  center: {
+    width: 60,
+    height: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    marginTop: 8,
+  },
+  icon: {
+    marginLeft: -2,
+    marginTop: -2,
+  },
+}
 
 const HALFPANEL_HEIGHT = 130
 
@@ -23,12 +48,14 @@ function AddCollection({ projectId, style = {}, disableModal }) {
   }, [showHalfpanel])
 
   return (
-    <Base style={style}>
-      <Center>
-        <Icon source={add} onPress={handleHalfPanel} style={{ marginLeft: -2, marginTop: -2 }} />
-      </Center>
-      <Text fontSize={12}>{t('add')}</Text>
-    </Base>
+    <View style={[styles.base, style]}>
+      <View style={styles.center}>
+        <Icon source={add} onPress={handleHalfPanel} style={styles.icon} />
+      </View>
+      <Text fontSize={12} style={styles.text}>
+        {t('add')}
+      </Text>
+    </View>
   )
 }
 

@@ -1,10 +1,26 @@
 import React, { useState } from 'react'
+import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useAddCollectionMutation, CollectionFragmentDoc } from '@wrench/common'
 import { store } from 'gql'
 import { useNavigation, SCREENS } from 'navigation'
-import { Title } from 'ui'
-import { Input, Text, Content, Inner } from './styles'
+import { Title, Input, Text } from 'ui'
+
+const styles = {
+  input: {
+    flex: 1,
+  },
+  inner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  text: {
+    marginTop: 8,
+  },
+  content: {
+    marginTop: 20,
+  },
+}
 
 function Form({ projectId, disableModal }) {
   const { t } = useTranslation('add-collection')
@@ -57,11 +73,12 @@ function Form({ projectId, disableModal }) {
   }
 
   return (
-    <Content>
+    <View style={styles.content}>
       <Title>{t('title')}</Title>
 
-      <Inner>
+      <View style={styles.inner}>
         <Input
+          style={styles.input}
           placeholder={t('placeholder')}
           enablesReturnKeyAutomatically
           autoFocus
@@ -71,12 +88,12 @@ function Form({ projectId, disableModal }) {
         />
 
         {name.length > 0 && (
-          <Text fontSize={15} medium onPress={handleOnSubmit}>
+          <Text fontSize={15} medium onPress={handleOnSubmit} style={styles.text}>
             {t('done')}
           </Text>
         )}
-      </Inner>
-    </Content>
+      </View>
+    </View>
   )
 }
 

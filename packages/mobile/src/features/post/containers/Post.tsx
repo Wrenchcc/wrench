@@ -96,7 +96,7 @@ function PostContainer({ postId, commentId }) {
       },
     })
 
-  const highlightId = commentData && commentData.comment.id
+  const highlightId = commentData?.comment?.id
 
   const handleOnReply = useCallback((data) => setMention(data), [setMention])
 
@@ -140,6 +140,12 @@ function PostContainer({ postId, commentId }) {
 
   const initialFetch = isFetching && !edges
 
+  const ListEmptyComponent = initialFetch && (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <ActivityIndicator />
+    </View>
+  )
+
   return (
     <Page headerTitle={t('title')} disableAnimation>
       <FlatList
@@ -151,13 +157,7 @@ function PostContainer({ postId, commentId }) {
         keyboardShouldPersistTaps="always"
         keyExtractor={keyExtractor}
         ListFooterComponent={renderTopComponent}
-        ListEmptyComponent={
-          initialFetch && (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-              <ActivityIndicator />
-            </View>
-          )
-        }
+        ListEmptyComponent={ListEmptyComponent}
         data={edges}
         renderItem={renderItem}
         contentContainerStyle={{

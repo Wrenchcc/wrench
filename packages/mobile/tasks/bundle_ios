@@ -4,34 +4,37 @@ set -e
 # NOTE: Only works when run from xCode
 export SENTRY_PROPERTIES=sentry.properties
 
-OUTPUT_DIR=${OUTPUT_DIR:-$PWD/dist/ios}
+SOURCE_MAP_DIR=${SOURCE_MAP_DIR:-$PWD/dist/ios}
+DEST=$CONFIGURATION_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH
+BUNDLE_FILE="$CONFIGURATION_BUILD_DIR/main.jsbundle"
+ENTRY_FILE="./packages/mobile/index.js"
 NODE_MODULES_PATH=../../../node_modules
 VERSION=`$NODE_MODULES_PATH/@sentry/cli/bin/sentry-cli releases propose-version`
  
 # Delete previous versions
-rm -rf "$OUTPUT_DIR"
-mkdir -p "$OUTPUT_DIR"
+rm -rf "$SOURCE_MAP_DIR"
+mkdir -p "$SOURCE_MAP_DIR"
 
 $NODE_MODULES_PATH/.bin/react-native bundle \
   --dev false \
   --platform ios \
-  --entry-file ./packages/mobile/index.js \
-  --assets-dest $OUTPUT_DIR \
-  --bundle-output $OUTPUT_DIR/index.ios.bundle \
-  --sourcemap-output $OUTPUT_DIR/index.ios.bundle.map
+  --entry-file $ENTRY_FILE \
+  --assets-dest $DEST \
+  --bundle-output $BUNDLE_FILE \
+  --sourcemap-output $SOURCE_MAP_DIR/index.ios.bundle.map
 
 $NODE_MODULES_PATH/hermes-engine/osx-bin/hermesc \
   -emit-binary \
-  -out $OUTPUT_DIR/index.ios.bundle.hbc $OUTPUT_DIR/index.ios.bundle \
+  -out $SOURCE_MAP_DIR/index.ios.bundle.hbc $BUNDLE_FILE \
   -output-source-map -w
 
 $NODE_MODULES_PATH/react-native/scripts/compose-source-maps.js \
-  $OUTPUT_DIR/index.ios.bundle.map $OUTPUT_DIR/index.ios.bundle.hbc.map \
-  -o $OUTPUT_DIR/index.ios.bundle.map
+  $SOURCE_MAP_DIR/index.ios.bundle.map $SOURCE_MAP_DIR/index.ios.bundle.hbc.map \
+  -o $SOURCE_MAP_DIR/index.ios.bundle.map
 
 if [ "${CONFIGURATION}" == "Release" ]; then
   $NODE_MODULES_PATH/@sentry/cli/bin/sentry-cli releases \
     files "$VERSION" \
-    upload-sourcemaps $OUTPUT_DIR
+    upload-sourcemaps $SOURCE_MAP_DIR
 fi
 
