@@ -4017,7 +4017,6 @@ export type NotificationsQuery = {
   __typename?: 'Query'
   notifications?: {
     __typename?: 'NotificationsConnection'
-    unreadCount?: number | null
     pageInfo?: { __typename?: 'PageInfo'; hasNextPage?: boolean | null } | null
     edges?: Array<{
       __typename?: 'NotificationEdge'
@@ -8407,7 +8406,6 @@ export type MetaQueryResult = Apollo.QueryResult<MetaQuery, MetaQueryVariables>
 export const NotificationsDocument = gql`
   query notifications($after: String, $first: Int = 10) {
     notifications(after: $after, first: $first) @connection(key: "notifications") {
-      unreadCount
       pageInfo {
         hasNextPage
       }

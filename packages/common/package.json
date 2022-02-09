@@ -6,7 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "generate:graphql": "graphql-codegen --config codegen.yml"
+    "generate:graphql": "graphql-codegen --config codegen.yml && yarn build"
   },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
@@ -15,9 +15,9 @@
     "react": "*"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^2.5.0",
+    "@graphql-codegen/cli": "^2.6.0",
     "@graphql-codegen/typescript": "2.4.3",
-    "@graphql-codegen/typescript-operations": "2.2.4",
+    "@graphql-codegen/typescript-operations": "2.3.0",
     "@graphql-codegen/typescript-react-apollo": "3.2.5",
     "graphql-codegen-apollo-next-ssr": "^1.7.1",
     "typescript": "*"

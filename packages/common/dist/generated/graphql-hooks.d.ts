@@ -4189,7 +4189,6 @@ export declare type NotificationsQuery = {
     __typename?: 'Query';
     notifications?: {
         __typename?: 'NotificationsConnection';
-        unreadCount?: number | null;
         pageInfo?: {
             __typename?: 'PageInfo';
             hasNextPage?: boolean | null;

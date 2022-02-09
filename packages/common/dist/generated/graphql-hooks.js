@@ -1768,7 +1768,7 @@ function useMetaLazyQuery(baseOptions) {
     return Apollo.useLazyQuery(exports.MetaDocument, options);
 }
 exports.useMetaLazyQuery = useMetaLazyQuery;
-exports.NotificationsDocument = (0, client_1.gql)(templateObject_65 || (templateObject_65 = __makeTemplateObject(["\n  query notifications($after: String, $first: Int = 10) {\n    notifications(after: $after, first: $first) @connection(key: \"notifications\") {\n      unreadCount\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Notification\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query notifications($after: String, $first: Int = 10) {\n    notifications(after: $after, first: $first) @connection(key: \"notifications\") {\n      unreadCount\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Notification\n        }\n      }\n    }\n  }\n  ", "\n"
+exports.NotificationsDocument = (0, client_1.gql)(templateObject_65 || (templateObject_65 = __makeTemplateObject(["\n  query notifications($after: String, $first: Int = 10) {\n    notifications(after: $after, first: $first) @connection(key: \"notifications\") {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Notification\n        }\n      }\n    }\n  }\n  ", "\n"], ["\n  query notifications($after: String, $first: Int = 10) {\n    notifications(after: $after, first: $first) @connection(key: \"notifications\") {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Notification\n        }\n      }\n    }\n  }\n  ", "\n"
     /**
      * __useNotificationsQuery__
      *
