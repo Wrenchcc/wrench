@@ -44,9 +44,9 @@ const VideoEditor = ({ source }) => {
         videoRef?.current.pauseAsync()
 
         // TODO: Find a way to set when view is unmounted
-        setTimeout(() => {
+        requestAnimationFrame(() => {
           setPaused(true)
-        }, 1000)
+        })
       }
     })
 

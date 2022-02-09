@@ -2,7 +2,6 @@
 
 query notifications($after: String, $first: Int = 10) {
   notifications(after: $after, first: $first) @connection(key: "notifications") {
-    unreadCount
     pageInfo {
       hasNextPage
     }

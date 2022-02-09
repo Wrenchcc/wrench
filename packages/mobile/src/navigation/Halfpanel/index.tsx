@@ -70,10 +70,10 @@ const HalfPanel = ({ renderContent = () => null, data, height }) => {
       {data.map(({ title, onPress }) => {
         const handleOnPress = () => {
           bottomSheetRef?.current.close()
-          setTimeout(() => {
+          requestAnimationFrame(() => {
             onPress()
             dismissHalfpanel()
-          }, 100)
+          })
         }
 
         return (

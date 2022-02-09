@@ -32,9 +32,9 @@ DeepLinking.addRoute('/p/:id', ({ id }) => {
 DeepLinking.addRoute('/settings/:section', ({ section }) => {
   selectTabIndex(TABS_INDEX.ME)
 
-  setTimeout(() => {
+  requestAnimationFrame(() => {
     return navigateWithoutContext(SCREENS.SETTINGS, { section })
-  }, 300)
+  })
 })
 
 DeepLinking.addRoute('/:root', ({ root }) => {

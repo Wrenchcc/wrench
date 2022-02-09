@@ -1,8 +1,23 @@
+import { AppState } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
 import { feed, explore, notification, profile, add } from 'images'
+import { getUnreadNotifications } from 'gql'
 import { SCREENS, BOTTOM_TABS_ID } from './constants'
 import defaultOptions from './defaultOptions'
+import { showNotificationBadge } from './api'
+
+const THREE_MINUTES = 180000
+
+const checkNotificationsCount = async () => {
+  const unreadCount = await getUnreadNotifications({
+    fetchPolicy: 'network-only',
+  })
+
+  if (unreadCount > 0) {
+    await showNotificationBadge()
+  }
+}
 
 export async function Bootstrap() {
   Navigation.setDefaultOptions(defaultOptions)
@@ -179,6 +194,14 @@ export async function AppNavigation(onboarding: boolean) {
           ],
         },
       },
+    })
+
+    setInterval(checkNotificationsCount, THREE_MINUTES)
+
+    AppState.addEventListener('change', (state) => {
+      if (state === 'active') {
+        checkNotificationsCount()
+      }
     })
   }
 }

@@ -1,16 +1,28 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import {
   usePaginatedQuery,
   NotificationsDocument,
+  UnreadNotificationsDocument,
   useDeleteNotificationMutation,
+  useMarkAllNotificationsSeenMutation,
 } from '@wrench/common'
-import { Layout, FlatList, useScrollToTop, withScrollableContext, SCREENS } from 'navigation'
+import { getUnreadNotifications } from 'gql'
+import {
+  Layout,
+  FlatList,
+  useScrollToTop,
+  withScrollableContext,
+  SCREENS,
+  useNavigation,
+} from 'navigation'
 import { Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import NotificationSkeletonList from 'ui/Notification/SkeletonList'
 
 function Notifications() {
+  const [markAllNotificationsSeen] = useMarkAllNotificationsSeenMutation()
   const [deleteNotification] = useDeleteNotificationMutation()
+  const { hideNotificationBadge } = useNavigation()
 
   useScrollToTop(SCREENS.NOTIFICATIONS)
 
@@ -46,6 +58,33 @@ function Notifications() {
     hasNextPage,
     refetch,
   } = usePaginatedQuery(['notifications'])(NotificationsDocument)
+
+  useEffect(() => {
+    async function getNotifications() {
+      const unreadCount = await getUnreadNotifications({
+        fetchPolicy: 'cache-only',
+      })
+
+      if (unreadCount > 0) {
+        markAllNotificationsSeen({
+          update: (cache) => {
+            cache.writeQuery({
+              query: UnreadNotificationsDocument,
+              data: {
+                unreadNotifications: {
+                  unreadCount: 0,
+                },
+              },
+            })
+          },
+        })
+      }
+
+      hideNotificationBadge()
+    }
+
+    getNotifications()
+  }, [])
 
   const renderItem = ({ item }) => (
     <Notification data={item.node} deleteNotification={handleDeleteNotification} />

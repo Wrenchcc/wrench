@@ -51,10 +51,10 @@ function EditProject({ project, onDeleteCallback }) {
       },
     })
 
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       setIsSaving(false)
       dismissModal()
-    }, 500)
+    })
   }, [title])
 
   const navigateToModel = useCallback(

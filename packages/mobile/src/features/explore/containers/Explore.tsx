@@ -71,8 +71,8 @@ function Explore() {
     refetch()
   }, [refetch])
 
-  const handleChange = useCallback((newState) => {
-    if (newState === 'active') {
+  const handleChange = useCallback((state) => {
+    if (state === 'active') {
       handleRefetch()
     }
   }, [])

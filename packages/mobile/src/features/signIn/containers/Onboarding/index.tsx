@@ -79,7 +79,7 @@ function Onboarding({ settingsPage }) {
       },
     })
 
-    setTimeout(
+    requestAnimationFrame(
       settingsPage
         ? () => {
             navigateBack()
@@ -88,8 +88,7 @@ function Onboarding({ settingsPage }) {
         : () => {
             navigate(SCREENS.PROJECT_SUGGESTIONS)
             setIsSaving(false)
-          },
-      100
+          }
     )
   }
 

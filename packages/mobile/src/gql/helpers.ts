@@ -4,6 +4,7 @@ import {
   PreSignUrlsDocument,
   PreSignUrlDocument,
   RegisterDeviceTokenDocument,
+  UnreadNotificationsDocument,
 } from '@wrench/common'
 import { PLATFORM_TYPES } from 'utils/enums'
 import { logError } from 'utils/sentry'
@@ -52,6 +53,19 @@ export async function preSignUrl(input) {
 export async function getCurrentUser() {
   try {
     return client.query({ query: CurrentUserDocument })
+  } catch (err) {
+    logError(err)
+  }
+}
+
+export async function getUnreadNotifications({ fetchPolicy }) {
+  try {
+    const response = await client.query({
+      query: UnreadNotificationsDocument,
+      fetchPolicy,
+    })
+
+    return response?.data?.unreadNotifications || 0
   } catch (err) {
     logError(err)
   }
