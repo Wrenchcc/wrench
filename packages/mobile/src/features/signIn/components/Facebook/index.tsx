@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 import { useAuthenticateFacebookMutation } from '@wrench/common'
 import { useMMKVString } from 'utils/storage'
 import { setTokens } from 'utils/storage/auth'
@@ -11,23 +11,20 @@ import { getCurrentUser } from 'gql'
 import { logError } from 'utils/sentry'
 import { Icon } from 'ui'
 import { facebook } from 'images'
-import { Button, Text, Loader } from './styles'
+import { Button, Text } from './styles'
 
 function Facebook() {
   const { t } = useTranslation('facebook')
-  const [isLoading, setIsLoading] = useState(false)
   const [authenticate] = useAuthenticateFacebookMutation()
   const [_, setProvider] = useMMKVString(PREFFERED_SIGN_IN_PROVIDER)
 
   const handleLoginManager = useCallback(async () => {
     try {
       const result = await LoginManager.logInWithPermissions(['public_profile', 'email'])
-      setIsLoading(true)
 
       setProvider(SIGN_IN_PROVIDERS.FACEBOOK)
 
       if (result.isCancelled) {
-        setIsLoading(false)
         return
       }
 
@@ -48,7 +45,6 @@ function Facebook() {
         await AppNavigation(!data.user.interestedIn)
       }
     } catch (err) {
-      setIsLoading(false)
       logError(err)
     }
   }, [])
@@ -56,10 +52,9 @@ function Facebook() {
   return (
     <Button onPress={handleLoginManager}>
       <Icon source={facebook} style={{ marginRight: 10 }} color="white" />
-      <Text white medium>
+      <Text white medium fontSize={16}>
         {t('button')}
       </Text>
-      {isLoading && <Loader color="white" />}
     </Button>
   )
 }

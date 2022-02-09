@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { AppNavigation } from 'navigation'
 import { useAuthenticateGoogleMutation } from '@wrench/common'
 import { setTokens } from 'utils/storage/auth'
@@ -11,23 +11,22 @@ import { getCurrentUser } from 'gql'
 import { track, events } from 'utils/analytics'
 import { Icon } from 'ui'
 import { google } from 'images'
-import { Button, Text, Loader } from './styles'
+import { Button, Text } from './styles'
 
 function Google({ border }) {
   const { t } = useTranslation('google')
-  const [isLoading, setIsLoading] = useState(false)
   const [authenticate] = useAuthenticateGoogleMutation()
   const [_, setProvider] = useMMKVString(PREFFERED_SIGN_IN_PROVIDER)
 
+  useEffect(() => {
+    GoogleSignin.configure({
+      offlineAccess: true,
+      webClientId: '407610377102-dsuursv0qn83s4v2vnqfevm511ujp81t.apps.googleusercontent.com',
+    })
+  }, [])
+
   const handleLoginManager = useCallback(async () => {
     try {
-      GoogleSignin.configure({
-        offlineAccess: true,
-        webClientId: '407610377102-dsuursv0qn83s4v2vnqfevm511ujp81t.apps.googleusercontent.com',
-      })
-
-      setIsLoading(true)
-
       await GoogleSignin.hasPlayServices()
       const userInfo = await GoogleSignin.signIn()
 
@@ -50,18 +49,15 @@ function Google({ border }) {
       if (data.user) {
         await AppNavigation(!data.user.interestedIn)
       }
-    } catch {
-      setIsLoading(false)
-    }
+    } catch {}
   }, [])
 
   return (
     <Button onPress={handleLoginManager} border={border}>
       <Icon source={google} style={{ marginRight: 10 }} color="black" />
-      <Text medium color="black">
+      <Text medium color="black" fontSize={16}>
         {t('button')}
       </Text>
-      {isLoading && <Loader color="black" />}
     </Button>
   )
 }

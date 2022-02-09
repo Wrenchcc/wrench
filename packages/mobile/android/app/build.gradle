@@ -90,6 +90,10 @@ project.ext.react = [
     composeSourceMapsPath: "../../node_modules/react-native/scripts/compose-source-maps.js",
 ]
 
+project.ext.sentryCli = [
+    logLevel: "debug"
+]
+
 apply from: new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim(), "../react.gradle")
 apply from: projectRoot + "node_modules/@sentry/react-native/sentry.gradle"
 

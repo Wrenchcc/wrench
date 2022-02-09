@@ -52,7 +52,9 @@ function Header({
   const opacityStyle = useAnimatedStyle(() => ({
     opacity: disableAnimation
       ? 1
-      : interpolate(scrollY.value, [0, 50], [0, 1], Animated.Extrapolate.CLAMP),
+      : scrollY
+      ? interpolate(scrollY.value, [0, 50], [0, 1], Animated.Extrapolate.CLAMP)
+      : 1,
   }))
 
   const handleOnPress = useCallback(() => {

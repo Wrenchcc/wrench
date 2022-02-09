@@ -405,7 +405,7 @@ PODS:
   - react-native-mmkv (2.1.0):
     - MMKV
     - React-Core
-  - react-native-netinfo (7.1.11):
+  - react-native-netinfo (7.1.12):
     - React-Core
   - react-native-pager-view (5.4.9):
     - React-Core
@@ -880,7 +880,7 @@ SPEC CHECKSUMS:
   react-native-config: 6502b1879f97ed5ac570a029961fc35ea606cd14
   react-native-fbsdk-next: 800e60618cd7b861eb5d37ed4b653b5bc72e7ceb
   react-native-mmkv: e92ed3dfb337b01afd411fa7a9b65be05fec36be
-  react-native-netinfo: 7190fbe4eae35b201b4d73ec8e123a754fa2bd42
+  react-native-netinfo: c023b7c36ff34e3b607d1446002b5b39089a860b
   react-native-pager-view: 3ee7d4c7697fb3ef788346e834a60cca97ed8540
   react-native-pinchable: b4381b0807d15c12b14bfacd927128f52d96f0f1
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
@@ -914,6 +914,6 @@ SPEC CHECKSUMS:
   Sentry: 2f7e91f247cfb05b05bd01e0b5d0692557a7687b
   Yoga: 9b6696970c3289e8dea34b3eda93f23e61fb8121
 
-PODFILE CHECKSUM: a4a48e9120e993cf2c4e8b234569f83e1dfce551
+PODFILE CHECKSUM: 62f3fc859d4e2b8f569cc7bf9c345011a1c00d35
 
 COCOAPODS: 1.11.2

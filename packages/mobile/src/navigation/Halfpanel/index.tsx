@@ -26,7 +26,7 @@ const Backdrop = ({ animatedIndex }: BottomSheetBackdropProps) => {
 
   const handleClose = useCallback(() => {
     // NOTE: Hack to get the underlaying view to react to touches
-    ref.current.setNativeProps({ pointerEvents: 'none' })
+    ref?.current?.setNativeProps({ pointerEvents: 'none' })
     close()
   }, [ref])
 

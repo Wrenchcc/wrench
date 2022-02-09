@@ -8,9 +8,9 @@ import Animated, {
   useAnimatedStyle,
   useAnimatedGestureHandler,
 } from 'react-native-reanimated'
-import { clamp, snapPoint } from 'react-native-redash'
+import { clamp, snapPoint } from 'navigation/scrollables/worklets'
 import { PanGestureHandler } from 'react-native-gesture-handler'
-import { Pressable } from 'react-native'
+import { Touchable } from 'ui'
 import { NAVIGATION } from 'navigation/constants'
 
 const FULLY_UP = -60
@@ -100,11 +100,11 @@ const Animation = (
   }, [onPress, translateY])
 
   return (
-    <Pressable onPress={handleOnPress} disabled={!Boolean(onPress)}>
+    <Touchable onPress={handleOnPress} disabled={!Boolean(onPress)}>
       <PanGestureHandler onGestureEvent={gestureHandler} enabled={gestureEnabled}>
         <Animated.View style={[styles.base, animatedStyle]}>{children}</Animated.View>
       </PanGestureHandler>
-    </Pressable>
+    </Touchable>
   )
 }
 
