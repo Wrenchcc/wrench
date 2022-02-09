@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.5.8",
-    "aws-sdk": "^2.1070.0",
+    "aws-sdk": "^2.1071.0",
     "ramda": "^0.28.0",
     "rambda": "^7.0.2",
     "human-format": "^0.11.0",
