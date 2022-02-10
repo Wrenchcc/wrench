@@ -16,6 +16,7 @@ export default function withScrollableContext<T>(Component: FC<T>, extraContentI
   return (props: T) => {
     const scrollRef = useAnimatedRef()
     const headerY = useSharedValue(0)
+    const manuallyUp = useSharedValue(false)
     const scrollY = useSharedValue(0)
     const scrollVelocity = useSharedValue({ x: 0, y: 0 })
     const initialViewOffset = isAndroid ? 0 : -CONTENT_INSET - extraContentInset
@@ -35,14 +36,13 @@ export default function withScrollableContext<T>(Component: FC<T>, extraContentI
           scrollVelocity.value = evt.velocity
         }
 
-        // When pressing tab or scroll to top
-        // NOTE: Velocity is always 0 in emulator
-        if (direction === 'up' && scrollVelocity.value.y === 0) {
-          headerY.value = withTiming(0, { duration: 100 })
-        }
-
         const isScrollingUp = evt.contentOffset.y - ctx.beginOffset < -300
         const velocityThreshold = Math.abs(velocityY) > 0.2
+
+        // NOTE: Reset manual scroll
+        if (scrollY.value === 0) {
+          manuallyUp.value = false
+        }
 
         if (direction === 'up' && velocityThreshold && isScrollingUp && headerY.value !== 0) {
           headerY.value = withSpring(0, {
@@ -51,7 +51,10 @@ export default function withScrollableContext<T>(Component: FC<T>, extraContentI
           })
         }
 
-        if (direction === 'down' || scrollY.value <= 0) {
+        if (
+          (direction === 'down' && !manuallyUp.value) ||
+          (scrollY.value <= 0 && !manuallyUp.value)
+        ) {
           headerY.value = withSpring(clamp(scrollY.value, 0, NAVIGATION.TOP_BAR_HEIGHT), {
             mass: 0.5,
             velocity: velocityY,
@@ -105,6 +108,8 @@ export default function withScrollableContext<T>(Component: FC<T>, extraContentI
         scrollVelocity,
         headerY,
         scrollTo: (offset: number, animate?: boolean) => {
+          manuallyUp.value = true
+          headerY.value = withTiming(0, { duration: 150 })
           scrollRef.current?.scrollToOffset({ offset, animate })
         },
       }

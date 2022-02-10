@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { Dimensions } from 'react-native'
 import { useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { useCurrentUserQuery, useProjectTypesQuery } from '@wrench/common'
-import { Page, FlatList, useNavigation, SCREENS, keyExtractor } from 'navigation'
+import { Page, FlatList, useNavigation, SCREENS, keyExtractor, NAVIGATION } from 'navigation'
 import { omit } from 'rambda'
 import { track, events } from 'utils/analytics'
-import { ActivityIndicator, Touchable, Text, Loader } from 'ui'
+import { ActivityIndicator, Touchable, Text } from 'ui'
 import Content from 'features/signIn/components/Content'
 import Footer from 'features/signIn/components/Footer'
-import { Cell, Image, Overlay, Picture } from './styles'
-
-const { width } = Dimensions.get('window')
+import Skeleton from './Skeleton'
+import { Cell, Image, Overlay, Picture, GUTTER, ITEM_SIZE } from './styles'
 
 const MIN_ITEMS = 3
-const GUTTER = 10
-const ITEM_SIZE = width / 2 - GUTTER
 
 function Onboarding({ settingsPage }) {
   const { t } = useTranslation('onboarding')
@@ -112,36 +108,43 @@ function Onboarding({ settingsPage }) {
     </Cell>
   )
 
+  const headerRight = isSaving ? (
+    <ActivityIndicator />
+  ) : (
+    <Text
+      color="inverse"
+      medium
+      opacity={isComplete() ? 1 : 0.5}
+      disabled={!isComplete()}
+      onPress={handleSubmit}
+    >
+      {settingsPage ? t('save') : t('next')}
+    </Text>
+  )
+
+  const headerTitle = settingsPage && t('headerTitle')
+
+  const ListHeaderComponent = !settingsPage && <Content />
+  const ListEmptyComponent = loading && <Skeleton />
+
   return (
     <Page
       disableAnimation
       {...(!settingsPage && { headerLeft: true })}
-      headerTitle={settingsPage && t('headerTitle')}
-      headerRight={
-        isSaving ? (
-          <ActivityIndicator />
-        ) : (
-          <Text
-            color="inverse"
-            medium
-            opacity={isComplete() ? 1 : 0.5}
-            disabled={!isComplete()}
-            onPress={handleSubmit}
-          >
-            {settingsPage ? t('save') : t('next')}
-          </Text>
-        )
-      }
+      headerTitle={headerTitle}
+      headerRight={headerRight}
     >
       <FlatList
         paddingHorizontal={10}
-        ListHeaderComponent={!settingsPage && <Content />}
-        ListEmptyComponent={loading && <Loader />}
-        contentContainerStyle={{ flex: loading ? 1 : 0 }}
+        ListHeaderComponent={ListHeaderComponent}
+        ListEmptyComponent={ListEmptyComponent}
         numColumns={2}
         data={projectData?.types}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
+        contentContainerStyle={{
+          paddingBottom: NAVIGATION.TAB_HEIGHT + 20,
+        }}
       />
       {!settingsPage && <Footer progress={progress()} />}
     </Page>

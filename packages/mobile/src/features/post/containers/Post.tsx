@@ -138,9 +138,7 @@ function PostContainer({ postId, commentId }) {
     return content
   }, [postData, hasNextPage, fetchMore, isFetching])
 
-  const initialFetch = isFetching && !edges
-
-  const ListEmptyComponent = initialFetch && (
+  const ListEmptyComponent = isFetching && (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <ActivityIndicator />
     </View>

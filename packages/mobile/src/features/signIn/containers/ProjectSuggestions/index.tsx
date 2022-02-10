@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useProjectSuggestionsQuery } from '@wrench/common'
 import { Page, ScrollView, useNavigation, SCREENS } from 'navigation'
-import { ProjectSuggestion, Loader, Text } from 'ui'
+import { ProjectSuggestion, Text } from 'ui'
+import Skeleton from './Skeleton'
 import { Headline, Description } from './styles'
 
 function Suggestions() {
@@ -15,20 +16,20 @@ function Suggestions() {
     navigate(SCREENS.PUSH_NOTIFICATIONS)
   }
 
-  return (
-    <Page
-      headerRight={
-        <Text
-          color="inverse"
-          medium
-          opacity={isComplete ? 1 : 0.5}
-          disabled={!isComplete}
-          onPress={handleSubmit}
-        >
-          {t('next')}
-        </Text>
-      }
+  const headerRight = (
+    <Text
+      color="inverse"
+      medium
+      opacity={isComplete ? 1 : 0.5}
+      disabled={!isComplete}
+      onPress={handleSubmit}
     >
+      {t('next')}
+    </Text>
+  )
+
+  return (
+    <Page headerRight={headerRight}>
       <ScrollView>
         <Headline medium numberOfLines={0}>
           {t('headline')}
@@ -38,17 +39,19 @@ function Suggestions() {
           {t('description')}
         </Description>
 
-        {loading && <Loader />}
-
-        {data?.projects.map(({ type, edges }) => (
-          <ProjectSuggestion
-            disabled
-            key={type.id}
-            title={type.title}
-            data={edges}
-            onFollow={() => setIsComplete(true)}
-          />
-        ))}
+        {loading ? (
+          <Skeleton />
+        ) : (
+          data?.projects.map(({ type, edges }) => (
+            <ProjectSuggestion
+              disabled
+              key={type.id}
+              title={type.title}
+              data={edges}
+              onFollow={() => setIsComplete(true)}
+            />
+          ))
+        )}
       </ScrollView>
     </Page>
   )
