@@ -8,10 +8,9 @@ type BaseProps = {
   theme: ThemeInterface
 }
 export const Base = styled.View<BaseProps>`
-  flex: 1;
   justify-content: center;
-  padding-top: 20px;
   padding-bottom: 20px;
+  margin-top: 100px;
 `
 
 export const Title = styled(UiTitle)`

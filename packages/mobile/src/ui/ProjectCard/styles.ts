@@ -1,9 +1,14 @@
+import { Dimensions } from 'react-native'
 import styled from 'styled-components'
 import { LinearGradient } from 'expo-linear-gradient'
 import UiTouchable from 'ui/Touchable'
 import UiFollowers from 'ui/Followers'
 import UiText from 'ui/Text'
 import UiButton from 'ui/Button'
+
+const { width } = Dimensions.get('window')
+
+export const height = width > 390 ? 220 : 190
 
 export const Base = styled(UiTouchable)`
   margin-top: 20px;

@@ -49,7 +49,6 @@ function FollowingProjects({ user }) {
         horizontal
         directionalLockEnabled
         showsHorizontalScrollIndicator={false}
-        loaderInset={270}
         decelerationRate="fast"
         snapToInterval={SNAP_INTERVAL}
         snapToAlignment="start"

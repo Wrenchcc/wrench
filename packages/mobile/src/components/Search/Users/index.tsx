@@ -67,11 +67,7 @@ function Users() {
   const renderItem = ({ item }) => <User data={item.node} onPress={handleSave} />
 
   const ListEmptyComponent =
-    isFetching && !edges ? (
-      <Skeleton marginTop={15} />
-    ) : (
-      !isFetching && query.length > 1 && <NoResults />
-    )
+    isFetching && !edges ? <Skeleton /> : !isFetching && query.length > 1 && <NoResults />
 
   const ListHeaderComponent = !query && recent.length > 0 && (
     <Header>

@@ -2,7 +2,7 @@ import React from 'react'
 import { ScrollView, View } from 'react-native'
 import * as Spacing from 'ui/Spacing'
 import Skeleton from 'ui/Skeleton'
-import { GUTTER, ITEM_SIZE } from './styles'
+import { ITEM_SIZE } from './styles'
 
 const COUNT = 4
 

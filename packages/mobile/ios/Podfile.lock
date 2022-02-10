@@ -405,7 +405,7 @@ PODS:
   - react-native-mmkv (2.1.0):
     - MMKV
     - React-Core
-  - react-native-netinfo (7.1.12):
+  - react-native-netinfo (8.0.0):
     - React-Core
   - react-native-pager-view (5.4.9):
     - React-Core
@@ -880,7 +880,7 @@ SPEC CHECKSUMS:
   react-native-config: 6502b1879f97ed5ac570a029961fc35ea606cd14
   react-native-fbsdk-next: 800e60618cd7b861eb5d37ed4b653b5bc72e7ceb
   react-native-mmkv: e92ed3dfb337b01afd411fa7a9b65be05fec36be
-  react-native-netinfo: c023b7c36ff34e3b607d1446002b5b39089a860b
+  react-native-netinfo: ba4ea50d836c60580c59079233c400753fe5bcb6
   react-native-pager-view: 3ee7d4c7697fb3ef788346e834a60cca97ed8540
   react-native-pinchable: b4381b0807d15c12b14bfacd927128f52d96f0f1
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457

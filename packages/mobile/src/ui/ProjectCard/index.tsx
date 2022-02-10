@@ -3,9 +3,7 @@ import { useFollowProjectMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import Image from 'ui/Image'
 import Touchable from 'ui/Touchable'
-import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './styles'
-
-const height = 190
+import { Base, Overlay, Content, Info, ProjectName, Followers, Button, height } from './styles'
 
 function ProjectCard({ onPress, onFollow, project, style }) {
   const { t } = useTranslation('project-card')
