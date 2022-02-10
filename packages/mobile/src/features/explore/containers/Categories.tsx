@@ -42,6 +42,7 @@ function Categories({ id, title }) {
         initialNumToRender={4}
         data={edges}
         refetch={refetch}
+        isFetching={edges && isFetching}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
         hasNextPage={hasNextPage}

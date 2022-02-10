@@ -225,7 +225,7 @@ function Post({ post, withoutTitle, disableComments, withoutCollections, padding
 
   const navigateToUser = useCallback(() => {
     navigate(SCREENS.USER, {
-      user: post.user,
+      user: { ...post.user, havePost: true }, // NOTE: Used to show right skeleton
     })
   }, [post])
 

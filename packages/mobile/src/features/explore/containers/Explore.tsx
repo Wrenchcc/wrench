@@ -106,6 +106,7 @@ function Explore() {
         refetch={handleRefetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
+        isFetching={edges && isFetching}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />

@@ -4,6 +4,7 @@ import { usePaginatedQuery, UserFollowingProjectsDocument } from '@wrench/common
 import { useNavigation, SCREENS } from 'navigation'
 import { InfiniteList } from 'ui'
 import { Title, Description, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
+import Skeleton from './Skeleton'
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
@@ -32,6 +33,8 @@ function FollowingProjects({ user }) {
     return <ProjectCard project={item.node} onPress={onPress} />
   }
 
+  const ListEmptyComponent = isFetching && <Skeleton />
+
   return (
     <>
       <Title>{t('title')}</Title>
@@ -40,8 +43,9 @@ function FollowingProjects({ user }) {
       <InfiniteList
         data={edges}
         fetchMore={fetchMore}
-        isFetching={isFetching}
+        isFetching={edges && isFetching}
         hasNextPage={hasNextPage}
+        ListEmptyComponent={ListEmptyComponent}
         horizontal
         directionalLockEnabled
         showsHorizontalScrollIndicator={false}

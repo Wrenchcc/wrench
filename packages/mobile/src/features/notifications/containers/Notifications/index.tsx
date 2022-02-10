@@ -37,7 +37,6 @@ function Notifications() {
       },
       update: (cache) => {
         const data = cache.readQuery({ query: NotificationsDocument })
-
         const edges = data.notifications.edges.filter((edge) => edge.node.id !== id)
 
         cache.writeQuery({
@@ -149,6 +148,7 @@ function Notifications() {
         refetch={onRefresh}
         fetchMore={fetchMore}
         isRefetching={isRefetchingLocal}
+        isFetching={edges && isFetching}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />

@@ -57,6 +57,13 @@ function SearchLocation({ iconLeft, onPress, autoFocus = false }) {
     )
   }
 
+  const ListFooterComponent =
+    isFetching && searchTerm.length !== 0 ? (
+      <SearchingFor query={searchTerm} />
+    ) : (
+      searchTerm.length > 0 && !results.length && <NoResults />
+    )
+
   return (
     <Base>
       <Header>
@@ -84,13 +91,7 @@ function SearchLocation({ iconLeft, onPress, autoFocus = false }) {
         renderItem={renderItem}
         keyboardDismissMode="on-drag"
         keyboardShouldPersistTaps="always"
-        ListFooterComponent={
-          isFetching && searchTerm.length !== 0 ? (
-            <SearchingFor query={searchTerm} />
-          ) : (
-            searchTerm.length > 0 && !results.length && <NoResults />
-          )
-        }
+        ListFooterComponent={ListFooterComponent}
       />
 
       {!searchTerm.length && <Footer />}

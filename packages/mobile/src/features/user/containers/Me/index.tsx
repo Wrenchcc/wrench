@@ -122,6 +122,7 @@ function Me() {
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
+        isFetching={edges && isFetching}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />

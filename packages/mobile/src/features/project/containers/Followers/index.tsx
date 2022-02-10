@@ -23,8 +23,7 @@ function Followers({ id }) {
     },
   })
 
-  const ListEmptyComponent =
-    isFetching && !edges ? <UserSkeletonList marginTop={140} /> : <NoResults />
+  const ListEmptyComponent = isFetching ? <UserSkeletonList /> : <NoResults />
 
   return (
     <Page headerTitle={t('title')} disableAnimation>
@@ -35,7 +34,7 @@ function Followers({ id }) {
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
-        isFetching={isFetching}
+        isFetching={edges && isFetching}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />

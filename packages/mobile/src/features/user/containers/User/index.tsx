@@ -14,6 +14,7 @@ import { showToast } from 'navigation/banner'
 import FollowingProjects from 'features/user/components/FollowingProjects'
 import Header from 'features/user/components/Header'
 import UserProjects from 'features/user/components/UserProjects'
+import UserProjectSkeleton from 'features/user/components/UserProjects/Skeleton'
 import PostSkeleton from 'components/Post/Skeleton'
 import { share } from 'images'
 
@@ -33,7 +34,7 @@ function User({ user: initialUserData }) {
     user: initialUserData,
   })(UserDocument, {
     variables: {
-      username: initialUserData.username,
+      username: initialUserData?.username,
     },
   })
 
@@ -96,18 +97,41 @@ function User({ user: initialUserData }) {
       </>
     )
   )
+  const moreThanOneProject = initialUserData?.projectCount > 1
+  const haveProject = initialUserData?.projectCount
+  const havePost = initialUserData?.havePost
 
-  const ListEmptyComponent =
-    isFetching && !isRefetching ? (
-      <PostSkeleton />
-    ) : (
-      user && !error && <FollowingProjects user={user} />
-    )
+  const SkeletonComponent = () => {
+    if (moreThanOneProject) {
+      return (
+        <>
+          <UserProjectSkeleton />
+          <PostSkeleton />
+        </>
+      )
+    }
+
+    if (havePost) {
+      return <PostSkeleton />
+    }
+
+    if (!haveProject) {
+      return null
+    }
+
+    return <PostSkeleton />
+  }
+
+  const ListEmptyComponent = isFetching ? (
+    <SkeletonComponent />
+  ) : (
+    user && !error && <FollowingProjects user={user} />
+  )
 
   const headerRight = <Icon source={share} onPress={handleActionSheet} />
 
   return (
-    <Page headerTitle={user.fullName} headerRight={headerRight}>
+    <Page headerTitle={user?.fullName} headerRight={headerRight}>
       <FlatList
         initialNumToRender={1}
         spacingSeparator
@@ -117,6 +141,7 @@ function User({ user: initialUserData }) {
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
+        isFetching={edges && isFetching}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />

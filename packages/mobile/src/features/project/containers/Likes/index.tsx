@@ -34,7 +34,7 @@ function Sparks({ id }) {
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
-        isFetching={isFetching}
+        isFetching={edges && isFetching}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />

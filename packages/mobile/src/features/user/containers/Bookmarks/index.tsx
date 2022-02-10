@@ -19,17 +19,19 @@ function Bookmarks() {
     refetch,
   } = usePaginatedQuery(['bookmarks'])(BookmarksDocument)
 
+  const ListEmptyComponent = (
+    <Base>
+      <Title>{t('title')}</Title>
+      <Description>{t('description')}</Description>
+    </Base>
+  )
+
   return (
     <Page headerTitle={t('headerTitle')} disableAnimation>
       <FlatList
         initialNumToRender={2}
         spacingSeparator
-        ListEmptyComponent={
-          <Base>
-            <Title>{t('title')}</Title>
-            <Description>{t('description')}</Description>
-          </Base>
-        }
+        ListEmptyComponent={ListEmptyComponent}
         data={edges}
         refetch={refetch}
         fetchMore={fetchMore}

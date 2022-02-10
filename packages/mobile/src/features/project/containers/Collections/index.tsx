@@ -79,6 +79,7 @@ function Collections({ id, name, projectId, isOwner, projectSlug, slug }) {
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
+        isFetching={edges && isFetching}
         hasNextPage={hasNextPage}
       />
     </Page>
