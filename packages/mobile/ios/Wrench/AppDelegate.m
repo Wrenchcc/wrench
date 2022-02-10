@@ -21,6 +21,7 @@
     [FIRApp configure];
   }
 
+  [FBSDKApplicationDelegate.sharedInstance initializeSDK];
   [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
 
   // Register WebP format support
@@ -31,7 +32,6 @@
   [super application:application didFinishLaunchingWithOptions:launchOptions];
 
   [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
-  [FBSDKApplicationDelegate.sharedInstance initializeSDK];
   [RNSplashScreen show];
 
   return YES;
