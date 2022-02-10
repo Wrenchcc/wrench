@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react'
+import { Alert } from 'react-native'
 import { useAuthenticateFacebookMutation } from '@wrench/common'
 import { useMMKVString } from 'utils/storage'
 import { setTokens } from 'utils/storage/auth'
@@ -45,6 +46,12 @@ function Facebook() {
         await AppNavigation(!data.user.interestedIn)
       }
     } catch (err) {
+      Alert.alert('Error', `We're sorry, but something went wrong. Please try again.`, [
+        {
+          text: 'Dismiss',
+          style: 'cancel',
+        },
+      ])
       logError(err)
     }
   }, [])

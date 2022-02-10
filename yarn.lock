@@ -20136,10 +20136,10 @@ react-native-mmkv@^2.1.0:
   resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-2.1.0.tgz#07fba18e6220a39bccfcff9b478d67801a17650b"
   integrity sha512-dgX6RguKmipDmpmr11Zoz5CbuZVzInME2yAjOHw8jPnsGJNy33ZUEqHVxS6IZI5hpg2kmA5Gq91OSLQ8y7bnqw==
 
-react-native-navigation@^7.25.2:
-  version "7.25.2"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.25.2.tgz#3b36399dfe53938b9fefe796663ab347f990ef5d"
-  integrity sha512-QSOTLe8QIYsBE7Y5J9zzgNe3OMNC3bl6TXx0IiY5zTlsGewFdBpCY+R2Cj6Na/ME0qpNGuxo1E6QmBcjQnjqow==
+react-native-navigation@^7.25.3:
+  version "7.25.3"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.25.3.tgz#1ab5e9b9612bbed9f768ab7a5108f295b1963b5a"
+  integrity sha512-fRmBOfxfS86LrhpTkDXV36VWDwK565zxiWgVganmcmmOWvgfBWllO6fINeKQ11p/Wf7/bpEwLPgXCzZDWGzIyQ==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"

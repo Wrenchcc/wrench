@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { useColorScheme } from 'react-native'
+import { useColorScheme, Alert } from 'react-native'
 import { useAuthenticateAppleMutation } from '@wrench/common'
 import { AppNavigation } from 'navigation'
 import { useMMKVString } from 'utils/storage'
@@ -9,6 +9,7 @@ import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
 import { SIGN_IN_PROVIDERS } from 'utils/enums'
 import { getCurrentUser } from 'gql'
 import { setTokens } from 'utils/storage/auth'
+import { logError } from 'utils/sentry'
 
 function Apple({ black }) {
   const [authenticate] = useAuthenticateAppleMutation()
@@ -45,7 +46,18 @@ function Apple({ black }) {
       if (data.user) {
         await AppNavigation(!data.user.interestedIn)
       }
-    } catch {}
+    } catch (err) {
+      if (err.code === 'ERR_APPLE_AUTHENTICATION_REQUEST_FAILED') {
+        Alert.alert('Error', `We're sorry, but something went wrong. Please try again.`, [
+          {
+            text: 'Dismiss',
+            style: 'cancel',
+          },
+        ])
+
+        logError(err)
+      }
+    }
   }, [])
 
   const buttonStyle =
