@@ -7,7 +7,6 @@ function Collection({
   id,
   name,
   projectId,
-  projectSlug,
   slug,
   isOwner,
   image,
@@ -34,7 +33,6 @@ function Collection({
         name,
         id,
         projectId,
-        projectSlug,
         slug,
         isOwner,
       })

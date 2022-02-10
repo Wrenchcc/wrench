@@ -2,8 +2,6 @@ import styled from 'styled-components'
 import UiFollowers from 'ui/Followers'
 
 export const Base = styled.View`
-  padding-left: ${(props) => (props.spacingHorizontal ? 20 : 0)}px;
-  padding-right: ${(props) => (props.spacingHorizontal ? 20 : 0)}px;
   margin-bottom: 50px;
 `
 
@@ -22,10 +20,6 @@ export const Meta = styled.View`
   flex-direction: row;
   margin-top: 15px;
   margin-bottom: 35px;
-`
-
-export const Spacing = styled.View`
-  height: 30px;
 `
 
 export const OpenSimilar = styled.View`

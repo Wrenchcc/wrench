@@ -31,7 +31,7 @@ exports.default = (function (path, initialData) { return function (query, option
         data: __assign(__assign(__assign(__assign({}, initialData), data), result), { edges: (0, rambda_1.pathOr)(null, ['edges'], result) }),
         fetchMore: handleFetchMore,
         hasNextPage: (0, rambda_1.pathOr)(false, ['pageInfo', 'hasNextPage'], result),
-        isFetching: loading || networkStatus === 3,
+        isFetching: loading,
         isRefetching: networkStatus === client_1.NetworkStatus.refetch,
     };
 }; });

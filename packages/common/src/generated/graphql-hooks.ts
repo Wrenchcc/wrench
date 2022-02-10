@@ -170,14 +170,10 @@ export type EditCollectionInput = {
   name?: InputMaybe<Scalars['String']>
 }
 
-export type EditFileInput = {
-  id?: InputMaybe<Scalars['String']>
-}
-
 export type EditPostInput = {
   caption?: InputMaybe<Scalars['String']>
   collectionId?: InputMaybe<Scalars['ID']>
-  files?: InputMaybe<Array<InputMaybe<EditFileInput>>>
+  files?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
 export type EditUserInput = {

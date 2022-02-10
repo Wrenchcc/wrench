@@ -78,8 +78,6 @@ function User({ user: initialUserData }) {
     )
   }, [showActionSheetWithOptions])
 
-  const hasPosts = edges && edges.length > 0
-
   const ListHeaderComponent = error ? (
     <Toast content={t('notfound')} />
   ) : (
@@ -89,13 +87,12 @@ function User({ user: initialUserData }) {
           firstName={user.firstName}
           lastName={user.lastName}
           avatarUrl={user.avatarUrl}
-          spacingHorizontal={!hasPosts}
           bio={user.bio}
           website={user.website}
           location={user.location}
         />
 
-        {user.projects && <UserProjects projects={user.projects} spacingHorizontal={!hasPosts} />}
+        {user.projects && <UserProjects projects={user.projects} />}
       </>
     )
   )
@@ -107,16 +104,13 @@ function User({ user: initialUserData }) {
       user && !error && <FollowingProjects user={user} />
     )
 
+  const headerRight = <Icon source={share} onPress={handleActionSheet} />
+
   return (
-    <Page
-      headerTitle={user.fullName}
-      headerRight={<Icon source={share} onPress={handleActionSheet} />}
-    >
+    <Page headerTitle={user.fullName} headerRight={headerRight}>
       <FlatList
         initialNumToRender={1}
         spacingSeparator
-        paddingHorizontal={hasPosts ? 20 : 0}
-        contentContainerStyle={{ flexGrow: 1 }}
         ListHeaderComponent={ListHeaderComponent}
         ListEmptyComponent={ListEmptyComponent}
         data={edges}

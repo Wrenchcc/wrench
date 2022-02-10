@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native'
 import { useProjectTypesQuery } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
-import CategoriesSkeleton from './Skeleton'
+import Skeleton from './Skeleton'
 import { Base, Wrapper } from './styles'
 
 function ProjectTypes({ visible }) {
@@ -35,7 +35,7 @@ function ProjectTypes({ visible }) {
   if (!typesData?.types && loadingTypes) {
     return (
       <Base>
-        <CategoriesSkeleton />
+        <Skeleton />
       </Base>
     )
   }

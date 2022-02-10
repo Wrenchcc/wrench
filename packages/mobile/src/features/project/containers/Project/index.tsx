@@ -114,9 +114,9 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
       !hasPosts && <EmptyState type={emptyState} params={{ id: project?.id }} />
     )
 
-  const ListHeaderComponent = project?.title && (
-    <ProjectHeader project={project} spacingHorizontal={!hasPosts} />
-  )
+  const ListHeaderComponent = useCallback(() => {
+    return <ProjectHeader project={project} />
+  }, [])
 
   const headerRight = isOwner ? (
     <Edit project={project} onDeleteCallback={navigateBack} />
@@ -129,8 +129,6 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
       <FlatList
         initialNumToRender={2}
         spacingSeparator
-        paddingHorizontal={hasPosts ? 20 : 0}
-        contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={ListEmptyComponent}
         ListHeaderComponent={ListHeaderComponent}
         data={reorderedEdges}

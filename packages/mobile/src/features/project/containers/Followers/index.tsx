@@ -5,6 +5,8 @@ import { FlatList, Page } from 'navigation'
 import { User, NoResults } from 'ui'
 import UserSkeletonList from 'ui/User/SkeletonList'
 
+const renderItem = ({ item }) => <User data={item.node} />
+
 function Followers({ id }) {
   const { t } = useTranslation('followers')
 
@@ -21,14 +23,13 @@ function Followers({ id }) {
     },
   })
 
-  const renderItem = ({ item }) => <User data={item.node} />
+  const ListEmptyComponent =
+    isFetching && !edges ? <UserSkeletonList marginTop={140} /> : <NoResults />
 
-  const content =
-    isFetching && !edges ? (
-      <UserSkeletonList marginTop={140} />
-    ) : (
+  return (
+    <Page headerTitle={t('title')} disableAnimation>
       <FlatList
-        ListEmptyComponent={<NoResults />}
+        ListEmptyComponent={ListEmptyComponent}
         borderSeparator
         data={edges}
         refetch={refetch}
@@ -38,11 +39,6 @@ function Followers({ id }) {
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />
-    )
-
-  return (
-    <Page headerTitle={t('title')} disableAnimation>
-      {content}
     </Page>
   )
 }

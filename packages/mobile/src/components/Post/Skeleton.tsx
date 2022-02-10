@@ -8,9 +8,9 @@ const { width } = Dimensions.get('window')
 
 const GUTTER = 20
 
-export const PostSkeleton = ({ paddingHorizontal = GUTTER }) => {
+export const PostSkeleton = () => {
   return (
-    <View style={{ paddingHorizontal }}>
+    <>
       <Top>
         <Left>
           <Skeleton width={30} height={30} radius="round" />
@@ -34,7 +34,7 @@ export const PostSkeleton = ({ paddingHorizontal = GUTTER }) => {
           style={{ marginLeft: -GUTTER, marginRight: -GUTTER }}
         />
       </Content>
-    </View>
+    </>
   )
 }
 

@@ -6,7 +6,7 @@ const COUNT = 10
 
 const SkeletonList = (props) => {
   return (
-    <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }} {...props}>
+    <ScrollView {...props}>
       {new Array(COUNT).fill({}).map((_, index) => (
         <UserSkeleton key={index} />
       ))}

@@ -23,12 +23,12 @@ function Sparks({ id }) {
     },
   })
 
-  const content =
-    isFetching && !edges ? (
-      <UserSkeletonList />
-    ) : (
+  const ListEmptyComponent = isFetching && !edges ? <UserSkeletonList /> : <NoResults />
+
+  return (
+    <Page headerTitle={t('title')} disableAnimation>
       <FlatList
-        ListEmptyComponent={<NoResults />}
+        ListEmptyComponent={ListEmptyComponent}
         borderSeparator
         data={edges}
         refetch={refetch}
@@ -38,11 +38,6 @@ function Sparks({ id }) {
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />
-    )
-
-  return (
-    <Page headerTitle={t('title')} disableAnimation>
-      {content}
     </Page>
   )
 }

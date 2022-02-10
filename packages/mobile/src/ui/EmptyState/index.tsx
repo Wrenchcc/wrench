@@ -56,13 +56,13 @@ const showButton = (type) => {
 // t('notifications.title')
 // t('notifications.description')
 
-function EmptyState({ type = TYPES.PROJECT, params = {} }) {
+function EmptyState({ type = TYPES.PROJECT, params = {}, style = {} }) {
   const { t } = useTranslation('empty-state')
   const { showModal } = useNavigation()
   const handleNavigation = useCallback(() => onPressAction(type, showModal, params), [type])
 
   return (
-    <Base>
+    <Base style={style}>
       <Title>{t(`${type}.title`)}</Title>
       <Description color="neutral">{t(`${type}.description`)}</Description>
       {showButton(type) && (

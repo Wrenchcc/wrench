@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { usePaginatedQuery, UserFollowingProjectsDocument } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { InfiniteList } from 'ui'
-import { Base, Title, Description, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
+import { Title, Description, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
@@ -33,7 +33,7 @@ function FollowingProjects({ user }) {
   }
 
   return (
-    <Base>
+    <>
       <Title>{t('title')}</Title>
       <Description>{t('description', { name: user.firstName })}</Description>
 
@@ -56,7 +56,7 @@ function FollowingProjects({ user }) {
           marginRight: -GUTTER,
         }}
       />
-    </Base>
+    </>
   )
 }
 

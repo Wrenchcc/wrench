@@ -26,11 +26,13 @@ function EditPost({ post }) {
   const handleSave = useCallback(async () => {
     setIsSaving(true)
 
+    console.log(files)
+
     await editPost({
       variables: {
         id: post.id,
         input: {
-          collectionId: post?.collection.id,
+          collectionId: post?.collection?.id,
           caption,
           files: files.edges.map(({ node }) => node.id),
         },

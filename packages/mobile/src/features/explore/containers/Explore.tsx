@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 import { AppState, View, Dimensions } from 'react-native'
-import { usePaginatedQuery, PostsDocument, useSimilarProjectsQuery } from '@wrench/common'
+import { usePaginatedLazyQuery, PostsDocument, useSimilarProjectsQuery } from '@wrench/common'
 import { useReactiveVar, store } from 'gql'
 import { isAndroid as _isAndroid } from 'utils/platform'
 import {
@@ -19,7 +19,7 @@ import ProjectTypes from 'components/ProjectTypes'
 import Popular from 'features/explore/components/Popular'
 import ProjectsRow from 'features/project/components/SimilarProjects'
 import * as Spacing from 'ui/Spacing'
-import PostSkeleton from 'components/Post/Skeleton'
+import Skeleton from 'components/Post/Skeleton'
 
 const { width } = Dimensions.get('window')
 
@@ -59,13 +59,14 @@ function Explore() {
   useScrollToTop(SCREENS.EXPLORE, !searchActive)
 
   const {
+    loadData,
     data: { edges },
     isFetching,
     fetchMore,
     isRefetching,
     hasNextPage,
     refetch,
-  } = usePaginatedQuery(['posts'])(PostsDocument)
+  } = usePaginatedLazyQuery(['posts'])(PostsDocument)
 
   const handleRefetch = useCallback(() => {
     refetch()
@@ -73,8 +74,12 @@ function Explore() {
 
   const handleChange = useCallback((state) => {
     if (state === 'active') {
-      handleRefetch()
+      loadData()
     }
+  }, [])
+
+  useEffect(() => {
+    loadData()
   }, [])
 
   useEffect(() => {
@@ -82,7 +87,7 @@ function Explore() {
     return () => handler.remove()
   }, [])
 
-  const ListEmptyComponent = isFetching && !isRefetching && <PostSkeleton paddingHorizontal={0} />
+  const ListEmptyComponent = isFetching && !isRefetching && <Skeleton />
 
   const HeaderComponent = (
     <Header headerLeft={<SearchBar />} stickyComponent={<ProjectTypes visible={!searchActive} />} />

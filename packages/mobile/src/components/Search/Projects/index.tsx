@@ -79,6 +79,18 @@ function Projects() {
     return <ProjectCard project={item.node} onPress={onPress} />
   }
 
+  const ListHeaderComponent = !query && recent.length > 0 && (
+    <Header>
+      <Text medium>{t('recent')}</Text>
+      <Text fontSize={14} onPress={handleRemove} medium>
+        {t('clear')}
+      </Text>
+    </Header>
+  )
+
+  const ListFooterComponent =
+    isFetching && !edges ? <SearchingFor query={query} /> : hasNextPage && query && <Loader />
+
   return (
     <InfiniteList
       borderSeparator
@@ -92,20 +104,8 @@ function Projects() {
       refetch={query && refetch}
       renderItem={renderItem}
       defaultPadding
-      ListHeaderComponent={
-        !query &&
-        recent.length > 0 && (
-          <Header>
-            <Text medium>{t('recent')}</Text>
-            <Text fontSize={14} onPress={handleRemove} medium>
-              {t('clear')}
-            </Text>
-          </Header>
-        )
-      }
-      ListFooterComponent={
-        isFetching && !edges ? <SearchingFor query={query} /> : hasNextPage && query && <Loader />
-      }
+      ListHeaderComponent={ListHeaderComponent}
+      ListFooterComponent={ListFooterComponent}
     />
   )
 }

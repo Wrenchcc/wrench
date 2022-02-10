@@ -1,6 +1,7 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { Navigation } from 'react-native-navigation'
 import {
-  usePaginatedQuery,
+  usePaginatedLazyQuery,
   NotificationsDocument,
   UnreadNotificationsDocument,
   useDeleteNotificationMutation,
@@ -14,12 +15,15 @@ import {
   withScrollableContext,
   SCREENS,
   useNavigation,
+  TABS_INDEX,
 } from 'navigation'
 import { Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import NotificationSkeletonList from 'ui/Notification/SkeletonList'
 
 function Notifications() {
+  const [isRefetchingLocal, setRefresh] = useState(false)
+  const [tabPressed, setTabPressed] = useState(false)
   const [markAllNotificationsSeen] = useMarkAllNotificationsSeenMutation()
   const [deleteNotification] = useDeleteNotificationMutation()
   const { hideNotificationBadge } = useNavigation()
@@ -51,21 +55,38 @@ function Notifications() {
   }, [])
 
   const {
+    loadData,
     data: { edges },
     isFetching,
     fetchMore,
     isRefetching,
     hasNextPage,
     refetch,
-  } = usePaginatedQuery(['notifications'])(NotificationsDocument)
+  } = usePaginatedLazyQuery(['notifications'])(NotificationsDocument, {
+    onCompleted: () => setTabPressed(false), // NOTE: This is a hack because refetch is triggered on loadData
+  })
 
   useEffect(() => {
-    async function getNotifications() {
+    if (!tabPressed) {
+      setRefresh(!!isRefetching)
+    }
+  }, [isRefetching, tabPressed])
+
+  // NOTE: Without this hack the refresh jumps around
+  const onRefresh = useCallback(() => {
+    if (refetch) {
+      setRefresh(true)
+      refetch()
+    }
+  }, [refetch])
+
+  useEffect(() => {
+    async function handleNotificationBadge() {
       const unreadCount = await getUnreadNotifications({
         fetchPolicy: 'cache-only',
       })
 
-      if (unreadCount > 0) {
+      if (unreadCount) {
         markAllNotificationsSeen({
           update: (cache) => {
             cache.writeQuery({
@@ -81,9 +102,29 @@ function Notifications() {
       }
 
       hideNotificationBadge()
+
+      return unreadCount
     }
 
-    getNotifications()
+    // NOTE: on first mount
+    // registerBottomTabPressedListener is not triggered on render
+    handleNotificationBadge()
+    loadData()
+
+    const bottomTabPressedListener = Navigation.events().registerBottomTabPressedListener(
+      async ({ tabIndex }) => {
+        if (tabIndex === TABS_INDEX.NOTIFICATIONS) {
+          const unreadCount = await handleNotificationBadge()
+          if (unreadCount) {
+            // NOTE: Get latest data
+            setTabPressed(true)
+            loadData()
+          }
+        }
+      }
+    )
+
+    return () => bottomTabPressedListener.remove()
   }, [])
 
   const renderItem = ({ item }) => (
@@ -91,19 +132,23 @@ function Notifications() {
   )
 
   const ListEmptyComponent =
-    isFetching && !edges ? <NotificationSkeletonList /> : <EmptyState type={TYPES.NOTIFICATIONS} />
+    isFetching && !edges ? (
+      <NotificationSkeletonList />
+    ) : (
+      <EmptyState type={TYPES.NOTIFICATIONS} style={{ paddingHorizontal: 20, marginTop: -100 }} />
+    )
 
   return (
     <Layout headerTitleKey="notifications">
       <FlatList
         paddingHorizontal={0}
-        contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={ListEmptyComponent}
         borderSeparator
+        contentContainerStyle={{ flexGrow: 1 }}
         data={edges}
-        refetch={refetch}
+        refetch={onRefresh}
         fetchMore={fetchMore}
-        isRefetching={isRefetching}
+        isRefetching={isRefetchingLocal}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />

@@ -1,19 +1,12 @@
 import React from 'react'
+import { View } from 'react-native'
 import { usePaginatedQuery, ProjectCollectionsDocument } from '@wrench/common'
-import { InfiniteList } from 'ui'
+import { InfiniteList, Text } from 'ui'
 import AddCollection from 'components/AddCollection'
-import CollectionsSkelleton from './Skeleton'
+import Skelleton from './Skeleton'
 import { Collection, GUTTER } from './styles'
 
-function Collections({
-  isOwner,
-  projectId,
-  projectSlug,
-  onPress,
-  onSave,
-  selectedId,
-  disableModal = false,
-}) {
+function Collections({ isOwner, projectId, onPress, onSave, selectedId, disableModal = false }) {
   const {
     data: { edges },
     isFetching,
@@ -26,15 +19,6 @@ function Collections({
     },
   })
 
-  let content = (
-    <CollectionsSkelleton
-      isLoading={isFetching}
-      empty={!isFetching && isOwner && !edges?.length}
-      isOwner={isOwner}
-      projectId={projectId}
-    />
-  )
-
   const renderItem = ({ item: { node }, index }) => (
     <Collection
       image={node.cover}
@@ -42,7 +26,6 @@ function Collections({
       key={node.id}
       last={index === edges && edges.length - 1}
       projectId={projectId}
-      projectSlug={projectSlug}
       id={node.id}
       slug={node.slug}
       selected={node.id === selectedId}
@@ -52,73 +35,57 @@ function Collections({
     />
   )
 
-  if (!edges?.length && !isOwner) {
-    content = null
-  }
+  const ListHeaderComponent = isOwner && (
+    <AddCollection style={{ marginRight: 10 }} projectId={projectId} disableModal={disableModal} />
+  )
 
-  if (edges?.length || (edges?.length && isOwner)) {
-    content = (
-      <InfiniteList
-        initialNumToRender={8}
-        data={edges}
-        horizontal
-        directionalLockEnabled
-        showsHorizontalScrollIndicator={false}
-        ListHeaderComponent={
-          isOwner && (
-            <AddCollection
-              style={{ marginRight: 10 }}
-              projectId={projectId}
-              disableModal={disableModal}
-            />
-          )
-        }
-        fetchMore={fetchMore}
-        isFetching={isFetching}
-        loaderInset={10}
-        hasNextPage={hasNextPage}
-        renderItem={renderItem}
-        showsVerticalScrollIndicator={false}
-        style={{
-          marginLeft: -GUTTER,
-          marginRight: -GUTTER,
-        }}
-      />
+  const ListEmptyComponent = isFetching && !edges && <Skelleton />
+
+  // TODO: Translate
+  if (!isFetching && isOwner && !edges) {
+    return (
+      <View style={{ marginBottom: 50 }}>
+        <AddCollection
+          style={{ marginRight: 10 }}
+          projectId={projectId}
+          disableModal={disableModal}
+        />
+        <View style={{ marginTop: 40 }}>
+          <Text medium style={{ marginBottom: 5 }}>
+            Collections
+          </Text>
+          <Text fontSize={15}>
+            Keep better track of your progress and add your posts to collections
+          </Text>
+        </View>
+      </View>
     )
   }
 
-  if (edges?.length || (edges?.length && !isOwner)) {
-    content = (
-      <InfiniteList
-        initialNumToRender={8}
-        data={edges}
-        horizontal
-        directionalLockEnabled
-        showsHorizontalScrollIndicator={false}
-        ListHeaderComponent={
-          isOwner && (
-            <AddCollection
-              style={{ marginRight: 10 }}
-              projectId={projectId}
-              disableModal={disableModal}
-            />
-          )
-        }
-        fetchMore={fetchMore}
-        isFetching={isFetching}
-        loaderInset={10}
-        hasNextPage={hasNextPage}
-        renderItem={renderItem}
-        showsVerticalScrollIndicator={false}
-        style={{
-          marginLeft: -GUTTER,
-          marginRight: -GUTTER,
-        }}
-      />
-    )
+  if (!isOwner && !edges) {
+    return null
   }
 
-  return content
+  return (
+    <InfiniteList
+      ListEmptyComponent={ListEmptyComponent}
+      initialNumToRender={7}
+      data={edges}
+      horizontal
+      directionalLockEnabled
+      showsHorizontalScrollIndicator={false}
+      ListHeaderComponent={ListHeaderComponent}
+      fetchMore={fetchMore}
+      loaderInset={10}
+      hasNextPage={hasNextPage}
+      renderItem={renderItem}
+      showsVerticalScrollIndicator={false}
+      style={{
+        marginLeft: -GUTTER,
+        marginRight: -GUTTER,
+      }}
+    />
+  )
 }
 
-export default Collections
+export default React.memo(Collections)

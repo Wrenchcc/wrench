@@ -7,7 +7,7 @@ import { usePaginatedLazyQuery, SearchHashtagsDocument } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { RECENT_SEARCHES_HASHTAGS } from 'utils/storage/constants'
 import { InfiniteList, NoResults, SearchingFor, Loader, Text, Hashtag } from 'ui'
-import HashtagSkeletonList from 'ui/Hashtag/SkeletonList'
+import Skeleton from 'ui/Hashtag/SkeletonList'
 import { Header } from '../styles'
 
 const MAX_ITEMS = 4
@@ -79,40 +79,42 @@ function Hashtags() {
     return <Hashtag {...item.node} onPress={onPress} />
   }
 
-  const content =
+  const ListEmptyComponent =
     isFetching && !edges ? (
-      <HashtagSkeletonList contentInset={0} marginTop={15} />
+      <Skeleton contentInset={0} marginTop={15} />
     ) : (
-      <InfiniteList
-        borderSeparator
-        initialNumToRender={10}
-        ListEmptyComponent={!isFetching && query.length > 1 && <NoResults />}
-        data={query ? edges : recent}
-        fetchMore={fetchMore}
-        hasNextPage={isFetching ? false : hasNextPage}
-        isFetching={isFetching && query.length === 0}
-        isRefetching={isRefetching}
-        refetch={query && refetch}
-        renderItem={renderItem}
-        defaultPadding
-        ListHeaderComponent={
-          !query &&
-          recent.length > 0 && (
-            <Header>
-              <Text medium>{t('recent')}</Text>
-              <Text fontSize={14} onPress={handleRemove} medium>
-                {t('clear')}
-              </Text>
-            </Header>
-          )
-        }
-        ListFooterComponent={
-          isFetching && !edges ? <SearchingFor query={query} /> : hasNextPage && query && <Loader />
-        }
-      />
+      !isFetching && query.length > 1 && <NoResults />
     )
 
-  return content
+  const ListHeaderComponent = !query && recent.length > 0 && (
+    <Header>
+      <Text medium>{t('recent')}</Text>
+      <Text fontSize={14} onPress={handleRemove} medium>
+        {t('clear')}
+      </Text>
+    </Header>
+  )
+
+  const ListFooterComponent =
+    isFetching && !edges ? <SearchingFor query={query} /> : hasNextPage && query && <Loader />
+
+  return (
+    <InfiniteList
+      borderSeparator
+      initialNumToRender={10}
+      ListEmptyComponent={ListEmptyComponent}
+      data={query ? edges : recent}
+      fetchMore={fetchMore}
+      hasNextPage={isFetching ? false : hasNextPage}
+      isFetching={isFetching && query.length === 0}
+      isRefetching={isRefetching}
+      refetch={query && refetch}
+      renderItem={renderItem}
+      defaultPadding
+      ListHeaderComponent={ListHeaderComponent}
+      ListFooterComponent={ListFooterComponent}
+    />
+  )
 }
 
 export default memo(Hashtags)

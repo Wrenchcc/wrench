@@ -40,7 +40,7 @@ export default (path, initialData?) => (query, options?) => {
     },
     fetchMore: handleFetchMore,
     hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], result),
-    isFetching: loading || networkStatus === 3,
+    isFetching: loading,
     isRefetching: networkStatus === NetworkStatus.refetch,
   }
 }

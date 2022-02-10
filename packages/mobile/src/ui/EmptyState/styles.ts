@@ -9,10 +9,7 @@ type BaseProps = {
 }
 export const Base = styled.View<BaseProps>`
   flex: 1;
-  background-color: ${(props) => props.theme.colors.placeholder};
   justify-content: center;
-  padding-left: 20px;
-  padding-right: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
 `

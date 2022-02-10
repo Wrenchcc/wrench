@@ -1,14 +1,15 @@
 import React, { useCallback, useState } from 'react'
 import { AnimatePresence } from 'moti'
 import { useSimilarProjectsLazyQuery, useFollowProjectMutation } from '@wrench/common'
+import * as Spacing from 'ui/Spacing'
 import { ActivityIndicator, Title, Follow, Icon, UserStack } from 'ui'
 import { arrowDown, arrowUp } from 'images'
 import { useNavigation, SCREENS } from 'navigation'
 import SimilarProjects from '../SimilarProjects'
 import Collections from '../Collections'
-import { Base, Meta, Actions, Followers, OpenSimilar, Spacing } from './styles'
+import { Base, Meta, Actions, Followers, OpenSimilar } from './styles'
 
-function ProjectHeader({ project, spacingHorizontal }) {
+function ProjectHeader({ project }) {
   const { navigate } = useNavigation()
   const [isShowingSimilarProjects, setIsShowingSimilarProjects] = useState(false)
 
@@ -79,9 +80,9 @@ function ProjectHeader({ project, spacingHorizontal }) {
   )
 
   return (
-    <Base spacingHorizontal={spacingHorizontal}>
+    <Base>
       <Title large numberOfLines={0}>
-        {project.title}
+        {project?.title}
       </Title>
 
       <Meta>
@@ -115,11 +116,11 @@ function ProjectHeader({ project, spacingHorizontal }) {
         )}
       </AnimatePresence>
 
-      {!isOwner && <Spacing />}
+      {!isOwner && <Spacing.Horizontally px={30} />}
 
-      <Collections isOwner={isOwner} projectId={project.id} projectSlug={project.slug} />
+      <Collections isOwner={isOwner} projectId={project.id} />
     </Base>
   )
 }
 
-export default ProjectHeader
+export default React.memo(ProjectHeader)

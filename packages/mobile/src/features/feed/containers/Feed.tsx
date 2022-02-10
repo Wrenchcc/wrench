@@ -17,7 +17,7 @@ import { ShowLatest } from 'ui'
 import * as Spacing from 'ui/Spacing'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import ProjectsRow from 'features/project/components/SimilarProjects'
-import PostSkeleton from 'components/Post/Skeleton'
+import Skeleton from 'components/Post/Skeleton'
 
 const { width } = Dimensions.get('window')
 
@@ -103,9 +103,9 @@ function Feed() {
   const ListEmptyComponent =
     isFetching && !isRefetching ? (
       <>
-        <PostSkeleton paddingHorizontal={0} />
+        <Skeleton />
         <Spacing.Horizontally px={50} />
-        <PostSkeleton paddingHorizontal={0} />
+        <Skeleton />
       </>
     ) : (
       <ProjectSuggestions />

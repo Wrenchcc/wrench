@@ -6,7 +6,7 @@ import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
 import { useReactiveVar, store } from 'gql'
 import { User, InfiniteList, NoResults, Loader, Text, Touchable } from 'ui'
 import { RECENT_SEARCHES_USERS } from 'utils/storage/constants'
-import UserSkeletonList from 'ui/User/SkeletonList'
+import Skeleton from 'ui/User/SkeletonList'
 import { Header } from '../styles'
 
 const MAX_ITEMS = 8
@@ -64,39 +64,44 @@ function Users() {
     storage.delete(RECENT_SEARCHES_USERS)
   }, [setRecent])
 
-  const content =
+  const renderItem = ({ item }) => <User data={item.node} onPress={handleSave} />
+
+  const ListEmptyComponent =
     isFetching && !edges ? (
-      <UserSkeletonList marginTop={15} />
+      <Skeleton marginTop={15} />
     ) : (
-      <InfiniteList
-        borderSeparator
-        ListEmptyComponent={!isFetching && query.length > 1 && <NoResults />}
-        data={query ? edges : recent}
-        fetchMore={fetchMore}
-        hasNextPage={isFetching ? false : hasNextPage}
-        isFetching={isFetching && query.length === 0}
-        isRefetching={isRefetching}
-        refetch={query && refetch}
-        renderItem={({ item }) => <User data={item.node} onPress={handleSave} />}
-        defaultPadding
-        ListHeaderComponent={
-          !query &&
-          recent.length > 0 && (
-            <Header>
-              <Text medium>{t('recent')}</Text>
-              <Touchable onPress={handleRemove}>
-                <Text fontSize={14} medium>
-                  {t('clear')}
-                </Text>
-              </Touchable>
-            </Header>
-          )
-        }
-        ListFooterComponent={hasNextPage && query && <Loader />}
-      />
+      !isFetching && query.length > 1 && <NoResults />
     )
 
-  return content
+  const ListHeaderComponent = !query && recent.length > 0 && (
+    <Header>
+      <Text medium>{t('recent')}</Text>
+      <Touchable onPress={handleRemove}>
+        <Text fontSize={14} medium>
+          {t('clear')}
+        </Text>
+      </Touchable>
+    </Header>
+  )
+
+  const ListFooterComponent = hasNextPage && query && <Loader />
+
+  return (
+    <InfiniteList
+      borderSeparator
+      ListEmptyComponent={ListEmptyComponent}
+      data={query ? edges : recent}
+      fetchMore={fetchMore}
+      hasNextPage={isFetching ? false : hasNextPage}
+      isFetching={isFetching && query.length === 0}
+      isRefetching={isRefetching}
+      refetch={query && refetch}
+      renderItem={renderItem}
+      defaultPadding
+      ListHeaderComponent={ListHeaderComponent}
+      ListFooterComponent={ListFooterComponent}
+    />
+  )
 }
 
 export default Users

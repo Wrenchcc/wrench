@@ -96,13 +96,12 @@ function Me() {
         firstName={user.firstName}
         lastName={user.lastName}
         avatarUrl={user.avatarUrl}
-        spacingHorizontal={!hasPosts}
         bio={user.bio}
         website={user.website}
         location={user.location}
       />
 
-      <UserProjects projects={user.projects} spacingHorizontal={!hasPosts} />
+      <UserProjects projects={user.projects} />
     </>
   )
 
@@ -117,8 +116,6 @@ function Me() {
       <FlatList
         initialNumToRender={1}
         spacingSeparator
-        paddingHorizontal={hasPosts ? 20 : 0}
-        contentContainerStyle={{ flexGrow: 1 }}
         ListHeaderComponent={ListHeaderComponent}
         ListEmptyComponent={ListEmptyComponent}
         data={edges}

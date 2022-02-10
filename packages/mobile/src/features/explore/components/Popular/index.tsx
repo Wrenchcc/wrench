@@ -5,11 +5,9 @@ import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { InfiniteList, Title } from 'ui'
 import { Header, Footer, Card, GUTTER, SNAP_INTERVAL } from './styles'
-import PopularSkeletonList from './SkeletonList'
+import Skeleton from './SkeletonList'
 
 function Popular() {
-  let content = <PopularSkeletonList />
-
   const { navigate } = useNavigation()
   const { t } = useTranslation('popular')
 
@@ -47,10 +45,17 @@ function Popular() {
     )
   }
 
-  if (edges) {
-    content = (
+  const ListEmptyComponent = isFetching && <Skeleton />
+
+  return (
+    <View style={{ height: 450 }}>
+      <Header>
+        <Title medium>{t('popular')}</Title>
+      </Header>
+
       <InfiniteList
         initialNumToRender={3}
+        ListEmptyComponent={ListEmptyComponent}
         data={edges}
         horizontal
         directionalLockEnabled
@@ -59,7 +64,6 @@ function Popular() {
         snapToInterval={SNAP_INTERVAL}
         snapToAlignment="start"
         fetchMore={fetchMore}
-        isFetching={isFetching}
         loaderInset={35}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
@@ -69,16 +73,6 @@ function Popular() {
           marginRight: -GUTTER,
         }}
       />
-    )
-  }
-
-  return (
-    <View style={{ height: 450 }}>
-      <Header>
-        <Title medium>{t('popular')}</Title>
-      </Header>
-
-      {content}
 
       <Footer>
         <Title medium>{t('recent')}</Title>

@@ -11,10 +11,7 @@ export const SkeletonList: React.FC = ({
   marginTop = 0,
 }) => {
   return (
-    <ScrollView
-      contentInset={{ top: contentInset }}
-      contentContainerStyle={{ paddingHorizontal: 20, marginTop }}
-    >
+    <ScrollView contentInset={{ top: contentInset }} contentContainerStyle={{ marginTop }}>
       {new Array(COUNT).fill({}).map((_, index) => (
         <HashtagSkeleton key={index} />
       ))}

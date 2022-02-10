@@ -31,52 +31,56 @@ function SearchModel({ query, onPress }) {
     return null
   }
 
+  const renderItem = ({ item }) => (
+    <Touchable
+      onPress={() => onPress(item.node)}
+      key={item.node.id}
+      style={{
+        height: 70,
+        justifyContent: 'center',
+      }}
+    >
+      <Text medium style={{ marginBottom: 3 }}>{`${item.node.brand.name} ${item.node.model}`}</Text>
+      <Text fontSize={15} color="accent">
+        {item.node.year}
+      </Text>
+    </Touchable>
+  )
+
   const bottom = keyboardHeight + INPUT_HEIGHT
 
-  const content =
+  const ListEmptyComponent =
     isFetching && !edges ? (
       <HashtagSkeletonList contentInset={0} marginTop={15} />
     ) : (
+      !isFetching && query.length > 1 && <NoResults />
+    )
+
+  const ListFooterComponent =
+    isFetching && !edges ? (
+      <SearchingFor query={query} />
+    ) : (
+      hasNextPage && query && isFetching && <Loader />
+    )
+
+  return (
+    <Base bottom={bottom}>
       <InfiniteList
         borderSeparator
         initialNumToRender={8}
         keyboard
         keyboardDismissMode="none"
-        ListEmptyComponent={!isFetching && query.length > 1 && <NoResults />}
+        ListEmptyComponent={ListEmptyComponent}
         data={edges}
         fetchMore={fetchMore}
         hasNextPage={isFetching ? false : hasNextPage}
         isFetching={isFetching && query.length === 0}
-        renderItem={({ item }) => (
-          <Touchable
-            onPress={() => onPress(item.node)}
-            key={item.node.id}
-            style={{
-              height: 70,
-              justifyContent: 'center',
-            }}
-          >
-            <Text
-              medium
-              style={{ marginBottom: 3 }}
-            >{`${item.node.brand.name} ${item.node.model}`}</Text>
-            <Text fontSize={15} color="accent">
-              {item.node.year}
-            </Text>
-          </Touchable>
-        )}
+        renderItem={renderItem}
         defaultPadding
-        ListFooterComponent={
-          isFetching && !edges ? (
-            <SearchingFor query={query} />
-          ) : (
-            hasNextPage && query && isFetching && <Loader />
-          )
-        }
+        ListFooterComponent={ListFooterComponent}
       />
-    )
-
-  return <Base bottom={bottom}>{content}</Base>
+    </Base>
+  )
 }
 
 export default SearchModel

@@ -41,7 +41,6 @@ function Collections({ id, name, projectId, isOwner, projectSlug, slug }) {
     },
   })
 
-  const hasPosts = edges?.length > 0
   const emptyState = isOwner ? TYPES.COLLECTION_POST : TYPES.COLLECTION_NO_POSTS
 
   const ListEmptyComponent =
@@ -61,28 +60,22 @@ function Collections({ id, name, projectId, isOwner, projectSlug, slug }) {
       />
     )
 
+  const headerRight = isOwner ? (
+    <Text medium onPress={navigateToEdit}>
+      {t('edit')}
+    </Text>
+  ) : (
+    <Share text url={`https://wrench.cc/project/${projectSlug}/collection/${slug}`} />
+  )
+
   return (
-    <Page
-      headerTitle={name}
-      disableAnimation
-      headerRight={
-        isOwner ? (
-          <Text medium onPress={navigateToEdit}>
-            {t('edit')}
-          </Text>
-        ) : (
-          <Share text url={`https://wrench.cc/project/${projectSlug}/collection/${slug}`} />
-        )
-      }
-    >
+    <Page headerTitle={name} disableAnimation headerRight={headerRight}>
       <FlatList
         data={edges}
         renderItem={renderItem}
-        contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={ListEmptyComponent}
         initialNumToRender={2}
         spacingSeparator
-        paddingHorizontal={hasPosts ? 20 : 0}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}

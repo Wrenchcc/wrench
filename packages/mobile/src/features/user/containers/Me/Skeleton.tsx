@@ -10,19 +10,17 @@ const styles = {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 15,
     paddingBottom: 15,
   },
   content: {
     flex: 2,
+    marginBottom: 50,
   },
 }
 
 export const MeSkeleton = () => {
   return (
-    <View>
+    <>
       <View style={styles.container}>
         <View style={styles.content}>
           <Skeleton width={150} height={25} radius={0} />
@@ -43,7 +41,7 @@ export const MeSkeleton = () => {
       </View>
 
       <PostSkeleton />
-    </View>
+    </>
   )
 }
 
