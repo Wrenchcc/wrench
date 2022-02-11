@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import Text from 'ui/Text'
 import Touchable from 'ui/Touchable'
-import Animated from 'react-native-reanimated'
+import Animated, { useAnimatedReaction, runOnJS } from 'react-native-reanimated'
 import { useNavigation, SCREENS, NAVIGATION } from 'navigation'
 import { useReactiveVar, store } from 'gql'
 import { useTranslation } from 'react-i18next'
@@ -50,15 +50,30 @@ const styles = {
   },
 }
 
-function Header({ headerLeftStyle = {}, headerRightStyle = {}, arrowStyle = {}, toggleAlbum }) {
+function Header({
+  headerLeftStyle = {},
+  headerRightStyle = {},
+  arrowStyle = {},
+  toggleAlbum,
+  albumVisible,
+}) {
   const { t } = useTranslation('add-media')
   const [isCropping, setCropping] = useState(false)
-
+  const [disabled, setDisabled] = useState(false)
   const { dismissModal, navigate } = useNavigation()
 
   const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
   const selectedAlbum = useReactiveVar(store.files.selectedAlbumVar)
   const albumTitle = useReactiveVar(store.files.albumTitleVar)
+
+  useAnimatedReaction(
+    () => albumVisible.value,
+    (result, previous) => {
+      if (result !== previous) {
+        runOnJS(setDisabled)(result)
+      }
+    }
+  )
 
   const handleOnCancel = useCallback(() => {
     store.files.reset()
@@ -120,7 +135,7 @@ function Header({ headerLeftStyle = {}, headerRightStyle = {}, arrowStyle = {}, 
     <View style={styles.background}>
       <View style={styles.container}>
         <Animated.View style={[styles.left, headerLeftStyle]}>
-          <Touchable onPress={handleOnCancel}>
+          <Touchable onPress={handleOnCancel} disabled={disabled}>
             <Text medium color="white">
               {t('options.cancel')}
             </Text>
@@ -139,7 +154,7 @@ function Header({ headerLeftStyle = {}, headerRightStyle = {}, arrowStyle = {}, 
         </View>
 
         <Animated.View style={[styles.right, headerRightStyle]}>
-          <Touchable onPress={handleCropping} disabled={!selectedFiles.length}>
+          <Touchable onPress={handleCropping} disabled={!selectedFiles.length} disabled={disabled}>
             {isCropping ? (
               <ActivityIndicator color="white" />
             ) : (

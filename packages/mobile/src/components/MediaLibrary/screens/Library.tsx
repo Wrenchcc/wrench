@@ -169,6 +169,7 @@ function Library() {
     <>
       <Animated.View style={[styles.cropArea, cropAreaStyle]}>
         <Header
+          albumVisible={isUp}
           headerLeftStyle={headerStyle}
           headerRightStyle={headerStyle}
           arrowStyle={arrowStyle}
