@@ -97,9 +97,9 @@ function Carousel({ postId, files, onRemove }) {
 
       if (index !== currentIndex) {
         // NOTE: Update visible id
-        context.setVisibleItemId(node.id)
+        context?.setVisibleItemId(node.id)
         // NOTE: Set index on post id
-        context.setVisibleIndex(postId, index)
+        context?.setVisibleIndex(postId, index)
 
         setCurrentIndex(index)
       }

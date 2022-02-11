@@ -3,7 +3,7 @@ import 'react-native-reanimated'
 
 import 'i18n'
 
-import { Linking } from 'react-native'
+import { Linking, LogBox } from 'react-native'
 import NetInfo from '@react-native-community/netinfo'
 import { Navigation } from 'react-native-navigation'
 import messaging from '@react-native-firebase/messaging'
@@ -14,6 +14,14 @@ import { Bootstrap, registerScreens, defaultOptions } from 'navigation'
 import { createPushNotificationsHandler } from 'utils/pushNotifications'
 import { createDeepLinkingHandler } from 'utils/dynamicLinks'
 import createClient from 'gql/client'
+
+if (__DEV__) {
+  // NOTE: https://github.com/software-mansion/react-native-gesture-handler/issues/1831
+  // Because of touchables from RNGH
+  LogBox.ignoreLogs([
+    "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
+  ])
+}
 
 Navigation.events().registerAppLaunchedListener(async () => {
   Navigation.setDefaultOptions(defaultOptions)

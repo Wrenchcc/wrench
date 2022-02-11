@@ -113,7 +113,13 @@ function User({ user: initialUserData }) {
     }
 
     if (havePost) {
-      return <PostSkeleton />
+      return (
+        <>
+          <PostSkeleton />
+          <Spacing.Horizontally px={50} />
+          <PostSkeleton />
+        </>
+      )
     }
 
     if (!haveProject) {

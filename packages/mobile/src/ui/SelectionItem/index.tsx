@@ -36,9 +36,9 @@ type SelectionItemProps = {
   onPress?: () => void
 }
 
-function SelectionItem({ title, hasChildren, important, ...rest }: SelectionItemProps) {
+function SelectionItem({ title, hasChildren, important, style = {}, ...rest }: SelectionItemProps) {
   return (
-    <Base onPress={rest.onPress} disabled={!rest.onPress}>
+    <Base onPress={rest.onPress} disabled={!rest.onPress} style={style}>
       <Text color={important && 'error'}>{title}</Text>
       {hasChildren && <Icon source={arrowRight} />}
       {getActionType(rest)}

@@ -78,10 +78,12 @@ export default function createScrollable(Component) {
 
     const ItemSeparatorComponent = useCallback(() => {
       if (borderSeparator) {
-        return <Border style={{ paddingTop: 15, marginBottom: 15 }} />
+        return (
+          <Border style={{ paddingTop: 15, marginBottom: 15, ...ItemSeparatorComponentStyle }} />
+        )
       }
       return <View {...ItemSeparatorComponentStyle} />
-    }, [borderSeparator])
+    }, [borderSeparator, ItemSeparatorComponentStyle])
 
     return (
       <ViewabilityItemsContext.Provider value={context}>

@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react'
+import React, { useEffect, useCallback, useRef } from 'react'
 import { View, Dimensions } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 import { showPosting, NavigationBanner } from 'navigation/banner'
@@ -53,6 +53,7 @@ const renderItem = ({ item, index }) => {
 const THREE_MINUTES = 180000
 
 function Feed() {
+  const latestId = useRef(null)
   const isVisible = useSharedValue(false)
   const { scrollTo } = useScrollContext()
   const isPosting = useReactiveVar(store.post.isPostingVar)
@@ -62,7 +63,6 @@ function Feed() {
 
   const {
     data: { edges },
-    previousData,
     isFetching,
     fetchMore,
     isRefetching,
@@ -77,15 +77,15 @@ function Feed() {
   }, [])
 
   useEffect(() => {
-    const newEdges = previousData && edges?.length > previousData?.edges?.length
-    const isOwner = edges?.length && edges[0].node?.permissions?.isOwner
-    const previousFirstItemId = previousData?.edges && previousData?.edges[0]?.node.id
-    const currentFirstItemId = edges && edges[0].node.id
+    const node = edges && edges[0]?.node
+    const id = node?.id
 
-    if (!isVisible.value && newEdges && !isOwner && previousFirstItemId !== currentFirstItemId) {
+    if (node && latestId.current !== id && !node.permissions.isOwner) {
       isVisible.value = true
     }
-  }, [edges, previousData])
+
+    latestId.current = id
+  }, [edges])
 
   useEffect(() => {
     if (isPosting) {

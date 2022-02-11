@@ -15,11 +15,9 @@ const style = {
     paddingBottom: 40,
     paddingLeft: 20,
     paddingRight: 20,
-    marginTop: -40,
   },
   header: {
-    marginBottom: 20,
-    marginTop: 40,
+    marginBottom: 30,
   },
 }
 
@@ -90,16 +88,32 @@ function Settings({ section }) {
     return <Title style={style.header}>{title}</Title>
   }, [])
 
-  const renderItem = useCallback(
-    ({ item, index }) => <SelectionItem key={index} {...item} title={item.title} />,
-    []
-  )
+  const renderItem = useCallback(({ item, index, section }) => {
+    return (
+      <SelectionItem
+        key={index}
+        {...item}
+        title={item.title}
+        style={{ marginBottom: index === section?.data.length - 1 ? 50 : 0 }}
+      />
+    )
+  }, [])
 
   if (!data?.user && loading) {
     return null
   }
 
   const settings = data?.user.settings
+
+  const sectionData = sections({
+    handleToggleNotificationSettings,
+    settings,
+    navigate,
+    showModal,
+    deleteUser,
+    t,
+    user: data?.user,
+  })[section || 'settings']
 
   return (
     <Page headerTitle={section ? t(`settings:${section}`) : t('settings')} disableAnimation>
@@ -109,19 +123,10 @@ function Settings({ section }) {
         renderSectionHeader={renderSectionHeader}
         renderItem={renderItem}
         initialNumToRender={15}
-        sections={
-          sections({
-            handleToggleNotificationSettings,
-            settings,
-            navigate,
-            showModal,
-            deleteUser,
-            t,
-            user: data?.user,
-          })[section || 'settings']
-        }
+        sections={sectionData}
         keyExtractor={keyExtractor}
         ListFooterComponent={!section && <Footer />}
+        ItemSeparatorComponentStyle={{ paddingTop: 20, marginBottom: 20 }}
         borderSeparator
       />
     </Page>
