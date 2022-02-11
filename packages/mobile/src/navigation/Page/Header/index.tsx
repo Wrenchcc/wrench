@@ -42,7 +42,6 @@ function Header({
   headerRight,
   headerSubTitle,
   disableAnimation = false,
-
   inline,
 }: HeaderProps) {
   const { navigateBack } = useNavigation()
@@ -64,8 +63,10 @@ function Header({
   return (
     <View style={[styles.base, { position: inline ? 'relative' : 'absolute' }]}>
       <View style={styles.inner}>
-        <View>{headerLeft || <Icon onPress={handleNavigation} source={arrowLeft} />}</View>
-        <Animated.View style={[opacityStyle, { maxWidth: 230 }]}>
+        <Animated.View style={{ minWidth: 30, justifyContent: 'flex-start', flexDirection: 'row' }}>
+          {headerLeft || <Icon onPress={handleNavigation} source={arrowLeft} />}
+        </Animated.View>
+        <Animated.View style={[opacityStyle, { flex: 1 }]}>
           <Text medium center numberOfLines={1} onPress={handleOnPress}>
             {headerTitle}
           </Text>
@@ -75,7 +76,9 @@ function Header({
             </Text>
           )}
         </Animated.View>
-        <View>{headerRight}</View>
+        <Animated.View style={{ minWidth: 30, justifyContent: 'flex-end', flexDirection: 'row' }}>
+          {headerRight}
+        </Animated.View>
       </View>
     </View>
   )

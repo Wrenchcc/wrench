@@ -48,7 +48,7 @@ function Popular() {
   const ListEmptyComponent = isFetching && <Skeleton />
 
   return (
-    <View style={{ height: 450 }}>
+    <View style={{ height: 460 }}>
       <Header>
         <Title medium>{t('popular')}</Title>
       </Header>

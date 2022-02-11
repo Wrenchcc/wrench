@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { usePaginatedQuery, FollowersDocument } from '@wrench/common'
 import { FlatList, Page } from 'navigation'
 import { User, NoResults } from 'ui'
-import UserSkeletonList from 'ui/User/SkeletonList'
+import Skeleton from 'ui/User/SkeletonList'
 
 const renderItem = ({ item }) => <User data={item.node} />
 
@@ -23,7 +23,7 @@ function Followers({ id }) {
     },
   })
 
-  const ListEmptyComponent = isFetching ? <UserSkeletonList /> : <NoResults />
+  const ListEmptyComponent = isFetching ? <Skeleton /> : <NoResults />
 
   return (
     <Page headerTitle={t('title')} disableAnimation>
