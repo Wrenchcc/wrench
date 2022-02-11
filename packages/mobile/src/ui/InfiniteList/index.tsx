@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect } from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, View } from 'react-native'
 import Border from 'ui/Border'
 import Loader from 'ui/Loader'
 import { CONTENT_INSET } from 'navigation/constants'
@@ -10,7 +10,7 @@ const renderLoader = (loaderInset?) => <Loader inset={loaderInset} />
 function InfiniteList({
   contentContainerStyle = {},
   paddingHorizontal = 20,
-  defaultPaddingTop,
+  paddingVertical = 20,
   borderSeparator,
   data,
   isFetching,
@@ -21,11 +21,12 @@ function InfiniteList({
   ListEmptyComponent,
   initialNumToRender = 10,
   loaderInset = CONTENT_INSET,
+  ItemSeparatorComponentStyle = {},
+  defaultSeparator = true,
   ...props
 }) {
   const [isRefetchingLocal, setRefresh] = useState(false)
   const initialFetch = !data && isFetching
-  const paddingTop = contentContainerStyle.paddingTop || (defaultPaddingTop && 20) || 0
 
   useEffect(() => {
     setRefresh(!!isRefetching)
@@ -45,6 +46,23 @@ function InfiniteList({
     }
   }, [hasNextPage, isRefetching, isFetching, fetchMore])
 
+  const ItemSeparatorComponent = useCallback(() => {
+    if (!defaultSeparator && props.horizontal) {
+      return null
+    }
+    if (borderSeparator) {
+      return <Border style={{ paddingTop: 15, marginBottom: 15 }} />
+    }
+    return (
+      <View
+        style={[
+          !props.horizontal && { paddingTop: 15, marginBottom: 15 },
+          ItemSeparatorComponentStyle,
+        ]}
+      />
+    )
+  }, [borderSeparator])
+
   return (
     <FlatList
       style={{ flex: 1 }}
@@ -59,14 +77,15 @@ function InfiniteList({
       keyboardShouldPersistTaps="always"
       keyboardDismissMode="on-drag"
       onEndReachedThreshold={1}
+      ItemSeparatorComponent={ItemSeparatorComponent}
       contentContainerStyle={{
         flex: initialFetch ? 1 : 0,
         paddingLeft: paddingHorizontal,
         paddingRight: paddingHorizontal,
-        paddingTop,
+        paddingTop: paddingVertical,
+        paddingBottom: paddingVertical,
         ...contentContainerStyle,
       }}
-      {...(borderSeparator && { ItemSeparatorComponent: Border })}
       {...props}
     />
   )

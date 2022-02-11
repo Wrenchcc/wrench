@@ -8,13 +8,7 @@ const COUNT = 4
 
 export const OnboardingSkeleton: React.FC = () => {
   return (
-    <ScrollView
-      showsHorizontalScrollIndicator={false}
-      style={{
-        paddingBottom: 10,
-        paddingTop: 10,
-      }}
-    >
+    <ScrollView showsHorizontalScrollIndicator={false}>
       {new Array(COUNT).fill({}).map((_, index) => (
         <>
           <View key={index} style={{ flexDirection: 'row' }}>

@@ -6,7 +6,7 @@ import { width, GUTTER } from './styles'
 const height = width > 390 ? 220 : 190
 
 const FollowingProjectsSkeleton = () => (
-  <View style={{ marginTop: 20, flexDirection: 'row' }}>
+  <View style={{ flexDirection: 'row' }}>
     <Skeleton
       height={height}
       width={width - GUTTER * 2}

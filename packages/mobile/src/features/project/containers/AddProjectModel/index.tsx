@@ -124,21 +124,20 @@ function AddProjectModel() {
   )
 
   const handleOnBlur = useCallback(() => setIsSearching(false), [setIsSearching])
+  const headerRight = isSaving ? (
+    <ActivityIndicator />
+  ) : (
+    <Text onPress={handleSave} medium>
+      {model ? t('add') : t('skip')}
+    </Text>
+  )
 
   return (
     <>
       <Header
         headerLeft={<Icon source={arrowLeft} onPress={handleNavigationBack} />}
         headerTitle={<Text medium>{t('headerTitle')}</Text>}
-        headerRight={
-          isSaving ? (
-            <ActivityIndicator />
-          ) : (
-            <Text onPress={handleSave} medium>
-              {model ? t('add') : t('skip')}
-            </Text>
-          )
-        }
+        headerRight={headerRight}
       />
       {isSearching && <SearchModel query={query} onPress={handleModelChange} />}
 

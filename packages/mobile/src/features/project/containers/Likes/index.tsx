@@ -23,7 +23,7 @@ function Sparks({ id }) {
     },
   })
 
-  const ListEmptyComponent = isFetching && !edges ? <Skeleton /> : <NoResults />
+  const ListEmptyComponent = isFetching ? <Skeleton /> : <NoResults />
 
   return (
     <Page headerTitle={t('title')} disableAnimation>

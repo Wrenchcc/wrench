@@ -25,6 +25,16 @@ const styles = {
     justifyContent: 'space-between',
     paddingHorizontal: 20,
   },
+  headerLeft: {
+    minWidth: 30,
+    justifyContent: 'flex-start',
+    flexDirection: 'row',
+  },
+  headerRight: {
+    minWidth: 30,
+    justifyContent: 'flex-end',
+    flexDirection: 'row',
+  },
 }
 
 type HeaderProps = {
@@ -63,9 +73,9 @@ function Header({
   return (
     <View style={[styles.base, { position: inline ? 'relative' : 'absolute' }]}>
       <View style={styles.inner}>
-        <Animated.View style={{ minWidth: 30, justifyContent: 'flex-start', flexDirection: 'row' }}>
+        <View style={styles.headerLeft}>
           {headerLeft || <Icon onPress={handleNavigation} source={arrowLeft} />}
-        </Animated.View>
+        </View>
         <Animated.View style={[opacityStyle, { flex: 1 }]}>
           <Text medium center numberOfLines={1} onPress={handleOnPress}>
             {headerTitle}
@@ -76,9 +86,7 @@ function Header({
             </Text>
           )}
         </Animated.View>
-        <Animated.View style={{ minWidth: 30, justifyContent: 'flex-end', flexDirection: 'row' }}>
-          {headerRight}
-        </Animated.View>
+        <View style={styles.headerRight}>{headerRight}</View>
       </View>
     </View>
   )

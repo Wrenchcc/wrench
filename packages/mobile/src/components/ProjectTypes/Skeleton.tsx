@@ -1,10 +1,15 @@
 import React from 'react'
-import { ScrollView } from 'react-native'
+import { View } from 'react-native'
 import Skeleton from 'ui/Skeleton'
 
 const COUNT = 5
 
 const styles = {
+  container: {
+    flexDirection: 'row',
+    paddingBottom: 10,
+    paddingTop: 10,
+  },
   category: {
     marginRight: 10,
   },
@@ -18,14 +23,7 @@ const styles = {
 
 export const CategoriesSkeleton: React.FC = () => {
   return (
-    <ScrollView
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      style={{
-        paddingBottom: 10,
-        paddingTop: 10,
-      }}
-    >
+    <View style={styles.container}>
       {new Array(COUNT).fill({}).map((_, index) => (
         <Skeleton
           key={index}
@@ -35,7 +33,7 @@ export const CategoriesSkeleton: React.FC = () => {
           style={[styles.category, index === 0 && styles.first, index === COUNT - 1 && styles.last]}
         />
       ))}
-    </ScrollView>
+    </View>
   )
 }
 

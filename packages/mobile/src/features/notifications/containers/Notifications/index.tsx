@@ -130,12 +130,11 @@ function Notifications() {
     <Notification data={item.node} deleteNotification={handleDeleteNotification} />
   )
 
-  const ListEmptyComponent =
-    isFetching && !edges ? (
-      <NotificationSkeletonList />
-    ) : (
-      <EmptyState type={TYPES.NOTIFICATIONS} style={{ paddingHorizontal: 20, marginTop: -100 }} />
-    )
+  const ListEmptyComponent = isFetching ? (
+    <NotificationSkeletonList />
+  ) : (
+    <EmptyState type={TYPES.NOTIFICATIONS} style={{ paddingHorizontal: 20, marginTop: -100 }} />
+  )
 
   return (
     <Layout headerTitleKey="notifications">
@@ -143,6 +142,7 @@ function Notifications() {
         paddingHorizontal={0}
         ListEmptyComponent={ListEmptyComponent}
         borderSeparator
+        ItemSeparatorComponentStyle={{ paddingTop: 15, marginBottom: 15 }}
         contentContainerStyle={{ flexGrow: 1 }}
         data={edges}
         refetch={onRefresh}

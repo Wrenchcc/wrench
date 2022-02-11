@@ -88,12 +88,14 @@ function Projects() {
     </Header>
   )
 
-  const ListFooterComponent =
-    isFetching && !edges ? <SearchingFor query={query} /> : hasNextPage && query && <Loader />
+  const ListFooterComponent = isFetching ? (
+    <SearchingFor query={query} />
+  ) : (
+    hasNextPage && query && <Loader />
+  )
 
   return (
     <InfiniteList
-      borderSeparator
       initialNumToRender={4}
       ListEmptyComponent={!isFetching && query.length > 1 && <NoResults />}
       data={query ? edges : recent}
@@ -103,9 +105,9 @@ function Projects() {
       isRefetching={isRefetching}
       refetch={query && refetch}
       renderItem={renderItem}
-      defaultPadding
       ListHeaderComponent={ListHeaderComponent}
       ListFooterComponent={ListFooterComponent}
+      ItemSeparatorComponentStyle={{ paddingTop: 10, marginBottom: 10 }}
     />
   )
 }

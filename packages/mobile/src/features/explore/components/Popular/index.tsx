@@ -58,6 +58,7 @@ function Popular() {
         ListEmptyComponent={ListEmptyComponent}
         data={edges}
         horizontal
+        paddingVertical={0}
         directionalLockEnabled
         showsHorizontalScrollIndicator={false}
         decelerationRate="fast"

@@ -41,6 +41,7 @@ function FollowingProjects({ user }) {
       <Description>{t('description', { name: user.firstName })}</Description>
 
       <InfiniteList
+        paddingVertical={0}
         data={edges}
         fetchMore={fetchMore}
         isFetching={edges && isFetching}

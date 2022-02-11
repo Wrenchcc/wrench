@@ -79,12 +79,11 @@ function Hashtags() {
     return <Hashtag {...item.node} onPress={onPress} />
   }
 
-  const ListEmptyComponent =
-    isFetching && !edges ? (
-      <Skeleton contentInset={0} marginTop={15} />
-    ) : (
-      !isFetching && query.length > 1 && <NoResults />
-    )
+  const ListEmptyComponent = isFetching ? (
+    <Skeleton />
+  ) : (
+    !isFetching && query.length > 1 && <NoResults />
+  )
 
   const ListHeaderComponent = !query && recent.length > 0 && (
     <Header>
@@ -95,8 +94,11 @@ function Hashtags() {
     </Header>
   )
 
-  const ListFooterComponent =
-    isFetching && !edges ? <SearchingFor query={query} /> : hasNextPage && query && <Loader />
+  const ListFooterComponent = isFetching ? (
+    <SearchingFor query={query} />
+  ) : (
+    hasNextPage && query && <Loader />
+  )
 
   return (
     <InfiniteList
@@ -110,7 +112,6 @@ function Hashtags() {
       isRefetching={isRefetching}
       refetch={query && refetch}
       renderItem={renderItem}
-      defaultPadding
       ListHeaderComponent={ListHeaderComponent}
       ListFooterComponent={ListFooterComponent}
     />

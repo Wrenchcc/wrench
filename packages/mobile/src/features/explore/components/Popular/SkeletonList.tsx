@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, View } from 'react-native'
+import { View } from 'react-native'
 import Skeleton from 'ui/Skeleton'
 import * as Spacing from 'ui/Spacing'
 import { GUTTER } from './styles'
@@ -7,6 +7,11 @@ import { GUTTER } from './styles'
 const COUNT = 3
 
 const styles = {
+  base: {
+    flexDirection: 'row',
+    marginLeft: -GUTTER,
+    marginRight: -GUTTER,
+  },
   container: {
     marginRight: 10,
   },
@@ -20,14 +25,7 @@ const styles = {
 
 export const SkeletonList: React.FC = () => {
   return (
-    <ScrollView
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      style={{
-        marginLeft: -GUTTER,
-        marginRight: -GUTTER,
-      }}
-    >
+    <View style={styles.base}>
       {new Array(COUNT).fill({}).map((_, index) => (
         <View
           key={index}
@@ -44,7 +42,7 @@ export const SkeletonList: React.FC = () => {
           <Skeleton width={60} radius={0} height={10} />
         </View>
       ))}
-    </ScrollView>
+    </View>
   )
 }
 

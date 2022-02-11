@@ -8,9 +8,9 @@ export const { width } = Dimensions.get('window')
 const GUTTER = 20
 export const BAR_SPACE = GUTTER / 2
 
-const FollowingProjectsSkeleton = () => (
+const ProjectSuggestionsSkeleton = () => (
   <>
-    <Skeleton height={15} width={'50%'} radius={0} style={{ marginTop: 5 }} />
+    <Skeleton height={15} width={'50%'} radius={0} />
 
     <View style={{ marginTop: 35, marginBottom: 40, flexDirection: 'row' }}>
       <Skeleton
@@ -35,4 +35,4 @@ const FollowingProjectsSkeleton = () => (
   </>
 )
 
-export default FollowingProjectsSkeleton
+export default ProjectSuggestionsSkeleton

@@ -59,6 +59,8 @@ function Inspiration() {
           numColumns={NUM_COLUMNS}
           loaderInset={0}
           paddingHorizontal={0}
+          paddingVertical={0}
+          defaultSeparator={false}
           data={edges}
           isFetching={isFetching}
           fetchMore={fetchMore}

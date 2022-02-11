@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState, useMemo } from 'react'
+import { View } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
@@ -24,6 +25,7 @@ export default function createScrollable(Component) {
     extraContentInset = 0,
     loaderInset = 0,
     progressViewOffset = CONTENT_INSET - 30,
+    ItemSeparatorComponentStyle = {},
     ...props
   }) {
     const [isRefetchingLocal, setRefresh] = useState(false)
@@ -74,6 +76,13 @@ export default function createScrollable(Component) {
       return { visibleItemId, visiblePostId, setVisibleItemId, setVisibleIndex }
     }, [visibleItemId, visiblePostId, setVisibleItemId, setVisibleIndex])
 
+    const ItemSeparatorComponent = useCallback(() => {
+      if (borderSeparator) {
+        return <Border style={{ paddingTop: 15, marginBottom: 15 }} />
+      }
+      return <View {...ItemSeparatorComponentStyle} />
+    }, [borderSeparator])
+
     return (
       <ViewabilityItemsContext.Provider value={context}>
         <Component
@@ -104,7 +113,7 @@ export default function createScrollable(Component) {
             paddingRight: paddingHorizontal,
             paddingTop: VIEW_OFFSET,
           }}
-          {...(borderSeparator && { ItemSeparatorComponent: Border })}
+          ItemSeparatorComponent={ItemSeparatorComponent}
           {...props}
           onViewableItemsChanged={onViewableItemsChanged}
           viewabilityConfig={{

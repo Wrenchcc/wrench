@@ -100,16 +100,15 @@ function Feed() {
   }, [isPosting])
 
   const StickyComponent = hasNewPosts && <ShowLatest onHide={closeNewPosts} />
-  const ListEmptyComponent =
-    isFetching && !isRefetching ? (
-      <>
-        <Skeleton />
-        <Spacing.Horizontally px={50} />
-        <Skeleton />
-      </>
-    ) : (
-      <ProjectSuggestions />
-    )
+  const ListEmptyComponent = isFetching ? (
+    <>
+      <Skeleton />
+      <Spacing.Horizontally px={50} />
+      <Skeleton />
+    </>
+  ) : (
+    <ProjectSuggestions />
+  )
 
   return (
     <Layout headerTitleKey="home" stickyComponent={StickyComponent}>

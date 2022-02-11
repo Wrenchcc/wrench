@@ -26,10 +26,16 @@ function Mention({ onPress }) {
     })
   }, [query])
 
+  const ListFooterComponent =
+    isFetching && !edges && query.length > 0 ? (
+      <SearchingFor query={query} />
+    ) : (
+      hasNextPage && <Loader />
+    )
+
   return (
     <Base>
       <InfiniteList
-        defaultPadding
         keyboardDismissMode="none"
         ListEmptyComponent={!isFetching && query.length > 0 && <NoResults />}
         data={edges}
@@ -39,13 +45,7 @@ function Mention({ onPress }) {
         isRefetching={isRefetching}
         renderItem={renderItem}
         borderSeparators
-        ListFooterComponent={
-          isFetching && !edges && query.length > 0 ? (
-            <SearchingFor query={query} />
-          ) : (
-            hasNextPage && <Loader />
-          )
-        }
+        ListFooterComponent={ListFooterComponent}
       />
     </Base>
   )

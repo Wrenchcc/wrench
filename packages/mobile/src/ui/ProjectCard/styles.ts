@@ -11,7 +11,6 @@ const { width } = Dimensions.get('window')
 export const height = width > 390 ? 220 : 190
 
 export const Base = styled(UiTouchable)`
-  margin-top: 20px;
   height: ${(props) => props.height}px;
   position: relative;
   overflow: hidden;

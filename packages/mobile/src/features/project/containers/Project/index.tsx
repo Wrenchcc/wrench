@@ -107,16 +107,13 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
     return <Post post={item.node} avatar={false} withoutTitle />
   }
 
-  const ListEmptyComponent =
-    isFetching && !isRefetching ? (
-      <PostSkeleton />
-    ) : (
-      !hasPosts && <EmptyState type={emptyState} params={{ id: project?.id }} />
-    )
+  const ListEmptyComponent = isFetching ? (
+    <PostSkeleton />
+  ) : (
+    !hasPosts && <EmptyState type={emptyState} params={{ id: project?.id }} />
+  )
 
-  const ListHeaderComponent = useCallback(() => {
-    return <ProjectHeader project={project} />
-  }, [])
+  const ListHeaderComponent = <ProjectHeader project={project} />
 
   const headerRight = isOwner ? (
     <Edit project={project} onDeleteCallback={navigateBack} />

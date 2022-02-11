@@ -41,8 +41,6 @@ function Me() {
   const navigateAddProject = useCallback(() => showModal(SCREENS.ADD_PROJECT), [])
   const navigateToAddPost = useCallback(() => showModal(SCREENS.ADD_MEDIA), [])
 
-  const hasPosts = edges?.length > 0
-
   const emptyState = user?.projects.edges.length > 0 ? TYPES.POST : TYPES.PROJECT
 
   const addOptions = [
@@ -105,8 +103,7 @@ function Me() {
     </>
   )
 
-  const ListEmptyComponent =
-    isFetching && !hasPosts ? <Skeleton /> : <EmptyState type={emptyState} />
+  const ListEmptyComponent = isFetching ? <Skeleton /> : <EmptyState type={emptyState} />
 
   return (
     <Layout

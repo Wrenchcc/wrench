@@ -39,7 +39,7 @@ function Collections({ isOwner, projectId, onPress, onSave, selectedId, disableM
     <AddCollection style={{ marginRight: 10 }} projectId={projectId} disableModal={disableModal} />
   )
 
-  const ListEmptyComponent = isFetching && !edges && <Skelleton />
+  const ListEmptyComponent = isFetching && <Skelleton />
 
   // TODO: Translate
   if (!isFetching && isOwner && !edges) {
@@ -70,6 +70,7 @@ function Collections({ isOwner, projectId, onPress, onSave, selectedId, disableM
     <InfiniteList
       ListEmptyComponent={ListEmptyComponent}
       initialNumToRender={7}
+      paddingVertical={0}
       data={edges}
       horizontal
       directionalLockEnabled

@@ -3,7 +3,6 @@ import { usePaginatedLazyQuery, SearchModelsDocument } from '@wrench/common'
 import { InfiniteList, Text, Touchable, SearchingFor, NoResults, Loader } from 'ui'
 import { keyboardHeight } from 'utils/platform'
 import HashtagSkeletonList from 'ui/Hashtag/SkeletonList'
-
 import { Base } from './styles'
 
 const INPUT_HEIGHT = 80
@@ -36,7 +35,6 @@ function SearchModel({ query, onPress }) {
       onPress={() => onPress(item.node)}
       key={item.node.id}
       style={{
-        height: 70,
         justifyContent: 'center',
       }}
     >
@@ -49,12 +47,11 @@ function SearchModel({ query, onPress }) {
 
   const bottom = keyboardHeight + INPUT_HEIGHT
 
-  const ListEmptyComponent =
-    isFetching && !edges ? (
-      <HashtagSkeletonList contentInset={0} marginTop={15} />
-    ) : (
-      !isFetching && query.length > 1 && <NoResults />
-    )
+  const ListEmptyComponent = isFetching ? (
+    <HashtagSkeletonList />
+  ) : (
+    !isFetching && query.length > 1 && <NoResults />
+  )
 
   const ListFooterComponent =
     isFetching && !edges ? (
@@ -76,7 +73,6 @@ function SearchModel({ query, onPress }) {
         hasNextPage={isFetching ? false : hasNextPage}
         isFetching={isFetching && query.length === 0}
         renderItem={renderItem}
-        defaultPadding
         ListFooterComponent={ListFooterComponent}
       />
     </Base>

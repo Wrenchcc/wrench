@@ -20,7 +20,7 @@ export const Description = styled(UiText)`
 `
 
 export const Title = styled(UiTitle)`
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `
 
 export const ProjectCard = styled(UiProjectCard)`

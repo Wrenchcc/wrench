@@ -12,6 +12,7 @@ export const Base = styled.View`
 
 export const Header = styled.View`
   margin-top: 20px;
+  margin-bottom: 20px;
   justify-content: space-between;
   flex-direction: row;
 `

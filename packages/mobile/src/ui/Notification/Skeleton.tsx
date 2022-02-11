@@ -5,13 +5,10 @@ import * as Spacing from 'ui/Spacing'
 
 const styles = {
   container: {
-    height: 71,
     flex: 1,
     flexDirection: 'row',
     paddingLeft: 20,
     paddingRight: 20,
-    paddingTop: 15,
-    paddingBottom: 15,
   },
   content: {
     marginTop: 5,
@@ -25,9 +22,19 @@ export const NotificationSkeleton = () => {
       <Skeleton width={40} height={40} radius="round" />
 
       <View style={styles.content}>
-        <Skeleton width={150} height={10} />
+        <Skeleton width={'70%'} height={10} />
         <Spacing.Horizontally px={10} />
         <Skeleton width={100} height={10} />
+      </View>
+
+      <View
+        style={{
+          flex: 2,
+          justifyContent: 'flex-end',
+          flexDirection: 'row',
+        }}
+      >
+        <Skeleton width={40} height={40} radius={0} />
       </View>
     </View>
   )

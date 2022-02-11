@@ -43,6 +43,7 @@ function ProjectSuggestion({
       <Title fontSize={21}>{title}</Title>
 
       <InfiniteList
+        paddingVertical={0}
         data={data}
         refetch={refetch}
         fetchMore={fetchMore}

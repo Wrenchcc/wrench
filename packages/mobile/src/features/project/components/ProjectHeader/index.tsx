@@ -23,12 +23,12 @@ function ProjectHeader({ project }) {
   const isOwner = project?.permissions.isOwner
 
   const handleSimilarProjects = useCallback(() => {
-    if (!isShowingSimilarProjects && (!data || !data.similarProjects)) {
+    if (!isShowingSimilarProjects && !data?.similarProjects) {
       getSimilarProjects()
       setIsShowingSimilarProjects(true)
     }
 
-    if (!isShowingSimilarProjects && data && data.similarProjects) {
+    if (!isShowingSimilarProjects && data?.similarProjects) {
       setIsShowingSimilarProjects(true)
     }
 
@@ -111,7 +111,7 @@ function ProjectHeader({ project }) {
       </Actions>
 
       <AnimatePresence>
-        {data && data.similarProjects && isShowingSimilarProjects && (
+        {data?.similarProjects && isShowingSimilarProjects && (
           <SimilarProjects projects={data.similarProjects} />
         )}
       </AnimatePresence>
