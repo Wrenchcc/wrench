@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { View, Dimensions } from 'react-native'
+import { useSharedValue } from 'react-native-reanimated'
 import { showPosting, NavigationBanner } from 'navigation/banner'
 import { getTrackingConsent } from 'utils/analytics'
 import { usePaginatedQuery, FeedDocument, useSimilarProjectsQuery } from '@wrench/common'
@@ -52,12 +53,8 @@ const renderItem = ({ item, index }) => {
 const THREE_MINUTES = 180000
 
 function Feed() {
+  const isVisible = useSharedValue(false)
   const { scrollTo } = useScrollContext()
-
-  const [hasNewPosts, setHasNewPosts] = useState(false)
-  const [latestId, setLatestId] = useState('')
-  const closeNewPosts = useCallback(() => setHasNewPosts(false), [])
-
   const isPosting = useReactiveVar(store.post.isPostingVar)
   const file = useReactiveVar(store.files.croppedFilesVar)[0]
 
@@ -65,6 +62,7 @@ function Feed() {
 
   const {
     data: { edges },
+    previousData,
     isFetching,
     fetchMore,
     isRefetching,
@@ -79,16 +77,15 @@ function Feed() {
   }, [])
 
   useEffect(() => {
-    if (edges?.length) {
-      const id = edges[0].node.id
+    const newEdges = previousData && edges?.length > previousData?.edges?.length
+    const isOwner = edges?.length && edges[0].node?.permissions?.isOwner
+    const previousFirstItemId = previousData?.edges && previousData?.edges[0]?.node.id
+    const currentFirstItemId = edges && edges[0].node.id
 
-      if (latestId && latestId !== id && !edges[0].node.permissions.isOwner) {
-        setHasNewPosts(true)
-      }
-
-      setLatestId(id)
+    if (!isVisible.value && newEdges && !isOwner && previousFirstItemId !== currentFirstItemId) {
+      isVisible.value = true
     }
-  }, [edges])
+  }, [edges, previousData])
 
   useEffect(() => {
     if (isPosting) {
@@ -99,7 +96,12 @@ function Feed() {
     }
   }, [isPosting])
 
-  const StickyComponent = hasNewPosts && <ShowLatest onHide={closeNewPosts} />
+  const handleOnClose = useCallback(() => {
+    isVisible.value = false
+  }, [])
+
+  const StickyComponent = <ShowLatest onClose={handleOnClose} isVisible={isVisible} />
+
   const ListEmptyComponent = isFetching ? (
     <>
       <Skeleton />
