@@ -7,6 +7,7 @@ import { useActionSheet } from '@expo/react-native-action-sheet'
 import NativeShare from 'react-native-share'
 import * as Clipboard from 'expo-clipboard'
 import openLink from 'utils/openLink'
+import * as Spacing from 'ui/Spacing'
 import Post from 'components/Post'
 import { Toast, Icon } from 'ui'
 import { TOAST_TYPES } from 'utils/enums'
@@ -119,7 +120,13 @@ function User({ user: initialUserData }) {
       return null
     }
 
-    return <PostSkeleton />
+    return (
+      <>
+        <PostSkeleton />
+        <Spacing.Horizontally px={50} />
+        <PostSkeleton />
+      </>
+    )
   }
 
   const ListEmptyComponent = isFetching ? (

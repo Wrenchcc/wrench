@@ -3,15 +3,17 @@ import { View } from 'react-native'
 import Skeleton from 'ui/Skeleton'
 import { width, GUTTER } from './styles'
 
+const height = width > 390 ? 220 : 190
+
 const FollowingProjectsSkeleton = () => (
   <View style={{ marginTop: 20, flexDirection: 'row' }}>
     <Skeleton
-      height={190}
+      height={height}
       width={width - GUTTER * 2}
       radius={0}
       style={{ marginRight: GUTTER / 2 }}
     />
-    <Skeleton height={190} width={width - GUTTER * 2} radius={0} />
+    <Skeleton height={height} width={width - GUTTER * 2} radius={0} />
   </View>
 )
 
