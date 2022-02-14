@@ -152,13 +152,10 @@ export declare type CoverType = {
 export declare type EditCollectionInput = {
     name?: InputMaybe<Scalars['String']>;
 };
-export declare type EditFileInput = {
-    id?: InputMaybe<Scalars['String']>;
-};
 export declare type EditPostInput = {
     caption?: InputMaybe<Scalars['String']>;
     collectionId?: InputMaybe<Scalars['ID']>;
-    files?: InputMaybe<Array<InputMaybe<EditFileInput>>>;
+    files?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 export declare type EditUserInput = {
     avatarUrl?: InputMaybe<Scalars['String']>;

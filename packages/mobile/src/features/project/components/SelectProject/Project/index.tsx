@@ -1,10 +1,9 @@
 import React, { useCallback } from 'react'
 import { pathOr } from 'rambda'
 import { Text, Followers } from 'ui'
-import { check } from 'images'
-import { Base, Cover, Middle, Content, Icon } from './styles'
+import { Base, Cover, Middle, Content } from './styles'
 
-function Project({ id, files, title, followers, onPress, selected }) {
+function Project({ id, files, title, followers, onPress }) {
   const image = pathOr(null, ['edges', 0, 'node'], files)
   const handleOnPress = useCallback(() => onPress(id), [id, onPress])
 
@@ -17,7 +16,6 @@ function Project({ id, files, title, followers, onPress, selected }) {
           <Text numberOfLines={1}>{title}</Text>
           <Followers color="neutral" followers={followers.totalCount} />
         </Content>
-        {selected && <Icon source={check} />}
       </Middle>
     </Base>
   )

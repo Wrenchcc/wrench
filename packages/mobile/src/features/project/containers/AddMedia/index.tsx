@@ -1,5 +1,4 @@
 import React from 'react'
-
 import MediaLibrary from 'components/MediaLibrary'
 
 function AddMedia() {

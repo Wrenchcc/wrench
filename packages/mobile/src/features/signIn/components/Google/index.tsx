@@ -10,10 +10,31 @@ import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
 import { SIGN_IN_PROVIDERS } from 'utils/enums'
 import { getCurrentUser } from 'gql'
 import { track, events } from 'utils/analytics'
-import { Icon } from 'ui'
+import { Icon, Text, Touchable } from 'ui'
 import { google } from 'images'
 import { logError } from 'utils/sentry'
-import { Button, Text } from './styles'
+import PlatformColor from 'ui/PlatformColor'
+
+const styles = {
+  button: {
+    width: '100%',
+    background: PlatformColor.white,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    paddingTop: 13,
+    paddingRight: 13,
+    paddingBottom: 13,
+    paddingLeft: 13,
+    borderColor: PlatformColor.subtle,
+  },
+  icon: {
+    marginRight: 10,
+  },
+  text: {
+    textAlign: 'center',
+  },
+}
 
 function Google({ border }) {
   const { t } = useTranslation('google')
@@ -71,12 +92,12 @@ function Google({ border }) {
   }, [])
 
   return (
-    <Button onPress={handleLoginManager} border={border}>
-      <Icon source={google} style={{ marginRight: 10 }} color="black" />
+    <Touchable onPress={handleLoginManager} style={[styles.button, , { border: border ? 1 : 0 }]}>
+      <Icon source={google} style={styles.icon} color="black" />
       <Text medium color="black" fontSize={16}>
         {t('button')}
       </Text>
-    </Button>
+    </Touchable>
   )
 }
 

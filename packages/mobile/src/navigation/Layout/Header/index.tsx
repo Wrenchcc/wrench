@@ -64,7 +64,7 @@ function Header({ headerLeft, headerRight, headerTitleKey, stickyComponent }) {
   }))
 
   return (
-    <Animated.View style={[styles.container, transformStyle]}>
+    <Animated.View style={[styles.container, transformStyle]} pointerEvents="box-none">
       <View style={styles.backgrond}>
         <Animated.View style={[styles.content, opacityStyle]}>
           <View style={styles.inner}>

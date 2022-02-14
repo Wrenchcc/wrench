@@ -23,9 +23,8 @@ function IsOnline({ badgeSize = 'medium' }) {
   const colorScheme = useColorScheme()
 
   return (
-    <View style={{ zIndex: 1000 }}>
+    <View style={{ zIndex: 1000 }} pointerEvents="none">
       <View
-        pointerEvents="none"
         style={{
           ...getSize(badgeSize).badge,
           backgroundColor: '#2db22f',
@@ -34,7 +33,6 @@ function IsOnline({ badgeSize = 'medium' }) {
         }}
       />
       <View
-        pointerEvents="none"
         style={{
           ...getSize(badgeSize).background,
           backgroundColor: colorScheme === 'dark' ? 'black' : 'white',

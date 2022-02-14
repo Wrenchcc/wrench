@@ -1,7 +1,8 @@
 import React from 'react'
 import { ImageProps, View } from 'react-native'
 import Touchable, { TouchablePropsType } from 'ui/Touchable'
-import { Base } from './styles'
+import PlatformColor from 'ui/PlatformColor'
+import { props } from 'rambda'
 
 type IconProps = {
   onPress?: () => void
@@ -24,7 +25,15 @@ function Icon({
   return (
     <View style={style}>
       <Touchable onPress={onPress} {...rest}>
-        <Base source={source} width={width} height={height} color={color} opacity={opacity} />
+        <Image
+          source={source}
+          style={{
+            opacity,
+            tintColor: PlatformColor[props.color] || PlatformColor.inverse,
+            width,
+            height,
+          }}
+        />
       </Touchable>
     </View>
   )

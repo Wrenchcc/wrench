@@ -12,6 +12,25 @@ const ITEM_SIZE = width / 2 - GUTTER
 function ProjectCategories({ ListHeaderComponent, onSelect }) {
   const { data, loading } = useProjectTypesQuery()
 
+  const renderItem = ({ item }) => (
+    <Cell key={item.id}>
+      <Touchable onPress={() => onSelect(item)}>
+        <Picture width={ITEM_SIZE} height={ITEM_SIZE}>
+          <Image
+            placeholderColor="transparent"
+            source={{ uri: item.imageUrl }}
+            width={ITEM_SIZE}
+            height={ITEM_SIZE}
+            gutter={GUTTER}
+          >
+            <Overlay />
+            <Text color="white">{item.title}</Text>
+          </Image>
+        </Picture>
+      </Touchable>
+    </Cell>
+  )
+
   return (
     <FlatList
       ListHeaderComponent={ListHeaderComponent}
@@ -22,26 +41,9 @@ function ProjectCategories({ ListHeaderComponent, onSelect }) {
         paddingBottom: 30,
       }}
       numColumns={2}
-      data={data.types}
+      data={data?.types}
       keyExtractor={keyExtractor}
-      renderItem={({ item }) => (
-        <Cell key={item.id}>
-          <Touchable onPress={() => onSelect(item)}>
-            <Picture width={ITEM_SIZE} height={ITEM_SIZE}>
-              <Image
-                placeholderColor="transparent"
-                source={{ uri: item.imageUrl }}
-                width={ITEM_SIZE}
-                height={ITEM_SIZE}
-                gutter={GUTTER}
-              >
-                <Overlay />
-                <Text color="white">{item.title}</Text>
-              </Image>
-            </Picture>
-          </Touchable>
-        </Cell>
-      )}
+      renderItem={renderItem}
     />
   )
 }

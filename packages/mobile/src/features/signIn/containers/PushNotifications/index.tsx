@@ -4,9 +4,18 @@ import { useTranslation } from 'react-i18next'
 import { useCurrentUserQuery } from '@wrench/common'
 import { AppNavigation, useNavigation, SCREENS } from 'navigation'
 import Header from 'navigation/Page/Header'
-import { Text, Button } from 'ui'
+import { Text, Title, Button } from 'ui'
 import { requestNotificationToken } from 'utils/pushNotifications/register'
-import { Headline, Description } from './styles'
+
+const styles = {
+  headline: {
+    marginBottom: 12,
+    marginTop: 35,
+  },
+  description: {
+    marginBottom: 80,
+  },
+}
 
 function PushNotifications() {
   const { t } = useTranslation('push-notifications')
@@ -29,13 +38,13 @@ function PushNotifications() {
     <>
       <Header inline />
       <View style={{ flexGrow: 1, paddingHorizontal: 20 }}>
-        <Headline medium numberOfLines={0}>
+        <Title medium numberOfLines={0} style={styles.headline}>
           {t('title')}
-        </Headline>
+        </Title>
 
-        <Description color="neutral" fontSize={19}>
+        <Text color="neutral" fontSize={19} style={styles.description}>
           {t('description')}
-        </Description>
+        </Text>
 
         <View style={{ marginTop: 'auto', marginBottom: 80 }}>
           <Button color="inverse" onPress={handleNotifications}>

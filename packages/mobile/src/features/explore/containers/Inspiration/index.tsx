@@ -3,15 +3,44 @@ import { Dimensions, View } from 'react-native'
 import { hasNotch } from 'utils/platform'
 import { usePaginatedQuery, FilesDocument } from '@wrench/common'
 import { useNavigation } from 'navigation'
-import { Icon, InfiniteList, Image } from 'ui'
+import { Icon, Touchable, InfiniteList, Image } from 'ui'
 import { arrowLeft } from 'images'
 import { NAVIGATION, SCREENS } from 'navigation/constants'
-import { BackButton, Item } from './styles'
+import PlatformColor from 'ui/PlatformColor'
 
 const { width } = Dimensions.get('window')
-const NUM_COLUMNS = 4
 
+const NUM_COLUMNS = 4
 const ITEM_SIZE = width / NUM_COLUMNS - 4
+
+const styles = {
+  base: {
+    flex: 1,
+    marginTop: hasNotch ? -NAVIGATION.STATUS_BAR_HEIGHT : 0,
+  },
+  back: {
+    zIndex: 10,
+    width: 50,
+    height: 50,
+    borderTopRightRadius: 50,
+    borderBottomRightRadius: 50,
+    borderBottomLeftRadius: 50,
+    borderTopLeftRadius: 50,
+    position: 'absolute',
+    top: NAVIGATION.STATUS_BAR_HEIGHT,
+    left: 10,
+    background: PlatformColor.default,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  item: {
+    width: ITEM_SIZE,
+    height: ITEM_SIZE,
+    marginBottom: 5,
+    marginLeft: 0,
+    marginRight: 5,
+  },
+}
 
 function Inspiration() {
   const { navigateBack, navigate } = useNavigation()
@@ -43,18 +72,18 @@ function Inspiration() {
   })
 
   const renderItem = ({ item }) => (
-    <Item onPress={() => handleNavigate(item.node.postId)} size={ITEM_SIZE}>
+    <Touchable onPress={() => handleNavigate(item.node.postId)} style={styles.item}>
       <Image source={item.node} width={ITEM_SIZE} height={ITEM_SIZE} />
-    </Item>
+    </Touchable>
   )
 
   return (
     <>
-      <BackButton onPress={handleNavigationBack}>
+      <Touchable onPress={handleNavigationBack} style={styles.back}>
         <Icon source={arrowLeft} onPress={handleNavigationBack} />
-      </BackButton>
+      </Touchable>
 
-      <View style={{ flex: 1, marginTop: hasNotch ? -NAVIGATION.STATUS_BAR_HEIGHT : 0 }}>
+      <View style={styles.base}>
         <InfiniteList
           numColumns={NUM_COLUMNS}
           loaderInset={0}

@@ -19,7 +19,7 @@ function formatModel(model) {
 
 function AddProjectModel() {
   const { t } = useTranslation('add-project-model')
-  const { navigate, navigateBack } = useNavigation()
+  const { navigate, navigateBack, dismissModal } = useNavigation()
   const [addProject] = useAddProjectMutation()
   const [query, setQuery] = useState()
   const [isSearching, setIsSearching] = useState(false)
@@ -30,6 +30,7 @@ function AddProjectModel() {
   })
 
   const { model, type, title } = useReactiveVar(store.project.projectVar)
+  const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
 
   const handleNavigationBack = useCallback(() => {
     navigateBack()
@@ -103,15 +104,20 @@ function AddProjectModel() {
       },
     })
 
-    navigate(SCREENS.ADD_MEDIA, {
-      options: {
-        layout: {
-          componentBackgroundColor: COLORS.DARK,
-        },
-      },
-    })
-
     store.project.reset()
+
+    // NOTE: If in add post flow
+    if (selectedFiles?.length) {
+      dismissModal()
+    } else {
+      navigate(SCREENS.ADD_MEDIA, {
+        options: {
+          layout: {
+            componentBackgroundColor: COLORS.DARK,
+          },
+        },
+      })
+    }
   }, [model, type, title, data])
 
   const handleModelChange = useCallback(

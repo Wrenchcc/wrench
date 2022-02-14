@@ -1,15 +1,26 @@
 import React from 'react'
+import { View } from 'react-native'
 import { Text } from 'ui'
 import { readableVersion } from 'utils/appVersion'
-import { Base } from './styles'
+
+const styles = {
+  base: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 30,
+    paddingRight: 0,
+    paddingBottom: 30,
+    paddingLeft: 0,
+  },
+}
 
 function Footer() {
   return (
-    <Base>
+    <View style={styles.base}>
       <Text fontSize={15} color="accent">
         {`v${readableVersion}`}
       </Text>
-    </Base>
+    </View>
   )
 }
 

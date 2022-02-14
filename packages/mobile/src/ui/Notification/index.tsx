@@ -9,13 +9,32 @@ import Avatar from 'ui/Avatar'
 import Image from 'ui/Image'
 import Text from 'ui/Text'
 import TimeAgo from 'ui/TimeAgo'
+import Toucable from 'ui/Touchable'
 import { COLORS } from 'ui/constants'
 import { trash } from 'images'
 import { NOTIFICATION_TYPES } from 'utils/enums'
-import { Base, Content, Bottom } from './styles'
 import transition from './transition'
 
 export const { width } = Dimensions.get('window')
+
+const styles = {
+  base: {
+    flexDirection: 'row',
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  content: {
+    marginLeft: 10,
+    marginRight: 10,
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+  },
+  bottom: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+}
 
 function description(data, t) {
   switch (data.type) {
@@ -111,7 +130,7 @@ function Notification({ data, deleteNotification }) {
         renderRightActions={renderRightAction}
         onSwipeableRightOpen={handleDelete}
       >
-        <Base onPress={handleOnPress}>
+        <Toucable onPress={handleOnPress} style={styles.base}>
           <Avatar
             uri={data.user.avatarUrl}
             size={40}
@@ -120,17 +139,17 @@ function Notification({ data, deleteNotification }) {
             fallback={data.user.isSilhouette}
             fullName={data.user.fullName}
           />
-          <Content>
+          <View style={styles.content}>
             <Text onPress={navigateToUser}>{data.user.fullName}</Text>
-            <Bottom>
+            <View style={styles.bottom}>
               <Text color="accent" fontSize={15} lineHeight={22} onPress={handleOnPress}>
                 {description(data, t)}. <TimeAgo date={data.createdAt} fontSize={15} />
               </Text>
-            </Bottom>
-          </Content>
+            </View>
+          </View>
 
           <Image source={image} width={40} height={40} />
-        </Base>
+        </Toucable>
       </Swipeable>
     </Transitioning.View>
   )

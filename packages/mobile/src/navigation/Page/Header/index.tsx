@@ -71,7 +71,10 @@ function Header({
   }, [])
 
   return (
-    <View style={[styles.base, { position: inline ? 'relative' : 'absolute' }]}>
+    <View
+      style={[styles.base, { position: inline ? 'relative' : 'absolute' }]}
+      pointerEvents="box-none"
+    >
       <View style={styles.inner}>
         <View style={styles.headerLeft}>
           {headerLeft || <Icon onPress={handleNavigation} source={arrowLeft} />}

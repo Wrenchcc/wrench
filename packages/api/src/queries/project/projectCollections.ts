@@ -41,7 +41,7 @@ export default async (_, args, ctx) => {
         node: {
           ...collection,
           cover: {
-            uri: file.poster ? transformPosterUrl(file) : file ? transformFileUrl(file) : null,
+            uri: file?.poster ? transformPosterUrl(file) : file ? transformFileUrl(file) : null,
           },
         },
       }

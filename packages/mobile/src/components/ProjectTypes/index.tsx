@@ -1,11 +1,30 @@
-import React, { useCallback, memo } from 'react'
+import React, { useCallback } from 'react'
+import { ScrollView, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { ScrollView } from 'react-native'
 import { useProjectTypesQuery } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
-import { Text } from 'ui'
+import { Text, Touchable } from 'ui'
+import PlatformColor from 'ui/PlatformColor'
 import Skeleton from './Skeleton'
-import { Base, Wrapper } from './styles'
+
+const GUTTER = 20
+const BAR_SPACE = GUTTER / 2
+
+const styles = {
+  base: {
+    paddingBottom: 10,
+    paddingTop: 10,
+    backgroundColor: PlatformColor.default,
+  },
+  button: {
+    height: 40,
+    borderWidth: 1,
+    borderColor: PlatformColor.divider,
+    justifycontent: 'center',
+    paddingLeft: 15,
+    paddinRight: 15,
+  },
+}
 
 function ProjectTypes({ visible }) {
   const { t } = useTranslation('project-types')
@@ -34,36 +53,49 @@ function ProjectTypes({ visible }) {
 
   if (!typesData?.types && loadingTypes) {
     return (
-      <Base>
+      <View style={styles.base}>
         <Skeleton />
-      </Base>
+      </View>
     )
   }
 
-  return (
-    visible && (
-      <Base>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <Wrapper first onPress={navigateToInsp}>
-            <Text fontSize={15} medium>
-              {t('inspo')}
-            </Text>
-          </Wrapper>
+  if (!visible) {
+    return null
+  }
 
-          {typesData.types.map((category, index) => (
-            <Wrapper
-              key={category.id}
-              last={index === typesData.types?.length - 1}
-              onPress={() => handleNavigation(category)}
-            >
-              <Text fontSize={15} medium>
-                {category.title}
-              </Text>
-            </Wrapper>
-          ))}
-        </ScrollView>
-      </Base>
-    )
+  return (
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.base}>
+      <Touchable
+        style={[
+          styles.button,
+          {
+            marginLeft: GUTTER,
+          },
+        ]}
+        onPress={navigateToInsp}
+      >
+        <Text fontSize={15} medium>
+          {t('inspo')}
+        </Text>
+      </Touchable>
+
+      {typesData.types.map((category, index) => (
+        <Touchable
+          key={category.id}
+          style={[
+            styles.button,
+            {
+              marginRight: index === typesData.types?.length - 1 ? GUTTER : BAR_SPACE,
+            },
+          ]}
+          onPress={() => handleNavigation(category)}
+        >
+          <Text fontSize={15} medium>
+            {category.title}
+          </Text>
+        </Touchable>
+      ))}
+    </ScrollView>
   )
 }
 

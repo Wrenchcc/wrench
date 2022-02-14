@@ -1,11 +1,32 @@
 import React from 'react'
+import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedQuery, BookmarksDocument } from '@wrench/common'
 import { Page, FlatList } from 'navigation'
+import { Text, Title } from 'ui'
 import * as Spacing from 'ui/Spacing'
 import Post from 'components/Post'
 import PostSkeleton from 'components/Post/Skeleton'
-import { Base, Title, Description } from './styles'
+
+const styles = {
+  base: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+    marginTop: 100,
+    justifyContent: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
+  },
+  title: {
+    marginBottom: 10,
+  },
+  description: {
+    marginBottom: 30,
+  },
+}
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
@@ -28,10 +49,10 @@ function Bookmarks() {
       <PostSkeleton />
     </>
   ) : (
-    <Base>
-      <Title>{t('title')}</Title>
-      <Description>{t('description')}</Description>
-    </Base>
+    <View style={styles.base}>
+      <Title style={styles.title}>{t('title')}</Title>
+      <Text style={styles.description}>{t('description')}</Text>
+    </View>
   )
 
   return (

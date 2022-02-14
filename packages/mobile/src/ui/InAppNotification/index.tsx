@@ -1,6 +1,6 @@
 import React from 'react'
+import { View, useColorScheme } from 'react-native'
 import { Text, Avatar } from 'ui'
-import { Base, Content } from './styles'
 
 interface InAppNotificationProps {
   title: string
@@ -8,20 +8,54 @@ interface InAppNotificationProps {
   avatarUrl: string
 }
 
-const InAppNotification = ({ body, title, avatarUrl }: InAppNotificationProps) => {
-  return (
-    <Base>
-      <Avatar size={40} uri={avatarUrl} style={{ flex: 1 }} />
+const styles = {
+  base: {
+    flexDirection: 'row',
+    paddingHorizontal: 14,
+    marginHorizontal: 10,
+    paddingVertical: 12,
+    boxShadow: '0 5px 7px rgba(0, 0, 0, 0.1)',
+    borderTopRightRadius: 8,
+    borderBottomRightRadius: 8,
+    borderBottomLeftRadius: 8,
+    borderTopLeftRadius: 8,
+  },
+  content: {
+    marginLeft: 10,
+    justifyContent: 'center',
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+  },
+  avatar: {
+    flex: 1,
+  },
+}
 
-      <Content>
+const InAppNotification = ({ body, title, avatarUrl }: InAppNotificationProps) => {
+  const colorScheme = useColorScheme()
+
+  return (
+    <View
+      style={[
+        styles.base,
+        {
+          backgroundColor:
+            colorScheme === 'dark' ? 'rgba(25, 25, 26, 0.98)' : 'rgba(255, 255, 255, 0.98)',
+        },
+      ]}
+    >
+      <Avatar size={40} uri={avatarUrl} style={styles.avatar} />
+
+      <View style={styles.content}>
         <Text fontSize={15} bold>
           {title}
         </Text>
         <Text fontSize={15} numberOfLines={2}>
           {body}
         </Text>
-      </Content>
-    </Base>
+      </View>
+    </View>
   )
 }
 

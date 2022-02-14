@@ -11,6 +11,14 @@ import { getCurrentUser } from 'gql'
 import { setTokens } from 'utils/storage/auth'
 import { logError } from 'utils/sentry'
 
+const styles = {
+  button: {
+    height: 46,
+    width: '100%',
+    marginBottom: 20,
+  },
+}
+
 function Apple({ black }) {
   const [authenticate] = useAuthenticateAppleMutation()
   const colorScheme = useColorScheme()
@@ -72,7 +80,7 @@ function Apple({ black }) {
       buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
       buttonStyle={buttonStyle}
       cornerRadius={0}
-      style={{ height: 46, width: '100%', marginBottom: 20 }}
+      style={styles.button}
       onPress={handleLoginManager}
     />
   )

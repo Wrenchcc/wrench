@@ -27,7 +27,3 @@ export const Content = styled.View`
   margin-left: ${(props) => (props.noImage ? 0 : 10)}px;
   margin-right: 20px;
 `
-
-export const Icon = styled.Image`
-  align-self: center;
-`

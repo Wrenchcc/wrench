@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import { Keyboard } from 'react-native'
+import { View, Keyboard } from 'react-native'
 import { storage, useMMKVString } from 'utils/storage'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
@@ -7,7 +7,15 @@ import { useReactiveVar, store } from 'gql'
 import { User, InfiniteList, NoResults, Loader, Text, Touchable } from 'ui'
 import { RECENT_SEARCHES_USERS } from 'utils/storage/constants'
 import Skeleton from 'ui/User/SkeletonList'
-import { Header } from '../styles'
+
+const styles = {
+  header: {
+    marginTop: 20,
+    marginBottom: 20,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+}
 
 const MAX_ITEMS = 8
 
@@ -73,14 +81,14 @@ function Users() {
   )
 
   const ListHeaderComponent = !query && recent.length > 0 && (
-    <Header>
+    <View style={styles.header}>
       <Text medium>{t('recent')}</Text>
       <Touchable onPress={handleRemove}>
         <Text fontSize={14} medium>
           {t('clear')}
         </Text>
       </Touchable>
-    </Header>
+    </View>
   )
 
   const ListFooterComponent = hasNextPage && query && <Loader />

@@ -171,7 +171,7 @@ function Carousel({ postId, files, onRemove }) {
             animatedStyle,
           ]}
         >
-          <Text fontSize={12} medium>
+          <Text fontSize={12} medium color="white">
             {currentIndex + 1}/{files.edges.length}
           </Text>
         </Animated.View>

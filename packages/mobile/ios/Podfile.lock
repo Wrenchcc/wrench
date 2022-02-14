@@ -65,24 +65,24 @@ PODS:
     - FBSDKCoreKit (= 12.2.1)
   - FBSDKShareKit (12.2.1):
     - FBSDKCoreKit (= 12.2.1)
-  - Firebase/AnalyticsWithoutAdIdSupport (8.11.0):
+  - Firebase/AnalyticsWithoutAdIdSupport (8.12.1):
     - Firebase/CoreOnly
-    - FirebaseAnalytics/WithoutAdIdSupport (~> 8.11.0)
-  - Firebase/CoreOnly (8.11.0):
-    - FirebaseCore (= 8.11.0)
-  - Firebase/Messaging (8.11.0):
+    - FirebaseAnalytics/WithoutAdIdSupport (~> 8.12.0)
+  - Firebase/CoreOnly (8.12.1):
+    - FirebaseCore (= 8.12.1)
+  - Firebase/Messaging (8.12.1):
     - Firebase/CoreOnly
-    - FirebaseMessaging (~> 8.11.0)
-  - FirebaseAnalytics/WithoutAdIdSupport (8.11.0):
+    - FirebaseMessaging (~> 8.12.0)
+  - FirebaseAnalytics/WithoutAdIdSupport (8.12.0):
     - FirebaseCore (~> 8.0)
     - FirebaseInstallations (~> 8.0)
-    - GoogleAppMeasurement/WithoutAdIdSupport (= 8.11.0)
+    - GoogleAppMeasurement/WithoutAdIdSupport (= 8.12.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
     - GoogleUtilities/MethodSwizzler (~> 7.7)
     - GoogleUtilities/Network (~> 7.7)
     - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - FirebaseCore (8.11.0):
+  - FirebaseCore (8.12.1):
     - FirebaseCoreDiagnostics (~> 8.0)
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/Logger (~> 7.7)
@@ -96,7 +96,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/UserDefaults (~> 7.7)
     - PromisesObjC (< 3.0, >= 1.2)
-  - FirebaseMessaging (8.11.0):
+  - FirebaseMessaging (8.12.0):
     - FirebaseCore (~> 8.0)
     - FirebaseInstallations (~> 8.0)
     - GoogleDataTransport (~> 9.1)
@@ -107,7 +107,7 @@ PODS:
     - nanopb (~> 2.30908.0)
   - fmt (6.2.1)
   - glog (0.3.5)
-  - GoogleAppMeasurement/WithoutAdIdSupport (8.11.0):
+  - GoogleAppMeasurement/WithoutAdIdSupport (8.12.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
     - GoogleUtilities/MethodSwizzler (~> 7.7)
     - GoogleUtilities/Network (~> 7.7)
@@ -480,13 +480,13 @@ PODS:
     - React-jsi (= 0.67.2)
     - React-logger (= 0.67.2)
     - React-perflogger (= 0.67.2)
-  - ReactNativeNavigation (7.25.3):
+  - ReactNativeNavigation (7.25.4):
     - HMSegmentedControl
     - React-Core
     - React-RCTImage
     - React-RCTText
-    - ReactNativeNavigation/Core (= 7.25.3)
-  - ReactNativeNavigation/Core (7.25.3):
+    - ReactNativeNavigation/Core (= 7.25.4)
+  - ReactNativeNavigation/Core (7.25.4):
     - HMSegmentedControl
     - React-Core
     - React-RCTImage
@@ -497,15 +497,15 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
-  - RNFBAnalytics (14.3.1):
-    - Firebase/AnalyticsWithoutAdIdSupport (= 8.11.0)
+  - RNFBAnalytics (14.3.3):
+    - Firebase/AnalyticsWithoutAdIdSupport (= 8.12.1)
     - React-Core
     - RNFBApp
-  - RNFBApp (14.3.1):
-    - Firebase/CoreOnly (= 8.11.0)
+  - RNFBApp (14.3.3):
+    - Firebase/CoreOnly (= 8.12.1)
     - React-Core
-  - RNFBMessaging (14.3.1):
-    - Firebase/Messaging (= 8.11.0)
+  - RNFBMessaging (14.3.3):
+    - Firebase/Messaging (= 8.12.1)
     - React-Core
     - RNFBApp
   - RNFS (2.18.0):
@@ -840,15 +840,15 @@ SPEC CHECKSUMS:
   FBSDKCoreKit_Basics: a6a92ca628e05f86f458a4721574c5ddfb058ba3
   FBSDKLoginKit: 7467b7f988ca4fdf48f12a839bcfce4264752429
   FBSDKShareKit: 25fe0e2cd0811918e5b5b1603cb3fc580154cc48
-  Firebase: 44dd9724c84df18b486639e874f31436eaa9a20c
-  FirebaseAnalytics: 4e4b13031034e6561ed3bd1d47b6fdabbd6487c6
-  FirebaseCore: 2f4f85b453cc8fea4bb2b37e370007d2bcafe3f0
+  Firebase: 580d09e8edafc3073ebf09c03fd42e4d80d35fe9
+  FirebaseAnalytics: bd10d7706ba8d6e01ea2816f8fe9e9b881cb0918
+  FirebaseCore: 8138de860a90ca7eec5e324da5788fb0ebf1d93c
   FirebaseCoreDiagnostics: 3b40dfadef5b90433a60ae01f01e90fe87aa76aa
   FirebaseInstallations: 25764cf322e77f99449395870a65b2bef88e1545
-  FirebaseMessaging: 02e248e8997f71fa8cc9d78e9d49ec1a701ba14a
+  FirebaseMessaging: 23db8bf05585e929ada8af0f0968933c25252808
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 85ecdd10ee8d8ec362ef519a6a45ff9aa27b2e85
-  GoogleAppMeasurement: aa3cb422fab2b05d2efac543a5720d1a85b9dea5
+  GoogleAppMeasurement: ae033c3aad67e68294369373056b4d74cc8ae0d6
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
@@ -897,12 +897,12 @@ SPEC CHECKSUMS:
   React-RCTVibration: 99c7f67fba7a5ade46e98e870c6ff2444484f995
   React-runtimeexecutor: 2450b43df7ffe8e805a0b3dcb2abd4282f1f1836
   ReactCommon: d98c6c96b567f9b3a15f9fd4cc302c1eda8e3cf2
-  ReactNativeNavigation: 81628d0bac0c0d214d13f08bcd1721879ba70da7
+  ReactNativeNavigation: 146bec8f834564f05637b43f469b9ca6e1cbe94f
   RNDeviceInfo: 4944cf8787b9c5bffaf301fda68cc1a2ec003341
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
-  RNFBAnalytics: 232f2b886b20735b9968c3540decf9de31f37e50
-  RNFBApp: 227358730432d119d9b76ed33eba9e2306a9d85a
-  RNFBMessaging: a5b301177f6d7b9af6fa2228a86ee133cc471009
+  RNFBAnalytics: 2de2179ebe1e31ef93825f5b0492739e60162f81
+  RNFBApp: 920a4992d33019eecca3cfada87caaf3784c1cbd
+  RNFBMessaging: 53bf58bb94b68a1137a4c916bd457e421f394bb4
   RNFS: 3ab21fa6c56d65566d1fb26c2228e2b6132e5e32
   RNGestureHandler: bf572f552ea324acd5b5464b8d30755b2d8c1de6
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499

@@ -2,9 +2,19 @@ import React from 'react'
 import { View } from 'react-native'
 import { usePaginatedQuery, ProjectCollectionsDocument } from '@wrench/common'
 import { InfiniteList, Text } from 'ui'
+import Collection from 'components/Collection'
 import AddCollection from 'components/AddCollection'
 import Skelleton from './Skeleton'
-import { Collection, GUTTER } from './styles'
+
+const GUTTER = 20
+const BAR_SPACE = GUTTER / 2
+
+const styles = {
+  list: {
+    marginLeft: -GUTTER,
+    marginRight: -GUTTER,
+  },
+}
 
 function Collections({ isOwner, projectId, onPress, onSave, selectedId, disableModal = false }) {
   const {
@@ -19,21 +29,30 @@ function Collections({ isOwner, projectId, onPress, onSave, selectedId, disableM
     },
   })
 
-  const renderItem = ({ item: { node }, index }) => (
-    <Collection
-      image={node.cover}
-      name={node.name}
-      key={node.id}
-      last={index === edges && edges.length - 1}
-      projectId={projectId}
-      id={node.id}
-      slug={node.slug}
-      selected={node.id === selectedId}
-      onPress={onPress}
-      isOwner={isOwner}
-      onSave={onSave}
-    />
-  )
+  const renderItem = ({ item: { node }, index }) => {
+    // TODO: Exclude from backend
+    if (!isOwner && !node?.cover.uri) {
+      return null
+    }
+
+    return (
+      <Collection
+        image={node.cover}
+        name={node.name}
+        key={node.id}
+        projectId={projectId}
+        id={node.id}
+        slug={node.slug}
+        selected={node.id === selectedId}
+        onPress={onPress}
+        isOwner={isOwner}
+        onSave={onSave}
+        style={{
+          marginRight: index === edges && edges.length - 1 ? GUTTER : BAR_SPACE,
+        }}
+      />
+    )
+  }
 
   const ListHeaderComponent = isOwner && (
     <AddCollection style={{ marginRight: 10 }} projectId={projectId} disableModal={disableModal} />
@@ -81,10 +100,7 @@ function Collections({ isOwner, projectId, onPress, onSave, selectedId, disableM
       hasNextPage={hasNextPage}
       renderItem={renderItem}
       showsVerticalScrollIndicator={false}
-      style={{
-        marginLeft: -GUTTER,
-        marginRight: -GUTTER,
-      }}
+      style={styles.list}
     />
   )
 }

@@ -2,9 +2,17 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useProjectSuggestionsQuery } from '@wrench/common'
 import { Page, ScrollView, useNavigation, SCREENS } from 'navigation'
-import { ProjectSuggestion, Text } from 'ui'
+import { ProjectSuggestion, Text, Title } from 'ui'
 import Skeleton from './Skeleton'
-import { Headline, Description } from './styles'
+
+const styles = {
+  headline: {
+    marginBottom: 12,
+  },
+  description: {
+    marginBottom: 40,
+  },
+}
 
 function Suggestions() {
   const { t } = useTranslation('suggestions')
@@ -31,13 +39,13 @@ function Suggestions() {
   return (
     <Page headerRight={headerRight}>
       <ScrollView>
-        <Headline medium numberOfLines={0}>
+        <Title medium numberOfLines={0} style={styles.headline}>
           {t('headline')}
-        </Headline>
+        </Title>
 
-        <Description color="neutral" fontSize={19}>
+        <Text color="neutral" fontSize={19} style={styles.description}>
           {t('description')}
-        </Description>
+        </Text>
 
         {loading ? (
           <Skeleton />

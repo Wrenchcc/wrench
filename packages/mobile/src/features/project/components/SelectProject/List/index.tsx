@@ -6,7 +6,7 @@ import { Text } from 'ui'
 import Project from '../Project'
 import { Base, Scroll, NewProject } from './styles'
 
-function List({ projects, onPress, onClose, selectedId }) {
+function List({ projects, onPress, onClose }) {
   const { t } = useTranslation('select-project')
   const { showModal } = useNavigation()
 
@@ -15,14 +15,15 @@ function List({ projects, onPress, onClose, selectedId }) {
     onClose()
   }, [onClose])
 
-  const renderProjects = () =>
-    projects
-      ?.slice()
-      .sort((a, b) => a.node.files.edges.length > b.node.files.edges.length)
-      .reverse()
-      .map(({ node }) => (
-        <Project key={node.id} {...node} onPress={onPress} selected={selectedId === node.id} />
-      ))
+  const renderProjects = useCallback(
+    () =>
+      projects
+        ?.slice()
+        .sort((a, b) => a.node.files.edges.length > b.node.files.edges.length)
+        .reverse()
+        .map(({ node }) => <Project key={node.id} {...node} onPress={onPress} />),
+    [projects]
+  )
 
   return (
     <Animated.View

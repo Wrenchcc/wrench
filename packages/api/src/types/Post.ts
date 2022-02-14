@@ -52,10 +52,6 @@ export default gql`
     poster: String
   }
 
-  input EditFileInput {
-    id: String
-  }
-
   extend type Query {
     post(id: ID): Post
     posts(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
@@ -72,7 +68,7 @@ export default gql`
   input EditPostInput {
     caption: String
     collectionId: ID
-    files: [EditFileInput]
+    files: [String]
   }
 
   extend type Mutation {

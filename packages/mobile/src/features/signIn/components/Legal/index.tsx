@@ -1,12 +1,24 @@
 import React, { useCallback } from 'react'
+import { View, useColorScheme } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useColorScheme } from 'react-native'
 import { useNavigation, SCREENS, STATUS_BAR } from 'navigation'
-import { Touchable } from 'ui'
-import { Base, Text } from './styles'
+import { Touchable, Text } from 'ui'
 import { COLORS } from 'ui/constants'
 
 const LEGAL_URL = 'https://wrench.cc/terms'
+
+const styles = {
+  base: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 15,
+  },
+  text: {
+    opacity: 0.8,
+    fontSize: 12,
+  },
+}
 
 function Legal({ color = 'white' }) {
   const { t } = useTranslation('legal')
@@ -31,14 +43,14 @@ function Legal({ color = 'white' }) {
   )
 
   return (
-    <Base>
+    <View style={styles.base}>
       <Text color={color}>{t('description')}</Text>
       <Touchable onPress={handleNavigation}>
-        <Text underline color={color}>
+        <Text underline color={color} style={styles.text}>
           {t('link')}
         </Text>
       </Touchable>
-    </Base>
+    </View>
   )
 }
 

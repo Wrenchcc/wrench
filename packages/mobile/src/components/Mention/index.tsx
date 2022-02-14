@@ -1,8 +1,25 @@
 import React, { useEffect } from 'react'
+import { View } from 'react-native'
 import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
 import { useReactiveVar, store } from 'gql'
 import { InfiniteList, MentionUser, NoResults, SearchingFor, Loader } from 'ui'
-import { Base } from './styles'
+import PlatformColor from 'ui/PlatformColor'
+import { NAVIGATION } from 'navigation/constants'
+import { keyboardHeight } from 'utils/platform'
+
+const INPUT_HEIGHT = 60
+
+const styles = {
+  base: {
+    backgroundColor: PlatformColor.default,
+    bottom: keyboardHeight + INPUT_HEIGHT,
+    left: 0,
+    position: 'absolute',
+    top: NAVIGATION.STATUS_BAR_HEIGHT,
+    width: '100%',
+    zIndex: 100,
+  },
+}
 
 function Mention({ onPress }) {
   const query = useReactiveVar(store.mention.mentionVar)
@@ -34,7 +51,7 @@ function Mention({ onPress }) {
     )
 
   return (
-    <Base>
+    <View style={styles.base}>
       <InfiniteList
         keyboardDismissMode="none"
         ListEmptyComponent={!isFetching && query.length > 0 && <NoResults />}
@@ -47,7 +64,7 @@ function Mention({ onPress }) {
         borderSeparators
         ListFooterComponent={ListFooterComponent}
       />
-    </Base>
+    </View>
   )
 }
 

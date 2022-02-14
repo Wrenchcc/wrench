@@ -53,7 +53,7 @@ const renderItem = ({ item, index }) => {
 const THREE_MINUTES = 180000
 
 function Feed() {
-  const latestId = useRef(null)
+  const latestNode = useRef(null)
   const isVisible = useSharedValue(false)
   const { scrollTo } = useScrollContext()
   const isPosting = useReactiveVar(store.post.isPostingVar)
@@ -78,13 +78,18 @@ function Feed() {
 
   useEffect(() => {
     const node = edges && edges[0]?.node
-    const id = node?.id
 
-    if (node && latestId.current !== id && !node.permissions.isOwner) {
+    if (
+      node &&
+      latestNode.current &&
+      latestNode.current.id !== node.id &&
+      !node.permissions.isOwner &&
+      !latestNode.current.permissions.isOwner
+    ) {
       isVisible.value = true
     }
 
-    latestId.current = id
+    latestNode.current = node
   }, [edges])
 
   useEffect(() => {

@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
+import { View } from 'react-native'
 import * as AppleAuthentication from 'expo-apple-authentication'
 import { useNavigation, ScrollView } from 'navigation'
 import Header from 'navigation/Page/Header'
@@ -8,7 +9,21 @@ import Legal from '../../components/Legal'
 import Facebook from '../../components/Facebook'
 import Google from '../../components/Google'
 import Apple from '../../components/Apple'
-import { Base, Row, Footer } from './styles'
+
+const styles = {
+  base: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+  },
+  row: {
+    marginBottom: 15,
+  },
+  footer: {
+    marginTop: 'auto',
+    paddingBottom: 20,
+  },
+}
 
 function Other() {
   const { dismissModal } = useNavigation()
@@ -33,18 +48,20 @@ function Other() {
   }, [dismissModal])
 
   return (
-    <Base>
+    <View style={styles.base}>
       <Header headerLeft={<Icon source={close} onPress={handleDismissModal} />} />
       <ScrollView>
         {providers.map((Provider, i) => (
-          <Row key={i}>{Provider}</Row>
+          <View key={i} style={styles.row}>
+            {Provider}
+          </View>
         ))}
 
-        <Footer>
+        <View style={styles.footer}>
           <Legal color="neutral" />
-        </Footer>
+        </View>
       </ScrollView>
-    </Base>
+    </View>
   )
 }
 

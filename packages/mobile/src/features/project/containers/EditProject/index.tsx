@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { Alert } from 'react-native'
+import { Alert, View } from 'react-native'
 import {
   useEditProjectMutation,
   useDeleteProjectMutation,
@@ -10,9 +10,16 @@ import NativeShare from 'react-native-share'
 import { SCREENS, useNavigation, ScrollView } from 'navigation'
 import Header from 'navigation/Page/Header'
 import { ActivityIndicator, Text, Title, Icon, Input, SelectionItem } from 'ui'
+import { store } from 'gql'
 import { close } from 'images'
 import { logError } from 'utils/sentry'
-import { Inner, Spacing } from './styles'
+import * as Spacing from 'ui/Spacing'
+
+const styles = {
+  inner: {
+    paddingBottom: 40,
+  },
+}
 
 function EditProject({ project, onDeleteCallback }) {
   const { t } = useTranslation(['edit-project', 'share'])
@@ -71,6 +78,8 @@ function EditProject({ project, onDeleteCallback }) {
 
   const onDelete = useCallback(async () => {
     dismissModal()
+
+    store.project.deleteSelectedProjectId(project.id)
 
     await deleteProject({
       variables: {
@@ -152,7 +161,7 @@ function EditProject({ project, onDeleteCallback }) {
         headerCenter={renderHeaderCenter()}
       />
       <ScrollView>
-        <Inner>
+        <View style={styles.inner}>
           <Title>{t('information')}</Title>
           <Input
             placeholder={t('title')}
@@ -163,22 +172,23 @@ function EditProject({ project, onDeleteCallback }) {
             returnKeyType="done"
           />
 
-          <Spacing large />
+          <Spacing.Horizontally px={20} />
 
           <Text onPress={navigateToModel}>{t('model')}</Text>
-        </Inner>
+        </View>
 
-        <Inner>
+        <View style={styles.inner}>
           <Title>{t('share:share')}</Title>
-          <Spacing large />
+          <Spacing.Horizontally px={20} />
 
           <Text onPress={handleShare}>{t('share:share')}</Text>
-        </Inner>
+        </View>
 
-        <Inner>
+        <View style={styles.inner}>
           <Title>{t('projectSettings')}</Title>
-          <SelectionItem last important title={t('deleteTitle')} onPress={toggleActionSheet} />
-        </Inner>
+          <Spacing.Horizontally px={20} />
+          <SelectionItem important title={t('deleteTitle')} onPress={toggleActionSheet} />
+        </View>
       </ScrollView>
     </>
   )

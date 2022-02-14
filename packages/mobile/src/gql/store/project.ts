@@ -20,4 +20,13 @@ export const setProjectId = (id) => {
   storage.set(SELECTED_PROJECT_ID_KEY, id)
 }
 
+export const deleteSelectedProjectId = (id) => {
+  const selectedId = storage.getString(SELECTED_PROJECT_ID_KEY)
+
+  if (id === selectedId) {
+    selectedIdVar('')
+    storage.delete(SELECTED_PROJECT_ID_KEY)
+  }
+}
+
 export const getProjectId = () => storage.getString(SELECTED_PROJECT_ID_KEY)

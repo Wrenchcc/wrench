@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import Animated, {
   useSharedValue,
@@ -9,11 +9,30 @@ import Animated, {
 } from 'react-native-reanimated'
 import { useScrollContext } from 'navigation'
 import Text from 'ui/Text'
-import { Button, HEIGHT } from './styles'
+import Touchable from 'ui/Touchable'
+import PlatformColor from 'ui/PlatformColor'
 
 const FULLY_UP = -100
 const FULLY_DOWN = 10
 const ONE_POST_DOWN = 600
+const HEIGHT = 40
+
+const styles = {
+  base: {
+    alignSelf: 'center',
+    height: HEIGHT,
+  },
+  button: {
+    height: HEIGHT,
+    background: PlatformColor.inverse,
+    borderRadius: HEIGHT / 2,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingLeft: 22,
+    paddingRight: 22,
+  },
+}
 
 function ShowLatest({ onClose, isVisible }) {
   const { t } = useTranslation('show-latest')
@@ -47,20 +66,12 @@ function ShowLatest({ onClose, isVisible }) {
   }))
 
   return (
-    <Animated.View
-      style={[
-        {
-          alignSelf: 'center',
-          height: HEIGHT,
-        },
-        animatedStyle,
-      ]}
-    >
-      <Button onPress={handleOnPress}>
+    <Animated.View style={[styles.base, animatedStyle]}>
+      <Touchable onPress={handleOnPress} style={styles.button}>
         <Text color="default" fontSize={15} medium>
           {t('button')}
         </Text>
-      </Button>
+      </Touchable>
     </Animated.View>
   )
 }

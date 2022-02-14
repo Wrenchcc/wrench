@@ -10,7 +10,7 @@ type BaseProps = {
 export const Base = styled.View<BaseProps>`
   justify-content: center;
   padding-bottom: 20px;
-  margin-top: 100px;
+  margin-top: 60px;
 `
 
 export const Title = styled(UiTitle)`

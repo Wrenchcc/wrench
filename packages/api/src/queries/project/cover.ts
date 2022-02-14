@@ -22,7 +22,7 @@ export default async ({ id }, _, ctx) => {
   if (file) {
     return {
       default: false,
-      uri: file.poster ? transformPosterUrl(file) : transformFileUrl(file),
+      uri: file?.poster ? transformPosterUrl(file) : transformFileUrl(file),
     }
   }
 

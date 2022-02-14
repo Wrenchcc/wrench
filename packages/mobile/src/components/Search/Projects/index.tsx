@@ -1,13 +1,22 @@
 import React, { memo, useEffect, useState, useCallback } from 'react'
-import { Keyboard } from 'react-native'
+import { View, Keyboard } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useReactiveVar, store } from 'gql'
 import { storage, useMMKVString } from 'utils/storage'
 import { usePaginatedLazyQuery, SearchProjectsDocument } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { RECENT_SEARCHES_PROJECTS } from 'utils/storage/constants'
-import { ProjectCard, InfiniteList, NoResults, SearchingFor, Loader, Text } from 'ui'
-import { Header } from '../styles'
+import { ProjectCard, InfiniteList, NoResults, Loader, Text } from 'ui'
+import Skeleton from 'ui/ProjectCard/SkeletonList'
+
+const styles = {
+  header: {
+    marginTop: 20,
+    marginBottom: 20,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+}
 
 const MAX_ITEMS = 4
 
@@ -80,24 +89,26 @@ function Projects() {
   }
 
   const ListHeaderComponent = !query && recent.length > 0 && (
-    <Header>
+    <View style={styles.header}>
       <Text medium>{t('recent')}</Text>
       <Text fontSize={14} onPress={handleRemove} medium>
         {t('clear')}
       </Text>
-    </Header>
+    </View>
   )
 
-  const ListFooterComponent = isFetching ? (
-    <SearchingFor query={query} />
+  const ListFooterComponent = hasNextPage && query && <Loader />
+
+  const ListEmptyComponent = isFetching ? (
+    <Skeleton />
   ) : (
-    hasNextPage && query && <Loader />
+    !isFetching && query.length > 1 && <NoResults />
   )
 
   return (
     <InfiniteList
       initialNumToRender={4}
-      ListEmptyComponent={!isFetching && query.length > 1 && <NoResults />}
+      ListEmptyComponent={ListEmptyComponent}
       data={query ? edges : recent}
       fetchMore={fetchMore}
       hasNextPage={isFetching ? false : hasNextPage}
@@ -107,7 +118,7 @@ function Projects() {
       renderItem={renderItem}
       ListHeaderComponent={ListHeaderComponent}
       ListFooterComponent={ListFooterComponent}
-      ItemSeparatorComponentStyle={{ paddingTop: 10, marginBottom: 10 }}
+      ItemSeparatorComponentStyle={{ paddingTop: 15, marginBottom: 15 }}
     />
   )
 }
