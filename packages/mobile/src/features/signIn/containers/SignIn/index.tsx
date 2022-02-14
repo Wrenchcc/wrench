@@ -39,18 +39,14 @@ const styles = {
     bottom: 0,
   },
   inner: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
     paddingTop: isAndroid ? NAVIGATION.STATUS_BAR_HEIGHT + 20,
     paddingRight: 20,
     paddingBottom: 20,
     paddingLeft: 20,
   },
   content: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
     justifyContent: 'center',
   },
   description: {

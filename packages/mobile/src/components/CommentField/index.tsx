@@ -23,9 +23,7 @@ const styles = {
     marginBottom: 15,
   },
   input: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
     borderBottomWidth: 0,
     paddingRight: 10,
     paddingLeft: 10,

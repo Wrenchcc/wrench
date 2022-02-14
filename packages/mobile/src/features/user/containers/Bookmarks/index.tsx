@@ -10,9 +10,7 @@ import PostSkeleton from 'components/Post/Skeleton'
 
 const styles = {
   base: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
     marginTop: 100,
     justifyContent: 'center',
     paddingLeft: 20,

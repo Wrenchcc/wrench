@@ -20,14 +20,10 @@ const styles = {
   },
   middle: {
     flexDirection: 'row',
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
   },
   content: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
     marginRight: 20,
   },
 }

@@ -16,9 +16,7 @@ const styles = {
     backgroundColor: PlatformColor.default,
   },
   base: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
     paddingBottom: hasNotch ? 80 : 60,
   },
   footer: {
@@ -34,9 +32,7 @@ const styles = {
     backgroundColor: PlatformColor.default,
   },
   inner: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
     flexDirection: 'row',
   },
 }

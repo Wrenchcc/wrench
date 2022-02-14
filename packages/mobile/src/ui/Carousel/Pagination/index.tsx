@@ -8,9 +8,7 @@ export const PAGINATION_WIDTH = 4 * (DOT_SIZE + DOT_SPACE)
 
 const styles = {
   base: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
     position: 'absolute',
     zIndex: 10,
     bottom: 20,
@@ -18,10 +16,7 @@ const styles = {
     marginLeft: PAGINATION_WIDTH / 2,
     width: PAGINATION_WIDTH,
     overflow: 'hidden',
-    borderTopRightRadius: 20,
-    borderBottomRightRadius: 20,
-    borderBottomLeftRadius: 20,
-    borderTopLeftRadius: 20,
+    borderRadius: 20,
   },
   dot: {
     width: DOT_SIZE,

@@ -31,9 +31,7 @@ const styles = {
   },
   content: {
     position: 'absolute',
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
     width: '100%',
     paddingTop: 10,
     paddingRight: 10,
@@ -50,9 +48,7 @@ const styles = {
   },
   info: {
     justifyContent: 'flex-end',
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
   },
 }
 

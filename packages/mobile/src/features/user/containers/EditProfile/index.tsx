@@ -27,10 +27,7 @@ const styles = {
   },
   overlay: {
     position: 'absolute',
-    borderTopRightRadius: 60,
-    borderBottomRightRadius: 60,
-    borderBottomLeftRadius: 60,
-    borderTopLeftRadius: 60,
+    borderRadius: 60,
     backgroundColor: 'rgba(000, 000, 000, 0.3)',
     top: 0,
     left: 0,
@@ -50,9 +47,7 @@ const styles = {
     top: 22,
   },
   location: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
     height: 60,
     justifyContent: 'center',
     borderBottomWidth: 1,

@@ -14,9 +14,7 @@ const styles = {
     marginRight: 10,
   },
   inner: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     paddingLeft: 20,

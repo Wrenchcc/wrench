@@ -16,9 +16,7 @@ const ITEM_SIZE = width / 2 - GUTTER
 
 const styles = {
   image: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
     justifyContent: 'flex-end',
     paddingTop: 10,
     paddingRight: 10,

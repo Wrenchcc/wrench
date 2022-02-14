@@ -11,9 +11,7 @@ const styles = {
     justifyContent: 'space-between',
   },
   username: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
     paddingRight: 10,
   },
   info: {

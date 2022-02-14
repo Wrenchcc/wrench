@@ -26,9 +26,7 @@ const styles = {
   content: {
     marginLeft: 10,
     marginRight: 10,
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
   },
   bottom: {
     flexDirection: 'row',

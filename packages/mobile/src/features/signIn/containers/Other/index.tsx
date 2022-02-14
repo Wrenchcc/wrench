@@ -12,9 +12,7 @@ import Apple from '../../components/Apple'
 
 const styles = {
   base: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
   },
   row: {
     marginBottom: 15,

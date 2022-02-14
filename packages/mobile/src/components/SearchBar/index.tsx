@@ -13,14 +13,10 @@ const styles = {
   base: {
     flexDirection: 'row',
     alignItems: 'center',
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
   },
   inner: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
     height: 40,
   },
   text: {
@@ -28,14 +24,9 @@ const styles = {
     fontSize: 17,
   },
   input: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    flex: 1,
     position: 'relative',
-    borderTopRightRadius: 1,
-    borderBottomRightRadius: 1,
-    borderBottomLeftRadius: 1,
-    borderTopLeftRadius: 1,
+    borderRadius: 1,
     paddingLeft: 41,
     paddingBottom: 0,
     paddingTop: 0,

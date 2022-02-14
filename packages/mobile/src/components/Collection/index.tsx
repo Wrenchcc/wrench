@@ -14,10 +14,7 @@ const styles = {
   placeholder: {
     width: 60,
     height: 60,
-    borderTopRightRadius: 60,
-    borderBottomRightRadius: 60,
-    borderBottomLeftRadius: 60,
-    borderTopLeftRadius: 60,
+    borderRadius: 60,
     backgroundColor: PlatformColor.placeholder,
   },
   item: {
