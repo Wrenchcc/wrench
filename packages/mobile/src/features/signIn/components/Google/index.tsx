@@ -18,7 +18,7 @@ import PlatformColor from 'ui/PlatformColor'
 const styles = {
   button: {
     width: '100%',
-    background: PlatformColor.white,
+    backgroundColor: PlatformColor.white,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
@@ -92,7 +92,7 @@ function Google({ border }) {
   }, [])
 
   return (
-    <Touchable onPress={handleLoginManager} style={[styles.button, , { border: border ? 1 : 0 }]}>
+    <Touchable onPress={handleLoginManager} style={[styles.button, { border: border ? 1 : 0 }]}>
       <Icon source={google} style={styles.icon} color="black" />
       <Text medium color="black" fontSize={16}>
         {t('button')}

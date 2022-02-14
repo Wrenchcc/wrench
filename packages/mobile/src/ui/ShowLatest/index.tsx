@@ -24,7 +24,7 @@ const styles = {
   },
   button: {
     height: HEIGHT,
-    background: PlatformColor.inverse,
+    backgroundColor: PlatformColor.inverse,
     borderRadius: HEIGHT / 2,
     flex: 1,
     alignItems: 'center',

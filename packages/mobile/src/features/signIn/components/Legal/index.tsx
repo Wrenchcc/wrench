@@ -3,7 +3,6 @@ import { View, useColorScheme } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS, STATUS_BAR } from 'navigation'
 import { Touchable, Text } from 'ui'
-import { COLORS } from 'ui/constants'
 
 const LEGAL_URL = 'https://wrench.cc/terms'
 
@@ -13,10 +12,10 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 15,
+    marginBottom: 20,
   },
   text: {
     opacity: 0.8,
-    fontSize: 12,
   },
 }
 
@@ -34,7 +33,7 @@ function Legal({ color = 'white' }) {
             style: colorScheme === 'dark' ? STATUS_BAR.LIGHT : STATUS_BAR.DARK,
           },
           layout: {
-            componentBackgroundColor: COLORS.WHITE,
+            componentBackgroundColor: 'white',
           },
         },
         url: LEGAL_URL,
@@ -44,9 +43,12 @@ function Legal({ color = 'white' }) {
 
   return (
     <View style={styles.base}>
-      <Text color={color}>{t('description')}</Text>
+      <Text color={color} fontSize={12}>
+        {t('description')}
+      </Text>
+
       <Touchable onPress={handleNavigation}>
-        <Text underline color={color} style={styles.text}>
+        <Text underline color={color} fontSize={12} style={styles.text}>
           {t('link')}
         </Text>
       </Touchable>

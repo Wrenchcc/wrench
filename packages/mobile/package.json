@@ -78,7 +78,7 @@
     "react-native-gesture-handler": "^2.2.0",
     "react-native-mmkv": "^2.1.0",
     "react-native-navigation": "^7.25.4",
-    "react-native-pager-view": "^5.4.9",
+    "react-native-pager-view": "^5.4.11",
     "react-native-pinchable": "^0.2.1",
     "react-native-reanimated": "^2.4.1",
     "react-native-share": "^7.3.5",
@@ -86,7 +86,6 @@
     "react-native-status-bar-height": "^2.6.0",
     "react-native-tab-view": "3.1.1",
     "react-native-webview": "^11.17.2",
-    "styled-components": "5.2.3",
     "url": "^0.11.0"
   },
   "devDependencies": {

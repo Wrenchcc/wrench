@@ -6,10 +6,10 @@ import { useNavigation, SCREENS } from 'navigation'
 import { InfiniteList, ProjectCard, Title, Text } from 'ui'
 import Skeleton from './Skeleton'
 
-export const { width } = Dimensions.get('window')
+const { width } = Dimensions.get('window')
 
-export const GUTTER = 20
-export const BAR_SPACE = GUTTER / 2
+const GUTTER = 20
+const BAR_SPACE = GUTTER / 2
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
 const styles = {

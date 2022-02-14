@@ -22,7 +22,7 @@ const styles = {
     paddingRight: 10,
     paddingBottom: 10,
     paddingLeft: 10,
-    background: 'transparent',
+    backgroundColor: 'transparent',
     borderWidth: 3,
   },
   picture: {

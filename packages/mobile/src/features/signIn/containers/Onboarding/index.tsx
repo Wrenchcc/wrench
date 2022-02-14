@@ -28,7 +28,7 @@ const styles = {
     paddingRight: 10,
     paddingBottom: 10,
     paddingLeft: 10,
-    background: 'transparent',
+    backgroundColor: 'transparent',
     borderTopWidth: 3,
     borderRightWidth: 3,
     borderBottomWidth: 3,

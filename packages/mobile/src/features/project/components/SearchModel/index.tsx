@@ -59,8 +59,6 @@ function SearchModel({ query, onPress }) {
     </Touchable>
   )
 
-  const bottom = keyboardHeight + INPUT_HEIGHT
-
   const ListEmptyComponent = isFetching ? (
     <HashtagSkeletonList />
   ) : (
@@ -75,7 +73,14 @@ function SearchModel({ query, onPress }) {
     )
 
   return (
-    <View styles={[styles.base, { bottom }]}>
+    <View
+      styles={[
+        styles.base,
+        {
+          bottom: keyboardHeight + INPUT_HEIGHT,
+        },
+      ]}
+    >
       <InfiniteList
         borderSeparator
         initialNumToRender={8}

@@ -43,10 +43,9 @@ function ProjectCategories({ ListHeaderComponent, onSelect }) {
           }}
         >
           <FastImage
-            placeholderColor="transparent"
             source={{ uri: item.imageUrl }}
             style={[
-              style.image,
+              styles.image,
               {
                 height: ITEM_SIZE - GUTTER / 2,
                 width: ITEM_SIZE - GUTTER / 2,

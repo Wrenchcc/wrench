@@ -32,7 +32,7 @@ const styles = {
     paddingTop: 0,
     paddingRight: 40,
     fontFamily: FONTS.REGULAR,
-    fontsize: 17,
+    fontSize: 17,
     backgroundColor: PlatformColor.placeholder,
     color: PlatformColor.inverse,
   },

@@ -23,7 +23,7 @@ function Content() {
       <Title medium style={styles.headline}>
         {t('headline')}
       </Title>
-      <Text opacity={0.8}>{t('Text')}</Text>
+      <Text opacity={0.8}>{t('description')}</Text>
     </View>
   )
 }

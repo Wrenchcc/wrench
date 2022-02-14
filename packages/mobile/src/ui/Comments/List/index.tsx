@@ -1,9 +1,26 @@
 import React, { useCallback } from 'react'
+import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { slice } from 'rambda'
 import { useNavigation, SCREENS } from 'navigation'
 import Text from 'ui/Text'
-import { Row, Comment, LoadMore } from './styles'
+import ParsedText from 'ui/Text'
+import Touchable from 'ui/Touchable'
+
+const styles = {
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+  comment: {
+    flex: 1,
+  },
+  load: {
+    marginTop: 5,
+    marginBottom: 10,
+  },
+}
 
 function List({ data }) {
   const { t } = useTranslation('comment-list')
@@ -21,14 +38,14 @@ function List({ data }) {
     const onPress = () => navigate(SCREENS.USER, { user: node.user })
 
     return (
-      <Row key={node.id}>
+      <View key={node.id} style={styles.row}>
         <Text bold fontSize={15} onPress={onPress}>
           {`${node.user.fullName} `}
         </Text>
-        <Comment fontSize={15} numberOfLines={1} lineHeight={22}>
+        <ParsedText fontSize={15} numberOfLines={1} lineHeight={22} style={styles.comment}>
           {node.text}
-        </Comment>
-      </Row>
+        </ParsedText>
+      </View>
     )
   }
 
@@ -40,11 +57,11 @@ function List({ data }) {
     <>
       {slice(0, 2, data.comments.edges).reverse().map(renderComment)}
 
-      <LoadMore onPress={navigateToComments}>
+      <Touchable onPress={navigateToComments} style={styles.load}>
         <Text fontSize={15} color="accent">
           {t('loadMore', { count: data.comments.totalCount })}
         </Text>
-      </LoadMore>
+      </Touchable>
     </>
   )
 }

@@ -7,7 +7,7 @@ const styles = {
   base: {
     height: 50,
     width: '100%',
-    background: PlatformColor.default,
+    backgroundColor: PlatformColor.default,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

@@ -34,7 +34,7 @@ const styles = {
     position: 'absolute',
     width: '100%',
     height: '100%',
-    background: PlatformColor.default,
+    backgroundColor: PlatformColor.default,
     paddingTop: NAVIGATION.TOTAL_TOP_BAR_HEIGHT,
     zIndex: 1000,
   },

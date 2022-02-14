@@ -16,7 +16,7 @@ import { facebook } from 'images'
 const styles = {
   button: {
     width: '100%',
-    background: '#3b5998',
+    backgroundColor: '#3b5998',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',

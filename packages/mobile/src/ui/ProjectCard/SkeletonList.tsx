@@ -1,6 +1,6 @@
 import React from 'react'
 import Skeleton from './Skeleton'
-import { height } from './styles'
+import { height } from './index'
 
 const COUNT = 4
 

@@ -26,7 +26,7 @@ const styles = {
     position: 'absolute',
     top: NAVIGATION.STATUS_BAR_HEIGHT,
     left: 10,
-    background: PlatformColor.default,
+    backgroundColor: PlatformColor.default,
     justifyContent: 'center',
     alignItems: 'center',
   },

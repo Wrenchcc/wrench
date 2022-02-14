@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { Dimensions } from 'react-native'
+import { View, Dimensions } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useFollowProjectMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'

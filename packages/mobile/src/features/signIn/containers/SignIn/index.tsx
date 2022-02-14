@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { View, Image, useColorScheme } from 'react-native'
+import { SafeAreaView, View, Image, useColorScheme } from 'react-native'
 import * as AppleAuthentication from 'expo-apple-authentication'
 import { Video } from 'expo-av'
 import { useMMKVString } from 'utils/storage'
-import { DARK_THEME, LIGHT_THEME } from '@wrench/ui'
 import { useNavigation, SCREENS, STATUS_BAR, NAVIGATION } from 'navigation'
 import { logo } from 'images'
 import { Text, Title, Touchable } from 'ui'
@@ -40,7 +39,7 @@ const styles = {
   },
   inner: {
     flex: 1,
-    paddingTop: isAndroid ? NAVIGATION.STATUS_BAR_HEIGHT + 20,
+    paddingTop: isAndroid ? NAVIGATION.STATUS_BAR_HEIGHT + 20 : 20,
     paddingRight: 20,
     paddingBottom: 20,
     paddingLeft: 20,
@@ -111,23 +110,25 @@ function SignIn() {
           drawBehind: true,
         },
         layout: {
-          componentBackgroundColor:
-            colorScheme === 'dark' ? DARK_THEME.default : LIGHT_THEME.default,
+          componentBackgroundColor: {
+            light: '#fff',
+            dark: '#000',
+          },
         },
       },
     })
   }, [showModal])
 
   return (
-    <View style={styles.base}>
-      <Video source={video} isMuted resizeMode="cover" />
+    <SafeAreaView style={styles.base}>
+      <Video source={video} isMuted resizeMode="cover" style={styles.video} />
       <View style={styles.overlay} />
       <View style={styles.inner}>
-        <Image source={logo} />
+        <Image source={logo} style={styles.logo} />
 
         <View style={styles.content}>
           <Title large numberOfLines={0} color="white">
-            {t('Title')}
+            {t('headline')}
           </Title>
           <Text white fontSize={20} color="white" style={styles.description}>
             {t('description')}
@@ -148,7 +149,7 @@ function SignIn() {
 
         <Legal />
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

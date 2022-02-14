@@ -8,9 +8,9 @@ import Skeleton from './SkeletonList'
 
 export const { width } = Dimensions.get('window')
 
-export const GUTTER = 20
-export const BAR_SPACE = GUTTER / 2
-export const SNAP_INTERVAL = 180 + BAR_SPACE // Card size
+const GUTTER = 20
+const BAR_SPACE = GUTTER / 2
+const SNAP_INTERVAL = 180 + BAR_SPACE // Card size
 
 const styles = {
   base: {

@@ -20,9 +20,9 @@ const styles = {
     height: 40,
     borderWidth: 1,
     borderColor: PlatformColor.divider,
-    justifycontent: 'center',
+    justifyContent: 'center',
     paddingLeft: 15,
-    paddinRight: 15,
+    paddingRight: 15,
   },
 }
 
@@ -70,6 +70,7 @@ function ProjectTypes({ visible }) {
           styles.button,
           {
             marginLeft: GUTTER,
+            marginRight: BAR_SPACE,
           },
         ]}
         onPress={navigateToInsp}

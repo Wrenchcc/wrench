@@ -16,7 +16,31 @@ import ParsedText from 'ui/ParsedText'
 import TimeAgo from 'ui/TimeAgo'
 import { COLORS } from 'ui/constants'
 import { trash } from 'images'
-import { Base, Content, Row, Reply, Action } from './styles'
+import PlatformColor from 'ui/PlatformColor'
+
+const styles = {
+  base: {
+    flexDirection: 'row',
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  content: {
+    marginLeft: 10,
+    marginRight: 10,
+    flex: 1,
+  },
+  row: {
+    marginBottom: 5,
+    flexDirection: 'row',
+  },
+  reply: {
+    marginLeft: 5,
+  },
+  action: {
+    marginRight: 10,
+    flexDirection: 'row',
+  },
+}
 
 export const { width } = Dimensions.get('window')
 
@@ -214,7 +238,19 @@ function Item({
       onSwipeableRightOpen={handleDeleteComment}
     >
       <Animated.View style={{ backgroundColor }}>
-        <Base isReply={isReply} first={first}>
+        <View
+          style={[
+            styles.base,
+            {
+              paddingTop: first ? 0 : 10,
+              paddingBottom: first ? 10 : 0,
+              marginBottom: first ? 20 : 10,
+              marginLeft: isReply ? 40 : 0,
+              borderBottomWidth: first ? 1 : 0,
+              borderBottomColor: PlatformColor.divider,
+            },
+          ]}
+        >
           <Avatar
             uri={user.avatarUrl}
             size={isReply ? 20 : 30}
@@ -224,42 +260,47 @@ function Item({
             fallback={user.isSilhouette}
             fullName={user.fullName}
           />
-          <Content>
-            <Row>
+          <View style={styles.content}>
+            <View style={styles.row}>
               <Text>
                 <Text fontSize={15} bold onPress={handleNavigation}>{`${user.fullName} `}</Text>
                 {text && <ParsedText fontSize={15}>{text}</ParsedText>}
               </Text>
-            </Row>
+            </View>
 
-            <Row>
-              <Action>
+            <View style={styles.row}>
+              <View style={styles.action}>
                 <TimeAgo date={createdAt} />
-              </Action>
+              </View>
 
               {!first && likes.totalCount > 0 && (
-                <Action>
+                <View style={styles.action}>
                   <Text medium color="accent" fontSize={12}>
                     {t('like', { count: likes.totalCount })}
                   </Text>
-                </Action>
+                </View>
               )}
 
               {!first && (
-                <Action>
-                  <Reply
+                <View style={styles.action}>
+                  <Text
+                    style={[
+                      styles.reply,
+                      {
+                        opacity: id < 0 ? 0.7 : 1,
+                      },
+                    ]}
                     medium
                     fontSize={12}
                     onPress={handleOnReply}
-                    disabled={id < 0}
                     color="accent"
                   >
                     {t('reply')}
-                  </Reply>
-                </Action>
+                  </Text>
+                </View>
               )}
 
-              <Action>
+              <View style={styles.action}>
                 {translatable && (
                   <>
                     <Text color="neutral" medium fontSize={12} style={{ marginRight: 9 }}>
@@ -282,12 +323,12 @@ function Item({
                     )}
                   </>
                 )}
-              </Action>
-            </Row>
-          </Content>
+              </View>
+            </View>
+          </View>
 
           {!first && <LikeComment comment={{ id, text, user, permissions, likes }} />}
-        </Base>
+        </View>
       </Animated.View>
     </Swipeable>
   )
