@@ -1,10 +1,34 @@
 import React, { useCallback } from 'react'
+import { View, ScrollView } from 'react-native'
 import Animated, { FadeInUp, FadeOut } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
-import { Text } from 'ui'
+import { Text, Touchable } from 'ui'
+import { hasNotch } from 'utils/platform'
 import Project from '../Project'
-import { Base, Scroll, NewProject } from './styles'
+import PlatformColor from 'ui/PlatformColor'
+
+const SPACER = hasNotch ? 100 : 80
+const BUTTON_HEIGHT = 70
+const ITEM_HEIGHT = 65
+
+const styles = {
+  base: {
+    backgroundColor: PlatformColor.default,
+    paddingTop: SPACER,
+  },
+  scroll: {
+    paddingLeft: 20,
+    paddingRight: 20,
+    maxHeight: ITEM_HEIGHT * 4,
+  },
+  new: {
+    height: BUTTON_HEIGHT,
+    paddingTop: 12,
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+}
 
 function List({ projects, onPress, onClose }) {
   const { t } = useTranslation('select-project')
@@ -35,12 +59,12 @@ function List({ projects, onPress, onClose }) {
         zIndex: 10,
       }}
     >
-      <Base>
-        <Scroll>{renderProjects()}</Scroll>
-        <NewProject onPress={handleNavigation}>
+      <View style={styles.base}>
+        <ScrollView style={styles.scroll}>{renderProjects()}</ScrollView>
+        <Touchable onPress={handleNavigation} style={styles.new}>
           <Text medium>{t('create')}</Text>
-        </NewProject>
-      </Base>
+        </Touchable>
+      </View>
     </Animated.View>
   )
 }

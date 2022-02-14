@@ -107,7 +107,6 @@ function EditCollection({ id, name, projectId, projectSlug, slug, onDelete }) {
             value={title}
             onChangeText={onChangeText}
             color="dark"
-            onSubmitEditing={() => {}}
             returnKeyType="done"
           />
           <Spacing.Horizontally px={20} />

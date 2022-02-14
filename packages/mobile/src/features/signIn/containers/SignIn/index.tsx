@@ -1,23 +1,63 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useColorScheme } from 'react-native'
+import { View, Image, useColorScheme } from 'react-native'
 import * as AppleAuthentication from 'expo-apple-authentication'
+import { Video } from 'expo-av'
 import { useMMKVString } from 'utils/storage'
 import { DARK_THEME, LIGHT_THEME } from '@wrench/ui'
-import { useNavigation, SCREENS, STATUS_BAR } from 'navigation'
+import { useNavigation, SCREENS, STATUS_BAR, NAVIGATION } from 'navigation'
 import { logo } from 'images'
-import video from 'videos/background.mp4'
-import { Text, Touchable } from 'ui'
+import { Text, Title, Touchable } from 'ui'
 import { isIphone, isAndroid } from 'utils/platform'
 import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
 import { SIGN_IN_PROVIDERS } from 'utils/enums'
 import { logError } from 'utils/sentry'
 import * as Spacing from 'ui/Spacing'
+import video from 'videos/background.mp4'
 import Apple from '../../components/Apple'
 import Facebook from '../../components/Facebook'
 import Google from '../../components/Google'
 import Legal from '../../components/Legal'
-import { Base, Inner, Content, Video, Icon, Description, Headline, Overlay } from './styles'
+
+const styles = {
+  base: {
+    flex: 1,
+  },
+  video: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  overlay: {
+    backgroundColor: 'rgba(000, 000, 000, 0.6)',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  inner: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+    paddingTop: isAndroid ? NAVIGATION.STATUS_BAR_HEIGHT + 20,
+    paddingRight: 20,
+    paddingBottom: 20,
+    paddingLeft: 20,
+  },
+  content: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+    justifyContent: 'center',
+  },
+  description: {
+    paddingTop: 30,
+    lineHeight: 30,
+  },
+}
 
 function renderPreferredSignInProvider(provider, isAppleAvailable) {
   switch (provider) {
@@ -83,20 +123,20 @@ function SignIn() {
   }, [showModal])
 
   return (
-    <Base>
+    <View style={styles.base}>
       <Video source={video} isMuted resizeMode="cover" />
-      <Overlay />
-      <Inner>
-        <Icon source={logo} />
+      <View style={styles.overlay} />
+      <View style={styles.inner}>
+        <Image source={logo} />
 
-        <Content>
-          <Headline large numberOfLines={0}>
-            {t('headline')}
-          </Headline>
-          <Description white fontSize={20}>
+        <View style={styles.content}>
+          <Title large numberOfLines={0} color="white">
+            {t('Title')}
+          </Title>
+          <Text white fontSize={20} color="white" style={styles.description}>
             {t('description')}
-          </Description>
-        </Content>
+          </Text>
+        </View>
 
         {!isLoading && renderPreferredSignInProvider(provider, isAvailable)}
 
@@ -111,8 +151,8 @@ function SignIn() {
         <Spacing.Horizontally px={30} />
 
         <Legal />
-      </Inner>
-    </Base>
+      </View>
+    </View>
   )
 }
 

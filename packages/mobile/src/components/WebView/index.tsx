@@ -1,12 +1,45 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { View, BackHandler } from 'react-native'
+import { WebView as RNWebView } from 'react-native-webview'
 import { useTranslation } from 'react-i18next'
 import qs from 'url'
 import { useNavigation } from 'navigation'
 import Header from 'navigation/Page/Header'
 import { ProgressBar, Icon, Touchable, Share } from 'ui'
 import { arrowLeftSmall, arrowRightSmall, refresh, close } from 'images'
-import { Base, BaseWebView, Footer, Inner } from './styles'
+import { hasNotch } from 'utils/platform'
+import PlatformColor from 'ui/PlatformColor'
+
+const styles = {
+  webview: {
+    flex: 1,
+    backgroundColor: PlatformColor.default,
+  },
+  base: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+    paddingBottom: hasNotch ? 80 : 60,
+  },
+  footer: {
+    height: hasNotch ? 80 : 60,
+    paddingLeft: 20,
+    paddingRight: 20,
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+    flexDirection: 'row',
+    backgroundColor: PlatformColor.default,
+  },
+  inner: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+    flexDirection: 'row',
+  },
+}
 
 function WebView({ url: initialUrl }) {
   const { t } = useTranslation('webview')
@@ -66,8 +99,8 @@ function WebView({ url: initialUrl }) {
   }, [])
 
   const renderFooter = () => (
-    <Footer>
-      <Inner>
+    <View style={styles.footer}>
+      <View style={styles.inner}>
         <Touchable onPress={handleGoBack} style={{ marginRight: 50 }}>
           <View style={{ opacity: canGoBack ? 1 : 0.5 }}>
             <Icon source={arrowLeftSmall} onPress={handleGoBack} />
@@ -78,13 +111,13 @@ function WebView({ url: initialUrl }) {
             <Icon source={arrowRightSmall} onPress={handleGoForward} />
           </View>
         </Touchable>
-      </Inner>
+      </View>
       <Share title={title} url={url} />
-    </Footer>
+    </View>
   )
 
   return (
-    <Base>
+    <View style={styles.base}>
       <Header
         disableAnimation
         headerTitle={title}
@@ -94,14 +127,9 @@ function WebView({ url: initialUrl }) {
         inline
       />
 
-      <ProgressBar
-        opacity={progress > 0 ? 1 : 0}
-        borderRadius={0}
-        barHeight={2}
-        progress={progress}
-      />
+      <ProgressBar opacity={progress > 0 ? 1 : 0} borderRadius={0} progress={progress} />
 
-      <BaseWebView
+      <RNWebView
         source={{ uri: url }}
         onLoadEnd={onLoadEnd}
         onError={onLoadError}
@@ -112,7 +140,7 @@ function WebView({ url: initialUrl }) {
       />
 
       {renderFooter()}
-    </Base>
+    </View>
   )
 }
 

@@ -1,18 +1,40 @@
 import React, { useState } from 'react'
-import { Dimensions } from 'react-native'
+import { Dimensions, View } from 'react-native'
 import { useCollectPostsMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { omit, isEmpty } from 'rambda'
 import { usePaginatedQuery, ProjectDocument } from '@wrench/common'
 import { FlatList, Page, useNavigation } from 'navigation'
-import { Icon, Touchable, Text, ActivityIndicator } from 'ui'
+import { Icon, Image, Touchable, Text, ActivityIndicator } from 'ui'
 import { close } from 'images'
-import { Cell, Picture, Image } from './styles'
+import PlatformColor from 'ui/PlatformColor'
 
 const { width } = Dimensions.get('window')
 
 const GUTTER = 10
 const ITEM_SIZE = width / 2 - GUTTER
+
+const styles = {
+  image: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+    justifyContent: 'flex-end',
+    paddingTop: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    background: 'transparent',
+    borderWidth: 3,
+  },
+  picture: {
+    width: ITEM_SIZE,
+    heigh: ITEM_SIZE,
+  },
+  cell: {
+    width: '50%',
+  },
+}
 
 function AddPostToCollection({ collectionId, projectId }) {
   const { t } = useTranslation('add-post-to-collection')
@@ -98,19 +120,24 @@ function AddPostToCollection({ collectionId, projectId }) {
 
   const renderItem = ({ item }) => {
     return (
-      <Cell key={item.node.id}>
+      <View key={item.node.id} style={styles.cell}>
         <Touchable onPress={() => toggleSelection(item)}>
-          <Picture width={ITEM_SIZE} height={ITEM_SIZE}>
+          <View style={styles.picture}>
             <Image
-              selected={items[item.node.id]}
               source={item?.node.files.edges[0].node}
-              gutter={GUTTER}
-              width={ITEM_SIZE}
-              height={ITEM_SIZE}
+              style={[
+                styles.image,
+                {
+                  margin: GUTTER / 2,
+                  borderColor: items[item.node.id] ? PlatformColor.inverse : 'transparent',
+                  height: ITEM_SIZE - GUTTER / 2,
+                  width: ITEM_SIZE - GUTTER / 2,
+                },
+              ]}
             />
-          </Picture>
+          </View>
         </Touchable>
-      </Cell>
+      </View>
     )
   }
   return (

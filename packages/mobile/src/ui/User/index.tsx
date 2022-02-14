@@ -1,9 +1,22 @@
 import React, { useCallback } from 'react'
+import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
-import { Base, Content } from './styles'
+import Touchable from 'ui/Touchable'
+
+const styles = {
+  base: {
+    flexDirection: 'row',
+  },
+  content: {
+    marginLeft: 10,
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+  },
+}
 
 function User({ data, onPress }) {
   const { t } = useTranslation('user')
@@ -19,7 +32,7 @@ function User({ data, onPress }) {
   }, [data, onPress])
 
   return (
-    <Base onPress={handleNavigation} hitSlop={5}>
+    <Touchable onPress={handleNavigation} hitSlop={5} style={styles.base}>
       <Avatar
         uri={data.avatarUrl}
         size={40}
@@ -28,13 +41,13 @@ function User({ data, onPress }) {
         fallback={data.isSilhouette}
         fullName={data.fullName}
       />
-      <Content>
+      <View style={styles.content}>
         <Text medium>{data.fullName}</Text>
         <Text color="accent" fontSize={15}>
           {t('projects', { count: data.projectCount })}
         </Text>
-      </Content>
-    </Base>
+      </View>
+    </Touchable>
   )
 }
 

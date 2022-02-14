@@ -1,21 +1,30 @@
 import React from 'react'
-import { Switch } from 'react-native'
+import { Switch, Image } from 'react-native'
 import { arrowRight } from 'images'
-import { useDynamicColor } from 'utils/hooks'
+import PlatformColor from 'ui/PlatformColor'
+import Touchable from 'ui/Touchable'
 import Text from 'ui/Text'
-import { Base, Icon } from './styles'
 import Selector from './types/Selector'
 
-const getActionType = ({ type, selected, onPress }: Partial<SelectionItemProps>) => {
-  const dynamicTrackColor = useDynamicColor('inverse')
-  const dynamicTumbColor = useDynamicColor('default')
+const styles = {
+  base: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  icon: {
+    width: 6,
+    height: 11,
+  },
+}
 
+const getActionType = ({ type, selected, onPress }: Partial<SelectionItemProps>) => {
   switch (type) {
     case 'switch':
       return (
         <Switch
-          thumbColor={dynamicTumbColor}
-          trackColor={{ true: dynamicTrackColor, false: null }}
+          thumbColor={PlatformColor.default}
+          trackColor={{ true: PlatformColor.inverse, false: null }}
           value={selected}
           onValueChange={onPress}
         />
@@ -38,11 +47,11 @@ type SelectionItemProps = {
 
 function SelectionItem({ title, hasChildren, important, style = {}, ...rest }: SelectionItemProps) {
   return (
-    <Base onPress={rest.onPress} disabled={!rest.onPress} style={style}>
+    <Touchable onPress={rest.onPress} disabled={!rest.onPress} style={[styles.base, style]}>
       <Text color={important && 'error'}>{title}</Text>
-      {hasChildren && <Icon source={arrowRight} />}
+      {hasChildren && <Image source={arrowRight} style={styles.icon} />}
       {getActionType(rest)}
-    </Base>
+    </Touchable>
   )
 }
 

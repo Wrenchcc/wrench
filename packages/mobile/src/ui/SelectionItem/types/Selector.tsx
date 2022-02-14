@@ -1,12 +1,10 @@
 import React from 'react'
 import { Image } from 'react-native'
 import { check } from 'images'
-import { useDynamicColor } from 'utils/hooks'
+import PlatformColor from 'ui/PlatformColor'
 
 const Selector = ({ selected }) => {
-  const tintColor = useDynamicColor('inverse')
-
-  return selected && <Image source={check} style={{ tintColor }} />
+  return selected && <Image source={check} style={{ tintColor: PlatformColor.inverse }} />
 }
 
 export default Selector

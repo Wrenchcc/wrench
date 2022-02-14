@@ -1,18 +1,41 @@
 import React from 'react'
+import { View } from 'react-native'
 import Avatar from 'ui/Avatar'
-import { Base, Users, User } from './styles'
+import PlatformColor from 'ui/PlatformColor'
+
+const styles = {
+  base: {
+    flexDirection: 'row',
+    display: 'flex',
+  },
+  users: {
+    flexDirection: 'row',
+    display: 'flex',
+    marginRight: 5,
+    marginLeft: 5,
+  },
+}
 
 function UserStack({ users, onPress, size = 20 }) {
   return (
-    <Base>
-      <Users>
+    <View style={styles.base}>
+      <View style={styles.users}>
         {users.map(({ node }, index: number) => (
-          <User first={index === 0} key={node.id} size={size}>
+          <View
+            key={node.id}
+            size={size}
+            style={{
+              marginLeft: index === 0 ? 0 : -size / 2,
+              borderWidth: 1,
+              borderColor: PlatformColor.default,
+              borderRadius: size,
+            }}
+          >
             <Avatar uri={node.avatarUrl} size={size} onPress={onPress} />
-          </User>
+          </View>
         ))}
-      </Users>
-    </Base>
+      </View>
+    </View>
   )
 }
 
