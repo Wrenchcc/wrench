@@ -1,10 +1,48 @@
 import React from 'react'
+import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { View as MotiView } from 'moti'
 import { useFollowProjectMutation } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
-import { Title, InfiniteList, CardSmall } from 'ui'
-import { Base, Follow, SNAP_INTERVAL } from './styles'
+import { Title, InfiniteList, CardSmall, Follow } from 'ui'
+import PlatformColor from 'ui/PlatformColor'
+
+const GUTTER = 10
+const SIZE = 120
+const SNAP_INTERVAL = SIZE + GUTTER // Card size
+
+const styles = {
+  base: {
+    backgroundColor: PlatformColor.placeholder,
+    marginLeft: -20,
+    marginRight: -20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
+  },
+  card: {
+    marginLeft: 5,
+    marginRight: 5,
+  },
+  follow: {
+    position: 'absolute',
+    top: 80,
+    left: 10,
+    right: 10,
+    width: 100,
+    height: 30,
+    paddingLeft: 5,
+    paddingRight: 5,
+  },
+  title: {
+    marginBottom: 20,
+  },
+  list: {
+    marginLeft: -25,
+    marginRight: -25,
+  },
+}
 
 function SimilarProjects({ projects, marginTop, disableAnimation }) {
   const { t } = useTranslation('similar-projects')
@@ -58,13 +96,15 @@ function SimilarProjects({ projects, marginTop, disableAnimation }) {
         title={project.title}
         followers={project.followers.totalCount}
         image={project.cover}
-        style={{
-          marginLeft: 5,
-          marginRight: 5,
-        }}
+        style={styles.card}
       >
         {project.permissions && !project.permissions.isOwner && (
-          <Follow small following={project.permissions.isFollower} onPress={handletoggleFollow} />
+          <Follow
+            small
+            following={project.permissions.isFollower}
+            onPress={handletoggleFollow}
+            style={styles.follow}
+          />
         )}
       </CardSmall>
     )
@@ -72,8 +112,15 @@ function SimilarProjects({ projects, marginTop, disableAnimation }) {
 
   if (disableAnimation) {
     return (
-      <Base marginTop={marginTop}>
-        <Title style={{ marginBottom: 20 }}>{t('title')}</Title>
+      <View
+        style={[
+          styles.base,
+          {
+            marginTop: marginTop || 40,
+          },
+        ]}
+      >
+        <Title style={styles.title}>{t('title')}</Title>
 
         <InfiniteList
           paddingVertical={0}
@@ -87,12 +134,9 @@ function SimilarProjects({ projects, marginTop, disableAnimation }) {
           snapToAlignment="start"
           renderItem={renderItem}
           showsVerticalScrollIndicator={false}
-          style={{
-            marginLeft: -25,
-            marginRight: -25,
-          }}
+          style={styles.list}
         />
-      </Base>
+      </View>
     )
   }
 
@@ -109,8 +153,15 @@ function SimilarProjects({ projects, marginTop, disableAnimation }) {
         opacity: 0,
       }}
     >
-      <Base marginTop={marginTop}>
-        <Title style={{ marginBottom: 20 }}>{t('title')}</Title>
+      <View
+        style={[
+          styles.base,
+          {
+            marginTop: marginTop || 40,
+          },
+        ]}
+      >
+        <Title style={styles.title}>{t('title')}</Title>
 
         <InfiniteList
           paddingVertical={0}
@@ -124,12 +175,9 @@ function SimilarProjects({ projects, marginTop, disableAnimation }) {
           snapToAlignment="start"
           renderItem={renderItem}
           showsVerticalScrollIndicator={false}
-          style={{
-            marginLeft: -25,
-            marginRight: -25,
-          }}
+          style={styles.list}
         />
-      </Base>
+      </View>
     </MotiView>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import Skeleton from 'ui/Skeleton'
 import * as Spacing from 'ui/Spacing'
-import { GUTTER } from './styles'
+import { GUTTER } from './index'
 
 const COUNT = 3
 

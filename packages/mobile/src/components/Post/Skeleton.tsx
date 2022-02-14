@@ -2,25 +2,43 @@ import React from 'react'
 import { View, Dimensions } from 'react-native'
 import Skeleton from 'ui/Skeleton'
 import * as Spacing from 'ui/Spacing'
-import { Top, Left, Content } from './styles'
 
 const { width } = Dimensions.get('window')
 
 const GUTTER = 20
 
+const styles = {
+  top: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  left: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+    marginRight: 60,
+  },
+  content: {
+    paddingTop: 18,
+  },
+}
+
 export const PostSkeleton = () => {
   return (
     <>
-      <Top>
-        <Left>
+      <View style={styles.top}>
+        <View style={styles.left}>
           <Skeleton width={30} height={30} radius="round" />
           <View style={{ marginLeft: 10 }}>
             <Skeleton width={150} height={10} />
           </View>
-        </Left>
-      </Top>
+        </View>
+      </View>
 
-      <Content>
+      <View style={styles.content}>
         <Skeleton width={'100%'} height={10} />
 
         <Spacing.Horizontally px={10} />
@@ -33,7 +51,7 @@ export const PostSkeleton = () => {
           radius="square"
           style={{ marginLeft: -GUTTER, marginRight: -GUTTER }}
         />
-      </Content>
+      </View>
     </>
   )
 }

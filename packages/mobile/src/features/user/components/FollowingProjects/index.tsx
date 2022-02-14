@@ -1,12 +1,33 @@
 import React from 'react'
+import { Dimensions } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedQuery, UserFollowingProjectsDocument } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
-import { InfiniteList } from 'ui'
-import { Title, Description, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
+import { InfiniteList, ProjectCard, Title, Text } from 'ui'
 import Skeleton from './Skeleton'
 
+export const { width } = Dimensions.get('window')
+
+export const GUTTER = 20
+export const BAR_SPACE = GUTTER / 2
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
+
+const styles = {
+  headline: {
+    marginBottom: 12,
+  },
+  description: {
+    marginBottom: 40,
+  },
+  title: {
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  list: {
+    marginLeft: -GUTTER,
+    marginRight: -GUTTER,
+  },
+}
 
 function FollowingProjects({ user }) {
   const { t } = useTranslation('following-projects')
@@ -30,15 +51,24 @@ function FollowingProjects({ user }) {
         project: item.node,
       })
 
-    return <ProjectCard project={item.node} onPress={onPress} />
+    return (
+      <ProjectCard
+        project={item.node}
+        onPress={onPress}
+        style={{
+          width: width - GUTTER * 2,
+          marginBottom: 50,
+        }}
+      />
+    )
   }
 
   const ListEmptyComponent = isFetching && <Skeleton />
 
   return (
     <>
-      <Title>{t('title')}</Title>
-      <Description>{t('description', { name: user.firstName })}</Description>
+      <Title style={styles.headline}>{t('title')}</Title>
+      <Text style={styles.description}>{t('description', { name: user.firstName })}</Text>
 
       <InfiniteList
         paddingVertical={0}
@@ -55,10 +85,7 @@ function FollowingProjects({ user }) {
         snapToAlignment="start"
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
-        style={{
-          marginLeft: -GUTTER,
-          marginRight: -GUTTER,
-        }}
+        style={styles.list}
       />
     </>
   )

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Video as RNVideo } from 'expo-av'
-import { Text, Title, Touchable } from 'ui'
+import { Text, Title } from 'ui'
 import { NAVIGATION } from 'navigation'
 import { isAndroid } from 'utils/platform'
 

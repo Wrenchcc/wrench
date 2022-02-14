@@ -1,8 +1,10 @@
 import React, { useState, useCallback } from 'react'
 import { TextStyle } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import PlatformColor from 'ui/PlatformColor'
+import { FONTS } from 'ui/constants'
 import handleParse from './handleParse'
-import { Base } from './styles'
+import ParsedText from './ParsedText'
 
 type TextProps = {
   children: string
@@ -21,17 +23,28 @@ const Text = ({
   onPress,
   lineHeight = null,
   maxText,
+  style = {},
   ...props
 }: TextProps) => {
+  const [expanded, setExpanded] = useState(false)
+  const { t } = useTranslation('text')
+
+  const toggleExpanded = useCallback(() => setExpanded(!expanded), [setExpanded, expanded])
+
+  const baseStyle = {
+    fontFamily: (props.bold && FONTS.BOLD) || (props.medium ? FONTS.MEDIUM : FONTS.REGULAR),
+    textAlign: props.center ? 'center' : 'left',
+    fontSize: props.fontSize ? props.fontSize : 17,
+    textDecorationLine: props.underline ? 'underline' : 'none',
+    opacity: props.opacity ? props.opacity : 1,
+    color: props.color ? PlatformColor[props.color] : PlatformColor.inverse,
+  }
+
   if (maxText) {
-    const [expanded, setExpanded] = useState(false)
-    const { t } = useTranslation('text')
-
-    const toggleExpanded = useCallback(() => setExpanded(!expanded), [setExpanded, expanded])
-
     if (expanded) {
       return (
-        <Base
+        <ParsedText
+          style={[baseStyle, style]}
           numberOfLines={numberOfLines}
           {...(!disabled && { onPress })}
           {...props}
@@ -41,14 +54,15 @@ const Text = ({
           }}
         >
           {children}
-        </Base>
+        </ParsedText>
       )
     }
 
     if (children && children.length > maxText) {
       return (
         <>
-          <Base
+          <ParsedText
+            style={[baseStyle, style]}
             numberOfLines={numberOfLines}
             {...(!disabled && { onPress })}
             {...props}
@@ -56,17 +70,18 @@ const Text = ({
             childrenProps={{
               style: { lineHeight },
             }}
-          >{`${children.substring(0, maxText).trim()}... `}</Base>
-          <Base onPress={toggleExpanded} fontSize={15} medium>
+          >{`${children.substring(0, maxText).trim()}... `}</ParsedText>
+          <ParsedText style={[baseStyle, style]} onPress={toggleExpanded} fontSize={15} medium>
             {t('more')}
-          </Base>
+          </ParsedText>
         </>
       )
     }
   }
 
   return (
-    <Base
+    <ParsedText
+      style={[baseStyle, style]}
       numberOfLines={numberOfLines}
       {...(!disabled && { onPress })}
       {...props}
@@ -76,7 +91,7 @@ const Text = ({
       }}
     >
       {children}
-    </Base>
+    </ParsedText>
   )
 }
 

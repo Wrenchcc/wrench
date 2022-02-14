@@ -1,11 +1,29 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, Dimensions } from 'react-native'
 import { usePaginatedQuery, ProjectsDocument } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
-import { InfiniteList, Title } from 'ui'
-import { Header, Footer, Card, GUTTER, SNAP_INTERVAL } from './styles'
+import { InfiniteList, Title, Card } from 'ui'
 import Skeleton from './SkeletonList'
+
+export const { width } = Dimensions.get('window')
+
+export const GUTTER = 20
+export const BAR_SPACE = GUTTER / 2
+export const SNAP_INTERVAL = 180 + BAR_SPACE // Card size
+
+const styles = {
+  base: {
+    height: 460,
+  },
+  header: {
+    marginBottom: 40,
+  },
+  footer: {
+    marginBottom: 40,
+    marginTop: 50,
+  },
+}
 
 function Popular() {
   const { navigate } = useNavigation()
@@ -38,9 +56,10 @@ function Popular() {
         title={project.title}
         key={project.id}
         onPress={onPress}
-        first={index === 0}
-        last={index === edges && edges.length - 1}
         user={project.user}
+        style={{
+          marginRight: index === edges?.length - 1 ? GUTTER : BAR_SPACE,
+        }}
       />
     )
   }
@@ -48,10 +67,10 @@ function Popular() {
   const ListEmptyComponent = isFetching && <Skeleton />
 
   return (
-    <View style={{ height: 460 }}>
-      <Header>
-        <Title medium>{t('popular')}</Title>
-      </Header>
+    <View style={styles.base}>
+      <Title medium style={styles.header}>
+        {t('popular')}
+      </Title>
 
       <InfiniteList
         initialNumToRender={3}
@@ -75,9 +94,9 @@ function Popular() {
         }}
       />
 
-      <Footer>
-        <Title medium>{t('recent')}</Title>
-      </Footer>
+      <Title medium style={styles.footer}>
+        {t('recent')}
+      </Title>
     </View>
   )
 }

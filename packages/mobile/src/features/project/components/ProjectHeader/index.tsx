@@ -1,13 +1,47 @@
 import React, { useCallback, useState } from 'react'
+import { View } from 'react-native'
 import { AnimatePresence } from 'moti'
 import { useSimilarProjectsLazyQuery, useFollowProjectMutation } from '@wrench/common'
 import * as Spacing from 'ui/Spacing'
-import { ActivityIndicator, Title, Follow, Icon, UserStack } from 'ui'
+import { ActivityIndicator, Title, Follow, Icon, UserStack, Followers } from 'ui'
 import { arrowDown, arrowUp } from 'images'
 import { useNavigation, SCREENS } from 'navigation'
 import SimilarProjects from '../SimilarProjects'
 import Collections from '../Collections'
-import { Base, Meta, Actions, Followers, OpenSimilar } from './styles'
+import PlatformColor from 'ui/PlatformColor'
+
+const styles = {
+  base: {
+    marginBottom: 50,
+  },
+  folowers: {
+    marginTop: 7,
+    alignSelf: 'flex-start',
+  },
+  actions: {
+    alignSelf: 'flex-start',
+    flexDirection: 'row',
+  },
+  meta: {
+    alignSelf: 'flex-start',
+    flexDirection: 'row',
+    marginTop: 15,
+    marginBottom: 35,
+  },
+  open: {
+    borderTopWidth: 1,
+    borderRightWidth: 1,
+    borderBottomWidth: 1,
+    borderLeftWidth: 1,
+    borderColor: PlatformColor.divider,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingLeft: 15,
+    paddingRight: 15,
+    alignSelf: 'flex-start',
+  },
+}
 
 function ProjectHeader({ project }) {
   const { navigate } = useNavigation()
@@ -80,24 +114,28 @@ function ProjectHeader({ project }) {
   )
 
   return (
-    <Base>
+    <View style={styles.base}>
       <Title large numberOfLines={0}>
         {project?.title}
       </Title>
 
-      <Meta>
+      <View style={styles.meta}>
         {project.followers.edges.length > 2 && (
           <UserStack users={project.followers.edges} onPress={handleNavigation} size={30} />
         )}
 
-        <Followers followers={project.followers.totalCount} onPress={handleNavigation} />
-      </Meta>
+        <Followers
+          style={styles.folowers}
+          followers={project.followers.totalCount}
+          onPress={handleNavigation}
+        />
+      </View>
 
-      <Actions>
+      <View style={styles.actions}>
         {!isOwner && <Follow following={project.permissions.isFollower} onPress={handleFollow} />}
 
         {!isOwner && (
-          <OpenSimilar>
+          <View style={styles.open}>
             {loading ? (
               <ActivityIndicator />
             ) : (
@@ -106,9 +144,9 @@ function ProjectHeader({ project }) {
                 onPress={handleSimilarProjects}
               />
             )}
-          </OpenSimilar>
+          </View>
         )}
-      </Actions>
+      </View>
 
       <AnimatePresence>
         {data?.similarProjects && isShowingSimilarProjects && (
@@ -119,7 +157,7 @@ function ProjectHeader({ project }) {
       {!isOwner && <Spacing.Horizontally px={30} />}
 
       <Collections isOwner={isOwner} projectId={project.id} />
-    </Base>
+    </View>
   )
 }
 

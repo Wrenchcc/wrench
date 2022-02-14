@@ -1,6 +1,25 @@
 import React from 'react'
+import { View } from 'react-native'
 import { Avatar, Title, Text, ParsedText } from 'ui'
-import { Base, Inner, Username, Info } from './styles'
+
+const styles = {
+  base: {
+    paddingBottom: 45,
+  },
+  inner: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  username: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+    paddingRight: 10,
+  },
+  info: {
+    paddingTop: 20,
+  },
+}
 
 function Header({
   firstName,
@@ -12,19 +31,28 @@ function Header({
   bio,
 }) {
   return (
-    <Base spacingHorizontal={spacingHorizontal}>
-      <Inner>
-        <Username>
+    <View
+      spacingHorizontal={spacingHorizontal}
+      style={[
+        styles.base,
+        {
+          paddingLeft: spacingHorizontal ? 20 : 0,
+          paddingRight: spacingHorizontal ? 20 : 0,
+        },
+      ]}
+    >
+      <View style={styles.inner}>
+        <View style={styles.username}>
           <Title medium numberOfLines={0}>
             {firstName}
           </Title>
           <Title medium>{lastName}</Title>
-        </Username>
+        </View>
         <Avatar size={80} uri={avatarUrl} disabled />
-      </Inner>
+      </View>
 
       {location || bio || website ? (
-        <Info>
+        <View style={styles.info}>
           {location && (
             <Text color="neutral" fontSize={15}>
               {location}
@@ -42,9 +70,9 @@ function Header({
               {website}
             </ParsedText>
           )}
-        </Info>
+        </View>
       ) : null}
-    </Base>
+    </View>
   )
 }
 
