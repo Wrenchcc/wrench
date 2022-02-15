@@ -59,11 +59,6 @@ function Image({
 
   const uri = source.poster || source.uri
 
-  // NOTE: Guard for crash on Android
-  if (!uri) {
-    return null
-  }
-
   const handleLoadStart = useCallback(() => {
     if (showIndicator && !loading.current && progress !== 1) {
       loading.current = true
@@ -98,6 +93,11 @@ function Image({
   const placeholder = `${uri}?w=${Math.round(width / placeholderDensity)}&h=${Math.round(
     height / placeholderDensity
   )}&dpr=1`
+
+  // NOTE: Guard for crash on Android
+  if (!uri) {
+    return null
+  }
 
   return (
     <View
