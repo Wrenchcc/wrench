@@ -5,6 +5,7 @@ import PlatformColor from 'ui/PlatformColor'
 import { FONTS } from 'ui/constants'
 import handleParse from './handleParse'
 import ParsedText from './ParsedText'
+import Animated, { FadeIn } from 'react-native-reanimated'
 
 type TextProps = {
   children: string
@@ -43,18 +44,20 @@ const Text = ({
   if (maxText) {
     if (expanded) {
       return (
-        <ParsedText
-          style={[baseStyle, style]}
-          numberOfLines={numberOfLines}
-          {...(!disabled && { onPress })}
-          {...props}
-          parse={handleParse}
-          childrenProps={{
-            style: { lineHeight },
-          }}
-        >
-          {children}
-        </ParsedText>
+        <Animated.View entering={FadeIn.duration(200)}>
+          <ParsedText
+            style={[baseStyle, style]}
+            numberOfLines={numberOfLines}
+            {...(!disabled && { onPress })}
+            {...props}
+            parse={handleParse}
+            childrenProps={{
+              style: { lineHeight },
+            }}
+          >
+            {children}
+          </ParsedText>
+        </Animated.View>
       )
     }
 
@@ -71,7 +74,11 @@ const Text = ({
               style: { lineHeight },
             }}
           >{`${children.substring(0, maxText).trim()}... `}</ParsedText>
-          <ParsedText style={[baseStyle, style]} onPress={toggleExpanded} fontSize={15} medium>
+          <ParsedText
+            style={[baseStyle, style, { fontFamily: FONTS.MEDIUM }]}
+            onPress={toggleExpanded}
+            fontSize={15}
+          >
             {t('more')}
           </ParsedText>
         </>

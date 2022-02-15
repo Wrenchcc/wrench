@@ -5,5 +5,13 @@ mutation likePost($id: ID!) {
       isLiked
       totalCount
     }
+    likesConnection(first: 3) {
+      edges {
+        node {
+          id
+          avatarUrl
+        }
+      }
+    }
   }
 }

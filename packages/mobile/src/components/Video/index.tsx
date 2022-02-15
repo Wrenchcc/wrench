@@ -134,7 +134,9 @@ function Video({ size, source, id }) {
       </Animated.View>
 
       <Touchable onPress={togglePlay}>
-        {showPoster && <Image source={source} style={{ width: size, height: size }} />}
+        {showPoster && (
+          <Image source={source} style={{ width: size, height: size }} width={size} height={size} />
+        )}
 
         <Player
           ref={videoRef}

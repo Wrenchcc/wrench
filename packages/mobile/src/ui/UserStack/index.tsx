@@ -1,4 +1,5 @@
 import React from 'react'
+import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import { View } from 'react-native'
 import Avatar from 'ui/Avatar'
 import PlatformColor from 'ui/PlatformColor'
@@ -6,11 +7,9 @@ import PlatformColor from 'ui/PlatformColor'
 const styles = {
   base: {
     flexDirection: 'row',
-    display: 'flex',
   },
   users: {
     flexDirection: 'row',
-    display: 'flex',
     marginRight: 5,
     marginLeft: 5,
   },
@@ -21,7 +20,9 @@ function UserStack({ users, onPress, size = 20 }) {
     <View style={styles.base}>
       <View style={styles.users}>
         {users.map(({ node }, index: number) => (
-          <View
+          <Animated.View
+            entering={FadeIn.duration(200)}
+            exiting={FadeOut.duration(200)}
             key={node.id}
             size={size}
             style={{
@@ -32,7 +33,7 @@ function UserStack({ users, onPress, size = 20 }) {
             }}
           >
             <Avatar uri={node.avatarUrl} size={size} onPress={onPress} />
-          </View>
+          </Animated.View>
         ))}
       </View>
     </View>

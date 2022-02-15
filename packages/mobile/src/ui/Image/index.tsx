@@ -16,6 +16,8 @@ type ImageComponentProps = {
   borderWidth?: number
   priority?: 'low' | 'normal' | 'high'
   showIndicator?: boolean
+  width: number
+  height: number
 } & ImageProps &
   FastImageProps
 

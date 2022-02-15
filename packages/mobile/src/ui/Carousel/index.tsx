@@ -136,6 +136,8 @@ function Carousel({ postId, files, onRemove }) {
       return (
         <Image
           showIndicator
+          width={SIZE}
+          height={SIZE}
           style={{
             width: SIZE,
             height: SIZE,

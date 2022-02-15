@@ -123,6 +123,8 @@ function AddPostToCollection({ collectionId, projectId }) {
           <View style={styles.picture}>
             <Image
               source={item?.node.files.edges[0].node}
+              width={ITEM_SIZE - GUTTER / 2}
+              height={ITEM_SIZE - GUTTER / 2}
               style={[
                 styles.image,
                 {

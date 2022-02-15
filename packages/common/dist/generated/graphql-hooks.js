@@ -687,7 +687,7 @@ function useLikeCommentMutation(baseOptions) {
     return Apollo.useMutation(exports.LikeCommentDocument, options);
 }
 exports.useLikeCommentMutation = useLikeCommentMutation;
-exports.LikePostDocument = (0, client_1.gql)(templateObject_36 || (templateObject_36 = __makeTemplateObject(["\n  mutation likePost($id: ID!) {\n    likePost(id: $id) {\n      id\n      likes {\n        isLiked\n        totalCount\n      }\n    }\n  }\n"], ["\n  mutation likePost($id: ID!) {\n    likePost(id: $id) {\n      id\n      likes {\n        isLiked\n        totalCount\n      }\n    }\n  }\n"])));
+exports.LikePostDocument = (0, client_1.gql)(templateObject_36 || (templateObject_36 = __makeTemplateObject(["\n  mutation likePost($id: ID!) {\n    likePost(id: $id) {\n      id\n      likes {\n        isLiked\n        totalCount\n      }\n      likesConnection(first: 3) {\n        edges {\n          node {\n            id\n            avatarUrl\n          }\n        }\n      }\n    }\n  }\n"], ["\n  mutation likePost($id: ID!) {\n    likePost(id: $id) {\n      id\n      likes {\n        isLiked\n        totalCount\n      }\n      likesConnection(first: 3) {\n        edges {\n          node {\n            id\n            avatarUrl\n          }\n        }\n      }\n    }\n  }\n"])));
 /**
  * __useLikePostMutation__
  *

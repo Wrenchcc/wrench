@@ -2300,6 +2300,13 @@ export type LikePostMutation = {
     __typename?: 'Post'
     id?: string | null
     likes?: { __typename?: 'Likes'; isLiked?: boolean | null; totalCount?: number | null } | null
+    likesConnection?: {
+      __typename?: 'LikeConnection'
+      edges?: Array<{
+        __typename?: 'LikeEdge'
+        node: { __typename?: 'User'; id: string; avatarUrl?: string | null }
+      }> | null
+    } | null
   } | null
 }
 
@@ -6924,6 +6931,14 @@ export const LikePostDocument = gql`
       likes {
         isLiked
         totalCount
+      }
+      likesConnection(first: 3) {
+        edges {
+          node {
+            id
+            avatarUrl
+          }
+        }
       }
     }
   }

@@ -23,7 +23,7 @@ function Card({ image, title, onPress, style = {}, user, size = 180 }) {
 
   return (
     <Touchable onPress={onPress} style={style}>
-      <Image source={image} style={{ width: size, height: size }} />
+      <Image source={image} style={{ width: size, height: size }} width={size} height={size} />
       <Text numberOfLines={1} style={[styles.name, { width: size }]}>
         {title}
       </Text>

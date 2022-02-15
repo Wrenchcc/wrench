@@ -38,7 +38,7 @@ function Posting({ file }) {
       ]}
     >
       <View style={styles.inner}>
-        <Image source={file} style={styles.image} />
+        <Image source={file} style={styles.image} width={40} height={40} />
         <Text fontSize={15}>{t('description')}</Text>
       </View>
     </View>

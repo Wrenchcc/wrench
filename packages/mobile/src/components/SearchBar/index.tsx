@@ -8,6 +8,9 @@ import { search, close } from 'images'
 import { Input, Text, Icon } from 'ui'
 import { FONTS } from 'ui/constants'
 import PlatformColor from 'ui/PlatformColor'
+import Animated, { SequencedTransition, FadeIn, FadeOut } from 'react-native-reanimated'
+
+const AnimatedInput = Animated.createAnimatedComponent(Input)
 
 const styles = {
   base: {
@@ -112,7 +115,8 @@ function SearchBar() {
   return (
     <View style={styles.base}>
       <View style={styles.inner}>
-        <Input
+        <AnimatedInput
+          layout={SequencedTransition.duration(250)}
           style={styles.input}
           ref={inputRef}
           autoCorrect={false}
@@ -134,9 +138,11 @@ function SearchBar() {
       </View>
 
       {searchActive && (
-        <Text medium onPress={handleCancel} style={styles.cancel}>
-          {t('cancel')}
-        </Text>
+        <Animated.View entering={FadeIn.duration(200)} exiting={FadeOut.duration(150)}>
+          <Text medium onPress={handleCancel} style={styles.cancel}>
+            {t('cancel')}
+          </Text>
+        </Animated.View>
       )}
     </View>
   )

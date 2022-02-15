@@ -2299,6 +2299,17 @@ export declare type LikePostMutation = {
             isLiked?: boolean | null;
             totalCount?: number | null;
         } | null;
+        likesConnection?: {
+            __typename?: 'LikeConnection';
+            edges?: Array<{
+                __typename?: 'LikeEdge';
+                node: {
+                    __typename?: 'User';
+                    id: string;
+                    avatarUrl?: string | null;
+                };
+            }> | null;
+        } | null;
     } | null;
 };
 export declare type MarkAllNotificationsSeenMutationVariables = Exact<{

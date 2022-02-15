@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { View } from 'react-native'
 import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated'
 import { scaleAnimation } from 'utils/animations'
-import { useLikePostMutation } from '@wrench/common'
+import { useLikePostMutation, CurrentUserDocument, UserFragmentDoc } from '@wrench/common'
 import * as Haptics from 'expo-haptics'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
@@ -41,14 +41,57 @@ function LikePost({ post }) {
       optimisticResponse: {
         __typename: 'Mutation',
         likePost: {
-          __typename: 'Post',
           ...post,
           likes: {
-            __typename: 'Likes',
+            ...post.likes,
             isLiked: !post.likes.isLiked,
             totalCount: post.likes.isLiked ? post.likes.totalCount - 1 : post.likes.totalCount + 1,
           },
         },
+      },
+      update: (cache, { data: { likePost } }) => {
+        const { user } = cache.readQuery({ query: CurrentUserDocument })
+
+        const newUserRef = cache.writeFragment({
+          fragmentName: 'User',
+          data: user,
+          fragment: UserFragmentDoc,
+        })
+
+        cache.modify({
+          id: cache.identify({
+            __typename: 'Post',
+            id: post.id,
+          }),
+          optimistic: true,
+          fields: {
+            likesConnection(existingUsersRefs = {}) {
+              // NOTE: Add new user
+              if (likePost.likes.isLiked) {
+                const edges = [
+                  {
+                    __typename: 'LikeEdge',
+                    node: newUserRef,
+                  },
+                  ...existingUsersRefs.edges,
+                ].slice(0, 3)
+
+                return {
+                  ...existingUsersRefs,
+                  edges,
+                }
+              }
+
+              // NOTE: Remove user
+              return {
+                ...existingUsersRefs,
+                edges: existingUsersRefs.edges.filter(
+                  ({ node }) => node.__ref !== `User:${user.id}`
+                ),
+              }
+            },
+          },
+        })
       },
     })
   }, [toggleLike, post])
