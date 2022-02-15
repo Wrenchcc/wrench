@@ -142,7 +142,7 @@ function Notifications() {
         paddingHorizontal={0}
         ListEmptyComponent={ListEmptyComponent}
         borderSeparator
-        ItemSeparatorComponentStyle={{ paddingTop: 15, marginBottom: 15 }}
+        ItemSeparatorComponentStyle={{ paddingTop: 0, marginBottom: 0 }}
         contentContainerStyle={{ flexGrow: 1 }}
         data={edges}
         refetch={onRefresh}
@@ -151,6 +151,7 @@ function Notifications() {
         isFetching={edges && isFetching}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
+        style={{ marginTop: -15 }}
       />
     </Layout>
   )

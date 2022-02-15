@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { View } from 'react-native'
+import Animated, { FadeIn } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
 import { slice } from 'rambda'
 import { useNavigation, SCREENS } from 'navigation'
@@ -38,14 +38,14 @@ function List({ data }) {
     const onPress = () => navigate(SCREENS.USER, { user: node.user })
 
     return (
-      <View key={node.id} style={styles.row}>
+      <Animated.View key={node.id} style={styles.row}>
         <Text bold fontSize={15} onPress={onPress}>
           {`${node.user.fullName} `}
         </Text>
         <ParsedText fontSize={15} numberOfLines={1} lineHeight={22} style={styles.comment}>
           {node.text}
         </ParsedText>
-      </View>
+      </Animated.View>
     )
   }
 
@@ -55,7 +55,9 @@ function List({ data }) {
 
   return (
     <>
-      {slice(0, 2, data.comments.edges).reverse().map(renderComment)}
+      <Animated.View entering={FadeIn.duration(200)}>
+        {slice(0, 2, data.comments.edges).reverse().map(renderComment)}
+      </Animated.View>
 
       <Touchable onPress={navigateToComments} style={styles.load}>
         <Text fontSize={15} color="accent">

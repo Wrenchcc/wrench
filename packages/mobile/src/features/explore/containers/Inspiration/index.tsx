@@ -76,9 +76,9 @@ function Inspiration() {
 
   return (
     <>
-      <Touchable onPress={handleNavigationBack} style={styles.back}>
+      <View onPress={handleNavigationBack} style={styles.back}>
         <Icon source={arrowLeft} onPress={handleNavigationBack} />
-      </Touchable>
+      </View>
 
       <View style={styles.base}>
         <InfiniteList

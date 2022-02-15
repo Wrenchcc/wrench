@@ -49,12 +49,12 @@ const styles = {
   image: {
     width: SIZE,
     height: SIZE,
-    marginRight: '${({ last }) => (last ? GUTTER',
+    marginRight: BAR_SPACE,
   },
   video: {
     width: SIZE,
     height: SIZE,
-    marginRight: '${({ last }) => (last ? GUTTER',
+    marginRight: BAR_SPACE,
   },
   list: {
     marginBottom: 30,

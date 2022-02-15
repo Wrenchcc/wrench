@@ -1,5 +1,5 @@
 import React, { useRef, useCallback } from 'react'
-import { Dimensions, View, Animated, Image as RNImage } from 'react-native'
+import { Dimensions, View, Animated as RNAnimated, Image as RNImage } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Swipeable } from 'react-native-gesture-handler'
 import { Transitioning } from 'react-native-reanimated'
@@ -61,13 +61,19 @@ function renderRightAction(progress) {
   })
 
   return (
-    <Animated.View style={{ width, transform: [{ translateX }] }}>
-      <View style={{ flex: 1, justifyContent: 'center', backgroundColor: DELETE_COLOR }}>
+    <RNAnimated.View style={{ width, transform: [{ translateX }] }}>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          backgroundColor: DELETE_COLOR,
+        }}
+      >
         <View style={{ paddingLeft: 30 }}>
           <RNImage source={trash} />
         </View>
       </View>
-    </Animated.View>
+    </RNAnimated.View>
   )
 }
 
@@ -129,7 +135,10 @@ function Notification({ data, deleteNotification }) {
         renderRightActions={renderRightAction}
         onSwipeableRightOpen={handleDelete}
       >
-        <Toucable onPress={handleOnPress} style={styles.base}>
+        <Toucable
+          onPress={handleOnPress}
+          style={[styles.base, { paddingTop: 15, paddingBottom: 15 }]}
+        >
           <Avatar
             uri={data.user.avatarUrl}
             size={40}

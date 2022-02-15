@@ -48,7 +48,7 @@
     "react-phone-input-2": "^2.14.0",
     "react-scroll": "^1.8.4",
     "react-scrollable-anchor": "^0.6.1",
-    "styled-components": "5.2.3",
+    "styled-components": "^5.3.3",
     "styled-reset": "^4.3.4",
     "universal-cookie": "^4.0.4"
   },
