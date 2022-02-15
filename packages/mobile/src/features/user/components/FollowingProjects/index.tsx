@@ -58,6 +58,7 @@ function FollowingProjects({ user }) {
         style={{
           width: width - GUTTER * 2,
           marginBottom: 50,
+          marginRight: BAR_SPACE,
         }}
       />
     )
