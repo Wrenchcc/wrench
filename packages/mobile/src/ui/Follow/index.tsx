@@ -16,7 +16,7 @@ const styles = {
   },
 }
 
-function Follow({ onPress, following, small }) {
+function Follow({ onPress, following, small, style = {} }) {
   const { t } = useTranslation('follow')
 
   return (
@@ -29,6 +29,7 @@ function Follow({ onPress, following, small }) {
           borderWidth: small ? 0 : 1,
           borderColor: !following ? PlatformColor.inverse : PlatformColor.divider,
         },
+        style,
       ]}
     >
       <Text color={following ? 'inverse' : 'default'} medium fontSize={15}>

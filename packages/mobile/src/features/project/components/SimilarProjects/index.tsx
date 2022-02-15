@@ -7,9 +7,10 @@ import { useNavigation, SCREENS } from 'navigation'
 import { Title, InfiniteList, CardSmall, Follow } from 'ui'
 import PlatformColor from 'ui/PlatformColor'
 
-const GUTTER = 10
+const GUTTER = 25
 const SIZE = 120
-const SNAP_INTERVAL = SIZE + GUTTER // Card size
+const BAR_SPACE = GUTTER / 2
+const SNAP_INTERVAL = SIZE + GUTTER + BAR_SPACE // Card size
 
 const styles = {
   base: {
@@ -39,8 +40,8 @@ const styles = {
     marginBottom: 20,
   },
   list: {
-    marginLeft: -25,
-    marginRight: -25,
+    marginLeft: -GUTTER,
+    marginRight: -GUTTER,
   },
 }
 
@@ -98,7 +99,7 @@ function SimilarProjects({ projects, marginTop, disableAnimation }) {
         image={project.cover}
         style={styles.card}
       >
-        {project.permissions && !project.permissions.isOwner && (
+        {!project?.permissions.isOwner && (
           <Follow
             small
             following={project.permissions.isFollower}

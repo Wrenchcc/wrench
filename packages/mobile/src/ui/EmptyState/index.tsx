@@ -85,7 +85,7 @@ function EmptyState({ type = TYPES.PROJECT, params = {}, style = {} }) {
 
   return (
     <View style={[styles.base, style]}>
-      <Title>{t(`${type}.title`)}</Title>
+      <Title style={styles.title}>{t(`${type}.title`)}</Title>
       <Text style={styles.description} color="neutral">
         {t(`${type}.description`)}
       </Text>
