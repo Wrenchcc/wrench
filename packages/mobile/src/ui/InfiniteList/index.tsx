@@ -68,7 +68,7 @@ function InfiniteList({
       style={{ flex: 1 }}
       data={data}
       keyExtractor={keyExtractor}
-      onRefresh={refetch && onRefresh}
+      onRefresh={onRefresh}
       onEndReached={onEndReached}
       refreshing={isRefetchingLocal}
       initialNumToRender={initialNumToRender}
