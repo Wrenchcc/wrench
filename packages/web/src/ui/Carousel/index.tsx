@@ -1,10 +1,27 @@
-import React, { Fragment, useRef, useEffect } from 'react'
+// @ts-nocheck
+import React, { Fragment, useRef, useEffect, useState, useCallback } from 'react'
 import { CarouselProvider } from 'pure-react-carousel'
-import { ArrowLeftAlternativeIcon, ArrowRightAlternativeIcon } from '@wrench/ui'
+import { ArrowLeftAlternativeIcon, ArrowRightAlternativeIcon, SparkIcon } from '@wrench/ui'
 import { Base, Slider, Slide, ButtonBack, ButtonNext, DotGroup, Image } from './styles'
 
 function Video({ source }) {
+  const [isMuted, setMuted] = useState(true)
+  const isPlaying = useRef(false)
   const videoRef = useRef(null)
+
+  const togglePlay = useCallback(() => {
+    if (isPlaying.current) {
+      isPlaying.current = false
+      videoRef?.current?.pause()
+    } else {
+      isPlaying.current = true
+      videoRef?.current?.play()
+    }
+  }, [])
+
+  const toggleMuted = useCallback(() => {
+    setMuted(!isMuted)
+  }, [isMuted])
 
   useEffect(() => {
     const options = {
@@ -15,8 +32,10 @@ function Video({ source }) {
     const handlePlay = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          isPlaying.current = true
           videoRef?.current?.play()
         } else {
+          isPlaying.current = false
           videoRef?.current?.pause()
         }
       })
@@ -25,9 +44,21 @@ function Video({ source }) {
     const observer = new IntersectionObserver(handlePlay, options)
 
     observer.observe(videoRef.current)
-  })
+  }, [])
 
-  return <video width={640} height={640} ref={videoRef} muted src={source}></video>
+  return (
+    <div style={{ position: 'relative' }}>
+      <video
+        width={640}
+        height={640}
+        ref={videoRef}
+        muted={isMuted}
+        src={source}
+        onClick={togglePlay}
+      ></video>
+      {/* <SparkIcon onClick={toggleMuted} style={{ position: 'absolute', right: 20, bottom: 20 }} /> */}
+    </div>
+  )
 }
 
 function Carousel({ files }) {
