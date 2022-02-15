@@ -23,10 +23,11 @@ export default {
     ...(isAndroid && { style: Appearance.getColorScheme() === 'dark' ? 'light' : 'dark' }),
   },
   layout: {
-    backgroundColor: {
-      light: '#fff',
-      dark: '#000',
-    },
+    // https://github.com/wix/react-native-navigation/issues/7455
+    // backgroundColor: {
+    //   light: '#fff',
+    //   dark: '#000',
+    // },
     componentBackgroundColor: {
       light: '#fff',
       dark: '#000',

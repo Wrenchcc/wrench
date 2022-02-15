@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { InfiniteList, Title, Card } from 'ui'
 import Skeleton from './SkeletonList'
+import { isAndroid } from 'utils/platform'
 
 export const { width } = Dimensions.get('window')
 
@@ -14,7 +15,7 @@ const SNAP_INTERVAL = 180 + BAR_SPACE // Card size
 
 const styles = {
   base: {
-    height: 460,
+    height: isAndroid ? 480 : 460,
   },
   header: {
     marginBottom: 40,
