@@ -1,7 +1,8 @@
 import React from 'react'
-import { View, Image, useColorScheme } from 'react-native'
+import { View, useColorScheme } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import Text from 'ui/Text'
+import Image from 'ui/Image'
 
 const styles = {
   base: {

@@ -47,15 +47,20 @@ function Video({ size, source, id }) {
     async ({ isMuted }) => {
       // TODO: Check if video is ready
       if (!isPlaying.value) {
-        await videoRef?.current?.loadAsync(source, {
-          shouldPlay: true,
-          isMuted,
-          isLooping: true,
-        })
+        try {
+          await videoRef?.current?.loadAsync(source, {
+            shouldPlay: true,
+            isMuted,
+            isLooping: true,
+          })
 
-        setShowPoster(false)
+          setShowPoster(false)
 
-        isPlaying.value = true
+          isPlaying.value = true
+        } catch (err) {
+          isPlaying.value = false
+          console.log(err)
+        }
       }
     },
     [videoRef]
@@ -71,9 +76,13 @@ function Video({ size, source, id }) {
   }, [isPlaying, isMuted])
 
   const pause = useCallback(async () => {
-    await videoRef?.current?.unloadAsync()
-    setShowPoster(true)
-    isPlaying.value = false
+    try {
+      await videoRef?.current?.unloadAsync()
+      setShowPoster(true)
+      isPlaying.value = false
+    } catch (err) {
+      console.log(err)
+    }
   }, [videoRef])
 
   useAnimatedReaction(
