@@ -1,11 +1,25 @@
 import React, { useEffect } from 'react'
+import { View } from 'react-native'
 import { usePaginatedLazyQuery, SearchModelsDocument } from '@wrench/common'
 import { InfiniteList, Text, Touchable, SearchingFor, NoResults, Loader } from 'ui'
 import { keyboardHeight } from 'utils/platform'
 import HashtagSkeletonList from 'ui/Hashtag/SkeletonList'
-import { Base } from './styles'
+import { NAVIGATION } from 'navigation/constants'
+import PlatformColor from 'ui/PlatformColor'
 
 const INPUT_HEIGHT = 80
+
+const styles = {
+  base: {
+    left: 0,
+    position: 'absolute',
+    right: 0,
+    zIndex: 1000,
+    width: '100%',
+    backgroundColor: PlatformColor.default,
+    top: NAVIGATION.STATUS_BAR_HEIGHT,
+  },
+}
 
 function SearchModel({ query, onPress }) {
   const {
@@ -45,8 +59,6 @@ function SearchModel({ query, onPress }) {
     </Touchable>
   )
 
-  const bottom = keyboardHeight + INPUT_HEIGHT
-
   const ListEmptyComponent = isFetching ? (
     <HashtagSkeletonList />
   ) : (
@@ -61,7 +73,14 @@ function SearchModel({ query, onPress }) {
     )
 
   return (
-    <Base bottom={bottom}>
+    <View
+      style={[
+        styles.base,
+        {
+          bottom: keyboardHeight + INPUT_HEIGHT,
+        },
+      ]}
+    >
       <InfiniteList
         borderSeparator
         initialNumToRender={8}
@@ -75,7 +94,7 @@ function SearchModel({ query, onPress }) {
         renderItem={renderItem}
         ListFooterComponent={ListFooterComponent}
       />
-    </Base>
+    </View>
   )
 }
 

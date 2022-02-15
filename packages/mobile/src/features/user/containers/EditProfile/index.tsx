@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Image } from 'react-native'
+import { View, Image } from 'react-native'
 import { useCurrentUserQuery, useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import * as ImagePicker from 'expo-image-picker'
@@ -8,13 +8,54 @@ import { Page, ScrollView, useNavigation, AppNavigation, SCREENS } from 'navigat
 import { preSignUrl } from 'gql'
 import { TOAST_TYPES } from 'utils/enums'
 import { showToast } from 'navigation/banner'
+import * as Spacing from 'ui/Spacing'
 import { ActivityIndicator, Text, Title, Touchable, Input, Icon } from 'ui'
 import { logError } from 'utils/sentry'
 import { close } from 'images'
 import { FILE_TYPES } from 'utils/enums'
 import uploadAsync from 'utils/storage/uploadAsync'
 import { useDynamicColor } from 'utils/hooks'
-import { Information, Row, Counter, ChangeAvatar, Overlay, CloseIcon, Location } from './styles'
+import PlatformColor from 'ui/PlatformColor'
+
+const styles = {
+  information: {
+    marginTop: 50,
+  },
+  change: {
+    position: 'relative',
+    overflow: 'hidden',
+    paddingRight: 55,
+  },
+  overlay: {
+    position: 'absolute',
+    borderRadius: 60,
+    backgroundColor: 'rgba(000, 000, 000, 0.3)',
+    top: 0,
+    left: 0,
+    width: 120,
+    height: 120,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  counter: {
+    position: 'absolute',
+    right: 0,
+    top: 20,
+  },
+  icon: {
+    position: 'absolute',
+    right: 0,
+    top: 22,
+  },
+  location: {
+    flex: 1,
+    height: 60,
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    paddingRight: 30,
+    borderBottomColor: PlatformColor.divider,
+  },
+}
 
 const CDN_DOMAIN = 'https://edge-files.wrench.cc'
 const DEFAULT_AVATAR_URL = 'https://edge-files.wrench.cc/avatar/default.jpg'
@@ -221,14 +262,14 @@ function EditProfile({ onboarding }) {
           </Touchable>
         )
       }
-      headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
+      headerLeft={<Icon source={close} onPress={dismissModal} />}
       disableAnimation
     >
       <ScrollView
         contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 60 }}
         keyboardDismissMode="on-drag"
       >
-        <ChangeAvatar>
+        <View style={styles.change}>
           {/* NOTE: Use image Avatar can't handle file:// Android format */}
           <Image
             fadeDuration={0}
@@ -237,92 +278,75 @@ function EditProfile({ onboarding }) {
               uri: avatarUrl,
             }}
           />
-          <Overlay onPress={handleChangeAvatar} activeOpacity={1}>
+          <Touchable onPress={handleChangeAvatar} style={styles.overlay}>
             <Text color="white" medium fontSize={15}>
               {t('change')}
             </Text>
-          </Overlay>
-        </ChangeAvatar>
+          </Touchable>
+        </View>
 
-        <Information>
+        <View style={styles.information}>
           <Title>{t('information')}</Title>
 
-          <Row first>
-            <Input
-              color="dark"
-              placeholder={t('firstName')}
-              onChangeText={(value) => setFirstName(value)}
-              defaultValue={firstName}
-              error={firstName.length === 0}
-            />
-          </Row>
+          <Spacing.Horizontally px={30} />
 
-          <Row>
-            <Input
-              color="dark"
-              placeholder={t('lastName')}
-              onChangeText={(value) => setLastName(value)}
-              defaultValue={lastName}
-              error={lastName.length === 0}
-            />
-          </Row>
+          <Input
+            placeholder={t('firstName')}
+            onChangeText={(value) => setFirstName(value)}
+            defaultValue={firstName}
+            error={firstName.length === 0}
+          />
 
-          <Row>
-            <Input
-              color="dark"
-              placeholder={t('username')}
-              onChangeText={(value) => setUsername(value)}
-              defaultValue={username}
-              error={username.length === 0}
-            />
-          </Row>
+          <Input
+            placeholder={t('lastName')}
+            onChangeText={(value) => setLastName(value)}
+            defaultValue={lastName}
+            error={lastName.length === 0}
+          />
 
-          <Row>
-            <Location>
-              <Text
-                fontSize={17}
-                color={location ? 'dark' : 'light_grey'}
-                onPress={navigateToAddLocation}
-                numberOfLines={1}
-              >
-                {location ? location : t('place')}
-              </Text>
-            </Location>
+          <Input
+            placeholder={t('username')}
+            onChangeText={(value) => setUsername(value)}
+            defaultValue={username}
+            error={username.length === 0}
+          />
 
-            <CloseIcon
+          <View style={styles.location}>
+            <Text
+              fontSize={17}
+              color={location ? 'inverse' : 'accent'}
+              onPress={navigateToAddLocation}
+              numberOfLines={1}
+            >
+              {location ? location : t('place')}
+            </Text>
+
+            <Icon
+              style={styles.icon}
               source={close}
               color="accent"
               width={12}
               height={12}
               onPress={() => setLocation('')}
             />
-          </Row>
+          </View>
 
-          <Row>
-            <Input
-              color="dark"
-              placeholder={t('bio')}
-              defaultValue={bio}
-              onChangeText={handleBio}
-              style={{ paddingRight: 55 }}
-            />
-            <Counter color="accent" fontSize={15}>
+          <View>
+            <Input placeholder={t('bio')} defaultValue={bio} onChangeText={handleBio} />
+            <Text color="accent" fontSize={15} style={styles.counter}>
               {`${bio ? bio.length : 0}/${MAX_CHARACTERS}`}
-            </Counter>
-          </Row>
+            </Text>
+          </View>
 
-          <Row>
-            <Input
-              color="dark"
-              placeholder={t('website')}
-              keyboardType="url"
-              textContentType="URL"
-              onChangeText={(value) => setWebsite(value)}
-              defaultValue={website}
-              autoCorrect={false}
-            />
-          </Row>
-        </Information>
+          <Input
+            placeholder={t('website')}
+            keyboardType="url"
+            textContentType="URL"
+            onChangeText={(value) => setWebsite(value)}
+            defaultValue={website}
+            autoCorrect={false}
+          />
+        </View>
       </ScrollView>
     </Page>
   )

@@ -12,12 +12,14 @@ export default isAuthenticated(async (_, { id, input }, ctx) => {
   ctx.redis.delete(`project:cover:${id}`)
   ctx.db.PostTranslation.delete({ postId: id })
 
-  // Add new project if projectId is defined or use currenct project
-  const project = await ctx.db.Project.findOne(input.projectId || post.projectId)
+  const { files, ...rest } = input
 
-  if (input.collectionId) {
+  // Add new project if projectId is defined or use currenct project
+  const project = await ctx.db.Project.findOne(rest.projectId || post.projectId)
+
+  if (rest.collectionId) {
     await ctx.db.PostCollection.save({
-      collectionId: input.collectionId,
+      collectionId: rest.collectionId,
       projectId: project.id,
       postId: post.id,
     })
@@ -28,13 +30,18 @@ export default isAuthenticated(async (_, { id, input }, ctx) => {
     })
   }
 
-  if (input.files) {
-    // TODO: Remove files that are not included in paylaod
+  if (files) {
+    const savedFiles = await ctx.db.File.find({ postId: post.id })
+    const deletedFiles = savedFiles.filter((file) => !files.includes(file.id))
+
+    if (deletedFiles.length) {
+      await ctx.db.File.delete(deletedFiles)
+    }
   }
 
   return ctx.db.Post.save({
     ...post,
-    ...input,
+    ...rest,
     project,
   })
 })

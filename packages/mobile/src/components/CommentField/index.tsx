@@ -1,3 +1,4 @@
+import { View } from 'react-native'
 import * as Haptics from 'expo-haptics'
 import {
   optimisticId,
@@ -12,9 +13,23 @@ import EmojiList from 'components/EmojiList'
 import { useNavigation } from 'navigation'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Avatar, Text } from 'ui'
+import { Avatar, Text, Input } from 'ui'
 import { MENTION } from './constants'
-import { Inner, Input } from './styles'
+
+const styles = {
+  inner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 15,
+  },
+  input: {
+    flex: 1,
+    borderBottomWidth: 0,
+    paddingRight: 10,
+    paddingLeft: 10,
+    fontSize: 15,
+  },
+}
 
 const COMMENT_FIELD_HEIGHT = 40
 
@@ -237,20 +252,20 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
     <>
       {emoji && <EmojiList onPress={handleEmojiShortcut} />}
 
-      <Inner>
+      <View style={styles.inner}>
         <Avatar
           uri={data?.user.avatarUrl}
           fallback={data?.user.isSilhouette}
           fullName={data?.user.fullName}
         />
         <Input
+          style={styles.input}
           ref={inputRef}
           onSubmitEditing={(text.length > 0 && handleSubmit) || null}
           placeholder={t('placeholder')}
           keyboardType="twitter"
           onChangeText={handleOnChangeText}
           value={text}
-          color="dark"
           height={COMMENT_FIELD_HEIGHT}
         />
         {text.length > 0 && (
@@ -258,7 +273,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
             {t('post')}
           </Text>
         )}
-      </Inner>
+      </View>
     </>
   )
 }

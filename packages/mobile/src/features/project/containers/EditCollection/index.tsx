@@ -1,11 +1,18 @@
 import React, { useState, useCallback } from 'react'
+import { View } from 'react-native'
 import { useDeleteCollectionMutation, useEditCollectionMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import NativeShare from 'react-native-share'
+import * as Spacing from 'ui/Spacing'
 import { ScrollView, Page, useNavigation, SCREENS } from 'navigation'
 import { ActivityIndicator, Text, Title, Icon, Input, SelectionItem } from 'ui'
 import { close } from 'images'
-import { Inner } from './styles'
+
+const styles = {
+  inner: {
+    paddingBottom: 40,
+  },
+}
 
 function EditCollection({ id, name, projectId, projectSlug, slug, onDelete }) {
   const { t } = useTranslation('edit-collection')
@@ -93,23 +100,22 @@ function EditCollection({ id, name, projectId, projectSlug, slug, onDelete }) {
       }
     >
       <ScrollView>
-        <>
-          <Inner>
-            <Title>{t('title')}</Title>
-            <Input
-              placeholder={t('placeholder')}
-              value={title}
-              onChangeText={onChangeText}
-              color="dark"
-              onSubmitEditing={() => {}}
-              returnKeyType="done"
-            />
+        <View style={styles.inner}>
+          <Title>{t('title')}</Title>
+          <Input
+            placeholder={t('placeholder')}
+            value={title}
+            onChangeText={onChangeText}
+            returnKeyType="done"
+          />
+          <Spacing.Horizontally px={20} />
 
-            <SelectionItem title={t('share:share')} onPress={handleShare} />
-            <SelectionItem title={t('add')} onPress={navigateToAddPosts} />
-            <SelectionItem important title={t('delete')} onPress={handleDelete} />
-          </Inner>
-        </>
+          <SelectionItem title={t('share:share')} onPress={handleShare} />
+          <Spacing.Horizontally px={20} />
+          <SelectionItem title={t('add')} onPress={navigateToAddPosts} />
+          <Spacing.Horizontally px={20} />
+          <SelectionItem important title={t('delete')} onPress={handleDelete} />
+        </View>
       </ScrollView>
     </Page>
   )

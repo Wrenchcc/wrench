@@ -13,7 +13,7 @@ type FollowersProps = {
 function Followers({
   followers,
   onPress = null,
-  color = 'dark',
+  color = 'inverse',
   opacity = 1,
   style,
 }: FollowersProps) {

@@ -47,6 +47,7 @@ function Categories({ id, title }) {
         isRefetching={isRefetching}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
+        ItemSeparatorComponentStyle={{ paddingTop: 10, marginBottom: 10 }}
       />
     </Page>
   )

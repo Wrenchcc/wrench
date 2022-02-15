@@ -1,9 +1,56 @@
 import React, { useCallback } from 'react'
+import { View, Dimensions } from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient'
 import { useFollowProjectMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import Image from 'ui/Image'
 import Touchable from 'ui/Touchable'
-import { Base, Overlay, Content, Info, ProjectName, Followers, Button, height } from './styles'
+import Followers from 'ui/Followers'
+import Text from 'ui/Text'
+import Button from 'ui/Button'
+
+const { width } = Dimensions.get('window')
+
+export const height = width > 390 ? 220 : 190
+
+const styles = {
+  base: {
+    position: 'relative',
+    overflow: 'hidden',
+  },
+  overlay: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    zIndex: 1,
+  },
+  name: {
+    marginTop: 10,
+    marginBottom: 3,
+    marginRight: 20,
+  },
+  content: {
+    position: 'absolute',
+    flex: 1,
+    width: '100%',
+    paddingTop: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    bottom: 0,
+    alignItems: 'flex-end',
+    zIndex: 2,
+  },
+  button: {
+    marginBottom: 5,
+  },
+  info: {
+    justifyContent: 'flex-end',
+    flex: 1,
+  },
+}
 
 function ProjectCard({ onPress, onFollow, project, style }) {
   const { t } = useTranslation('project-card')
@@ -43,29 +90,42 @@ function ProjectCard({ onPress, onFollow, project, style }) {
   }, [project, onFollow])
 
   return (
-    <Base style={style} height={height}>
+    <Touchable
+      style={[
+        styles.base,
+        {
+          height,
+        },
+        style,
+      ]}
+      height={height}
+    >
       <Touchable onPress={onPress}>
         {!project.cover.default && (
-          <Overlay colors={['transparent', 'rgba(000, 000, 000, 0.7)']} locations={[0, 1]} />
+          <LinearGradient
+            colors={['transparent', 'rgba(000, 000, 000, 0.7)']}
+            locations={[0, 1]}
+            style={styles.overlay}
+          />
         )}
         <Image source={project.cover} height={height} />
 
-        <Content>
-          <Info>
-            <ProjectName numberOfLines={1} color="white">
+        <View style={styles.content}>
+          <View style={styles.info}>
+            <Text numberOfLines={1} color="white" style={styles.name}>
               {project.title}
-            </ProjectName>
+            </Text>
             <Followers followers={project.followers.totalCount} color="white" opacity={0.9} />
-          </Info>
+          </View>
 
           {!project.permissions.isOwner && (
-            <Button small color="inverse" onPress={handleFollow}>
+            <Button small color="inverse" onPress={handleFollow} style={styles.button}>
               {project.permissions.isFollower ? t('unfollow') : t('follow')}
             </Button>
           )}
-        </Content>
+        </View>
       </Touchable>
-    </Base>
+    </Touchable>
   )
 }
 

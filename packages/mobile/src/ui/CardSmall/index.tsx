@@ -1,16 +1,31 @@
 import React from 'react'
 import Touchable from 'ui/Touchable'
 import Followers from 'ui/Followers'
-import { Picture, ProjectName, SIZE } from './styles'
+import Text from 'ui/Text'
+import Image from 'ui/Image'
+
+const SIZE = 120
+
+const styles = {
+  name: {
+    marginTop: 10,
+    marginBottom: 5,
+    width: SIZE,
+  },
+  image: {
+    height: SIZE,
+    width: SIZE,
+  },
+}
 
 function CardSmall({ onPress, image, title, followers, style = {}, children }) {
   return (
     <Touchable onPress={onPress} style={style}>
-      <Picture source={image} width={SIZE} height={SIZE} />
+      <Image source={image} style={styles.image} />
       {children}
-      <ProjectName fontSize={15} numberOfLines={1}>
+      <Text fontSize={15} numberOfLines={1} style={styles.name}>
         {title}
-      </ProjectName>
+      </Text>
       <Followers color="neutral" followers={followers} />
     </Touchable>
   )

@@ -9,13 +9,31 @@ import Avatar from 'ui/Avatar'
 import Image from 'ui/Image'
 import Text from 'ui/Text'
 import TimeAgo from 'ui/TimeAgo'
-import { COLORS } from 'ui/constants'
+import Toucable from 'ui/Touchable'
 import { trash } from 'images'
 import { NOTIFICATION_TYPES } from 'utils/enums'
-import { Base, Content, Bottom } from './styles'
 import transition from './transition'
 
 export const { width } = Dimensions.get('window')
+
+const DELETE_COLOR = 'rgb(246, 86, 86)'
+
+const styles = {
+  base: {
+    flexDirection: 'row',
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  content: {
+    marginLeft: 10,
+    marginRight: 10,
+    flex: 1,
+  },
+  bottom: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+}
 
 function description(data, t) {
   switch (data.type) {
@@ -44,7 +62,7 @@ function renderRightAction(progress) {
 
   return (
     <Animated.View style={{ width, transform: [{ translateX }] }}>
-      <View style={{ flex: 1, justifyContent: 'center', backgroundColor: COLORS.RED }}>
+      <View style={{ flex: 1, justifyContent: 'center', backgroundColor: DELETE_COLOR }}>
         <View style={{ paddingLeft: 30 }}>
           <RNImage source={trash} />
         </View>
@@ -111,7 +129,7 @@ function Notification({ data, deleteNotification }) {
         renderRightActions={renderRightAction}
         onSwipeableRightOpen={handleDelete}
       >
-        <Base onPress={handleOnPress}>
+        <Toucable onPress={handleOnPress} style={styles.base}>
           <Avatar
             uri={data.user.avatarUrl}
             size={40}
@@ -120,17 +138,17 @@ function Notification({ data, deleteNotification }) {
             fallback={data.user.isSilhouette}
             fullName={data.user.fullName}
           />
-          <Content>
+          <View style={styles.content}>
             <Text onPress={navigateToUser}>{data.user.fullName}</Text>
-            <Bottom>
+            <View style={styles.bottom}>
               <Text color="accent" fontSize={15} lineHeight={22} onPress={handleOnPress}>
                 {description(data, t)}. <TimeAgo date={data.createdAt} fontSize={15} />
               </Text>
-            </Bottom>
-          </Content>
+            </View>
+          </View>
 
           <Image source={image} width={40} height={40} />
-        </Base>
+        </Toucable>
       </Swipeable>
     </Transitioning.View>
   )

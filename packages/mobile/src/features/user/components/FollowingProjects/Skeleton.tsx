@@ -1,7 +1,10 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, Dimensions } from 'react-native'
 import Skeleton from 'ui/Skeleton'
-import { width, GUTTER } from './styles'
+
+const { width } = Dimensions.get('window')
+
+const GUTTER = 20
 
 const height = width > 390 ? 220 : 190
 

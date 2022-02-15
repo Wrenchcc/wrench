@@ -1,5 +1,5 @@
 import React, { memo, useState, useCallback } from 'react'
-import { FlatList, View } from 'react-native'
+import { Dimensions, FlatList, View } from 'react-native'
 import Pinchable from 'react-native-pinchable'
 import Animated, {
   useAnimatedReaction,
@@ -15,13 +15,54 @@ import { useViewability } from 'navigation'
 import { FILE_TYPES } from 'utils/enums'
 import Video from 'components/Video'
 import { IMAGE_PRIORITY } from 'ui/constants'
+import Image from 'ui/Image'
 import Pagination from './Pagination'
-import { Picture, SIZE, GUTTER } from './styles'
 import { keyExtractor } from 'navigation'
 import { Text, Icon, Touchable } from 'ui'
 import { close } from 'images'
 
+const { width } = Dimensions.get('window')
+
+const SIZE = width
+const GUTTER = 20
 const SNAP_INTERVAL = SIZE
+
+const styles = {
+  indicator: {
+    position: 'absolute',
+    right: 0,
+    top: 20,
+    height: 27,
+    borderRadius: 30,
+    paddingLeft: 9,
+    paddingRight: 9,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    zIndex: 1000,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  close: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    height: 30,
+    width: 30,
+  },
+  remove: {
+    position: 'absolute',
+    right: 20,
+    top: 20,
+    zIndex: 100000,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    height: 30,
+    width: 30,
+    borderRadius: 30,
+  },
+  list: {
+    marginLeft: -GUTTER,
+    marginRight: -GUTTER,
+  },
+}
 
 const getItemLayout = (_, index: number) => ({
   index,
@@ -39,29 +80,8 @@ const RemoveItem = ({ children, id, onRemove, files }) => {
   return (
     <Animated.View exiting={FadeOut.delay(0).duration(100)}>
       {files?.edges?.length > 1 && (
-        <Animated.View
-          entering={FadeIn.delay(100).duration(200)}
-          style={{
-            position: 'absolute',
-            right: 20,
-            top: 20,
-            zIndex: 100000,
-            backgroundColor: 'rgba(0, 0, 0, 0.75)',
-            height: 30,
-            width: 30,
-            borderRadius: 30,
-          }}
-        >
-          <Touchable
-            onPress={handleRemove}
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexDirection: 'row',
-              height: 30,
-              width: 30,
-            }}
-          >
+        <Animated.View entering={FadeIn.delay(100).duration(200)} style={styles.remove}>
+          <Touchable onPress={handleRemove} style={styles.close}>
             <Icon source={close} color="white" width={12} height={12} onPress={handleRemove} />
           </Touchable>
         </Animated.View>
@@ -114,10 +134,12 @@ function Carousel({ postId, files, onRemove }) {
 
     if (item.node.type === FILE_TYPES.IMAGE) {
       return (
-        <Picture
+        <Image
           showIndicator
-          width={SIZE}
-          height={SIZE}
+          style={{
+            width: SIZE,
+            height: SIZE,
+          }}
           source={item.node}
           priority={index < 2 ? IMAGE_PRIORITY.HIGH : IMAGE_PRIORITY.LOW}
         />
@@ -153,25 +175,8 @@ function Carousel({ postId, files, onRemove }) {
   return (
     <View style={{ height: SIZE }}>
       {files?.edges?.length > 1 && !onRemove && (
-        <Animated.View
-          style={[
-            {
-              position: 'absolute',
-              right: 0,
-              top: 20,
-              height: 27,
-              borderRadius: 30,
-              paddingLeft: 9,
-              paddingRight: 9,
-              backgroundColor: 'rgba(0, 0, 0, 0.75)',
-              zIndex: 1000,
-              justifyContent: 'center',
-              alignItems: 'center',
-            },
-            animatedStyle,
-          ]}
-        >
-          <Text fontSize={12} medium>
+        <Animated.View style={[styles.indicator, animatedStyle]}>
+          <Text fontSize={12} medium color="white">
             {currentIndex + 1}/{files.edges.length}
           </Text>
         </Animated.View>
@@ -192,10 +197,7 @@ function Carousel({ postId, files, onRemove }) {
         snapToAlignment="center"
         onScroll={handleScroll}
         renderItem={renderItem}
-        style={{
-          marginLeft: -GUTTER,
-          marginRight: -GUTTER,
-        }}
+        style={styles.list}
       />
 
       {scrollEnabled && <Pagination files={files.edges} currentIndex={currentIndex} />}

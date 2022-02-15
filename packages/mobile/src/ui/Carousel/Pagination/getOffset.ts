@@ -1,4 +1,4 @@
-import { DOT_SIZE, DOT_SPACE } from './styles'
+import { DOT_SIZE, DOT_SPACE } from './index'
 
 export default (slides, currentIndex) => {
   const t = slides.length

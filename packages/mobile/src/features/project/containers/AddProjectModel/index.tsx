@@ -10,7 +10,6 @@ import { useReactiveVar, store, PROJECT } from 'gql'
 import { ActivityIndicator, Header, Title, Text, Input, Icon, KeyboardAvoidingView } from 'ui'
 import { arrowLeft } from 'images'
 import SearchModel from 'features/project/components/SearchModel'
-import { COLORS } from 'ui/constants'
 import { logError } from 'utils/sentry'
 
 function formatModel(model) {
@@ -19,7 +18,7 @@ function formatModel(model) {
 
 function AddProjectModel() {
   const { t } = useTranslation('add-project-model')
-  const { navigate, navigateBack } = useNavigation()
+  const { navigate, navigateBack, dismissModal } = useNavigation()
   const [addProject] = useAddProjectMutation()
   const [query, setQuery] = useState()
   const [isSearching, setIsSearching] = useState(false)
@@ -30,6 +29,7 @@ function AddProjectModel() {
   })
 
   const { model, type, title } = useReactiveVar(store.project.projectVar)
+  const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
 
   const handleNavigationBack = useCallback(() => {
     navigateBack()
@@ -103,15 +103,20 @@ function AddProjectModel() {
       },
     })
 
-    navigate(SCREENS.ADD_MEDIA, {
-      options: {
-        layout: {
-          componentBackgroundColor: COLORS.DARK,
-        },
-      },
-    })
-
     store.project.reset()
+
+    // NOTE: If in add post flow
+    if (selectedFiles?.length) {
+      dismissModal()
+    } else {
+      navigate(SCREENS.ADD_MEDIA, {
+        options: {
+          layout: {
+            componentBackgroundColor: 'black',
+          },
+        },
+      })
+    }
   }, [model, type, title, data])
 
   const handleModelChange = useCallback(
@@ -151,11 +156,10 @@ function AddProjectModel() {
           large
           onChangeText={onChangeText}
           value={model ? formatModel(model) : query}
-          borderColor="dark"
-          color="dark"
           returnKeyType="next"
           onBlur={handleOnBlur}
           autoFocus
+          autoCorrect={false}
         />
       </KeyboardAvoidingView>
     </>

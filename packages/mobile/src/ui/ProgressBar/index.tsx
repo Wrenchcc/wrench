@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { View } from 'react-native'
 import { Transitioning, Transition } from 'react-native-reanimated'
-import { useDynamicColor } from 'utils/hooks'
+import PlatformColor from 'ui/PlatformColor'
 
 const transition = <Transition.Change interpolation="easeInOut" />
 
@@ -15,7 +15,6 @@ function ProgressBar({
 }) {
   const ref = useRef(null)
   const [width, setWidth] = useState(progress)
-  const dynamicColor = useDynamicColor(fillColor)
 
   useEffect(() => {
     setWidth(progress)
@@ -27,7 +26,7 @@ function ProgressBar({
       ref={ref}
       transition={transition}
       style={{
-        backgroundColor,
+        backgroundColor: PlatformColor[backgroundColor],
         opacity,
         overflow: 'hidden',
         width: '100%',
@@ -35,7 +34,7 @@ function ProgressBar({
     >
       <View
         style={{
-          backgroundColor: dynamicColor,
+          backgroundColor: PlatformColor[fillColor],
           borderRadius,
           height,
           width: `${width}%`,

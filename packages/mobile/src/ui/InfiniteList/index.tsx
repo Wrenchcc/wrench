@@ -47,7 +47,7 @@ function InfiniteList({
   }, [hasNextPage, isRefetching, isFetching, fetchMore])
 
   const ItemSeparatorComponent = useCallback(() => {
-    if (!defaultSeparator && props.horizontal) {
+    if (!defaultSeparator || props.horizontal) {
       return null
     }
     if (borderSeparator) {

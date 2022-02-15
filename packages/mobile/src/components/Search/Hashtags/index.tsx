@@ -1,16 +1,24 @@
 import React, { memo, useEffect, useState, useCallback } from 'react'
-import { Keyboard } from 'react-native'
+import { View, Keyboard } from 'react-native'
 import { useReactiveVar, store } from 'gql'
 import { storage, useMMKVString } from 'utils/storage'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedLazyQuery, SearchHashtagsDocument } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { RECENT_SEARCHES_HASHTAGS } from 'utils/storage/constants'
-import { InfiniteList, NoResults, SearchingFor, Loader, Text, Hashtag } from 'ui'
+import { InfiniteList, NoResults, Loader, Text, Hashtag } from 'ui'
 import Skeleton from 'ui/Hashtag/SkeletonList'
-import { Header } from '../styles'
 
 const MAX_ITEMS = 4
+
+const styles = {
+  header: {
+    marginTop: 20,
+    marginBottom: 20,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+}
 
 function Hashtags() {
   const { t } = useTranslation('search')
@@ -86,19 +94,15 @@ function Hashtags() {
   )
 
   const ListHeaderComponent = !query && recent.length > 0 && (
-    <Header>
+    <View style={styles.header}>
       <Text medium>{t('recent')}</Text>
       <Text fontSize={14} onPress={handleRemove} medium>
         {t('clear')}
       </Text>
-    </Header>
+    </View>
   )
 
-  const ListFooterComponent = isFetching ? (
-    <SearchingFor query={query} />
-  ) : (
-    hasNextPage && query && <Loader />
-  )
+  const ListFooterComponent = hasNextPage && query && <Loader />
 
   return (
     <InfiniteList

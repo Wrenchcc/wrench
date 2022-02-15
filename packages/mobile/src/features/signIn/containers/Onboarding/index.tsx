@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import { Dimensions, View } from 'react-native'
 import { useEditUserMutation } from '@wrench/common'
+import FastImage from 'react-native-fast-image'
 import { useTranslation } from 'react-i18next'
 import { useCurrentUserQuery, useProjectTypesQuery } from '@wrench/common'
 import { Page, FlatList, useNavigation, SCREENS, keyExtractor, NAVIGATION } from 'navigation'
@@ -9,9 +11,46 @@ import { ActivityIndicator, Touchable, Text } from 'ui'
 import Content from 'features/signIn/components/Content'
 import Footer from 'features/signIn/components/Footer'
 import Skeleton from './Skeleton'
-import { Cell, Image, Overlay, Picture, GUTTER, ITEM_SIZE } from './styles'
+import PlatformColor from 'ui/PlatformColor'
 
+const { width } = Dimensions.get('window')
+
+const GUTTER = 10
 const MIN_ITEMS = 3
+
+export const ITEM_SIZE = width / 2 - GUTTER
+
+const styles = {
+  image: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    paddingTop: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    backgroundColor: 'transparent',
+    borderTopWidth: 3,
+    borderRightWidth: 3,
+    borderBottomWidth: 3,
+    borderLeftWidth: 3,
+    margin: GUTTER / 2,
+    width: ITEM_SIZE - GUTTER / 2,
+    height: ITEM_SIZE - GUTTER / 2,
+  },
+  cell: {
+    width: '50%',
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    right: -3,
+    bottom: -3,
+    left: 0,
+  },
+  contentContainerStyle: {
+    paddingBottom: NAVIGATION.TAB_HEIGHT + 20,
+  },
+}
 
 function Onboarding({ settingsPage }) {
   const { t } = useTranslation('onboarding')
@@ -89,23 +128,31 @@ function Onboarding({ settingsPage }) {
   }
 
   const renderItem = ({ item }) => (
-    <Cell key={item.id}>
+    <View key={item.id} style={styles.cell}>
       <Touchable onPress={() => toggleSelection(item)}>
-        <Picture width={ITEM_SIZE} height={ITEM_SIZE}>
-          <Image
-            selected={items[item.id]}
-            placeholderColor="transparent"
-            source={{ uri: item.imageUrl }}
-            gutter={GUTTER}
-            width={ITEM_SIZE}
-            height={ITEM_SIZE}
-          >
-            <Overlay selected={false} />
-            <Text color="white">{item.title}</Text>
-          </Image>
-        </Picture>
+        <FastImage
+          source={{ uri: item.imageUrl }}
+          style={[
+            styles.image,
+            {
+              borderColor: items[item.id] ? PlatformColor.inverse : 'transparent',
+            },
+          ]}
+        >
+          <View
+            style={[
+              styles.overlay,
+              {
+                backgroundColor: items[item.id]
+                  ? 'rgba(000, 000, 000, 0.5)'
+                  : 'rgba(000, 000, 000, 0.2)',
+              },
+            ]}
+          />
+          <Text color="white">{item.title}</Text>
+        </FastImage>
       </Touchable>
-    </Cell>
+    </View>
   )
 
   const headerRight = isSaving ? (
@@ -142,9 +189,7 @@ function Onboarding({ settingsPage }) {
         data={projectData?.types}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
-        contentContainerStyle={{
-          paddingBottom: NAVIGATION.TAB_HEIGHT + 20,
-        }}
+        contentContainerStyle={styles.contentContainerStyle}
       />
       {!settingsPage && <Footer progress={progress()} />}
     </Page>

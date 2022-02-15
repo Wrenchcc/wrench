@@ -1,8 +1,24 @@
 import React, { useCallback } from 'react'
+import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import PlatformColor from 'ui/PlatformColor'
 import Text from 'ui/Text'
 import Item from './Item'
-import { LoadReplies, Border } from './styles'
+
+const styles = {
+  load: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 60,
+    marginBottom: 10,
+  },
+  border: {
+    width: 20,
+    height: 1,
+    backgroundColor: PlatformColor.divider,
+    marginRight: 10,
+  },
+}
 
 function CommentItem({ data, onReply, fetchReplies, first, highlightId, postId }) {
   const { t } = useTranslation('comment-item')
@@ -33,14 +49,14 @@ function CommentItem({ data, onReply, fetchReplies, first, highlightId, postId }
       ))}
 
       {replies.totalCount > replies.edges.length && (
-        <LoadReplies>
-          <Border />
+        <View style={styles.load}>
+          <View style={styles.border} />
           <Text medium fontSize={12} color="accent" onPress={handleLoadMore}>
             {t('loadReplies', {
               count: replies.totalCount - replies.edges.length,
             })}
           </Text>
-        </LoadReplies>
+        </View>
       )}
 
       <Item {...data.node} onReply={onReply} t={t} highlightId={highlightId} postId={postId} />

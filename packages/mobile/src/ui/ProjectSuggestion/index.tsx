@@ -1,10 +1,25 @@
 import React from 'react'
+import { Dimensions } from 'react-native'
 import { useNavigation, SCREENS } from 'navigation'
+import ProjectCard from 'ui/ProjectCard'
+import Title from 'ui/Title'
 import InfiniteList from 'ui/InfiniteList'
 import * as Spacing from 'ui/Spacing'
-import { Title, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
 
+const { width } = Dimensions.get('window')
+
+const GUTTER = 20
+const BAR_SPACE = GUTTER / 2
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
+
+const styles = {
+  title: {
+    marginBottom: 20,
+  },
+  card: {
+    width: width - GUTTER * 2,
+  },
+}
 
 function ProjectSuggestion({
   title,
@@ -29,9 +44,14 @@ function ProjectSuggestion({
 
     return (
       <ProjectCard
+        style={[
+          styles.card,
+          {
+            marginRight: index === data.length - 1 ? GUTTER : BAR_SPACE,
+            marginLeft: index === 0 ? GUTTER : 0,
+          },
+        ]}
         onFollow={onFollow}
-        first={index === 0}
-        last={index === data.length - 1}
         project={item.node}
         onPress={onPress}
       />
@@ -40,7 +60,9 @@ function ProjectSuggestion({
 
   return (
     <>
-      <Title fontSize={21}>{title}</Title>
+      <Title fontSize={21} style={styles.title}>
+        {title}
+      </Title>
 
       <InfiniteList
         paddingVertical={0}

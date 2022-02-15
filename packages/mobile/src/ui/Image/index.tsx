@@ -2,7 +2,7 @@ import React, { useState, useCallback, useRef } from 'react'
 import { Animated, View, ImageProps } from 'react-native'
 import FastImage, { FastImageProps } from 'react-native-fast-image'
 import { IMAGE_PRIORITY } from 'ui/constants'
-import { Base } from './styles'
+import PlatformColor from 'ui/PlatformColor'
 import Spinner from '../Spinner'
 
 const PROGRESS_COLOR = '#E1E1E2'
@@ -18,6 +18,27 @@ type ImageComponentProps = {
   showIndicator?: boolean
 } & ImageProps &
   FastImageProps
+
+const styles = {
+  base: {
+    overflow: 'hidden',
+  },
+  image: {
+    bottom: 0,
+    left: 0,
+    position: 'absolute',
+    right: 0,
+    top: 0,
+  },
+  indicator: {
+    position: 'absolute',
+    zIndex: 100,
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+}
 
 function Image({
   width,
@@ -79,12 +100,19 @@ function Image({
   )}&dpr=1`
 
   return (
-    <Base
+    <View
       width={width}
       height={height}
       borderRadius={borderRadius}
       placeholderColor={placeholderColor}
-      style={style}
+      style={[
+        styles.base,
+        {
+          borderRadius: borderRadius || 0,
+          backgroundColor: placeholderColor || PlatformColor.placeholder,
+        },
+        style,
+      ]}
     >
       <Animated.Image
         {...props}
@@ -104,32 +132,19 @@ function Image({
         onProgress={handleProgress}
         onError={handleError}
         style={[
+          styles.image,
           {
+            width,
+            height,
             borderColor,
             borderRadius,
             borderWidth,
-            bottom: 0,
-            height,
-            left: 0,
-            position: 'absolute',
-            right: 0,
-            top: 0,
-            width,
           },
         ]}
       />
 
       {showIndicator && progress < 1 ? (
-        <View
-          style={{
-            position: 'absolute',
-            zIndex: 100,
-            width: '100%',
-            height: '100%',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
+        <View style={styles.indicator}>
           <Spinner
             size={80}
             width={1.3}
@@ -140,7 +155,7 @@ function Image({
           />
         </View>
       ) : null}
-    </Base>
+    </View>
   )
 }
 

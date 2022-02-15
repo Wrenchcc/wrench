@@ -1,9 +1,31 @@
 import React, { useCallback } from 'react'
+import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
+import Title from 'ui/Title'
 import Text from 'ui/Text'
+import Touchable from 'ui/Touchable'
 import { TYPES } from './constants'
-import { Base, Title, Description, Button } from './styles'
+
+const styles = {
+  base: {
+    justifyContent: 'center',
+    paddingBottom: 20,
+    marginTop: 60,
+  },
+  title: {
+    marginBottom: 10,
+  },
+  description: {
+    marginBottom: 30,
+  },
+  button: {
+    height: 40,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+}
 
 const onPressAction = (type: TYPES, showModal, params) => {
   switch (type) {
@@ -62,17 +84,20 @@ function EmptyState({ type = TYPES.PROJECT, params = {}, style = {} }) {
   const handleNavigation = useCallback(() => onPressAction(type, showModal, params), [type])
 
   return (
-    <Base style={style}>
-      <Title>{t(`${type}.title`)}</Title>
-      <Description color="neutral">{t(`${type}.description`)}</Description>
+    <View style={[styles.base, style]}>
+      <Title style={styles.title}>{t(`${type}.title`)}</Title>
+      <Text style={styles.description} color="neutral">
+        {t(`${type}.description`)}
+      </Text>
+
       {showButton(type) && (
-        <Button onPress={handleNavigation}>
+        <Touchable onPress={handleNavigation} style={styles.button}>
           <Text medium fontSize={15} color="black">
             {t(`${type}.button`)}
           </Text>
-        </Button>
+        </Touchable>
       )}
-    </Base>
+    </View>
   )
 }
 

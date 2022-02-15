@@ -1,15 +1,56 @@
 import React from 'react'
-import { Background, Base, Left, Center, Right } from './styles'
+import { View } from 'react-native'
+import { NAVIGATION } from 'navigation/constants'
+import PlatformColor from 'ui/PlatformColor'
 
-function Header({ headerLeft, headerTitle, headerRight, color, top }) {
+const styles = {
+  background: {
+    zIndex: 10,
+  },
+  base: {
+    zIndex: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingTop: 0,
+    paddingRight: 20,
+    paddingBottom: 20,
+    paddingLeft: 20,
+    marginTop: NAVIGATION.STATUS_BAR_HEIGHT,
+    height: NAVIGATION.TOP_BAR_HEIGHT,
+  },
+  left: {
+    flex: 1,
+    alignItems: 'flex-start',
+  },
+  center: {
+    flexGrow: 2,
+    flexShrink: 1,
+    flexBasis: 0,
+    alignItems: 'center',
+  },
+  right: {
+    flex: 1,
+    alignItems: 'flex-end',
+  },
+}
+
+function Header({ headerLeft, headerTitle, headerRight, color }) {
   return (
-    <Background color={color}>
-      <Base color={color} top={top}>
-        <Left>{headerLeft}</Left>
-        <Center>{headerTitle}</Center>
-        <Right>{headerRight}</Right>
-      </Base>
-    </Background>
+    <View
+      style={[
+        styles.background,
+        {
+          backgroundColor: color ? color : PlatformColor.default,
+        },
+      ]}
+    >
+      <View style={styles.base}>
+        <View style={styles.left}>{headerLeft}</View>
+        <View style={styles.center}>{headerTitle}</View>
+        <View style={styles.right}>{headerRight}</View>
+      </View>
+    </View>
   )
 }
 

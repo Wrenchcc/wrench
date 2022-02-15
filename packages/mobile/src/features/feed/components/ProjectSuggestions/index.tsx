@@ -1,22 +1,30 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useProjectSuggestionsQuery } from '@wrench/common'
-import { ProjectSuggestion, Loader } from 'ui'
-import { Base, Headline, Description } from './styles'
+import { ProjectSuggestion, Loader, Title, Text } from 'ui'
+
+const styles = {
+  headline: {
+    marginBottom: 12,
+  },
+  description: {
+    marginBottom: 40,
+  },
+}
 
 function ProjectSuggestions() {
   const { data, loading } = useProjectSuggestionsQuery()
   const { t } = useTranslation('project-suggestions')
 
   return (
-    <Base>
-      <Headline medium numberOfLines={0}>
+    <>
+      <Title medium numberOfLines={0} style={styles.headline}>
         {t('title')}
-      </Headline>
+      </Title>
 
-      <Description color="neutral" fontSize={19}>
+      <Text color="neutral" fontSize={19} style={styles.description}>
         {t('description')}
-      </Description>
+      </Text>
 
       {loading && <Loader />}
 
@@ -24,7 +32,7 @@ function ProjectSuggestions() {
         data.projects.map(({ type, edges }) => (
           <ProjectSuggestion key={type.id} title={type.title} data={edges} />
         ))}
-    </Base>
+    </>
   )
 }
 

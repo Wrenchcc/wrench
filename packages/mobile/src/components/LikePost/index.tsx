@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react'
+import { View } from 'react-native'
 import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated'
 import { scaleAnimation } from 'utils/animations'
 import { useLikePostMutation } from '@wrench/common'
@@ -7,7 +8,14 @@ import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { Icon, Text, UserStack } from 'ui'
 import { spark } from 'images'
-import { Base } from './styled'
+
+const styles = {
+  base: {
+    height: 60,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+}
 
 function LikePost({ post }) {
   const animatedValue = useSharedValue(1)
@@ -56,7 +64,7 @@ function LikePost({ post }) {
   })
 
   return (
-    <Base>
+    <View style={styles.base}>
       <Animated.View style={animatedStyle}>
         <Icon
           source={spark}
@@ -74,7 +82,7 @@ function LikePost({ post }) {
       <Text fontSize={15} onPress={navigateToLikes}>
         {t('like', { count: post.likes.totalCount })}
       </Text>
-    </Base>
+    </View>
   )
 }
 

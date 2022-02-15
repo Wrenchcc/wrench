@@ -1,7 +1,41 @@
 import React, { useState } from 'react'
-import { Image, ActivityIndicator } from 'ui'
+import { View } from 'react-native'
+import { Image, ActivityIndicator, Touchable, Text } from 'ui'
+import PlatformColor from 'ui/PlatformColor'
 import { useNavigation, SCREENS } from 'navigation'
-import { Base, Text, Placeholder, Overlay, Item, ActivityIndicatorWrapper } from './styles'
+
+const styles = {
+  base: {
+    width: 60,
+  },
+  text: {
+    marginTop: 8,
+  },
+  placeholder: {
+    width: 60,
+    height: 60,
+    borderRadius: 60,
+    backgroundColor: PlatformColor.placeholder,
+  },
+  item: {
+    height: 60,
+  },
+  indicator: {
+    position: 'absolute',
+    zIndex: 1,
+    height: 60,
+    width: 60,
+    justifyContent: 'center',
+  },
+  overlay: {
+    position: 'absolute',
+    width: 60,
+    height: 60,
+    borderRadius: 60,
+    zIndex: 1,
+    borderWidth: 2,
+  },
+}
 
 function Collection({
   id,
@@ -40,26 +74,34 @@ function Collection({
   }
 
   return (
-    <Base style={style} onPress={handleOnPress}>
-      <Item>
-        <Overlay selected={selected} />
+    <Touchable style={[styles.base, style]} onPress={handleOnPress}>
+      <View style={styles.item}>
+        <View
+          style={[
+            styles.overlay,
+            {
+              borderColor: selected ? 'white' : 'transparent',
+              backgroundColor: selected ? 'rgba(000, 000, 000, 0.2)' : 'transparent',
+            },
+          ]}
+        />
 
         {isSaving && (
-          <ActivityIndicatorWrapper>
+          <View style={styles.indicator}>
             <ActivityIndicator />
-          </ActivityIndicatorWrapper>
+          </View>
         )}
 
         {image?.uri ? (
           <Image source={image} width={60} height={60} borderRadius={60} />
         ) : (
-          <Placeholder />
+          <View style={styles.placeholder} />
         )}
-      </Item>
-      <Text numberOfLines={1} fontSize={12} center>
+      </View>
+      <Text numberOfLines={1} fontSize={12} center style={styles.text}>
         {name}
       </Text>
-    </Base>
+    </Touchable>
   )
 }
 

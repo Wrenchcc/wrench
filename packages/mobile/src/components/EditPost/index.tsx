@@ -1,9 +1,26 @@
 import React, { useState, useCallback } from 'react'
+import { View } from 'react-native'
 import { useEditPostMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { Page, ScrollView, useNavigation } from 'navigation'
-import { ActivityIndicator, Text, Carousel } from 'ui'
-import { Content, Input } from './styles'
+import { ActivityIndicator, Text, Carousel, Input } from 'ui'
+import { FONTS } from 'ui/constants'
+
+const styles = {
+  content: {
+    marginRight: 20,
+    marginLeft: 20,
+  },
+  input: {
+    fontSize: 15,
+    lineHeight: 22,
+    paddingTop: 0,
+    paddingBottom: 0,
+    marginTop: 20,
+    fontFamily: FONTS.REGULAR,
+    marginBottom: 20,
+  },
+}
 
 function EditPost({ post }) {
   const { t } = useTranslation('edit-post')
@@ -23,10 +40,10 @@ function EditPost({ post }) {
     [files]
   )
 
+  const handleOnChange = useCallback((text) => setCaption(text), [])
+
   const handleSave = useCallback(async () => {
     setIsSaving(true)
-
-    console.log(files)
 
     await editPost({
       variables: {
@@ -64,7 +81,7 @@ function EditPost({ post }) {
       }
     >
       <ScrollView paddingHorizontal={0}>
-        <Content>
+        <View style={styles.content}>
           <Carousel files={files} onRemove={handleRemove} />
 
           <Input
@@ -73,13 +90,12 @@ function EditPost({ post }) {
             keyboardType="twitter"
             noBorder
             scrollEnabled={false}
-            color="dark"
             value={caption}
-            onChangeText={(text) => setCaption(text)}
+            onChangeText={handleOnChange}
             placeholder={t('placeholder')}
-            style={{ marginBottom: 20 }}
+            style={styles.input}
           />
-        </Content>
+        </View>
       </ScrollView>
     </Page>
   )

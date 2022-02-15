@@ -16,13 +16,13 @@ export const remove = (uri) => {
 
   croppedFilesVar(files.filter((item) => item.uri !== uri))
 }
+
 export const reset = () => {
   croppedFilesVar([])
   selectedFilesVar([])
   selectedFile(null)
   selectedFileIdVar('')
   fallbackFileVar(null)
-  selectedAlbumVar(null)
   croppedOptionsVar({})
 }
 

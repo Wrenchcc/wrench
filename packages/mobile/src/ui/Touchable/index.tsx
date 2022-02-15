@@ -6,7 +6,9 @@ export type TouchablePropsType = {
   children?: React.ReactNode
   hitSlop?: number
   onPress?: () => void
+  onLongPress?: () => void
   disabled?: boolean
+  activeOpacity?: number
 }
 
 const Touchable = ({ children, hitSlop = 15, onPress, ...props }: TouchablePropsType) => {

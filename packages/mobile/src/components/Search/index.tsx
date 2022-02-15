@@ -1,13 +1,13 @@
 import React, { useState, useCallback, memo, useEffect } from 'react'
-import { Dimensions, useColorScheme } from 'react-native'
+import { View, Dimensions, useColorScheme } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view'
+import PlatformColor from 'ui/PlatformColor'
 import { NAVIGATION } from 'navigation'
 import { FONTS } from 'ui/constants'
 import Users from './Users'
 import Projects from './Projects'
 import Hashtags from './Hashtags'
-import { Base } from './styles'
 import { isAndroid } from 'utils/platform'
 
 const { width, height } = Dimensions.get('window')
@@ -29,12 +29,23 @@ const routes = [
   },
 ]
 
+const styles = {
+  base: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    backgroundColor: PlatformColor.default,
+    paddingTop: NAVIGATION.TOTAL_TOP_BAR_HEIGHT,
+    zIndex: 1000,
+  },
+}
+
 function Search() {
   const { t } = useTranslation('search')
   const [index, setIndex] = useState(0)
   const colorScheme = useColorScheme()
 
-  const styles = {
+  const tabBarStyles = {
     indicatorStyle: {
       backgroundColor: colorScheme === 'dark' ? 'white' : 'black',
       height: 3,
@@ -79,9 +90,9 @@ function Search() {
     (props) => (
       <TabBar
         {...props}
-        style={styles.tabBar}
-        labelStyle={styles.labelStyle}
-        indicatorStyle={styles.indicatorStyle}
+        style={tabBarStyles.tabBar}
+        labelStyle={tabBarStyles.labelStyle}
+        indicatorStyle={tabBarStyles.indicatorStyle}
         getLabelText={handleLabelText}
       />
     ),
@@ -89,7 +100,7 @@ function Search() {
   )
 
   return (
-    <Base>
+    <View style={styles.base}>
       <TabView
         keyboardDismissMode="none"
         navigationState={{ index, routes }}
@@ -99,7 +110,7 @@ function Search() {
         initialLayout={initialLayout}
         lazy
       />
-    </Base>
+    </View>
   )
 }
 

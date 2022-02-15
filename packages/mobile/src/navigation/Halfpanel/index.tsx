@@ -12,9 +12,24 @@ import Animated, {
 import { useNavigation } from 'navigation'
 import { Text } from 'ui'
 import Background from './Background'
-import { Base, Bar, Row } from './styles'
+import PlatformColor from 'ui/PlatformColor'
 
 const styles = {
+  base: {
+    backgroundColor: PlatformColor.default,
+  },
+  bar: {
+    alignSelf: 'center',
+    height: 4,
+    width: 60,
+    backgroundColor: PlatformColor.divider,
+  },
+  row: {
+    height: 60,
+    borderBottomWidth: 1,
+    borderBottomColor: PlatformColor.divider,
+    justifyContent: 'center',
+  },
   container: {
     backgroundColor: 'black',
   },
@@ -66,7 +81,7 @@ const HalfPanel = ({ renderContent = () => null, data, height }) => {
   const renderBackdrop = useCallback((props) => <Backdrop {...props} />, [])
 
   const RenderDataContent = () => (
-    <Base>
+    <View style={styles.base}>
       {data.map(({ title, onPress }) => {
         const handleOnPress = () => {
           bottomSheetRef?.current.close()
@@ -77,14 +92,14 @@ const HalfPanel = ({ renderContent = () => null, data, height }) => {
         }
 
         return (
-          <Row key={title}>
+          <View key={title} style={styles.row}>
             <Text onPress={handleOnPress} fontSize={17}>
               {title}
             </Text>
-          </Row>
+          </View>
         )
       })}
-    </Base>
+    </View>
   )
 
   return (
@@ -100,7 +115,7 @@ const HalfPanel = ({ renderContent = () => null, data, height }) => {
       snapPoints={snapPoints}
     >
       <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
-        <Bar />
+        <View style={styles.bar} />
         {data ? <RenderDataContent /> : renderContent()}
       </View>
     </BottomSheet>

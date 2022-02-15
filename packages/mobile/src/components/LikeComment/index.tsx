@@ -5,7 +5,13 @@ import { scaleAnimation } from 'utils/animations'
 import { useLikeCommentMutation } from '@wrench/common'
 import { Icon } from 'ui'
 import { sparkSmall } from 'images'
-import { Base } from './styles'
+
+const styles = {
+  base: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+}
 
 function LikeComment({ comment }) {
   const animatedValue = useSharedValue(1)
@@ -47,15 +53,13 @@ function LikeComment({ comment }) {
   })
 
   return (
-    <Base>
-      <Animated.View style={animatedStyle}>
-        <Icon
-          source={sparkSmall}
-          color={comment.likes.isLiked ? 'warning' : 'inverse'}
-          onPress={handleToggleLike}
-        />
-      </Animated.View>
-    </Base>
+    <Animated.View style={[styles.base, animatedStyle]}>
+      <Icon
+        source={sparkSmall}
+        color={comment.likes.isLiked ? 'warning' : 'inverse'}
+        onPress={handleToggleLike}
+      />
+    </Animated.View>
   )
 }
 

@@ -4,27 +4,39 @@ import { logError } from 'utils/sentry'
 // TODO: Handle error
 export default async function uploadToS3Async(files) {
   try {
-    const mappedFiles = files.flatMap((file) => {
+    const mappedFiles = files.flatMap((file, index) => {
       // NOTE: If video we need to generate a image url for the poster
       // Order matters
       if (file.type === 'VIDEO') {
-        return [{ type: 'VIDEO' }, { type: 'IMAGE' }]
+        return [
+          { ...file, type: 'VIDEO', index },
+          { ...file, type: 'IMAGE', index },
+        ]
       }
       if (file.type === 'IMAGE') {
-        return { type: 'IMAGE' }
+        return { ...file, type: 'IMAGE', index }
       }
     })
 
+    // console.log('mappedFiles', mappedFiles)
+    // // console.log('files', files)
+
+    // return
     const urlTypes = mappedFiles.map(({ type }) => ({ type }))
 
     const urls = await preSignUrls(urlTypes)
 
     return Promise.all(
-      files.map(async (file, i) => {
+      mappedFiles.map(async (file, i) => {
         const currentSignedRequest = urls.data.preSignUrls[i]
 
+        // NOTE: Video
         if (currentSignedRequest.type === 'mp4') {
           const nextSignedRquest = urls.data.preSignUrls[i + 1]
+
+          // if (nextSignedRquest.poster) {
+          //   return null
+          // }
 
           await Promise.all([
             fetch(currentSignedRequest.url, {

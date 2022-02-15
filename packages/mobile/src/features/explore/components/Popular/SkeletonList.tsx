@@ -2,9 +2,9 @@ import React from 'react'
 import { View } from 'react-native'
 import Skeleton from 'ui/Skeleton'
 import * as Spacing from 'ui/Spacing'
-import { GUTTER } from './styles'
 
 const COUNT = 3
+const GUTTER = 20
 
 const styles = {
   base: {

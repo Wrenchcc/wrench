@@ -1,10 +1,27 @@
 import React, { useState, useCallback, useEffect } from 'react'
+import { View } from 'react-native'
 import { useCurrentUserProjectsQuery } from '@wrench/common'
 import { useReactiveVar, store } from 'gql'
 import { Text, Icon, Touchable } from 'ui'
+import { NAVIGATION } from 'navigation/constants'
 import { arrowDown, arrowUp } from 'images'
 import List from './List'
-import { Base } from './styles'
+
+const styles = {
+  base: {
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: NAVIGATION.STATUS_BAR_HEIGHT + 10,
+    zIndex: 100,
+    width: '45%',
+    position: 'absolute',
+  },
+  button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+}
 
 function SelectProject({ black = false, selectedId: idFromNavigation }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -23,34 +40,16 @@ function SelectProject({ black = false, selectedId: idFromNavigation }) {
     store.project.setProjectId(id)
   }, [])
 
-  function setInitialProject() {
-    const savedId = store.project.getProjectId()
-
-    // if saved project is deleted
-    if (projects.some(({ node }) => savedId !== node.id)) {
-      store.project.setProjectId(projects[0].node.id)
-    }
-
-    const id = idFromNavigation || savedId || projects[0].node.id
-
-    store.project.setProjectId(id)
-  }
-
   useEffect(() => {
-    setInitialProject()
+    const savedId = store.project.getProjectId()
+    const id = idFromNavigation || savedId || projects[0].node.id
+    store.project.setProjectId(id)
   }, [])
 
   return (
     <>
-      <Base>
-        <Touchable
-          onPress={toggleOpen}
-          activeOpacity={0.8}
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-          }}
-        >
+      <View style={styles.base}>
+        <Touchable onPress={toggleOpen} activeOpacity={0.8} style={styles.button}>
           <Text
             color={(black && 'default') || isOpen ? 'inverse' : 'white'}
             medium
@@ -66,16 +65,9 @@ function SelectProject({ black = false, selectedId: idFromNavigation }) {
             color={(black && 'default') || isOpen ? 'inverse' : 'white'}
           />
         </Touchable>
-      </Base>
+      </View>
 
-      {isOpen && (
-        <List
-          projects={projects}
-          selectedId={selectedId}
-          onPress={handleOnPress}
-          onClose={handleClose}
-        />
-      )}
+      {isOpen && <List projects={projects} onPress={handleOnPress} onClose={handleClose} />}
     </>
   )
 }

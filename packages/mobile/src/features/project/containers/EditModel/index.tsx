@@ -86,8 +86,6 @@ function EditModel({ passProps }) {
           large
           onChangeText={onChangeText}
           value={model ? formatModel(model) : query}
-          borderColor="dark"
-          color="dark"
           returnKeyType="next"
           onBlur={handleOnBlur}
           autoFocus

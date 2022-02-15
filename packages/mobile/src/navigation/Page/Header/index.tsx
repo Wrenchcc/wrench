@@ -26,12 +26,12 @@ const styles = {
     paddingHorizontal: 20,
   },
   headerLeft: {
-    minWidth: 30,
+    minWidth: 60,
     justifyContent: 'flex-start',
     flexDirection: 'row',
   },
   headerRight: {
-    minWidth: 30,
+    minWidth: 60,
     justifyContent: 'flex-end',
     flexDirection: 'row',
   },
@@ -71,7 +71,10 @@ function Header({
   }, [])
 
   return (
-    <View style={[styles.base, { position: inline ? 'relative' : 'absolute' }]}>
+    <View
+      style={[styles.base, { position: inline ? 'relative' : 'absolute' }]}
+      pointerEvents="box-none"
+    >
       <View style={styles.inner}>
         <View style={styles.headerLeft}>
           {headerLeft || <Icon onPress={handleNavigation} source={arrowLeft} />}

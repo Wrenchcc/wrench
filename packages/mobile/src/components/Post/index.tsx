@@ -29,7 +29,51 @@ import { showToast } from 'navigation/banner'
 import LikePost from 'components/LikePost'
 import Bookmark from 'components/Bookmark'
 import { share, sparkMega, arrowRightSmall } from 'images'
-import { Base, Top, Left, Headline, Content, Spacer, Row, Collection, Bottom } from './styles'
+import PlatformColor from 'ui/PlatformColor'
+import * as Spacing from 'ui/Spacing'
+
+const styles = {
+  top: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  left: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+    marginRight: 60,
+  },
+  headline: {
+    paddingRight: 10,
+    marginBottom: 5,
+  },
+  content: {
+    paddingTop: 18,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  collection: {
+    height: 60,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderBottomWidth: 1,
+    borderBottomColor: PlatformColor.divider,
+  },
+  bottom: {
+    flexDirection: 'row',
+  },
+  name: {
+    marginLeft: 10,
+  },
+  select: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
+}
 
 function Post({ post, withoutTitle, disableComments, withoutCollections, paddingBottom }) {
   const { t } = useTranslation('post')
@@ -299,10 +343,7 @@ function Post({ post, withoutTitle, disableComments, withoutCollections, padding
                 height: 250,
                 renderContent: () => (
                   <>
-                    <Spacer />
-                    <Title>{t('selectCollection')}</Title>
-                    <Spacer />
-
+                    <Title style={styles.select}>{t('selectCollection')}</Title>
                     <Collections projectId={post.project.id} isOwner onSave={addToCollection} />
                   </>
                 ),
@@ -369,9 +410,13 @@ function Post({ post, withoutTitle, disableComments, withoutCollections, padding
   })
 
   return (
-    <Base paddingBottom={paddingBottom}>
-      <Top>
-        <Left>
+    <View
+      style={{
+        paddingBottom: paddingBottom ? paddingBottom : 50,
+      }}
+    >
+      <View style={styles.top}>
+        <View style={styles.left}>
           <Avatar
             uri={post.user.avatarUrl}
             onPress={navigateToUser}
@@ -379,27 +424,30 @@ function Post({ post, withoutTitle, disableComments, withoutCollections, padding
             fallback={post.user.isSilhouette}
             fullName={post.user.fullName}
           />
-          <Touchable onPress={navigateToUser} style={{ marginLeft: 10 }}>
+          <Touchable onPress={navigateToUser} style={styles.name}>
             <Text medium fontSize={14} numberOfLines={1}>
               {post.user.fullName}
             </Text>
           </Touchable>
-        </Left>
+        </View>
         <Icon source={share} onPress={handleActionSheet} hitSlop={20} />
-      </Top>
-      <Content>
+      </View>
+      <View style={styles.content}>
         {!withoutTitle && post.project.title && (
-          <Headline>
-            <Title fontSize={19} numberOfLines={1} onPress={navigateToProject}>
-              {post.project.title}
-            </Title>
-          </Headline>
+          <Title
+            fontSize={19}
+            numberOfLines={1}
+            onPress={navigateToProject}
+            style={styles.headline}
+          >
+            {post.project.title}
+          </Title>
         )}
 
         <ParsedText
           onPress={navigateToProject}
           disabled={withoutTitle}
-          color={withoutTitle ? 'dark' : 'grey'}
+          color={withoutTitle ? 'default' : 'accent'}
           fontSize={15}
           lineHeight={24}
           maxText={120}
@@ -407,7 +455,7 @@ function Post({ post, withoutTitle, disableComments, withoutCollections, padding
           {post.caption}
         </ParsedText>
 
-        <Spacer />
+        <Spacing.Horizontally px={20} />
 
         {post.files && (
           <TapGestureHandler numberOfTaps={2} onHandlerStateChange={handleToggleLike}>
@@ -429,24 +477,24 @@ function Post({ post, withoutTitle, disableComments, withoutCollections, padding
             </View>
           </TapGestureHandler>
         )}
-      </Content>
+      </View>
 
       {!withoutCollections && post.collection && (
-        <Collection onPress={navigateToCollection}>
+        <Touchable onPress={navigateToCollection} style={styles.collection}>
           <Text fontSize={15} medium>
             {t('showCollection')}
           </Text>
           <Icon source={arrowRightSmall} />
-        </Collection>
+        </Touchable>
       )}
 
-      <Row>
+      <View style={styles.row}>
         <LikePost post={post} />
         <Bookmark post={post} />
-      </Row>
+      </View>
       {!disableComments && <Comments data={post} />}
 
-      <Bottom>
+      <View style={styles.bottom}>
         <TimeAgo date={post.createdAt} long />
         {post.translatable && (
           <>
@@ -466,8 +514,8 @@ function Post({ post, withoutTitle, disableComments, withoutCollections, padding
             )}
           </>
         )}
-      </Bottom>
-    </Base>
+      </View>
+    </View>
   )
 }
 

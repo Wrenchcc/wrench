@@ -24,7 +24,7 @@ function AddProject() {
   return (
     <>
       <Header
-        headerLeft={<Icon source={close} color="dark" onPress={handleDismissModal} />}
+        headerLeft={<Icon source={close} onPress={handleDismissModal} />}
         headerTitle={<Text medium>{t('headerTitle')}</Text>}
         headerRight={
           !!title && (
@@ -45,9 +45,7 @@ function AddProject() {
           large
           onChangeText={onChangeText}
           value={title}
-          borderColor="dark"
           autoFocus
-          color="dark"
           returnKeyType="next"
           enablesReturnKeyAutomatically
           onSubmitEditing={title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}

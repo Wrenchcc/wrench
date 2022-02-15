@@ -10,9 +10,29 @@ import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
 import { SIGN_IN_PROVIDERS } from 'utils/enums'
 import { getCurrentUser } from 'gql'
 import { logError } from 'utils/sentry'
-import { Icon } from 'ui'
+import { Touchable, Text, Icon } from 'ui'
 import { facebook } from 'images'
-import { Button, Text } from './styles'
+
+const styles = {
+  button: {
+    width: '100%',
+    backgroundColor: '#3b5998',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    paddingTop: 13,
+    paddingRight: 13,
+    paddingBottom: 13,
+    paddingLeft: 13,
+    marginTop: 15,
+  },
+  icon: {
+    marginRight: 10,
+  },
+  text: {
+    textAlign: 'center',
+  },
+}
 
 function Facebook() {
   const { t } = useTranslation('facebook')
@@ -57,12 +77,12 @@ function Facebook() {
   }, [])
 
   return (
-    <Button onPress={handleLoginManager}>
-      <Icon source={facebook} style={{ marginRight: 10 }} color="white" />
-      <Text white medium fontSize={16}>
+    <Touchable style={styles.button} onPress={handleLoginManager}>
+      <Icon source={facebook} style={styles.icon} color="white" />
+      <Text color="white" medium fontSize={16} style={styles.text}>
         {t('button')}
       </Text>
-    </Button>
+    </Touchable>
   )
 }
 

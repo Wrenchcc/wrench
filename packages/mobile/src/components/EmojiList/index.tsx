@@ -1,18 +1,34 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import { View } from 'react-native'
 import { Text } from 'ui'
-import { Base } from './styles'
+import PlatformColor from 'ui/PlatformColor'
+
+const styles = {
+  base: {
+    height: 50,
+    width: '100%',
+    backgroundColor: PlatformColor.default,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+}
 
 const EMOJIS = ['🙌 ', '🔥 ', '😎 ', '🤘 ', '👏 ', '👍 ', '👊 ', '👌 ']
 
 function EmojiList({ onPress }) {
   return (
-    <Base>
-      {EMOJIS.map((emoji) => (
-        <Text fontSize={24} key={emoji} center onPress={() => onPress(emoji)}>
-          {emoji}
-        </Text>
-      ))}
-    </Base>
+    <View style={styles.base}>
+      {EMOJIS.map((emoji) => {
+        const handleOnPress = useCallback(() => onPress(emoji), [emoji])
+
+        return (
+          <Text fontSize={24} key={emoji} center onPress={handleOnPress}>
+            {emoji}
+          </Text>
+        )
+      })}
+    </View>
   )
 }
 
