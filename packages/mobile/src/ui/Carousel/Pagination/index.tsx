@@ -13,7 +13,7 @@ const styles = {
     zIndex: 10,
     bottom: 20,
     left: '50%',
-    marginLeft: PAGINATION_WIDTH / 2,
+    marginLeft: -PAGINATION_WIDTH / 2,
     width: PAGINATION_WIDTH,
     overflow: 'hidden',
     borderRadius: 20,

@@ -1,7 +1,7 @@
 import React from 'react'
-import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import Text from 'ui/Text'
+import Touchable from 'ui/Touchable'
 import PlatformColor from 'ui/PlatformColor'
 
 const styles = {
@@ -20,7 +20,7 @@ function Follow({ onPress, following, small }) {
   const { t } = useTranslation('follow')
 
   return (
-    <View
+    <Touchable
       onPress={onPress}
       style={[
         styles.base,
@@ -40,7 +40,7 @@ function Follow({ onPress, following, small }) {
           ? t('followSmall')
           : t('follow')}
       </Text>
-    </View>
+    </Touchable>
   )
 }
 

@@ -5,7 +5,7 @@ import Touchable from 'ui/Touchable'
 import Image from 'ui/Image'
 import IsOnline from 'ui/IsOnline'
 import Text from 'ui/Text'
-import { COLORS } from '../constants'
+import PlatformColor from 'ui/PlatformColor'
 
 const getInitials = (string: string) => {
   if (string.length <= 2) {
@@ -64,7 +64,7 @@ function Avatar({
             style={{
               width: size,
               height: size,
-              backgroundColor: COLORS.LIGHT_GREY,
+              backgroundColor: PlatformColor.accent,
               borderRadius: size,
               justifyContent: 'center',
               alignItems: 'center',

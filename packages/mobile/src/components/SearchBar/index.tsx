@@ -123,19 +123,13 @@ function SearchBar() {
           onChangeText={handleQueryChange}
           value={query}
           placeholderTextColor={PlatformColor.neutral}
+          noBorder
         />
 
         <Icon style={styles.search} source={search} color="accent" />
 
         {query.length > 0 && (
-          <Icon
-            style={styles.close}
-            source={close}
-            color="dark"
-            width={12}
-            height={12}
-            onPress={clearQuery}
-          />
+          <Icon style={styles.close} source={close} width={12} height={12} onPress={clearQuery} />
         )}
       </View>
 

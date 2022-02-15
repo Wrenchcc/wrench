@@ -66,14 +66,7 @@ function SearchLocation({ iconLeft, onPress, autoFocus = false }) {
   const renderItem = ({ item }) => {
     return (
       <View style={{ height: 30, marginTop: 20 }}>
-        <Text
-          key={item.id}
-          color="dark"
-          numberOfLines={1}
-          medium
-          fontSize={15}
-          onPress={() => onPress(item)}
-        >
+        <Text key={item.id} numberOfLines={1} medium fontSize={15} onPress={() => onPress(item)}>
           {item.place_name}
         </Text>
       </View>
@@ -94,7 +87,6 @@ function SearchLocation({ iconLeft, onPress, autoFocus = false }) {
 
         <View style={styles.center}>
           <Input
-            color="dark"
             placeholder={t('placeholder')}
             value={searchTerm}
             style={{ marginLeft: iconLeft ? 20 : 0, marginRight: 20 }}

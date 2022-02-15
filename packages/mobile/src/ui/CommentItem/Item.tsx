@@ -14,9 +14,10 @@ import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
 import ParsedText from 'ui/ParsedText'
 import TimeAgo from 'ui/TimeAgo'
-import { COLORS } from 'ui/constants'
 import { trash } from 'images'
 import PlatformColor from 'ui/PlatformColor'
+
+const DELETE_COLOR = 'rgb(246, 86, 86)'
 
 const styles = {
   base: {
@@ -52,7 +53,7 @@ function renderRightAction(progress) {
 
   return (
     <Animated.View style={{ width, transform: [{ translateX }] }}>
-      <View style={{ flex: 1, justifyContent: 'center', backgroundColor: COLORS.RED }}>
+      <View style={{ flex: 1, justifyContent: 'center', backgroundColor: DELETE_COLOR }}>
         <View style={{ paddingLeft: 30 }}>
           <Image source={trash} />
         </View>

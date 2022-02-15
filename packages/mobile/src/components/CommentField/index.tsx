@@ -266,7 +266,6 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
           keyboardType="twitter"
           onChangeText={handleOnChangeText}
           value={text}
-          color="dark"
           height={COMMENT_FIELD_HEIGHT}
         />
         {text.length > 0 && (

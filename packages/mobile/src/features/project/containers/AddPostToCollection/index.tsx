@@ -142,7 +142,7 @@ function AddPostToCollection({ collectionId, projectId }) {
     <Page
       headerTitle={t('title')}
       disableAnimation
-      headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
+      headerLeft={<Icon source={close} onPress={dismissModal} />}
       headerRight={
         isSaving ? (
           <ActivityIndicator />

@@ -118,7 +118,7 @@ function WebView({ url: initialUrl }) {
         disableAnimation
         headerTitle={title}
         headerSubTitle={qs.parse(url).host}
-        headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
+        headerLeft={<Icon source={close} onPress={dismissModal} />}
         headerRight={<Icon onPress={handleRefresh} source={refresh} />}
         inline
       />

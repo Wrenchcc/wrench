@@ -156,11 +156,10 @@ function AddProjectModel() {
           large
           onChangeText={onChangeText}
           value={model ? formatModel(model) : query}
-          borderColor="dark"
-          color="dark"
           returnKeyType="next"
           onBlur={handleOnBlur}
           autoFocus
+          autoCorrect={false}
         />
       </KeyboardAvoidingView>
     </>

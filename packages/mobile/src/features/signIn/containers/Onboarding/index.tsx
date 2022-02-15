@@ -34,10 +34,8 @@ const styles = {
     borderBottomWidth: 3,
     borderLeftWidth: 3,
     margin: GUTTER / 2,
-  },
-  picture: {
-    width: ITEM_SIZE,
-    height: ITEM_SIZE,
+    width: ITEM_SIZE - GUTTER / 2,
+    height: ITEM_SIZE - GUTTER / 2,
   },
   cell: {
     width: '50%',
@@ -48,7 +46,6 @@ const styles = {
     right: -3,
     bottom: -3,
     left: 0,
-    backgroundColor: 'rgba(000, 000, 000, 0.2)',
   },
   contentContainerStyle: {
     paddingBottom: NAVIGATION.TAB_HEIGHT + 20,
@@ -133,22 +130,27 @@ function Onboarding({ settingsPage }) {
   const renderItem = ({ item }) => (
     <View key={item.id} style={styles.cell}>
       <Touchable onPress={() => toggleSelection(item)}>
-        <View style={styles.picture}>
-          <FastImage
-            source={{ uri: item.imageUrl }}
+        <FastImage
+          source={{ uri: item.imageUrl }}
+          style={[
+            styles.image,
+            {
+              borderColor: items[item.id] ? PlatformColor.inverse : 'transparent',
+            },
+          ]}
+        >
+          <View
             style={[
-              styles.image,
+              styles.overlay,
               {
-                width: GUTTER / 2,
-                height: GUTTER / 2,
-                borderColor: items[item.id] ? PlatformColor.inverse : 'transparent',
+                backgroundColor: items[item.id]
+                  ? 'rgba(000, 000, 000, 0.5)'
+                  : 'rgba(000, 000, 000, 0.2)',
               },
             ]}
-          >
-            <View style={styles.overlay} />
-            <Text color="white">{item.title}</Text>
-          </FastImage>
-        </View>
+          />
+          <Text color="white">{item.title}</Text>
+        </FastImage>
       </Touchable>
     </View>
   )

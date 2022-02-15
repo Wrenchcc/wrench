@@ -24,7 +24,7 @@ const styles = {
 function Footer({ progress }) {
   return (
     <View style={styles.base}>
-      <ProgressBar progress={progress} />
+      <ProgressBar progress={progress} backgroundColor="neutral" />
     </View>
   )
 }

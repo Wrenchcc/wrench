@@ -111,10 +111,10 @@ function EditProject({ project, onDeleteCallback }) {
 
   const renderHeaderLeft = () => {
     if (isSaving) {
-      return <Icon source={close} color="dark" opacity={0.4} />
+      return <Icon source={close} opacity={0.4} />
     }
 
-    return <Icon onPress={handleClose} source={close} color="dark" />
+    return <Icon onPress={handleClose} source={close} />
   }
 
   const renderHeaderRight = () =>
@@ -167,7 +167,6 @@ function EditProject({ project, onDeleteCallback }) {
             placeholder={t('title')}
             value={title}
             onChangeText={onChangeText}
-            color="dark"
             onSubmitEditing={handleEditProject}
             returnKeyType="done"
           />

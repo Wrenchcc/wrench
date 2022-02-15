@@ -138,7 +138,6 @@ function AddPost() {
           scrollEnabled={false}
           keyboardType="twitter"
           multiline
-          color="dark"
           onChangeText={onChangeText}
           placeholder={t('placeholder')}
           value={caption}

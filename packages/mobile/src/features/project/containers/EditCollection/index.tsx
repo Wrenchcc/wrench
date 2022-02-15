@@ -106,7 +106,6 @@ function EditCollection({ id, name, projectId, projectSlug, slug, onDelete }) {
             placeholder={t('placeholder')}
             value={title}
             onChangeText={onChangeText}
-            color="dark"
             returnKeyType="done"
           />
           <Spacing.Horizontally px={20} />

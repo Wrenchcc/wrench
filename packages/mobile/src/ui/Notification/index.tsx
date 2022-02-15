@@ -10,12 +10,13 @@ import Image from 'ui/Image'
 import Text from 'ui/Text'
 import TimeAgo from 'ui/TimeAgo'
 import Toucable from 'ui/Touchable'
-import { COLORS } from 'ui/constants'
 import { trash } from 'images'
 import { NOTIFICATION_TYPES } from 'utils/enums'
 import transition from './transition'
 
 export const { width } = Dimensions.get('window')
+
+const DELETE_COLOR = 'rgb(246, 86, 86)'
 
 const styles = {
   base: {
@@ -61,7 +62,7 @@ function renderRightAction(progress) {
 
   return (
     <Animated.View style={{ width, transform: [{ translateX }] }}>
-      <View style={{ flex: 1, justifyContent: 'center', backgroundColor: COLORS.RED }}>
+      <View style={{ flex: 1, justifyContent: 'center', backgroundColor: DELETE_COLOR }}>
         <View style={{ paddingLeft: 30 }}>
           <RNImage source={trash} />
         </View>

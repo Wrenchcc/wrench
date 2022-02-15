@@ -1,6 +1,7 @@
 import React from 'react'
 import { Dimensions } from 'react-native'
 import { useNavigation, SCREENS } from 'navigation'
+import ProjectCard from 'ui/ProjectCard'
 import Title from 'ui/Title'
 import InfiniteList from 'ui/InfiniteList'
 import * as Spacing from 'ui/Spacing'

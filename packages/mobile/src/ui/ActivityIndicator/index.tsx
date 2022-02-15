@@ -1,11 +1,9 @@
 import React from 'react'
 import { ActivityIndicator as RNActivityIndicator } from 'react-native'
-import { useDynamicColor } from 'utils/hooks'
+import PlatformColor from 'ui/PlatformColor'
 
 function ActivityIndicator({ color = 'inverse', size = 'small' }) {
-  const dynamicColor = useDynamicColor(color)
-
-  return <RNActivityIndicator size={size} color={dynamicColor} />
+  return <RNActivityIndicator size={size} color={PlatformColor[color]} />
 }
 
 export default ActivityIndicator

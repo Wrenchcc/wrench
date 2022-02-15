@@ -24,6 +24,7 @@ const styles = {
   change: {
     position: 'relative',
     overflow: 'hidden',
+    paddingRight: 55,
   },
   overlay: {
     position: 'absolute',
@@ -261,7 +262,7 @@ function EditProfile({ onboarding }) {
           </Touchable>
         )
       }
-      headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
+      headerLeft={<Icon source={close} onPress={dismissModal} />}
       disableAnimation
     >
       <ScrollView
@@ -290,7 +291,6 @@ function EditProfile({ onboarding }) {
           <Spacing.Horizontally px={30} />
 
           <Input
-            color="dark"
             placeholder={t('firstName')}
             onChangeText={(value) => setFirstName(value)}
             defaultValue={firstName}
@@ -298,7 +298,6 @@ function EditProfile({ onboarding }) {
           />
 
           <Input
-            color="dark"
             placeholder={t('lastName')}
             onChangeText={(value) => setLastName(value)}
             defaultValue={lastName}
@@ -306,7 +305,6 @@ function EditProfile({ onboarding }) {
           />
 
           <Input
-            color="dark"
             placeholder={t('username')}
             onChangeText={(value) => setUsername(value)}
             defaultValue={username}
@@ -316,36 +314,31 @@ function EditProfile({ onboarding }) {
           <View style={styles.location}>
             <Text
               fontSize={17}
-              color={location ? 'dark' : 'light_grey'}
+              color={location ? 'inverse' : 'accent'}
               onPress={navigateToAddLocation}
               numberOfLines={1}
             >
               {location ? location : t('place')}
             </Text>
+
+            <Icon
+              style={styles.icon}
+              source={close}
+              color="accent"
+              width={12}
+              height={12}
+              onPress={() => setLocation('')}
+            />
           </View>
 
-          <Icon
-            style={styles.icon}
-            source={close}
-            color="accent"
-            width={12}
-            height={12}
-            onPress={() => setLocation('')}
-          />
+          <View>
+            <Input placeholder={t('bio')} defaultValue={bio} onChangeText={handleBio} />
+            <Text color="accent" fontSize={15} style={styles.counter}>
+              {`${bio ? bio.length : 0}/${MAX_CHARACTERS}`}
+            </Text>
+          </View>
 
           <Input
-            color="dark"
-            placeholder={t('bio')}
-            defaultValue={bio}
-            onChangeText={handleBio}
-            style={{ paddingRight: 55 }}
-          />
-          <Text color="accent" fontSize={15} style={styles.counter}>
-            {`${bio ? bio.length : 0}/${MAX_CHARACTERS}`}
-          </Text>
-
-          <Input
-            color="dark"
             placeholder={t('website')}
             keyboardType="url"
             textContentType="URL"

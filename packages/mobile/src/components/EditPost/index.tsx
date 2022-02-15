@@ -90,7 +90,6 @@ function EditPost({ post }) {
             keyboardType="twitter"
             noBorder
             scrollEnabled={false}
-            color="dark"
             value={caption}
             onChangeText={handleOnChange}
             placeholder={t('placeholder')}

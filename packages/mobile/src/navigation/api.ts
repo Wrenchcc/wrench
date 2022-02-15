@@ -1,5 +1,5 @@
 import { Navigation, Options } from 'react-native-navigation'
-import { COLORS } from 'ui/constants'
+import PlatformColor from 'ui/PlatformColor'
 import { isIphone } from 'utils/platform'
 import { SCREENS, BOTTOM_TABS_ID } from './constants'
 import { componentId } from './events'
@@ -142,7 +142,7 @@ export function showNotificationBadge() {
   Navigation.mergeOptions(SCREENS.NOTIFICATIONS, {
     bottomTab: {
       dotIndicator: {
-        color: COLORS.ORANGE,
+        color: PlatformColor.error,
         size: isIphone ? 8 : 30,
         visible: true,
       },

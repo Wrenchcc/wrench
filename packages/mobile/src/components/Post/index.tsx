@@ -447,7 +447,7 @@ function Post({ post, withoutTitle, disableComments, withoutCollections, padding
         <ParsedText
           onPress={navigateToProject}
           disabled={withoutTitle}
-          color={withoutTitle ? 'dark' : 'grey'}
+          color={withoutTitle ? 'default' : 'accent'}
           fontSize={15}
           lineHeight={24}
           maxText={120}

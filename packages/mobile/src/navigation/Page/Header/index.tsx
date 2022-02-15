@@ -26,12 +26,12 @@ const styles = {
     paddingHorizontal: 20,
   },
   headerLeft: {
-    minWidth: 30,
+    minWidth: 60,
     justifyContent: 'flex-start',
     flexDirection: 'row',
   },
   headerRight: {
-    minWidth: 30,
+    minWidth: 60,
     justifyContent: 'flex-end',
     flexDirection: 'row',
   },

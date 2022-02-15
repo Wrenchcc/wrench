@@ -74,7 +74,7 @@ function SearchModel({ query, onPress }) {
 
   return (
     <View
-      styles={[
+      style={[
         styles.base,
         {
           bottom: keyboardHeight + INPUT_HEIGHT,

@@ -1,6 +1,5 @@
 import { AppState } from 'react-native'
 import { Navigation } from 'react-native-navigation'
-import { COLORS } from 'ui/constants'
 import { feed, explore, notification, profile, add } from 'images'
 import { getUnreadNotifications } from 'gql'
 import { SCREENS, BOTTOM_TABS_ID } from './constants'
@@ -8,6 +7,9 @@ import defaultOptions from './defaultOptions'
 import { showNotificationBadge } from './api'
 
 const THREE_MINUTES = 180000
+
+const TAB_ICON_COLOR = '#8E8E8E'
+const TAB_ICON_COLOR_SELECTED = '#fff'
 
 const checkNotificationsCount = async () => {
   const unreadCount = await getUnreadNotifications({
@@ -105,8 +107,8 @@ export async function AppNavigation(onboarding: boolean) {
                       options: {
                         bottomTab: {
                           icon: feed,
-                          iconColor: COLORS.TAB_ICON,
-                          selectedIconColor: COLORS.WHITE,
+                          iconColor: TAB_ICON_COLOR,
+                          selectedIconColor: TAB_ICON_COLOR_SELECTED,
                         },
                       },
                     },
@@ -124,8 +126,8 @@ export async function AppNavigation(onboarding: boolean) {
                       options: {
                         bottomTab: {
                           icon: explore,
-                          iconColor: COLORS.TAB_ICON,
-                          selectedIconColor: COLORS.WHITE,
+                          iconColor: TAB_ICON_COLOR,
+                          selectedIconColor: TAB_ICON_COLOR_SELECTED,
                         },
                       },
                     },
@@ -144,8 +146,8 @@ export async function AppNavigation(onboarding: boolean) {
                         bottomTab: {
                           selectTabOnPress: false,
                           icon: add,
-                          iconColor: COLORS.TAB_ICON,
-                          selectedIconColor: COLORS.WHITE,
+                          iconColor: TAB_ICON_COLOR,
+                          selectedIconColor: TAB_ICON_COLOR_SELECTED,
                         },
                       },
                     },
@@ -163,8 +165,8 @@ export async function AppNavigation(onboarding: boolean) {
                       options: {
                         bottomTab: {
                           icon: notification,
-                          iconColor: COLORS.TAB_ICON,
-                          selectedIconColor: COLORS.WHITE,
+                          iconColor: TAB_ICON_COLOR,
+                          selectedIconColor: TAB_ICON_COLOR_SELECTED,
                         },
                       },
                     },
@@ -182,8 +184,8 @@ export async function AppNavigation(onboarding: boolean) {
                       options: {
                         bottomTab: {
                           icon: profile,
-                          iconColor: COLORS.TAB_ICON,
-                          selectedIconColor: COLORS.WHITE,
+                          iconColor: TAB_ICON_COLOR,
+                          selectedIconColor: TAB_ICON_COLOR_SELECTED,
                         },
                       },
                     },
