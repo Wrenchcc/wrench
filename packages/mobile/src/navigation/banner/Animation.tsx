@@ -1,4 +1,5 @@
 import React, { forwardRef, useEffect, useCallback, useImperativeHandle } from 'react'
+import { TouchableOpacity } from 'react-native'
 import Animated, {
   useSharedValue,
   withSpring,
@@ -10,7 +11,6 @@ import Animated, {
 } from 'react-native-reanimated'
 import { clamp, snapPoint } from 'navigation/scrollables/worklets'
 import { PanGestureHandler } from 'react-native-gesture-handler'
-import { Touchable } from 'ui'
 import { NAVIGATION } from 'navigation/constants'
 
 const FULLY_UP = -60
@@ -99,12 +99,13 @@ const Animation = (
     }
   }, [onPress, translateY])
 
+  // NOTE: We need TouchableOpacity from RN instead of RNGH
   return (
-    <Touchable onPress={handleOnPress} disabled={!Boolean(onPress)}>
+    <TouchableOpacity onPress={handleOnPress} disabled={!Boolean(onPress)} activeOpacity={1}>
       <PanGestureHandler onGestureEvent={gestureHandler} enabled={gestureEnabled}>
         <Animated.View style={[styles.base, animatedStyle]}>{children}</Animated.View>
       </PanGestureHandler>
-    </Touchable>
+    </TouchableOpacity>
   )
 }
 

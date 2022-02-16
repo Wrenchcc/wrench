@@ -76,7 +76,6 @@ const RemoveItem = ({ children, id, onRemove, files }) => {
     onRemove(id)
   }, [id, onRemove])
 
-  // TODO: Translate
   return (
     <Animated.View exiting={FadeOut.delay(0).duration(100)}>
       {files?.edges?.length > 1 && (
@@ -113,9 +112,10 @@ function Carousel({ postId, files, onRemove }) {
     ({ nativeEvent }) => {
       const offset = nativeEvent.contentOffset.x
       const index = Math.round(offset / SIZE)
-      const node = files?.edges[currentIndex].node
 
       if (index !== currentIndex) {
+        const node = files?.edges[index].node
+
         // NOTE: Update visible id
         context?.setVisibleItemId(node.id)
         // NOTE: Set index on post id
@@ -134,17 +134,19 @@ function Carousel({ postId, files, onRemove }) {
 
     if (item.node.type === FILE_TYPES.IMAGE) {
       return (
-        <Image
-          showIndicator
-          width={SIZE}
-          height={SIZE}
-          style={{
-            width: SIZE,
-            height: SIZE,
-          }}
-          source={item.node}
-          priority={index < 2 ? IMAGE_PRIORITY.HIGH : IMAGE_PRIORITY.LOW}
-        />
+        <Pinchable key={item.node.uri} maximumZoomScale={5}>
+          <Image
+            showIndicator
+            width={SIZE}
+            height={SIZE}
+            style={{
+              width: SIZE,
+              height: SIZE,
+            }}
+            source={item.node}
+            priority={index < 2 ? IMAGE_PRIORITY.HIGH : IMAGE_PRIORITY.LOW}
+          />
+        </Pinchable>
       )
     }
 
@@ -161,11 +163,7 @@ function Carousel({ postId, files, onRemove }) {
         )
       }
 
-      return (
-        <Pinchable key={item.node.uri} maximumZoomScale={5}>
-          {renderType(item, index)}
-        </Pinchable>
-      )
+      return renderType(item, index)
     },
     [files]
   )

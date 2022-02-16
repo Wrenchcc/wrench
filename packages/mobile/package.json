@@ -81,7 +81,7 @@
     "react-native-pager-view": "^5.4.11",
     "react-native-pinchable": "^0.2.1",
     "react-native-reanimated": "^2.4.1",
-    "react-native-share": "^7.3.5",
+    "react-native-share": "^7.3.6",
     "react-native-splash-screen": "^3.3.0",
     "react-native-status-bar-height": "^2.6.0",
     "react-native-tab-view": "3.1.1",
@@ -89,7 +89,7 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.3",
+    "@babel/core": "^7.17.4",
     "@babel/runtime": "^7.17.2",
     "babel-plugin-module-resolver": "*",
     "concurrently": "^7.0.0",
