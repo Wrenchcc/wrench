@@ -11,7 +11,7 @@ import Animated, {
 } from 'react-native-reanimated'
 import * as MediaLibrary from 'expo-media-library'
 import { useNavigation, STATUS_BAR_HEIGHT } from 'navigation'
-import { clamp, snapPoint } from 'navigation/scrollables/worklets'
+import { clamp, snapPoint } from 'utils/animations'
 import { store } from 'gql'
 import Header from '../Header'
 import ImageEditor from '../ImageEditor'

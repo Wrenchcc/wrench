@@ -9,7 +9,7 @@ import Animated, {
   useAnimatedStyle,
   useAnimatedGestureHandler,
 } from 'react-native-reanimated'
-import { clamp, snapPoint } from 'navigation/scrollables/worklets'
+import { clamp, snapPoint } from 'utils/animations'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import { STATUS_BAR_HEIGHT } from 'navigation/constants'
 

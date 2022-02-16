@@ -7,9 +7,9 @@ import {
   withTiming,
 } from 'react-native-reanimated'
 import { isAndroid } from 'utils/platform'
+import { clamp, snapPoint } from 'utils/animations'
 import { useScrollToInput } from '../hooks'
 import { ScrollContext } from './context'
-import { clamp, snapPoint } from './worklets'
 import { CONTENT_INSET, TOP_BAR_HEIGHT } from '../constants'
 
 export default function withScrollableContext<T>(Component: FC<T>, extraContentInset = 0) {
@@ -27,8 +27,8 @@ export default function withScrollableContext<T>(Component: FC<T>, extraContentI
       beginOffset: number
     }>({
       onScroll: (evt, ctx) => {
-        // const velocityY = scrollVelocity.value.y
-        // const direction = evt.contentOffset.y > ctx.beginOffset ? 'down' : 'up'
+        const velocityY = scrollVelocity.value.y
+        const direction = evt.contentOffset.y > ctx.beginOffset ? 'down' : 'up'
 
         scrollY.value = evt.contentOffset.y - initialViewOffset
 
@@ -36,30 +36,24 @@ export default function withScrollableContext<T>(Component: FC<T>, extraContentI
           scrollVelocity.value = evt.velocity
         }
 
-        // const isScrollingUp = evt.contentOffset.y - ctx.beginOffset < -300
-        // const velocityThreshold = Math.abs(velocityY) > 0.2
+        const isScrollingUp = evt.contentOffset.y - ctx.beginOffset < -300
+        const velocityThreshold = Math.abs(velocityY) > 0.2
 
-        // // NOTE: Reset manual scroll
-        // if (scrollY.value === 0) {
-        //   manuallyUp.value = false
-        // }
+        // NOTE: Reset manual scroll
+        if (scrollY.value === 0) {
+          manuallyUp.value = false
+        }
 
-        // if (direction === 'up' && velocityThreshold && isScrollingUp && headerY.value !== 0) {
-        //   headerY.value = withSpring(0, {
-        //     mass: 0.5,
-        //     velocity: velocityY,
-        //   })
-        // }
+        if (direction === 'up' && velocityThreshold && isScrollingUp && headerY.value !== 0) {
+          headerY.value = clamp(scrollY.value, 0, TOP_BAR_HEIGHT)
+        }
 
-        // if (
-        //   (direction === 'down' && !manuallyUp.value) ||
-        //   (scrollY.value <= 0 && !manuallyUp.value)
-        // ) {
-        //   headerY.value = withSpring(clamp(scrollY.value, 0, TOP_BAR_HEIGHT), {
-        //     mass: 0.5,
-        //     velocity: velocityY,
-        //   })
-        // }
+        if (
+          (direction === 'down' && !manuallyUp.value) ||
+          (scrollY.value <= 0 && !manuallyUp.value)
+        ) {
+          headerY.value = clamp(scrollY.value, 0, TOP_BAR_HEIGHT)
+        }
       },
       onBeginDrag: (evt, ctx) => {
         ctx.beginOffset = evt.contentOffset.y
@@ -105,7 +99,6 @@ export default function withScrollableContext<T>(Component: FC<T>, extraContentI
         scrollRef,
         scrollHandler,
         scrollY,
-        scrollVelocity,
         headerY,
         scrollTo: (offset: number, animate?: boolean) => {
           manuallyUp.value = true
@@ -113,7 +106,7 @@ export default function withScrollableContext<T>(Component: FC<T>, extraContentI
           scrollRef.current?.scrollToOffset({ offset, animate })
         },
       }
-    }, [scrollRef, scrollHandler, scrollY, scrollVelocity])
+    }, [scrollRef, scrollHandler, scrollY])
 
     return (
       <ScrollContext.Provider value={context}>
