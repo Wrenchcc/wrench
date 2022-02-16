@@ -1,6 +1,6 @@
 import { Options, OptionsModalPresentationStyle } from 'react-native-navigation'
 import { Appearance } from 'react-native'
-import { isAndroid } from 'utils/platform'
+import { isAndroid, isIphone } from 'utils/platform'
 
 export default {
   modalPresentationStyle: OptionsModalPresentationStyle.fullScreen,
@@ -24,10 +24,12 @@ export default {
   },
   layout: {
     // https://github.com/wix/react-native-navigation/issues/7455
-    // backgroundColor: {
-    //   light: '#fff',
-    //   dark: '#000',
-    // },
+    ...(isIphone && {
+      backgroundColor: {
+        light: '#fff',
+        dark: '#000',
+      },
+    }),
     componentBackgroundColor: {
       light: '#fff',
       dark: '#000',

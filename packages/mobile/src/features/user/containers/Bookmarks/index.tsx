@@ -40,18 +40,19 @@ function Bookmarks() {
     refetch,
   } = usePaginatedQuery(['bookmarks'])(BookmarksDocument)
 
-  const ListEmptyComponent = isFetching ? (
-    <>
-      <PostSkeleton />
-      <Spacing.Horizontally px={50} />
-      <PostSkeleton />
-    </>
-  ) : (
-    <View style={styles.base}>
-      <Title style={styles.title}>{t('title')}</Title>
-      <Text style={styles.description}>{t('description')}</Text>
-    </View>
-  )
+  const ListEmptyComponent =
+    isFetching && !isRefetching ? (
+      <>
+        <PostSkeleton />
+        <Spacing.Horizontally px={50} />
+        <PostSkeleton />
+      </>
+    ) : (
+      <View style={styles.base}>
+        <Title style={styles.title}>{t('title')}</Title>
+        <Text style={styles.description}>{t('description')}</Text>
+      </View>
+    )
 
   return (
     <Page headerTitle={t('headerTitle')} disableAnimation>

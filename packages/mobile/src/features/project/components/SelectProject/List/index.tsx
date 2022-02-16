@@ -2,20 +2,18 @@ import React, { useCallback } from 'react'
 import { View, ScrollView } from 'react-native'
 import Animated, { FadeInUp, FadeOut } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
-import { useNavigation, SCREENS } from 'navigation'
+import { useNavigation, SCREENS, NAVIGATION } from 'navigation'
 import { Text, Touchable } from 'ui'
-import { hasNotch } from 'utils/platform'
 import Project from '../Project'
 import PlatformColor from 'ui/PlatformColor'
 
-const SPACER = hasNotch ? 100 : 80
 const BUTTON_HEIGHT = 70
 const ITEM_HEIGHT = 65
 
 const styles = {
   base: {
     backgroundColor: PlatformColor.default,
-    paddingTop: SPACER,
+    paddingTop: NAVIGATION.TOTAL_TOP_BAR_HEIGHT,
   },
   scroll: {
     paddingLeft: 20,

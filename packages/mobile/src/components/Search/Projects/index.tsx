@@ -11,7 +11,6 @@ import Skeleton from 'ui/ProjectCard/SkeletonList'
 
 const styles = {
   header: {
-    marginTop: 20,
     marginBottom: 20,
     justifyContent: 'space-between',
     flexDirection: 'row',
@@ -99,11 +98,8 @@ function Projects() {
 
   const ListFooterComponent = hasNextPage && query && <Loader />
 
-  const ListEmptyComponent = isFetching ? (
-    <Skeleton />
-  ) : (
-    !isFetching && query.length > 1 && <NoResults />
-  )
+  const ListEmptyComponent =
+    isFetching && !isRefetching ? <Skeleton /> : !isFetching && query.length > 1 && <NoResults />
 
   return (
     <InfiniteList

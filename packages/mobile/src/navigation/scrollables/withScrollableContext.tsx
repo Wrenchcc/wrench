@@ -27,8 +27,8 @@ export default function withScrollableContext<T>(Component: FC<T>, extraContentI
       beginOffset: number
     }>({
       onScroll: (evt, ctx) => {
-        const velocityY = scrollVelocity.value.y
-        const direction = evt.contentOffset.y > ctx.beginOffset ? 'down' : 'up'
+        // const velocityY = scrollVelocity.value.y
+        // const direction = evt.contentOffset.y > ctx.beginOffset ? 'down' : 'up'
 
         scrollY.value = evt.contentOffset.y - initialViewOffset
 
@@ -36,30 +36,30 @@ export default function withScrollableContext<T>(Component: FC<T>, extraContentI
           scrollVelocity.value = evt.velocity
         }
 
-        const isScrollingUp = evt.contentOffset.y - ctx.beginOffset < -300
-        const velocityThreshold = Math.abs(velocityY) > 0.2
+        // const isScrollingUp = evt.contentOffset.y - ctx.beginOffset < -300
+        // const velocityThreshold = Math.abs(velocityY) > 0.2
 
-        // NOTE: Reset manual scroll
-        if (scrollY.value === 0) {
-          manuallyUp.value = false
-        }
+        // // NOTE: Reset manual scroll
+        // if (scrollY.value === 0) {
+        //   manuallyUp.value = false
+        // }
 
-        if (direction === 'up' && velocityThreshold && isScrollingUp && headerY.value !== 0) {
-          headerY.value = withSpring(0, {
-            mass: 0.5,
-            velocity: velocityY,
-          })
-        }
+        // if (direction === 'up' && velocityThreshold && isScrollingUp && headerY.value !== 0) {
+        //   headerY.value = withSpring(0, {
+        //     mass: 0.5,
+        //     velocity: velocityY,
+        //   })
+        // }
 
-        if (
-          (direction === 'down' && !manuallyUp.value) ||
-          (scrollY.value <= 0 && !manuallyUp.value)
-        ) {
-          headerY.value = withSpring(clamp(scrollY.value, 0, NAVIGATION.TOP_BAR_HEIGHT), {
-            mass: 0.5,
-            velocity: velocityY,
-          })
-        }
+        // if (
+        //   (direction === 'down' && !manuallyUp.value) ||
+        //   (scrollY.value <= 0 && !manuallyUp.value)
+        // ) {
+        //   headerY.value = withSpring(clamp(scrollY.value, 0, NAVIGATION.TOP_BAR_HEIGHT), {
+        //     mass: 0.5,
+        //     velocity: velocityY,
+        //   })
+        // }
       },
       onBeginDrag: (evt, ctx) => {
         ctx.beginOffset = evt.contentOffset.y

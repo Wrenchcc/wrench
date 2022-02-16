@@ -1,18 +1,15 @@
 import { getStatusBarHeight } from 'react-native-status-bar-height'
-import { hasNotch } from 'utils/platform'
+
+const statusBarHeight = getStatusBarHeight()
 
 export enum NAVIGATION {
   LIST_INSET_TOP = 30,
-  LIST_OFFSET = hasNotch ? 120 : 90,
-  STATUS_BAR_HEIGHT = getStatusBarHeight(),
-  BOTTOM_TABS_HEIGHT = hasNotch ? 80 : 60,
-  TAB_HEIGHT = 60,
+  STATUS_BAR_HEIGHT = statusBarHeight,
   TOP_BAR_HEIGHT = 60,
-  TOTAL_TOP_BAR_HEIGHT = hasNotch ? 104 : 80,
+  TOTAL_TOP_BAR_HEIGHT = statusBarHeight + 60,
 }
 
-export const CONTENT_INSET =
-  NAVIGATION.TOP_BAR_HEIGHT + NAVIGATION.STATUS_BAR_HEIGHT + NAVIGATION.LIST_INSET_TOP
+export const CONTENT_INSET = NAVIGATION.TOTAL_TOP_BAR_HEIGHT + NAVIGATION.LIST_INSET_TOP
 
 export const BOTTOM_TABS_ID = 'BOTTOM_TABS'
 

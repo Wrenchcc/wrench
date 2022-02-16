@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react'
 import { Dimensions, View } from 'react-native'
-import { hasNotch } from 'utils/platform'
 import { usePaginatedQuery, FilesDocument } from '@wrench/common'
 import { useNavigation } from 'navigation'
 import { Icon, Touchable, InfiniteList, Image } from 'ui'
@@ -16,7 +15,7 @@ const ITEM_SIZE = width / NUM_COLUMNS - 4
 const styles = {
   base: {
     flex: 1,
-    marginTop: hasNotch ? -NAVIGATION.STATUS_BAR_HEIGHT : 0,
+    marginTop: -NAVIGATION.STATUS_BAR_HEIGHT,
   },
   back: {
     zIndex: 10,

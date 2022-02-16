@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
+import { View } from 'react-native'
 import Animated, {
   useSharedValue,
   useDerivedValue,
@@ -31,6 +32,10 @@ import {
 } from '../constants'
 
 const styles = {
+  container: {
+    flex: 1,
+    backgroundColor: 'black',
+  },
   cropArea: {
     position: 'absolute',
     zIndex: 1000,
@@ -166,7 +171,7 @@ function Library() {
   }
 
   return (
-    <>
+    <View style={styles.container}>
       <Animated.View style={[styles.cropArea, cropAreaStyle]}>
         <Header
           albumVisible={isUp}
@@ -185,7 +190,7 @@ function Library() {
       <MediaSelector onScroll={scrollHandler} spacing={spacing} onSelect={handleOnSelect} />
 
       <Albums onPress={handleToggleAlbum} translateY={albumTranslateY} />
-    </>
+    </View>
   )
 }
 

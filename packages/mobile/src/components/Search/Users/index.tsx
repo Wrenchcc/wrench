@@ -10,7 +10,6 @@ import Skeleton from 'ui/User/SkeletonList'
 
 const styles = {
   header: {
-    marginTop: 20,
     marginBottom: 20,
     justifyContent: 'space-between',
     flexDirection: 'row',
@@ -74,11 +73,8 @@ function Users() {
 
   const renderItem = ({ item }) => <User data={item.node} onPress={handleSave} />
 
-  const ListEmptyComponent = isFetching ? (
-    <Skeleton />
-  ) : (
-    !isFetching && query.length > 1 && <NoResults />
-  )
+  const ListEmptyComponent =
+    isFetching && !isRefetching ? <Skeleton /> : !isFetching && query.length > 1 && <NoResults />
 
   const ListHeaderComponent = !query && recent.length > 0 && (
     <View style={styles.header}>

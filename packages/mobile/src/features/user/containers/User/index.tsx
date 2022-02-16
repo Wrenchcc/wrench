@@ -135,11 +135,12 @@ function User({ user: initialUserData }) {
     )
   }
 
-  const ListEmptyComponent = isFetching ? (
-    <SkeletonComponent />
-  ) : (
-    user && !error && <FollowingProjects user={user} />
-  )
+  const ListEmptyComponent =
+    isFetching && !isRefetching ? (
+      <SkeletonComponent />
+    ) : (
+      user && !error && <FollowingProjects user={user} />
+    )
 
   const headerRight = <Icon source={share} onPress={handleActionSheet} />
 

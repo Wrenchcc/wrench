@@ -130,11 +130,12 @@ function Notifications() {
     <Notification data={item.node} deleteNotification={handleDeleteNotification} />
   )
 
-  const ListEmptyComponent = isFetching ? (
-    <NotificationSkeletonList />
-  ) : (
-    <EmptyState type={TYPES.NOTIFICATIONS} style={{ paddingHorizontal: 20, marginTop: -100 }} />
-  )
+  const ListEmptyComponent =
+    isFetching && !isRefetching ? (
+      <NotificationSkeletonList />
+    ) : (
+      <EmptyState type={TYPES.NOTIFICATIONS} style={{ paddingHorizontal: 20, marginTop: -100 }} />
+    )
 
   return (
     <Layout headerTitleKey="notifications">
@@ -151,6 +152,8 @@ function Notifications() {
         isFetching={edges && isFetching}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
+        // NOTE: This is because we want the red color to be from top to bottom when swiping to delete
+        // Same value as in ui/Notification
         style={{ marginTop: -15 }}
       />
     </Layout>

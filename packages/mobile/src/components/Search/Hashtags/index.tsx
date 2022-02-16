@@ -13,7 +13,6 @@ const MAX_ITEMS = 4
 
 const styles = {
   header: {
-    marginTop: 20,
     marginBottom: 20,
     justifyContent: 'space-between',
     flexDirection: 'row',
@@ -87,11 +86,8 @@ function Hashtags() {
     return <Hashtag {...item.node} onPress={onPress} />
   }
 
-  const ListEmptyComponent = isFetching ? (
-    <Skeleton />
-  ) : (
-    !isFetching && query.length > 1 && <NoResults />
-  )
+  const ListEmptyComponent =
+    isFetching && !isRefetching ? <Skeleton /> : !isFetching && query.length > 1 && <NoResults />
 
   const ListHeaderComponent = !query && recent.length > 0 && (
     <View style={styles.header}>

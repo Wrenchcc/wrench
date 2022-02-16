@@ -1,3 +1,3 @@
-import DeviceInfo from 'react-native-device-info'
+import * as Application from 'expo-application'
 
-export const readableVersion = DeviceInfo.getReadableVersion()
+export const readableVersion = Application.nativeApplicationVersion || '1.0.0'

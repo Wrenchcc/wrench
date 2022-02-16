@@ -4,12 +4,11 @@ import { useEditUserMutation } from '@wrench/common'
 import FastImage from 'react-native-fast-image'
 import { useTranslation } from 'react-i18next'
 import { useCurrentUserQuery, useProjectTypesQuery } from '@wrench/common'
-import { Page, FlatList, useNavigation, SCREENS, keyExtractor, NAVIGATION } from 'navigation'
+import { Page, FlatList, useNavigation, SCREENS, keyExtractor } from 'navigation'
 import { omit } from 'rambda'
 import { track, events } from 'utils/analytics'
 import { ActivityIndicator, Touchable, Text } from 'ui'
 import Content from 'features/signIn/components/Content'
-import Footer from 'features/signIn/components/Footer'
 import Skeleton from './Skeleton'
 import PlatformColor from 'ui/PlatformColor'
 
@@ -47,9 +46,6 @@ const styles = {
     bottom: -3,
     left: 0,
   },
-  contentContainerStyle: {
-    paddingBottom: NAVIGATION.TAB_HEIGHT + 20,
-  },
 }
 
 function Onboarding({ settingsPage }) {
@@ -78,8 +74,6 @@ function Onboarding({ settingsPage }) {
       setItems(items)
     }
   }, [userData])
-
-  const progress = () => (Object.keys(items).length / 3) * 100
 
   const isComplete = () => {
     if (Object.keys(items).length >= MIN_ITEMS) {
@@ -135,7 +129,7 @@ function Onboarding({ settingsPage }) {
           style={[
             styles.image,
             {
-              borderColor: items[item.id] ? PlatformColor.inverse : 'transparent',
+              borderColor: items[item.id] ? PlatformColor.inverse : PlatformColor.default,
             },
           ]}
         >
@@ -189,9 +183,7 @@ function Onboarding({ settingsPage }) {
         data={projectData?.types}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
-        contentContainerStyle={styles.contentContainerStyle}
       />
-      {!settingsPage && <Footer progress={progress()} />}
     </Page>
   )
 }

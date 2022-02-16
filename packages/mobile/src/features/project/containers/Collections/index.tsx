@@ -43,21 +43,22 @@ function Collections({ id, name, projectId, isOwner, projectSlug, slug }) {
 
   const emptyState = isOwner ? TYPES.COLLECTION_POST : TYPES.COLLECTION_NO_POSTS
 
-  const ListEmptyComponent = isFetching ? (
-    <>
-      <PostSkeleton />
-      <Spacing.Horizontally px={50} />
-      <PostSkeleton />
-    </>
-  ) : (
-    <EmptyState
-      type={emptyState}
-      params={{
-        collectionId: id,
-        projectId,
-      }}
-    />
-  )
+  const ListEmptyComponent =
+    isFetching && !isRefetching ? (
+      <>
+        <PostSkeleton />
+        <Spacing.Horizontally px={50} />
+        <PostSkeleton />
+      </>
+    ) : (
+      <EmptyState
+        type={emptyState}
+        params={{
+          collectionId: id,
+          projectId,
+        }}
+      />
+    )
 
   const headerRight = isOwner ? (
     <Text medium onPress={navigateToEdit}>

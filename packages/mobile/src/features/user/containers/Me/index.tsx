@@ -103,7 +103,8 @@ function Me() {
     </>
   )
 
-  const ListEmptyComponent = isFetching ? <Skeleton /> : <EmptyState type={emptyState} />
+  const ListEmptyComponent =
+    isFetching && !isRefetching ? <Skeleton /> : <EmptyState type={emptyState} />
 
   return (
     <Layout

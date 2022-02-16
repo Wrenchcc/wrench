@@ -93,7 +93,7 @@ export default function createScrollable(Component) {
           scrollEventThrottle={1}
           style={{ flex: 1 }}
           data={data}
-          onRefresh={onRefresh}
+          onRefresh={refetch && onRefresh}
           onEndReached={onEndReached}
           progressViewOffset={progressViewOffset}
           refreshing={isRefetchingLocal}

@@ -3,11 +3,10 @@ import { View, BackHandler } from 'react-native'
 import { WebView as RNWebView } from 'react-native-webview'
 import { useTranslation } from 'react-i18next'
 import qs from 'url'
-import { useNavigation } from 'navigation'
+import { useNavigation, NAVIGATION } from 'navigation'
 import Header from 'navigation/Page/Header'
 import { ProgressBar, Icon, Touchable, Share } from 'ui'
 import { arrowLeftSmall, arrowRightSmall, refresh, close } from 'images'
-import { hasNotch } from 'utils/platform'
 import PlatformColor from 'ui/PlatformColor'
 
 const styles = {
@@ -17,10 +16,10 @@ const styles = {
   },
   base: {
     flex: 1,
-    paddingBottom: hasNotch ? 80 : 60,
+    paddingBottom: NAVIGATION.TOP_BAR_HEIGHT,
   },
   footer: {
-    height: hasNotch ? 80 : 60,
+    height: NAVIGATION.TOP_BAR_HEIGHT,
     paddingLeft: 20,
     paddingRight: 20,
     position: 'absolute',

@@ -107,15 +107,16 @@ function Feed() {
 
   const StickyComponent = <ShowLatest onClose={handleOnClose} isVisible={isVisible} />
 
-  const ListEmptyComponent = isFetching ? (
-    <>
-      <Skeleton />
-      <Spacing.Horizontally px={50} />
-      <Skeleton />
-    </>
-  ) : (
-    <ProjectSuggestions />
-  )
+  const ListEmptyComponent =
+    isFetching && !isRefetching ? (
+      <>
+        <Skeleton />
+        <Spacing.Horizontally px={50} />
+        <Skeleton />
+      </>
+    ) : (
+      <ProjectSuggestions />
+    )
 
   return (
     <Layout headerTitleKey="home" stickyComponent={StickyComponent}>
