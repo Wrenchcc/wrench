@@ -4,7 +4,7 @@ import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
 import { useReactiveVar, store } from 'gql'
 import { InfiniteList, MentionUser, NoResults, SearchingFor, Loader } from 'ui'
 import PlatformColor from 'ui/PlatformColor'
-import { NAVIGATION } from 'navigation/constants'
+import { STATUS_BAR_HEIGHT } from 'navigation/constants'
 import { keyboardHeight } from 'utils/platform'
 
 const INPUT_HEIGHT = 60
@@ -15,7 +15,7 @@ const styles = {
     bottom: keyboardHeight + INPUT_HEIGHT,
     left: 0,
     position: 'absolute',
-    top: NAVIGATION.STATUS_BAR_HEIGHT,
+    top: STATUS_BAR_HEIGHT,
     width: '100%',
     zIndex: 100,
   },

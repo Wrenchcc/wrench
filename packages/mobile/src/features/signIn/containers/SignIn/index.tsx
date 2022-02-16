@@ -4,7 +4,7 @@ import { SafeAreaView, View, Image, useColorScheme } from 'react-native'
 import * as AppleAuthentication from 'expo-apple-authentication'
 import { Video } from 'expo-av'
 import { useMMKVString } from 'utils/storage'
-import { useNavigation, SCREENS, STATUS_BAR, NAVIGATION } from 'navigation'
+import { useNavigation, SCREENS, STATUS_BAR, STATUS_BAR_HEIGHT } from 'navigation'
 import { logo } from 'images'
 import { Text, Title, Touchable } from 'ui'
 import { isIphone, isAndroid } from 'utils/platform'
@@ -39,7 +39,7 @@ const styles = {
   },
   inner: {
     flex: 1,
-    paddingTop: isAndroid ? NAVIGATION.STATUS_BAR_HEIGHT + 20 : 20,
+    paddingTop: isAndroid ? STATUS_BAR_HEIGHT + 20 : 20,
     paddingRight: 20,
     paddingBottom: 20,
     paddingLeft: 20,

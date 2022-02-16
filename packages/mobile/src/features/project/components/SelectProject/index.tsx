@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import { useCurrentUserProjectsQuery } from '@wrench/common'
 import { useReactiveVar, store } from 'gql'
 import { Text, Icon, Touchable } from 'ui'
-import { NAVIGATION } from 'navigation/constants'
+import { STATUS_BAR_HEIGHT } from 'navigation/constants'
 import { arrowDown, arrowUp } from 'images'
 import List from './List'
 
@@ -12,7 +12,7 @@ const styles = {
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
-    top: NAVIGATION.STATUS_BAR_HEIGHT + 10,
+    top: STATUS_BAR_HEIGHT + 10,
     zIndex: 100,
     width: '45%',
     position: 'absolute',

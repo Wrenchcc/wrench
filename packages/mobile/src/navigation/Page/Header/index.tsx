@@ -6,7 +6,7 @@ import { arrowLeft } from 'images'
 import PlatformColor from 'ui/PlatformColor'
 import { useScrollContext } from '../../scrollables'
 import { useNavigation } from '../../hooks'
-import { NAVIGATION } from '../../constants'
+import { TOP_BAR_HEIGHT, STATUS_BAR_HEIGHT } from '../../constants'
 
 const styles = {
   base: {
@@ -20,8 +20,8 @@ const styles = {
   inner: {
     alignItems: 'center',
     flexDirection: 'row',
-    height: NAVIGATION.TOP_BAR_HEIGHT,
-    marginTop: NAVIGATION.STATUS_BAR_HEIGHT,
+    height: TOP_BAR_HEIGHT,
+    marginTop: STATUS_BAR_HEIGHT,
     justifyContent: 'space-between',
     paddingHorizontal: 20,
   },

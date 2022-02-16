@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { FlatList, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import Config from 'react-native-config'
-import { NAVIGATION } from 'navigation/constants'
+import { STATUS_BAR_HEIGHT, TOP_BAR_HEIGHT } from 'navigation/constants'
 import { Input, Text, NoResults, SearchingFor } from 'ui'
 import { keyExtractor } from 'navigation'
 import Footer from './Footer'
@@ -26,8 +26,8 @@ const styles = {
     paddingRight: 20,
     paddingBottom: 20,
     paddingLeft: 20,
-    marginTop: NAVIGATION.STATUS_BAR_HEIGHT,
-    height: NAVIGATION.TOP_BAR_HEIGHT,
+    marginTop: STATUS_BAR_HEIGHT,
+    height: TOP_BAR_HEIGHT,
     backgroundColor: PlatformColor.default,
   },
 }

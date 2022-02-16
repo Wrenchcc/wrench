@@ -10,7 +10,7 @@ import {
   RepliesDocument,
 } from '@wrench/common'
 import { update } from 'rambda'
-import { Page, useNavigation, keyExtractor, NAVIGATION } from 'navigation'
+import { Page, useNavigation, keyExtractor, TOP_BAR_HEIGHT } from 'navigation'
 import Post from 'components/Post'
 import CommentField from 'components/CommentField'
 import { CommentItem, ActivityIndicator, Text } from 'ui'
@@ -159,7 +159,7 @@ function PostContainer({ postId, commentId }) {
         data={edges}
         renderItem={renderItem}
         contentContainerStyle={{
-          paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
+          paddingBottom: TOP_BAR_HEIGHT * 2,
           flexGrow: 1,
           justifyContent: 'flex-end',
         }}

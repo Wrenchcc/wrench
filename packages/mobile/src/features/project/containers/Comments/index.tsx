@@ -3,7 +3,7 @@ import { FlatList, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { CommentsDocument, RepliesDocument, usePaginatedQuery } from '@wrench/common'
 import { Page, keyExtractor } from 'navigation'
-import { NAVIGATION } from 'navigation/constants'
+import { TOP_BAR_HEIGHT } from 'navigation/constants'
 import CommentField from 'components/CommentField'
 import { ActivityIndicator, CommentItem, Text } from 'ui'
 import { update } from 'rambda'
@@ -137,7 +137,7 @@ function Comments({ postId }) {
         data={edges}
         renderItem={renderItem}
         contentContainerStyle={{
-          paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
+          paddingBottom: TOP_BAR_HEIGHT * 2,
           flexGrow: 1,
           justifyContent: 'flex-end',
         }}

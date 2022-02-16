@@ -3,7 +3,7 @@ import { View, Dimensions, useColorScheme } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view'
 import PlatformColor from 'ui/PlatformColor'
-import { NAVIGATION } from 'navigation'
+import { TOTAL_TOP_BAR_HEIGHT } from 'navigation'
 import { FONTS } from 'ui/constants'
 import Users from './Users'
 import Projects from './Projects'
@@ -14,7 +14,7 @@ const { width, height } = Dimensions.get('window')
 
 const initialLayout = {
   width,
-  height: height - NAVIGATION.TOTAL_TOP_BAR_HEIGHT,
+  height: height - TOTAL_TOP_BAR_HEIGHT,
 }
 
 const routes = [
@@ -35,7 +35,7 @@ const styles = {
     width: '100%',
     height: '100%',
     backgroundColor: PlatformColor.default,
-    paddingTop: NAVIGATION.TOTAL_TOP_BAR_HEIGHT,
+    paddingTop: TOTAL_TOP_BAR_HEIGHT,
     zIndex: 1000,
   },
 }

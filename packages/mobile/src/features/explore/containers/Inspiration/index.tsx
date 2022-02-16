@@ -4,7 +4,7 @@ import { usePaginatedQuery, FilesDocument } from '@wrench/common'
 import { useNavigation } from 'navigation'
 import { Icon, Touchable, InfiniteList, Image } from 'ui'
 import { arrowLeft } from 'images'
-import { NAVIGATION, SCREENS } from 'navigation/constants'
+import { STATUS_BAR_HEIGHT, SCREENS } from 'navigation/constants'
 import PlatformColor from 'ui/PlatformColor'
 
 const { width } = Dimensions.get('window')
@@ -15,7 +15,7 @@ const ITEM_SIZE = width / NUM_COLUMNS - 4
 const styles = {
   base: {
     flex: 1,
-    marginTop: -NAVIGATION.STATUS_BAR_HEIGHT,
+    marginTop: -STATUS_BAR_HEIGHT,
   },
   back: {
     zIndex: 10,
@@ -23,7 +23,7 @@ const styles = {
     height: 50,
     borderRadius: 50,
     position: 'absolute',
-    top: NAVIGATION.STATUS_BAR_HEIGHT,
+    top: STATUS_BAR_HEIGHT,
     left: 10,
     backgroundColor: PlatformColor.default,
     justifyContent: 'center',

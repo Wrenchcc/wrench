@@ -1,15 +1,10 @@
 import { getStatusBarHeight } from 'react-native-status-bar-height'
 
-const statusBarHeight = getStatusBarHeight()
-
-export enum NAVIGATION {
-  LIST_INSET_TOP = 30,
-  STATUS_BAR_HEIGHT = statusBarHeight,
-  TOP_BAR_HEIGHT = 60,
-  TOTAL_TOP_BAR_HEIGHT = statusBarHeight + 60,
-}
-
-export const CONTENT_INSET = NAVIGATION.TOTAL_TOP_BAR_HEIGHT + NAVIGATION.LIST_INSET_TOP
+export const LIST_INSET_TOP = 30
+export const STATUS_BAR_HEIGHT = getStatusBarHeight()
+export const TOP_BAR_HEIGHT = 60
+export const TOTAL_TOP_BAR_HEIGHT = STATUS_BAR_HEIGHT + TOP_BAR_HEIGHT
+export const CONTENT_INSET = TOTAL_TOP_BAR_HEIGHT + LIST_INSET_TOP
 
 export const BOTTOM_TABS_ID = 'BOTTOM_TABS'
 

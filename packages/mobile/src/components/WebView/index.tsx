@@ -3,7 +3,7 @@ import { View, BackHandler } from 'react-native'
 import { WebView as RNWebView } from 'react-native-webview'
 import { useTranslation } from 'react-i18next'
 import qs from 'url'
-import { useNavigation, NAVIGATION } from 'navigation'
+import { useNavigation, TOP_BAR_HEIGHT } from 'navigation'
 import Header from 'navigation/Page/Header'
 import { ProgressBar, Icon, Touchable, Share } from 'ui'
 import { arrowLeftSmall, arrowRightSmall, refresh, close } from 'images'
@@ -16,10 +16,10 @@ const styles = {
   },
   base: {
     flex: 1,
-    paddingBottom: NAVIGATION.TOP_BAR_HEIGHT,
+    paddingBottom: TOP_BAR_HEIGHT,
   },
   footer: {
-    height: NAVIGATION.TOP_BAR_HEIGHT,
+    height: TOP_BAR_HEIGHT,
     paddingLeft: 20,
     paddingRight: 20,
     position: 'absolute',

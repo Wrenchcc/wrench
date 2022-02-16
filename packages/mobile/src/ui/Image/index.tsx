@@ -59,6 +59,10 @@ function Image({
   const [progress, setProgress] = useState(0)
   const loading = useRef(false)
 
+  if ((__DEV__ && !width) || !height) {
+    console.warn('You need to define both width and height prop to the <Image /> component.')
+  }
+
   const uri = source.poster || source.uri
 
   const handleLoadStart = useCallback(() => {

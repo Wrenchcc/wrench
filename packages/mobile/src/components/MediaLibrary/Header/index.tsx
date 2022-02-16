@@ -3,7 +3,7 @@ import { View, ActivityIndicator } from 'react-native'
 import Text from 'ui/Text'
 import Touchable from 'ui/Touchable'
 import Animated, { useAnimatedReaction, runOnJS } from 'react-native-reanimated'
-import { useNavigation, SCREENS, NAVIGATION } from 'navigation'
+import { useNavigation, SCREENS, STATUS_BAR_HEIGHT } from 'navigation'
 import { useReactiveVar, store } from 'gql'
 import { useTranslation } from 'react-i18next'
 import cropImage from 'utils/cropImage'
@@ -21,7 +21,7 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: NAVIGATION.STATUS_BAR_HEIGHT,
+    marginTop: STATUS_BAR_HEIGHT,
     paddingBottom: 20,
     zIndex: 10,
     paddingHorizontal: 20,

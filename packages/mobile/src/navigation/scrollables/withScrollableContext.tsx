@@ -10,7 +10,7 @@ import { isAndroid } from 'utils/platform'
 import { useScrollToInput } from '../hooks'
 import { ScrollContext } from './context'
 import { clamp, snapPoint } from './worklets'
-import { CONTENT_INSET, NAVIGATION } from '../constants'
+import { CONTENT_INSET, TOP_BAR_HEIGHT } from '../constants'
 
 export default function withScrollableContext<T>(Component: FC<T>, extraContentInset = 0) {
   return (props: T) => {
@@ -55,7 +55,7 @@ export default function withScrollableContext<T>(Component: FC<T>, extraContentI
         //   (direction === 'down' && !manuallyUp.value) ||
         //   (scrollY.value <= 0 && !manuallyUp.value)
         // ) {
-        //   headerY.value = withSpring(clamp(scrollY.value, 0, NAVIGATION.TOP_BAR_HEIGHT), {
+        //   headerY.value = withSpring(clamp(scrollY.value, 0, TOP_BAR_HEIGHT), {
         //     mass: 0.5,
         //     velocity: velocityY,
         //   })
@@ -73,7 +73,7 @@ export default function withScrollableContext<T>(Component: FC<T>, extraContentI
       onEndDrag: (evt, ctx) => {
         const direction = evt.contentOffset.y > ctx.beginOffset ? 'down' : 'up'
         const velocityY = evt.velocity.y
-        const snapPointY = snapPoint(headerY.value, evt.velocity.y, [0, NAVIGATION.TOP_BAR_HEIGHT])
+        const snapPointY = snapPoint(headerY.value, evt.velocity.y, [0, TOP_BAR_HEIGHT])
 
         headerY.value = withSpring(snapPointY, { mass: 0.5, velocity: velocityY })
 
@@ -81,7 +81,7 @@ export default function withScrollableContext<T>(Component: FC<T>, extraContentI
           scrollVelocity.value = evt.velocity
         }
 
-        if (direction === 'down' && scrollY.value <= NAVIGATION.TOP_BAR_HEIGHT) {
+        if (direction === 'down' && scrollY.value <= TOP_BAR_HEIGHT) {
           headerY.value = withSpring(0, {
             mass: 0.5,
             velocity: velocityY,

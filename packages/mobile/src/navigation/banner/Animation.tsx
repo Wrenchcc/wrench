@@ -11,10 +11,10 @@ import Animated, {
 } from 'react-native-reanimated'
 import { clamp, snapPoint } from 'navigation/scrollables/worklets'
 import { PanGestureHandler } from 'react-native-gesture-handler'
-import { NAVIGATION } from 'navigation/constants'
+import { STATUS_BAR_HEIGHT } from 'navigation/constants'
 
 const FULLY_UP = -60
-const FULLY_DOWN = NAVIGATION.STATUS_BAR_HEIGHT + 5
+const FULLY_DOWN = STATUS_BAR_HEIGHT + 5
 
 const styles = {
   base: {

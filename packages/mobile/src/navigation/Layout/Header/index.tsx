@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Title } from 'ui'
 import PlatformColor from 'ui/PlatformColor'
 import { useScrollContext } from 'navigation'
-import { NAVIGATION } from '../../constants'
+import { STATUS_BAR_HEIGHT, TOP_BAR_HEIGHT } from '../../constants'
 
 // NOTE: Used to create translation files
 // t('notifications')
@@ -26,12 +26,12 @@ const styles = {
   },
   content: {
     backgroundColor: PlatformColor.default,
-    marginTop: NAVIGATION.STATUS_BAR_HEIGHT,
+    marginTop: STATUS_BAR_HEIGHT,
   },
   inner: {
     alignItems: 'center',
     flexDirection: 'row',
-    height: NAVIGATION.TOP_BAR_HEIGHT,
+    height: TOP_BAR_HEIGHT,
     justifyContent: 'space-between',
     paddingHorizontal: 20,
   },
@@ -46,8 +46,8 @@ function Header({ headerLeft, headerRight, headerTitleKey, stickyComponent }) {
       {
         translateY: interpolate(
           headerY.value,
-          [0, NAVIGATION.TOP_BAR_HEIGHT],
-          [0, -NAVIGATION.TOP_BAR_HEIGHT],
+          [0, TOP_BAR_HEIGHT],
+          [0, -TOP_BAR_HEIGHT],
           Animated.Extrapolate.CLAMP
         ),
       },
@@ -57,7 +57,7 @@ function Header({ headerLeft, headerRight, headerTitleKey, stickyComponent }) {
   const opacityStyle = useAnimatedStyle(() => ({
     opacity: interpolate(
       headerY.value,
-      [NAVIGATION.TOP_BAR_HEIGHT / 1.5, 0],
+      [TOP_BAR_HEIGHT / 1.5, 0],
       [0, 1],
       Animated.Extrapolate.CLAMP
     ),

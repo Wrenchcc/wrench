@@ -21,7 +21,7 @@ const styles = {
 function CardSmall({ onPress, image, title, followers, style = {}, children }) {
   return (
     <Touchable onPress={onPress} style={style}>
-      <Image source={image} style={styles.image} />
+      <Image source={image} style={styles.image} width={SIZE} height={SIZE} />
       {children}
       <Text fontSize={15} numberOfLines={1} style={styles.name}>
         {title}

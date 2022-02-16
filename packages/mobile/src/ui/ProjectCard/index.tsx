@@ -108,7 +108,7 @@ function ProjectCard({ onPress, onFollow, project, style }) {
             style={styles.overlay}
           />
         )}
-        <Image source={project.cover} height={height} />
+        <Image source={project.cover} height={height} width={width - 40} />
 
         <View style={styles.content}>
           <View style={styles.info}>

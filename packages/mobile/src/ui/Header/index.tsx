@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import { NAVIGATION } from 'navigation/constants'
+import { STATUS_BAR_HEIGHT, TOP_BAR_HEIGHT } from 'navigation/constants'
 import PlatformColor from 'ui/PlatformColor'
 
 const styles = {
@@ -16,8 +16,8 @@ const styles = {
     paddingRight: 20,
     paddingBottom: 20,
     paddingLeft: 20,
-    marginTop: NAVIGATION.STATUS_BAR_HEIGHT,
-    height: NAVIGATION.TOP_BAR_HEIGHT,
+    marginTop: STATUS_BAR_HEIGHT,
+    height: TOP_BAR_HEIGHT,
   },
   left: {
     flex: 1,

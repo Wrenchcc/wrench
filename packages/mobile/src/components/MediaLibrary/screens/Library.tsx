@@ -10,7 +10,7 @@ import Animated, {
   useAnimatedScrollHandler,
 } from 'react-native-reanimated'
 import * as MediaLibrary from 'expo-media-library'
-import { useNavigation, NAVIGATION } from 'navigation'
+import { useNavigation, STATUS_BAR_HEIGHT } from 'navigation'
 import { clamp, snapPoint } from 'navigation/scrollables/worklets'
 import { store } from 'gql'
 import Header from '../Header'
@@ -40,7 +40,7 @@ const styles = {
     position: 'absolute',
     zIndex: 1000,
     width: CROP_AREA,
-    height: CROP_AREA + HEADER_HEIGHT + NAVIGATION.STATUS_BAR_HEIGHT,
+    height: CROP_AREA + HEADER_HEIGHT + STATUS_BAR_HEIGHT,
   },
 }
 
@@ -132,13 +132,7 @@ function Library() {
 
   const spacing = useDerivedValue(() => {
     if (Math.abs(CROP_FULLY_UP) > translationY.value) {
-      return (
-        CROP_AREA -
-        DRAG_BAR -
-        Math.abs(cropAreaY.value) +
-        HEADER_HEIGHT +
-        NAVIGATION.STATUS_BAR_HEIGHT
-      )
+      return CROP_AREA - DRAG_BAR - Math.abs(cropAreaY.value) + HEADER_HEIGHT + STATUS_BAR_HEIGHT
     }
   })
 

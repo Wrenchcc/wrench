@@ -4,7 +4,7 @@ import { usePaginatedLazyQuery, SearchModelsDocument } from '@wrench/common'
 import { InfiniteList, Text, Touchable, SearchingFor, NoResults, Loader } from 'ui'
 import { keyboardHeight } from 'utils/platform'
 import HashtagSkeletonList from 'ui/Hashtag/SkeletonList'
-import { NAVIGATION } from 'navigation/constants'
+import { STATUS_BAR_HEIGHT } from 'navigation/constants'
 import PlatformColor from 'ui/PlatformColor'
 
 const INPUT_HEIGHT = 80
@@ -17,7 +17,7 @@ const styles = {
     zIndex: 1000,
     width: '100%',
     backgroundColor: PlatformColor.default,
-    top: NAVIGATION.STATUS_BAR_HEIGHT,
+    top: STATUS_BAR_HEIGHT,
   },
 }
 

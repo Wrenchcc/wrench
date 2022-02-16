@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
-import { Image, View } from 'react-native'
+import { View } from 'react-native'
 import { pathOr } from 'rambda'
-import { Text, Followers, Touchable } from 'ui'
+import { Image, Text, Followers, Touchable } from 'ui'
 import PlatformColor from 'ui/PlatformColor'
 
 const styles = {
@@ -34,7 +34,7 @@ function Project({ id, files, title, followers, onPress }) {
 
   return (
     <Touchable key={id} onPress={handleOnPress} style={styles.base}>
-      {image && <Image source={image} style={styles.cover} />}
+      {image && <Image source={image} style={styles.cover} width={40} height={40} />}
 
       <View style={styles.middle}>
         <View
