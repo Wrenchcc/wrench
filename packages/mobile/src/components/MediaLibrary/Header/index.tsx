@@ -67,7 +67,7 @@ function Header({
   const albumTitle = useReactiveVar(store.files.albumTitleVar)
 
   useAnimatedReaction(
-    () => albumVisible.value,
+    () => albumVisible && albumVisible.value,
     (result, previous) => {
       if (result !== previous) {
         runOnJS(setDisabled)(result)
