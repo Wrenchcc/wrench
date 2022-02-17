@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import Animated, { useAnimatedStyle, interpolate } from 'react-native-reanimated'
+import Animated, { useAnimatedStyle, interpolate, Extrapolate } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
 import { Title } from 'ui'
 import PlatformColor from 'ui/PlatformColor'
@@ -48,19 +48,14 @@ function Header({ headerLeft, headerRight, headerTitleKey, stickyComponent }) {
           headerY.value,
           [0, TOP_BAR_HEIGHT],
           [0, -TOP_BAR_HEIGHT],
-          Animated.Extrapolate.CLAMP
+          Extrapolate.CLAMP
         ),
       },
     ],
   }))
 
   const opacityStyle = useAnimatedStyle(() => ({
-    opacity: interpolate(
-      headerY.value,
-      [TOP_BAR_HEIGHT / 1.5, 0],
-      [0, 1],
-      Animated.Extrapolate.CLAMP
-    ),
+    opacity: interpolate(headerY.value, [TOP_BAR_HEIGHT / 1.5, 0], [0, 1], Extrapolate.CLAMP),
   }))
 
   return (

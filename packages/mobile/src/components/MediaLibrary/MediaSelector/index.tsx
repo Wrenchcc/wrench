@@ -45,7 +45,7 @@ function MediaSelector({ onScroll, spacing, onSelect }) {
 
   const fetchInitialAssets = async (albumId?: string) => {
     try {
-      if (assets.length) {
+      if (assets.length && init.current) {
         // NOTE: Empty when chaning album
         setAssets([])
       }
@@ -58,7 +58,9 @@ function MediaSelector({ onScroll, spacing, onSelect }) {
       })
 
       if (!init.current) {
-        store.files.select(result.assets[0])
+        if (result.assets.length > 0) {
+          store.files.select(result.assets[0])
+        }
         init.current = true
       }
 

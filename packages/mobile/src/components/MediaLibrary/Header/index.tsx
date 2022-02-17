@@ -154,7 +154,7 @@ function Header({
         </View>
 
         <Animated.View style={[styles.right, headerRightStyle]}>
-          <Touchable onPress={handleCropping} disabled={!selectedFiles.length} disabled={disabled}>
+          <Touchable onPress={handleCropping} disabled={disabled || !selectedFiles.length}>
             {isCropping ? (
               <ActivityIndicator color="white" />
             ) : (
