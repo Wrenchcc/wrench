@@ -1,6 +1,6 @@
 {
   "name": "wrench",
-  "version": "1.0.345",
+  "version": "1.0.346",
   "private": true,
   "workspaces": {
     "packages": [
